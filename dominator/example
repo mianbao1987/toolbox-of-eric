@@ -1,0 +1,11 @@
+
+# vetices not include ENTRY and EXIT
+ENTRY EXIT bb2 bb3 bb4 bb5 bb6
+# edges
+ENTRY->bb2
+bb2->bb3
+bb2->bb4
+bb3->bb5
+bb4->bb5
+bb5->bb6
+bb6->EXIT
