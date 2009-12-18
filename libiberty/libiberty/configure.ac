@@ -471,11 +471,14 @@ if test -n "${with_target_subdir}"; then
   esac
 
   # We may wish to install the target headers somewhere.
-  AC_ARG_ENABLE(install-libiberty,
-  [  --enable-install-libiberty       Install headers for end users],
-  enable_install_libiberty=$enableval,
-  enable_install_libiberty=no)dnl
+  #AC_ARG_ENABLE(install-libiberty,
+  #[  --enable-install-libiberty       Install headers for end users],
+  #enable_install_libiberty=$enableval,
+  #enable_install_libiberty=no)dnl
   
+  # Always install libiberty and headers.
+  enable_install_libiberty=yes
+
   # Option parsed, now set things appropriately.
   case x"$enable_install_libiberty" in
     xyes|x)
