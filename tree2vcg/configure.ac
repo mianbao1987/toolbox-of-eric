@@ -14,7 +14,7 @@ AC_PROG_LEX
 
 # Checks for libraries.
 # FIXME: Replace `main' with a function in `-liberty':
-AC_CHECK_LIB([iberty], [main])
+AC_CHECK_LIB([iberty], [xstrdup])
 
 # Checks for header files.
 AC_HEADER_STDC
@@ -27,5 +27,5 @@ AC_FUNC_OBSTACK
 # Checks for library functions.
 AC_FUNC_ERROR_AT_LINE
 
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile])
 AC_OUTPUT
