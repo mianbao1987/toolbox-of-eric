@@ -15,7 +15,7 @@ AC_PROG_LEX
 AC_ARG_WITH(libiberty, [  --with-libiberty=PATH		specify prefix directory for installed libiberty package.
 				Equivalent to --with-libiberty-include=PATH/include
 				plus --with-mpfr-lib=PATH/lib])
-AC_ARG_WITH(libiberty_inc, [  --with-libiberty-include=PATH	specify directory for installed libiberty include files])
+AC_ARG_WITH(libiberty_include, [  --with-libiberty-include=PATH	specify directory for installed libiberty include files])
 AC_ARG_WITH(libiberty_lib, [  --with-libiberty-lib=PATH	specify directory for installed libiberty library])
 
 if test "x$with_libiberty" != x; then
@@ -23,22 +23,22 @@ if test "x$with_libiberty" != x; then
   liberty_lib="-L$with_libiberty/lib"
 fi
 
-if test "x$with_libiberty_inc" != x; then
-  liberty_inc="-I$with_libiberty"
+if test "x$with_libiberty_include" != x; then
+  liberty_inc="-I$with_libiberty_include"
 fi
 
 if test "x$with_libiberty_lib" != x; then
-  liberty_lib="-L$with_libiberty"
+  liberty_lib="-L$with_libiberty_lib"
 fi
 
 AC_SUBST(liberty_inc)
 AC_SUBST(liberty_lib)
 
 # Checks for libraries.
-saved_LIBS="$LIBS"
+#saved_LIBS="$LIBS"
 LIBS="$LIBS $liberty_lib"
 AC_CHECK_LIB([iberty], [xstrdup], , [echo "Error! libiberty library is required." && exit -1])
-LIBS="$saved_LIBS"
+#LIBS="$saved_LIBS"
 
 # Checks for header files.
 AC_HEADER_STDC

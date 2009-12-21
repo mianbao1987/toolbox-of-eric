@@ -3187,9 +3187,9 @@ if test "${with_libiberty+set}" = set; then
 
 fi;
 
-# Check whether --with-libiberty_inc or --without-libiberty_inc was given.
-if test "${with_libiberty_inc+set}" = set; then
-  withval="$with_libiberty_inc"
+# Check whether --with-libiberty_include or --without-libiberty_include was given.
+if test "${with_libiberty_include+set}" = set; then
+  withval="$with_libiberty_include"
 
 fi;
 
@@ -3204,19 +3204,19 @@ if test "x$with_libiberty" != x; then
   liberty_lib="-L$with_libiberty/lib"
 fi
 
-if test "x$with_libiberty_inc" != x; then
-  liberty_inc="-I$with_libiberty"
+if test "x$with_libiberty_include" != x; then
+  liberty_inc="-I$with_libiberty_include"
 fi
 
 if test "x$with_libiberty_lib" != x; then
-  liberty_lib="-L$with_libiberty"
+  liberty_lib="-L$with_libiberty_lib"
 fi
 
 
 
 
 # Checks for libraries.
-saved_LIBS="$LIBS"
+#saved_LIBS="$LIBS"
 LIBS="$LIBS $liberty_lib"
 
 echo "$as_me:$LINENO: checking for xstrdup in -liberty" >&5
@@ -3294,7 +3294,7 @@ else
   echo "Error! libiberty library is required." && exit -1
 fi
 
-LIBS="$saved_LIBS"
+#LIBS="$saved_LIBS"
 
 # Checks for header files.
 ac_ext=c
