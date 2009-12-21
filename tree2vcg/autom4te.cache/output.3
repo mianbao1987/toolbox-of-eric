@@ -3181,21 +3181,21 @@ fi
 fi
 
 
-# Check whether --with-liberty or --without-liberty was given.
-if test "${with_liberty+set}" = set; then
-  withval="$with_liberty"
+# Check whether --with-libiberty or --without-libiberty was given.
+if test "${with_libiberty+set}" = set; then
+  withval="$with_libiberty"
   
 fi; 
 
-# Check whether --with-liberty_include or --without-liberty_include was given.
-if test "${with_liberty_include+set}" = set; then
-  withval="$with_liberty_include"
+# Check whether --with-libiberty_inc or --without-libiberty_inc was given.
+if test "${with_libiberty_inc+set}" = set; then
+  withval="$with_libiberty_inc"
   
 fi; 
 
-# Check whether --with-liberty_lib or --without-liberty_lib was given.
-if test "${with_liberty_lib+set}" = set; then
-  withval="$with_liberty_lib"
+# Check whether --with-libiberty_lib or --without-libiberty_lib was given.
+if test "${with_libiberty_lib+set}" = set; then
+  withval="$with_libiberty_lib"
   
 fi; 
 
@@ -3204,19 +3204,20 @@ if test "x$with_libiberty" != x; then
   liberty_lib="-L$with_libiberty/lib"
 fi
 
-if test "x$with_libiberty_include" != x; then
-  liberty_inc="-I$with_libiberty/include"
+if test "x$with_libiberty_inc" != x; then
+  liberty_inc="-I$with_libiberty"
 fi
 
 if test "x$with_libiberty_lib" != x; then
-  liberty_lib="-L$with_libiberty/lib"
+  liberty_lib="-L$with_libiberty"
 fi
 
 
 
 
 # Checks for libraries.
-# FIXME: Replace `main' with a function in `-liberty':
+saved_LIBS="$LIBS"
+LIBS="$LIBS $liberty_lib"
 
 echo "$as_me:$LINENO: checking for xstrdup in -liberty" >&5
 echo $ECHO_N "checking for xstrdup in -liberty... $ECHO_C" >&6
@@ -3293,6 +3294,7 @@ else
   echo "Error! libiberty library is required." && exit -1
 fi
 
+LIBS="$saved_LIBS"
 
 # Checks for header files.
 ac_ext=c
