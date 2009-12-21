@@ -51,7 +51,7 @@ binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_tree2vcg_OBJECTS = main.$(OBJEXT) yacc.$(OBJEXT) lex.$(OBJEXT)
 tree2vcg_OBJECTS = $(am_tree2vcg_OBJECTS)
-tree2vcg_DEPENDENCIES =
+tree2vcg_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -130,6 +130,8 @@ includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
 libdir = @libdir@
+liberty_inc = @liberty_inc@
+liberty_lib = @liberty_lib@
 libexecdir = @libexecdir@
 localstatedir = @localstatedir@
 mandir = @mandir@
@@ -142,9 +144,9 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 AM_YFLAGS = -d -t
-AM_LDFLAGS = -liberty
+AM_CFLAGS = $(LIBERTY_INC)
 tree2vcg_SOURCES = main.c yacc.y lex.l
-tree2vcg_LDADD = -liberty
+tree2vcg_LDFLAGS = -liberty $(LIBERTY_LIB)
 all: all-am
 
 .SUFFIXES:

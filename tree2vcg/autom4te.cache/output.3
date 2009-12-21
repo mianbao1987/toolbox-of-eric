@@ -310,7 +310,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar YACC CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE LEX LEXLIB LEX_OUTPUT_ROOT CPP EGREP LIB@&t@OBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar YACC CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE LEX LEXLIB LEX_OUTPUT_ROOT liberty_inc liberty_lib CPP EGREP LIB@&t@OBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -850,6 +850,15 @@ Optional Features:
   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
   --disable-dependency-tracking  speeds up one-time build
   --enable-dependency-tracking   do not reject slow dependency extractors
+
+Optional Packages:
+  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+  --with-libiberty=PATH		specify prefix directory for installed libiberty package.
+				Equivalent to --with-libiberty-include=PATH/include
+				plus --with-mpfr-lib=PATH/lib
+  --with-libiberty-include=PATH	specify directory for installed libiberty include files
+  --with-libiberty-lib=PATH	specify directory for installed libiberty library
 
 Some influential environment variables:
   CC          C compiler command
@@ -3171,6 +3180,41 @@ fi
 
 fi
 
+
+# Check whether --with-liberty or --without-liberty was given.
+if test "${with_liberty+set}" = set; then
+  withval="$with_liberty"
+  
+fi; 
+
+# Check whether --with-liberty_include or --without-liberty_include was given.
+if test "${with_liberty_include+set}" = set; then
+  withval="$with_liberty_include"
+  
+fi; 
+
+# Check whether --with-liberty_lib or --without-liberty_lib was given.
+if test "${with_liberty_lib+set}" = set; then
+  withval="$with_liberty_lib"
+  
+fi; 
+
+if test "x$with_libiberty" != x; then
+  liberty_inc="-I$with_libiberty/include"
+  liberty_lib="-L$with_libiberty/lib"
+fi
+
+if test "x$with_libiberty_include" != x; then
+  liberty_inc="-I$with_libiberty/include"
+fi
+
+if test "x$with_libiberty_lib" != x; then
+  liberty_lib="-L$with_libiberty/lib"
+fi
+
+
+
+
 # Checks for libraries.
 # FIXME: Replace `main' with a function in `-liberty':
 
@@ -3245,6 +3289,8 @@ _ACEOF
 
   LIBS="-liberty $LIBS"
 
+else
+  echo "Error! libiberty library is required." && exit -1
 fi
 
 
@@ -4843,6 +4889,8 @@ s,@am__fastdepCC_FALSE@,$am__fastdepCC_FALSE,;t t
 s,@LEX@,$LEX,;t t
 s,@LEXLIB@,$LEXLIB,;t t
 s,@LEX_OUTPUT_ROOT@,$LEX_OUTPUT_ROOT,;t t
+s,@liberty_inc@,$liberty_inc,;t t
+s,@liberty_lib@,$liberty_lib,;t t
 s,@CPP@,$CPP,;t t
 s,@EGREP@,$EGREP,;t t
 s,@LIB@&t@OBJS@,$LIB@&t@OBJS,;t t
