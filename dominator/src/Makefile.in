@@ -14,6 +14,23 @@
 
 @SET_MAKE@
 
+# Makefile for dominator.
+# 
+# Copyright (C) 2009 Eric Fisher, joefoxreal@gmail.com. 
+# 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 SOURCES = $(dominator_SOURCES)
 
 srcdir = @srcdir@
@@ -38,14 +55,13 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 bin_PROGRAMS = dominator$(EXEEXT)
 subdir = src
-DIST_COMMON = README $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
-	AUTHORS COPYING ChangeLog INSTALL NEWS lex.c yacc.c yacc.h
+DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in lex.c yacc.c \
+	yacc.h
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
-CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
@@ -53,8 +69,8 @@ PROGRAMS = $(bin_PROGRAMS)
 am_dominator_OBJECTS = main.$(OBJEXT) dfs.$(OBJEXT) vec.$(OBJEXT) \
 	yacc.$(OBJEXT) lex.$(OBJEXT)
 dominator_OBJECTS = $(am_dominator_OBJECTS)
-dominator_DEPENDENCIES =
-DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
+dominator_LDADD = $(LDADD)
+DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -69,7 +85,6 @@ ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
-ALLOCA = @ALLOCA@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
@@ -101,9 +116,6 @@ LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
-MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
-MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
 MAKEINFO = @MAKEINFO@
 OBJEXT = @OBJEXT@
 PACKAGE = @PACKAGE@
@@ -113,15 +125,12 @@ PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
-POW_LIB = @POW_LIB@
-RANLIB = @RANLIB@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
 VERSION = @VERSION@
 YACC = @YACC@
 ac_ct_CC = @ac_ct_CC@
-ac_ct_RANLIB = @ac_ct_RANLIB@
 ac_ct_STRIP = @ac_ct_STRIP@
 am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
 am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
@@ -139,6 +148,8 @@ includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
 libdir = @libdir@
+liberty_inc = @liberty_inc@
+liberty_lib = @liberty_lib@
 libexecdir = @libexecdir@
 localstatedir = @localstatedir@
 mandir = @mandir@
@@ -148,14 +159,12 @@ prefix = @prefix@
 program_transform_name = @program_transform_name@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
-subdirs = @subdirs@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 AM_YFLAGS = -d -t
-AM_CPPFLAGS = -I$(srcdir)/../include
-AM_LDFLAGS = -L../libiberty -liberty
+AM_CFLAGS = $(LIBERTY_INC)
 dominator_SOURCES = main.c dfs.c vec.c vec.h common.h yacc.y lex.l
-dominator_LDADD = -liberty
+dominator_LDFLAGS = -liberty $(LIBERTY_LIB)
 all: all-am
 
 .SUFFIXES:

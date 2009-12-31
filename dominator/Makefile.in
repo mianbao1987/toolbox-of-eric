@@ -35,20 +35,16 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 subdir = .
 DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
-	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
-	$(top_srcdir)/configure $(top_srcdir)/libiberty/Makefile.in \
-	$(top_srcdir)/libiberty/testsuite/Makefile.in AUTHORS COPYING \
-	ChangeLog INSTALL NEWS config.guess config.sub depcomp \
-	install-sh missing
+	$(srcdir)/Makefile.in $(top_srcdir)/configure AUTHORS COPYING \
+	ChangeLog INSTALL NEWS depcomp install-sh missing
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno configure.status.lineno
 mkinstalldirs = $(install_sh) -d
-CONFIG_HEADER = config.h
-CONFIG_CLEAN_FILES = libiberty/Makefile libiberty/testsuite/Makefile
+CONFIG_CLEAN_FILES =
 SOURCES =
 DIST_SOURCES =
 RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
@@ -72,7 +68,6 @@ GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
 ACLOCAL = @ACLOCAL@
-ALLOCA = @ALLOCA@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
@@ -104,9 +99,6 @@ LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
-MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
-MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
 MAKEINFO = @MAKEINFO@
 OBJEXT = @OBJEXT@
 PACKAGE = @PACKAGE@
@@ -116,15 +108,12 @@ PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
-POW_LIB = @POW_LIB@
-RANLIB = @RANLIB@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
 VERSION = @VERSION@
 YACC = @YACC@
 ac_ct_CC = @ac_ct_CC@
-ac_ct_RANLIB = @ac_ct_RANLIB@
 ac_ct_STRIP = @ac_ct_STRIP@
 am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
 am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
@@ -142,6 +131,8 @@ includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
 libdir = @libdir@
+liberty_inc = @liberty_inc@
+liberty_lib = @liberty_lib@
 libexecdir = @libexecdir@
 localstatedir = @localstatedir@
 mandir = @mandir@
@@ -151,12 +142,10 @@ prefix = @prefix@
 program_transform_name = @program_transform_name@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
-subdirs = @subdirs@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-SUBDIRS = libiberty src
-all: config.h
-	$(MAKE) $(AM_MAKEFLAGS) all-recursive
+SUBDIRS = src
+all: all-recursive
 
 .SUFFIXES:
 am--refresh:
@@ -192,27 +181,6 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(srcdir) && $(AUTOCONF)
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
-
-config.h: stamp-h1
-	@if test ! -f $@; then \
-	  rm -f stamp-h1; \
-	  $(MAKE) stamp-h1; \
-	else :; fi
-
-stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status
-	@rm -f stamp-h1
-	cd $(top_builddir) && $(SHELL) ./config.status config.h
-$(srcdir)/config.h.in:  $(am__configure_deps) 
-	cd $(top_srcdir) && $(AUTOHEADER)
-	rm -f stamp-h1
-	touch $@
-
-distclean-hdr:
-	-rm -f config.h stamp-h1
-libiberty/Makefile: $(top_builddir)/config.status $(top_srcdir)/libiberty/Makefile.in
-	cd $(top_builddir) && $(SHELL) ./config.status $@
-libiberty/testsuite/Makefile: $(top_builddir)/config.status $(top_srcdir)/libiberty/testsuite/Makefile.in
-	cd $(top_builddir) && $(SHELL) ./config.status $@
 uninstall-info-am:
 
 # This directory's subdirectories are mostly independent; you can cd
@@ -284,7 +252,7 @@ ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	mkid -fID $$unique
 tags: TAGS
 
-TAGS: tags-recursive $(HEADERS) $(SOURCES) config.h.in $(TAGS_DEPENDENCIES) \
+TAGS: tags-recursive $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 		$(TAGS_FILES) $(LISP)
 	tags=; \
 	here=`pwd`; \
@@ -301,7 +269,7 @@ TAGS: tags-recursive $(HEADERS) $(SOURCES) config.h.in $(TAGS_DEPENDENCIES) \
 	      tags="$$tags $$include_option=$$here/$$subdir/TAGS"; \
 	  fi; \
 	done; \
-	list='$(SOURCES) $(HEADERS) config.h.in $(LISP) $(TAGS_FILES)'; \
+	list='$(SOURCES) $(HEADERS)  $(LISP) $(TAGS_FILES)'; \
 	unique=`for i in $$list; do \
 	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
 	  done | \
@@ -313,11 +281,11 @@ TAGS: tags-recursive $(HEADERS) $(SOURCES) config.h.in $(TAGS_DEPENDENCIES) \
 	    $$tags $$unique; \
 	fi
 ctags: CTAGS
-CTAGS: ctags-recursive $(HEADERS) $(SOURCES) config.h.in $(TAGS_DEPENDENCIES) \
+CTAGS: ctags-recursive $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 		$(TAGS_FILES) $(LISP)
 	tags=; \
 	here=`pwd`; \
-	list='$(SOURCES) $(HEADERS) config.h.in $(LISP) $(TAGS_FILES)'; \
+	list='$(SOURCES) $(HEADERS)  $(LISP) $(TAGS_FILES)'; \
 	unique=`for i in $$list; do \
 	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
 	  done | \
@@ -338,7 +306,6 @@ distclean-tags:
 distdir: $(DISTFILES)
 	$(am__remove_distdir)
 	mkdir $(distdir)
-	$(mkdir_p) $(distdir)/libiberty $(distdir)/libiberty/testsuite
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \
@@ -479,7 +446,7 @@ distcleancheck: distclean
 	       exit 1; } >&2
 check-am: all-am
 check: check-recursive
-all-am: Makefile config.h
+all-am: Makefile
 installdirs: installdirs-recursive
 installdirs-am:
 install: install-recursive
@@ -513,7 +480,7 @@ clean-am: clean-generic mostlyclean-am
 distclean: distclean-recursive
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -f Makefile
-distclean-am: clean-am distclean-generic distclean-hdr distclean-tags
+distclean-am: clean-am distclean-generic distclean-tags
 
 dvi: dvi-recursive
 
@@ -561,17 +528,18 @@ uninstall-info: uninstall-info-recursive
 	check-am clean clean-generic clean-recursive ctags \
 	ctags-recursive dist dist-all dist-bzip2 dist-gzip dist-shar \
 	dist-tarZ dist-zip distcheck distclean distclean-generic \
-	distclean-hdr distclean-recursive distclean-tags \
-	distcleancheck distdir distuninstallcheck dvi dvi-am html \
-	html-am info info-am install install-am install-data \
-	install-data-am install-exec install-exec-am install-info \
-	install-info-am install-man install-strip installcheck \
-	installcheck-am installdirs installdirs-am maintainer-clean \
-	maintainer-clean-generic maintainer-clean-recursive \
-	mostlyclean mostlyclean-generic mostlyclean-recursive pdf \
-	pdf-am ps ps-am tags tags-recursive uninstall uninstall-am \
-	uninstall-info-am
+	distclean-recursive distclean-tags distcleancheck distdir \
+	distuninstallcheck dvi dvi-am html html-am info info-am \
+	install install-am install-data install-data-am install-exec \
+	install-exec-am install-info install-info-am install-man \
+	install-strip installcheck installcheck-am installdirs \
+	installdirs-am maintainer-clean maintainer-clean-generic \
+	maintainer-clean-recursive mostlyclean mostlyclean-generic \
+	mostlyclean-recursive pdf pdf-am ps ps-am tags tags-recursive \
+	uninstall uninstall-am uninstall-info-am
 
+export LIBERTY_INC=@liberty_inc@
+export LIBERTY_LIB=@liberty_lib@
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
