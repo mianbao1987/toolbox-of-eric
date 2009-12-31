@@ -1,0 +1,41 @@
+--- gcc/final.c	2008-12-10 16:46:40.000000000 +0800
++++ gcc/final.c	2009-04-07 16:07:38.000000000 +0800
+@@ -1834,6 +1835,38 @@ final_scan_insn (rtx insn, FILE *file, i
+ 	    fprintf (asm_out_file, "\t%s basic block %d\n",
+ 		     ASM_COMMENT_START, NOTE_BASIC_BLOCK (insn)->index);
+ 
++#if 1
++          /* Print basic block info. */
++          if (1)
++            {
++              edge e;
++              edge_iterator ei;
++
++              fprintf (asm_out_file, "\t%s BLOCK %d",
++                       ASM_COMMENT_START, NOTE_BASIC_BLOCK (insn)->index);
++              if (NOTE_BASIC_BLOCK (insn)->frequency)
++                fprintf (asm_out_file, " freq: %d",
++                         NOTE_BASIC_BLOCK (insn)->frequency);
++              //if (NOTE_BASIC_BLOCK (insn)->count)
++              //  fprintf (asm_out_file, " count: %d",
++              //           (HOST_WIDEST_INT)NOTE_BASIC_BLOCK (insn)->count);
++              fprintf (asm_out_file, "\n");
++
++              fprintf (asm_out_file, "\t%s PRED:", ASM_COMMENT_START);
++              FOR_EACH_EDGE (e, ei, NOTE_BASIC_BLOCK (insn)->preds)
++                {
++                  dump_edge_info (asm_out_file, e, 0);
++                }
++              fprintf (asm_out_file, "\n");
++
++              fprintf (asm_out_file, "\t%s SUCC:", ASM_COMMENT_START);
++              FOR_EACH_EDGE (e, ei, NOTE_BASIC_BLOCK (insn)->succs)
++                {
++                  dump_edge_info (asm_out_file, e, 1);
++                }
++              fprintf (asm_out_file, "\n");
++            }
++#endif
+ 	  if ((*seen & (SEEN_EMITTED | SEEN_BB)) == SEEN_BB)
+ 	    {
+ 	      *seen |= SEEN_EMITTED;
