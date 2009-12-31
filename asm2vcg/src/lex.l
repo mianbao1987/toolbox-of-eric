@@ -19,7 +19,7 @@
   #include <assert.h>
   #include <string.h>
   #include <libiberty.h>
-  #include "parser.tab.h"
+  #include "yacc.h"
 %}
 
 blanks [[:blank:]]*
