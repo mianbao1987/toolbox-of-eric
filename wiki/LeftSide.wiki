@@ -1,0 +1,21 @@
+* libiberty
+
+  The libiberty library used by the tools here.
+
+* tree2vcg
+
+  Generate vcg format file from gcc tree dump, which can be viewed as a graph by a vcg tool (e.g. http://www.absint.com/aisee/).
+
+  Gcc can generate vcg format file only for rtl dump. So this tool can help you read the tree-level program.
+
+* asm2vcg
+
+  Generate vcg format file from .s file. This requires gcc to be patched with output_bb_info.patch， which is based on gcc-4.4.0. The parser is based on mips assembly, so it may need a little changes if you want use it on x86 .s files or others.
+
+* dominator
+
+  Build dominator tree according cfg.
+
+Note:
+
+I don't use trunck and branch, and just put each package under svn directory.
