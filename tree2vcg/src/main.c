@@ -91,7 +91,7 @@ output_graph_header_bb (const char *fun_name, const int bb_num)
   fprintf (fout, "title: \"%s.BB%d\"\n", fun_name, bb_num);
   fprintf (fout, "folding: 1\n");
   fprintf (fout, "color: lightblue\n");
-  fprintf (fout, "label: \"basic block %d\"\n", bb_num);
+  fprintf (fout, "label: \"bb %d\"\n", bb_num);
   //fprintf (fout, "\n");
 }
 
@@ -99,7 +99,7 @@ void
 output_graph_tailer_bb (const char *fun_name, const int bb_num)
 {
   char *insns;
-  int len;
+  int len, i;
   
   len = obstack_object_size (&insn_obstack);
   if (len > 0)
@@ -111,7 +111,15 @@ output_graph_tailer_bb (const char *fun_name, const int bb_num)
       fprintf (fout, "node: {\n");
       fprintf (fout, "  title: \"%s.%d\"\n", fun_name, bb_num);
       fprintf (fout, "  color: green\n");
-      fprintf (fout, "  label: \"<bb %d>\n%s\"",bb_num, insns);
+      /* fprintf (fout, "  label: \"<bb %d>\n%s\"",bb_num, insns); */
+      fprintf (fout, "  label: \"<bb %d>\n",bb_num);
+      for (i = 0; i < len - 1; i++)
+        { 
+          if (insns[i] == '"')
+            fprintf (fout, "\\");
+          fprintf (fout, "%c", insns[i]);
+        }
+      fprintf (fout, "\"");  
       fprintf (fout, "}\n");  
       obstack_free (&insn_obstack, insns);
     }
