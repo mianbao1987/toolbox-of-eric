@@ -91,7 +91,7 @@ output_graph_header_bb (const char *fun_name, const int bb_num)
   fprintf (fout, "title: \"%s.BB%d\"\n", fun_name, bb_num);
   fprintf (fout, "folding: 1\n");
   fprintf (fout, "color: lightblue\n");
-  fprintf (fout, "label: \"basic block %d\"\n", bb_num);
+  fprintf (fout, "label: \"bb %d\"\n", bb_num);
   //fprintf (fout, "\n");
 }
 
