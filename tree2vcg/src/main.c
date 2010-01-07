@@ -34,7 +34,7 @@ FILE *fin;
 FILE *fout;
 
 char *program_name;
-char *program_version = "0.1";
+char *program_version = "0.2";
 
 char *current_fun_name;
 int current_bb_num = -1;
