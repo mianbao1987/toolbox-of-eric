@@ -50,30 +50,15 @@ input:	/* empty */
 ;
 
 line: FN FN_NAME {
-    if (current_fun_name) 
-      { 
-        if (current_bb_num != -1)
-          {
-            output_graph_tailer_bb (current_fun_name, current_bb_num);
-            current_bb_num = -1;
-          }
-        output_graph_tailer_fun (current_fun_name);
-        free (current_fun_name);
-      }
-    current_fun_name = $<str>2; /* FN_NAME */
-    output_graph_header_fun(current_fun_name);
+    current_graph = new_graph ($<str>2); /* FN_NAME */
+    add_graph (top_graph, current_graph);
   }
 	| BB BB_NUM {
-    if (current_bb_num != -1)
-      {
-        output_graph_tailer_bb (current_fun_name, current_bb_num);
-      }
-    current_bb_num = $<val>2; /* BB_NUM */
-    output_graph_header_bb (current_fun_name, current_bb_num);
+    current_node = new_node ($<val>2); /* BB_NUM */
+    add_node (current_graph, current_node);
   }
         | PRED pred_nums 
         | SUCC succ_nums {
-    output_edges_bb (current_fun_name, current_bb_num, &pred_obstack, &succ_obstack);
   }
 	| STMT {
     /* obstack_grow (&insn_obstack, "  ", 2); */
@@ -84,12 +69,14 @@ line: FN FN_NAME {
 
 pred_nums:	/* empty */
 	| pred_nums PRED_NUM {
-    obstack_int_grow (&pred_obstack, $<val>2);
+    current_edge = new_edge ($<str>2, get_node_title (current_node));
+    add_edge (current_graph, current_edge);
   }
 
 succ_nums:	/* empty */
 	| succ_nums SUCC_NUM {
-    obstack_int_grow (&succ_obstack, $<val>2);
+    current_edge = new_edge (get_node_title (current_node), $<str>2);
+    add_edge (current_graph, current_edge);
   }
 
 %%

@@ -1,4 +1,4 @@
-/* Output vcg description file according to the tree dump file.
+/* 
 
    Copyright (C) 2009 Eric Fisher, joefoxreal@gmail.com. 
 
@@ -24,59 +24,21 @@
 #include <libiberty.h>
 #include <obstack.h>
 
-#include <argp.h>
-
 #include "gdl.h"
 #include "tree2vcg.h"
 
-extern FILE *yyin;
-extern int yyparse (void);
-extern void set_yy_debug (void);
-
-FILE *fin;
-FILE *fout;
-
-char *program_name;
-
-int seen_label = 0;
-
-#define ENTRY_ID 0
-#define EXIT_ID 1
-
-#define obstack_chunk_alloc xmalloc
-#define obstack_chunk_free free
-
-struct obstack pred_obstack;
-struct obstack succ_obstack;
-struct obstack insn_obstack;
-
-struct gdl_graph *top_graph;
-struct gdl_graph *current_graph;
-
-void
-graph_init (void)
+struct gdl_graph *
+new_graph (char *title)
 {
-  top_graph = new_graph (NULL);
-  current_graph = top_graph;
 }
 
-int
-main (int argc, char *argv[])
+struct gdl_node *
+new_node (char *title)
 {
-  program_name = argv[0];
-  handle_option (argc, argv);
-
-  obstack_init (&pred_obstack);
-  obstack_init (&succ_obstack);
-  obstack_init (&insn_obstack);
-
-  graph_init ();
-
-  yyin = fin;
-  //set_yy_debug ();
-  yyparse ();
-
-  /* fine_tune_graph (); */
-
-  output_graph (top_graph);
 }
+
+struct gdl_edge *
+new_edge (char *sourcename, char *targetname)
+{
+}
+
