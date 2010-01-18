@@ -54,7 +54,7 @@ parse_opt (int key, char *arg, struct argp_state *state)
 static struct argp argp = {options, parse_opt, NULL, NULL};
 
 void
-handle_option (int argc, char *argv[])
+handle_options (int argc, char *argv[])
 {
   int arg_index;
   

@@ -29,56 +29,23 @@
 #include "gdl.h"
 #include "tree2vcg.h"
 
-extern FILE *yyin;
-extern int yyparse (void);
-extern void set_yy_debug (void);
-
-FILE *fin;
-FILE *fout;
-
-char *program_name;
-
-int seen_label = 0;
-
-#define ENTRY_ID 0
-#define EXIT_ID 1
-
-#define obstack_chunk_alloc xmalloc
-#define obstack_chunk_free free
-
-struct obstack pred_obstack;
-struct obstack succ_obstack;
-struct obstack insn_obstack;
-
-struct gdl_graph *top_graph;
-struct gdl_graph *fun_graph;
-struct gdl_graph *bb_graph;
-struct gdl_node *bb_node;
-struct gdl_edge *current_edge;
-
 void
-graph_init (void)
+fine_tune_graph (void)
 {
-  top_graph = new_graph (NULL);
+  struct gdl_graph *fun_graph, *bb_graph;
+
+  /* common attributes */
+  // set_graph_node_color (top_graph, ...);
+  set_graph_layoutalgorithm (top_graph, MAX_DEPTH);
+
+  set_graph_folding (top_graph, 0);
+  for (fun_graph = top_graph->subgraphs; fun_graph; fun_graph = fun_graph->next)
+    {
+      for (bb_graph = fun_graph->subgraphs; bb_graph; bb_graph = bb_graph->next)
+        {
+          set_graph_folding (bb_graph, 1);
+        }
+      set_graph_folding (fun_graph, 0);
+    }
 }
 
-int
-main (int argc, char *argv[])
-{
-  program_name = argv[0];
-  handle_options (argc, argv);
-
-  obstack_init (&pred_obstack);
-  obstack_init (&succ_obstack);
-  obstack_init (&insn_obstack);
-
-  graph_init ();
-
-  yyin = fin;
-  //set_yy_debug ();
-  yyparse ();
-
-  fine_tune_graph ();
-
-  output_graph (top_graph);
-}

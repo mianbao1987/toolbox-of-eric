@@ -19,26 +19,135 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include <unistd.h>
 #include <error.h>
 #include <libiberty.h>
-#include <obstack.h>
 
 #include "gdl.h"
-#include "tree2vcg.h"
+
+char *shape_s[SHAPE_DEFAULT + 1] =
+{
+  "box",
+  "rhomb",
+  "ellipse",
+  "triangle",
+  NULL
+};
+
+char *color_s[COLOR_DEFAULT + 1] =
+{
+  "black",
+  "blue",
+  "lightblue",
+  "red",
+  "green",
+  "yellow",
+  "white",
+  NULL
+};
+
+char *linestyle_s[LINESTYLE_DEFAULT + 1] =
+{
+  "continuous",
+  "dashed",
+  "dotted",
+  "invisible",
+  NULL
+};
+
+char *layoutalgorithm_s[LAYOUTALGORITHM_DEFAULT + 1] =
+{
+  "max_depth",
+  NULL
+};
 
 struct gdl_graph *
 new_graph (char *title)
 {
+  struct gdl_graph *graph;
+
+  graph = (struct gdl_graph *) xmalloc (sizeof (struct gdl_graph));
+  graph->title = title;
+  graph->label = NULL;
+  graph->color = COLOR_DEFAULT;
+  graph->node_color = COLOR_DEFAULT;
+  graph->folding = -1;
+  graph->shape = SHAPE_DEFAULT;
+  graph->layoutalgorithm = LAYOUTALGORITHM_DEFAULT;
+  graph->near_edges = -1;
+  graph->port_sharing = -1;
+  graph->nodes = NULL;
+  graph->subgraphs = NULL;
+  graph->edges = NULL;
+  graph->next = NULL;
+
+  return graph;
 }
 
 struct gdl_node *
 new_node (char *title)
 {
+  struct gdl_node *node;
+
+  node = (struct gdl_node *) xmalloc (sizeof (struct gdl_node));
+  node->title = title;
+  node->label = NULL;
+  node->vertical_order = -1;
+  node->color = COLOR_DEFAULT;
+  node->shape = SHAPE_DEFAULT;
+  node->next = NULL;
+  
+  return node;
 }
 
 struct gdl_edge *
 new_edge (char *sourcename, char *targetname)
 {
+  struct gdl_edge *edge;
+
+  edge = (struct gdl_edge *) xmalloc (sizeof (struct gdl_edge));
+  edge->sourcename = sourcename;
+  edge->targetname = targetname;
+  edge->label = NULL;
+  edge->linestyle = LINESTYLE_DEFAULT;
+  edge->next = NULL;
+  
+  return edge;
 }
+
+void 
+add_subgraph (struct gdl_graph *graph, struct gdl_graph *subgraph)
+{
+  if (graph->subgraphs == NULL)
+    graph->subgraphs = subgraph;
+  else
+    {
+      subgraph->next = graph->subgraphs;
+      graph->subgraphs = subgraph;
+    }
+}
+
+void 
+add_node (struct gdl_graph *graph, struct gdl_node *node)
+{
+  if (graph->nodes == NULL)
+    graph->nodes = node;
+  else
+    {
+      node->next = graph->nodes;
+      graph->nodes = node;
+    }
+}
+
+void 
+add_edge (struct gdl_graph *graph, struct gdl_edge *edge)
+{
+  if (graph->edges == NULL)
+    graph->edges = edge;
+  else
+    {
+      edge->next = graph->edges;
+      graph->edges = edge;
+    }
+}
+
 

@@ -53,7 +53,7 @@ identifier [[:alpha:]][[:alnum:]_]*
   }
 
 <bb>{digits} {
-    yylval.val = atoi (yytext);
+    yylval.str = xstrdup (yytext);
     BEGIN (INITIAL);
     return BB_NUM;
   }
@@ -64,12 +64,12 @@ identifier [[:alpha:]][[:alnum:]_]*
   }
 
 <pred>"ENTRY" {
-    yylval.val = 0;
+    yylval.str = xstrdup (yytext);
     return PRED_NUM;
   }
 
 <pred>{digits} {
-    yylval.val = atoi (yytext);
+    yylval.str = xstrdup (yytext);
     return PRED_NUM;
   }
 
@@ -79,12 +79,12 @@ identifier [[:alpha:]][[:alnum:]_]*
   }
 
 <succ>"EXIT" {
-    yylval.val = 1;
+    yylval.str = xstrdup (yytext);
     return SUCC_NUM;
   }
 
 <succ>{digits} {
-    yylval.val = atoi (yytext);
+    yylval.str = xstrdup (yytext);
     return SUCC_NUM;
   }
 

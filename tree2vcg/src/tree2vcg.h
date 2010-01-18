@@ -18,10 +18,15 @@
 #ifndef TREE2VCG_H
 #define TREE2VCG_H
 
-extern char *current_fun_name;
-extern int current_bb_num;
-extern char *current_label;
-extern char *current_insn;
+#include "gdl.h"
+
+extern FILE *fin, *fout;
+
+extern struct gdl_graph *top_graph;
+extern struct gdl_graph *fun_graph;
+extern struct gdl_graph *bb_graph;
+extern struct gdl_node *bb_node;
+extern struct gdl_edge *current_edge;
 
 extern int seen_label;
 
@@ -29,13 +34,12 @@ extern struct obstack pred_obstack;
 extern struct obstack succ_obstack;
 extern struct obstack insn_obstack;
 
-extern void output_graph_header_fun (const char *fun_name);
-extern void output_graph_tailer_fun (const char *fun_name);
-extern void output_graph_header_bb (const char *fun_name, const int bb_num);
-extern void output_graph_tailer_bb (const char *fun_name, const int bb_num);
-extern void output_edges_bb (const char *fun_name, const int bb_num,
-                             struct obstack *pred_obstack,
-                             struct obstack *succ_obstack);
-extern void output_node_insn (const char *fun_name, const char *insn);
+/* output.c */
+extern void output_graph (struct gdl_graph *graph);
 
+/* options.c */
+extern void handle_options (int argc, char *argv[]);
+
+/* fine_tune.c */
+extern void fine_tune_graph (void);
 #endif
