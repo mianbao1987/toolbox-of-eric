@@ -80,9 +80,11 @@ line: FN FN_NAME {
     fun_graph = new_graph ($<str>2); /* FN_NAME */
     add_subgraph (top_graph, fun_graph);
 
-    bb_node = new_node ("ENTRY");
+    bb_node = new_node (concat ($<str>2, "_ENTRY", NULL));
+    set_node_label (bb_node, "ENTRY");
     add_node (fun_graph, bb_node);
-    bb_node = new_node ("EXIT");
+    bb_node = new_node (concat ($<str>2, "_EXIT", NULL));
+    set_node_label (bb_node, "EXIT");
     add_node (fun_graph, bb_node);
   }
 	| BB BB_NUM {
@@ -127,15 +129,17 @@ pred_nums:	/* empty */
 	| pred_nums PRED_NUM {
     if (strcmp ($<str>2, "ENTRY") == 0)
       {
-        current_edge = new_edge ($<str>2, get_node_title (bb_graph));
+        fnname = get_graph_title (fun_graph);
+        current_edge = new_edge (concat (fnname, "_ENTRY", NULL), get_node_title (bb_graph));
         add_edge (fun_graph, current_edge);
       }
   }
 
 succ_nums:	/* empty */
 	| succ_nums SUCC_NUM {
+    fnname = get_graph_title (fun_graph);
     if (strcmp ($<str>2, "EXIT") == 0)
-      current_edge = new_edge (get_node_title (bb_graph), $<str>2);
+      current_edge = new_edge (get_node_title (bb_graph), concat (fnname, "_EXIT", NULL));
     else
       current_edge = new_edge (get_node_title (bb_graph),
                                concat (fnname, "_BB", $<str>2, NULL));

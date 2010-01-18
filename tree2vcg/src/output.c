@@ -32,6 +32,7 @@ output_node (struct gdl_node *node)
 {
   char *str;
   int val;
+  int i;
 
   fputs ("node: {\n", fout);
 
@@ -43,7 +44,16 @@ output_node (struct gdl_node *node)
   /* label */
   str = get_node_label (node);
   if (str != NULL)
-    fprintf (fout, "label: \"%s\"\n", str);
+    {
+      fprintf (fout, "label: \"", str);
+      for (i = 0; i < strlen (str); i++)
+        {
+          if (str[i] == '"')
+            fprintf (fout,  "\\");
+          fprintf (fout, "%c", str[i]);
+        }
+      fprintf (fout, "\"\n");
+    }
   
   /* vertical_order */
   val = get_node_vertical_order (node);
@@ -68,6 +78,7 @@ output_edge (struct gdl_edge *edge)
 {
   char *str;
   int *val;
+  int i;
 
   fputs ("edge: {\n", fout);
 
@@ -84,7 +95,16 @@ output_edge (struct gdl_edge *edge)
   /* label */
   str = get_edge_label (edge);
   if (str != NULL)
-    fprintf (fout, "label: \"%s\"\n", str);
+    {
+      fprintf (fout, "label: \"", str);
+      for (i = 0; i < strlen (str); i++)
+        {
+          if (str[i] == '"')
+            fprintf (fout,  "\\");
+          fprintf (fout, "%c", str[i]);
+        }
+      fprintf (fout, "\"\n");
+    }
   
   /* linestyle */
   str = get_edge_linestyle_s (edge);
@@ -99,6 +119,7 @@ output_graph_attributes (struct gdl_graph *graph)
 {
   char *str;
   int *val;
+  int i;
 
   /* title */
   str = get_graph_title (graph);
@@ -108,7 +129,16 @@ output_graph_attributes (struct gdl_graph *graph)
   /* label */
   str = get_graph_label (graph);
   if (str != NULL)
-    fprintf (fout, "label: \"%s\"\n", str);
+    {
+      fprintf (fout, "label: \"", str);
+      for (i = 0; i < strlen (str); i++)
+        {
+          if (str[i] == '"')
+            fprintf (fout,  "\\");
+          fprintf (fout, "%c", str[i]);
+        }
+      fprintf (fout, "\"\n");
+    }
 
   /* color */
   str = get_graph_color_s (graph);

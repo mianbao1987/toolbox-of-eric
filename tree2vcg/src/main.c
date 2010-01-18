@@ -56,6 +56,11 @@ struct gdl_graph *bb_graph;
 struct gdl_node *bb_node;
 struct gdl_edge *current_edge;
 
+extern char *insns;
+extern int len;
+extern int seen_bb;
+
+
 void
 graph_init (void)
 {
@@ -77,6 +82,23 @@ main (int argc, char *argv[])
   yyin = fin;
   //set_yy_debug ();
   yyparse ();
+
+  if (seen_bb && bb_graph != NULL && bb_node != NULL)
+    {
+      len = obstack_object_size (&insn_obstack);
+      if (len > 0)
+        {
+          insns = (char *)obstack_finish (&insn_obstack);
+          assert (insns[len-1] == '\n');
+          insns[len-1] = '\0';
+          set_node_label (bb_node, insns);
+        }
+      else
+        {
+          set_node_label (bb_node, "   ");
+        }
+    }
+  seen_bb = 0;
 
   fine_tune_graph ();
 

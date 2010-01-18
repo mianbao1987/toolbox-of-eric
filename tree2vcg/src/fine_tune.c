@@ -45,7 +45,7 @@ fine_tune_graph (void)
         {
           set_graph_folding (bb_graph, 1);
         }
-      set_graph_folding (fun_graph, 0);
+      set_graph_folding (fun_graph, 1);
     }
 }
 
