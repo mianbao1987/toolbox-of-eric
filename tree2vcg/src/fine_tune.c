@@ -35,7 +35,8 @@ fine_tune_graph (void)
   struct gdl_graph *fun_graph, *bb_graph;
 
   /* common attributes */
-  // set_graph_node_color (top_graph, ...);
+  set_graph_node_color (top_graph, LIGHTGREY);
+  set_graph_node_shape (top_graph, ELLIPSE);
   set_graph_layoutalgorithm (top_graph, MAX_DEPTH);
 
   set_graph_folding (top_graph, 0);

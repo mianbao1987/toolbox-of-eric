@@ -42,6 +42,7 @@ char *color_s[COLOR_DEFAULT + 1] =
   "green",
   "yellow",
   "white",
+  "lightgrey",
   NULL
 };
 
@@ -57,6 +58,7 @@ char *linestyle_s[LINESTYLE_DEFAULT + 1] =
 char *layoutalgorithm_s[LAYOUTALGORITHM_DEFAULT + 1] =
 {
   "max_depth",
+  "tree",
   NULL
 };
 
