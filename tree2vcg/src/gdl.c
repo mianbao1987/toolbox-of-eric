@@ -68,15 +68,16 @@ new_graph (char *title)
   struct gdl_graph *graph;
 
   graph = (struct gdl_graph *) xmalloc (sizeof (struct gdl_graph));
-  graph->title = title;
-  graph->label = NULL;
-  graph->color = COLOR_DEFAULT;
-  graph->node_color = COLOR_DEFAULT;
-  graph->folding = -1;
+  set_graph_title (graph, title);
+  set_graph_label (graph, NULL);
+  set_graph_color (graph, COLOR_DEFAULT);
+  set_graph_node_color (graph, COLOR_DEFAULT);
+  /*graph->folding = -1;
   graph->shape = SHAPE_DEFAULT;
   graph->layoutalgorithm = LAYOUTALGORITHM_DEFAULT;
   graph->near_edges = -1;
-  graph->port_sharing = -1;
+  graph->port_sharing = -1;*/
+
   graph->nodes = NULL;
   graph->subgraphs = NULL;
   graph->edges = NULL;
@@ -91,11 +92,12 @@ new_node (char *title)
   struct gdl_node *node;
 
   node = (struct gdl_node *) xmalloc (sizeof (struct gdl_node));
-  node->title = title;
-  node->label = NULL;
-  node->vertical_order = -1;
+  set_node_title (node, title);
+  set_node_label (node, NULL);
+  /* node->vertical_order = -1;
   node->color = COLOR_DEFAULT;
-  node->shape = SHAPE_DEFAULT;
+  node->shape = SHAPE_DEFAULT; */
+
   node->next = NULL;
   
   return node;
@@ -107,10 +109,11 @@ new_edge (char *sourcename, char *targetname)
   struct gdl_edge *edge;
 
   edge = (struct gdl_edge *) xmalloc (sizeof (struct gdl_edge));
-  edge->sourcename = sourcename;
+ /*  edge->sourcename = sourcename;
   edge->targetname = targetname;
   edge->label = NULL;
-  edge->linestyle = LINESTYLE_DEFAULT;
+  edge->linestyle = LINESTYLE_DEFAULT; */
+
   edge->next = NULL;
   
   return edge;
