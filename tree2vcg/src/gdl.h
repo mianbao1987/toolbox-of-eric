@@ -56,6 +56,7 @@ enum gdl_layoutalgorithm
   LAYOUTALGORITHM_DEFAULT
 };
 
+#if 0
 struct gdl_node_attr
 {
   /* bordercolor: Color Entry,
@@ -252,6 +253,14 @@ struct gdl_node_attr
      specifies the width of a node including the border. See also height. */ 
   int width;
 };
+#endif
+
+#define DEF_ATTR(obj, name, type) type name;
+struct gdl_node_attr
+{
+  #include "node_attr.c"
+};
+#undef DEF_ATTR
 
 struct gdl_node
 {
