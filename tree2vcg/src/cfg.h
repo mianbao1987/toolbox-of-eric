@@ -74,9 +74,8 @@ struct control_flow_graph
 {
   int bb_num;
   int edge_num;
-  struct basic_block *entry;
-  struct basic_block *exit;
-  struct basic_block *node;
+  struct basic_block *entry; /* also the first bb */
+  struct basic_block *exit; /* also  the last bb */
   struct edge *edge;
 };
 

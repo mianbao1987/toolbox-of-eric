@@ -38,37 +38,56 @@ FILE *fout;
 
 char *program_name;
 
-int seen_label = 0;
-
-#define ENTRY_ID 0
-#define EXIT_ID 1
-
 #define obstack_chunk_alloc xmalloc
 #define obstack_chunk_free free
 
-struct obstack pred_obstack;
-struct obstack succ_obstack;
 struct obstack insn_obstack;
-
-struct gdl_graph *top_graph;
-struct gdl_graph *fun_graph;
-struct gdl_graph *bb_graph;
-struct gdl_node *bb_node;
-struct gdl_edge *current_edge;
-
-extern char *insns;
-extern int len;
-extern int seen_bb;
 
 int func_num; 
 struct function *func_list; 
+struct function *current_function; 
+struct basic_block *current_basic_block;
+
+struct gdl_graph *top_graph;
+struct gdl_graph *current_func_graph;
+struct gdl_graph *current_bb_graph;
+struct gdl_node *current_bb_node;
+
+char *insns;
+int len;
+int seen_bb;
 
 void
 general_init (void)
 {
   func_num = 0;
   func_list = NULL;
+  current_function = NULL;
+
   top_graph = new_graph (NULL);
+
+  seen_bb = 0;
+}
+
+void
+finalize_node_label (void)
+{
+  if (seen_bb && current_bb_node != NULL)
+    {
+      len = obstack_object_size (&insn_obstack);
+      if (len > 0)
+        {
+          insns = (char *)obstack_finish (&insn_obstack);
+          assert (insns[len-1] == '\n');
+          insns[len-1] = '\0';
+          gdl_set_node_label (current_bb_node, insns);
+        }
+      else
+        {
+          gdl_set_node_label (current_bb_node, "   ");
+        }
+    }
+  seen_bb = 0;
 }
 
 int
@@ -86,23 +105,7 @@ main (int argc, char *argv[])
   yyin = fin;
   //set_yy_debug ();
   yyparse ();
-
-  if (seen_bb && bb_graph != NULL && bb_node != NULL)
-    {
-      len = obstack_object_size (&insn_obstack);
-      if (len > 0)
-        {
-          insns = (char *)obstack_finish (&insn_obstack);
-          assert (insns[len-1] == '\n');
-          insns[len-1] = '\0';
-          set_node_label (bb_node, insns);
-        }
-      else
-        {
-          set_node_label (bb_node, "   ");
-        }
-    }
-  seen_bb = 0;
+  finalize_node_label ();
 
   fine_tune_graph ();
 

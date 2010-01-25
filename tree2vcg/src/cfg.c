@@ -1,8 +1,4 @@
 
-struct parse_unit  *trans_unit;
-struct function *func;
-struct control_flow_graph *cfg;
-
 struct basic_block *
 new_bb (char *name)
 {
@@ -11,10 +7,12 @@ new_bb (char *name)
   bb = (struct basic_block *) xmalloc (sizeof (struct basic_block));
   bb->name = name;
 
-  bb->x_graph = new_graph (name);
-  gdl_set_graph_label (bb->x_graph, name);
-  bb_node = new_node (NULL);
-  gdl_add_subgraph (bb->x_graph, bb_node);
+  current_bb_graph = new_graph (name);
+  bb->x_graph = current_bb_graph;
+  gdl_set_graph_label (current_bb_graph, name);
+
+  current_bb_node = new_node (NULL);
+  gdl_add_subgraph (current_bb_graph, current_bb_node);
 
   return bb;
 }
@@ -43,18 +41,32 @@ new_func (char *name)
   func->next = NULL:
   func->prev = NULL:
 
-  func->x_graph = gdl_new_graph (name);
-  gdl_add_subgraph (top_graph,  func->x_graph);
+  current_func_graph = gdl_new_graph (name);
+  func->x_graph = current_func_graph;
+  gdl_add_subgraph (top_graph, current_func_graph);
 
-  bb_node = new_node ("ENTRY");
-  set_node_label (bb_node, "ENTRY");
-  add_node (fun_graph, bb_node);
-  bb_node = new_node ("EXIT");
-  set_node_label (bb_node, "EXIT");
-  add_node (fun_graph, bb_node);
+  current_bb_node = new_node ("ENTRY");
+  set_node_label (current_bb_node, "ENTRY");
+  add_node (current_func_graph, current_bb_node);
+
+  current_bb_node = new_node ("EXIT");
+  set_node_label (current_bb_node, "EXIT");
+  add_node (current_fun_graph, current_bb_node);
+
+  current_bb_node = NULL;
 
   return func;
 }
 
 void
-set_cfg_
+add_bb (struct control_flow_graph *cfg, struct basic_block *bb)
+{
+  assert (cfg->entry != NULL && cfg->exit != NULL);
+
+  bb->prev = cfg->exit->prev;
+  bb->next = cfg->exit;
+  cfg->exit->prev->next = bb;
+  cfg->exit->prev = bb;
+
+  cfg->bb_num++;
+}
