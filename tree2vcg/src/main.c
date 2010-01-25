@@ -60,10 +60,14 @@ extern char *insns;
 extern int len;
 extern int seen_bb;
 
+int func_num; 
+struct function *func_list; 
 
 void
-graph_init (void)
+general_init (void)
 {
+  func_num = 0;
+  func_list = NULL;
   top_graph = new_graph (NULL);
 }
 
@@ -77,7 +81,7 @@ main (int argc, char *argv[])
   obstack_init (&succ_obstack);
   obstack_init (&insn_obstack);
 
-  graph_init ();
+  general_init ();
 
   yyin = fin;
   //set_yy_debug ();

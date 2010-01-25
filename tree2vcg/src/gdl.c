@@ -63,7 +63,7 @@ char *layoutalgorithm_s[LAYOUTALGORITHM_DEFAULT + 1] =
 };
 
 struct gdl_graph *
-new_graph (char *title)
+gdl_new_graph (char *title)
 {
   struct gdl_graph *graph;
 
@@ -87,7 +87,7 @@ new_graph (char *title)
 }
 
 struct gdl_node *
-new_node (char *title)
+gdl_new_node (char *title)
 {
   struct gdl_node *node;
 
@@ -104,7 +104,7 @@ new_node (char *title)
 }
 
 struct gdl_edge *
-new_edge (char *sourcename, char *targetname)
+gdl_new_edge (char *sourcename, char *targetname)
 {
   struct gdl_edge *edge;
 
@@ -120,7 +120,7 @@ new_edge (char *sourcename, char *targetname)
 }
 
 void 
-add_subgraph (struct gdl_graph *graph, struct gdl_graph *subgraph)
+gdl_add_subgraph (struct gdl_graph *graph, struct gdl_graph *subgraph)
 {
   if (graph->subgraphs == NULL)
     graph->subgraphs = subgraph;
@@ -132,7 +132,7 @@ add_subgraph (struct gdl_graph *graph, struct gdl_graph *subgraph)
 }
 
 void 
-add_node (struct gdl_graph *graph, struct gdl_node *node)
+gdl_add_node (struct gdl_graph *graph, struct gdl_node *node)
 {
   if (graph->nodes == NULL)
     graph->nodes = node;
@@ -144,7 +144,7 @@ add_node (struct gdl_graph *graph, struct gdl_node *node)
 }
 
 void 
-add_edge (struct gdl_graph *graph, struct gdl_edge *edge)
+gdl_add_edge (struct gdl_graph *graph, struct gdl_edge *edge)
 {
   if (graph->edges == NULL)
     graph->edges = edge;

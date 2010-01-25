@@ -27,42 +27,8 @@
 #include <argp.h>
 
 #include "gdl.h"
+#include "cfg.h"
 #include "tree2vcg.h"
-
-enum cfg_edge_type
-{
-  UNKNOWN_EDGE,
-  DFST_EDGE,
-  ADVANCING_EDGE,
-  RETREATING_EDGE,
-  CROSS_EDGE
-};
-
-struct cfg_edge
-{
-  int source_index;
-  int target_index;
-  enum cfg_edge_type type;
-};
-
-struct cfg_node
-{
-  int pred_num;
-  int succ_num;
-  //struct gdl_graph *entry;
-  struct cfg_edge **preds;
-  struct cfg_edge **succs;
-  int visited;
-  int dfs_order;
-};
-
-struct cfg_graph
-{
-  int node_num;
-  struct cfg_node **nodes;
-};
-
-struct cfg_graph *graph;
 
 void
 init_cfg (void)
@@ -86,6 +52,7 @@ init_cfg (void)
   node->succs[0]->source_index = i;
   node->succs[0]->target_index = 2;
   node->succs[0]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 1;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -98,6 +65,7 @@ init_cfg (void)
   node->preds[0]->target_index = i;
   node->preds[0]->type = UNKNOWN_EDGE;
   node->succ_num = 0;
+  node->vertical_order = 0;
 
   i = 2;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -120,6 +88,7 @@ init_cfg (void)
   node->succs[1]->source_index = i;
   node->succs[1]->target_index = 7;
   node->succs[1]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 3;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -142,6 +111,7 @@ init_cfg (void)
   node->succs[1]->source_index = i;
   node->succs[1]->target_index = 13;
   node->succs[1]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 4;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -164,6 +134,7 @@ init_cfg (void)
   node->succs[1]->source_index = i;
   node->succs[1]->target_index = 13;
   node->succs[1]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 5;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -190,6 +161,7 @@ init_cfg (void)
   node->succs[1]->source_index = i;
   node->succs[1]->target_index = 13;
   node->succs[1]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 6;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -212,6 +184,7 @@ init_cfg (void)
   node->succs[1]->source_index = i;
   node->succs[1]->target_index = 13;
   node->succs[1]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 7;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -234,6 +207,7 @@ init_cfg (void)
   node->succs[1]->source_index = i;
   node->succs[1]->target_index = 11;
   node->succs[1]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 8;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -256,6 +230,7 @@ init_cfg (void)
   node->succs[1]->source_index = i;
   node->succs[1]->target_index = 11;
   node->succs[1]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 9;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -282,6 +257,7 @@ init_cfg (void)
   node->succs[1]->source_index = i;
   node->succs[1]->target_index = 11;
   node->succs[1]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 10;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -304,6 +280,7 @@ init_cfg (void)
   node->succs[1]->source_index = i;
   node->succs[1]->target_index = 11;
   node->succs[1]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 11;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -338,6 +315,7 @@ init_cfg (void)
   node->succs[1]->source_index = i;
   node->succs[1]->target_index = 13;
   node->succs[1]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 12;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -356,6 +334,7 @@ init_cfg (void)
   node->succs[0]->source_index = i;
   node->succs[0]->target_index = 13;
   node->succs[0]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 13;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -398,6 +377,7 @@ init_cfg (void)
   node->succs[1]->source_index = i;
   node->succs[1]->target_index = 15;
   node->succs[1]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 14;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -416,6 +396,7 @@ init_cfg (void)
   node->succs[0]->source_index = i;
   node->succs[0]->target_index = 15;
   node->succs[0]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 
   i = 15;
   graph->nodes[i] = (struct cfg_node *) xmalloc (sizeof (struct cfg_node));
@@ -438,6 +419,7 @@ init_cfg (void)
   node->succs[0]->source_index = i;
   node->succs[0]->target_index = 1;
   node->succs[0]->type = UNKNOWN_EDGE;
+  node->vertical_order = 0;
 }
 
 int count;
@@ -532,7 +514,7 @@ mark_edge (struct cfg_edge *edge)
 }
 
 void
-mark_other_edges (void)
+mark_edges (void)
 {
   int i, j;
   struct cfg_node *node;
@@ -541,6 +523,14 @@ mark_other_edges (void)
   for (i = 0; i < graph->node_num; i++)
     {
       node = graph->nodes[i];
+      for (j = 0; j < node->pred_num; j++)
+        {
+          edge = node->preds[j];
+          if (edge->type == UNKNOWN_EDGE)
+            {
+              mark_edge (edge);
+            }
+        }
       for (j = 0; j < node->succ_num; j++)
         {
           edge = node->succs[j];
@@ -552,8 +542,31 @@ mark_other_edges (void)
     }
 }
 
+int
+calc_vertical_order (struct cfg_node *node)
+{
+  int i;
+  int val, max = 0;
+  struct cfg_node *pred_node;
+  struct cfg_edge *edge;
+
+  if (node->vertical_order == 0)
+    {
+      for (i = 0; i < node->pred_num; i++)
+        {
+          edge = node->preds[i];
+          if (edge->type == RETREATING_EDGE)
+            continue;
+          val = calc_vertical_order (graph->nodes[edge->source_index]);
+          max = max > val ? max : val;
+        }
+      node->vertical_order = max + 1;
+    }
+  return node->vertical_order;
+}
+
 void
-calc_vertical_order (void)
+set_vertical_order (void)
 {
   int i, j;
   struct cfg_node *node;
@@ -563,12 +576,15 @@ calc_vertical_order (void)
 
   depth_first_search ();
 
-  mark_other_edges ();
+  mark_edges ();
+
+  calc_vertical_order (graph->nodes[1]);
 
   for (i = 0; i < graph->node_num; i++)
     {
       node = graph->nodes[i];
       printf ("node: %d\n", i);
+      printf ("vertical order: %d\n", node->vertical_order);
       printf ("dfs order: %d\n", node->dfs_order);
       for (j = 0; j < node->succ_num; j++)
         {
@@ -597,7 +613,7 @@ calc_vertical_order (void)
 int
 main (void)
 {
-  calc_vertical_order ();
+  set_vertical_order ();
 
   return 0; 
 }

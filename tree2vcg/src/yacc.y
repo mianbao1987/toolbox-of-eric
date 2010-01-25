@@ -60,60 +60,52 @@ input:	/* empty */
 ;
 
 line: FN FN_NAME {
-    if (seen_bb && bb_graph != NULL && bb_node != NULL)
+    if (seen_bb && current_function != NULL)
       {
+        node = current_function->x_graph->node;  
+
         len = obstack_object_size (&insn_obstack);
         if (len > 0)
           {
             insns = (char *)obstack_finish (&insn_obstack);
             assert (insns[len-1] == '\n');
             insns[len-1] = '\0';
-            set_node_label (bb_node, insns);
+            gdl_set_node_label (node, insns);
           }
         else
           {
-            set_node_label (bb_node, "   ");
+            gdl_set_node_label (node, "   ");
           }
       }
     seen_bb = 0;
 
-    fun_graph = new_graph ($<str>2); /* FN_NAME */
-    add_subgraph (top_graph, fun_graph);
+    struct function *func;
 
-    bb_node = new_node (concat ($<str>2, "_ENTRY", NULL));
-    set_node_label (bb_node, "ENTRY");
-    add_node (fun_graph, bb_node);
-    bb_node = new_node (concat ($<str>2, "_EXIT", NULL));
-    set_node_label (bb_node, "EXIT");
-    add_node (fun_graph, bb_node);
+    func = new_function ($<str>2); /* FN_NAME */
   }
 	| BB BB_NUM {
-    if (seen_bb && bb_graph != NULL && bb_node != NULL)
+    if (seen_bb)
       {
+        node = current_function->x_graph->node;  
+
         len = obstack_object_size (&insn_obstack);
         if (len > 0)
           {
             insns = (char *)obstack_finish (&insn_obstack);
             assert (insns[len-1] == '\n');
             insns[len-1] = '\0';
-            set_node_label (bb_node, insns);
+            gdl_set_node_label (node, insns);
           }
         else
           {
-            set_node_label (bb_node, "   ");
+            gdl_set_node_label (node, "   ");
           }
       }
     seen_bb = 1;
 
-    fnname = get_graph_title (fun_graph);
-    //bb_node = new_node (concat (fnname, "_bb", $<str>2, NULL)); /* BB_NUM */
-    bb_node = new_node (NULL); /* BB_NUM */
+    struct basic_block *bb;
 
-    bb_graph = new_graph (concat (fnname, "_BB", $<str>2, NULL));
-    set_graph_label (bb_graph, concat ("bb ", $<str>2, NULL));
-
-    add_node (bb_graph, bb_node);
-    add_subgraph (fun_graph, bb_graph);
+    bb = new_bb ($<str>2);
   }
         | PRED pred_nums 
         | SUCC succ_nums {
