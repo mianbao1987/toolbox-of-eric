@@ -19,20 +19,19 @@
 #define TREE2VCG_H
 
 #include "gdl.h"
+#include "cfg.h"
 
 extern FILE *fin, *fout;
 
-extern struct gdl_graph *top_graph;
-extern struct gdl_graph *fun_graph;
-extern struct gdl_graph *bb_graph;
-extern struct gdl_node *bb_node;
-extern struct gdl_edge *current_edge;
-
-extern int seen_label;
-
-extern struct obstack pred_obstack;
-extern struct obstack succ_obstack;
 extern struct obstack insn_obstack;
+
+extern struct function *current_function;
+extern struct basic_block *current_bb;
+
+extern struct gdl_graph *top_graph;
+extern struct gdl_graph *current_func_graph;
+extern struct gdl_graph *current_bb_graph;
+extern struct gdl_node *current_bb_node;
 
 /* output.c */
 extern void output_graph (struct gdl_graph *graph);

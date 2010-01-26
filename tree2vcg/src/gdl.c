@@ -23,6 +23,8 @@
 #include <libiberty.h>
 
 #include "gdl.h"
+#include "cfg.h"
+#include "tree2vcg.h"
 
 char *shape_s[SHAPE_DEFAULT + 1] =
 {
@@ -68,10 +70,10 @@ gdl_new_graph (char *title)
   struct gdl_graph *graph;
 
   graph = (struct gdl_graph *) xmalloc (sizeof (struct gdl_graph));
-  set_graph_title (graph, title);
-  set_graph_label (graph, NULL);
-  set_graph_color (graph, COLOR_DEFAULT);
-  set_graph_node_color (graph, COLOR_DEFAULT);
+  gdl_set_graph_title (graph, title);
+  gdl_set_graph_label (graph, NULL);
+  gdl_set_graph_color (graph, COLOR_DEFAULT);
+  gdl_set_graph_node_color (graph, COLOR_DEFAULT);
   /*graph->folding = -1;
   graph->shape = SHAPE_DEFAULT;
   graph->layoutalgorithm = LAYOUTALGORITHM_DEFAULT;
@@ -86,14 +88,14 @@ gdl_new_graph (char *title)
   return graph;
 }
 
-struct gdl_node *
+static struct gdl_node *
 gdl_new_node (char *title)
 {
   struct gdl_node *node;
 
   node = (struct gdl_node *) xmalloc (sizeof (struct gdl_node));
-  set_node_title (node, title);
-  set_node_label (node, NULL);
+  gdl_set_node_title (node, title);
+  gdl_set_node_label (node, NULL);
   /* node->vertical_order = -1;
   node->color = COLOR_DEFAULT;
   node->shape = SHAPE_DEFAULT; */
@@ -119,7 +121,7 @@ gdl_new_edge (char *sourcename, char *targetname)
   return edge;
 }
 
-void 
+static void 
 gdl_add_subgraph (struct gdl_graph *graph, struct gdl_graph *subgraph)
 {
   if (graph->subgraphs == NULL)
@@ -131,7 +133,7 @@ gdl_add_subgraph (struct gdl_graph *graph, struct gdl_graph *subgraph)
     }
 }
 
-void 
+static void 
 gdl_add_node (struct gdl_graph *graph, struct gdl_node *node)
 {
   if (graph->nodes == NULL)
@@ -143,7 +145,7 @@ gdl_add_node (struct gdl_graph *graph, struct gdl_node *node)
     }
 }
 
-void 
+static void 
 gdl_add_edge (struct gdl_graph *graph, struct gdl_edge *edge)
 {
   if (graph->edges == NULL)
@@ -161,11 +163,12 @@ gdl_new_bb_graph (char *name)
   struct gdl_graph *graph;
   struct gdl_node *node;
 
-  graph = new_graph (name);
+  graph = gdl_new_graph (name);
   gdl_set_graph_label (graph, name);
+  gdl_add_subgraph (top_graph, graph);
 
-  node = new_node (NULL);
-  gdl_add_subgraph (graph, node);
+  node = gdl_new_node (NULL);
+  gdl_add_node (graph, node);
 
   return graph;
 }
@@ -179,13 +182,13 @@ gdl_new_func_graph (char *name)
   graph = gdl_new_graph (name);
   gdl_add_subgraph (top_graph, graph);
 
-  node = new_node ("ENTRY");
-  set_node_label (node, "ENTRY");
-  add_node (graph, node);
+  node = gdl_new_node ("ENTRY");
+  gdl_set_node_label (node, "ENTRY");
+  gdl_add_node (graph, node);
 
-  node = new_node ("EXIT");
-  set_node_label (node, "EXIT");
-  add_node (graph, node);
+  node = gdl_new_node ("EXIT");
+  gdl_set_node_label (node, "EXIT");
+  gdl_add_node (graph, node);
 
   return graph;
 }

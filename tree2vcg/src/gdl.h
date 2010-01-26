@@ -100,18 +100,14 @@ extern char *color_s[COLOR_DEFAULT + 1];
 extern char *linestyle_s[LINESTYLE_DEFAULT + 1];
 extern char *layoutalgorithm_s[LAYOUTALGORITHM_DEFAULT + 1];
 
-extern struct gdl_graph *new_graph (char *title);
-extern struct gdl_node *new_node (char *title);
-extern struct gdl_edge *new_edge (char *sourcename, char *targetname);
-
-extern void add_subgraph (struct gdl_graph *graph,  
-                          struct gdl_graph *subgraph);
-extern void add_node (struct gdl_graph *graph, struct gdl_node *node);
-extern void add_edge (struct gdl_graph *graph, struct gdl_edge *edge);
+extern struct gdl_edge *gdl_new_edge (char *sourcename, char *targetname);
+extern struct gdl_graph *gdl_new_graph (char *title);
+extern struct gdl_graph *gdl_new_bb_graph (char *name);
+extern struct gdl_graph *gdl_new_func_graph (char *name);
 
 #define DEF_ATTR(obj, name, type) \
 static inline type \
-get_##obj##_##name (struct gdl_##obj *obj) \
+gdl_get_##obj##_##name (struct gdl_##obj *obj) \
 { \
   return obj->attr.name; \
 }
@@ -124,7 +120,7 @@ get_##obj##_##name (struct gdl_##obj *obj) \
 
 #define DEF_ATTR(obj, name, type) \
 static inline void \
-set_##obj##_##name (struct gdl_##obj *obj, type value) \
+gdl_set_##obj##_##name (struct gdl_##obj *obj, type value) \
 { \
   obj->attr.name = value; \
 }

@@ -15,6 +15,9 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
+#ifndef CFG_H
+#define CFG_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -28,9 +31,6 @@
 
 #include "gdl.h"
 #include "tree2vcg.h"
-
-DEF_VEC_P(struct edge);
-DEF_VEC_ALLOC_P(struct edge, heap);
 
 enum edge_type
 {
@@ -49,9 +49,14 @@ struct edge
   struct basic_block *target;
 
   struct edge *next;
-  struct edge *prev;
 
   struct gdl_edge *x_edge;
+};
+
+struct vec_edge
+{
+  struct edge *edge;
+  struct vec_edge *next;
 };
 
 struct basic_block
@@ -62,13 +67,14 @@ struct basic_block
   int succ_num;
   int visited;
   int dfs_order;
-  int vertical_order;
+  int max_distance;
 
-  struct edge *pred;
-  struct edge *succ;
+  struct vec_edge *pred;
+  struct vec_edge *last_pred;
+  struct vec_edge *succ;
+  struct vec_edge *last_succ;
 
   struct basic_block *next;
-  struct basic_block *prev;
 
   struct gdl_graph *x_graph;
 };
@@ -79,16 +85,28 @@ struct control_flow_graph
   int edge_num;
   struct basic_block *entry; /* also the first bb */
   struct basic_block *exit; /* also  the last bb */
+  struct basic_block *bb;
+  struct basic_block *last_bb;
   struct edge *edge;
+  struct edge *last_edge;
 };
 
 struct function
 {
   char *name;
-  struct contral_flow_graph *cfg;
+  struct control_flow_graph *cfg;
   struct function *next;
-  struct function *prev;
 
   struct gdl_graph *x_graph;
 };
 
+extern struct function *new_function (char *name);
+
+extern struct basic_block *lookup_and_add_bb (struct function *func,
+                                              char *name);
+
+extern struct edge *lookup_and_add_edge (struct function *func,
+                                         char *source_name,
+                                         char *target_name);
+
+#endif

@@ -23,7 +23,13 @@
   #include <libiberty.h>
   #include <obstack.h>
 
+  #include "gdl.h"
+  #include "cfg.h"
   #include "tree2vcg.h"
+
+  static char *insns;
+  static int len;
+  static int seen_bb = 0;
 
   int yylex (void);
   void yyerror (char const *);

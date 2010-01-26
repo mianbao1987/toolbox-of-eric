@@ -46,27 +46,23 @@ struct obstack insn_obstack;
 int func_num; 
 struct function *func_list; 
 struct function *current_function; 
-struct basic_block *current_basic_block;
+struct basic_block *current_bb;
 
 struct gdl_graph *top_graph;
 struct gdl_graph *current_func_graph;
 struct gdl_graph *current_bb_graph;
 struct gdl_node *current_bb_node;
 
-char *insns;
-int len;
-int seen_bb;
-
 void
 general_init (void)
 {
+  obstack_init (&insn_obstack);
+
   func_num = 0;
   func_list = NULL;
   current_function = NULL;
 
-  top_graph = new_graph (NULL);
-
-  seen_bb = 0;
+  top_graph = gdl_new_graph (NULL);
 }
 
 int
@@ -74,10 +70,6 @@ main (int argc, char *argv[])
 {
   program_name = argv[0];
   handle_options (argc, argv);
-
-  obstack_init (&pred_obstack);
-  obstack_init (&succ_obstack);
-  obstack_init (&insn_obstack);
 
   general_init ();
 
