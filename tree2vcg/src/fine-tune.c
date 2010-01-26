@@ -62,10 +62,11 @@ search (int n)
 }
 
 void
-depth_first_search (void)
+depth_first_search (struct function *func)
 {
-  int i;
-
+  struct control_flow_graph *cfg = func->cfg;
+  
+  
   for (i = 0; i < graph->node_num; i++)
     {
       graph->nodes[i]->visited = 0;
@@ -217,24 +218,33 @@ set_vertical_order (void)
 }
 
 void
-fine_tune_graph (void)
+fine_tune_func_graph (struct function *func)
 {
   struct gdl_graph *fun_graph, *bb_graph;
 
   set_vertical_order ();
 
   /* common attributes */
-  set_graph_node_color (top_graph, LIGHTGREY);
-  set_graph_node_shape (top_graph, ELLIPSE);
-  set_graph_layoutalgorithm (top_graph, MAX_DEPTH);
+  gdl_set_graph_node_color (top_graph, LIGHTGREY);
+  gdl_set_graph_node_shape (top_graph, ELLIPSE);
+  gdl_set_graph_layoutalgorithm (top_graph, MAX_DEPTH);
 
-  set_graph_folding (top_graph, 0);
+  gdl_set_graph_folding (top_graph, 0);
   for (fun_graph = top_graph->subgraphs; fun_graph; fun_graph = fun_graph->next)
     {
       for (bb_graph = fun_graph->subgraphs; bb_graph; bb_graph = bb_graph->next)
         {
-          set_graph_folding (bb_graph, 1);
+          gdl_set_graph_folding (bb_graph, 1);
         }
-      set_graph_folding (fun_graph, 1);
+      gdl_set_graph_folding (fun_graph, 1);
     }
+}
+
+void
+fine_tune_graph (void)
+{
+
+  for (current_function = first_function; current_function != NULL;
+       current_function = current_function->next)
+    fine_tune_func_graph (current_function);
 }

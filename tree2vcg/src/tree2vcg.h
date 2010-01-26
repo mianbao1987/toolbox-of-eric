@@ -25,6 +25,8 @@ extern FILE *fin, *fout;
 
 extern struct obstack insn_obstack;
 
+extern struct function *first_function; 
+extern struct function *last_function;
 extern struct function *current_function;
 extern struct basic_block *current_bb;
 

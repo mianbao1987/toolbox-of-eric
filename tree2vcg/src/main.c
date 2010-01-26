@@ -43,8 +43,8 @@ char *program_name;
 
 struct obstack insn_obstack;
 
-int func_num; 
-struct function *func_list; 
+struct function *first_function; 
+struct function *last_function; 
 struct function *current_function; 
 struct basic_block *current_bb;
 
@@ -58,8 +58,8 @@ general_init (void)
 {
   obstack_init (&insn_obstack);
 
-  func_num = 0;
-  func_list = NULL;
+  first_function = NULL;
+  last_function = NULL;
   current_function = NULL;
 
   top_graph = gdl_new_graph (NULL);

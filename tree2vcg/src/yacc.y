@@ -62,6 +62,18 @@ line: FN FN_NAME {
     finalize_node_label ();
 
     current_function = new_function ($<str>2); /* FN_NAME */
+    if (first_function == NULL)
+      {
+        first_function = current_function;
+        last_function = current_function;
+      }
+    else
+      {
+        assert (last_function != NULL);
+
+        last_function->next = current_function;
+        last_function = current_function;
+      }
   }
 	| BB BB_NUM {
     finalize_node_label ();
