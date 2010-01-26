@@ -180,8 +180,6 @@ set_vertical_order (void)
   struct cfg_node *node;
   struct cfg_edge *edge;
 
-  init_cfg ();
-
   depth_first_search ();
 
   mark_edges ();

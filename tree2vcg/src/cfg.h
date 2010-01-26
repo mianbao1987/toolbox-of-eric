@@ -29,6 +29,9 @@
 #include "gdl.h"
 #include "tree2vcg.h"
 
+DEF_VEC_P(struct edge);
+DEF_VEC_ALLOC_P(struct edge, heap);
+
 enum edge_type
 {
   UNKNOWN_EDGE,

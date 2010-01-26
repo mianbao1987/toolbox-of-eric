@@ -53,20 +53,15 @@ input:	/* empty */
 ;
 
 line: FN FN_NAME {
-    struct function *func;
-
     finalize_node_label ();
 
-    func = new_function ($<str>2); /* FN_NAME */
+    current_function = new_function ($<str>2); /* FN_NAME */
   }
 	| BB BB_NUM {
-    struct basic_block *bb;
-
     finalize_node_label ();
 
     seen_bb = 1;
-    bb = new_bb ($<str>2);
-    add_bb (current_cfg, bb);
+    current_bb = lookup_and_add_bb (current_function, $<str>2);
   }
         | PRED pred_nums 
         | SUCC succ_nums {
@@ -79,25 +74,12 @@ line: FN FN_NAME {
 
 pred_nums:	/* empty */
 	| pred_nums PRED_NUM {
-    struct edge  *e;
-
-    e = new_edge ($<str>2, 
-    if (strcmp ($<str>2, "ENTRY") == 0)
-      {
-        current_edge = new_edge (concat (fnname, "_ENTRY", NULL), get_node_title (bb_graph));
-        add_edge (fun_graph, current_edge);
-      }
+    lookup_and_add_edge (current_function, $<str>2, current_bb->name);
   }
 
 succ_nums:	/* empty */
 	| succ_nums SUCC_NUM {
-    fnname = get_graph_title (fun_graph);
-    if (strcmp ($<str>2, "EXIT") == 0)
-      current_edge = new_edge (get_node_title (bb_graph), concat (fnname, "_EXIT", NULL));
-    else
-      current_edge = new_edge (get_node_title (bb_graph),
-                               concat (fnname, "_BB", $<str>2, NULL));
-    add_edge (fun_graph, current_edge);
+    lookup_and_add_edge (current_function, current_bb->name, $<str>2);
   }
 
 %%
@@ -113,3 +95,25 @@ set_yy_debug (void)
 {
   yydebug = 1;
 }
+
+void
+finalize_node_label (void)
+{
+  if (seen_bb && current_bb_node != NULL)
+    {
+      len = obstack_object_size (&insn_obstack);
+      if (len > 0)
+        {
+          insns = (char *)obstack_finish (&insn_obstack);
+          assert (insns[len-1] == '\n');
+          insns[len-1] = '\0';
+          gdl_set_node_label (current_bb_node, insns);
+        }
+      else
+        {
+          gdl_set_node_label (current_bb_node, "   ");
+        }
+    }
+  seen_bb = 0;
+}
+

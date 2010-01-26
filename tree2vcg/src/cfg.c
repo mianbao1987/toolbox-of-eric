@@ -7,12 +7,7 @@ new_bb (char *name)
   bb = (struct basic_block *) xmalloc (sizeof (struct basic_block));
   bb->name = name;
 
-  current_bb_graph = new_graph (name);
-  bb->x_graph = current_bb_graph;
-  gdl_set_graph_label (current_bb_graph, name);
-
-  current_bb_node = new_node (NULL);
-  gdl_add_subgraph (current_bb_graph, current_bb_node);
+  bb->x_graph = gdl_new_bb_graph (name);
 
   return bb;
 }
@@ -41,32 +36,58 @@ new_func (char *name)
   func->next = NULL:
   func->prev = NULL:
 
-  current_func_graph = gdl_new_graph (name);
-  func->x_graph = current_func_graph;
-  gdl_add_subgraph (top_graph, current_func_graph);
-
-  current_bb_node = new_node ("ENTRY");
-  set_node_label (current_bb_node, "ENTRY");
-  add_node (current_func_graph, current_bb_node);
-
-  current_bb_node = new_node ("EXIT");
-  set_node_label (current_bb_node, "EXIT");
-  add_node (current_fun_graph, current_bb_node);
-
-  current_bb_node = NULL;
+  func->x_graph = gdl_new_func_graph (name);
 
   return func;
 }
 
 void
-add_bb (struct control_flow_graph *cfg, struct basic_block *bb)
+add_bb (struct function *func, struct basic_block *bb)
 {
-  assert (cfg->entry != NULL && cfg->exit != NULL);
+  assert (func->cfg->entry != NULL && func->cfg->exit != NULL);
 
-  bb->prev = cfg->exit->prev;
-  bb->next = cfg->exit;
-  cfg->exit->prev->next = bb;
-  cfg->exit->prev = bb;
+  bb->prev = func->cfg->exit->prev;
+  bb->next = func->cfg->exit;
+  func->cfg->exit->prev->next = bb;
+  func->cfg->exit->prev = bb;
 
-  cfg->bb_num++;
+  func->cfg->bb_num++;
+}
+
+struct basic_block *
+lookup_and_add_bb (struct function *func, char *name)
+{
+  struct basic_block *bb;
+
+  for (bb = func->cfg->entry; bb != func->cfg->exit->next; bb = bb->next)
+    {
+      if (strcmp (bb->name, name) == 0)
+        return bb;
+    }
+
+  bb = new_bb (name);
+  add_bb (func, bb);
+
+  return bb;
+}
+
+struct edge *
+lookup_and_add_edge (struct function *func, 
+                     char *source_name, char *target_name)
+{
+  struct basic_block *source_bb, *target_bb;
+  struct edge *e;
+
+  source_bb = lookup_and_add_bb (func, source_name);
+  target_bb = lookup_and_add_bb (func, target_name);
+
+  for (e = func->cfg->edge; e != NULL; e = e->next)
+    {
+      if (e->source == source_bb && e->target == target_bb)
+        return e;
+    }
+  e = new_edge (source, target);
+  add_edge (func, e);
+
+  return e;
 }

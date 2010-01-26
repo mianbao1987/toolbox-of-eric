@@ -69,27 +69,6 @@ general_init (void)
   seen_bb = 0;
 }
 
-void
-finalize_node_label (void)
-{
-  if (seen_bb && current_bb_node != NULL)
-    {
-      len = obstack_object_size (&insn_obstack);
-      if (len > 0)
-        {
-          insns = (char *)obstack_finish (&insn_obstack);
-          assert (insns[len-1] == '\n');
-          insns[len-1] = '\0';
-          gdl_set_node_label (current_bb_node, insns);
-        }
-      else
-        {
-          gdl_set_node_label (current_bb_node, "   ");
-        }
-    }
-  seen_bb = 0;
-}
-
 int
 main (int argc, char *argv[])
 {

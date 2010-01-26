@@ -155,4 +155,37 @@ gdl_add_edge (struct gdl_graph *graph, struct gdl_edge *edge)
     }
 }
 
+struct gdl_graph *
+gdl_new_bb_graph (char *name)
+{
+  struct gdl_graph *graph;
+  struct gdl_node *node;
 
+  graph = new_graph (name);
+  gdl_set_graph_label (graph, name);
+
+  node = new_node (NULL);
+  gdl_add_subgraph (graph, node);
+
+  return graph;
+}
+
+struct gdl_graph *
+gdl_new_func_graph (char *name)
+{
+  struct gdl_graph *graph;
+  struct gdl_node *node;
+
+  graph = gdl_new_graph (name);
+  gdl_add_subgraph (top_graph, graph);
+
+  node = new_node ("ENTRY");
+  set_node_label (node, "ENTRY");
+  add_node (graph, node);
+
+  node = new_node ("EXIT");
+  set_node_label (node, "EXIT");
+  add_node (graph, node);
+
+  return graph;
+}
