@@ -27,6 +27,8 @@
 #include "gdl.h"
 #include "tree2vcg.h"
 
+static char *prefix;
+
 static void
 output_node (struct gdl_node *node)
 {
@@ -37,12 +39,12 @@ output_node (struct gdl_node *node)
   fputs ("node: {\n", fout);
 
   /* title */
-  str = get_node_title (node);
+  str = gdl_get_node_title (node);
   if (str != NULL)
-    fprintf (fout, "title: \"%s\"\n", str);
+    fprintf (fout, "title: \"%s_%s\"\n", prefix, str);
   
   /* label */
-  str = get_node_label (node);
+  str = gdl_get_node_label (node);
   if (str != NULL)
     {
       fprintf (fout, "label: \"", str);
@@ -56,17 +58,17 @@ output_node (struct gdl_node *node)
     }
   
   /* vertical_order */
-  val = get_node_vertical_order (node);
+  val = gdl_get_node_vertical_order (node);
   if (val != -1)
     fprintf (fout, "vertical_order: %d\n", val);
 
   /* shape */
-  str = get_node_shape_s (node);
+  str = gdl_get_node_shape_s (node);
   if (str != NULL)
     fprintf (fout, "shape: %s\n", str); 
 
   /* color */
-  str = get_node_color_s (node);
+  str = gdl_get_node_color_s (node);
   if (str != NULL)
     fprintf (fout, "color: %s\n", str); 
 
@@ -77,23 +79,23 @@ static void
 output_edge (struct gdl_edge *edge)
 {
   char *str;
-  int *val;
+  int val;
   int i;
 
   fputs ("edge: {\n", fout);
 
   /* sourcename */
-  str = get_edge_sourcename (edge);
+  str = gdl_get_edge_source (edge);
   if (str != NULL)
-    fprintf (fout, "sourcename: \"%s\"\n", str);
+    fprintf (fout, "source: \"%s_%s\"\n", prefix, str);
   
   /* targetname */
-  str = get_edge_targetname (edge);
+  str = gdl_get_edge_target (edge);
   if (str != NULL)
-    fprintf (fout, "targetname: \"%s\"\n", str);
+    fprintf (fout, "target: \"%s_%s\"\n", prefix, str);
   
   /* label */
-  str = get_edge_label (edge);
+  str = gdl_get_edge_label (edge);
   if (str != NULL)
     {
       fprintf (fout, "label: \"", str);
@@ -107,7 +109,7 @@ output_edge (struct gdl_edge *edge)
     }
   
   /* linestyle */
-  str = get_edge_linestyle_s (edge);
+  str = gdl_get_edge_linestyle_s (edge);
   if (str != NULL)
     fprintf (fout, "linestyle: %s\n", str);
 
@@ -118,16 +120,18 @@ static void
 output_graph_attributes (struct gdl_graph *graph)
 {
   char *str;
-  int *val;
+  int val;
   int i;
 
   /* title */
-  str = get_graph_title (graph);
+  str = gdl_get_graph_title (graph);
   if (str != NULL)
     fprintf (fout, "title: \"%s\"\n", str);
 
+  prefix = str;
+
   /* label */
-  str = get_graph_label (graph);
+  str = gdl_get_graph_label (graph);
   if (str != NULL)
     {
       fprintf (fout, "label: \"", str);
@@ -141,37 +145,37 @@ output_graph_attributes (struct gdl_graph *graph)
     }
 
   /* color */
-  str = get_graph_color_s (graph);
+  str = gdl_get_graph_color_s (graph);
   if (str != NULL)
     fprintf (fout, "color: %s\n", str);
 
   /* node.color */
-  str = get_graph_node_color_s (graph);
+  str = gdl_get_graph_node_color_s (graph);
   if (str != NULL)
     fprintf (fout, "node.color: %s\n", str);
 
   /* folding */
-  val = get_graph_folding (graph);
+  val = gdl_get_graph_folding (graph);
   if (val != -1)
     fprintf (fout, "folding: %d\n", val);
 
   /* shape */
-  str = get_graph_shape_s (graph);
+  str = gdl_get_graph_shape_s (graph);
   if (str != NULL)
     fprintf (fout, "shape: %s\n", str);
 
   /* layoutalgorithm */
-  str = get_graph_layoutalgorithm_s (graph);
+  str = gdl_get_graph_layout_algorithm_s (graph);
   if (str != NULL)
     fprintf (fout, "layoutalgorithm: %s\n", str);
 
   /* near_edges */
-  val = get_graph_near_edges (graph);
+  val = gdl_get_graph_near_edges (graph);
   if (val != -1)
     fprintf (fout, "near_edges: %s\n", val ? "yes" : "no");
 
   /* port_sharing */
-  val = get_graph_port_sharing (graph);
+  val = gdl_get_graph_port_sharing (graph);
   if (val != -1)
     fprintf (fout, "port_sharing: %s\n", val ? "yes" : "no");
 }
@@ -189,16 +193,16 @@ output_graph (struct gdl_graph *graph)
   output_graph_attributes (graph);
 
   /* list of nodes or subgraphs */
-  nodes = get_graph_nodes (graph);
+  nodes = gdl_get_graph_node (graph);
   for (node = nodes; node != NULL; node = node->next)
     output_node (node);
 
-  subgraphs = get_graph_subgraphs (graph);
+  subgraphs = gdl_get_graph_subgraph (graph);
   for (subgraph = subgraphs; subgraph != NULL; subgraph = subgraph->next)
     output_graph (subgraph);
 
   /* list of edges */
-  edges = get_graph_edges (graph);
+  edges = gdl_get_graph_edge (graph);
   for (edge = edges; edge != NULL; edge = edge->next)
     output_edge (edge);
 

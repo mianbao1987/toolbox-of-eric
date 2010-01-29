@@ -117,19 +117,22 @@ set_yy_debug (void)
 void
 finalize_node_label (void)
 {
-  if (seen_bb && current_bb_node != NULL)
+  struct gdl_node *node;
+
+  if (seen_bb && current_bb != NULL)
     {
+      node = current_bb->x_graph->last_node;
       len = obstack_object_size (&insn_obstack);
       if (len > 0)
         {
           insns = (char *)obstack_finish (&insn_obstack);
           assert (insns[len-1] == '\n');
           insns[len-1] = '\0';
-          gdl_set_node_label (current_bb_node, insns);
+          gdl_set_node_label (node, insns);
         }
       else
         {
-          gdl_set_node_label (current_bb_node, "   ");
+          gdl_set_node_label (node, "   ");
         }
     }
   seen_bb = 0;

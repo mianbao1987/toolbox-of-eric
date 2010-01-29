@@ -30,221 +30,193 @@
 #include "cfg.h"
 #include "tree2vcg.h"
 
-int count;
+static int count;
 
 void
-search (int n)
+search (struct basic_block *bb)
 {
-  int i, j;
-  struct cfg_node *node, *succ_node;
-  struct cfg_edge *edge;
+  struct control_flow_graph *cfg = current_function->cfg;
+  struct basic_block *succ_bb;
+  struct vec_edge *ve;
+  struct edge *e;
 
-  node = graph->nodes[n];
-  node->visited = 1;
+  bb->visited = 1;
 
-  for (i = 0; i < node->succ_num; i++)
+  for (ve = bb->succ; ve != NULL; ve = ve->next)
     {
-      edge = node->succs[i];
-      succ_node = graph->nodes[edge->target_index];
-      if (succ_node->visited == 0)
+      e = ve->edge;
+      succ_bb = e->target;
+      if (succ_bb->visited == 0)
         {
-          edge->type = DFST_EDGE;
-          for (j = 0; j < succ_node->pred_num; j++)
-            {
-              if (succ_node->preds[j]->source_index == n)
-                succ_node->preds[j]->type = DFST_EDGE;
-            }
-          search (edge->target_index);
+          e->type = DFST_EDGE;
+          search (succ_bb);
         }
     }
-  node->dfs_order = count;
+  bb->dfs_order = count;
   count--;
 }
 
 void
-depth_first_search (struct function *func)
+depth_first_search (void)
 {
-  struct control_flow_graph *cfg = func->cfg;
-  
-  
-  for (i = 0; i < graph->node_num; i++)
+  struct control_flow_graph *cfg = current_function->cfg;
+  struct basic_block *bb;
+ 
+  for (bb = cfg->bb; bb != NULL; bb = bb->next)
     {
-      graph->nodes[i]->visited = 0;
+      bb->visited = 0;
     }
 
-  count = graph->node_num;
-  search (0);
+  count = cfg->bb_num;
+  search (cfg->entry);
 }
 
 int
-is_ancestor (int source, int target)
+is_ancestor (struct basic_block *source, struct basic_block *target)
 {
-  int i;
-  int index;
-  struct cfg_node *node;
-  struct cfg_edge *edge;  
+  struct control_flow_graph *cfg = current_function->cfg;
+  struct basic_block *bb;
+  struct vec_edge *ve;
+  struct edge *e;
 
-  index = target;
-  node = graph->nodes[index];
+  bb = target;
   do
     {
-      if (index == source)
+      if (bb == source)
         return 1;
       
-      for (i = 0;  i < node->pred_num; i++)
+      for (ve = bb->pred;  ve != NULL; ve = ve->next)
         {
-          edge = node->preds[i];
-          if (edge->type == DFST_EDGE)
+          e = ve->edge;
+          if (e->type == DFST_EDGE)
             {
-              index = edge->source_index;
-              node = graph->nodes[index];
+              bb = e->source;
               break;
             }
         }
-    } while (index != 0);
+    } while (bb != cfg->entry);
 
   return 0;
 }
 
 void
-mark_edge (struct cfg_edge *edge)
+mark_edge (struct edge *e)
 {
-  int source_index, target_index;
+  struct basic_block *source;
+  struct basic_block *target;
 
-  source_index = edge->source_index;
-  target_index = edge->target_index;
+  source = e->source;
+  target = e->target;
 
-  if (is_ancestor (source_index, target_index))
-    edge->type = ADVANCING_EDGE;
-  else if (is_ancestor (target_index, source_index))
-    edge->type = RETREATING_EDGE;
+  if (is_ancestor (target, source))
+    e->type = RETREATING_EDGE;
+  else if (is_ancestor (source, target))
+    e->type = ADVANCING_EDGE;
   else
-    edge->type = CROSS_EDGE;
+    e->type = CROSS_EDGE;
 }
 
 void
 mark_edges (void)
 {
-  int i, j;
-  struct cfg_node *node;
-  struct cfg_edge *edge;
+  struct control_flow_graph *cfg = current_function->cfg;
+  struct edge *e;
 
-  for (i = 0; i < graph->node_num; i++)
-    {
-      node = graph->nodes[i];
-      for (j = 0; j < node->pred_num; j++)
-        {
-          edge = node->preds[j];
-          if (edge->type == UNKNOWN_EDGE)
-            {
-              mark_edge (edge);
-            }
-        }
-      for (j = 0; j < node->succ_num; j++)
-        {
-          edge = node->succs[j];
-          if (edge->type == UNKNOWN_EDGE)
-            {
-              mark_edge (edge);
-            }
-        }
-    }
+  for (e = cfg->edge; e != NULL; e = e->next)
+    if (e->type == UNKNOWN_EDGE)
+      mark_edge (e);
 }
 
 int
-calc_vertical_order (struct cfg_node *node)
+calc_max_distance (struct basic_block *bb)
 {
-  int i;
   int val, max = 0;
-  struct cfg_node *pred_node;
-  struct cfg_edge *edge;
+  struct control_flow_graph *cfg = current_function->cfg;
+  struct vec_edge *ve;
+  struct edge *e;
 
-  if (node->vertical_order == 0)
+  if (bb->max_distance == 0)
     {
-      for (i = 0; i < node->pred_num; i++)
+      for (ve = bb->pred; ve != NULL; ve = ve->next)
         {
-          edge = node->preds[i];
-          if (edge->type == RETREATING_EDGE)
+          e = ve->edge;
+          if (e->type == RETREATING_EDGE)
             continue;
-          val = calc_vertical_order (graph->nodes[edge->source_index]);
+          val = calc_max_distance (e->source);
           max = max > val ? max : val;
         }
-      node->vertical_order = max + 1;
+      bb->max_distance = max + 1;
     }
-  return node->vertical_order;
+  return bb->max_distance;
 }
 
 void
 set_vertical_order (void)
 {
-  int i, j;
-  struct cfg_node *node;
-  struct cfg_edge *edge;
+  struct control_flow_graph *cfg = current_function->cfg;
+  struct basic_block *bb;
+  struct vec_edge *ve;
+  struct edge *e;
 
   depth_first_search ();
 
   mark_edges ();
 
-  calc_vertical_order (graph->nodes[1]);
+  calc_max_distance (cfg->exit);
 
-  for (i = 0; i < graph->node_num; i++)
+  for (bb = cfg->bb; bb != NULL; bb = bb->next)
     {
-      node = graph->nodes[i];
-      printf ("node: %d\n", i);
-      printf ("vertical order: %d\n", node->vertical_order);
-      printf ("dfs order: %d\n", node->dfs_order);
-      for (j = 0; j < node->succ_num; j++)
+      gdl_set_graph_vertical_order (bb->x_graph, bb->max_distance);
+/*
+      printf ("node: %s\n", bb->name);
+      printf ("vertical order: %d\n", bb->max_distance);
+      printf ("dfs order: %d\n", bb->dfs_order);
+      for (ve = bb->succ; ve != NULL; ve = ve->next)
         {
-          edge = node->succs[j];
-          if (edge->type == DFST_EDGE)
+          e = ve->edge;
+          if (e->type == DFST_EDGE)
             printf ("edge type: dfst\n");
 
-          if (edge->type == ADVANCING_EDGE)
+          if (e->type == ADVANCING_EDGE)
             printf ("edge type: advancing\n");
 
-          if (edge->type == RETREATING_EDGE)
+          if (e->type == RETREATING_EDGE)
             printf ("edge type: retreating\n");
 
-          if (edge->type == CROSS_EDGE)
+          if (e->type == CROSS_EDGE)
             printf ("edge type: cross\n");
 
-          if (edge->type == UNKNOWN_EDGE)
+          if (e->type == UNKNOWN_EDGE)
             printf ("edge type: unknown\n");
 
-          printf ("edge: %d -> %d\n", edge->source_index,
-                  edge->target_index);
+          printf ("edge: %s -> %s\n", e->source->name,
+                  e->target->name);
         }
+*/
     }  
-}
-
-void
-fine_tune_func_graph (struct function *func)
-{
-  struct gdl_graph *fun_graph, *bb_graph;
-
-  set_vertical_order ();
-
-  /* common attributes */
-  gdl_set_graph_node_color (top_graph, LIGHTGREY);
-  gdl_set_graph_node_shape (top_graph, ELLIPSE);
-  gdl_set_graph_layoutalgorithm (top_graph, MAX_DEPTH);
-
-  gdl_set_graph_folding (top_graph, 0);
-  for (fun_graph = top_graph->subgraphs; fun_graph; fun_graph = fun_graph->next)
-    {
-      for (bb_graph = fun_graph->subgraphs; bb_graph; bb_graph = bb_graph->next)
-        {
-          gdl_set_graph_folding (bb_graph, 1);
-        }
-      gdl_set_graph_folding (fun_graph, 1);
-    }
 }
 
 void
 fine_tune_graph (void)
 {
+  struct gdl_graph *fun_graph, *bb_graph;
 
   for (current_function = first_function; current_function != NULL;
        current_function = current_function->next)
-    fine_tune_func_graph (current_function);
+    set_vertical_order ();
+
+  /* common attributes */
+  gdl_set_graph_node_color (top_graph, LIGHTGREY);
+  gdl_set_graph_node_shape (top_graph, ELLIPSE);
+  gdl_set_graph_layout_algorithm (top_graph, MAX_DEPTH);
+
+  gdl_set_graph_folding (top_graph, 0);
+  for (fun_graph = top_graph->subgraph; fun_graph; fun_graph = fun_graph->next)
+    {
+      for (bb_graph = fun_graph->subgraph; bb_graph; bb_graph = bb_graph->next)
+        {
+          gdl_set_graph_folding (bb_graph, 1);
+        }
+      gdl_set_graph_folding (fun_graph, 1);
+    }
 }

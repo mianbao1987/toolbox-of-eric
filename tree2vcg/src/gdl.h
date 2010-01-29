@@ -49,11 +49,11 @@ enum gdl_linestyle
   LINESTYLE_DEFAULT
 };
 
-enum gdl_layoutalgorithm
+enum gdl_layout_algorithm
 {
   MAX_DEPTH,
   TREE,
-  LAYOUTALGORITHM_DEFAULT
+  LAYOUT_ALGORITHM_DEFAULT
 };
 
 #define DEF_ATTR(obj, name, type) type name;
@@ -89,16 +89,19 @@ struct gdl_graph
 {
   struct gdl_graph_attr attr;
   /* nodes or subgraphs */
-  struct gdl_node *nodes;
-  struct gdl_graph *subgraphs;
-  struct gdl_edge *edges;
+  struct gdl_node *node;
+  struct gdl_node *last_node;
+  struct gdl_graph *subgraph;
+  struct gdl_graph *last_subgraph;
+  struct gdl_edge *edge;
+  struct gdl_edge *last_edge;
   struct gdl_graph *next;
 };
 
 extern char *shape_s[SHAPE_DEFAULT + 1];
 extern char *color_s[COLOR_DEFAULT + 1];
 extern char *linestyle_s[LINESTYLE_DEFAULT + 1];
-extern char *layoutalgorithm_s[LAYOUTALGORITHM_DEFAULT + 1];
+extern char *layout_algorithm_s[LAYOUT_ALGORITHM_DEFAULT + 1];
 
 extern struct gdl_edge *gdl_new_edge (char *sourcename, char *targetname);
 extern struct gdl_graph *gdl_new_graph (char *title);
@@ -131,51 +134,69 @@ gdl_set_##obj##_##name (struct gdl_##obj *obj, type value) \
 
 #undef DEF_ATTR
 
-#if 0
 static inline char *
-get_node_shape_s (struct gdl_node *node)
+gdl_get_node_shape_s (struct gdl_node *node)
 {
-  assert (node->shape >= 0 && node->shape <= SHAPE_DEFAULT);
-  return shape_s[node->shape];
-}
-
-static inline char *
-get_node_color_s (struct gdl_node *node)
-{
-  assert (node->color >= 0 && node->color <= COLOR_DEFAULT);
-  return color_s[node->color];
-}
-
-static inline void
-set_graph_node_color (struct gdl_graph *graph, enum gdl_color color)
-{
-  assert (color >= 0 && color <= COLOR_DEFAULT);
-  graph->color = color;
+  assert (node->attr.shape >= 0 && node->attr.shape <= SHAPE_DEFAULT);
+  return shape_s[node->attr.shape];
 }
 
 static inline char *
-get_graph_shape_s (struct gdl_graph *graph)
+gdl_get_node_color_s (struct gdl_node *node)
 {
-  assert (graph->shape >= 0 && graph->shape <= SHAPE_DEFAULT);
-  return shape_s[graph->shape];
+  assert (node->attr.color >= 0 && node->attr.color <= COLOR_DEFAULT);
+  return color_s[node->attr.color];
 }
 
 static inline char *
-get_graph_layoutalgorithm_s (struct gdl_graph *graph)
+gdl_get_edge_linestyle_s (struct gdl_edge *edge)
 {
-  assert (graph->layoutalgorithm >= 0 
-          && graph->layoutalgorithm <= LAYOUTALGORITHM_DEFAULT);
-  return layoutalgorithm_s[graph->layoutalgorithm];
+  return linestyle_s[edge->attr.linestyle];
 }
 
-static inline void
-set_graph_layoutalgorithm (struct gdl_graph *graph,
-                           enum gdl_layoutalgorithm alg)
+static inline char *
+gdl_get_graph_color_s (struct gdl_graph *graph)
 {
-  assert (alg >= 0 && alg <= LAYOUTALGORITHM_DEFAULT);
-  graph->layoutalgorithm = alg;
+  return color_s[graph->attr.color];
 }
 
-#endif
+static inline char *
+gdl_get_graph_node_color_s (struct gdl_graph *graph)
+{
+  return color_s[graph->attr.node_color];
+}
+
+static inline char *
+gdl_get_graph_shape_s (struct gdl_graph *graph)
+{
+  assert (graph->attr.shape >= 0 && graph->attr.shape <= SHAPE_DEFAULT);
+  return shape_s[graph->attr.shape];
+}
+
+static inline char *
+gdl_get_graph_layout_algorithm_s (struct gdl_graph *graph)
+{
+  assert (graph->attr.layout_algorithm >= 0 
+          && graph->attr.layout_algorithm <= LAYOUT_ALGORITHM_DEFAULT);
+  return layout_algorithm_s[graph->attr.layout_algorithm];
+}
+
+static inline struct gdl_node *
+gdl_get_graph_node (struct gdl_graph *graph)
+{
+  return graph->node;
+}
+
+static inline struct gdl_edge *
+gdl_get_graph_edge (struct gdl_graph *graph)
+{
+  return graph->edge;
+}
+
+static inline struct gdl_graph *
+gdl_get_graph_subgraph (struct gdl_graph *graph)
+{
+  return graph->subgraph;
+}
 
 #endif

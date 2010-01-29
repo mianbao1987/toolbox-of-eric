@@ -503,11 +503,11 @@
                o Magnetic forces: magnetic_field1 / 2, magnetic_force1 / 2
                o Energy level: energetic, energetic attraction / repulsion /
      gravity / crossing / overlapping / border
-               o Boundary rectangle border x / y
+               o Boundary rectangle border x / y */
      
-     Top
+     DEF_ATTR (graph, layout_algorithm, enum gdl_layout_algorithm)
      
-     layout_downfactor: Int, default is 1
+     /* layout_downfactor: Int, default is 1
      layout_nearfactor: Int, default is 1
      layout_upfactor: Int, default is 1
      Attributes of top-level graph, subgraphs
@@ -766,6 +766,7 @@
          * lparallelogram
          * rparallelogram */
   DEF_ATTR (graph, shape, enum gdl_shape)
+  DEF_ATTR (graph, node_shape, enum gdl_shape)
      
   /* shrink: Int, default is 1
      stretch: Int, default is 1
@@ -861,11 +862,11 @@
            The subgraph is shown exclusively. All other nodes of the graph are
      not visible. Only edges between nodes of a group are visible. Of course,
      this value should appear only once in a graph specification. See also
-     displaying node groups exclusively.
+     displaying node groups exclusively. */
+
+     DEF_ATTR (graph, folding, int)
      
-     Top
-     
-     straight_phase: yes or no, default is no
+     /* straight_phase: yes or no, default is no
      Attribute of top-level graph, subgraphs
      yes switches on the straight phase. This is an additional phase that tries
      to avoid bends in long edges. Long edges are drawn as long straight
@@ -1026,11 +1027,10 @@
      The level specification may conflict with a near edge specification,
      because the source and target node of a near edge have to have the same
      level. In this case, the level specification of the source or the target
-     node of the near edge is ignored.
-     
-     Top
-     
-     view: Mode, default is normal, i.e. no fish-eye view
+     node of the near edge is ignored. */
+DEF_ATTR (graph, vertical_order, int)
+   
+     /* view: Mode, default is normal, i.e. no fish-eye view
      Attribute of top-level graph
      Enables one of the six fish-eye view Modes to be selected. If a graph is
      large only a small amount of it is visible in the graph window because of

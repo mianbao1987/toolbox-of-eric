@@ -57,7 +57,7 @@ char *linestyle_s[LINESTYLE_DEFAULT + 1] =
   NULL
 };
 
-char *layoutalgorithm_s[LAYOUTALGORITHM_DEFAULT + 1] =
+char *layout_algorithm_s[LAYOUT_ALGORITHM_DEFAULT + 1] =
 {
   "max_depth",
   "tree",
@@ -74,15 +74,18 @@ gdl_new_graph (char *title)
   gdl_set_graph_label (graph, NULL);
   gdl_set_graph_color (graph, COLOR_DEFAULT);
   gdl_set_graph_node_color (graph, COLOR_DEFAULT);
-  /*graph->folding = -1;
-  graph->shape = SHAPE_DEFAULT;
-  graph->layoutalgorithm = LAYOUTALGORITHM_DEFAULT;
-  graph->near_edges = -1;
-  graph->port_sharing = -1;*/
+  gdl_set_graph_folding (graph, -1);
+  gdl_set_graph_shape (graph, SHAPE_DEFAULT);
+  gdl_set_graph_layout_algorithm (graph, LAYOUT_ALGORITHM_DEFAULT);
+  gdl_set_graph_near_edges (graph, -1);
+  gdl_set_graph_port_sharing (graph, -1);
 
-  graph->nodes = NULL;
-  graph->subgraphs = NULL;
-  graph->edges = NULL;
+  graph->node = NULL;
+  graph->last_node = NULL;
+  graph->subgraph = NULL;
+  graph->last_subgraph = NULL;
+  graph->edge = NULL;
+  graph->last_edge = NULL;
   graph->next = NULL;
 
   return graph;
@@ -96,9 +99,9 @@ gdl_new_node (char *title)
   node = (struct gdl_node *) xmalloc (sizeof (struct gdl_node));
   gdl_set_node_title (node, title);
   gdl_set_node_label (node, NULL);
-  /* node->vertical_order = -1;
-  node->color = COLOR_DEFAULT;
-  node->shape = SHAPE_DEFAULT; */
+  gdl_set_node_vertical_order (node, -1);
+  gdl_set_node_color (node, COLOR_DEFAULT);
+  gdl_set_node_shape (node, SHAPE_DEFAULT);
 
   node->next = NULL;
   
@@ -111,10 +114,10 @@ gdl_new_edge (char *sourcename, char *targetname)
   struct gdl_edge *edge;
 
   edge = (struct gdl_edge *) xmalloc (sizeof (struct gdl_edge));
- /*  edge->sourcename = sourcename;
-  edge->targetname = targetname;
-  edge->label = NULL;
-  edge->linestyle = LINESTYLE_DEFAULT; */
+  gdl_set_edge_source (edge, sourcename);
+  gdl_set_edge_target (edge, targetname);
+  gdl_set_edge_label (edge, NULL);
+  gdl_set_edge_linestyle (edge, LINESTYLE_DEFAULT);
 
   edge->next = NULL;
   
@@ -124,36 +127,45 @@ gdl_new_edge (char *sourcename, char *targetname)
 static void 
 gdl_add_subgraph (struct gdl_graph *graph, struct gdl_graph *subgraph)
 {
-  if (graph->subgraphs == NULL)
-    graph->subgraphs = subgraph;
+  if (graph->subgraph == NULL)
+    {
+      graph->subgraph = subgraph;
+      graph->last_subgraph = subgraph;
+    }
   else
     {
-      subgraph->next = graph->subgraphs;
-      graph->subgraphs = subgraph;
+      graph->last_subgraph->next = subgraph;
+      graph->last_subgraph = subgraph;
     }
 }
 
 static void 
 gdl_add_node (struct gdl_graph *graph, struct gdl_node *node)
 {
-  if (graph->nodes == NULL)
-    graph->nodes = node;
+  if (graph->node == NULL)
+    {
+      graph->node = node;
+      graph->last_node = node;
+    }
   else
     {
-      node->next = graph->nodes;
-      graph->nodes = node;
+      graph->last_node->next = node;
+      graph->last_node = node;
     }
 }
 
 static void 
 gdl_add_edge (struct gdl_graph *graph, struct gdl_edge *edge)
 {
-  if (graph->edges == NULL)
-    graph->edges = edge;
+  if (graph->edge == NULL)
+    {
+      graph->edge = edge;
+      graph->last_edge = edge;
+    }
   else
     {
-      edge->next = graph->edges;
-      graph->edges = edge;
+      graph->last_edge->next = edge;
+      graph->last_edge = edge;
     }
 }
 
@@ -165,7 +177,7 @@ gdl_new_bb_graph (char *name)
 
   graph = gdl_new_graph (name);
   gdl_set_graph_label (graph, name);
-  gdl_add_subgraph (top_graph, graph);
+  gdl_add_subgraph (current_function->x_graph, graph);
 
   node = gdl_new_node (NULL);
   gdl_add_node (graph, node);
@@ -181,14 +193,6 @@ gdl_new_func_graph (char *name)
 
   graph = gdl_new_graph (name);
   gdl_add_subgraph (top_graph, graph);
-
-  node = gdl_new_node ("ENTRY");
-  gdl_set_node_label (node, "ENTRY");
-  gdl_add_node (graph, node);
-
-  node = gdl_new_node ("EXIT");
-  gdl_set_node_label (node, "EXIT");
-  gdl_add_node (graph, node);
 
   return graph;
 }

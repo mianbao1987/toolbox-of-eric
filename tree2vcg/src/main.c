@@ -49,9 +49,6 @@ struct function *current_function;
 struct basic_block *current_bb;
 
 struct gdl_graph *top_graph;
-struct gdl_graph *current_func_graph;
-struct gdl_graph *current_bb_graph;
-struct gdl_node *current_bb_node;
 
 void
 general_init (void)
@@ -81,4 +78,6 @@ main (int argc, char *argv[])
   fine_tune_graph ();
 
   output_graph (top_graph);
+
+  return 0;
 }

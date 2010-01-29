@@ -69,6 +69,18 @@ new_edge (struct basic_block *source, struct basic_block *target)
   return e;
 }
 
+struct vec_edge *
+new_vec_edge (struct edge *e)
+{
+  struct vec_edge *ve;
+
+  ve = (struct vec_edge *) xmalloc (sizeof (struct vec_edge));
+  ve->edge = e;
+  ve->next = NULL;
+
+  return ve;
+}
+
 struct control_flow_graph *
 new_cfg (void)
 {
@@ -99,10 +111,11 @@ new_function (char *name)
 
   func = (struct function *) xmalloc (sizeof (struct function));
   func->name = name;
-  func->cfg = new_cfg ();
   func->next = NULL;
 
   func->x_graph = gdl_new_func_graph (name);
+
+  func->cfg = new_cfg ();
 
   return func;
 }
@@ -216,14 +229,20 @@ lookup_and_add_edge (struct function *func,
       break;
    
   if (ve == NULL)
-    add_succ_vec_edge (source_bb, ve);
+    {
+      ve = new_vec_edge (e);
+      add_succ_vec_edge (source_bb, ve);
+    }
 
   for (ve = target_bb->pred; ve != NULL; ve = ve->next)
     if (ve->edge == e)
       break;
    
   if (ve == NULL)
-    add_pred_vec_edge (target_bb, ve);
+    {
+      ve = new_vec_edge (e);
+      add_pred_vec_edge (target_bb, ve);
+    }
 
   return e;
 }
