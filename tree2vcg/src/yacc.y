@@ -59,7 +59,7 @@ input:	/* empty */
 ;
 
 line: FN FN_NAME {
-    finalize_node_label ();
+    finalize_last_bb ();
 
     current_function = new_function ($<str>2); /* FN_NAME */
     if (first_function == NULL)
@@ -76,7 +76,7 @@ line: FN FN_NAME {
       }
   }
 	| BB BB_NUM {
-    finalize_node_label ();
+    finalize_last_bb ();
 
     seen_bb = 1;
     current_bb = lookup_and_add_bb (current_function, $<str>2);
@@ -115,7 +115,7 @@ set_yy_debug (void)
 }
 
 void
-finalize_node_label (void)
+finalize_last_bb (void)
 {
   struct gdl_node *node;
 

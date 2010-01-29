@@ -31,16 +31,16 @@ extern struct function *current_function;
 extern struct basic_block *current_bb;
 
 extern struct gdl_graph *top_graph;
-extern struct gdl_graph *current_func_graph;
-extern struct gdl_graph *current_bb_graph;
-extern struct gdl_node *current_bb_node;
+
+/* yacc.y */
+extern void finalize_last_bb (void);
 
 /* output.c */
-extern void output_graph (struct gdl_graph *graph);
+extern void output_vcg (void);
 
 /* options.c */
 extern void handle_options (int argc, char *argv[]);
 
 /* fine_tune.c */
-extern void fine_tune_graph (void);
+extern void fine_tune_vcg (void);
 #endif

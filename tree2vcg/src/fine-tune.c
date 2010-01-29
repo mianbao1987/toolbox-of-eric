@@ -197,7 +197,7 @@ set_vertical_order (void)
 }
 
 void
-fine_tune_graph (void)
+fine_tune_cfg (void)
 {
   struct gdl_graph *fun_graph, *bb_graph;
 

@@ -209,3 +209,20 @@ output_graph (struct gdl_graph *graph)
   fputs ("}\n", fout);
 }
 
+void
+output_vcg (void)
+{
+  fputs ("graph: {\n", fout);
+
+  /* general graph attributes */
+  output_graph_attributes (top_graph);
+
+  for (current_function = first_function; current_function != NULL;
+       current_function = current_function->next)
+    {
+      graph = current_function->x_graph;
+      output_graph (graph);
+    }
+
+  fputs ("}\n", fout);
+}

@@ -48,8 +48,6 @@ struct function *last_function;
 struct function *current_function; 
 struct basic_block *current_bb;
 
-struct gdl_graph *top_graph;
-
 void
 general_init (void)
 {
@@ -58,8 +56,6 @@ general_init (void)
   first_function = NULL;
   last_function = NULL;
   current_function = NULL;
-
-  top_graph = gdl_new_graph (NULL);
 }
 
 int
@@ -73,11 +69,13 @@ main (int argc, char *argv[])
   yyin = fin;
   //set_yy_debug ();
   yyparse ();
-  finalize_node_label ();
+  finalize_last_bb ();
 
-  fine_tune_graph ();
+  fine_tune_cfg ();
 
-  output_graph (top_graph);
+  cfg_to_vcg ();
+
+  output_vcg ();
 
   return 0;
 }
