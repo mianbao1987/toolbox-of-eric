@@ -70,7 +70,8 @@
   /* borderwidth: Int, default is 2
      Attribute of subgraphs
      Specifies the thickness of the border of a summary node in pixels. */
-     
+  DEF_ATTR (graph, node_borderwidth, int)   
+  DEF_ATTR (graph, edge_thickness, int)   
      
   /* classname Int:"String", default is 1:"1", 2:"2", 3:"3", etc.
      Attributes of top-level graph
@@ -592,20 +593,18 @@
      horizontal or vertical line segments. Vertical edge segments might be
      shared by several edges, while horizontal edge segments are never shared.
      This results in aesthetic layouts for flowcharts. If orthogonal layout is
-     used, the priority_phase and straight_phase are also used by default.
+     used, the priority_phase and straight_phase are also used by default. */
      
-     Top
      
-     margin: Int, as of aiSee 2.1.89,
+  /* margin: Int, as of aiSee 2.1.89,
      default is 3 if the value of borderwidth is > 0,
      0 if the value of borderwidth is 0
      Attribute of subgraphs
      Specifies the horizontal and vertical offset between the border of a
-     summary node and its label in pixels. Useful for rectangular nodes only.
+     summary node and its label in pixels. Useful for rectangular nodes only. */
+  DEF_ATTR (graph, node_margin, int)   
      
-     Top
-     
-     near_edges: yes or no, default is yes
+  /* near_edges: yes or no, default is yes
      Attribute of top-level graph, subgraphs
      no: All near edges are treated as normal edges in the graph layout. */
   DEF_ATTR (graph, near_edges, int)
@@ -810,21 +809,19 @@
      Attribute of top-level graph
      Determines the bending of splines. A factor of 100 indicates very sharp
      bending, a factor of 1 indicating very flat bending. Useful values range
-     from 30 to 80.
+     from 30 to 80. */
      
-     Top
      
-     splines: yes or no, default is no
+     /* splines: yes or no, default is no
      Attribute of top-level graph
      Specifies whether splines are used to draw edges. Polygon segments are
      used to draw edges by default, because this is much faster. Note that the
      spline drawing routine is very slow. Splines are mainly used to prepare
      high-quality PostScript or SVG output for small graphs. See also
-     splinefactor.
+     splinefactor. */
+     DEF_ATTR (graph, splines, char *)
      
-     Top
-     
-     spreadlevel: Int, default is 1
+     /* spreadlevel: Int, default is 1
      Attribute of top-level graph, subgraphs
      Influences only the tree algorithm. Spreading of the uppermost nodes of
      large balanced trees would increase the width of the tree to such an

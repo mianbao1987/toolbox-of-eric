@@ -103,10 +103,13 @@ extern char *color_s[COLOR_DEFAULT + 1];
 extern char *linestyle_s[LINESTYLE_DEFAULT + 1];
 extern char *layout_algorithm_s[LAYOUT_ALGORITHM_DEFAULT + 1];
 
-extern struct gdl_edge *gdl_new_edge (char *sourcename, char *targetname);
 extern struct gdl_graph *gdl_new_graph (char *title);
-extern struct gdl_graph *gdl_new_bb_graph (char *name);
-extern struct gdl_graph *gdl_new_func_graph (char *name);
+extern struct gdl_node *gdl_new_node (char *title);
+extern struct gdl_edge *gdl_new_edge (char *source, char *target);
+extern void gdl_add_subgraph (struct gdl_graph *graph,
+                              struct gdl_graph *subgraph);
+extern void gdl_add_node (struct gdl_graph *graph, struct gdl_node *node);
+extern void gdl_add_edge (struct gdl_graph *graph, struct gdl_edge *edge);
 
 #define DEF_ATTR(obj, name, type) \
 static inline type \

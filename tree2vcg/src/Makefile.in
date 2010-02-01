@@ -66,7 +66,7 @@ binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_tree2vcg_OBJECTS = main.$(OBJEXT) yacc.$(OBJEXT) lex.$(OBJEXT) \
 	options.$(OBJEXT) gdl.$(OBJEXT) cfg.$(OBJEXT) \
-	fine-tune.$(OBJEXT) output.$(OBJEXT)
+	fine-tune.$(OBJEXT) vcg.$(OBJEXT) output.$(OBJEXT)
 tree2vcg_OBJECTS = $(am_tree2vcg_OBJECTS)
 tree2vcg_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I. -I$(srcdir)
@@ -163,7 +163,7 @@ target_alias = @target_alias@
 AM_YFLAGS = -d -t
 AM_CFLAGS = $(LIBERTY_INC)
 tree2vcg_SOURCES = main.c yacc.y lex.l tree2vcg.h options.c gdl.h \
-                   gdl.c cfg.h cfg.c fine-tune.c output.c
+                   gdl.c cfg.h cfg.c fine-tune.c vcg.c output.c
 
 tree2vcg_LDFLAGS = -liberty $(LIBERTY_LIB)
 all: all-am
@@ -244,6 +244,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/options.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/output.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/vcg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/yacc.Po@am__quote@
 
 .c.o:

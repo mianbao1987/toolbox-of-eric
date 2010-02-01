@@ -27,8 +27,6 @@
 #include "gdl.h"
 #include "tree2vcg.h"
 
-static char *prefix;
-
 static void
 output_node (struct gdl_node *node)
 {
@@ -41,7 +39,7 @@ output_node (struct gdl_node *node)
   /* title */
   str = gdl_get_node_title (node);
   if (str != NULL)
-    fprintf (fout, "title: \"%s_%s\"\n", prefix, str);
+    fprintf (fout, "title: \"%s\"\n", str);
   
   /* label */
   str = gdl_get_node_label (node);
@@ -87,12 +85,12 @@ output_edge (struct gdl_edge *edge)
   /* sourcename */
   str = gdl_get_edge_source (edge);
   if (str != NULL)
-    fprintf (fout, "source: \"%s_%s\"\n", prefix, str);
+    fprintf (fout, "source: \"%s\"\n", str);
   
   /* targetname */
   str = gdl_get_edge_target (edge);
   if (str != NULL)
-    fprintf (fout, "target: \"%s_%s\"\n", prefix, str);
+    fprintf (fout, "target: \"%s\"\n", str);
   
   /* label */
   str = gdl_get_edge_label (edge);
@@ -128,8 +126,6 @@ output_graph_attributes (struct gdl_graph *graph)
   if (str != NULL)
     fprintf (fout, "title: \"%s\"\n", str);
 
-  prefix = str;
-
   /* label */
   str = gdl_get_graph_label (graph);
   if (str != NULL)
@@ -154,10 +150,35 @@ output_graph_attributes (struct gdl_graph *graph)
   if (str != NULL)
     fprintf (fout, "node.color: %s\n", str);
 
+  /* node.borderwidth */
+  val = gdl_get_graph_node_borderwidth (graph);
+  if (val != -1)
+    fprintf (fout, "node.borderwidth: %d\n", val);
+
+  /* node.margin */
+  val = gdl_get_graph_node_margin (graph);
+  if (val != -1)
+    fprintf (fout, "node.margin: %d\n", val);
+
+  /* edge.thickness */
+  val = gdl_get_graph_edge_thickness (graph);
+  if (val != -1)
+    fprintf (fout, "edge.thickness: %d\n", val);
+
   /* folding */
   val = gdl_get_graph_folding (graph);
   if (val != -1)
     fprintf (fout, "folding: %d\n", val);
+
+  /* vertical order */
+  val = gdl_get_graph_vertical_order (graph);
+  if (val != -1)
+    fprintf (fout, "vertical_order: %d\n", val);
+
+  /* splines */
+  str = gdl_get_graph_splines (graph);
+  if (str != NULL)
+    fprintf (fout, "splines: %s\n", str);
 
   /* shape */
   str = gdl_get_graph_shape_s (graph);
@@ -212,17 +233,5 @@ output_graph (struct gdl_graph *graph)
 void
 output_vcg (void)
 {
-  fputs ("graph: {\n", fout);
-
-  /* general graph attributes */
-  output_graph_attributes (top_graph);
-
-  for (current_function = first_function; current_function != NULL;
-       current_function = current_function->next)
-    {
-      graph = current_function->x_graph;
-      output_graph (graph);
-    }
-
-  fputs ("}\n", fout);
+  output_graph (top_graph);
 }

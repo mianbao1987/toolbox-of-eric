@@ -128,7 +128,7 @@ mark_edges (void)
 }
 
 int
-calc_max_distance (struct basic_block *bb)
+calc_max_distance_recursive (struct basic_block *bb)
 {
   int val, max = 0;
   struct control_flow_graph *cfg = current_function->cfg;
@@ -142,7 +142,7 @@ calc_max_distance (struct basic_block *bb)
           e = ve->edge;
           if (e->type == RETREATING_EDGE)
             continue;
-          val = calc_max_distance (e->source);
+          val = calc_max_distance_recursive (e->source);
           max = max > val ? max : val;
         }
       bb->max_distance = max + 1;
@@ -151,7 +151,7 @@ calc_max_distance (struct basic_block *bb)
 }
 
 void
-set_vertical_order (void)
+calc_max_distance (void)
 {
   struct control_flow_graph *cfg = current_function->cfg;
   struct basic_block *bb;
@@ -162,61 +162,13 @@ set_vertical_order (void)
 
   mark_edges ();
 
-  calc_max_distance (cfg->exit);
-
-  for (bb = cfg->bb; bb != NULL; bb = bb->next)
-    {
-      gdl_set_graph_vertical_order (bb->x_graph, bb->max_distance);
-/*
-      printf ("node: %s\n", bb->name);
-      printf ("vertical order: %d\n", bb->max_distance);
-      printf ("dfs order: %d\n", bb->dfs_order);
-      for (ve = bb->succ; ve != NULL; ve = ve->next)
-        {
-          e = ve->edge;
-          if (e->type == DFST_EDGE)
-            printf ("edge type: dfst\n");
-
-          if (e->type == ADVANCING_EDGE)
-            printf ("edge type: advancing\n");
-
-          if (e->type == RETREATING_EDGE)
-            printf ("edge type: retreating\n");
-
-          if (e->type == CROSS_EDGE)
-            printf ("edge type: cross\n");
-
-          if (e->type == UNKNOWN_EDGE)
-            printf ("edge type: unknown\n");
-
-          printf ("edge: %s -> %s\n", e->source->name,
-                  e->target->name);
-        }
-*/
-    }  
+  calc_max_distance_recursive (cfg->exit);
 }
 
 void
 fine_tune_cfg (void)
 {
-  struct gdl_graph *fun_graph, *bb_graph;
-
   for (current_function = first_function; current_function != NULL;
        current_function = current_function->next)
-    set_vertical_order ();
-
-  /* common attributes */
-  gdl_set_graph_node_color (top_graph, LIGHTGREY);
-  gdl_set_graph_node_shape (top_graph, ELLIPSE);
-  gdl_set_graph_layout_algorithm (top_graph, MAX_DEPTH);
-
-  gdl_set_graph_folding (top_graph, 0);
-  for (fun_graph = top_graph->subgraph; fun_graph; fun_graph = fun_graph->next)
-    {
-      for (bb_graph = fun_graph->subgraph; bb_graph; bb_graph = bb_graph->next)
-        {
-          gdl_set_graph_folding (bb_graph, 1);
-        }
-      gdl_set_graph_folding (fun_graph, 1);
-    }
+    calc_max_distance ();
 }

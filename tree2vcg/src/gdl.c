@@ -76,9 +76,14 @@ gdl_new_graph (char *title)
   gdl_set_graph_node_color (graph, COLOR_DEFAULT);
   gdl_set_graph_folding (graph, -1);
   gdl_set_graph_shape (graph, SHAPE_DEFAULT);
+  gdl_set_graph_splines (graph, NULL);
   gdl_set_graph_layout_algorithm (graph, LAYOUT_ALGORITHM_DEFAULT);
+  gdl_set_graph_vertical_order (graph, -1);
   gdl_set_graph_near_edges (graph, -1);
   gdl_set_graph_port_sharing (graph, -1);
+  gdl_set_graph_node_borderwidth (graph, -1);
+  gdl_set_graph_node_margin (graph, -1);
+  gdl_set_graph_edge_thickness (graph, -1);
 
   graph->node = NULL;
   graph->last_node = NULL;
@@ -91,7 +96,7 @@ gdl_new_graph (char *title)
   return graph;
 }
 
-static struct gdl_node *
+struct gdl_node *
 gdl_new_node (char *title)
 {
   struct gdl_node *node;
@@ -109,13 +114,13 @@ gdl_new_node (char *title)
 }
 
 struct gdl_edge *
-gdl_new_edge (char *sourcename, char *targetname)
+gdl_new_edge (char *source, char *target)
 {
   struct gdl_edge *edge;
 
   edge = (struct gdl_edge *) xmalloc (sizeof (struct gdl_edge));
-  gdl_set_edge_source (edge, sourcename);
-  gdl_set_edge_target (edge, targetname);
+  gdl_set_edge_source (edge, source);
+  gdl_set_edge_target (edge, target);
   gdl_set_edge_label (edge, NULL);
   gdl_set_edge_linestyle (edge, LINESTYLE_DEFAULT);
 
@@ -124,7 +129,7 @@ gdl_new_edge (char *sourcename, char *targetname)
   return edge;
 }
 
-static void 
+void 
 gdl_add_subgraph (struct gdl_graph *graph, struct gdl_graph *subgraph)
 {
   if (graph->subgraph == NULL)
@@ -139,7 +144,7 @@ gdl_add_subgraph (struct gdl_graph *graph, struct gdl_graph *subgraph)
     }
 }
 
-static void 
+void 
 gdl_add_node (struct gdl_graph *graph, struct gdl_node *node)
 {
   if (graph->node == NULL)
@@ -154,7 +159,7 @@ gdl_add_node (struct gdl_graph *graph, struct gdl_node *node)
     }
 }
 
-static void 
+void 
 gdl_add_edge (struct gdl_graph *graph, struct gdl_edge *edge)
 {
   if (graph->edge == NULL)

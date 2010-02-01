@@ -49,8 +49,6 @@ struct edge
   struct basic_block *target;
 
   struct edge *next;
-
-  struct gdl_edge *x_edge;
 };
 
 struct vec_edge
@@ -62,6 +60,7 @@ struct vec_edge
 struct basic_block
 {
   char *name;
+  char *text;
 
   int pred_num;
   int succ_num;
@@ -75,8 +74,6 @@ struct basic_block
   struct vec_edge *last_succ;
 
   struct basic_block *next;
-
-  struct gdl_graph *x_graph;
 };
 
 struct control_flow_graph
@@ -96,8 +93,6 @@ struct function
   char *name;
   struct control_flow_graph *cfg;
   struct function *next;
-
-  struct gdl_graph *x_graph;
 };
 
 extern struct function *new_function (char *name);

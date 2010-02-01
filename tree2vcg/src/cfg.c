@@ -34,6 +34,8 @@ new_bb (char *name)
   bb = (struct basic_block *) xmalloc (sizeof (struct basic_block));
   bb->name = name;
 
+  bb->text = NULL;
+
   bb->pred_num = 0;
   bb->succ_num = 0;
   bb->pred = NULL;
@@ -46,8 +48,6 @@ new_bb (char *name)
   bb->max_distance = 0;
 
   bb->next = NULL;
-
-  bb->x_graph = gdl_new_bb_graph (name);
 
   return bb;
 }
@@ -63,8 +63,6 @@ new_edge (struct basic_block *source, struct basic_block *target)
 
   e->type = UNKNOWN_EDGE;
   e->next = NULL;
-
-  e->x_edge = gdl_new_edge (source->name, target->name);
 
   return e;
 }
@@ -112,8 +110,6 @@ new_function (char *name)
   func = (struct function *) xmalloc (sizeof (struct function));
   func->name = name;
   func->next = NULL;
-
-  func->x_graph = gdl_new_func_graph (name);
 
   func->cfg = new_cfg ();
 
