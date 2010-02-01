@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT(tree2vcg, 0.2, joefoxreal@gmail.com)
+AC_INIT(tree2vcg, 0.3, joefoxreal@gmail.com)
 
 # automake
 AM_INIT_AUTOMAKE
