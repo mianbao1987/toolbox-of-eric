@@ -62,7 +62,7 @@ cfg_to_vcg (void)
 
       /* function graph */
       fun_graph = gdl_new_graph (current_function->name);
-      gdl_set_graph_node_color (fun_graph, LIGHTGREY);
+      gdl_set_graph_node_color (fun_graph, WHITE);
       gdl_set_graph_folding (fun_graph, 1);
       gdl_add_subgraph (top_graph, fun_graph);
 
@@ -99,6 +99,9 @@ cfg_to_vcg (void)
           str_a = concat (current_function->name, ".", e->source->name, NULL);
           str_b = concat (current_function->name, ".", e->target->name, NULL);
           edge = gdl_new_edge (str_a, str_b);
+          if (e->type == RETREATING_EDGE)
+            gdl_set_edge_linestyle (edge, DASHED);
+
           gdl_add_edge (fun_graph, edge);
         }
     }

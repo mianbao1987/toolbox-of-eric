@@ -111,11 +111,9 @@
      on), e.g. 0 0 0 specifies the color black and 255 255 255 specifies the
      color white. For instance, colorentry 75: 70 130 180 sets map entry 75 to
      steel blue. This color can then be used by merely specifying 75 wherever a
-     Color Entry is expected. More details can be found in the section Colors.
+     Color Entry is expected. More details can be found in the section Colors.*/
      
-     Top
-     
-     crossing_optimization: yes or no, default is yes
+  /* crossing_optimization: yes or no, default is yes
      Attribute of top-level graph, subgraphs
      yes activates the crossing optimization phase, which works locally. It is
      a postprocessing phase after normal crossing reduction. It tries to
