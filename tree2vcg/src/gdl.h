@@ -59,17 +59,17 @@ enum gdl_layout_algorithm
 #define DEF_ATTR(obj, name, type) type name;
 struct gdl_node_attr
 {
-  #include "node-attr.c"
+  #include "node-attr.def"
 };
 
 struct gdl_edge_attr
 {
-  #include "edge-attr.c"
+  #include "edge-attr.def"
 };
 
 struct gdl_graph_attr
 {
-  #include "graph-attr.c"
+  #include "graph-attr.def"
 };
 #undef DEF_ATTR
 
@@ -118,9 +118,9 @@ gdl_get_##obj##_##name (struct gdl_##obj *obj) \
   return obj->attr.name; \
 }
 
-#include "node-attr.c"
-#include "edge-attr.c"
-#include "graph-attr.c"
+#include "node-attr.def"
+#include "edge-attr.def"
+#include "graph-attr.def"
 
 #undef DEF_ATTR
 
@@ -131,9 +131,9 @@ gdl_set_##obj##_##name (struct gdl_##obj *obj, type value) \
   obj->attr.name = value; \
 }
 
-#include "node-attr.c"
-#include "edge-attr.c"
-#include "graph-attr.c"
+#include "node-attr.def"
+#include "edge-attr.def"
+#include "graph-attr.def"
 
 #undef DEF_ATTR
 
