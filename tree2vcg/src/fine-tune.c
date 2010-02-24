@@ -156,13 +156,17 @@ calc_max_distance (void)
   struct control_flow_graph *cfg = current_function->cfg;
   struct basic_block *bb;
   struct vec_edge *ve;
-  struct edge *e;
 
   depth_first_search ();
 
   mark_edges ();
 
   calc_max_distance_recursive (cfg->exit);
+  for (bb = cfg->bb; bb != NULL; bb = bb->next)
+    {
+      if (bb->max_distance == 0)
+        calc_max_distance_recursive (bb);
+    }
 }
 
 void
