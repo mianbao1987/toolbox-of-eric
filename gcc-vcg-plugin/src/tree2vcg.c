@@ -25,7 +25,7 @@
 
 extern FILE *yyin;
 extern int yyparse (void);
-extern void vvp_set_yy_debug (void);
+extern void vcg_plugin_set_yy_debug (void);
 
 /* char *program_name; */
 
@@ -34,60 +34,60 @@ extern void vvp_set_yy_debug (void);
 
 /*
  Define global variables:
-  vvp_insn_obstack
-  vvp_first_function
-  vvp_last_function
-  vvp_current_function
+  vcg_plugin_insn_obstack
+  vcg_plugin_first_function
+  vcg_plugin_last_function
+  vcg_plugin_current_function
 
  Use global variables: 
-  vvp_insn_obstack
-  vvp_first_function
-  vvp_last_function
-  vvp_current_function
+  vcg_plugin_insn_obstack
+  vcg_plugin_first_function
+  vcg_plugin_last_function
+  vcg_plugin_current_function
 
  Define extern functions:
-  vvp_tree2vcg
+  vcg_plugin_tree2vcg
 
  Use extern functions:
-  vvp_set_yy_debug
+  vcg_plugin_set_yy_debug
   yyparse
-  vvp_finalize_last_bb
-  vvp_fine_tune_cfg
-  vvp_cfg_to_vcg
-  vvp_output_vcg
+  vcg_plugin_finalize_last_bb
+  vcg_plugin_fine_tune_cfg
+  vcg_plugin_cfg_to_vcg
+  vcg_plugin_output_vcg
 */
 
-struct obstack vvp_insn_obstack;
+struct obstack vcg_plugin_insn_obstack;
 
-struct vvp_function *vvp_first_function; 
-struct vvp_function *vvp_last_function; 
-struct vvp_function *vvp_current_function; 
+struct vcg_plugin_function *vcg_plugin_first_function; 
+struct vcg_plugin_function *vcg_plugin_last_function; 
+struct vcg_plugin_function *vcg_plugin_current_function; 
 
 static void
 general_init (void)
 {
-  obstack_init (&vvp_insn_obstack);
+  obstack_init (&vcg_plugin_insn_obstack);
 
-  vvp_first_function = NULL;
-  vvp_last_function = NULL;
-  vvp_current_function = NULL;
+  vcg_plugin_first_function = NULL;
+  vcg_plugin_last_function = NULL;
+  vcg_plugin_current_function = NULL;
 }
 
 int
-vvp_tree2vcg (FILE *dump_file, FILE *vcg_file)
+vcg_plugin_tree2vcg (FILE *dump_file, FILE *vcg_file)
 {
   general_init ();
 
   yyin = dump_file;
-  vvp_set_yy_debug ();
+  vcg_plugin_set_yy_debug ();
   yyparse ();
-  vvp_finalize_last_bb ();
+  vcg_plugin_finalize_last_bb ();
 
-  vvp_fine_tune_cfg ();
+  vcg_plugin_fine_tune_cfg ();
 
-  vvp_cfg_to_vcg ();
+  vcg_plugin_cfg_to_vcg ();
 
-  vvp_output_vcg (vcg_file);
+  vcg_plugin_output_vcg (vcg_file);
 
   return 0;
 }

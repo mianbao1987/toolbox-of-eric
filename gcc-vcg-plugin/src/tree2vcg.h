@@ -21,20 +21,20 @@
 #include "gdl.h"
 #include "cfg.h"
 
-extern struct obstack vvp_insn_obstack;
+extern struct obstack vcg_plugin_insn_obstack;
 
-extern struct vvp_function *vvp_first_function; 
-extern struct vvp_function *vvp_last_function;
-extern struct vvp_function *vvp_current_function;
+extern struct vcg_plugin_function *vcg_plugin_first_function; 
+extern struct vcg_plugin_function *vcg_plugin_last_function;
+extern struct vcg_plugin_function *vcg_plugin_current_function;
 
-extern struct gdl_graph *vvp_top_graph;
+extern struct gdl_graph *vcg_plugin_top_graph;
 
 /* yacc.y */
-extern void vvp_finalize_last_bb (void);
+extern void vcg_plugin_finalize_last_bb (void);
 
 /* output.c */
-extern void vvp_output_vcg (FILE *fout);
+extern void vcg_plugin_output_vcg (FILE *fout);
 
 /* fine_tune.c */
-extern void vvp_fine_tune_vcg (void);
+extern void vcg_plugin_fine_tune_vcg (void);
 #endif

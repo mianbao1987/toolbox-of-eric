@@ -32,15 +32,15 @@
   gdl_color_s
   gdl_linestyle_s
   gdl_layout_algorithm_s
-  vvp_top_graph
+  vcg_plugin_top_graph
 
  Use global variable:
-  vvp_top_graph
-  vvp_current_function 
-  vvp_first_function
+  vcg_plugin_top_graph
+  vcg_plugin_current_function 
+  vcg_plugin_first_function
 
  Define extern functions:
-  vvp_cfg_to_vcg
+  vcg_plugin_cfg_to_vcg
 
  Use extern functions:
   <none>
@@ -84,7 +84,7 @@ char *gdl_layout_algorithm_s[GDL_LAYOUT_ALGORITHM_DEFAULT + 1] =
   NULL
 };
 
-struct gdl_graph *vvp_top_graph;
+struct gdl_graph *vcg_plugin_top_graph;
 
 static struct gdl_graph *
 gdl_new_graph (char *title)
@@ -198,45 +198,45 @@ gdl_add_edge (struct gdl_graph *graph, struct gdl_edge *edge)
 
 /* Transform cfg to vcg. */
 void
-vvp_cfg_to_vcg (void)
+vcg_plugin_cfg_to_vcg (void)
 {
   struct gdl_graph *fun_graph;
   struct gdl_graph *bb_graph;
   struct gdl_node *node;
   struct gdl_edge *edge;
 
-  struct vvp_control_flow_graph *cfg;
-  struct vvp_basic_block *bb;
-  struct vvp_edge *e;
+  struct vcg_plugin_control_flow_graph *cfg;
+  struct vcg_plugin_basic_block *bb;
+  struct vcg_plugin_edge *e;
 
   char *str_a, *str_b;
 
   /* top graph */
-  vvp_top_graph = gdl_new_graph (NULL);
-  gdl_set_graph_node_shape (vvp_top_graph, GDL_BOX);
-  gdl_set_graph_node_borderwidth (vvp_top_graph, 1);
-  gdl_set_graph_node_margin (vvp_top_graph, 1);
-  gdl_set_graph_edge_thickness (vvp_top_graph, 1);
-  gdl_set_graph_layout_algorithm (vvp_top_graph, GDL_MAX_DEPTH);
-  gdl_set_graph_folding (vvp_top_graph, -1);
-  gdl_set_graph_splines (vvp_top_graph, "yes");
+  vcg_plugin_top_graph = gdl_new_graph (NULL);
+  gdl_set_graph_node_shape (vcg_plugin_top_graph, GDL_BOX);
+  gdl_set_graph_node_borderwidth (vcg_plugin_top_graph, 1);
+  gdl_set_graph_node_margin (vcg_plugin_top_graph, 1);
+  gdl_set_graph_edge_thickness (vcg_plugin_top_graph, 1);
+  gdl_set_graph_layout_algorithm (vcg_plugin_top_graph, GDL_MAX_DEPTH);
+  gdl_set_graph_folding (vcg_plugin_top_graph, -1);
+  gdl_set_graph_splines (vcg_plugin_top_graph, "yes");
 
-  for (vvp_current_function = vvp_first_function;
-       vvp_current_function != NULL;
-       vvp_current_function = vvp_current_function->next)
+  for (vcg_plugin_current_function = vcg_plugin_first_function;
+       vcg_plugin_current_function != NULL;
+       vcg_plugin_current_function = vcg_plugin_current_function->next)
     {
-      cfg = vvp_current_function->cfg;
+      cfg = vcg_plugin_current_function->cfg;
 
       /* function graph */
-      fun_graph = gdl_new_graph (vvp_current_function->name);
+      fun_graph = gdl_new_graph (vcg_plugin_current_function->name);
       gdl_set_graph_node_color (fun_graph, GDL_WHITE);
       gdl_set_graph_folding (fun_graph, 1);
-      gdl_add_subgraph (vvp_top_graph, fun_graph);
+      gdl_add_subgraph (vcg_plugin_top_graph, fun_graph);
 
       for (bb = cfg->bb; bb != NULL; bb = bb->next)
         {
           /* bb graph */
-          str_a = concat (vvp_current_function->name, ".", bb->name, NULL);
+          str_a = concat (vcg_plugin_current_function->name, ".", bb->name, NULL);
           if (strcmp (bb->name, "ENTRY") == 0
               || strcmp (bb->name, "EXIT") == 0)
             str_b = bb->name;
@@ -251,7 +251,7 @@ vvp_cfg_to_vcg (void)
           gdl_add_subgraph (fun_graph, bb_graph);
 
           /* bb node */
-          str_a = concat (vvp_current_function->name, "_", bb->name, NULL);
+          str_a = concat (vcg_plugin_current_function->name, "_", bb->name, NULL);
           node = gdl_new_node (str_a);
           if (bb->text == NULL)
             gdl_set_node_label (node, bb->name);
@@ -264,10 +264,10 @@ vvp_cfg_to_vcg (void)
       for (e = cfg->edge; e != NULL; e = e->next)
         {
           /* edge */
-          str_a = concat (vvp_current_function->name, ".", e->source->name, NULL);
-          str_b = concat (vvp_current_function->name, ".", e->target->name, NULL);
+          str_a = concat (vcg_plugin_current_function->name, ".", e->source->name, NULL);
+          str_b = concat (vcg_plugin_current_function->name, ".", e->target->name, NULL);
           edge = gdl_new_edge (str_a, str_b);
-          if (e->type == VVP_RETREATING_EDGE)
+          if (e->type == VCG_PLUGIN_RETREATING_EDGE)
             gdl_set_edge_linestyle (edge, GDL_DASHED);
 
           gdl_add_edge (fun_graph, edge);

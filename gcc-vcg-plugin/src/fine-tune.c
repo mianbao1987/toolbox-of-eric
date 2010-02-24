@@ -34,25 +34,25 @@
     <none>
 
   Use global variables:
-    vvp_current_function
-    vvp_first_function
+    vcg_plugin_current_function
+    vcg_plugin_first_function
 
   Define extern functions:
-    vvp_fine_tune_cfg
+    vcg_plugin_fine_tune_cfg
 
   Use extern functions:
     <none>
 */
 
 static int count;
-static struct vvp_control_flow_graph *cfg;
+static struct vcg_plugin_control_flow_graph *cfg;
 
 static void
-search (struct vvp_basic_block *bb)
+search (struct vcg_plugin_basic_block *bb)
 {
-  struct vvp_basic_block *succ_bb;
-  struct vvp_vec_edge *ve;
-  struct vvp_edge *e;
+  struct vcg_plugin_basic_block *succ_bb;
+  struct vcg_plugin_vec_edge *ve;
+  struct vcg_plugin_edge *e;
 
   bb->visited = 1;
 
@@ -62,7 +62,7 @@ search (struct vvp_basic_block *bb)
       succ_bb = e->target;
       if (succ_bb->visited == 0)
         {
-          e->type = VVP_DFST_EDGE;
+          e->type = VCG_PLUGIN_DFST_EDGE;
           search (succ_bb);
         }
     }
@@ -73,7 +73,7 @@ search (struct vvp_basic_block *bb)
 static void
 depth_first_search (void)
 {
-  struct vvp_basic_block *bb;
+  struct vcg_plugin_basic_block *bb;
  
   for (bb = cfg->bb; bb != NULL; bb = bb->next)
     {
@@ -85,11 +85,11 @@ depth_first_search (void)
 }
 
 static int
-is_ancestor (struct vvp_basic_block *source, struct vvp_basic_block *target)
+is_ancestor (struct vcg_plugin_basic_block *source, struct vcg_plugin_basic_block *target)
 {
-  struct vvp_basic_block *bb;
-  struct vvp_vec_edge *ve;
-  struct vvp_edge *e;
+  struct vcg_plugin_basic_block *bb;
+  struct vcg_plugin_vec_edge *ve;
+  struct vcg_plugin_edge *e;
 
   bb = target;
   do
@@ -100,7 +100,7 @@ is_ancestor (struct vvp_basic_block *source, struct vvp_basic_block *target)
       for (ve = bb->pred;  ve != NULL; ve = ve->next)
         {
           e = ve->edge;
-          if (e->type == VVP_DFST_EDGE)
+          if (e->type == VCG_PLUGIN_DFST_EDGE)
             {
               bb = e->source;
               break;
@@ -112,45 +112,45 @@ is_ancestor (struct vvp_basic_block *source, struct vvp_basic_block *target)
 }
 
 static void
-mark_edge (struct vvp_edge *e)
+mark_edge (struct vcg_plugin_edge *e)
 {
-  struct vvp_basic_block *source;
-  struct vvp_basic_block *target;
+  struct vcg_plugin_basic_block *source;
+  struct vcg_plugin_basic_block *target;
 
   source = e->source;
   target = e->target;
 
   if (is_ancestor (target, source))
-    e->type = VVP_RETREATING_EDGE;
+    e->type = VCG_PLUGIN_RETREATING_EDGE;
   else if (is_ancestor (source, target))
-    e->type = VVP_ADVANCING_EDGE;
+    e->type = VCG_PLUGIN_ADVANCING_EDGE;
   else
-    e->type = VVP_CROSS_EDGE;
+    e->type = VCG_PLUGIN_CROSS_EDGE;
 }
 
 static void
 mark_edges (void)
 {
-  struct vvp_edge *e;
+  struct vcg_plugin_edge *e;
 
   for (e = cfg->edge; e != NULL; e = e->next)
-    if (e->type == VVP_UNKNOWN_EDGE)
+    if (e->type == VCG_PLUGIN_UNKNOWN_EDGE)
       mark_edge (e);
 }
 
 static int
-calc_max_distance_recursive (struct vvp_basic_block *bb)
+calc_max_distance_recursive (struct vcg_plugin_basic_block *bb)
 {
   int val, max = 0;
-  struct vvp_vec_edge *ve;
-  struct vvp_edge *e;
+  struct vcg_plugin_vec_edge *ve;
+  struct vcg_plugin_edge *e;
 
   if (bb->max_distance == 0)
     {
       for (ve = bb->pred; ve != NULL; ve = ve->next)
         {
           e = ve->edge;
-          if (e->type == VVP_RETREATING_EDGE)
+          if (e->type == VCG_PLUGIN_RETREATING_EDGE)
             continue;
           val = calc_max_distance_recursive (e->source);
           max = max > val ? max : val;
@@ -163,7 +163,7 @@ calc_max_distance_recursive (struct vvp_basic_block *bb)
 static void
 calc_max_distance (void)
 {
-  struct vvp_basic_block *bb;
+  struct vcg_plugin_basic_block *bb;
 
   depth_first_search ();
 
@@ -178,13 +178,13 @@ calc_max_distance (void)
 }
 
 void
-vvp_fine_tune_cfg (void)
+vcg_plugin_fine_tune_cfg (void)
 {
-  for (vvp_current_function = vvp_first_function;
-       vvp_current_function != NULL;
-       vvp_current_function = vvp_current_function->next)
+  for (vcg_plugin_current_function = vcg_plugin_first_function;
+       vcg_plugin_current_function != NULL;
+       vcg_plugin_current_function = vcg_plugin_current_function->next)
     {
-      cfg = vvp_current_function->cfg;
+      cfg = vcg_plugin_current_function->cfg;
       calc_max_distance ();
     }
 }

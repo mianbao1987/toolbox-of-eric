@@ -33,10 +33,10 @@
     <none>
 
   Use global variables,
-    vvp_top_graph
+    vcg_plugin_top_graph
 
   Define extern functions,
-    vvp_output_vcg
+    vcg_plugin_output_vcg
 
   Use extern functions,
     gdl_get_*
@@ -246,7 +246,7 @@ output_graph (FILE *fout, struct gdl_graph *graph)
 }
 
 void
-vvp_output_vcg (FILE *fout)
+vcg_plugin_output_vcg (FILE *fout)
 {
-  output_graph (fout, vvp_top_graph);
+  output_graph (fout, vcg_plugin_top_graph);
 }

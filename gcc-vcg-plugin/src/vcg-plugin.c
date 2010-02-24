@@ -32,7 +32,7 @@ plugin_init (struct plugin_name_args *plugin_info,
 }
 
 void
-vvp_dump_file (tree fn, FILE *dump)
+vcg_plugin_dump_file (tree fn, FILE *dump)
 {
   const char *dname, *aname;
 
@@ -44,7 +44,7 @@ vvp_dump_file (tree fn, FILE *dump)
 }
 
 int
-vcgview (void)
+vcg_plugin_view (void)
 {
   int argc = 2;
   char *argv[2] = {"vcgview", "tmp.vcg"};
@@ -58,12 +58,12 @@ vcgview (void)
   dump_file = fopen ("tmp.dump", "w");
   vcg_file = fopen ("tmp.vcg", "w");
 
-  vvp_dump_file (fn, dump_file);
+  vcg_plugin_dump_file (fn, dump_file);
 
   fclose (dump_file);
 
   dump_file = fopen ("tmp.dump", "r");
-  vvp_tree2vcg (dump_file, vcg_file);
+  vcg_plugin_tree2vcg (dump_file, vcg_file);
 
   fclose (dump_file);
   fclose (vcg_file);
@@ -73,5 +73,4 @@ vcgview (void)
     system ("vcgview tmp.vcg");
 
   return 0;
-  //return vcgview_main (argc, argv);
 }

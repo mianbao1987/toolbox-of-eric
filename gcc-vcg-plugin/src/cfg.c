@@ -33,20 +33,21 @@
     <none>
 
   Define extern functions:
-    vvp_new_function
-    vvp_lookup_and_add_bb
-    vvp_lookup_and_add_edge
+    vcg_plugin_new_function
+    vcg_plugin_lookup_and_add_bb
+    vcg_plugin_lookup_and_add_edge
 
   Use extern functions:
-    vvp_lookup_and_add_bb
+    vcg_plugin_lookup_and_add_bb
 */
 
-static struct vvp_basic_block *
+static struct vcg_plugin_basic_block *
 cfg_new_bb (char *name)
 {
-  struct vvp_basic_block *bb;
+  struct vcg_plugin_basic_block *bb;
 
-  bb = (struct vvp_basic_block *) xmalloc (sizeof (struct vvp_basic_block));
+  bb = (struct vcg_plugin_basic_block *)
+       xmalloc (sizeof (struct vcg_plugin_basic_block));
   bb->name = name;
 
   bb->text = NULL;
@@ -67,12 +68,13 @@ cfg_new_bb (char *name)
   return bb;
 }
 
-static struct vvp_edge *
-cfg_new_edge (struct vvp_basic_block *source, struct vvp_basic_block *target)
+static struct vcg_plugin_edge *
+cfg_new_edge (struct vcg_plugin_basic_block *source,
+              struct vcg_plugin_basic_block *target)
 {
-  struct vvp_edge *e;
+  struct vcg_plugin_edge *e;
 
-  e = (struct vvp_edge *) xmalloc (sizeof (struct vvp_edge));
+  e = (struct vcg_plugin_edge *) xmalloc (sizeof (struct vcg_plugin_edge));
   e->source = source;
   e->target = target;
 
@@ -82,25 +84,26 @@ cfg_new_edge (struct vvp_basic_block *source, struct vvp_basic_block *target)
   return e;
 }
 
-static struct vvp_vec_edge *
-cfg_new_vec_edge (struct vvp_edge *e)
+static struct vcg_plugin_vec_edge *
+cfg_new_vec_edge (struct vcg_plugin_edge *e)
 {
-  struct vvp_vec_edge *ve;
+  struct vcg_plugin_vec_edge *ve;
 
-  ve = (struct vvp_vec_edge *) xmalloc (sizeof (struct vvp_vec_edge));
+  ve = (struct vcg_plugin_vec_edge *)
+        xmalloc (sizeof (struct vcg_plugin_vec_edge));
   ve->edge = e;
   ve->next = NULL;
 
   return ve;
 }
 
-static struct vvp_control_flow_graph *
+static struct vcg_plugin_control_flow_graph *
 cfg_new_cfg (void)
 {
-  struct vvp_control_flow_graph *cfg;
+  struct vcg_plugin_control_flow_graph *cfg;
 
-  cfg = (struct vvp_control_flow_graph *)
-        xmalloc (sizeof (struct vvp_control_flow_graph));
+  cfg = (struct vcg_plugin_control_flow_graph *)
+        xmalloc (sizeof (struct vcg_plugin_control_flow_graph));
   cfg->bb_num = 2;
   cfg->edge_num = 0;
 
@@ -118,9 +121,9 @@ cfg_new_cfg (void)
 }
 
 static void
-cfg_add_bb (struct vvp_function *func, struct vvp_basic_block *bb)
+cfg_add_bb (struct vcg_plugin_function *func, struct vcg_plugin_basic_block *bb)
 {
-  struct vvp_control_flow_graph *cfg=func->cfg;
+  struct vcg_plugin_control_flow_graph *cfg=func->cfg;
 
   assert (cfg->bb != NULL && cfg->last_bb != NULL);
 
@@ -130,9 +133,9 @@ cfg_add_bb (struct vvp_function *func, struct vvp_basic_block *bb)
 }
 
 static void
-cfg_add_edge (struct vvp_function *func, struct vvp_edge *e)
+cfg_add_edge (struct vcg_plugin_function *func, struct vcg_plugin_edge *e)
 {
-  struct vvp_control_flow_graph *cfg=func->cfg;
+  struct vcg_plugin_control_flow_graph *cfg=func->cfg;
 
   if (cfg->edge == NULL)
     {
@@ -150,7 +153,8 @@ cfg_add_edge (struct vvp_function *func, struct vvp_edge *e)
 }
 
 static void
-cfg_add_succ_vec_edge (struct vvp_basic_block *bb, struct vvp_vec_edge *ve)
+cfg_add_succ_vec_edge (struct vcg_plugin_basic_block *bb,
+                       struct vcg_plugin_vec_edge *ve)
 {
   if (bb->succ == NULL)
     {
@@ -167,7 +171,8 @@ cfg_add_succ_vec_edge (struct vvp_basic_block *bb, struct vvp_vec_edge *ve)
 }
 
 static void
-cfg_add_pred_vec_edge (struct vvp_basic_block *bb, struct vvp_vec_edge *ve)
+cfg_add_pred_vec_edge (struct vcg_plugin_basic_block *bb,
+                       struct vcg_plugin_vec_edge *ve)
 {
   if (bb->pred == NULL)
     {
@@ -183,12 +188,13 @@ cfg_add_pred_vec_edge (struct vvp_basic_block *bb, struct vvp_vec_edge *ve)
     }
 }
 
-struct vvp_function *
-vvp_new_function (char *name)
+struct vcg_plugin_function *
+vcg_plugin_new_function (char *name)
 {
-  struct vvp_function *func;
+  struct vcg_plugin_function *func;
 
-  func = (struct vvp_function *) xmalloc (sizeof (struct vvp_function));
+  func = (struct vcg_plugin_function *)
+         xmalloc (sizeof (struct vcg_plugin_function));
   func->name = name;
   func->next = NULL;
 
@@ -197,11 +203,11 @@ vvp_new_function (char *name)
   return func;
 }
 
-struct vvp_basic_block *
-vvp_lookup_and_add_bb (struct vvp_function *func, char *name)
+struct vcg_plugin_basic_block *
+vcg_plugin_lookup_and_add_bb (struct vcg_plugin_function *func, char *name)
 {
-  struct vvp_control_flow_graph *cfg=func->cfg;
-  struct vvp_basic_block *bb;
+  struct vcg_plugin_control_flow_graph *cfg=func->cfg;
+  struct vcg_plugin_basic_block *bb;
 
   for (bb = cfg->bb; bb != NULL; bb = bb->next)
     {
@@ -215,17 +221,17 @@ vvp_lookup_and_add_bb (struct vvp_function *func, char *name)
   return bb;
 }
 
-struct vvp_edge *
-vvp_lookup_and_add_edge (struct vvp_function *func, 
+struct vcg_plugin_edge *
+vcg_plugin_lookup_and_add_edge (struct vcg_plugin_function *func, 
                      char *source_name, char *target_name)
 {
-  struct vvp_control_flow_graph *cfg=func->cfg;
-  struct vvp_basic_block *source_bb, *target_bb;
-  struct vvp_edge *e;
-  struct vvp_vec_edge *ve;
+  struct vcg_plugin_control_flow_graph *cfg=func->cfg;
+  struct vcg_plugin_basic_block *source_bb, *target_bb;
+  struct vcg_plugin_edge *e;
+  struct vcg_plugin_vec_edge *ve;
 
-  source_bb = vvp_lookup_and_add_bb (func, source_name);
-  target_bb = vvp_lookup_and_add_bb (func, target_name);
+  source_bb = vcg_plugin_lookup_and_add_bb (func, source_name);
+  target_bb = vcg_plugin_lookup_and_add_bb (func, target_name);
 
   for (e = cfg->edge; e != NULL; e = e->next)
     {

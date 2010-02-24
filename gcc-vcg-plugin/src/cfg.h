@@ -18,32 +18,32 @@
 #ifndef CFG_H
 #define CFG_H
 
-enum vvp_edge_type
+enum vcg_plugin_edge_type
 {
-  VVP_UNKNOWN_EDGE,
-  VVP_DFST_EDGE,
-  VVP_ADVANCING_EDGE,
-  VVP_RETREATING_EDGE,
-  VVP_CROSS_EDGE
+  VCG_PLUGIN_UNKNOWN_EDGE,
+  VCG_PLUGIN_DFST_EDGE,
+  VCG_PLUGIN_ADVANCING_EDGE,
+  VCG_PLUGIN_RETREATING_EDGE,
+  VCG_PLUGIN_CROSS_EDGE
 };
 
-struct vvp_edge
+struct vcg_plugin_edge
 {
-  enum vvp_edge_type type;
+  enum vcg_plugin_edge_type type;
 
-  struct vvp_basic_block *source;
-  struct vvp_basic_block *target;
+  struct vcg_plugin_basic_block *source;
+  struct vcg_plugin_basic_block *target;
 
-  struct vvp_edge *next;
+  struct vcg_plugin_edge *next;
 };
 
-struct vvp_vec_edge
+struct vcg_plugin_vec_edge
 {
-  struct vvp_edge *edge;
-  struct vvp_vec_edge *next;
+  struct vcg_plugin_edge *edge;
+  struct vcg_plugin_vec_edge *next;
 };
 
-struct vvp_basic_block
+struct vcg_plugin_basic_block
 {
   char *name;
   char *text;
@@ -54,37 +54,37 @@ struct vvp_basic_block
   int dfs_order;
   int max_distance;
 
-  struct vvp_vec_edge *pred;
-  struct vvp_vec_edge *last_pred;
-  struct vvp_vec_edge *succ;
-  struct vvp_vec_edge *last_succ;
+  struct vcg_plugin_vec_edge *pred;
+  struct vcg_plugin_vec_edge *last_pred;
+  struct vcg_plugin_vec_edge *succ;
+  struct vcg_plugin_vec_edge *last_succ;
 
-  struct vvp_basic_block *next;
+  struct vcg_plugin_basic_block *next;
 };
 
-struct vvp_control_flow_graph
+struct vcg_plugin_control_flow_graph
 {
   int bb_num;
   int edge_num;
-  struct vvp_basic_block *entry; /* also the first bb */
-  struct vvp_basic_block *exit; /* also  the last bb */
-  struct vvp_basic_block *bb;
-  struct vvp_basic_block *last_bb;
-  struct vvp_edge *edge;
-  struct vvp_edge *last_edge;
+  struct vcg_plugin_basic_block *entry; /* also the first bb */
+  struct vcg_plugin_basic_block *exit; /* also  the last bb */
+  struct vcg_plugin_basic_block *bb;
+  struct vcg_plugin_basic_block *last_bb;
+  struct vcg_plugin_edge *edge;
+  struct vcg_plugin_edge *last_edge;
 };
 
-struct vvp_function
+struct vcg_plugin_function
 {
   char *name;
-  struct vvp_control_flow_graph *cfg;
-  struct vvp_function *next;
+  struct vcg_plugin_control_flow_graph *cfg;
+  struct vcg_plugin_function *next;
 };
 
-extern struct vvp_function *vvp_new_function (char *name);
-extern struct vvp_basic_block *vvp_lookup_and_add_bb (struct vvp_function *func,
+extern struct vcg_plugin_function *vcg_plugin_new_function (char *name);
+extern struct vcg_plugin_basic_block *vcg_plugin_lookup_and_add_bb (struct vcg_plugin_function *func,
                                                       char *name);
-extern struct vvp_edge *vvp_lookup_and_add_edge (struct vvp_function *func,
+extern struct vcg_plugin_edge *vcg_plugin_lookup_and_add_edge (struct vcg_plugin_function *func,
                                                  char *source_name,
                                                  char *target_name);
 

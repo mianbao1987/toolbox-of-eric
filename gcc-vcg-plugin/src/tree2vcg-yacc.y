@@ -30,27 +30,27 @@
     <none>
 
   Use global variables:
-    vvp_current_function
-    vvp_first_function
-    vvp_last_function
-    vvp_insn_obstack
+    vcg_plugin_current_function
+    vcg_plugin_first_function
+    vcg_plugin_last_function
+    vcg_plugin_insn_obstack
 
   Define extern functions:
-    vvp_set_yy_debug
-    vvp_finalize_last_bb
+    vcg_plugin_set_yy_debug
+    vcg_plugin_finalize_last_bb
 
   Use extern functions:
-    vvp_finalize_last_bb
-    vvp_new_function
-    vvp_lookup_and_add_bb
-    vvp_lookup_and_add_edge
+    vcg_plugin_finalize_last_bb
+    vcg_plugin_new_function
+    vcg_plugin_lookup_and_add_bb
+    vcg_plugin_lookup_and_add_edge
 */
 
   static char *insns;
   static int len;
   static int seen_bb = 0;
 
-  static struct vvp_basic_block *current_bb;
+  static struct vcg_plugin_basic_block *current_bb;
 
   extern int yylex (void);
   extern void yyerror (char const *);
@@ -80,45 +80,45 @@ input:	/* empty */
 ;
 
 line: FN FN_NAME {
-    vvp_finalize_last_bb ();
+    vcg_plugin_finalize_last_bb ();
 
-    vvp_current_function = vvp_new_function ($<str>2); /* FN_NAME */
-    if (vvp_first_function == NULL)
+    vcg_plugin_current_function = vcg_plugin_new_function ($<str>2); /* FN_NAME */
+    if (vcg_plugin_first_function == NULL)
       {
-        vvp_first_function = vvp_current_function;
-        vvp_last_function = vvp_current_function;
+        vcg_plugin_first_function = vcg_plugin_current_function;
+        vcg_plugin_last_function = vcg_plugin_current_function;
       }
     else
       {
-        assert (vvp_last_function != NULL);
+        assert (vcg_plugin_last_function != NULL);
 
-        vvp_last_function->next = vvp_current_function;
-        vvp_last_function = vvp_current_function;
+        vcg_plugin_last_function->next = vcg_plugin_current_function;
+        vcg_plugin_last_function = vcg_plugin_current_function;
       }
   }
 	| BB BB_NUM {
-    vvp_finalize_last_bb ();
+    vcg_plugin_finalize_last_bb ();
 
     seen_bb = 1;
-    current_bb = vvp_lookup_and_add_bb (vvp_current_function, $<str>2);
+    current_bb = vcg_plugin_lookup_and_add_bb (vcg_plugin_current_function, $<str>2);
   }
         | PRED pred_nums 
         | SUCC succ_nums {
   }
 	| STMT {
-    obstack_grow (&vvp_insn_obstack, $<str>1, strlen ($<str>1));
-    obstack_grow (&vvp_insn_obstack, "  \n", 3);
+    obstack_grow (&vcg_plugin_insn_obstack, $<str>1, strlen ($<str>1));
+    obstack_grow (&vcg_plugin_insn_obstack, "  \n", 3);
     free ($<str>1);
   }
 
 pred_nums:	/* empty */
 	| pred_nums PRED_NUM {
-    vvp_lookup_and_add_edge (vvp_current_function, $<str>2, current_bb->name);
+    vcg_plugin_lookup_and_add_edge (vcg_plugin_current_function, $<str>2, current_bb->name);
   }
 
 succ_nums:	/* empty */
 	| succ_nums SUCC_NUM {
-    vvp_lookup_and_add_edge (vvp_current_function, current_bb->name, $<str>2);
+    vcg_plugin_lookup_and_add_edge (vcg_plugin_current_function, current_bb->name, $<str>2);
   }
 
 %%
@@ -130,20 +130,20 @@ yyerror (char const *s)
 }
 
 void
-vvp_set_yy_debug (void)
+vcg_plugin_set_yy_debug (void)
 {
   yydebug = 1;
 }
 
 void
-vvp_finalize_last_bb (void)
+vcg_plugin_finalize_last_bb (void)
 {
   if (seen_bb && current_bb != NULL)
     {
-      len = obstack_object_size (&vvp_insn_obstack);
+      len = obstack_object_size (&vcg_plugin_insn_obstack);
       if (len > 0)
         {
-          insns = (char *)obstack_finish (&vvp_insn_obstack);
+          insns = (char *)obstack_finish (&vcg_plugin_insn_obstack);
           assert (insns[len-1] == '\n');
           insns[len-1] = '\0';
           current_bb->text = insns;
