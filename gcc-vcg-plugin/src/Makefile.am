@@ -12,12 +12,14 @@ INCLUDES = \
         -DPACKAGE_DATA_DIR=\""$(datadir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
 
-lib_LTLIBRARIES = libvcg-plugin.la
+pkglib_LTLIBRARIES = vcg.la
 
-libvcg_plugin_la_SOURCES = \
-        vcg-plugin.c \
+vcg_la_SOURCES = \
+        vcg.c \
         tree2vcg.c tree2vcg.h gdl.c gdl.h cfg.c cfg.h \
         fine-tune.c output.c tree2vcg-yacc.y tree2vcg-lex.l
 
-libvcg_plugin_la_LIBADD = $(INTLLIBS)
+vcg_la_LDFLAGS = -module
+
+#vcg_la_LIBADD = $(INTLLIBS)
 

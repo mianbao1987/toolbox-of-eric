@@ -6,10 +6,10 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+#include "gcc-plugin.h"
 #include "plugin.h"
 #include "plugin-version.h"
 
-#include "gcc-plugin.h"
 #include "system.h"
 #include "coretypes.h"
 #include "tm.h"
@@ -19,14 +19,34 @@
 #include "intl.h"
 #include "langhooks.h"
 
+/* plugin license check */
 int plugin_is_GPL_compatible;
 
+/* vcg viewer tool, default is vcgview */
+char *vcg_viewer = "vcgview";
+
+/* plugin initialization */
 int
 plugin_init (struct plugin_name_args *plugin_info,
              struct plugin_gcc_version *version)
 {
+  int i;
+  int argc = plugin_info->argc;
+  struct plugin_argument *argv = plugin_info->argv;
+
   if (!plugin_default_version_check (version, &gcc_version))
     return 1;
+
+  for (i = 0; i < argc; i++)
+    {
+      printf ("key: %s\n", argv[i].key);
+      printf ("value: %s\n", argv[i].value);
+      /* Get the vcg viewer tool, default is "vcgview". */
+      if (strcmp (argv[i].key, "viewer") == 0)
+        {
+          vcg_viewer = argv[i].value;
+        }
+    }
 
   return 0;
 }
@@ -46,8 +66,7 @@ vcg_plugin_dump_file (tree fn, FILE *dump)
 int
 vcg_plugin_view (void)
 {
-  int argc = 2;
-  char *argv[2] = {"vcgview", "tmp.vcg"};
+  char *cmd;
   FILE *dump_file, *vcg_file;
   
   tree fn;
@@ -68,9 +87,10 @@ vcg_plugin_view (void)
   fclose (dump_file);
   fclose (vcg_file);
 
+  cmd = concat (vcg_viewer, " tmp.vcg", NULL);
   pid = fork ();
   if (pid == 0)
-    system ("vcgview tmp.vcg");
+    system (cmd);
 
   return 0;
 }

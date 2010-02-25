@@ -78,7 +78,7 @@ cfg_new_edge (struct vcg_plugin_basic_block *source,
   e->source = source;
   e->target = target;
 
-  e->type = VVP_UNKNOWN_EDGE;
+  e->type = VCG_PLUGIN_UNKNOWN_EDGE;
   e->next = NULL;
 
   return e;
