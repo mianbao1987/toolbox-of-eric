@@ -90,7 +90,10 @@ vcg_plugin_view (void)
   cmd = concat (vcg_viewer, " tmp.vcg", NULL);
   pid = fork ();
   if (pid == 0)
-    system (cmd);
+    {
+      system (cmd);
+      exit (0);
+    }
 
   return 0;
 }

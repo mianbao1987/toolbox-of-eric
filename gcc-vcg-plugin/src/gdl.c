@@ -254,9 +254,14 @@ vcg_plugin_cfg_to_vcg (void)
           str_a = concat (vcg_plugin_current_function->name, "_", bb->name, NULL);
           node = gdl_new_node (str_a);
           if (bb->text == NULL)
-            gdl_set_node_label (node, bb->name);
+            {
+              gdl_set_node_label (node, bb->name);
+            }
           else
-            gdl_set_node_label (node, bb->text);
+            {
+              str_b = concat ("<bb ", bb->name, ">:\n", bb->text, NULL);
+              gdl_set_node_label (node, str_b);
+            }
 
           gdl_set_node_vertical_order (node, bb->max_distance);
           gdl_add_node (bb_graph, node);
