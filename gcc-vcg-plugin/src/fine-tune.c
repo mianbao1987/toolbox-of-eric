@@ -163,18 +163,23 @@ calc_max_distance_recursive (struct vcg_plugin_basic_block *bb)
 static void
 calc_max_distance (void)
 {
+  int val, max = 0;
   struct vcg_plugin_basic_block *bb;
 
   depth_first_search ();
 
   mark_edges ();
 
-  calc_max_distance_recursive (cfg->exit);
+  max = calc_max_distance_recursive (cfg->exit);
   for (bb = cfg->bb; bb != NULL; bb = bb->next)
     {
       if (bb->max_distance == 0)
-        calc_max_distance_recursive (bb);
+        {
+          val = calc_max_distance_recursive (bb);
+          max = max > val ? max : val + 1;
+        }
     }
+  cfg->exit->max_distance = max;
 }
 
 void

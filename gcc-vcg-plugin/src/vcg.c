@@ -18,6 +18,7 @@
 #include "tree-pass.h"
 #include "intl.h"
 #include "langhooks.h"
+#include "cfghooks.h"
 
 /* plugin license check */
 int plugin_is_GPL_compatible;
@@ -70,29 +71,48 @@ vcg_plugin_view (void)
   FILE *dump_file, *vcg_file;
   
   tree fn;
+  struct cfg_hooks cfg_hooks;
 
   pid_t pid;
 
   fn = current_function_decl;
-  dump_file = fopen ("tmp.dump", "w");
-  vcg_file = fopen ("tmp.vcg", "w");
-
-  vcg_plugin_dump_file (fn, dump_file);
-
-  fclose (dump_file);
-
-  dump_file = fopen ("tmp.dump", "r");
-  vcg_plugin_tree2vcg (dump_file, vcg_file);
-
-  fclose (dump_file);
-  fclose (vcg_file);
-
-  cmd = concat (vcg_viewer, " tmp.vcg", NULL);
-  pid = fork ();
-  if (pid == 0)
+  if (fn == 0)
     {
-      system (cmd);
-      exit (0);
+      printf ("vcg-plugin: function decl is unavailable for now.\n");
+      return 0;
+    }
+  
+  cfg_hooks = get_cfg_hooks ();
+  if (strcmp (cfg_hooks.name, "gimple") == 0)
+    {
+      dump_file = fopen ("tmp.dump", "w");
+      vcg_file = fopen ("tmp.vcg", "w");
+
+      vcg_plugin_dump_file (fn, dump_file);
+
+      fclose (dump_file);
+
+      dump_file = fopen ("tmp.dump", "r");
+      vcg_plugin_tree2vcg (dump_file, vcg_file);
+
+      fclose (dump_file);
+      fclose (vcg_file);
+
+      cmd = concat (vcg_viewer, " tmp.vcg", NULL);
+      pid = fork ();
+      if (pid == 0)
+        {
+          system (cmd);
+          exit (0);
+        }
+    }
+  else if (strcmp (cfg_hooks.name, "rtl") == 0)
+    {
+      printf ("vcg-plugin: rtl level is not supported for now.\n");
+    }
+  else
+    {
+      printf ("vcg-plugin: cfg_hooks.name is %s.\n", cfg_hooks.name);
     }
 
   return 0;
