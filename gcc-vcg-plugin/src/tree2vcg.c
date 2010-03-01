@@ -79,7 +79,7 @@ vcg_plugin_tree2vcg (FILE *dump_file, FILE *vcg_file)
   general_init ();
 
   yyin = dump_file;
-  vcg_plugin_set_yy_debug ();
+  /* vcg_plugin_set_yy_debug (); */
   yyparse ();
   vcg_plugin_finalize_last_bb ();
 

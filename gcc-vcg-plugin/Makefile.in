@@ -13,6 +13,23 @@
 # PARTICULAR PURPOSE.
 
 @SET_MAKE@
+
+# Makefile.am
+#
+# Copyright (C) 2009, 2010 Eric Fisher, joefoxreal@gmail.com.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
 VPATH = @srcdir@
@@ -171,8 +188,6 @@ includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
 libdir = @libdir@
-liberty_inc = @liberty_inc@
-liberty_lib = @liberty_lib@
 libexecdir = @libexecdir@
 localstatedir = @localstatedir@
 lt_ECHO = @lt_ECHO@
@@ -622,9 +637,6 @@ uninstall-info: uninstall-info-recursive
 	mostlyclean-libtool mostlyclean-recursive pdf pdf-am ps ps-am \
 	tags tags-recursive uninstall uninstall-am uninstall-info-am
 
-
-export LIBERTY_INC=@liberty_inc@
-export LIBERTY_LIB=@liberty_lib@
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
