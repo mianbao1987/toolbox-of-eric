@@ -30,7 +30,7 @@ pkglib_LTLIBRARIES = vcg.la
 
 vcg_la_SOURCES = \
         vcg-plugin.c \
-        view.c view-cfg.c \
+        view.c view-cfg.c view-tree.c\
         tree2vcg.c tree2vcg.h gdl.c gdl.h cfg.c cfg.h \
         fine-tune.c output.c tree2vcg-yacc.y tree2vcg-lex.l
 

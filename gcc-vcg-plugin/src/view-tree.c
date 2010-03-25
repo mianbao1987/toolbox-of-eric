@@ -1,214 +1,683 @@
+/* <one line to give the program's name and a bief idea of what it does.>
+
+   Copyright (C) 2010 Eric Fisher, joefoxreal@gmail.com.
+
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 2 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>. */ 
+
+#include <config.h>
+
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+#include "gcc-plugin.h"
+#include "plugin.h"
+#include "plugin-version.h"
+
+#include "system.h"
+#include "coretypes.h"
+#include "tm.h"
+#include "toplev.h"
+#include "gimple.h"
+#include "tree-pass.h"
+#include "rtl.h"
+#include "intl.h"
+#include "langhooks.h"
+#include "cfghooks.h"
+#include "version.h" /* for printing gcc version number in graph */
+
+#ifdef TMP_VCG
+  #undef TMP_VCG
+#endif
+
+#define TMP_VCG "tmp-vcg-plugin-cfg.vcg"
+
 #include "tree.h"
 
+#undef DEFTREESTRUCT
+#define DEFTREESTRUCT(ENUM, NAME) NAME,
+static char *tsname[] =
+{
+  #include "treestruct.def"
+  NULL
+};
+
+static FILE *fout;
+
+static int title_id = 0;
+
+#define PRINT_GRAPH_BEGIN \
+do {\
+  fprintf (fout, "\n\
+graph: {\n\
+  title: \"g%d\"\n\
+\n", id);\
+} while (0); \
+do {\
+  fprintf (fout, "\n\
+node: {\n\
+  title: \"%d\"\n\
+}\n", id);\
+} while (0); 
+
+
 void
-dump_tree_base (struct tree_base s)
+dump_tree_base (struct tree_base s, int id)
+{
+  PRINT_GRAPH_BEGIN
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_common (struct tree_common s, int id)
+{
+  int id1 = title_id++;
+  int id2 = title_id++;
+  int id3 = title_id++;
+
+
+  PRINT_GRAPH_BEGIN
+
+  dump_tree_base (s.base, id1);
+  dump_tree (s.chain, id2);
+  dump_tree (s.type, id3);
+
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id2);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id3);
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_int_cst (struct tree_int_cst s, int id)
 {
   
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
 }
 
 void
-dump_tree_common (struct tree_common s)
+dump_tree_real_cst (struct tree_real_cst s, int id)
 {
-  dump_tree_base (s.base);
-  dump_tree (s.chain);
-  dump_tree (s.type);
+  
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
 }
 
 void
-dump_tree_decl_minimal (struct tree_decl_minimal s)
+dump_tree_fixed_cst (struct tree_fixed_cst s, int id)
 {
-  dump_tree_common (s.common);
-  dump_tree (s.name);
-  dump_tree (s.context);
+  
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
 }
 
 void
-dump_tree_decl_common (struct tree_decl_common s)
+dump_tree_vector (struct tree_vector s, int id)
 {
-  dump_tree_decl_minimal (s.common);
-  dump_tree (s.size);
-  dump_tree (s.size_unit);
-  dump_tree (s.initial);
-  dump_tree (s.attributes);
-  dump_tree (s.abstract_origin);
+  
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
 }
 
 void
-dump_tree_decl_with_rtl (struct tree_decl_with_rtl s)
+dump_tree_string (struct tree_string s, int id)
 {
-  dump_tree_decl_common (s.common);
+  
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
 }
 
 void
-dump_tree_decl_with_wis (struct tree_decl_with_wis s)
+dump_tree_complex (struct tree_complex s, int id)
 {
-  dump_tree_decl_with_rtl (s.common)
-  dump_tree (s.assembler_name);
-  dump_tree (s.section_name);
-  dump_tree (s.comdat_group);
+  
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
 }
 
 void
-dump_tree_decl_non_common (struct tree_decl_non_common s)
+dump_tree_identifier (struct tree_identifier s, int id)
 {
-  dump_tree_decl_with_wis (s.common);
-  dump_tree (s.saved_tree);
-  dump_tree (s.arguments);
-  dump_tree (s.result);
-  dump_tree (s.vindex);
+  
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
 }
 
 void
-dump_tree (tree t)
+dump_tree_decl_minimal (struct tree_decl_minimal s, int id)
 {
-  switch (TREE_CODE (t))
+  int id1 = title_id++;
+  int id2 = title_id++;
+  int id3 = title_id++;
+
+  PRINT_GRAPH_BEGIN
+
+  dump_tree_common (s.common, id1);
+  dump_tree (s.name, id2);
+  dump_tree (s.context, id3);
+
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id2);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id3);
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_decl_common (struct tree_decl_common s, int id)
+{
+  int id1 = title_id++;
+  int id2 = title_id++;
+  int id3 = title_id++;
+  int id4 = title_id++;
+  int id5 = title_id++;
+  int id6 = title_id++;
+
+  PRINT_GRAPH_BEGIN
+
+  dump_tree_decl_minimal (s.common, id1);
+  dump_tree (s.size, id2);
+  dump_tree (s.size_unit, id3);
+  dump_tree (s.initial, id4);
+  dump_tree (s.attributes, id5);
+  dump_tree (s.abstract_origin, id6);
+
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id2);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id3);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id4);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id5);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id6);
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_decl_with_rtl (struct tree_decl_with_rtl s, int id)
+{
+  int id1 = title_id++;
+
+  PRINT_GRAPH_BEGIN
+
+  dump_tree_decl_common (s.common, id1);
+
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_decl_non_common (struct tree_decl_non_common s, int id)
+{
+  int id1 = title_id++;
+  int id2 = title_id++;
+  int id3 = title_id++;
+  int id4 = title_id++;
+  int id5 = title_id++;
+
+  PRINT_GRAPH_BEGIN
+
+  dump_tree_decl_with_vis (s.common, id1);
+  dump_tree (s.saved_tree, id2);
+  dump_tree (s.arguments, id3);
+  dump_tree (s.result, id4);
+  dump_tree (s.vindex, id5);
+
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id2);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id3);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id4);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id5);
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_parm_decl (struct tree_parm_decl s, int id)
+{
+  
+
+  PRINT_GRAPH_BEGIN
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_decl_with_vis (struct tree_decl_with_vis s, int id)
+{
+  int id1 = title_id++;
+  int id2 = title_id++;
+  int id3 = title_id++;
+  int id4 = title_id++;
+
+  PRINT_GRAPH_BEGIN
+
+  dump_tree_decl_with_rtl (s.common, id1);
+  dump_tree (s.assembler_name, id2);
+  dump_tree (s.section_name, id3);
+  dump_tree (s.comdat_group, id4);
+
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id2);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id3);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id4);
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_var_decl (struct tree_var_decl s, int id)
+{
+  
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_field_decl (struct tree_field_decl s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_label_decl (struct tree_label_decl s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_result_decl (struct tree_result_decl s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_const_decl (struct tree_const_decl s, int id)
+{
+  PRINT_GRAPH_BEGIN
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_type_decl (struct tree_type_decl s, int id)
+{
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_function_decl (struct tree_function_decl s, int id)
+{
+  int id1 = title_id++;
+  int id2 = title_id++;
+  int id3 = title_id++;
+
+  PRINT_GRAPH_BEGIN
+
+  dump_tree_decl_non_common (s.common, id1);
+  dump_tree (s.function_specific_target, id2);
+  dump_tree (s.function_specific_optimization, id3);
+  
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id2);
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id3);
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_type (struct tree_type s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_list (struct tree_list s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_vec (struct tree_vec s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_exp (struct tree_exp s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_ssa_name (struct tree_ssa_name s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_block (struct tree_block s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_binfo (struct tree_binfo s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_statement_list (struct tree_statement_list s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_constructor (struct tree_constructor s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_omp_clause (struct tree_omp_clause s, int id)
+{
+
+  PRINT_GRAPH_BEGIN
+
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_optimization_option (struct tree_optimization_option s, int id)
+{
+  int id1 = title_id++;
+
+  PRINT_GRAPH_BEGIN
+
+  dump_tree_common (s.common, id1);
+
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree_target_option (struct tree_target_option s, int id)
+{
+  int id1 = title_id++;
+
+  PRINT_GRAPH_BEGIN
+
+  dump_tree_common (s.common, id1);
+
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
+
+  fprintf (fout, "}\n");
+}
+
+void
+dump_tree (tree t, int id)
+{  
+  int id1;
+  enum tree_node_structure_enum tns;
+
+  if (t == 0)
+    {
+      PRINT_GRAPH_BEGIN
+      
+      fprintf (fout, "}\n");
+      return;
+    }
+
+  tns = tree_node_structure (t);
+
+  fprintf (fout, "\n\
+graph: {\n\
+  title: \"g%d\"\n\
+  label: \"%s\"\n\
+\n", id, tsname[tns]);
+
+  fprintf (fout, "\n\
+node: {\n\
+  title: \"%d\"\n\
+  label: \"%s\"\n\
+}\n", id, tsname[tns]);
+
+  id1 = title_id++;
+  switch (tns)
     {
     case TS_BASE:
-      dump_tree_base (t->base);
+      dump_tree_base (t->base, id1);
       break;
       
     case TS_COMMON:
-      dump_tree_common (t->common);
+      dump_tree_common (t->common, id1);
       break;
       
     case TS_INT_CST:
-      dump_tree_int_cst (t->int_cst);
+      dump_tree_int_cst (t->int_cst, id1);
       break;
       
     case TS_REAL_CST:
-      dump_tree_real_cst (t->real_cst);
+      dump_tree_real_cst (t->real_cst, id1);
       break;
       
     case TS_FIXED_CST:
-      dump_tree_fixed_cst (t->fixed_cst);
+      dump_tree_fixed_cst (t->fixed_cst, id1);
       break;
       
     case TS_VECTOR:
-      dump_tree_vector (t->vector);
+      dump_tree_vector (t->vector, id1);
       break;
       
     case TS_STRING:
-      dump_tree_string (t->string);
+      dump_tree_string (t->string, id1);
       break;
       
     case TS_COMPLEX:
-      dump_tree_complex (t->complex);
+      dump_tree_complex (t->complex, id1);
       break;
       
     case TS_IDENTIFIER:
-      dump_tree_identifier (t->identifier);
+      dump_tree_identifier (t->identifier, id1);
       break;
       
     case TS_DECL_MINIMAL:
-      dump_tree_decl_minimal (t->decl_minimal);
+      dump_tree_decl_minimal (t->decl_minimal, id1);
       break;
       
     case TS_DECL_COMMON:
-      dump_tree_decl_common (t->decl_common);
+      dump_tree_decl_common (t->decl_common, id1);
       break;
       
     case TS_DECL_WRTL:
-      dump_tree_decl_wrtl (t->decl_wrtl);
+      dump_tree_decl_with_rtl (t->decl_with_rtl, id1);
       break;
       
     case TS_DECL_NON_COMMON:
-      dump_tree_decl_non_common (t->decl_non_common);
+      dump_tree_decl_non_common (t->decl_non_common, id1);
       break;
       
     case TS_DECL_WITH_VIS:
-      dump_tree_decl_with_vis (t->decl_with_vis);
+      dump_tree_decl_with_vis (t->decl_with_vis, id1);
       break;
       
     case TS_FIELD_DECL:
-      dump_tree_field_decl (t->field_decl);
+      dump_tree_field_decl (t->field_decl, id1);
       break;
       
     case TS_VAR_DECL:
-      dump_tree_var_decl (t->var_decl);
+      dump_tree_var_decl (t->var_decl, id1);
       break;
       
     case TS_PARM_DECL:
-      dump_tree_parm_decl (t->parm_decl);
+      dump_tree_parm_decl (t->parm_decl, id1);
       break;
       
     case TS_LABEL_DECL:
-      dump_tree_label_decl (t->label_decl);
+      dump_tree_label_decl (t->label_decl, id1);
       break;
       
     case TS_RESULT_DECL:
-      dump_tree_result_decl (t->result_decl);
+      dump_tree_result_decl (t->result_decl, id1);
       break;
       
     case TS_CONST_DECL:
-      dump_tree_const_decl (t->const_decl);
+      dump_tree_const_decl (t->const_decl, id1);
       break;
       
     case TS_TYPE_DECL:
-      dump_tree_type_decl (t->type_decl);
+      dump_tree_type_decl (t->type_decl, id1);
       break;
       
     case TS_FUNCTION_DECL:
-      dump_tree_function_decl (t->function_decl);
+      dump_tree_function_decl (t->function_decl, id1);
       break;
       
-      #define S (t->function_decl)
-      dump_tree_decl_non_common (S.common);
-      dump_tree (S.function_specific_target);
-      dump_tree (S.function_specific_optimization);
-      break;
     case TS_TYPE:
-      dump_tree_type (t->type);
+      dump_tree_type (t->type, id1);
       break;
       
     case TS_LIST:
-      dump_tree_list (t->list);
+      dump_tree_list (t->list, id1);
       break;
       
     case TS_VEC:
-      dump_tree_vec (t->vec);
+      dump_tree_vec (t->vec, id1);
       break;
       
     case TS_EXP:
-      dump_tree_exp (t->exp);
+      dump_tree_exp (t->exp, id1);
       break;
       
     case TS_SSA_NAME:
-      dump_tree_ssa_name (t->ssa_name);
+      dump_tree_ssa_name (t->ssa_name, id1);
       break;
       
     case TS_BLOCK:
-      dump_tree_block (t->block);
+      dump_tree_block (t->block, id1);
       break;
       
     case TS_BINFO:
-      dump_tree_binfo (t->binfo);
+      dump_tree_binfo (t->binfo, id1);
       break;
       
     case TS_STATEMENT_LIST:
-      dump_tree_statement_list (t->statement_list);
+      dump_tree_statement_list (t->stmt_list, id1);
       break;
       
     case TS_CONSTRUCTOR:
-      dump_tree_constructor (t->constructor);
+      dump_tree_constructor (t->constructor, id1);
       break;
       
     case TS_OMP_CLAUSE:
-      dump_tree_omp_clause (t->omp_clause);
+      dump_tree_omp_clause (t->omp_clause, id1);
       break;
       
     case TS_OPTIMIZATION:
-      dump_tree_optimization (t->optimization);
+      dump_tree_optimization_option (t->optimization, id1);
       break;
       
     case TS_TARGET_OPTION:
-      dump_tree_target_option (t->target_option);
+      dump_tree_target_option (t->target_option, id1);
       break;
     }
+
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
+  fprintf (fout, "}\n");
 }
 
 void
 vcg_plugin_view_tree (tree t)
 {
-}
+  int id = title_id++;
 
+  fout = fopen (TMP_VCG, "w");
+  dump_tree (t, id);
+  fclose (fout);
+}
 

@@ -76,9 +76,9 @@ am__installdirs = "$(DESTDIR)$(pkglibdir)"
 pkglibLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(pkglib_LTLIBRARIES)
 vcg_la_LIBADD =
-am_vcg_la_OBJECTS = vcg-plugin.lo view.lo view-cfg.lo tree2vcg.lo \
-	gdl.lo cfg.lo fine-tune.lo output.lo tree2vcg-yacc.lo \
-	tree2vcg-lex.lo
+am_vcg_la_OBJECTS = vcg-plugin.lo view.lo view-cfg.lo view-tree.lo \
+	tree2vcg.lo gdl.lo cfg.lo fine-tune.lo output.lo \
+	tree2vcg-yacc.lo tree2vcg-lex.lo
 vcg_la_OBJECTS = $(am_vcg_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -220,7 +220,7 @@ INCLUDES = \
 pkglib_LTLIBRARIES = vcg.la
 vcg_la_SOURCES = \
         vcg-plugin.c \
-        view.c view-cfg.c \
+        view.c view-cfg.c view-tree.c\
         tree2vcg.c tree2vcg.h gdl.c gdl.h cfg.c cfg.h \
         fine-tune.c output.c tree2vcg-yacc.y tree2vcg-lex.l
 
@@ -308,6 +308,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tree2vcg.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/vcg-plugin.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/view-cfg.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/view-tree.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/view.Plo@am__quote@
 
 .c.o:
