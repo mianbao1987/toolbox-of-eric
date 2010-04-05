@@ -85,12 +85,12 @@ output_edge (struct gdl_edge *edge)
   /* sourcename */
   str = gdl_get_edge_source (edge);
   if (str != NULL)
-    fprintf (fout, "source: \"%s\"\n", str);
+    fprintf (fout, "sourcename: \"%s\"\n", str);
   
   /* targetname */
   str = gdl_get_edge_target (edge);
   if (str != NULL)
-    fprintf (fout, "target: \"%s\"\n", str);
+    fprintf (fout, "targetname: \"%s\"\n", str);
   
   /* label */
   str = gdl_get_edge_label (edge);
@@ -158,7 +158,7 @@ output_graph_attributes (struct gdl_graph *graph)
   /* node.margin */
   val = gdl_get_graph_node_margin (graph);
   if (val != -1)
-    fprintf (fout, "node.margin: %d\n", val);
+    fprintf (fout, "//node.margin: %d\n", val);
 
   /* edge.thickness */
   val = gdl_get_graph_edge_thickness (graph);
@@ -188,7 +188,7 @@ output_graph_attributes (struct gdl_graph *graph)
   /* layoutalgorithm */
   str = gdl_get_graph_layout_algorithm_s (graph);
   if (str != NULL)
-    fprintf (fout, "layoutalgorithm: %s\n", str);
+    fprintf (fout, "//layoutalgorithm: %s\n", str);
 
   /* near_edges */
   val = gdl_get_graph_near_edges (graph);
