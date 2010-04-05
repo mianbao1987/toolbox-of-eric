@@ -517,6 +517,11 @@ dump_tree_exp (struct tree_exp s, int id, char *name)
   int id1 = title_id++;
   int id2 = title_id++;
 
+  int i;
+  int idx;
+  int len;
+  len = 2; //(int) tree_code_length[((struct tree_base)s).code];
+
   PRINT_GRAPH_BEGIN(name, "tree_exp", id)
   PRINT_NODE(name, "tree_exp", id)
 
@@ -525,6 +530,13 @@ dump_tree_exp (struct tree_exp s, int id, char *name)
 
   fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
   fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id2);
+
+  for (i = 0; i < len; i++)
+    {
+      idx = title_id++;
+      dump_tree (s.operands[i], idx, "operand");
+      fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, idx);
+    }
 
   fprintf (fout, "}\n");
 }
