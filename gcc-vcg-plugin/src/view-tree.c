@@ -374,8 +374,12 @@ dump_tree_decl_with_vis (struct tree_decl_with_vis *s, int id, char *name)
   int id3 = title_id++;
   int id4 = title_id++;
 
-  PRINT_GRAPH_BEGIN(name, "tree_decl_with_vis", id)
-  PRINT_NODE(name, "tree_decl_with_vis", id)
+  char *value;
+
+  value = tree_code_name[((struct tree_base *)s)->code];
+
+  PRINT_GRAPH_BEGIN(name, value, id)
+  PRINT_NODE(name, value, id)
 
   dump_tree_decl_with_rtl (&s->common, id1, "common");
   dump_tree (s->assembler_name, id2, "assembler_name");
@@ -395,8 +399,12 @@ dump_tree_var_decl (struct tree_var_decl *s, int id, char *name)
 {
   int id1 = title_id++;
   
-  PRINT_GRAPH_BEGIN(name, "tree_var_decl", id)
-  PRINT_NODE(name, "tree_var_decl", id)
+  char *value;
+
+  value = tree_code_name[((struct tree_base *)s)->code];
+
+  PRINT_GRAPH_BEGIN(name, value, id)
+  PRINT_NODE(name, value, id)
 
   dump_tree_decl_with_vis (&s->common, id1, "common");
 
@@ -466,8 +474,12 @@ dump_tree_function_decl (struct tree_function_decl *s, int id, char *name)
   int id2 = title_id++;
   int id3 = title_id++;
 
-  PRINT_GRAPH_BEGIN(name, "tree_function_decl", id)
-  PRINT_NODE(name, "tree_function_decl", id)
+  char *value;
+
+  value = tree_code_name[((struct tree_base *)s)->code];
+
+  PRINT_GRAPH_BEGIN(name, value, id)
+  PRINT_NODE(name, value, id)
 
   dump_tree_decl_non_common (&s->common, id1, "common");
   dump_tree (s->function_specific_target, id2, "function_specific_target");
@@ -537,13 +549,14 @@ dump_tree_exp (struct tree_exp *s, int id, char *name)
   int idx;
   int len;
 
+  char *value;
   char buf[16];  
 
-  /* safe conversin? */
-  len = (int) tree_code_length[((struct tree_base *)&s)->code];
+  value = tree_code_name[((struct tree_base *)s)->code];
+  len = (int) tree_code_length[((struct tree_base *)s)->code];
 
-  PRINT_GRAPH_BEGIN(name, "tree_exp", id)
-  PRINT_NODE(name, "tree_exp", id)
+  PRINT_GRAPH_BEGIN(name, value, id)
+  PRINT_NODE(name, value, id)
 
   dump_tree_common (&s->common, id1, "common");
   dump_tree (s->block, id2, "block");
@@ -661,7 +674,6 @@ dump_tree_target_option (struct tree_target_option *s, int id, char *name)
 static void
 dump_tree (tree t, int id, char *name)
 {  
-  int id1;
   enum tree_node_structure_enum tns;
 
   if (t == 0)
@@ -674,186 +686,144 @@ dump_tree (tree t, int id, char *name)
 
   tns = tree_node_structure (t);
 
-  //PRINT_GRAPH_BEGIN(name, tsname[tns], id)
-  //PRINT_NODE(name, tsname[tns], id)
-
-  //id1 = title_id++;
-  id1 = id;
   switch (tns)
     {
     case TS_BASE:
-      //dump_tree_base (t->base, id1, "base");
-      dump_tree_base (&t->base, id1, name);
+      dump_tree_base (&t->base, id, name);
       break;
       
     case TS_COMMON:
-      //dump_tree_common (t->common, id1, "common");
-      dump_tree_common (&t->common, id1, name);
+      dump_tree_common (&t->common, id, name);
       break;
       
     case TS_INT_CST:
-      //dump_tree_int_cst (t->int_cst, id1, "int_cst");
-      dump_tree_int_cst (&t->int_cst, id1, name);
+      dump_tree_int_cst (&t->int_cst, id, name);
       break;
       
     case TS_REAL_CST:
-      //dump_tree_real_cst (t->real_cst, id1, "real_cst");
-      dump_tree_real_cst (&t->real_cst, id1, name);
+      dump_tree_real_cst (&t->real_cst, id, name);
       break;
       
     case TS_FIXED_CST:
-      //dump_tree_fixed_cst (t->fixed_cst, id1, "fixed_cst");
-      dump_tree_fixed_cst (&t->fixed_cst, id1, name);
+      dump_tree_fixed_cst (&t->fixed_cst, id, name);
       break;
       
     case TS_VECTOR:
-      //dump_tree_vector (t->vector, id1, "vector");
-      dump_tree_vector (&t->vector, id1, name);
+      dump_tree_vector (&t->vector, id, name);
       break;
       
     case TS_STRING:
-      //dump_tree_string (t->string, id1, "string");
-      dump_tree_string (&t->string, id1, name);
+      dump_tree_string (&t->string, id, name);
       break;
       
     case TS_COMPLEX:
-      //dump_tree_complex (t->complex, id1, "complex");
-      dump_tree_complex (&t->complex, id1, name);
+      dump_tree_complex (&t->complex, id, name);
       break;
       
     case TS_IDENTIFIER:
-      //dump_tree_identifier (t->identifier, id1, "identifier");
-      dump_tree_identifier (&t->identifier, id1, name);
+      dump_tree_identifier (&t->identifier, id, name);
       break;
       
     case TS_DECL_MINIMAL:
-      //dump_tree_decl_minimal (t->decl_minimal, id1, "decl_minimal");
-      dump_tree_decl_minimal (&t->decl_minimal, id1, name);
+      dump_tree_decl_minimal (&t->decl_minimal, id, name);
       break;
       
     case TS_DECL_COMMON:
-      //dump_tree_decl_common (t->decl_common, id1, "decl_common");
-      dump_tree_decl_common (&t->decl_common, id1, name);
+      dump_tree_decl_common (&t->decl_common, id, name);
       break;
       
     case TS_DECL_WRTL:
-      //dump_tree_decl_with_rtl (t->decl_with_rtl, id1, "decl_with_rtl");
-      dump_tree_decl_with_rtl (&t->decl_with_rtl, id1, name);
+      dump_tree_decl_with_rtl (&t->decl_with_rtl, id, name);
       break;
       
     case TS_DECL_NON_COMMON:
-      //dump_tree_decl_non_common (t->decl_non_common, id1, "decl_non_common");
-      dump_tree_decl_non_common (&t->decl_non_common, id1, name);
+      dump_tree_decl_non_common (&t->decl_non_common, id, name);
       break;
       
     case TS_DECL_WITH_VIS:
-      //dump_tree_decl_with_vis (t->decl_with_vis, id1, "decl_with_vis");
-      dump_tree_decl_with_vis (&t->decl_with_vis, id1, name);
+      dump_tree_decl_with_vis (&t->decl_with_vis, id, name);
       break;
       
     case TS_FIELD_DECL:
-      //dump_tree_field_decl (t->field_decl, id1, "field_decl");
-      dump_tree_field_decl (&t->field_decl, id1, name);
+      dump_tree_field_decl (&t->field_decl, id, name);
       break;
       
     case TS_VAR_DECL:
-      //dump_tree_var_decl (t->var_decl, id1, "var_decl");
-      dump_tree_var_decl (&t->var_decl, id1, name);
+      dump_tree_var_decl (&t->var_decl, id, name);
       break;
       
     case TS_PARM_DECL:
-      //dump_tree_parm_decl (t->parm_decl, id1, "parm_decl");
-      dump_tree_parm_decl (&t->parm_decl, id1, name);
+      dump_tree_parm_decl (&t->parm_decl, id, name);
       break;
       
     case TS_LABEL_DECL:
-      //dump_tree_label_decl (t->label_decl, id1, "label_decl");
-      dump_tree_label_decl (&t->label_decl, id1, name);
+      dump_tree_label_decl (&t->label_decl, id, name);
       break;
       
     case TS_RESULT_DECL:
-      //dump_tree_result_decl (t->result_decl, id1, "result_decl");
-      dump_tree_result_decl (&t->result_decl, id1, name);
+      dump_tree_result_decl (&t->result_decl, id, name);
       break;
       
     case TS_CONST_DECL:
-      //dump_tree_const_decl (t->const_decl, id1, "const_decl");
-      dump_tree_const_decl (&t->const_decl, id1, name);
+      dump_tree_const_decl (&t->const_decl, id, name);
       break;
       
     case TS_TYPE_DECL:
-      //dump_tree_type_decl (t->type_decl, id1, "type_decl");
-      dump_tree_type_decl (&t->type_decl, id1, name);
+      dump_tree_type_decl (&t->type_decl, id, name);
       break;
       
     case TS_FUNCTION_DECL:
-      //dump_tree_function_decl (t->function_decl, id1, "function_decl");
-      dump_tree_function_decl (&t->function_decl, id1, name);
+      dump_tree_function_decl (&t->function_decl, id, name);
       break;
       
     case TS_TYPE:
-      //dump_tree_type (t->type, id1, "type");
-      dump_tree_type (&t->type, id1, name);
+      dump_tree_type (&t->type, id, name);
       break;
       
     case TS_LIST:
-      //dump_tree_list (t->list, id1, "list");
-      dump_tree_list (&t->list, id1, name);
+      dump_tree_list (&t->list, id, name);
       break;
       
     case TS_VEC:
-      //dump_tree_vec (t->vec, id1, "vec");
-      dump_tree_vec (&t->vec, id1, name);
+      dump_tree_vec (&t->vec, id, name);
       break;
       
     case TS_EXP:
-      //dump_tree_exp (t->exp, id1, "exp");
-      dump_tree_exp (&t->exp, id1, name);
+      dump_tree_exp (&t->exp, id, name);
       break;
       
     case TS_SSA_NAME:
-      //dump_tree_ssa_name (t->ssa_name, id1, "ssa_name");
-      dump_tree_ssa_name (&t->ssa_name, id1, name);
+      dump_tree_ssa_name (&t->ssa_name, id, name);
       break;
       
     case TS_BLOCK:
-      //dump_tree_block (t->block, id1, "block");
-      dump_tree_block (&t->block, id1, name);
+      dump_tree_block (&t->block, id, name);
       break;
       
     case TS_BINFO:
-      //dump_tree_binfo (t->binfo, id1, "binfo");
-      dump_tree_binfo (&t->binfo, id1, name);
+      dump_tree_binfo (&t->binfo, id, name);
       break;
       
     case TS_STATEMENT_LIST:
-      //dump_tree_statement_list (t->stmt_list, id1, "stmt_list");
-      dump_tree_statement_list (&t->stmt_list, id1, name);
+      dump_tree_statement_list (&t->stmt_list, id, name);
       break;
       
     case TS_CONSTRUCTOR:
-      //dump_tree_constructor (t->constructor, id1, "constructor");
-      dump_tree_constructor (&t->constructor, id1, name);
+      dump_tree_constructor (&t->constructor, id, name);
       break;
       
     case TS_OMP_CLAUSE:
-      //dump_tree_omp_clause (t->omp_clause, id1, "omp_clause");
-      dump_tree_omp_clause (&t->omp_clause, id1, name);
+      dump_tree_omp_clause (&t->omp_clause, id, name);
       break;
       
     case TS_OPTIMIZATION:
-      //dump_tree_optimization_option (t->optimization, id1, "optimization");
-      dump_tree_optimization_option (&t->optimization, id1, name);
+      dump_tree_optimization_option (&t->optimization, id, name);
       break;
       
     case TS_TARGET_OPTION:
-      //dump_tree_target_option (t->target_option, id1, "target_option");
-      dump_tree_target_option (&t->target_option, id1, name);
+      dump_tree_target_option (&t->target_option, id, name);
       break;
     }
-
-  //fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
-  //fprintf (fout, "}\n");
 }
 
 void
