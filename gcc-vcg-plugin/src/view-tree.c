@@ -358,10 +358,14 @@ dump_tree_decl_non_common (struct tree_decl_non_common *s, int id, char *name)
 static void
 dump_tree_parm_decl (struct tree_parm_decl *s, int id, char *name)
 {
-  
+  int id1 = title_id++;
 
   PRINT_GRAPH_BEGIN(name, "tree_parm_decl", id)
   PRINT_NODE(name, "tree_parm_decl", id)
+
+  dump_tree_decl_with_rtl (&s->common, id1, "common");
+  
+  fprintf (fout, "edge: {sourcename: \"%d\" targetname: \"g%d\"}\n", id, id1);
 
   fprintf (fout, "}\n");
 }
@@ -374,12 +378,8 @@ dump_tree_decl_with_vis (struct tree_decl_with_vis *s, int id, char *name)
   int id3 = title_id++;
   int id4 = title_id++;
 
-  char *value;
-
-  value = tree_code_name[((struct tree_base *)s)->code];
-
-  PRINT_GRAPH_BEGIN(name, value, id)
-  PRINT_NODE(name, value, id)
+  PRINT_GRAPH_BEGIN(name, "tree_decl_with_vis", id)
+  PRINT_NODE(name, "tree_decl_with_vis", id)
 
   dump_tree_decl_with_rtl (&s->common, id1, "common");
   dump_tree (s->assembler_name, id2, "assembler_name");
@@ -399,12 +399,8 @@ dump_tree_var_decl (struct tree_var_decl *s, int id, char *name)
 {
   int id1 = title_id++;
   
-  char *value;
-
-  value = tree_code_name[((struct tree_base *)s)->code];
-
-  PRINT_GRAPH_BEGIN(name, value, id)
-  PRINT_NODE(name, value, id)
+  PRINT_GRAPH_BEGIN(name, "tree_var_decl", id)
+  PRINT_NODE(name, "tree_var_decl", id)
 
   dump_tree_decl_with_vis (&s->common, id1, "common");
 
