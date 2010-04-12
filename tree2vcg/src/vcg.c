@@ -52,7 +52,7 @@ cfg_to_vcg (void)
   gdl_set_graph_node_margin (top_graph, 1);
   gdl_set_graph_edge_thickness (top_graph, 1);
   gdl_set_graph_layout_algorithm (top_graph, MAX_DEPTH);
-  gdl_set_graph_folding (top_graph, 0);
+  gdl_set_graph_folding (top_graph, -1);
   gdl_set_graph_splines (top_graph, "yes");
 
   for (current_function = first_function; current_function != NULL;

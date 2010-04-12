@@ -21,6 +21,7 @@ AM_YFLAGS = -d -t
 AM_CFLAGS = $(LIBERTY_INC)
 
 tree2vcg_SOURCES = main.c yacc.y lex.l tree2vcg.h options.c gdl.h \
-                   gdl.c cfg.h cfg.c fine-tune.c vcg.c output.c
+                   gdl.c cfg.h cfg.c fine-tune.c vcg.c output.c \
+                   edge-attr.def graph-attr.def node-attr.def
 tree2vcg_LDFLAGS = -liberty $(LIBERTY_LIB)
 

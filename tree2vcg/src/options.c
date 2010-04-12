@@ -29,7 +29,7 @@
 char *fin_name, *fout_name;
 FILE *fin, *fout;
 
-const char *argp_program_version = "tree2vcg 0.3";
+const char *argp_program_version = "tree2vcg 0.5";
 const char *argp_program_bug_address = "joefoxreal@gmail.com";
 
 static struct argp_option options[] = {

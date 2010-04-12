@@ -31,11 +31,11 @@
 #include "tree2vcg.h"
 
 static int count;
+static struct control_flow_graph *cfg;
 
 void
 search (struct basic_block *bb)
 {
-  struct control_flow_graph *cfg = current_function->cfg;
   struct basic_block *succ_bb;
   struct vec_edge *ve;
   struct edge *e;
@@ -59,7 +59,6 @@ search (struct basic_block *bb)
 void
 depth_first_search (void)
 {
-  struct control_flow_graph *cfg = current_function->cfg;
   struct basic_block *bb;
  
   for (bb = cfg->bb; bb != NULL; bb = bb->next)
@@ -74,7 +73,6 @@ depth_first_search (void)
 int
 is_ancestor (struct basic_block *source, struct basic_block *target)
 {
-  struct control_flow_graph *cfg = current_function->cfg;
   struct basic_block *bb;
   struct vec_edge *ve;
   struct edge *e;
@@ -131,7 +129,6 @@ int
 calc_max_distance_recursive (struct basic_block *bb)
 {
   int val, max = 0;
-  struct control_flow_graph *cfg = current_function->cfg;
   struct vec_edge *ve;
   struct edge *e;
 
@@ -153,20 +150,23 @@ calc_max_distance_recursive (struct basic_block *bb)
 void
 calc_max_distance (void)
 {
-  struct control_flow_graph *cfg = current_function->cfg;
+  int val, max = 0;
   struct basic_block *bb;
-  struct vec_edge *ve;
 
   depth_first_search ();
 
   mark_edges ();
 
-  calc_max_distance_recursive (cfg->exit);
+  max = calc_max_distance_recursive (cfg->exit);
   for (bb = cfg->bb; bb != NULL; bb = bb->next)
     {
       if (bb->max_distance == 0)
-        calc_max_distance_recursive (bb);
+        {
+          val = calc_max_distance_recursive (bb);
+          max = max > val ? max : val + 1;
+        }
     }
+  cfg->exit->max_distance = max;
 }
 
 void
@@ -174,5 +174,8 @@ fine_tune_cfg (void)
 {
   for (current_function = first_function; current_function != NULL;
        current_function = current_function->next)
-    calc_max_distance ();
+    {
+      cfg = current_function->cfg;
+      calc_max_distance ();
+    }
 }
