@@ -28,11 +28,18 @@ INCLUDES = \
 
 pkglib_LTLIBRARIES = vcg.la
 
+EXTRA_DIST = vcg.gdbinit
+
 vcg_la_SOURCES = \
-        vcg-plugin.c \
-        view.c view-cfg.c view-tree.c\
-        tree2vcg.c tree2vcg.h gdl.c gdl.h cfg.c cfg.h \
-        fine-tune.c output.c tree2vcg-yacc.y tree2vcg-lex.l
+        cfg.c cfg.h \
+        edge-attr.def \
+        fine-tune.c \
+        gdl.c gdl.h graph-attr.def \
+        node-attr.def \
+        output.c \
+        tree2vcg.c tree2vcg.h tree2vcg-lex.l tree2vcg-yacc.y \
+        vcg-plugin.c view.c view-cfg.c view-tree.c view-tree.h
+                   
 
 vcg_la_LDFLAGS = -module
 

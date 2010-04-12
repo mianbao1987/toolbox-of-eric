@@ -89,9 +89,9 @@ am__base_list = \
 am__installdirs = "$(DESTDIR)$(pkglibdir)"
 LTLIBRARIES = $(pkglib_LTLIBRARIES)
 vcg_la_LIBADD =
-am_vcg_la_OBJECTS = vcg-plugin.lo view.lo view-cfg.lo view-tree.lo \
-	tree2vcg.lo gdl.lo cfg.lo fine-tune.lo output.lo \
-	tree2vcg-yacc.lo tree2vcg-lex.lo
+am_vcg_la_OBJECTS = cfg.lo fine-tune.lo gdl.lo output.lo tree2vcg.lo \
+	tree2vcg-lex.lo tree2vcg-yacc.lo vcg-plugin.lo view.lo \
+	view-cfg.lo view-tree.lo
 vcg_la_OBJECTS = $(am_vcg_la_OBJECTS)
 vcg_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(vcg_la_LDFLAGS) \
@@ -245,11 +245,16 @@ INCLUDES = \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
 
 pkglib_LTLIBRARIES = vcg.la
+EXTRA_DIST = vcg.gdbinit
 vcg_la_SOURCES = \
-        vcg-plugin.c \
-        view.c view-cfg.c view-tree.c\
-        tree2vcg.c tree2vcg.h gdl.c gdl.h cfg.c cfg.h \
-        fine-tune.c output.c tree2vcg-yacc.y tree2vcg-lex.l
+        cfg.c cfg.h \
+        edge-attr.def \
+        fine-tune.c \
+        gdl.c gdl.h graph-attr.def \
+        node-attr.def \
+        output.c \
+        tree2vcg.c tree2vcg.h tree2vcg-lex.l tree2vcg-yacc.y \
+        vcg-plugin.c view.c view-cfg.c view-tree.c view-tree.h
 
 vcg_la_LDFLAGS = -module
 all: all-am

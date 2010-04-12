@@ -1,0 +1,2529 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+A	./include/md5.h	/^  md5_uint32 A;$/;"	m	struct:md5_ctx
+A	./include/sha1.h	/^  sha1_uint32 A;$/;"	m	struct:sha1_ctx
+ACONCAT	./include/libiberty.h	165;"	d
+ADDRESS_FUNCTION	./libiberty/alloca.c	75;"	d	file:
+ADDRESS_FUNCTION	./libiberty/alloca.c	77;"	d	file:
+ALIGN_SIZE	./libiberty/alloca.c	137;"	d	file:
+AND	./include/ansidecl.h	196;"	d
+AND	./include/ansidecl.h	235;"	d
+ANONYMOUS_NAMESPACE_PREFIX	./libiberty/cp-demangle.c	207;"	d	file:
+ANONYMOUS_NAMESPACE_PREFIX_LEN	./libiberty/cp-demangle.c	208;"	d	file:
+ANSI_PROTOTYPES	./include/ansidecl.h	147;"	d
+ANSI_PROTOTYPES	./include/ansidecl.h	203;"	d
+APPEND_BLANK	./libiberty/cplus-dem.c	316;"	d	file:
+ARGV0	./libiberty/testsuite/test-expandargv.c	70;"	d	file:
+ARG_PREFIX	./libiberty/regex.c	614;"	d	file:
+ARG_PREFIX	./libiberty/regex.c	624;"	d	file:
+ARG_PREFIX	./libiberty/regex.c	8197;"	d	file:
+ARG_UNUSED	./include/ansidecl.h	275;"	d
+ARG_UNUSED	./include/ansidecl.h	277;"	d
+ARM_DEMANGLING	./include/demangle.h	106;"	d
+ARM_DEMANGLING_STYLE_STRING	./include/demangle.h	93;"	d
+ARM_VTABLE_STRING	./libiberty/cplus-dem.c	324;"	d	file:
+ARM_VTABLE_STRLEN	./libiberty/cplus-dem.c	325;"	d	file:
+ARRAY_SIZE	./include/libiberty.h	623;"	d
+ASTRDUP	./include/libiberty.h	636;"	d
+ASTRDUP	./include/libiberty.h	650;"	d
+ATTRIBUTE_ALIGNED_ALIGNOF	./include/ansidecl.h	358;"	d
+ATTRIBUTE_ALIGNED_ALIGNOF	./include/ansidecl.h	360;"	d
+ATTRIBUTE_COLD	./include/ansidecl.h	373;"	d
+ATTRIBUTE_COLD	./include/ansidecl.h	375;"	d
+ATTRIBUTE_FPTR_PRINTF	./include/ansidecl.h	320;"	d
+ATTRIBUTE_FPTR_PRINTF	./include/ansidecl.h	322;"	d
+ATTRIBUTE_FPTR_PRINTF_1	./include/ansidecl.h	324;"	d
+ATTRIBUTE_FPTR_PRINTF_2	./include/ansidecl.h	325;"	d
+ATTRIBUTE_FPTR_PRINTF_3	./include/ansidecl.h	326;"	d
+ATTRIBUTE_FPTR_PRINTF_4	./include/ansidecl.h	327;"	d
+ATTRIBUTE_FPTR_PRINTF_5	./include/ansidecl.h	328;"	d
+ATTRIBUTE_HOT	./include/ansidecl.h	380;"	d
+ATTRIBUTE_HOT	./include/ansidecl.h	382;"	d
+ATTRIBUTE_MALLOC	./include/ansidecl.h	253;"	d
+ATTRIBUTE_MALLOC	./include/ansidecl.h	255;"	d
+ATTRIBUTE_NONNULL	./include/ansidecl.h	287;"	d
+ATTRIBUTE_NONNULL	./include/ansidecl.h	289;"	d
+ATTRIBUTE_NORETURN	./include/ansidecl.h	281;"	d
+ATTRIBUTE_NULL_PRINTF	./include/ansidecl.h	335;"	d
+ATTRIBUTE_NULL_PRINTF	./include/ansidecl.h	337;"	d
+ATTRIBUTE_NULL_PRINTF_1	./include/ansidecl.h	339;"	d
+ATTRIBUTE_NULL_PRINTF_2	./include/ansidecl.h	340;"	d
+ATTRIBUTE_NULL_PRINTF_3	./include/ansidecl.h	341;"	d
+ATTRIBUTE_NULL_PRINTF_4	./include/ansidecl.h	342;"	d
+ATTRIBUTE_NULL_PRINTF_5	./include/ansidecl.h	343;"	d
+ATTRIBUTE_PACKED	./include/ansidecl.h	367;"	d
+ATTRIBUTE_PRINTF	./include/ansidecl.h	307;"	d
+ATTRIBUTE_PRINTF_1	./include/ansidecl.h	308;"	d
+ATTRIBUTE_PRINTF_2	./include/ansidecl.h	309;"	d
+ATTRIBUTE_PRINTF_3	./include/ansidecl.h	310;"	d
+ATTRIBUTE_PRINTF_4	./include/ansidecl.h	311;"	d
+ATTRIBUTE_PRINTF_5	./include/ansidecl.h	312;"	d
+ATTRIBUTE_PURE	./include/ansidecl.h	296;"	d
+ATTRIBUTE_PURE	./include/ansidecl.h	298;"	d
+ATTRIBUTE_SENTINEL	./include/ansidecl.h	349;"	d
+ATTRIBUTE_SENTINEL	./include/ansidecl.h	351;"	d
+ATTRIBUTE_SENTINEL	./include/libiberty.h	/^extern char *concat (const char *, ...) ATTRIBUTE_MALLOC ATTRIBUTE_SENTINEL;$/;"	v
+ATTRIBUTE_SENTINEL	./include/libiberty.h	/^extern char *reconcat (char *, const char *, ...) ATTRIBUTE_MALLOC ATTRIBUTE_SENTINEL;$/;"	v
+ATTRIBUTE_UNUSED	./include/ansidecl.h	269;"	d
+ATTRIBUTE_UNUSED_LABEL	./include/ansidecl.h	262;"	d
+ATTRIBUTE_UNUSED_LABEL	./include/ansidecl.h	264;"	d
+AT_STRINGS_BEG	./libiberty/regex.c	5290;"	d	file:
+AT_STRINGS_BEG	./libiberty/regex.c	8183;"	d	file:
+AT_STRINGS_END	./libiberty/regex.c	5291;"	d	file:
+AT_STRINGS_END	./libiberty/regex.c	8184;"	d	file:
+AUTO_DEMANGLING	./include/demangle.h	103;"	d
+AUTO_DEMANGLING_STYLE_STRING	./include/demangle.h	90;"	d
+B	./include/md5.h	/^  md5_uint32 B;$/;"	m	struct:md5_ctx
+B	./include/sha1.h	/^  sha1_uint32 B;$/;"	m	struct:sha1_ctx
+BIG_REQUEST	./libiberty/objalloc.c	81;"	d	file:
+BLOCKSIZE	./libiberty/md5.c	130;"	d	file:
+BLOCKSIZE	./libiberty/sha1.c	44;"	d	file:
+BREAK_0	./libiberty/random.c	128;"	d	file:
+BREAK_1	./libiberty/random.c	134;"	d	file:
+BREAK_2	./libiberty/random.c	140;"	d	file:
+BREAK_3	./libiberty/random.c	146;"	d	file:
+BREAK_4	./libiberty/random.c	152;"	d	file:
+BUF_PUSH	./libiberty/regex.c	1946;"	d	file:
+BUF_PUSH	./libiberty/regex.c	8169;"	d	file:
+BUF_PUSH_2	./libiberty/regex.c	1954;"	d	file:
+BUF_PUSH_2	./libiberty/regex.c	8170;"	d	file:
+BUF_PUSH_3	./libiberty/regex.c	1963;"	d	file:
+BUF_PUSH_3	./libiberty/regex.c	8171;"	d	file:
+BYTE	./libiberty/regex.c	636;"	d	file:
+BYTE	./libiberty/regex.c	8199;"	d	file:
+BYTEWIDTH	./libiberty/regex.c	395;"	d	file:
+C	./include/md5.h	/^  md5_uint32 C;$/;"	m	struct:md5_ctx
+C	./include/sha1.h	/^  sha1_uint32 C;$/;"	m	struct:sha1_ctx
+C	./libiberty/safe-ctype.c	149;"	d	file:
+CALL_CHUNKFUN	./libiberty/obstack.c	104;"	d	file:
+CALL_CHUNKFUN	./libiberty/obstack.c	117;"	d	file:
+CALL_FREEFUN	./libiberty/obstack.c	109;"	d	file:
+CALL_FREEFUN	./libiberty/obstack.c	122;"	d	file:
+CHAR_BIT	./libiberty/hashtab.c	64;"	d	file:
+CHAR_CLASS_MAX_LENGTH	./libiberty/regex.c	2174;"	d	file:
+CHAR_CLASS_MAX_LENGTH	./libiberty/regex.c	2178;"	d	file:
+CHAR_CLASS_MAX_LENGTH	./libiberty/regex.c	2187;"	d	file:
+CHAR_CLASS_SIZE	./libiberty/regex.c	622;"	d	file:
+CHAR_CLASS_SIZE	./libiberty/regex.c	8195;"	d	file:
+CHAR_SET_SIZE	./libiberty/regex.c	264;"	d	file:
+CHAR_T	./libiberty/regex.c	609;"	d	file:
+CHAR_T	./libiberty/regex.c	618;"	d	file:
+CHAR_T	./libiberty/regex.c	8191;"	d	file:
+CHECK_LINE	./libiberty/testsuite/test-pexecute.c	173;"	d	file:
+CHUNK_HEADER_SIZE	./libiberty/objalloc.c	70;"	d	file:
+CHUNK_SIZE	./libiberty/objalloc.c	77;"	d	file:
+CLEAR	./libiberty/vsnprintf.c	87;"	d	file:
+CLOCKS_PER_SEC	./libiberty/getruntime.c	65;"	d	file:
+CLSIZE	./libiberty/getpagesize.c	50;"	d	file:
+CMP	./libiberty/strverscmp.c	81;"	d	file:
+COMPILED_BUFFER_VAR	./libiberty/regex.c	611;"	d	file:
+COMPILED_BUFFER_VAR	./libiberty/regex.c	620;"	d	file:
+COMPILED_BUFFER_VAR	./libiberty/regex.c	8193;"	d	file:
+COMPILE_STACK_EMPTY	./libiberty/regex.c	2137;"	d	file:
+COMPILE_STACK_FULL	./libiberty/regex.c	2138;"	d	file:
+COMPILE_STACK_TOP	./libiberty/regex.c	2141;"	d	file:
+CONST	./include/ansidecl.h	188;"	d
+CONST	./include/ansidecl.h	227;"	d
+COPYING_UNIT	./libiberty/obstack.c	72;"	d	file:
+COPY_VA_INT	./libiberty/_doprnt.c	42;"	d	file:
+CPLUS_MARKER	./libiberty/cplus-dem.c	92;"	d	file:
+CP_DYNAMIC_ARRAYS	./libiberty/cp-demangle.c	181;"	d	file:
+CP_DYNAMIC_ARRAYS	./libiberty/cp-demangle.c	186;"	d	file:
+CP_STATIC_IF_GLIBCPP_V3	./libiberty/cp-demangle.c	138;"	d	file:
+CP_STATIC_IF_GLIBCPP_V3	./libiberty/cp-demangle.c	175;"	d	file:
+CP_STATIC_IF_GLIBCPP_V3	./libiberty/cp-demangle.h	141;"	d
+CP_STATIC_IF_GLIBCPP_V3	./libiberty/cp-demangle.h	143;"	d
+CP_STATIC_IF_GLIBCPP_V3	./libiberty/cp-demangle.h	168;"	d
+CRAY_STACK	./libiberty/alloca.c	224;"	d	file:
+CURRENT_DEMANGLING_STYLE	./include/demangle.h	102;"	d
+CURRENT_DEMANGLING_STYLE	./libiberty/cplus-dem.c	60;"	d	file:
+CURRENT_DEMANGLING_STYLE	./libiberty/cplus-dem.c	61;"	d	file:
+CYCLIC	./libiberty/md5.c	318;"	d	file:
+C_ALLOCA	./include/libiberty.h	635;"	d
+C_ALLOCA	./include/libiberty.h	645;"	d
+C_ALLOCA	./include/libiberty.h	646;"	d
+C_ALLOCA	./libiberty/regex.c	1395;"	d	file:
+C_alloca	./libiberty/alloca.c	/^C_alloca (size_t size)$/;"	f
+D	./include/md5.h	/^  md5_uint32 D;$/;"	m	struct:md5_ctx
+D	./include/sha1.h	/^  sha1_uint32 D;$/;"	m	struct:sha1_ctx
+D	./libiberty/safe-ctype.c	145;"	d	file:
+DEBUG_POP	./libiberty/regex.c	1574;"	d	file:
+DEBUG_POP	./libiberty/regex.c	1577;"	d	file:
+DEBUG_POP	./libiberty/regex.c	8155;"	d	file:
+DEBUG_PRINT1	./libiberty/regex.c	1219;"	d	file:
+DEBUG_PRINT1	./libiberty/regex.c	759;"	d	file:
+DEBUG_PRINT2	./libiberty/regex.c	1220;"	d	file:
+DEBUG_PRINT2	./libiberty/regex.c	760;"	d	file:
+DEBUG_PRINT3	./libiberty/regex.c	1221;"	d	file:
+DEBUG_PRINT3	./libiberty/regex.c	761;"	d	file:
+DEBUG_PRINT4	./libiberty/regex.c	1222;"	d	file:
+DEBUG_PRINT4	./libiberty/regex.c	762;"	d	file:
+DEBUG_PRINT_COMPILED_PATTERN	./libiberty/regex.c	1224;"	d	file:
+DEBUG_PRINT_COMPILED_PATTERN	./libiberty/regex.c	765;"	d	file:
+DEBUG_PRINT_COMPILED_PATTERN	./libiberty/regex.c	8141;"	d	file:
+DEBUG_PRINT_DOUBLE_STRING	./libiberty/regex.c	1225;"	d	file:
+DEBUG_PRINT_DOUBLE_STRING	./libiberty/regex.c	767;"	d	file:
+DEBUG_PRINT_DOUBLE_STRING	./libiberty/regex.c	8142;"	d	file:
+DEBUG_PUSH	./libiberty/regex.c	1573;"	d	file:
+DEBUG_PUSH	./libiberty/regex.c	1576;"	d	file:
+DEBUG_PUSH	./libiberty/regex.c	8154;"	d	file:
+DEBUG_STATEMENT	./libiberty/regex.c	1218;"	d	file:
+DEBUG_STATEMENT	./libiberty/regex.c	758;"	d	file:
+DEFAULT_ALIGNMENT	./libiberty/obstack.c	59;"	d	file:
+DEFAULT_ROUNDING	./libiberty/obstack.c	65;"	d	file:
+DEFINED_ONCE	./libiberty/regex.c	8202;"	d	file:
+DEFUN	./include/ansidecl.h	194;"	d
+DEFUN	./include/ansidecl.h	233;"	d
+DEFUN_VOID	./include/ansidecl.h	195;"	d
+DEFUN_VOID	./include/ansidecl.h	234;"	d
+DEG_0	./libiberty/random.c	129;"	d	file:
+DEG_1	./libiberty/random.c	135;"	d	file:
+DEG_2	./libiberty/random.c	141;"	d	file:
+DEG_3	./libiberty/random.c	147;"	d	file:
+DEG_4	./libiberty/random.c	153;"	d	file:
+DEMANGLE_COMPONENT_ARGLIST	./include/demangle.h	/^  DEMANGLE_COMPONENT_ARGLIST,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_ARRAY_TYPE	./include/demangle.h	/^  DEMANGLE_COMPONENT_ARRAY_TYPE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_BINARY	./include/demangle.h	/^  DEMANGLE_COMPONENT_BINARY,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_BINARY_ARGS	./include/demangle.h	/^  DEMANGLE_COMPONENT_BINARY_ARGS,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_BUILTIN_TYPE	./include/demangle.h	/^  DEMANGLE_COMPONENT_BUILTIN_TYPE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_CAST	./include/demangle.h	/^  DEMANGLE_COMPONENT_CAST,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_CHARACTER	./include/demangle.h	/^  DEMANGLE_COMPONENT_CHARACTER,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_COMPLEX	./include/demangle.h	/^  DEMANGLE_COMPONENT_COMPLEX,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_COMPOUND_NAME	./include/demangle.h	/^  DEMANGLE_COMPONENT_COMPOUND_NAME,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_CONST	./include/demangle.h	/^  DEMANGLE_COMPONENT_CONST,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_CONSTRUCTION_VTABLE	./include/demangle.h	/^  DEMANGLE_COMPONENT_CONSTRUCTION_VTABLE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_CONST_THIS	./include/demangle.h	/^  DEMANGLE_COMPONENT_CONST_THIS,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_COVARIANT_THUNK	./include/demangle.h	/^  DEMANGLE_COMPONENT_COVARIANT_THUNK,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_CTOR	./include/demangle.h	/^  DEMANGLE_COMPONENT_CTOR,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_DECLTYPE	./include/demangle.h	/^  DEMANGLE_COMPONENT_DECLTYPE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_DTOR	./include/demangle.h	/^  DEMANGLE_COMPONENT_DTOR,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_EXTENDED_OPERATOR	./include/demangle.h	/^  DEMANGLE_COMPONENT_EXTENDED_OPERATOR,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_FIXED_TYPE	./include/demangle.h	/^  DEMANGLE_COMPONENT_FIXED_TYPE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_FUNCTION_PARAM	./include/demangle.h	/^  DEMANGLE_COMPONENT_FUNCTION_PARAM,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_FUNCTION_TYPE	./include/demangle.h	/^  DEMANGLE_COMPONENT_FUNCTION_TYPE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_GUARD	./include/demangle.h	/^  DEMANGLE_COMPONENT_GUARD,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_HIDDEN_ALIAS	./include/demangle.h	/^  DEMANGLE_COMPONENT_HIDDEN_ALIAS,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_IMAGINARY	./include/demangle.h	/^  DEMANGLE_COMPONENT_IMAGINARY,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_JAVA_CLASS	./include/demangle.h	/^  DEMANGLE_COMPONENT_JAVA_CLASS,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_JAVA_RESOURCE	./include/demangle.h	/^  DEMANGLE_COMPONENT_JAVA_RESOURCE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_LITERAL	./include/demangle.h	/^  DEMANGLE_COMPONENT_LITERAL,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_LITERAL_NEG	./include/demangle.h	/^  DEMANGLE_COMPONENT_LITERAL_NEG,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_LOCAL_NAME	./include/demangle.h	/^  DEMANGLE_COMPONENT_LOCAL_NAME,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_NAME	./include/demangle.h	/^  DEMANGLE_COMPONENT_NAME,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_OPERATOR	./include/demangle.h	/^  DEMANGLE_COMPONENT_OPERATOR,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_PACK_EXPANSION	./include/demangle.h	/^  DEMANGLE_COMPONENT_PACK_EXPANSION$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_POINTER	./include/demangle.h	/^  DEMANGLE_COMPONENT_POINTER,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_PTRMEM_TYPE	./include/demangle.h	/^  DEMANGLE_COMPONENT_PTRMEM_TYPE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_QUAL_NAME	./include/demangle.h	/^  DEMANGLE_COMPONENT_QUAL_NAME,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_REFERENCE	./include/demangle.h	/^  DEMANGLE_COMPONENT_REFERENCE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_REFTEMP	./include/demangle.h	/^  DEMANGLE_COMPONENT_REFTEMP,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_RESTRICT	./include/demangle.h	/^  DEMANGLE_COMPONENT_RESTRICT,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_RESTRICT_THIS	./include/demangle.h	/^  DEMANGLE_COMPONENT_RESTRICT_THIS,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_RVALUE_REFERENCE	./include/demangle.h	/^  DEMANGLE_COMPONENT_RVALUE_REFERENCE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_SUB_STD	./include/demangle.h	/^  DEMANGLE_COMPONENT_SUB_STD,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_TEMPLATE	./include/demangle.h	/^  DEMANGLE_COMPONENT_TEMPLATE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_TEMPLATE_ARGLIST	./include/demangle.h	/^  DEMANGLE_COMPONENT_TEMPLATE_ARGLIST,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_TEMPLATE_PARAM	./include/demangle.h	/^  DEMANGLE_COMPONENT_TEMPLATE_PARAM,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_THUNK	./include/demangle.h	/^  DEMANGLE_COMPONENT_THUNK,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_TRINARY	./include/demangle.h	/^  DEMANGLE_COMPONENT_TRINARY,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_TRINARY_ARG1	./include/demangle.h	/^  DEMANGLE_COMPONENT_TRINARY_ARG1,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_TRINARY_ARG2	./include/demangle.h	/^  DEMANGLE_COMPONENT_TRINARY_ARG2,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_TYPED_NAME	./include/demangle.h	/^  DEMANGLE_COMPONENT_TYPED_NAME,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_TYPEINFO	./include/demangle.h	/^  DEMANGLE_COMPONENT_TYPEINFO,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_TYPEINFO_FN	./include/demangle.h	/^  DEMANGLE_COMPONENT_TYPEINFO_FN,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_TYPEINFO_NAME	./include/demangle.h	/^  DEMANGLE_COMPONENT_TYPEINFO_NAME,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_UNARY	./include/demangle.h	/^  DEMANGLE_COMPONENT_UNARY,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_VENDOR_TYPE	./include/demangle.h	/^  DEMANGLE_COMPONENT_VENDOR_TYPE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_VENDOR_TYPE_QUAL	./include/demangle.h	/^  DEMANGLE_COMPONENT_VENDOR_TYPE_QUAL,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_VIRTUAL_THUNK	./include/demangle.h	/^  DEMANGLE_COMPONENT_VIRTUAL_THUNK,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_VOLATILE	./include/demangle.h	/^  DEMANGLE_COMPONENT_VOLATILE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_VOLATILE_THIS	./include/demangle.h	/^  DEMANGLE_COMPONENT_VOLATILE_THIS,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_VTABLE	./include/demangle.h	/^  DEMANGLE_COMPONENT_VTABLE,$/;"	e	enum:demangle_component_type
+DEMANGLE_COMPONENT_VTT	./include/demangle.h	/^  DEMANGLE_COMPONENT_VTT,$/;"	e	enum:demangle_component_type
+DEMANGLE_H	./include/demangle.h	31;"	d
+DIGIT_MAX	./libiberty/sort.c	55;"	d	file:
+DIR_SEPARATOR	./libiberty/basename.c	23;"	d	file:
+DIR_SEPARATOR	./libiberty/make-relative-prefix.c	73;"	d	file:
+DIR_SEPARATOR	./libiberty/make-temp-file.c	54;"	d	file:
+DIR_SEPARATOR_2	./libiberty/basename.c	30;"	d	file:
+DIR_SEPARATOR_2	./libiberty/make-relative-prefix.c	82;"	d	file:
+DIR_UP	./libiberty/make-relative-prefix.c	96;"	d	file:
+DMGL_ANSI	./include/demangle.h	43;"	d
+DMGL_ARM	./include/demangle.h	53;"	d
+DMGL_AUTO	./include/demangle.h	50;"	d
+DMGL_EDG	./include/demangle.h	57;"	d
+DMGL_GNAT	./include/demangle.h	59;"	d
+DMGL_GNU	./include/demangle.h	51;"	d
+DMGL_GNU_V3	./include/demangle.h	58;"	d
+DMGL_HP	./include/demangle.h	54;"	d
+DMGL_JAVA	./include/demangle.h	44;"	d
+DMGL_LUCID	./include/demangle.h	52;"	d
+DMGL_NO_OPTS	./include/demangle.h	41;"	d
+DMGL_PARAMS	./include/demangle.h	42;"	d
+DMGL_RET_POSTFIX	./include/demangle.h	47;"	d
+DMGL_STYLE_MASK	./include/demangle.h	62;"	d
+DMGL_TYPES	./include/demangle.h	46;"	d
+DMGL_VERBOSE	./include/demangle.h	45;"	d
+DONT_DECLARE_STRERROR	./libiberty/xstrerror.c	28;"	d	file:
+DOTS	./include/ansidecl.h	197;"	d
+DOTS	./include/ansidecl.h	236;"	d
+DOUBLE_FAIL_STACK	./libiberty/regex.c	1523;"	d	file:
+DOUBLE_FAIL_STACK	./libiberty/regex.c	8146;"	d	file:
+D_BUILTIN_TYPE_COUNT	./libiberty/cp-demangle.h	150;"	d
+D_PRINT_BOOL	./libiberty/cp-demangle.h	/^  D_PRINT_BOOL,$/;"	e	enum:d_builtin_type_print
+D_PRINT_BUFFER_LENGTH	./libiberty/cp-demangle.c	/^enum { D_PRINT_BUFFER_LENGTH = 256 };$/;"	e	enum:__anon26	file:
+D_PRINT_DEFAULT	./libiberty/cp-demangle.h	/^  D_PRINT_DEFAULT,$/;"	e	enum:d_builtin_type_print
+D_PRINT_FLOAT	./libiberty/cp-demangle.h	/^  D_PRINT_FLOAT,$/;"	e	enum:d_builtin_type_print
+D_PRINT_INT	./libiberty/cp-demangle.h	/^  D_PRINT_INT,$/;"	e	enum:d_builtin_type_print
+D_PRINT_LONG	./libiberty/cp-demangle.h	/^  D_PRINT_LONG,$/;"	e	enum:d_builtin_type_print
+D_PRINT_LONG_LONG	./libiberty/cp-demangle.h	/^  D_PRINT_LONG_LONG,$/;"	e	enum:d_builtin_type_print
+D_PRINT_UNSIGNED	./libiberty/cp-demangle.h	/^  D_PRINT_UNSIGNED,$/;"	e	enum:d_builtin_type_print
+D_PRINT_UNSIGNED_LONG	./libiberty/cp-demangle.h	/^  D_PRINT_UNSIGNED_LONG,$/;"	e	enum:d_builtin_type_print
+D_PRINT_UNSIGNED_LONG_LONG	./libiberty/cp-demangle.h	/^  D_PRINT_UNSIGNED_LONG_LONG,$/;"	e	enum:d_builtin_type_print
+D_PRINT_VOID	./libiberty/cp-demangle.h	/^  D_PRINT_VOID$/;"	e	enum:d_builtin_type_print
+E	./include/sha1.h	/^  sha1_uint32 E;$/;"	m	struct:sha1_ctx
+EDG_DEMANGLING	./include/demangle.h	108;"	d
+EDG_DEMANGLING_STYLE_STRING	./include/demangle.h	95;"	d
+ELIDE_CODE	./libiberty/getopt.c	60;"	d	file:
+ELIDE_CODE	./libiberty/getopt1.c	51;"	d	file:
+ELIDE_CODE	./libiberty/obstack.c	47;"	d	file:
+ELSE_EXTEND_BUFFER_HIGH_BOUND	./libiberty/regex.c	2017;"	d	file:
+ELSE_EXTEND_BUFFER_HIGH_BOUND	./libiberty/regex.c	2031;"	d	file:
+ENTRY	./libiberty/strerror.c	69;"	d	file:
+ENTRY	./libiberty/strerror.c	71;"	d	file:
+ENTRY	./libiberty/strsignal.c	73;"	d	file:
+ENTRY	./libiberty/strsignal.c	75;"	d	file:
+EOS	./libiberty/argv.c	44;"	d	file:
+ERROR	./libiberty/testsuite/test-pexecute.c	131;"	d	file:
+ERRSTR_FMT	./libiberty/xstrerror.c	48;"	d	file:
+EVER_MATCHED_SOMETHING	./libiberty/regex.c	1813;"	d	file:
+EXFUN	./include/ansidecl.h	193;"	d
+EXFUN	./include/ansidecl.h	232;"	d
+EXIT_FAILURE	./libiberty/obstack.c	88;"	d	file:
+EXIT_FAILURE	./libiberty/testsuite/test-expandargv.c	49;"	d	file:
+EXIT_FAILURE	./libiberty/testsuite/test-pexecute.c	77;"	d	file:
+EXIT_SUCCESS	./libiberty/testsuite/test-expandargv.c	45;"	d	file:
+EXIT_SUCCESS	./libiberty/testsuite/test-pexecute.c	73;"	d	file:
+EXTEND_BUFFER	./libiberty/regex.c	2036;"	d	file:
+EXTEND_BUFFER	./libiberty/regex.c	2070;"	d	file:
+EXTEND_BUFFER	./libiberty/regex.c	8176;"	d	file:
+EXTRACT_NUMBER	./libiberty/regex.c	678;"	d	file:
+EXTRACT_NUMBER	./libiberty/regex.c	683;"	d	file:
+EXTRACT_NUMBER	./libiberty/regex.c	705;"	d	file:
+EXTRACT_NUMBER	./libiberty/regex.c	706;"	d	file:
+EXTRACT_NUMBER	./libiberty/regex.c	8138;"	d	file:
+EXTRACT_NUMBER_AND_INCR	./libiberty/regex.c	714;"	d	file:
+EXTRACT_NUMBER_AND_INCR	./libiberty/regex.c	731;"	d	file:
+EXTRACT_NUMBER_AND_INCR	./libiberty/regex.c	732;"	d	file:
+EXTRACT_NUMBER_AND_INCR	./libiberty/regex.c	8139;"	d	file:
+F1	./libiberty/sha1.c	277;"	d	file:
+F2	./libiberty/sha1.c	278;"	d	file:
+F3	./libiberty/sha1.c	279;"	d	file:
+F4	./libiberty/sha1.c	280;"	d	file:
+FAIL_STACK_EMPTY	./libiberty/regex.c	1483;"	d	file:
+FAIL_STACK_FULL	./libiberty/regex.c	1485;"	d	file:
+FAIL_STACK_PTR_EMPTY	./libiberty/regex.c	1484;"	d	file:
+FALSE	./libiberty/regex.c	628;"	d	file:
+FATAL_ERROR	./libiberty/testsuite/test-pexecute.c	118;"	d	file:
+FF	./libiberty/md5.c	262;"	d	file:
+FG	./libiberty/md5.c	263;"	d	file:
+FH	./libiberty/md5.c	264;"	d	file:
+FI	./libiberty/md5.c	265;"	d	file:
+FIBHEAPKEY_MIN	./libiberty/fibheap.c	38;"	d	file:
+FILENAMES_H	./include/filenames.h	27;"	d
+FILENAME_CMP	./include/filenames.h	54;"	d
+FILENAME_PATTERN	./libiberty/testsuite/test-expandargv.c	69;"	d	file:
+FIRST_STRING_P	./libiberty/regex.c	385;"	d	file:
+FLOATFORMAT_CHAR_BIT	./libiberty/floatformat.c	78;"	d	file:
+FLOATFORMAT_H	./include/floatformat.h	22;"	d
+FNM_CASEFOLD	./include/fnmatch.h	55;"	d
+FNM_FILE_NAME	./include/fnmatch.h	53;"	d
+FNM_LEADING_DIR	./include/fnmatch.h	54;"	d
+FNM_NOESCAPE	./include/fnmatch.h	44;"	d
+FNM_NOESCAPE	./include/fnmatch.h	49;"	d
+FNM_NOMATCH	./include/fnmatch.h	59;"	d
+FNM_PATHNAME	./include/fnmatch.h	43;"	d
+FNM_PATHNAME	./include/fnmatch.h	48;"	d
+FNM_PERIOD	./include/fnmatch.h	45;"	d
+FNM_PERIOD	./include/fnmatch.h	50;"	d
+FOLD	./libiberty/fnmatch.c	73;"	d	file:
+FREE_STACK_RETURN	./libiberty/regex.c	2274;"	d	file:
+FREE_STACK_RETURN	./libiberty/regex.c	2277;"	d	file:
+FREE_STACK_RETURN	./libiberty/regex.c	8178;"	d	file:
+FREE_VAR	./libiberty/regex.c	4971;"	d	file:
+FREE_VAR	./libiberty/regex.c	8186;"	d	file:
+FREE_VARIABLES	./libiberty/regex.c	5324;"	d	file:
+FREE_VARIABLES	./libiberty/regex.c	5345;"	d	file:
+FREE_VARIABLES	./libiberty/regex.c	5361;"	d	file:
+FREE_VARIABLES	./libiberty/regex.c	5372;"	d	file:
+FREE_VARIABLES	./libiberty/regex.c	8187;"	d	file:
+FREE_WCS_BUFFERS	./libiberty/regex.c	4979;"	d	file:
+FX	./libiberty/md5.c	357;"	d	file:
+FX	./libiberty/md5.c	377;"	d	file:
+FX	./libiberty/md5.c	378;"	d	file:
+FX	./libiberty/md5.c	398;"	d	file:
+FX	./libiberty/md5.c	399;"	d	file:
+GCC_VERSION	./include/ansidecl.h	136;"	d
+GETOPT_INTERFACE_VERSION	./libiberty/getopt.c	56;"	d	file:
+GETOPT_INTERFACE_VERSION	./libiberty/getopt1.c	47;"	d	file:
+GET_BUFFER_SPACE	./libiberty/regex.c	1935;"	d	file:
+GET_BUFFER_SPACE	./libiberty/regex.c	1940;"	d	file:
+GET_BUFFER_SPACE	./libiberty/regex.c	8168;"	d	file:
+GET_UNSIGNED_NUMBER	./libiberty/regex.c	2153;"	d	file:
+GET_UNSIGNED_NUMBER	./libiberty/regex.c	8177;"	d	file:
+GNAT_DEMANGLING	./include/demangle.h	111;"	d
+GNAT_DEMANGLING_STYLE_STRING	./include/demangle.h	98;"	d
+GNU_DEMANGLING	./include/demangle.h	104;"	d
+GNU_DEMANGLING_STYLE_STRING	./include/demangle.h	91;"	d
+GNU_HZ	./libiberty/clock.c	56;"	d	file:
+GNU_HZ	./libiberty/clock.c	59;"	d	file:
+GNU_HZ	./libiberty/clock.c	62;"	d	file:
+GNU_HZ	./libiberty/getruntime.c	69;"	d	file:
+GNU_HZ	./libiberty/getruntime.c	72;"	d	file:
+GNU_HZ	./libiberty/getruntime.c	75;"	d	file:
+GNU_OUR_PAGESIZE	./libiberty/getpagesize.c	32;"	d	file:
+GNU_OUR_PAGESIZE	./libiberty/getpagesize.c	36;"	d	file:
+GNU_OUR_PAGESIZE	./libiberty/getpagesize.c	42;"	d	file:
+GNU_OUR_PAGESIZE	./libiberty/getpagesize.c	45;"	d	file:
+GNU_OUR_PAGESIZE	./libiberty/getpagesize.c	48;"	d	file:
+GNU_OUR_PAGESIZE	./libiberty/getpagesize.c	54;"	d	file:
+GNU_OUR_PAGESIZE	./libiberty/getpagesize.c	56;"	d	file:
+GNU_V3_DEMANGLING	./include/demangle.h	109;"	d
+GNU_V3_DEMANGLING_STYLE_STRING	./include/demangle.h	96;"	d
+GTY	./include/hashtab.h	42;"	d
+GTY	./include/splay-tree.h	48;"	d
+GUESSPATHLEN	./libiberty/getpwd.c	55;"	d	file:
+GUESSPATHLEN	./libiberty/getpwd.c	57;"	d	file:
+HAVE_DOS_BASED_FILE_SYSTEM	./include/filenames.h	36;"	d
+HAVE_DOS_BASED_FILE_SYSTEM	./libiberty/basename.c	28;"	d	file:
+HAVE_DOS_BASED_FILE_SYSTEM	./libiberty/make-relative-prefix.c	78;"	d	file:
+HAVE_HOST_EXECUTABLE_SUFFIX	./libiberty/make-relative-prefix.c	79;"	d	file:
+HEX_TABLE_INITIALIZED	./libiberty/hex.c	150;"	d	file:
+HOST_CHARSET	./include/safe-ctype.h	45;"	d
+HOST_CHARSET	./include/safe-ctype.h	49;"	d
+HOST_CHARSET	./include/safe-ctype.h	51;"	d
+HOST_CHARSET_ASCII	./include/safe-ctype.h	40;"	d
+HOST_CHARSET_EBCDIC	./include/safe-ctype.h	41;"	d
+HOST_CHARSET_UNKNOWN	./include/safe-ctype.h	39;"	d
+HOST_EXECUTABLE_SUFFIX	./libiberty/make-relative-prefix.c	80;"	d	file:
+HP_DEMANGLING	./include/demangle.h	107;"	d
+HP_DEMANGLING_STYLE_STRING	./include/demangle.h	94;"	d
+HTAB_DELETED_ENTRY	./include/hashtab.h	91;"	d
+HTAB_EMPTY_ENTRY	./include/hashtab.h	86;"	d
+INFINITY	./libiberty/floatformat.c	45;"	d	file:
+INFINITY	./libiberty/floatformat.c	47;"	d	file:
+INHIBIT_STRING_HEADER	./libiberty/regex.c	139;"	d	file:
+INITIAL_MAXARGC	./libiberty/argv.c	47;"	d	file:
+INIT_BUF_SIZE	./libiberty/regex.c	1931;"	d	file:
+INIT_BUF_SIZE	./libiberty/regex.c	8167;"	d	file:
+INIT_COMPILE_STACK_SIZE	./libiberty/regex.c	2135;"	d	file:
+INIT_FAILURE_ALLOC	./libiberty/regex.c	1418;"	d	file:
+INIT_FAIL_STACK	./libiberty/regex.c	1493;"	d	file:
+INIT_FAIL_STACK	./libiberty/regex.c	1507;"	d	file:
+INIT_FAIL_STACK	./libiberty/regex.c	8144;"	d	file:
+INSERT	./include/hashtab.h	/^enum insert_option {NO_INSERT, INSERT};$/;"	e	enum:insert_option
+INSERT_JUMP	./libiberty/regex.c	1981;"	d	file:
+INSERT_JUMP	./libiberty/regex.c	8174;"	d	file:
+INSERT_JUMP2	./libiberty/regex.c	1985;"	d	file:
+INSERT_JUMP2	./libiberty/regex.c	8175;"	d	file:
+INSIDE_RECURSION	./libiberty/regex.c	632;"	d	file:
+INSIDE_RECURSION	./libiberty/regex.c	634;"	d	file:
+INSIDE_RECURSION	./libiberty/regex.c	637;"	d	file:
+INSIDE_RECURSION	./libiberty/regex.c	639;"	d	file:
+INTBUF_SIZE	./libiberty/cplus-dem.c	71;"	d	file:
+INT_MAX	./include/md5.h	52;"	d
+INT_MAX	./include/sha1.h	51;"	d
+INT_MAX_32_BITS	./include/md5.h	44;"	d
+INT_MAX_32_BITS	./include/sha1.h	43;"	d
+ISALNUM	./include/safe-ctype.h	90;"	d
+ISALNUM	./libiberty/regex.c	231;"	d	file:
+ISALPHA	./include/safe-ctype.h	89;"	d
+ISALPHA	./libiberty/regex.c	232;"	d	file:
+ISASCII	./libiberty/regex.c	210;"	d	file:
+ISASCII	./libiberty/regex.c	212;"	d	file:
+ISASCII	./libiberty/regex.c	214;"	d	file:
+ISBLANK	./include/safe-ctype.h	91;"	d
+ISBLANK	./libiberty/regex.c	218;"	d	file:
+ISBLANK	./libiberty/regex.c	220;"	d	file:
+ISCNTRL	./include/safe-ctype.h	92;"	d
+ISCNTRL	./libiberty/regex.c	233;"	d	file:
+ISDIGIT	./include/safe-ctype.h	93;"	d
+ISDIGIT	./libiberty/regex.c	230;"	d	file:
+ISGRAPH	./include/safe-ctype.h	94;"	d
+ISGRAPH	./libiberty/regex.c	223;"	d	file:
+ISGRAPH	./libiberty/regex.c	225;"	d	file:
+ISIDNUM	./include/safe-ctype.h	102;"	d
+ISIDST	./include/safe-ctype.h	103;"	d
+ISLOWER	./include/safe-ctype.h	95;"	d
+ISLOWER	./libiberty/regex.c	234;"	d	file:
+ISPRINT	./include/safe-ctype.h	96;"	d
+ISPRINT	./libiberty/regex.c	228;"	d	file:
+ISPRINT	./libiberty/regex.c	229;"	d	file:
+ISPUNCT	./include/safe-ctype.h	97;"	d
+ISPUNCT	./libiberty/regex.c	235;"	d	file:
+ISSPACE	./include/safe-ctype.h	98;"	d
+ISSPACE	./libiberty/regex.c	236;"	d	file:
+ISUPPER	./include/safe-ctype.h	99;"	d
+ISUPPER	./libiberty/regex.c	237;"	d	file:
+ISXDIGIT	./include/safe-ctype.h	100;"	d
+ISXDIGIT	./libiberty/regex.c	238;"	d	file:
+IS_ABSOLUTE_PATH	./include/filenames.h	44;"	d
+IS_ABSOLUTE_PATH	./include/filenames.h	49;"	d
+IS_ACTIVE	./libiberty/regex.c	1811;"	d	file:
+IS_ALPHA	./libiberty/cp-demangle.c	4872;"	d	file:
+IS_CHAR_CLASS	./libiberty/regex.c	2182;"	d	file:
+IS_CHAR_CLASS	./libiberty/regex.c	2184;"	d	file:
+IS_CHAR_CLASS	./libiberty/regex.c	2189;"	d	file:
+IS_DIGIT	./libiberty/cp-demangle.c	201;"	d	file:
+IS_DIR_SEPARATOR	./include/filenames.h	39;"	d
+IS_DIR_SEPARATOR	./include/filenames.h	48;"	d
+IS_DIR_SEPARATOR	./libiberty/basename.c	36;"	d	file:
+IS_DIR_SEPARATOR	./libiberty/basename.c	38;"	d	file:
+IS_DIR_SEPARATOR	./libiberty/make-relative-prefix.c	90;"	d	file:
+IS_DIR_SEPARATOR	./libiberty/make-relative-prefix.c	92;"	d	file:
+IS_ISOBASIC	./include/safe-ctype.h	104;"	d
+IS_LOWER	./libiberty/cp-demangle.c	203;"	d	file:
+IS_NVSPACE	./include/safe-ctype.h	106;"	d
+IS_SPACE_OR_NUL	./include/safe-ctype.h	107;"	d
+IS_UPPER	./libiberty/cp-demangle.c	202;"	d	file:
+IS_VSPACE	./include/safe-ctype.h	105;"	d
+JAVA_DEMANGLING	./include/demangle.h	110;"	d
+JAVA_DEMANGLING_STYLE_STRING	./include/demangle.h	97;"	d
+K1	./libiberty/sha1.c	271;"	d	file:
+K2	./libiberty/sha1.c	272;"	d	file:
+K3	./libiberty/sha1.c	273;"	d	file:
+K4	./libiberty/sha1.c	274;"	d	file:
+KDEL	./libiberty/splay-tree.c	105;"	d	file:
+KDEL	./libiberty/splay-tree.c	60;"	d	file:
+L	./libiberty/safe-ctype.c	141;"	d	file:
+LEN	./libiberty/strverscmp.c	82;"	d	file:
+LEN_STRING	./libiberty/cplus-dem.c	318;"	d	file:
+LIBIBERTY_H	./include/libiberty.h	36;"	d
+LINELEN	./libiberty/testsuite/test-demangle.c	46;"	d	file:
+LOCK	./libiberty/setenv.c	72;"	d	file:
+LONG_DOUBLE	./include/ansidecl.h	150;"	d
+LONG_DOUBLE	./include/ansidecl.h	206;"	d
+LONG_MAX	./libiberty/random.c	67;"	d	file:
+LONG_MAX	./libiberty/strtol.c	74;"	d	file:
+LONG_MIN	./libiberty/strtol.c	78;"	d	file:
+LUCID_DEMANGLING	./include/demangle.h	105;"	d
+LUCID_DEMANGLING_STYLE_STRING	./include/demangle.h	92;"	d
+L_tmpnam	./libiberty/tmpnam.c	18;"	d	file:
+M	./libiberty/safe-ctype.c	151;"	d	file:
+M	./libiberty/sha1.c	308;"	d	file:
+MAP_ANONYMOUS	./libiberty/testsuite/test-demangle.c	98;"	d	file:
+MATCHED_SOMETHING	./libiberty/regex.c	1812;"	d	file:
+MATCHING_IN_FIRST_STRING	./libiberty/regex.c	5273;"	d	file:
+MATCHING_IN_FRST_STRING	./libiberty/regex.c	8181;"	d	file:
+MATCH_MAY_ALLOCATE	./libiberty/regex.c	1390;"	d	file:
+MATCH_MAY_ALLOCATE	./libiberty/regex.c	1404;"	d	file:
+MATCH_NULL_UNSET_VALUE	./libiberty/regex.c	1801;"	d	file:
+MAX	./libiberty/regex.c	399;"	d	file:
+MAX	./libiberty/regex.c	401;"	d	file:
+MAX	./libiberty/strerror.c	43;"	d	file:
+MAX	./libiberty/strsignal.c	48;"	d	file:
+MAXPATHLEN	./libiberty/getcwd.c	37;"	d	file:
+MAXPATHLEN	./libiberty/getpwd.c	111;"	d	file:
+MAX_ALLOCA_SIZE	./libiberty/regex.c	4977;"	d	file:
+MAX_BUF_SIZE	./libiberty/regex.c	2002;"	d	file:
+MAX_BUF_SIZE	./libiberty/regex.c	2005;"	d	file:
+MAX_FAILURE_ITEMS	./libiberty/regex.c	1685;"	d	file:
+MAX_REGNUM	./libiberty/regex.c	2103;"	d	file:
+MAX_TYPES	./libiberty/random.c	160;"	d	file:
+MB_LEN_MAX	./libiberty/regex.c	189;"	d	file:
+MIN	./libiberty/regex.c	400;"	d	file:
+MIN	./libiberty/regex.c	402;"	d	file:
+MINGW_NAME	./libiberty/pex-win32.c	61;"	d	file:
+MINGW_NAME_LEN	./libiberty/pex-win32.c	62;"	d	file:
+MOVE_BUFFER_POINTER	./libiberty/regex.c	2015;"	d	file:
+MOVE_BUFFER_POINTER	./libiberty/regex.c	2030;"	d	file:
+M_PI	./libiberty/_doprnt.c	209;"	d	file:
+NAN	./libiberty/floatformat.c	53;"	d	file:
+NAN	./libiberty/floatformat.c	55;"	d	file:
+NL	./libiberty/cp-demangle.c	1449;"	d	file:
+NOARGS	./include/ansidecl.h	198;"	d
+NOARGS	./include/ansidecl.h	237;"	d
+NONOPTION_P	./libiberty/getopt.c	541;"	d	file:
+NO_DEMANGLING_STYLE_STRING	./include/demangle.h	89;"	d
+NO_HIGHEST_ACTIVE_REG	./libiberty/regex.c	5383;"	d	file:
+NO_HIGHEST_ACTIVE_REG	./libiberty/regex.c	8188;"	d	file:
+NO_INSERT	./include/hashtab.h	/^enum insert_option {NO_INSERT, INSERT};$/;"	e	enum:insert_option
+NO_LOWEST_ACTIVE_REG	./libiberty/regex.c	5384;"	d	file:
+NO_LOWEST_ACTIVE_REG	./libiberty/regex.c	8189;"	d	file:
+NULL	./libiberty/alloca.c	81;"	d	file:
+NULL	./libiberty/argv.c	40;"	d	file:
+NULL	./libiberty/getopt1.c	65;"	d	file:
+NULL	./libiberty/random.c	72;"	d	file:
+NULL	./libiberty/random.c	77;"	d	file:
+NULL	./libiberty/regex.c	247;"	d	file:
+NULL	./libiberty/strsignal.c	44;"	d	file:
+NULLP	./libiberty/concat.c	213;"	d	file:
+NUM_FAILURE_ITEMS	./libiberty/regex.c	1688;"	d	file:
+NUM_NONREG_ITEMS	./libiberty/regex.c	1676;"	d	file:
+NUM_NONREG_ITEMS	./libiberty/regex.c	1678;"	d	file:
+NUM_REG_ITEMS	./libiberty/regex.c	1672;"	d	file:
+OBJALLOC_ALIGN	./include/objalloc.h	63;"	d
+OBJALLOC_H	./include/objalloc.h	21;"	d
+OBSTACK_INTERFACE_VERSION	./libiberty/obstack.c	32;"	d	file:
+OFFSET_ADDRESS_SIZE	./libiberty/regex.c	612;"	d	file:
+OFFSET_ADDRESS_SIZE	./libiberty/regex.c	621;"	d	file:
+OFFSET_ADDRESS_SIZE	./libiberty/regex.c	8194;"	d	file:
+OP	./libiberty/md5.c	306;"	d	file:
+OP	./libiberty/md5.c	347;"	d	file:
+OP	./libiberty/md5.c	348;"	d	file:
+O_BINARY	./libiberty/mkstemps.c	53;"	d	file:
+P	./libiberty/safe-ctype.c	146;"	d	file:
+PARAMS	./include/ansidecl.h	155;"	d
+PARAMS	./include/ansidecl.h	208;"	d
+PATFETCH	./libiberty/regex.c	1883;"	d	file:
+PATFETCH	./libiberty/regex.c	1889;"	d	file:
+PATFETCH	./libiberty/regex.c	8162;"	d	file:
+PATFETCH_RAW	./libiberty/regex.c	1899;"	d	file:
+PATFETCH_RAW	./libiberty/regex.c	8163;"	d	file:
+PATH_SEPARATOR	./libiberty/make-relative-prefix.c	84;"	d	file:
+PATH_SEPARATOR	./libiberty/make-relative-prefix.c	86;"	d	file:
+PATUNFETCH	./libiberty/regex.c	1905;"	d	file:
+PATUNFETCH	./libiberty/regex.c	8164;"	d	file:
+PERMUTE	./libiberty/getopt.c	/^  REQUIRE_ORDER, PERMUTE, RETURN_IN_ORDER$/;"	e	enum:__anon9	file:
+PEXECUTE_FIRST	./include/libiberty.h	579;"	d
+PEXECUTE_LAST	./include/libiberty.h	580;"	d
+PEXECUTE_ONE	./include/libiberty.h	581;"	d
+PEXECUTE_SEARCH	./include/libiberty.h	582;"	d
+PEXECUTE_VERBOSE	./include/libiberty.h	583;"	d
+PEX_BINARY_ERROR	./include/libiberty.h	425;"	d
+PEX_BINARY_INPUT	./include/libiberty.h	406;"	d
+PEX_BINARY_OUTPUT	./include/libiberty.h	413;"	d
+PEX_COMMON_H	./libiberty/pex-common.h	23;"	d
+PEX_LAST	./include/libiberty.h	393;"	d
+PEX_MSDOS_FD_OFFSET	./libiberty/pex-msdos.c	43;"	d	file:
+PEX_MSDOS_FILE_COUNT	./libiberty/pex-msdos.c	41;"	d	file:
+PEX_RECORD_TIMES	./include/libiberty.h	367;"	d
+PEX_SAVE_TEMPS	./include/libiberty.h	373;"	d
+PEX_SEARCH	./include/libiberty.h	396;"	d
+PEX_STDERR_TO_PIPE	./include/libiberty.h	421;"	d
+PEX_STDERR_TO_STDOUT	./include/libiberty.h	402;"	d
+PEX_SUFFIX	./include/libiberty.h	399;"	d
+PEX_USE_PIPES	./include/libiberty.h	370;"	d
+PFN_MS_EX	./libiberty/physmem.c	/^typedef WINBOOL (WINAPI *PFN_MS_EX) (lMEMORYSTATUSEX*);$/;"	t	file:
+POINTER	./libiberty/obstack.c	55;"	d	file:
+POINTER_TO_OFFSET	./libiberty/regex.c	5257;"	d	file:
+POINTER_TO_OFFSET	./libiberty/regex.c	5265;"	d	file:
+POINTER_TO_OFFSET	./libiberty/regex.c	8180;"	d	file:
+POP_FAILURE_ELT	./libiberty/regex.c	1569;"	d	file:
+POP_FAILURE_ELT	./libiberty/regex.c	8153;"	d	file:
+POP_FAILURE_INT	./libiberty/regex.c	1568;"	d	file:
+POP_FAILURE_INT	./libiberty/regex.c	8152;"	d	file:
+POP_FAILURE_POINT	./libiberty/regex.c	1710;"	d	file:
+POP_FAILURE_POINT	./libiberty/regex.c	8157;"	d	file:
+POP_FAILURE_POINTER	./libiberty/regex.c	1567;"	d	file:
+POP_FAILURE_POINTER	./libiberty/regex.c	8151;"	d	file:
+PREFETCH	./libiberty/regex.c	5277;"	d	file:
+PREFETCH	./libiberty/regex.c	8182;"	d	file:
+PREFIX	./libiberty/regex.c	/^typedef union PREFIX(fail_stack_elt) PREFIX(fail_stack_elt_t);$/;"	t	typeref:union:	file:
+PREFIX	./libiberty/regex.c	/^union PREFIX(fail_stack_elt)$/;"	f
+PREFIX	./libiberty/regex.c	/^} PREFIX(fail_stack_type);$/;"	t	typeref:struct:__anon2	file:
+PREFIX	./libiberty/regex.c	/^} PREFIX(fail_stack_type);$/;"	t	typeref:struct:__anon3	file:
+PREFIX	./libiberty/regex.c	/^} PREFIX(register_info_type);$/;"	t	typeref:union:__anon4	file:
+PREFIX	./libiberty/regex.c	613;"	d	file:
+PREFIX	./libiberty/regex.c	623;"	d	file:
+PREFIX	./libiberty/regex.c	8196;"	d	file:
+PRINT_ANSI_QUALIFIERS	./libiberty/cplus-dem.c	144;"	d	file:
+PRINT_ARG_TYPES	./libiberty/cplus-dem.c	145;"	d	file:
+PRINT_CHAR	./libiberty/_doprnt.c	53;"	d	file:
+PRINT_TYPE	./libiberty/_doprnt.c	61;"	d	file:
+PROTO	./include/ansidecl.h	192;"	d
+PROTO	./include/ansidecl.h	231;"	d
+PTR	./include/ansidecl.h	148;"	d
+PTR	./include/ansidecl.h	204;"	d
+PTR	./libiberty/random.c	70;"	d	file:
+PTR	./libiberty/random.c	75;"	d	file:
+PTRCONST	./include/ansidecl.h	149;"	d
+PTRCONST	./include/ansidecl.h	205;"	d
+PTR_INT_TYPE	./include/obstack.h	136;"	d
+PTR_INT_TYPE	./include/obstack.h	140;"	d
+PTR_INT_TYPE	./include/obstack.h	142;"	d
+PUBLIC_MODE	./libiberty/pex-unix.c	77;"	d	file:
+PUBLIC_MODE	./libiberty/pex-unix.c	80;"	d	file:
+PUSH_FAILURE_ELT	./libiberty/regex.c	1562;"	d	file:
+PUSH_FAILURE_ELT	./libiberty/regex.c	8150;"	d	file:
+PUSH_FAILURE_INT	./libiberty/regex.c	1556;"	d	file:
+PUSH_FAILURE_INT	./libiberty/regex.c	8149;"	d	file:
+PUSH_FAILURE_POINT	./libiberty/regex.c	1590;"	d	file:
+PUSH_FAILURE_POINT	./libiberty/regex.c	8156;"	d	file:
+PUSH_FAILURE_POINTER	./libiberty/regex.c	1550;"	d	file:
+PUSH_FAILURE_POINTER	./libiberty/regex.c	8148;"	d	file:
+PUSH_PATTERN_OP	./libiberty/regex.c	1540;"	d	file:
+PUSH_PATTERN_OP	./libiberty/regex.c	8147;"	d	file:
+PUT_CHAR	./libiberty/regex.c	615;"	d	file:
+PUT_CHAR	./libiberty/regex.c	626;"	d	file:
+PUT_CHAR	./libiberty/regex.c	8198;"	d	file:
+PWAIT_ERROR	./libiberty/pex-djgpp.c	40;"	d	file:
+PWAIT_ERROR	./libiberty/pex-djgpp.c	42;"	d	file:
+P_tmpdir	./libiberty/tmpnam.c	21;"	d	file:
+R	./libiberty/sha1.c	312;"	d	file:
+READ_PORT	./libiberty/pex-common.h	47;"	d
+REALLOC	./libiberty/regex.c	2003;"	d	file:
+REALLOC	./libiberty/regex.c	2006;"	d	file:
+REALPATH_LIMIT	./libiberty/lrealpath.c	61;"	d	file:
+REALPATH_LIMIT	./libiberty/lrealpath.c	64;"	d	file:
+REGEX_ALLOCATE	./libiberty/regex.c	318;"	d	file:
+REGEX_ALLOCATE	./libiberty/regex.c	338;"	d	file:
+REGEX_ALLOCATE_STACK	./libiberty/regex.c	354;"	d	file:
+REGEX_ALLOCATE_STACK	./libiberty/regex.c	365;"	d	file:
+REGEX_ALLOCATE_STACK	./libiberty/regex.c	371;"	d	file:
+REGEX_FREE	./libiberty/regex.c	320;"	d	file:
+REGEX_FREE	./libiberty/regex.c	346;"	d	file:
+REGEX_FREE_STACK	./libiberty/regex.c	358;"	d	file:
+REGEX_FREE_STACK	./libiberty/regex.c	367;"	d	file:
+REGEX_FREE_STACK	./libiberty/regex.c	376;"	d	file:
+REGEX_REALLOCATE	./libiberty/regex.c	319;"	d	file:
+REGEX_REALLOCATE	./libiberty/regex.c	341;"	d	file:
+REGEX_REALLOCATE_STACK	./libiberty/regex.c	356;"	d	file:
+REGEX_REALLOCATE_STACK	./libiberty/regex.c	366;"	d	file:
+REGEX_REALLOCATE_STACK	./libiberty/regex.c	373;"	d	file:
+REGEX_TALLOC	./libiberty/regex.c	393;"	d	file:
+REGS_FIXED	./include/xregex2.h	375;"	d
+REGS_REALLOCATE	./include/xregex2.h	374;"	d
+REGS_UNALLOCATED	./include/xregex2.h	373;"	d
+REG_BADBR	./include/xregex2.h	/^  REG_BADBR,		\/* Invalid contents of \\{\\}.  *\/$/;"	e	enum:__anon27
+REG_BADPAT	./include/xregex2.h	/^  REG_BADPAT,		\/* Invalid pattern.  *\/$/;"	e	enum:__anon27
+REG_BADRPT	./include/xregex2.h	/^  REG_BADRPT,		\/* No preceding re for repetition op.  *\/$/;"	e	enum:__anon27
+REG_EBRACE	./include/xregex2.h	/^  REG_EBRACE,		\/* Unmatched \\{.  *\/$/;"	e	enum:__anon27
+REG_EBRACK	./include/xregex2.h	/^  REG_EBRACK,		\/* Unmatched left bracket.  *\/$/;"	e	enum:__anon27
+REG_ECOLLATE	./include/xregex2.h	/^  REG_ECOLLATE,		\/* Not implemented.  *\/$/;"	e	enum:__anon27
+REG_ECTYPE	./include/xregex2.h	/^  REG_ECTYPE,		\/* Invalid character class name.  *\/$/;"	e	enum:__anon27
+REG_EEND	./include/xregex2.h	/^  REG_EEND,		\/* Premature end.  *\/$/;"	e	enum:__anon27
+REG_EESCAPE	./include/xregex2.h	/^  REG_EESCAPE,		\/* Trailing backslash.  *\/$/;"	e	enum:__anon27
+REG_ENOSYS	./include/xregex2.h	/^  REG_ENOSYS = -1,	\/* This will never happen for this implementation.  *\/$/;"	e	enum:__anon27
+REG_EPAREN	./include/xregex2.h	/^  REG_EPAREN,		\/* Parenthesis imbalance.  *\/$/;"	e	enum:__anon27
+REG_ERANGE	./include/xregex2.h	/^  REG_ERANGE,		\/* Invalid range end.  *\/$/;"	e	enum:__anon27
+REG_ERPAREN	./include/xregex2.h	/^  REG_ERPAREN		\/* Unmatched ) or \\); not returned from regcomp.  *\/$/;"	e	enum:__anon27
+REG_ESIZE	./include/xregex2.h	/^  REG_ESIZE,		\/* Compiled pattern bigger than 2^16 bytes.  *\/$/;"	e	enum:__anon27
+REG_ESPACE	./include/xregex2.h	/^  REG_ESPACE,		\/* Ran out of memory.  *\/$/;"	e	enum:__anon27
+REG_ESUBREG	./include/xregex2.h	/^  REG_ESUBREG,		\/* Invalid back reference.  *\/$/;"	e	enum:__anon27
+REG_EXTENDED	./include/xregex2.h	260;"	d
+REG_ICASE	./include/xregex2.h	264;"	d
+REG_MATCH_NULL_STRING_P	./libiberty/regex.c	1810;"	d	file:
+REG_NEWLINE	./include/xregex2.h	269;"	d
+REG_NOERROR	./include/xregex2.h	/^  REG_NOERROR = 0,	\/* Success.  *\/$/;"	e	enum:__anon27
+REG_NOMATCH	./include/xregex2.h	/^  REG_NOMATCH,		\/* Didn't find a match (for regexec).  *\/$/;"	e	enum:__anon27
+REG_NOSUB	./include/xregex2.h	273;"	d
+REG_NOTBOL	./include/xregex2.h	283;"	d
+REG_NOTEOL	./include/xregex2.h	286;"	d
+REG_UNSET	./libiberty/regex.c	1840;"	d	file:
+REG_UNSET	./libiberty/regex.c	8160;"	d	file:
+REG_UNSET_VALUE	./libiberty/regex.c	1839;"	d	file:
+REG_UNSET_VALUE	./libiberty/regex.c	8159;"	d	file:
+REL_ALLOC	./libiberty/regex.c	125;"	d	file:
+REMAINING_AVAIL_SLOTS	./libiberty/regex.c	1695;"	d	file:
+REQUIRE_ORDER	./libiberty/getopt.c	/^  REQUIRE_ORDER, PERMUTE, RETURN_IN_ORDER$/;"	e	enum:__anon9	file:
+RESET_FAIL_STACK	./libiberty/regex.c	1505;"	d	file:
+RESET_FAIL_STACK	./libiberty/regex.c	1512;"	d	file:
+RESET_FAIL_STACK	./libiberty/regex.c	8145;"	d	file:
+RESULT	./libiberty/_doprnt.c	212;"	d	file:
+RETALLOC	./libiberty/regex.c	390;"	d	file:
+RETALLOC_IF	./libiberty/regex.c	391;"	d	file:
+RETURN_IN_ORDER	./libiberty/getopt.c	/^  REQUIRE_ORDER, PERMUTE, RETURN_IN_ORDER$/;"	e	enum:__anon9	file:
+RE_BACKSLASH_ESCAPE_IN_LISTS	./include/xregex2.h	58;"	d
+RE_BK_PLUS_QM	./include/xregex2.h	63;"	d
+RE_CHAR_CLASSES	./include/xregex2.h	69;"	d
+RE_CONTEXT_INDEP_ANCHORS	./include/xregex2.h	83;"	d
+RE_CONTEXT_INDEP_OPS	./include/xregex2.h	91;"	d
+RE_CONTEXT_INVALID_OPS	./include/xregex2.h	95;"	d
+RE_DEBUG	./include/xregex2.h	163;"	d
+RE_DOT_NEWLINE	./include/xregex2.h	99;"	d
+RE_DOT_NOT_NULL	./include/xregex2.h	103;"	d
+RE_DUP_MAX	./include/xregex2.h	250;"	d
+RE_DUP_MAX	./include/xregex2.h	253;"	d
+RE_HAT_LISTS_NOT_NEWLINE	./include/xregex2.h	107;"	d
+RE_INTERVALS	./include/xregex2.h	112;"	d
+RE_INVALID_INTERVAL_ORD	./include/xregex2.h	168;"	d
+RE_LIMITED_OPS	./include/xregex2.h	116;"	d
+RE_NEWLINE_ALT	./include/xregex2.h	120;"	d
+RE_NO_BK_BRACES	./include/xregex2.h	125;"	d
+RE_NO_BK_PARENS	./include/xregex2.h	129;"	d
+RE_NO_BK_REFS	./include/xregex2.h	133;"	d
+RE_NO_BK_VBAR	./include/xregex2.h	137;"	d
+RE_NO_EMPTY_RANGES	./include/xregex2.h	143;"	d
+RE_NO_GNU_OPS	./include/xregex2.h	155;"	d
+RE_NO_POSIX_BACKTRACKING	./include/xregex2.h	151;"	d
+RE_NREGS	./include/xregex2.h	419;"	d
+RE_SYNTAX_AWK	./include/xregex2.h	182;"	d
+RE_SYNTAX_ED	./include/xregex2.h	213;"	d
+RE_SYNTAX_EGREP	./include/xregex2.h	202;"	d
+RE_SYNTAX_EMACS	./include/xregex2.h	180;"	d
+RE_SYNTAX_GNU_AWK	./include/xregex2.h	189;"	d
+RE_SYNTAX_GREP	./include/xregex2.h	197;"	d
+RE_SYNTAX_POSIX_AWK	./include/xregex2.h	193;"	d
+RE_SYNTAX_POSIX_BASIC	./include/xregex2.h	222;"	d
+RE_SYNTAX_POSIX_EGREP	./include/xregex2.h	208;"	d
+RE_SYNTAX_POSIX_EXTENDED	./include/xregex2.h	231;"	d
+RE_SYNTAX_POSIX_MINIMAL_BASIC	./include/xregex2.h	228;"	d
+RE_SYNTAX_POSIX_MINIMAL_EXTENDED	./include/xregex2.h	239;"	d
+RE_SYNTAX_SED	./include/xregex2.h	215;"	d
+RE_TRANSLATE_TYPE	./include/xregex2.h	328;"	d
+RE_UNMATCHED_RIGHT_PAREN_ORD	./include/xregex2.h	147;"	d
+R_OK	./libiberty/make-relative-prefix.c	67;"	d	file:
+R_OK	./libiberty/make-temp-file.c	44;"	d	file:
+S	./libiberty/safe-ctype.c	154;"	d	file:
+SAFE_CTYPE_H	./include/safe-ctype.h	36;"	d
+SCOPE_STRING	./libiberty/cplus-dem.c	322;"	d	file:
+SEP_0	./libiberty/random.c	130;"	d	file:
+SEP_1	./libiberty/random.c	136;"	d	file:
+SEP_2	./libiberty/random.c	142;"	d	file:
+SEP_3	./libiberty/random.c	148;"	d	file:
+SEP_4	./libiberty/random.c	154;"	d	file:
+SET_HIGH_BOUND	./libiberty/regex.c	2014;"	d	file:
+SET_LIST_BIT	./libiberty/regex.c	2147;"	d	file:
+SET_REGS_MATCHED	./libiberty/regex.c	1819;"	d	file:
+SHA1_H	./include/sha1.h	21;"	d
+SIGNED	./include/ansidecl.h	190;"	d
+SIGNED	./include/ansidecl.h	229;"	d
+SIGN_EXTEND_CHAR	./libiberty/regex.c	254;"	d	file:
+SIGN_EXTEND_CHAR	./libiberty/regex.c	256;"	d	file:
+SIGN_EXTEND_CHAR	./libiberty/regex.c	259;"	d	file:
+SORT_H	./include/sort.h	23;"	d
+STACK_DIR	./libiberty/alloca.c	103;"	d	file:
+STACK_DIR	./libiberty/alloca.c	98;"	d	file:
+STACK_DIRECTION	./libiberty/alloca.c	93;"	d	file:
+STDERR_FILE_NO	./libiberty/pex-common.h	44;"	d
+STDIN_FILE_NO	./libiberty/pex-common.h	38;"	d
+STDOUT_FILE_NO	./libiberty/pex-common.h	41;"	d
+STORE_JUMP	./libiberty/regex.c	1973;"	d	file:
+STORE_JUMP	./libiberty/regex.c	8172;"	d	file:
+STORE_JUMP2	./libiberty/regex.c	1977;"	d	file:
+STORE_JUMP2	./libiberty/regex.c	8173;"	d	file:
+STORE_NUMBER	./libiberty/regex.c	650;"	d	file:
+STORE_NUMBER	./libiberty/regex.c	655;"	d	file:
+STORE_NUMBER	./libiberty/regex.c	8136;"	d	file:
+STORE_NUMBER_AND_INCR	./libiberty/regex.c	667;"	d	file:
+STORE_NUMBER_AND_INCR	./libiberty/regex.c	8137;"	d	file:
+STREQ	./libiberty/regex.c	397;"	d	file:
+STRING_EMPTY	./libiberty/cplus-dem.c	315;"	d	file:
+SWAP	./libiberty/md5.c	50;"	d	file:
+SWAP	./libiberty/md5.c	53;"	d	file:
+SWAP	./libiberty/sha1.c	38;"	d	file:
+SWAP	./libiberty/sha1.c	40;"	d	file:
+SWAP_FLAGS	./libiberty/getopt.c	292;"	d	file:
+SWAP_FLAGS	./libiberty/getopt.c	300;"	d	file:
+SWITCH_ENUM_CAST	./libiberty/regex.c	177;"	d	file:
+SWITCH_ENUM_CAST	./libiberty/regex.c	179;"	d	file:
+SYI$_PAGE_SIZE	./libiberty/getpagesize.c	75;"	d	file:
+SYNTAX	./libiberty/regex.c	297;"	d	file:
+S_F	./libiberty/strverscmp.c	77;"	d	file:
+S_I	./libiberty/strverscmp.c	76;"	d	file:
+S_ISLNK	./libiberty/unlink-if-ordinary.c	55;"	d	file:
+S_ISLNK	./libiberty/unlink-if-ordinary.c	57;"	d	file:
+S_N	./libiberty/strverscmp.c	75;"	d	file:
+S_Z	./libiberty/strverscmp.c	78;"	d	file:
+Sword	./libiberty/regex.c	173;"	d	file:
+T	./libiberty/safe-ctype.c	153;"	d	file:
+TALLOC	./libiberty/regex.c	389;"	d	file:
+TEMP_FILE	./libiberty/choose-temp.c	37;"	d	file:
+TEMP_FILE	./libiberty/make-temp-file.c	59;"	d	file:
+TEMP_FILE_LEN	./libiberty/choose-temp.c	38;"	d	file:
+TEMP_FILE_LEN	./libiberty/make-temp-file.c	60;"	d	file:
+TEST	./libiberty/_doprnt.c	35;"	d	file:
+TEST_PEX_GET_STATUS	./libiberty/testsuite/test-pexecute.c	227;"	d	file:
+TEST_PEX_GET_STATUS_1	./libiberty/testsuite/test-pexecute.c	222;"	d	file:
+TEST_PEX_INIT	./libiberty/testsuite/test-pexecute.c	201;"	d	file:
+TEST_PEX_READ_OUTPUT	./libiberty/testsuite/test-pexecute.c	235;"	d	file:
+TEST_PEX_RUN	./libiberty/testsuite/test-pexecute.c	207;"	d	file:
+TMP_MAX	./libiberty/mkstemps.c	49;"	d	file:
+TOLOWER	./include/safe-ctype.h	113;"	d
+TOLOWER	./libiberty/regex.c	241;"	d	file:
+TOLOWER	./libiberty/regex.c	243;"	d	file:
+TOUPPER	./include/safe-ctype.h	112;"	d
+TRANSLATE	./libiberty/regex.c	1918;"	d	file:
+TRANSLATE	./libiberty/regex.c	1922;"	d	file:
+TRANSLATE	./libiberty/regex.c	8165;"	d	file:
+TRUE	./libiberty/regex.c	627;"	d	file:
+TYPE_0	./libiberty/random.c	127;"	d	file:
+TYPE_1	./libiberty/random.c	133;"	d	file:
+TYPE_2	./libiberty/random.c	139;"	d	file:
+TYPE_3	./libiberty/random.c	145;"	d	file:
+TYPE_4	./libiberty/random.c	151;"	d	file:
+TYPE_QUAL_CONST	./libiberty/cplus-dem.c	456;"	d	file:
+TYPE_QUAL_RESTRICT	./libiberty/cplus-dem.c	458;"	d	file:
+TYPE_QUAL_VOLATILE	./libiberty/cplus-dem.c	457;"	d	file:
+TYPE_UNQUALIFIED	./libiberty/cplus-dem.c	455;"	d	file:
+U	./libiberty/safe-ctype.c	143;"	d	file:
+UCHAR_MAX	./libiberty/sort.c	41;"	d	file:
+UCHAR_T	./libiberty/regex.c	610;"	d	file:
+UCHAR_T	./libiberty/regex.c	619;"	d	file:
+UCHAR_T	./libiberty/regex.c	8192;"	d	file:
+ULONG_MAX	./libiberty/random.c	66;"	d	file:
+ULONG_MAX	./libiberty/strtol.c	70;"	d	file:
+ULONG_MAX	./libiberty/strtoul.c	51;"	d	file:
+UNALIGNED_P	./libiberty/md5.c	230;"	d	file:
+UNALIGNED_P	./libiberty/sha1.c	234;"	d	file:
+UNLOCK	./libiberty/setenv.c	73;"	d	file:
+USE_C_ALLOCA	./include/libiberty.h	643;"	d
+USE_C_ALLOCA	./include/libiberty.h	644;"	d
+V	./libiberty/safe-ctype.c	152;"	d	file:
+VA_CLOSE	./include/ansidecl.h	166;"	d
+VA_CLOSE	./include/ansidecl.h	213;"	d
+VA_FIXEDARG	./include/ansidecl.h	167;"	d
+VA_FIXEDARG	./include/ansidecl.h	214;"	d
+VA_OPEN	./include/ansidecl.h	165;"	d
+VA_OPEN	./include/ansidecl.h	212;"	d
+VA_START	./include/ansidecl.h	159;"	d
+VA_START	./include/ansidecl.h	210;"	d
+VDEL	./libiberty/splay-tree.c	106;"	d	file:
+VDEL	./libiberty/splay-tree.c	61;"	d	file:
+VERIFY	./libiberty/vsnprintf.c	89;"	d	file:
+VFORK_STRING	./libiberty/pex-unix.c	61;"	d	file:
+VFORK_STRING	./libiberty/pex-unix.c	63;"	d	file:
+VOLATILE	./include/ansidecl.h	189;"	d
+VOLATILE	./include/ansidecl.h	228;"	d
+VPARAMS	./include/ansidecl.h	158;"	d
+VPARAMS	./include/ansidecl.h	209;"	d
+WAIT_CHILD	./libiberty/pex-win32.c	57;"	d	file:
+WAIT_GRANDCHILD	./libiberty/pex-win32.c	58;"	d	file:
+WCHAR	./libiberty/regex.c	631;"	d	file:
+WCHAR	./libiberty/regex.c	8200;"	d	file:
+WCOREDUMP	./libiberty/testsuite/test-pexecute.c	66;"	d	file:
+WCOREFLG	./libiberty/testsuite/test-pexecute.c	69;"	d	file:
+WEXITSTATUS	./libiberty/testsuite/test-pexecute.c	60;"	d	file:
+WIDE_CHAR_SUPPORT	./libiberty/regex.c	54;"	d	file:
+WIFEXITED	./libiberty/testsuite/test-pexecute.c	57;"	d	file:
+WIFSIGNALED	./libiberty/testsuite/test-pexecute.c	51;"	d	file:
+WIN32_LEAN_AND_MEAN	./libiberty/lrealpath.c	70;"	d	file:
+WIN32_LEAN_AND_MEAN	./libiberty/physmem.c	60;"	d	file:
+WORDCHAR_P	./libiberty/regex.c	5300;"	d	file:
+WORDCHAR_P	./libiberty/regex.c	5306;"	d	file:
+WORDCHAR_P	./libiberty/regex.c	8185;"	d	file:
+WORDS_BIGENDIAN	./libiberty/md5.c	45;"	d	file:
+WORK_BUFFER_SIZE	./libiberty/regex.c	6171;"	d	file:
+WRITE_PORT	./libiberty/pex-common.h	50;"	d
+WSTOPSIG	./libiberty/testsuite/test-pexecute.c	63;"	d	file:
+WTERMSIG	./libiberty/testsuite/test-pexecute.c	54;"	d	file:
+W_OK	./libiberty/make-relative-prefix.c	68;"	d	file:
+W_OK	./libiberty/make-temp-file.c	45;"	d	file:
+XALLOCA	./include/libiberty.h	323;"	d
+XALLOCAVAR	./include/libiberty.h	340;"	d
+XALLOCAVEC	./include/libiberty.h	331;"	d
+XATEXIT_SIZE	./libiberty/xatexit.c	48;"	d	file:
+XCNEW	./include/libiberty.h	325;"	d
+XCNEWVAR	./include/libiberty.h	342;"	d
+XCNEWVEC	./include/libiberty.h	333;"	d
+XDELETE	./include/libiberty.h	327;"	d
+XDELETEVEC	./include/libiberty.h	336;"	d
+XDUP	./include/libiberty.h	326;"	d
+XDUPVAR	./include/libiberty.h	343;"	d
+XDUPVEC	./include/libiberty.h	334;"	d
+XL	./libiberty/safe-ctype.c	142;"	d	file:
+XNEW	./include/libiberty.h	324;"	d
+XNEWVAR	./include/libiberty.h	341;"	d
+XNEWVEC	./include/libiberty.h	332;"	d
+XOBFINISH	./include/libiberty.h	351;"	d
+XOBNEW	./include/libiberty.h	348;"	d
+XOBNEWVAR	./include/libiberty.h	350;"	d
+XOBNEWVEC	./include/libiberty.h	349;"	d
+XRESIZEVAR	./include/libiberty.h	344;"	d
+XRESIZEVEC	./include/libiberty.h	335;"	d
+XU	./libiberty/safe-ctype.c	144;"	d	file:
+X_OK	./libiberty/make-relative-prefix.c	69;"	d	file:
+X_OK	./libiberty/make-temp-file.c	46;"	d	file:
+Z	./libiberty/safe-ctype.c	150;"	d	file:
+_	./libiberty/getopt.c	88;"	d	file:
+_	./libiberty/getopt.c	90;"	d	file:
+_	./libiberty/obstack.c	409;"	d	file:
+_	./libiberty/obstack.c	412;"	d	file:
+_	./libiberty/safe-ctype.c	147;"	d	file:
+_ANSIDECL_H	./include/ansidecl.h	115;"	d
+_FIBHEAP_H_	./include/fibheap.h	41;"	d
+_FNMATCH_H	./include/fnmatch.h	23;"	d
+_GETOPT_H	./include/getopt.h	24;"	d
+_GNU_SOURCE	./libiberty/floatformat.c	22;"	d	file:
+_GNU_SOURCE	./libiberty/fnmatch.c	34;"	d	file:
+_GNU_SOURCE	./libiberty/regex.c	34;"	d	file:
+_GNU_SOURCE	./libiberty/regex.c	35;"	d	file:
+_MD5_H	./include/md5.h	22;"	d
+_NO_PROTO	./libiberty/getopt.c	30;"	d	file:
+_OBSTACK_H	./include/obstack.h	111;"	d
+_PARTITION_H	./include/partition.h	37;"	d
+_POSIX_SOURCE	./libiberty/sigsetmask.c	18;"	d	file:
+_P_DETACH	./libiberty/pex-win32.c	55;"	d	file:
+_P_NOWAIT	./libiberty/pex-win32.c	52;"	d	file:
+_P_NOWAITO	./libiberty/pex-win32.c	54;"	d	file:
+_P_OVERLAY	./libiberty/pex-win32.c	53;"	d	file:
+_P_WAIT	./libiberty/pex-win32.c	51;"	d	file:
+_REGEX_H	./include/xregex2.h	26;"	d
+_REGEX_RE_COMP	./include/xregex.h	22;"	d
+_RE_SYNTAX_POSIX_COMMON	./include/xregex2.h	218;"	d
+_SPLAY_TREE_H	./include/splay-tree.h	31;"	d
+_XREGEX_H	./include/xregex.h	5;"	d
+__HASHTAB_H__	./include/hashtab.h	33;"	d
+__INT_TO_PTR	./include/obstack.h	126;"	d
+__P	./include/fnmatch.h	30;"	d
+__P	./include/fnmatch.h	31;"	d
+__P	./include/fnmatch.h	33;"	d
+__P	./include/fnmatch.h	34;"	d
+__PTR_TO_INT	./include/obstack.h	122;"	d
+__attribute__	./include/ansidecl.h	247;"	d
+__cxa_demangle	./libiberty/cp-demangle.c	/^__cxa_demangle (const char *mangled_name, char *output_buffer,$/;"	f
+__environ	./libiberty/setenv.c	62;"	d	file:
+__extension__	./include/ansidecl.h	390;"	d
+__extension__	./include/objalloc.h	84;"	d
+__extension__	./include/obstack.h	300;"	d
+__gcclibcxx_demangle_callback	./libiberty/cp-demangle.c	/^__gcclibcxx_demangle_callback (const char *mangled_name,$/;"	f
+__getopt_initialized	./libiberty/getopt.c	/^int __getopt_initialized = 0;$/;"	v
+__ieee_double_shape_type	./libiberty/copysign.c	/^} __ieee_double_shape_type;$/;"	t	typeref:union:__anon10	file:
+__ieee_double_shape_type	./libiberty/copysign.c	/^} __ieee_double_shape_type;$/;"	t	typeref:union:__anon14	file:
+__ieee_float_shape_type	./libiberty/copysign.c	/^} __ieee_float_shape_type;$/;"	t	typeref:union:__anon18	file:
+__ieee_float_shape_type	./libiberty/copysign.c	/^} __ieee_float_shape_type;$/;"	t	typeref:union:__anon21	file:
+__restrict	./include/xregex2.h	517;"	d
+__restrict	./include/xregex2.h	519;"	d
+__restrict_arr	./include/xregex2.h	528;"	d
+__restrict_arr	./include/xregex2.h	530;"	d
+__set_errno	./libiberty/setenv.c	50;"	d	file:
+_ascii	./libiberty/configure	/^ _ascii (); _ebcdic ();$/;"	f
+_doprnt	./libiberty/_doprnt.c	/^_doprnt (const char *format, va_list ap, FILE *stream)$/;"	f
+_doprnt	./libiberty/_doprnt.c	32;"	d	file:
+_doprnt	./libiberty/_doprnt.c	39;"	d	file:
+_getopt_initialize	./libiberty/getopt.c	/^_getopt_initialize (int argc ATTRIBUTE_UNUSED,$/;"	f	file:
+_getopt_internal	./libiberty/getopt.c	/^_getopt_internal (int argc, char *const *argv, const char *optstring,$/;"	f
+_hex_array_size	./include/libiberty.h	355;"	d
+_hex_bad	./include/libiberty.h	356;"	d
+_hex_value	./libiberty/hex.c	/^const unsigned char _hex_value[_hex_array_size] =$/;"	v
+_hex_value	./libiberty/hex.c	/^unsigned char _hex_value[_hex_array_size];$/;"	v
+_objalloc_alloc	./libiberty/objalloc.c	/^_objalloc_alloc (struct objalloc *o, unsigned long len)$/;"	f
+_obstack	./libiberty/obstack.c	/^struct obstack *_obstack;$/;"	v	typeref:struct:obstack
+_obstack_allocated_p	./libiberty/obstack.c	/^_obstack_allocated_p (struct obstack *h, POINTER obj)$/;"	f
+_obstack_begin	./libiberty/obstack.c	/^_obstack_begin (struct obstack *h, int size, int alignment,$/;"	f
+_obstack_begin_1	./libiberty/obstack.c	/^_obstack_begin_1 (struct obstack *h, int size, int alignment,$/;"	f
+_obstack_chunk	./include/obstack.h	/^struct _obstack_chunk		\/* Lives at front of each chunk. *\/$/;"	s
+_obstack_free	./libiberty/obstack.c	/^_obstack_free (struct obstack *h, POINTER obj)$/;"	f
+_obstack_memcpy	./include/obstack.h	148;"	d
+_obstack_memcpy	./include/obstack.h	151;"	d
+_obstack_memcpy	./include/obstack.h	153;"	d
+_obstack_memory_used	./libiberty/obstack.c	/^_obstack_memory_used (struct obstack *h)$/;"	f
+_obstack_newchunk	./libiberty/obstack.c	/^_obstack_newchunk (struct obstack *h, int length)$/;"	f
+_sch_isalnum	./include/safe-ctype.h	/^  _sch_isalnum  = _sch_isalpha|_sch_isdigit,	\/* A-Za-z0-9 *\/$/;"	e	enum:__anon29
+_sch_isalpha	./include/safe-ctype.h	/^  _sch_isalpha  = _sch_isupper|_sch_islower,	\/* A-Za-z *\/$/;"	e	enum:__anon29
+_sch_isbasic	./include/safe-ctype.h	/^  _sch_isbasic  = _sch_isprint|_sch_iscppsp     \/* basic charset of ISO C$/;"	e	enum:__anon29
+_sch_isblank	./include/safe-ctype.h	/^  _sch_isblank  = 0x0001,	\/* space \\t *\/$/;"	e	enum:__anon29
+_sch_iscntrl	./include/safe-ctype.h	/^  _sch_iscntrl  = 0x0002,	\/* nonprinting characters *\/$/;"	e	enum:__anon29
+_sch_iscppsp	./include/safe-ctype.h	/^  _sch_iscppsp  = _sch_isvsp|_sch_isnvsp,	\/* isspace + \\0 *\/$/;"	e	enum:__anon29
+_sch_isdigit	./include/safe-ctype.h	/^  _sch_isdigit  = 0x0004,	\/* 0-9 *\/$/;"	e	enum:__anon29
+_sch_isgraph	./include/safe-ctype.h	/^  _sch_isgraph  = _sch_isalnum|_sch_ispunct,	\/* isprint and not space *\/$/;"	e	enum:__anon29
+_sch_isidnum	./include/safe-ctype.h	/^  _sch_isidnum  = _sch_isidst|_sch_isdigit,	\/* A-Za-z0-9_ *\/$/;"	e	enum:__anon29
+_sch_isidst	./include/safe-ctype.h	/^  _sch_isidst	= 0x0200,	\/* A-Za-z_ *\/$/;"	e	enum:__anon29
+_sch_islower	./include/safe-ctype.h	/^  _sch_islower  = 0x0008,	\/* a-z *\/$/;"	e	enum:__anon29
+_sch_isnvsp	./include/safe-ctype.h	/^  _sch_isnvsp   = 0x0800,	\/* space \\t \\f \\v \\0 *\/$/;"	e	enum:__anon29
+_sch_isprint	./include/safe-ctype.h	/^  _sch_isprint  = 0x0010,	\/* any printing character including ' ' *\/$/;"	e	enum:__anon29
+_sch_ispunct	./include/safe-ctype.h	/^  _sch_ispunct  = 0x0020,	\/* all punctuation *\/$/;"	e	enum:__anon29
+_sch_isspace	./include/safe-ctype.h	/^  _sch_isspace  = 0x0040,	\/* space \\t \\n \\r \\f \\v *\/$/;"	e	enum:__anon29
+_sch_istable	./libiberty/safe-ctype.c	/^const unsigned short _sch_istable[256] =$/;"	v
+_sch_isupper	./include/safe-ctype.h	/^  _sch_isupper  = 0x0080,	\/* A-Z *\/$/;"	e	enum:__anon29
+_sch_isvsp	./include/safe-ctype.h	/^  _sch_isvsp    = 0x0400,	\/* \\n \\r *\/$/;"	e	enum:__anon29
+_sch_isxdigit	./include/safe-ctype.h	/^  _sch_isxdigit = 0x0100,	\/* 0-9A-Fa-f *\/$/;"	e	enum:__anon29
+_sch_test	./include/safe-ctype.h	87;"	d
+_sch_tolower	./libiberty/safe-ctype.c	/^const unsigned char _sch_tolower[256] =$/;"	v
+_sch_toupper	./libiberty/safe-ctype.c	/^const unsigned char _sch_toupper[256] =$/;"	v
+_xexit_cleanup	./libiberty/xexit.c	/^void (*_xexit_cleanup) (void);$/;"	v
+accum	./include/demangle.h	/^      short accum;$/;"	m	struct:demangle_component::__anon30::__anon34
+active_reg_t	./include/xregex2.h	/^typedef unsigned long int active_reg_t;$/;"	t
+ada_demangle	./libiberty/cplus-dem.c	/^ada_demangle (const char *mangled, int option ATTRIBUTE_UNUSED)$/;"	f	file:
+after_dot	./libiberty/regex.c	/^  after_dot,	\/* Succeeds if after point.  *\/$/;"	e	enum:__anon1	file:
+alc	./libiberty/cp-demangle.c	/^  size_t alc;$/;"	m	struct:d_growable_string	file:
+align	./libiberty/alloca.c	/^  char align[ALIGN_SIZE];	\/* To force sizeof(header).  *\/$/;"	m	union:hdr	file:
+alignment_mask	./include/obstack.h	/^  int   alignment_mask;		\/* Mask of alignment for each object. *\/$/;"	m	struct:obstack
+alignof	./libiberty/sha1.c	233;"	d	file:
+alloc_failed	./include/obstack.h	/^  unsigned alloc_failed:1;	\/* No longer used, as we now call the failed$/;"	m	struct:obstack
+alloca	./include/libiberty.h	632;"	d
+alloca	./include/libiberty.h	634;"	d
+alloca	./include/libiberty.h	642;"	d
+alloca	./libiberty/cp-demangle.c	120;"	d	file:
+alloca	./libiberty/putenv.c	56;"	d	file:
+alloca	./libiberty/regex.c	329;"	d	file:
+allocated	./include/dyn-string.h	/^  int allocated;	\/* The amount of space allocated for the string.  *\/$/;"	m	struct:dyn_string
+allocated	./include/xregex2.h	/^  unsigned long int allocated;$/;"	m	struct:re_pattern_buffer
+allocation_failure	./libiberty/cp-demangle.c	/^  int allocation_failure;$/;"	m	struct:d_growable_string	file:
+alloced	./libiberty/testsuite/test-demangle.c	/^  size_t alloced;$/;"	m	struct:line	file:
+alt_match_null_string_p	./libiberty/regex.c	/^PREFIX(alt_match_null_string_p) (UCHAR_T *p, UCHAR_T *end,$/;"	f	file:
+anychar	./libiberty/regex.c	/^  anychar,$/;"	e	enum:__anon1	file:
+args	./include/demangle.h	/^      int args;$/;"	m	struct:demangle_component::__anon30::__anon33
+args	./libiberty/cp-demangle.h	/^  int args;$/;"	m	struct:demangle_operator_info
+argv_to_argc	./libiberty/pex-win32.c	/^argv_to_argc (char *const *argv)$/;"	f	file:
+argv_to_cmdline	./libiberty/pex-win32.c	/^argv_to_cmdline (char *const *argv)$/;"	f	file:
+arm_demangling	./include/demangle.h	/^  arm_demangling = DMGL_ARM,$/;"	e	enum:demangling_styles
+arm_pt	./libiberty/cplus-dem.c	/^arm_pt (struct work_stuff *work, const char *mangled,$/;"	f	file:
+arm_special	./libiberty/cplus-dem.c	/^arm_special (const char **mangled, string *declp)$/;"	f	file:
+aslong	./libiberty/copysign.c	/^    long aslong[2];$/;"	m	union:__anon10	file:
+aslong	./libiberty/copysign.c	/^  long aslong[2];$/;"	m	union:__anon14	file:
+asprintf	./libiberty/asprintf.c	/^asprintf (char **buf, const char *fmt, ...)$/;"	f
+assert	./libiberty/regex.c	1215;"	d	file:
+assert	./libiberty/regex.c	1216;"	d	file:
+at_begline_loc_p	./libiberty/regex.c	/^PREFIX(at_begline_loc_p) (const CHAR_T *pattern, const CHAR_T *p,$/;"	f	file:
+at_dot	./libiberty/regex.c	/^  at_dot,	\/* Succeeds if at point.  *\/$/;"	e	enum:__anon1	file:
+at_endline_loc_p	./libiberty/regex.c	/^PREFIX(at_endline_loc_p) (const CHAR_T *p, const CHAR_T *pend,$/;"	f	file:
+atexit	./libiberty/atexit.c	/^atexit(void (*f)(void))$/;"	f
+auto_demangling	./include/demangle.h	/^  auto_demangling = DMGL_AUTO,$/;"	e	enum:demangling_styles
+avail	./libiberty/regex.c	/^  unsigned avail;			\/* Offset of next open position.  *\/$/;"	m	struct:__anon3	file:
+avail	./libiberty/regex.c	/^  unsigned avail;			\/* Offset of next open position.  *\/$/;"	m	struct:__anon7	file:
+avail	./libiberty/regex.c	/^  unsigned long int avail;		\/* Offset of next open position.  *\/$/;"	m	struct:__anon2	file:
+b	./libiberty/cplus-dem.c	/^  char *b;			\/* pointer to start of string *\/$/;"	m	struct:string	file:
+backslashify	./libiberty/pex-win32.c	/^backslashify (char *s)$/;"	f	file:
+basename	./include/libiberty.h	110;"	d
+basename	./libiberty/basename.c	/^basename (const char *name)$/;"	f
+bcmp	./libiberty/bcmp.c	/^bcmp (const void *s1, const void *s2, size_t count)$/;"	f
+bcmp_translate	./libiberty/regex.c	/^PREFIX(bcmp_translate) (const CHAR_T *s1, const CHAR_T *s2, register int len,$/;"	f	file:
+bcopy	./libiberty/bcopy.c	/^bcopy (const void *src, void *dest, size_t len)$/;"	f
+before_dot	./libiberty/regex.c	/^  ,before_dot,	\/* Succeeds if before point.  *\/$/;"	e	enum:__anon1	file:
+begalt_offset	./libiberty/regex.c	/^  pattern_offset_t begalt_offset;$/;"	m	struct:__anon6	file:
+begbuf	./libiberty/regex.c	/^  begbuf,$/;"	e	enum:__anon1	file:
+begline	./libiberty/regex.c	/^  begline,$/;"	e	enum:__anon1	file:
+best_regend	./libiberty/regex.c	/^static const char **best_regstart, **best_regend;$/;"	v	file:
+best_regstart	./libiberty/regex.c	/^static const char **best_regstart, **best_regend;$/;"	v	file:
+bits	./libiberty/regex.c	/^  } bits;$/;"	m	union:__anon4	typeref:struct:__anon4::__anon5	file:
+bl	./libiberty/safe-ctype.c	127;"	d	file:
+boolean	./libiberty/regex.c	/^typedef char boolean;$/;"	t	file:
+bsearch	./libiberty/bsearch.c	/^bsearch (register const void *key, const void *base0,$/;"	f
+bsize	./libiberty/cplus-dem.c	/^  int bsize;$/;"	m	struct:work_stuff	file:
+btowc	./libiberty/regex.c	86;"	d	file:
+btypevec	./libiberty/cplus-dem.c	/^  char **btypevec;$/;"	m	struct:work_stuff	file:
+buf	./libiberty/cp-demangle.c	/^  char *buf;$/;"	m	struct:d_growable_string	file:
+buf	./libiberty/cp-demangle.c	/^  char buf[D_PRINT_BUFFER_LENGTH];$/;"	m	struct:d_print_info	file:
+buffer	./include/sha1.h	/^  sha1_uint32 buffer[32];$/;"	m	struct:sha1_ctx
+buffer	./include/xregex2.h	/^  unsigned char *buffer;$/;"	m	struct:re_pattern_buffer
+buflen	./include/md5.h	/^  md5_uint32 buflen;$/;"	m	struct:md5_ctx
+buflen	./include/sha1.h	/^  sha1_uint32 buflen;$/;"	m	struct:sha1_ctx
+buildargv	./libiberty/argv.c	/^char **buildargv (const char *input)$/;"	f
+byte_compile_range	./libiberty/regex.c	/^byte_compile_range (unsigned int range_start_char, const char **p_ptr,$/;"	f	file:
+byteorder	./include/floatformat.h	/^  enum floatformat_byteorders byteorder;$/;"	m	struct:floatformat	typeref:enum:floatformat::floatformat_byteorders
+bzero	./libiberty/bzero.c	/^bzero (void *to, size_t count)$/;"	f
+bzero	./libiberty/regex.c	152;"	d	file:
+bzero	./libiberty/regex.c	154;"	d	file:
+callback	./libiberty/cp-demangle.c	/^  demangle_callbackref callback;$/;"	m	struct:d_print_info	file:
+calloc	./libiberty/calloc.c	/^calloc (size_t nelem, size_t elsize)$/;"	f
+can_be_null	./include/xregex2.h	/^  unsigned can_be_null : 1;$/;"	m	struct:re_pattern_buffer
+char_str	./libiberty/cplus-dem.c	/^static char char_str[2] = { '\\000', '\\000' };$/;"	v	file:
+character	./include/demangle.h	/^      int character;$/;"	m	struct:demangle_component::__anon30::__anon40
+charmap	./libiberty/strcasecmp.c	/^static const unsigned char charmap[] = {$/;"	v	file:
+charmap	./libiberty/strncasecmp.c	/^static const unsigned char charmap[] = {$/;"	v	file:
+charset	./libiberty/regex.c	/^  charset,$/;"	e	enum:__anon1	file:
+charset_not	./libiberty/regex.c	/^  charset_not,$/;"	e	enum:__anon1	file:
+check_line	./libiberty/testsuite/test-pexecute.c	/^check_line (int line, FILE *e, const char *str)$/;"	f	file:
+checkit	./libiberty/_doprnt.c	/^checkit (const char* format, ...)$/;"	f	file:
+checkit	./libiberty/vasprintf.c	/^checkit (const char *format, ...)$/;"	f	file:
+checkit	./libiberty/vsnprintf.c	/^checkit (char *s, size_t n, const char *format, ...)$/;"	f	file:
+child	./include/fibheap.h	/^  struct fibnode *child;$/;"	m	struct:fibnode	typeref:struct:fibnode::fibnode
+children	./libiberty/pex-common.h	/^  long *children;$/;"	m	struct:pex_obj
+choose_temp_base	./libiberty/choose-temp.c	/^choose_temp_base (void)$/;"	f
+choose_tmpdir	./libiberty/make-temp-file.c	/^choose_tmpdir (void)$/;"	f
+chunk	./include/obstack.h	/^  struct _obstack_chunk *chunk;	\/* address of current struct obstack_chunk *\/$/;"	m	struct:obstack	typeref:struct:obstack::_obstack_chunk
+chunk_limit	./include/obstack.h	/^  char	*chunk_limit;		\/* address of char after current chunk *\/$/;"	m	struct:obstack
+chunk_size	./include/obstack.h	/^  long	chunk_size;		\/* preferred size to allocate chunks in *\/$/;"	m	struct:obstack
+chunkfun	./include/obstack.h	/^  struct _obstack_chunk *(*chunkfun) (void *, long);$/;"	m	struct:obstack	typeref:struct:obstack::chunkfun
+chunks	./include/objalloc.h	/^  void *chunks;$/;"	m	struct:objalloc
+class_count	./include/partition.h	/^  unsigned class_count;$/;"	m	struct:partition_elem
+class_element	./include/partition.h	/^  int class_element;$/;"	m	struct:partition_elem
+cleanup	./libiberty/pex-common.h	/^  void (*cleanup) (struct pex_obj *);$/;"	m	struct:pex_funcs
+clock	./libiberty/clock.c	/^clock (void)$/;"	f
+close	./libiberty/pex-common.h	/^  int (*close) (struct pex_obj *, int);$/;"	m	struct:pex_funcs
+cn	./libiberty/safe-ctype.c	128;"	d	file:
+code	./libiberty/cp-demangle.c	/^  char code;$/;"	m	struct:d_standard_sub_info	file:
+code	./libiberty/cp-demangle.h	/^  const char *code;$/;"	m	struct:demangle_operator_info
+code_for_qualifier	./libiberty/cplus-dem.c	/^code_for_qualifier (int c)$/;"	f	file:
+common_op_match_null_string_p	./libiberty/regex.c	/^PREFIX(common_op_match_null_string_p) (UCHAR_T **p, UCHAR_T *end,$/;"	f	file:
+compile_stack_elt_t	./libiberty/regex.c	/^} compile_stack_elt_t;$/;"	t	typeref:struct:__anon6	file:
+compile_stack_type	./libiberty/regex.c	/^} compile_stack_type;$/;"	t	typeref:struct:__anon7	file:
+comps	./libiberty/cp-demangle.h	/^  struct demangle_component *comps;$/;"	m	struct:d_info	typeref:struct:d_info::demangle_component
+concat	./libiberty/concat.c	/^concat (const char *first, ...)$/;"	f
+concat_copy	./libiberty/concat.c	/^concat_copy (char *dst, const char *first, ...)$/;"	f
+concat_copy2	./libiberty/concat.c	/^concat_copy2 (const char *first, ...)$/;"	f
+concat_length	./libiberty/concat.c	/^concat_length (const char *first, ...)$/;"	f
+const	./include/ansidecl.h	169;"	d
+const	./include/ansidecl.h	217;"	d
+const	./include/ansidecl.h	221;"	d
+const	./libiberty/fnmatch.c	42;"	d	file:
+const	./libiberty/getopt.c	41;"	d	file:
+const	./libiberty/getopt1.c	31;"	d	file:
+constructor	./libiberty/cplus-dem.c	/^  int constructor;$/;"	m	struct:work_stuff	file:
+consume_count	./libiberty/cplus-dem.c	/^consume_count (const char **type)$/;"	f	file:
+consume_count_with_underscores	./libiberty/cplus-dem.c	/^consume_count_with_underscores (const char **mangled)$/;"	f	file:
+contents	./include/obstack.h	/^  char	contents[4];		\/* objects begin here *\/$/;"	m	struct:_obstack_chunk
+convert_mbs_to_wcs	./libiberty/regex.c	/^convert_mbs_to_wcs (CHAR_T *dest, const unsigned char*src, size_t len,$/;"	f	file:
+copysign	./libiberty/copysign.c	/^copysign (double x, double y)$/;"	f
+count	./libiberty/pex-common.h	/^  int count;$/;"	m	struct:pex_obj
+count_mbs_length	./libiberty/regex.c	/^count_mbs_length(int *offset_buffer, int length)$/;"	f	file:
+cplus_demangle	./libiberty/cplus-dem.c	/^cplus_demangle (const char *mangled, int options)$/;"	f
+cplus_demangle_builtin_types	./libiberty/cp-demangle.c	/^cplus_demangle_builtin_types[D_BUILTIN_TYPE_COUNT] =$/;"	v	typeref:struct:demangle_builtin_type_info
+cplus_demangle_builtin_types	./libiberty/cp-demangle.h	/^cplus_demangle_builtin_types[D_BUILTIN_TYPE_COUNT];$/;"	v	typeref:struct:demangle_builtin_type_info
+cplus_demangle_fill_builtin_type	./libiberty/cp-demint.c	/^cplus_demangle_fill_builtin_type (struct demangle_component *p,$/;"	f
+cplus_demangle_fill_component	./libiberty/cp-demint.c	/^cplus_demangle_fill_component (struct demangle_component *p,$/;"	f
+cplus_demangle_fill_ctor	./libiberty/cp-demangle.c	/^cplus_demangle_fill_ctor (struct demangle_component *p,$/;"	f
+cplus_demangle_fill_ctor	./libiberty/cp-demangle.c	148;"	d	file:
+cplus_demangle_fill_dtor	./libiberty/cp-demangle.c	/^cplus_demangle_fill_dtor (struct demangle_component *p,$/;"	f
+cplus_demangle_fill_dtor	./libiberty/cp-demangle.c	153;"	d	file:
+cplus_demangle_fill_extended_operator	./libiberty/cp-demangle.c	/^cplus_demangle_fill_extended_operator (struct demangle_component *p, int args,$/;"	f
+cplus_demangle_fill_extended_operator	./libiberty/cp-demangle.c	143;"	d	file:
+cplus_demangle_fill_name	./libiberty/cp-demangle.c	/^cplus_demangle_fill_name (struct demangle_component *p, const char *s, int len)$/;"	f
+cplus_demangle_fill_name	./libiberty/cp-demangle.c	140;"	d	file:
+cplus_demangle_fill_operator	./libiberty/cp-demint.c	/^cplus_demangle_fill_operator (struct demangle_component *p,$/;"	f
+cplus_demangle_init_info	./libiberty/cp-demangle.c	/^cplus_demangle_init_info (const char *mangled, int options, size_t len,$/;"	f
+cplus_demangle_init_info	./libiberty/cp-demangle.c	171;"	d	file:
+cplus_demangle_mangled_name	./libiberty/cp-demangle.c	/^cplus_demangle_mangled_name (struct d_info *di, int top_level)$/;"	f
+cplus_demangle_mangled_name	./libiberty/cp-demangle.c	158;"	d	file:
+cplus_demangle_name_to_style	./libiberty/cplus-dem.c	/^cplus_demangle_name_to_style (const char *name)$/;"	f
+cplus_demangle_operators	./libiberty/cp-demangle.c	/^const struct demangle_operator_info cplus_demangle_operators[] =$/;"	v	typeref:struct:demangle_operator_info
+cplus_demangle_opname	./libiberty/cplus-dem.c	/^cplus_demangle_opname (const char *opname, char *result, int options)$/;"	f
+cplus_demangle_print	./libiberty/cp-demangle.c	/^cplus_demangle_print (int options, const struct demangle_component *dc,$/;"	f
+cplus_demangle_print	./libiberty/cp-demangle.c	164;"	d	file:
+cplus_demangle_print_callback	./libiberty/cp-demangle.c	/^cplus_demangle_print_callback (int options,$/;"	f
+cplus_demangle_print_callback	./libiberty/cp-demangle.c	167;"	d	file:
+cplus_demangle_set_style	./libiberty/cplus-dem.c	/^cplus_demangle_set_style (enum demangling_styles style)$/;"	f
+cplus_demangle_type	./libiberty/cp-demangle.c	/^cplus_demangle_type (struct d_info *di)$/;"	f
+cplus_demangle_type	./libiberty/cp-demangle.c	161;"	d	file:
+cplus_demangle_v3	./libiberty/cp-demangle.c	/^cplus_demangle_v3 (const char *mangled, int options)$/;"	f
+cplus_demangle_v3_callback	./libiberty/cp-demangle.c	/^cplus_demangle_v3_callback (const char *mangled, int options,$/;"	f
+cplus_demangle_v3_components	./libiberty/cp-demint.c	/^cplus_demangle_v3_components (const char *mangled, int options, void **mem)$/;"	f
+cplus_mangle_opname	./libiberty/cplus-dem.c	/^cplus_mangle_opname (const char *opname, int options)$/;"	f
+cplus_markers	./libiberty/cplus-dem.c	/^static char cplus_markers[] = { CPLUS_MARKER, '.', '$', '\\0' };$/;"	v	file:
+current_address	./libiberty/alloca.c	/^    long current_address;	\/* Current stack segment address.  *\/$/;"	m	struct:stk_stat	file:
+current_demangling_style	./libiberty/cplus-dem.c	/^enum demangling_styles current_demangling_style = auto_demangling;$/;"	v	typeref:enum:demangling_styles
+current_ptr	./include/objalloc.h	/^  char *current_ptr;$/;"	m	struct:objalloc
+current_ptr	./libiberty/objalloc.c	/^  char *current_ptr;$/;"	m	struct:objalloc_chunk	file:
+current_size	./libiberty/alloca.c	/^    long current_size;		\/* Current stack segment size.  This$/;"	m	struct:stk_stat	file:
+current_space	./include/objalloc.h	/^  unsigned int current_space;$/;"	m	struct:objalloc
+d	./include/objalloc.h	/^struct objalloc_align { char x; double d; };$/;"	m	struct:objalloc_align
+d	./libiberty/obstack.c	/^struct fooalign {char x; double d;};$/;"	m	struct:fooalign	file:
+d	./libiberty/obstack.c	/^union fooround {long x; double d;};$/;"	m	union:fooround	file:
+d_add_substitution	./libiberty/cp-demangle.c	/^d_add_substitution (struct d_info *di, struct demangle_component *dc)$/;"	f	file:
+d_advance	./libiberty/cp-demangle.h	133;"	d
+d_append_buffer	./libiberty/cp-demangle.c	/^d_append_buffer (struct d_print_info *dpi, const char *s, size_t l)$/;"	f	file:
+d_append_char	./libiberty/cp-demangle.c	/^d_append_char (struct d_print_info *dpi, char c)$/;"	f	file:
+d_append_string	./libiberty/cp-demangle.c	/^d_append_string (struct d_print_info *dpi, const char *s)$/;"	f	file:
+d_array_type	./libiberty/cp-demangle.c	/^d_array_type (struct d_info *di)$/;"	f	file:
+d_bare_function_type	./libiberty/cp-demangle.c	/^d_bare_function_type (struct d_info *di, int has_return_type)$/;"	f	file:
+d_builtin_type_print	./libiberty/cp-demangle.h	/^enum d_builtin_type_print$/;"	g
+d_call_offset	./libiberty/cp-demangle.c	/^d_call_offset (struct d_info *di, int c)$/;"	f	file:
+d_check_char	./libiberty/cp-demangle.h	134;"	d
+d_class_enum_type	./libiberty/cp-demangle.c	/^d_class_enum_type (struct d_info *di)$/;"	f	file:
+d_ctor_dtor_name	./libiberty/cp-demangle.c	/^d_ctor_dtor_name (struct d_info *di)$/;"	f	file:
+d_cv_qualifiers	./libiberty/cp-demangle.c	/^d_cv_qualifiers (struct d_info *di,$/;"	f	file:
+d_demangle	./libiberty/cp-demangle.c	/^d_demangle (const char *mangled, int options, size_t *palc)$/;"	f	file:
+d_demangle_callback	./libiberty/cp-demangle.c	/^d_demangle_callback (const char *mangled, int options,$/;"	f	file:
+d_discriminator	./libiberty/cp-demangle.c	/^d_discriminator (struct d_info *di)$/;"	f	file:
+d_dump	./libiberty/cp-demangle.c	/^d_dump (struct demangle_component *dc, int indent)$/;"	f	file:
+d_encoding	./libiberty/cp-demangle.c	/^d_encoding (struct d_info *di, int top_level)$/;"	f	file:
+d_expr_primary	./libiberty/cp-demangle.c	/^d_expr_primary (struct d_info *di)$/;"	f	file:
+d_expression	./libiberty/cp-demangle.c	/^d_expression (struct d_info *di)$/;"	f	file:
+d_exprlist	./libiberty/cp-demangle.c	/^d_exprlist (struct d_info *di)$/;"	f	file:
+d_find_pack	./libiberty/cp-demangle.c	/^d_find_pack (struct d_print_info *dpi,$/;"	f	file:
+d_function_type	./libiberty/cp-demangle.c	/^d_function_type (struct d_info *di)$/;"	f	file:
+d_growable_string	./libiberty/cp-demangle.c	/^struct d_growable_string$/;"	s	file:
+d_growable_string_append_buffer	./libiberty/cp-demangle.c	/^d_growable_string_append_buffer (struct d_growable_string *dgs,$/;"	f	file:
+d_growable_string_callback_adapter	./libiberty/cp-demangle.c	/^d_growable_string_callback_adapter (const char *s, size_t l, void *opaque)$/;"	f	file:
+d_growable_string_init	./libiberty/cp-demangle.c	/^d_growable_string_init (struct d_growable_string *dgs, size_t estimate)$/;"	f	file:
+d_growable_string_resize	./libiberty/cp-demangle.c	/^d_growable_string_resize (struct d_growable_string *dgs, size_t need)$/;"	f	file:
+d_identifier	./libiberty/cp-demangle.c	/^d_identifier (struct d_info *di, int len)$/;"	f	file:
+d_index_template_argument	./libiberty/cp-demangle.c	/^d_index_template_argument (struct demangle_component *args, int i)$/;"	f	file:
+d_info	./libiberty/cp-demangle.h	/^struct d_info$/;"	s
+d_java_resource	./libiberty/cp-demangle.c	/^d_java_resource (struct d_info *di)$/;"	f	file:
+d_last_char	./libiberty/cp-demangle.c	/^d_last_char (struct d_print_info *dpi)$/;"	f	file:
+d_left	./libiberty/cp-demangle.c	236;"	d	file:
+d_local_name	./libiberty/cp-demangle.c	/^d_local_name (struct d_info *di)$/;"	f	file:
+d_lookup_template_argument	./libiberty/cp-demangle.c	/^d_lookup_template_argument (struct d_print_info *dpi,$/;"	f	file:
+d_make_builtin_type	./libiberty/cp-demangle.c	/^d_make_builtin_type (struct d_info *di,$/;"	f	file:
+d_make_character	./libiberty/cp-demangle.c	/^d_make_character (struct d_info *di, int c)$/;"	f	file:
+d_make_comp	./libiberty/cp-demangle.c	/^d_make_comp (struct d_info *di, enum demangle_component_type type,$/;"	f	file:
+d_make_ctor	./libiberty/cp-demangle.c	/^d_make_ctor (struct d_info *di, enum gnu_v3_ctor_kinds kind,$/;"	f	file:
+d_make_dtor	./libiberty/cp-demangle.c	/^d_make_dtor (struct d_info *di, enum gnu_v3_dtor_kinds kind,$/;"	f	file:
+d_make_empty	./libiberty/cp-demangle.c	/^d_make_empty (struct d_info *di)$/;"	f	file:
+d_make_extended_operator	./libiberty/cp-demangle.c	/^d_make_extended_operator (struct d_info *di, int args,$/;"	f	file:
+d_make_function_param	./libiberty/cp-demangle.c	/^d_make_function_param (struct d_info *di, long i)$/;"	f	file:
+d_make_name	./libiberty/cp-demangle.c	/^d_make_name (struct d_info *di, const char *s, int len)$/;"	f	file:
+d_make_operator	./libiberty/cp-demangle.c	/^d_make_operator (struct d_info *di, const struct demangle_operator_info *op)$/;"	f	file:
+d_make_sub	./libiberty/cp-demangle.c	/^d_make_sub (struct d_info *di, const char *name, int len)$/;"	f	file:
+d_make_template_param	./libiberty/cp-demangle.c	/^d_make_template_param (struct d_info *di, long i)$/;"	f	file:
+d_name	./libiberty/cp-demangle.c	/^d_name (struct d_info *di)$/;"	f	file:
+d_nested_name	./libiberty/cp-demangle.c	/^d_nested_name (struct d_info *di)$/;"	f	file:
+d_next_char	./libiberty/cp-demangle.h	135;"	d
+d_number	./libiberty/cp-demangle.c	/^d_number (struct d_info *di)$/;"	f	file:
+d_operator_name	./libiberty/cp-demangle.c	/^d_operator_name (struct d_info *di)$/;"	f	file:
+d_pack_length	./libiberty/cp-demangle.c	/^d_pack_length (const struct demangle_component *dc)$/;"	f	file:
+d_peek_char	./libiberty/cp-demangle.h	131;"	d
+d_peek_next_char	./libiberty/cp-demangle.h	132;"	d
+d_pointer_to_member_type	./libiberty/cp-demangle.c	/^d_pointer_to_member_type (struct d_info *di)$/;"	f	file:
+d_prefix	./libiberty/cp-demangle.c	/^d_prefix (struct d_info *di)$/;"	f	file:
+d_print_array_type	./libiberty/cp-demangle.c	/^d_print_array_type (struct d_print_info *dpi,$/;"	f	file:
+d_print_cast	./libiberty/cp-demangle.c	/^d_print_cast (struct d_print_info *dpi,$/;"	f	file:
+d_print_comp	./libiberty/cp-demangle.c	/^d_print_comp (struct d_print_info *dpi,$/;"	f	file:
+d_print_error	./libiberty/cp-demangle.c	/^d_print_error (struct d_print_info *dpi)$/;"	f	file:
+d_print_expr_op	./libiberty/cp-demangle.c	/^d_print_expr_op (struct d_print_info *dpi,$/;"	f	file:
+d_print_flush	./libiberty/cp-demangle.c	/^d_print_flush (struct d_print_info *dpi)$/;"	f	file:
+d_print_function_type	./libiberty/cp-demangle.c	/^d_print_function_type (struct d_print_info *dpi,$/;"	f	file:
+d_print_info	./libiberty/cp-demangle.c	/^struct d_print_info$/;"	s	file:
+d_print_init	./libiberty/cp-demangle.c	/^d_print_init (struct d_print_info *dpi, int options,$/;"	f	file:
+d_print_java_identifier	./libiberty/cp-demangle.c	/^d_print_java_identifier (struct d_print_info *dpi, const char *name, int len)$/;"	f	file:
+d_print_mod	./libiberty/cp-demangle.c	/^d_print_mod (struct d_print_info *dpi,$/;"	f	file:
+d_print_mod	./libiberty/cp-demangle.c	/^struct d_print_mod$/;"	s	file:
+d_print_mod_list	./libiberty/cp-demangle.c	/^d_print_mod_list (struct d_print_info *dpi,$/;"	f	file:
+d_print_saw_error	./libiberty/cp-demangle.c	/^d_print_saw_error (struct d_print_info *dpi)$/;"	f	file:
+d_print_subexpr	./libiberty/cp-demangle.c	/^d_print_subexpr (struct d_print_info *dpi,$/;"	f	file:
+d_print_template	./libiberty/cp-demangle.c	/^struct d_print_template$/;"	s	file:
+d_right	./libiberty/cp-demangle.c	237;"	d	file:
+d_source_name	./libiberty/cp-demangle.c	/^d_source_name (struct d_info *di)$/;"	f	file:
+d_special_name	./libiberty/cp-demangle.c	/^d_special_name (struct d_info *di)$/;"	f	file:
+d_standard_sub_info	./libiberty/cp-demangle.c	/^struct d_standard_sub_info$/;"	s	file:
+d_str	./libiberty/cp-demangle.h	136;"	d
+d_substitution	./libiberty/cp-demangle.c	/^d_substitution (struct d_info *di, int prefix)$/;"	f	file:
+d_template_arg	./libiberty/cp-demangle.c	/^d_template_arg (struct d_info *di)$/;"	f	file:
+d_template_args	./libiberty/cp-demangle.c	/^d_template_args (struct d_info *di)$/;"	f	file:
+d_template_param	./libiberty/cp-demangle.c	/^d_template_param (struct d_info *di)$/;"	f	file:
+d_unqualified_name	./libiberty/cp-demangle.c	/^d_unqualified_name (struct d_info *di)$/;"	f	file:
+data	./include/fibheap.h	/^  void *data;$/;"	m	struct:fibnode
+data	./libiberty/testsuite/test-demangle.c	/^  char *data;$/;"	m	struct:line	file:
+debug	./libiberty/regex.c	/^static int debug;$/;"	v	file:
+deep	./libiberty/alloca.c	/^      char *deep;		\/* For stack depth measure.  *\/$/;"	m	struct:hdr::__anon24	file:
+degree	./include/fibheap.h	/^  __extension__ unsigned long int degree : 31;$/;"	m	struct:fibnode
+degree	./include/fibheap.h	/^  unsigned int degree : 31;$/;"	m	struct:fibnode
+degrees	./libiberty/random.c	/^static int degrees[MAX_TYPES] = { DEG_0, DEG_1, DEG_2, DEG_3, DEG_4 };$/;"	v	file:
+delete_non_B_K_work_stuff	./libiberty/cplus-dem.c	/^delete_non_B_K_work_stuff (struct work_stuff *work)$/;"	f	file:
+delete_work_stuff	./libiberty/cplus-dem.c	/^delete_work_stuff (struct work_stuff *work)$/;"	f	file:
+demangle_args	./libiberty/cplus-dem.c	/^demangle_args (struct work_stuff *work, const char **mangled,$/;"	f	file:
+demangle_arm_hp_template	./libiberty/cplus-dem.c	/^demangle_arm_hp_template (struct work_stuff *work, const char **mangled,$/;"	f	file:
+demangle_builtin_type_info	./libiberty/cp-demangle.h	/^struct demangle_builtin_type_info$/;"	s
+demangle_callbackref	./include/demangle.h	/^typedef void (*demangle_callbackref) (const char *, size_t, void *);$/;"	t
+demangle_class	./libiberty/cplus-dem.c	/^demangle_class (struct work_stuff *work, const char **mangled, string *declp)$/;"	f	file:
+demangle_class_name	./libiberty/cplus-dem.c	/^demangle_class_name (struct work_stuff *work, const char **mangled,$/;"	f	file:
+demangle_component	./include/demangle.h	/^struct demangle_component$/;"	s
+demangle_component_type	./include/demangle.h	/^enum demangle_component_type$/;"	g
+demangle_expression	./libiberty/cplus-dem.c	/^demangle_expression (struct work_stuff *work, const char **mangled,$/;"	f	file:
+demangle_failure	./libiberty/cp-demangle.c	/^  int demangle_failure;$/;"	m	struct:d_print_info	file:
+demangle_function_name	./libiberty/cplus-dem.c	/^demangle_function_name (struct work_stuff *work, const char **mangled,$/;"	f	file:
+demangle_fund_type	./libiberty/cplus-dem.c	/^demangle_fund_type (struct work_stuff *work,$/;"	f	file:
+demangle_integral_value	./libiberty/cplus-dem.c	/^demangle_integral_value (struct work_stuff *work,$/;"	f	file:
+demangle_nested_args	./libiberty/cplus-dem.c	/^demangle_nested_args (struct work_stuff *work, const char **mangled,$/;"	f	file:
+demangle_operator_info	./libiberty/cp-demangle.h	/^struct demangle_operator_info$/;"	s
+demangle_prefix	./libiberty/cplus-dem.c	/^demangle_prefix (struct work_stuff *work, const char **mangled,$/;"	f	file:
+demangle_qualified	./libiberty/cplus-dem.c	/^demangle_qualified (struct work_stuff *work, const char **mangled,$/;"	f	file:
+demangle_qualifier	./libiberty/cplus-dem.c	/^demangle_qualifier (int c)$/;"	f	file:
+demangle_real_value	./libiberty/cplus-dem.c	/^demangle_real_value (struct work_stuff *work,$/;"	f	file:
+demangle_signature	./libiberty/cplus-dem.c	/^demangle_signature (struct work_stuff *work,$/;"	f	file:
+demangle_template	./libiberty/cplus-dem.c	/^demangle_template (struct work_stuff *work, const char **mangled,$/;"	f	file:
+demangle_template_template_parm	./libiberty/cplus-dem.c	/^demangle_template_template_parm (struct work_stuff *work,$/;"	f	file:
+demangle_template_value_parm	./libiberty/cplus-dem.c	/^demangle_template_value_parm (struct work_stuff *work, const char **mangled,$/;"	f	file:
+demangler_engine	./include/demangle.h	/^extern const struct demangler_engine$/;"	s
+demangling_style	./include/demangle.h	/^  const enum demangling_styles demangling_style;$/;"	m	struct:demangler_engine	typeref:enum:demangler_engine::demangling_styles
+demangling_style_doc	./include/demangle.h	/^  const char *const demangling_style_doc;$/;"	m	struct:demangler_engine
+demangling_style_name	./include/demangle.h	/^  const char *const demangling_style_name;$/;"	m	struct:demangler_engine
+demangling_styles	./include/demangle.h	/^extern enum demangling_styles$/;"	g
+destructor	./libiberty/cplus-dem.c	/^  int destructor;$/;"	m	struct:work_stuff	file:
+di	./libiberty/safe-ctype.c	129;"	d	file:
+did_subs	./libiberty/cp-demangle.h	/^  int did_subs;$/;"	m	struct:d_info
+dllimported	./libiberty/cplus-dem.c	/^  int dllimported;	\/* Symbol imported from a PE DLL *\/$/;"	m	struct:work_stuff	file:
+do_arg	./libiberty/cplus-dem.c	/^do_arg (struct work_stuff *work, const char **mangled, string *result)$/;"	f	file:
+do_cmd	./libiberty/testsuite/test-pexecute.c	/^do_cmd (int argc, char **argv)$/;"	f	file:
+do_hpacc_template_const_value	./libiberty/cplus-dem.c	/^do_hpacc_template_const_value (struct work_stuff *work ATTRIBUTE_UNUSED,$/;"	f	file:
+do_hpacc_template_literal	./libiberty/cplus-dem.c	/^do_hpacc_template_literal (struct work_stuff *work, const char **mangled,$/;"	f	file:
+do_type	./libiberty/cplus-dem.c	/^do_type (struct work_stuff *work, const char **mangled, string *result)$/;"	f	file:
+dummy_failure_jump	./libiberty/regex.c	/^  dummy_failure_jump,$/;"	e	enum:__anon1	file:
+dupargv	./libiberty/argv.c	/^dupargv (char **argv)$/;"	f
+duplicate	./libiberty/regex.c	/^  duplicate,$/;"	e	enum:__anon1	file:
+dwLength	./libiberty/physmem.c	/^  DWORD dwLength;$/;"	m	struct:__anon25	file:
+dwMemoryLoad	./libiberty/physmem.c	/^  DWORD dwMemoryLoad;$/;"	m	struct:__anon25	file:
+dyn_string	./include/dyn-string.h	/^typedef struct dyn_string$/;"	s
+dyn_string_append	./libiberty/dyn-string.c	/^dyn_string_append (dyn_string_t dest, dyn_string_t s)$/;"	f
+dyn_string_append_char	./libiberty/dyn-string.c	/^dyn_string_append_char (dyn_string_t dest, int c)$/;"	f
+dyn_string_append_cstr	./libiberty/dyn-string.c	/^dyn_string_append_cstr (dyn_string_t dest, const char *s)$/;"	f
+dyn_string_buf	./include/dyn-string.h	35;"	d
+dyn_string_clear	./libiberty/dyn-string.c	/^dyn_string_clear (dyn_string_t ds)$/;"	f
+dyn_string_compare	./include/dyn-string.h	39;"	d
+dyn_string_copy	./libiberty/dyn-string.c	/^dyn_string_copy (dyn_string_t dest, dyn_string_t src)$/;"	f
+dyn_string_copy_cstr	./libiberty/dyn-string.c	/^dyn_string_copy_cstr (dyn_string_t dest, const char *src)$/;"	f
+dyn_string_delete	./libiberty/dyn-string.c	/^dyn_string_delete (dyn_string_t ds)$/;"	f
+dyn_string_eq	./libiberty/dyn-string.c	/^dyn_string_eq (dyn_string_t ds1, dyn_string_t ds2)$/;"	f
+dyn_string_init	./libiberty/dyn-string.c	/^dyn_string_init (struct dyn_string *ds_struct_ptr, int space)$/;"	f
+dyn_string_insert	./libiberty/dyn-string.c	/^dyn_string_insert (dyn_string_t dest, int pos, dyn_string_t src)$/;"	f
+dyn_string_insert_char	./libiberty/dyn-string.c	/^dyn_string_insert_char (dyn_string_t dest, int pos, int c)$/;"	f
+dyn_string_insert_cstr	./libiberty/dyn-string.c	/^dyn_string_insert_cstr (dyn_string_t dest, int pos, const char *src)$/;"	f
+dyn_string_length	./include/dyn-string.h	31;"	d
+dyn_string_new	./libiberty/dyn-string.c	/^dyn_string_new (int space)$/;"	f
+dyn_string_prepend	./libiberty/dyn-string.c	/^dyn_string_prepend (dyn_string_t dest, dyn_string_t src)$/;"	f
+dyn_string_prepend_cstr	./libiberty/dyn-string.c	/^dyn_string_prepend_cstr (dyn_string_t dest, const char *src)$/;"	f
+dyn_string_release	./libiberty/dyn-string.c	/^dyn_string_release (dyn_string_t ds)$/;"	f
+dyn_string_resize	./libiberty/dyn-string.c	/^dyn_string_resize (dyn_string_t ds, int space)$/;"	f
+dyn_string_substring	./libiberty/dyn-string.c	/^dyn_string_substring (dyn_string_t dest, dyn_string_t src,$/;"	f
+dyn_string_t	./include/dyn-string.h	/^}* dyn_string_t;$/;"	t	typeref:struct:dyn_string
+e	./libiberty/cplus-dem.c	/^  char *e;			\/* pointer after end of allocated space *\/$/;"	m	struct:string	file:
+edg_demangling	./include/demangle.h	/^  edg_demangling = DMGL_EDG,$/;"	e	enum:demangling_styles
+elem_compare	./libiberty/partition.c	/^elem_compare (const void *elem1, const void *elem2)$/;"	f	file:
+elements	./include/partition.h	/^  struct partition_elem elements[1];$/;"	m	struct:partition_def	typeref:struct:partition_def::partition_elem
+end	./include/xregex2.h	/^  regoff_t *end;$/;"	m	struct:re_registers
+end_ptr	./libiberty/random.c	/^static long int *end_ptr = &randtbl[sizeof(randtbl) \/ sizeof(randtbl[0])];$/;"	v	file:
+endbuf	./libiberty/regex.c	/^  endbuf,$/;"	e	enum:__anon1	file:
+endline	./libiberty/regex.c	/^  endline,$/;"	e	enum:__anon1	file:
+env_compare	./libiberty/pex-win32.c	/^env_compare (const void *a_ptr, const void *b_ptr)$/;"	f	file:
+eq_pointer	./libiberty/hashtab.c	/^eq_pointer (const PTR p1, const PTR p2)$/;"	f	file:
+erase_test	./libiberty/testsuite/test-expandargv.c	/^erase_test (int test)$/;"	f
+errno_max	./libiberty/strerror.c	/^errno_max (void)$/;"	f
+error	./libiberty/testsuite/test-pexecute.c	/^error (int line, const char *errmsg)$/;"	f	file:
+error_count	./libiberty/testsuite/test-pexecute.c	/^static int error_count;$/;"	v	file:
+error_info	./libiberty/strerror.c	/^struct error_info$/;"	s	file:
+error_names	./libiberty/strerror.c	/^static const char **error_names;$/;"	v	file:
+error_table	./libiberty/strerror.c	/^static const struct error_info error_table[] =$/;"	v	typeref:struct:error_info	file:
+ever_matched_something	./libiberty/regex.c	/^    unsigned ever_matched_something : 1;$/;"	m	struct:__anon4::__anon5	file:
+evmserr	./libiberty/strerror.c	/^  evmserr = { EVMSERR, "EVMSERR", "VMS-specific error" };$/;"	v	typeref:struct:__anon8	file:
+exactn	./libiberty/regex.c	/^  exactn,$/;"	e	enum:__anon1	file:
+exactn_bin	./libiberty/regex.c	/^  exactn_bin,$/;"	e	enum:__anon1	file:
+exchange	./libiberty/getopt.c	/^exchange (char **argv)$/;"	f	file:
+exec_child	./libiberty/pex-common.h	/^  pid_t (*exec_child) (struct pex_obj *, int \/* flags *\/,$/;"	m	struct:pex_funcs
+exp_bias	./include/floatformat.h	/^  int exp_bias;$/;"	m	struct:floatformat
+exp_len	./include/floatformat.h	/^  unsigned int exp_len;$/;"	m	struct:floatformat
+exp_nan	./include/floatformat.h	/^  unsigned int exp_nan;$/;"	m	struct:floatformat
+exp_start	./include/floatformat.h	/^  unsigned int exp_start;$/;"	m	struct:floatformat
+expandargv	./libiberty/argv.c	/^expandargv (int *argcp, char ***argvp)$/;"	f
+expansion	./libiberty/cp-demangle.h	/^  int expansion;$/;"	m	struct:d_info
+exponent	./libiberty/copysign.c	/^    unsigned int exponent :11;$/;"	m	struct:__anon14::__anon15	file:
+exponent	./libiberty/copysign.c	/^    unsigned int exponent: 11;$/;"	m	struct:__anon10::__anon11	file:
+exponent	./libiberty/copysign.c	/^    unsigned int exponent: 11;$/;"	m	struct:__anon10::__anon12	file:
+exponent	./libiberty/copysign.c	/^    unsigned int exponent: 11;$/;"	m	struct:__anon14::__anon16	file:
+exponent	./libiberty/copysign.c	/^    unsigned int exponent: 8;$/;"	m	struct:__anon18::__anon19	file:
+exponent	./libiberty/copysign.c	/^    unsigned int exponent: 8;$/;"	m	struct:__anon21::__anon22	file:
+exponent	./libiberty/copysign.c	/^    unsigned int exponent:8;$/;"	m	struct:__anon18::__anon20	file:
+exponent	./libiberty/copysign.c	/^    unsigned int exponent:8;$/;"	m	struct:__anon21::__anon23	file:
+extends	./libiberty/alloca.c	/^    long extends;		\/* Number of block extensions.  *\/$/;"	m	struct:stk_stat	file:
+extra_arg	./include/obstack.h	/^  void *extra_arg;		\/* first arg for chunk alloc\/dealloc funcs *\/$/;"	m	struct:obstack
+extract_number	./libiberty/regex.c	/^PREFIX(extract_number) (int *dest, UCHAR_T *source)$/;"	f	file:
+extract_number_and_incr	./libiberty/regex.c	/^PREFIX(extract_number_and_incr) (int *destination, UCHAR_T **source)$/;"	f	file:
+fail	./libiberty/testsuite/test-demangle.c	/^fail (lineno, opts, in, out, exp)$/;"	f	file:
+false	./libiberty/regex.c	405;"	d	file:
+fastmap	./include/xregex2.h	/^  char *fastmap;$/;"	m	struct:re_pattern_buffer
+fastmap_accurate	./include/xregex2.h	/^  unsigned fastmap_accurate : 1;$/;"	m	struct:re_pattern_buffer
+fatal_error	./libiberty/testsuite/test-expandargv.c	/^fatal_error (int line, const char *errmsg, int err)$/;"	f	file:
+fatal_error	./libiberty/testsuite/test-pexecute.c	/^fatal_error (int line, const char *errmsg, int err)$/;"	f	file:
+fdmatch	./libiberty/fdmatch.c	/^int fdmatch (int fd1, int fd2)$/;"	f
+fdopen_unlocked	./libiberty/fopen_unlocked.c	/^fdopen_unlocked (int fildes, const char *mode)$/;"	f
+fdopenr	./libiberty/pex-common.h	/^  FILE * (*fdopenr) (struct pex_obj *, int \/* fd *\/, int \/* binary *\/);$/;"	m	struct:pex_funcs
+fdopenw	./libiberty/pex-common.h	/^  FILE * (*fdopenw) (struct pex_obj *, int \/* fd *\/, int \/* binary *\/);$/;"	m	struct:pex_funcs
+ffs	./libiberty/ffs.c	/^ffs (register int valu)$/;"	f
+fibheap	./include/fibheap.h	/^typedef struct fibheap$/;"	s
+fibheap_cascading_cut	./libiberty/fibheap.c	/^fibheap_cascading_cut (fibheap_t heap, fibnode_t y)$/;"	f	file:
+fibheap_comp_data	./libiberty/fibheap.c	/^fibheap_comp_data (fibheap_t heap, fibheapkey_t key, void *data, fibnode_t b)$/;"	f	file:
+fibheap_compare	./libiberty/fibheap.c	/^fibheap_compare (fibheap_t heap ATTRIBUTE_UNUSED, fibnode_t a, fibnode_t b)$/;"	f	file:
+fibheap_consolidate	./libiberty/fibheap.c	/^fibheap_consolidate (fibheap_t heap)$/;"	f	file:
+fibheap_cut	./libiberty/fibheap.c	/^fibheap_cut (fibheap_t heap, fibnode_t node, fibnode_t parent)$/;"	f	file:
+fibheap_delete	./libiberty/fibheap.c	/^fibheap_delete (fibheap_t heap)$/;"	f
+fibheap_delete_node	./libiberty/fibheap.c	/^fibheap_delete_node (fibheap_t heap, fibnode_t node)$/;"	f
+fibheap_empty	./libiberty/fibheap.c	/^fibheap_empty (fibheap_t heap)$/;"	f
+fibheap_extr_min_node	./libiberty/fibheap.c	/^fibheap_extr_min_node (fibheap_t heap)$/;"	f	file:
+fibheap_extract_min	./libiberty/fibheap.c	/^fibheap_extract_min (fibheap_t heap)$/;"	f
+fibheap_ins_root	./libiberty/fibheap.c	/^fibheap_ins_root (fibheap_t heap, fibnode_t node)$/;"	f	file:
+fibheap_insert	./libiberty/fibheap.c	/^fibheap_insert (fibheap_t heap, fibheapkey_t key, void *data)$/;"	f
+fibheap_link	./libiberty/fibheap.c	/^fibheap_link (fibheap_t heap ATTRIBUTE_UNUSED,$/;"	f	file:
+fibheap_min	./libiberty/fibheap.c	/^fibheap_min (fibheap_t heap)$/;"	f
+fibheap_min_key	./libiberty/fibheap.c	/^fibheap_min_key (fibheap_t heap)$/;"	f
+fibheap_new	./libiberty/fibheap.c	/^fibheap_new (void)$/;"	f
+fibheap_rem_root	./libiberty/fibheap.c	/^fibheap_rem_root (fibheap_t heap, fibnode_t node)$/;"	f	file:
+fibheap_replace_data	./libiberty/fibheap.c	/^fibheap_replace_data (fibheap_t heap, fibnode_t node, void *data)$/;"	f
+fibheap_replace_key	./libiberty/fibheap.c	/^fibheap_replace_key (fibheap_t heap, fibnode_t node, fibheapkey_t key)$/;"	f
+fibheap_replace_key_data	./libiberty/fibheap.c	/^fibheap_replace_key_data (fibheap_t heap, fibnode_t node,$/;"	f
+fibheap_t	./include/fibheap.h	/^} *fibheap_t;$/;"	t	typeref:struct:fibheap
+fibheap_union	./libiberty/fibheap.c	/^fibheap_union (fibheap_t heapa, fibheap_t heapb)$/;"	f
+fibheapkey_t	./include/fibheap.h	/^typedef long fibheapkey_t;$/;"	t
+fibnode	./include/fibheap.h	/^typedef struct fibnode$/;"	s
+fibnode_insert_after	./libiberty/fibheap.c	/^fibnode_insert_after (fibnode_t a, fibnode_t b)$/;"	f	file:
+fibnode_insert_before	./libiberty/fibheap.c	51;"	d	file:
+fibnode_new	./libiberty/fibheap.c	/^fibnode_new (void)$/;"	f	file:
+fibnode_remove	./libiberty/fibheap.c	/^fibnode_remove (fibnode_t node)$/;"	f	file:
+fibnode_t	./include/fibheap.h	/^} *fibnode_t;$/;"	t	typeref:struct:fibnode
+filename_cmp	./libiberty/filename_cmp.c	/^filename_cmp (const char *s1, const char *s2)$/;"	f
+files	./libiberty/pex-msdos.c	/^  const char *files[PEX_MSDOS_FILE_COUNT];$/;"	m	struct:pex_msdos	file:
+fillbuf	./libiberty/md5.c	/^static const unsigned char fillbuf[64] = { 0x80, 0 \/* , 0, 0, ...  *\/ };$/;"	v	file:
+fillbuf	./libiberty/sha1.c	/^static const unsigned char fillbuf[64] = { 0x80, 0 \/* , 0, 0, ...  *\/ };$/;"	v	file:
+find_empty_slot_for_expand	./libiberty/hashtab.c	/^find_empty_slot_for_expand (htab_t htab, hashval_t hash)$/;"	f	file:
+find_executable	./libiberty/pex-win32.c	/^find_executable (const char *program, BOOL search)$/;"	f	file:
+find_stack_direction	./libiberty/alloca.c	/^find_stack_direction (void)$/;"	f	file:
+find_stack_direction	./libiberty/configure	/^find_stack_direction ()$/;"	f
+first_break	./libiberty/xmalloc.c	/^static char *first_break = NULL;$/;"	v	file:
+first_nonopt	./libiberty/getopt.c	/^static int first_nonopt;$/;"	v	file:
+fixup_alt_jump	./libiberty/regex.c	/^  pattern_offset_t fixup_alt_jump;$/;"	m	struct:__anon6	file:
+flag	./include/getopt.h	/^  int *flag;$/;"	m	struct:option
+flags	./libiberty/cplus-dem.c	/^  const int flags;$/;"	m	struct:optable	file:
+flags	./libiberty/pex-common.h	/^  int flags;$/;"	m	struct:pex_obj
+floatformat	./include/floatformat.h	/^struct floatformat$/;"	s
+floatformat_always_valid	./libiberty/floatformat.c	/^floatformat_always_valid (const struct floatformat *fmt ATTRIBUTE_UNUSED,$/;"	f	file:
+floatformat_arm_ext_big	./libiberty/floatformat.c	/^const struct floatformat floatformat_arm_ext_big =$/;"	v	typeref:struct:floatformat
+floatformat_arm_ext_littlebyte_bigword	./libiberty/floatformat.c	/^const struct floatformat floatformat_arm_ext_littlebyte_bigword =$/;"	v	typeref:struct:floatformat
+floatformat_big	./include/floatformat.h	/^  floatformat_big,$/;"	e	enum:floatformat_byteorders
+floatformat_byteorders	./include/floatformat.h	/^enum floatformat_byteorders {$/;"	g
+floatformat_from_double	./libiberty/floatformat.c	/^floatformat_from_double (const struct floatformat *fmt,$/;"	f
+floatformat_i387_ext	./libiberty/floatformat.c	/^const struct floatformat floatformat_i387_ext =$/;"	v	typeref:struct:floatformat
+floatformat_i387_ext_is_valid	./libiberty/floatformat.c	/^floatformat_i387_ext_is_valid (const struct floatformat *fmt, const void *from)$/;"	f	file:
+floatformat_i960_ext	./libiberty/floatformat.c	/^const struct floatformat floatformat_i960_ext =$/;"	v	typeref:struct:floatformat
+floatformat_ia64_quad_big	./libiberty/floatformat.c	/^const struct floatformat floatformat_ia64_quad_big =$/;"	v	typeref:struct:floatformat
+floatformat_ia64_quad_little	./libiberty/floatformat.c	/^const struct floatformat floatformat_ia64_quad_little =$/;"	v	typeref:struct:floatformat
+floatformat_ia64_spill_big	./libiberty/floatformat.c	/^const struct floatformat floatformat_ia64_spill_big =$/;"	v	typeref:struct:floatformat
+floatformat_ia64_spill_little	./libiberty/floatformat.c	/^const struct floatformat floatformat_ia64_spill_little =$/;"	v	typeref:struct:floatformat
+floatformat_ibm_long_double	./libiberty/floatformat.c	/^const struct floatformat floatformat_ibm_long_double =$/;"	v	typeref:struct:floatformat
+floatformat_ibm_long_double_is_valid	./libiberty/floatformat.c	/^floatformat_ibm_long_double_is_valid (const struct floatformat *fmt,$/;"	f	file:
+floatformat_ieee_double_big	./libiberty/floatformat.c	/^const struct floatformat floatformat_ieee_double_big =$/;"	v	typeref:struct:floatformat
+floatformat_ieee_double_little	./libiberty/floatformat.c	/^const struct floatformat floatformat_ieee_double_little =$/;"	v	typeref:struct:floatformat
+floatformat_ieee_double_littlebyte_bigword	./libiberty/floatformat.c	/^const struct floatformat floatformat_ieee_double_littlebyte_bigword =$/;"	v	typeref:struct:floatformat
+floatformat_ieee_single_big	./libiberty/floatformat.c	/^const struct floatformat floatformat_ieee_single_big =$/;"	v	typeref:struct:floatformat
+floatformat_ieee_single_little	./libiberty/floatformat.c	/^const struct floatformat floatformat_ieee_single_little =$/;"	v	typeref:struct:floatformat
+floatformat_intbit	./include/floatformat.h	/^enum floatformat_intbit { floatformat_intbit_yes, floatformat_intbit_no };$/;"	g
+floatformat_intbit_no	./include/floatformat.h	/^enum floatformat_intbit { floatformat_intbit_yes, floatformat_intbit_no };$/;"	e	enum:floatformat_intbit
+floatformat_intbit_yes	./include/floatformat.h	/^enum floatformat_intbit { floatformat_intbit_yes, floatformat_intbit_no };$/;"	e	enum:floatformat_intbit
+floatformat_is_valid	./libiberty/floatformat.c	/^floatformat_is_valid (const struct floatformat *fmt, const void *from)$/;"	f
+floatformat_little	./include/floatformat.h	/^  floatformat_little,$/;"	e	enum:floatformat_byteorders
+floatformat_littlebyte_bigword	./include/floatformat.h	/^  floatformat_littlebyte_bigword,$/;"	e	enum:floatformat_byteorders
+floatformat_m68881_ext	./libiberty/floatformat.c	/^const struct floatformat floatformat_m68881_ext =$/;"	v	typeref:struct:floatformat
+floatformat_m88110_ext	./libiberty/floatformat.c	/^const struct floatformat floatformat_m88110_ext =$/;"	v	typeref:struct:floatformat
+floatformat_m88110_harris_ext	./libiberty/floatformat.c	/^const struct floatformat floatformat_m88110_harris_ext =$/;"	v	typeref:struct:floatformat
+floatformat_to_double	./libiberty/floatformat.c	/^floatformat_to_double (const struct floatformat *fmt,$/;"	f
+floatformat_vax	./include/floatformat.h	/^  floatformat_vax$/;"	e	enum:floatformat_byteorders
+floatformat_vax_d	./libiberty/floatformat.c	/^const struct floatformat floatformat_vax_d =$/;"	v	typeref:struct:floatformat
+floatformat_vax_f	./libiberty/floatformat.c	/^const struct floatformat floatformat_vax_f =$/;"	v	typeref:struct:floatformat
+floatformat_vax_g	./libiberty/floatformat.c	/^const struct floatformat floatformat_vax_g =$/;"	v	typeref:struct:floatformat
+fnmatch	./libiberty/fnmatch.c	/^fnmatch (const char *pattern, const char *string, int flags)$/;"	f
+fns	./libiberty/xatexit.c	/^	void	(*fns[XATEXIT_SIZE]) (void);	\/* the table itself *\/$/;"	m	struct:xatexit	file:
+fooalign	./libiberty/obstack.c	/^struct fooalign {char x; double d;};$/;"	s	file:
+fooround	./libiberty/obstack.c	/^union fooround {long x; double d;};$/;"	u	file:
+fopen_unlocked	./libiberty/fopen_unlocked.c	/^fopen_unlocked (const char *path, const char *mode)		$/;"	f
+forget_B_and_K_types	./libiberty/cplus-dem.c	/^forget_B_and_K_types (struct work_stuff *work)$/;"	f	file:
+forget_types	./libiberty/cplus-dem.c	/^forget_types (struct work_stuff *work)$/;"	f	file:
+forgetting_types	./libiberty/cplus-dem.c	/^  int forgetting_types; \/* Nonzero if we are not remembering the types$/;"	m	struct:work_stuff	file:
+fptr	./libiberty/random.c	/^static long int *fptr = &randtbl[SEP_3 + 1];$/;"	v	file:
+fraction0	./libiberty/copysign.c	/^    unsigned int fraction0: 4;$/;"	m	struct:__anon14::__anon15	file:
+fraction0	./libiberty/copysign.c	/^    unsigned int fraction0: 7;$/;"	m	struct:__anon18::__anon19	file:
+fraction0	./libiberty/copysign.c	/^    unsigned int fraction0: 7;$/;"	m	struct:__anon21::__anon22	file:
+fraction0	./libiberty/copysign.c	/^    unsigned int fraction0:4;$/;"	m	struct:__anon10::__anon11	file:
+fraction1	./libiberty/copysign.c	/^    unsigned int fraction1: 16;$/;"	m	struct:__anon18::__anon19	file:
+fraction1	./libiberty/copysign.c	/^    unsigned int fraction1: 16;$/;"	m	struct:__anon21::__anon22	file:
+fraction1	./libiberty/copysign.c	/^    unsigned int fraction1:16;$/;"	m	struct:__anon10::__anon11	file:
+fraction1	./libiberty/copysign.c	/^    unsigned int fraction1:16;$/;"	m	struct:__anon14::__anon15	file:
+fraction2	./libiberty/copysign.c	/^    unsigned int fraction2:16;$/;"	m	struct:__anon10::__anon11	file:
+fraction2	./libiberty/copysign.c	/^    unsigned int fraction2:16;$/;"	m	struct:__anon14::__anon15	file:
+fraction3	./libiberty/copysign.c	/^    unsigned int fraction3:16;$/;"	m	struct:__anon10::__anon11	file:
+fraction3	./libiberty/copysign.c	/^    unsigned int fraction3:16;$/;"	m	struct:__anon14::__anon15	file:
+free_split_directories	./libiberty/make-relative-prefix.c	/^free_split_directories (char **dirs)$/;"	f	file:
+freeargv	./libiberty/argv.c	/^void freeargv (char **vector)$/;"	f
+freefun	./include/obstack.h	/^  void (*freefun) (void *, struct _obstack_chunk *);$/;"	m	struct:obstack
+freopen_unlocked	./libiberty/fopen_unlocked.c	/^freopen_unlocked (const char *path, const char *mode, FILE *stream)$/;"	f
+full_expansion	./libiberty/cp-demangle.c	/^  const char *full_expansion;$/;"	m	struct:d_standard_sub_info	file:
+full_len	./libiberty/cp-demangle.c	/^  int full_len;$/;"	m	struct:d_standard_sub_info	file:
+funcs	./libiberty/pex-common.h	/^  const struct pex_funcs *funcs;$/;"	m	struct:pex_obj	typeref:struct:pex_obj::pex_funcs
+funcs	./libiberty/pex-djgpp.c	/^const struct pex_funcs funcs =$/;"	v	typeref:struct:pex_funcs
+funcs	./libiberty/pex-msdos.c	/^const struct pex_funcs funcs =$/;"	v	typeref:struct:pex_funcs
+funcs	./libiberty/pex-unix.c	/^const struct pex_funcs funcs =$/;"	v	typeref:struct:pex_funcs
+funcs	./libiberty/pex-win32.c	/^const struct pex_funcs funcs =$/;"	v	typeref:struct:pex_funcs
+function0	./libiberty/copysign.c	/^    unsigned int function0:3;$/;"	m	struct:__anon10::__anon12	file:
+function0	./libiberty/copysign.c	/^    unsigned int function0:3;$/;"	m	struct:__anon14::__anon16	file:
+function0	./libiberty/copysign.c	/^    unsigned int function0:6;$/;"	m	struct:__anon18::__anon20	file:
+function0	./libiberty/copysign.c	/^    unsigned int function0:6;$/;"	m	struct:__anon21::__anon23	file:
+function1	./libiberty/copysign.c	/^    unsigned int function1:16;$/;"	m	struct:__anon10::__anon12	file:
+function1	./libiberty/copysign.c	/^    unsigned int function1:16;$/;"	m	struct:__anon14::__anon16	file:
+function1	./libiberty/copysign.c	/^    unsigned int function1:16;$/;"	m	struct:__anon18::__anon20	file:
+function1	./libiberty/copysign.c	/^    unsigned int function1:16;$/;"	m	struct:__anon21::__anon23	file:
+function2	./libiberty/copysign.c	/^    unsigned int function2:16;$/;"	m	struct:__anon10::__anon12	file:
+function2	./libiberty/copysign.c	/^    unsigned int function2:16;$/;"	m	struct:__anon14::__anon16	file:
+function3	./libiberty/copysign.c	/^    unsigned int function3:16;$/;"	m	struct:__anon10::__anon12	file:
+function3	./libiberty/copysign.c	/^    unsigned int function3:16;$/;"	m	struct:__anon14::__anon16	file:
+gcc_uint64_t	./libiberty/mkstemps.c	/^__extension__ typedef unsigned long long gcc_uint64_t;$/;"	t	file:
+gcc_uint64_t	./libiberty/mkstemps.c	/^typedef unsigned long gcc_uint64_t;$/;"	t	file:
+get_count	./libiberty/cplus-dem.c	/^get_count (const char **type, int *count)$/;"	f	file:
+get_field	./libiberty/floatformat.c	/^get_field (const unsigned char *data, enum floatformat_byteorders order,$/;"	f	file:
+get_run_time	./libiberty/getruntime.c	/^get_run_time (void)$/;"	f
+getcwd	./libiberty/getcwd.c	/^getcwd (char *buf, size_t len)$/;"	f
+getcwd	./libiberty/getpwd.c	51;"	d	file:
+getline	./libiberty/testsuite/test-demangle.c	/^getline(buf)$/;"	f	file:
+getopt	./libiberty/getopt.c	/^getopt (int argc, char *const *argv, const char *optstring)$/;"	f
+getopt_long	./libiberty/getopt1.c	/^getopt_long (int argc,  char *const *argv,  const char *options,$/;"	f
+getopt_long_only	./libiberty/getopt1.c	/^getopt_long_only (int argc, char *const *argv, const char *options,$/;"	f
+getpagesize	./libiberty/getpagesize.c	/^getpagesize (void)$/;"	f
+getpagesize	./libiberty/getpagesize.c	/^int getpagesize (void)$/;"	f
+getpwd	./libiberty/getpwd.c	/^getpwd (void)$/;"	f
+gettext	./libiberty/regex.c	100;"	d	file:
+gettext	./libiberty/regex.c	103;"	d	file:
+gettext	./libiberty/regex.c	99;"	d	file:
+gettext_noop	./libiberty/regex.c	109;"	d	file:
+gettimeofday	./libiberty/gettimeofday.c	/^gettimeofday (struct timeval *tp, void *tz)$/;"	f
+global_total_width	./libiberty/vasprintf.c	/^int global_total_width;$/;"	v
+gnat_demangling	./include/demangle.h	/^  gnat_demangling = DMGL_GNAT$/;"	e	enum:demangling_styles
+gnu_demangling	./include/demangle.h	/^  gnu_demangling = DMGL_GNU,$/;"	e	enum:demangling_styles
+gnu_special	./libiberty/cplus-dem.c	/^gnu_special (struct work_stuff *work, const char **mangled, string *declp)$/;"	f	file:
+gnu_v3_base_object_ctor	./include/demangle.h	/^  gnu_v3_base_object_ctor,$/;"	e	enum:gnu_v3_ctor_kinds
+gnu_v3_base_object_dtor	./include/demangle.h	/^  gnu_v3_base_object_dtor$/;"	e	enum:gnu_v3_dtor_kinds
+gnu_v3_complete_object_allocating_ctor	./include/demangle.h	/^  gnu_v3_complete_object_allocating_ctor$/;"	e	enum:gnu_v3_ctor_kinds
+gnu_v3_complete_object_ctor	./include/demangle.h	/^  gnu_v3_complete_object_ctor = 1,$/;"	e	enum:gnu_v3_ctor_kinds
+gnu_v3_complete_object_dtor	./include/demangle.h	/^  gnu_v3_complete_object_dtor,$/;"	e	enum:gnu_v3_dtor_kinds
+gnu_v3_ctor_kinds	./include/demangle.h	/^enum gnu_v3_ctor_kinds {$/;"	g
+gnu_v3_deleting_dtor	./include/demangle.h	/^  gnu_v3_deleting_dtor = 1,$/;"	e	enum:gnu_v3_dtor_kinds
+gnu_v3_demangling	./include/demangle.h	/^  gnu_v3_demangling = DMGL_GNU_V3,$/;"	e	enum:demangling_styles
+gnu_v3_dtor_kinds	./include/demangle.h	/^enum gnu_v3_dtor_kinds {$/;"	g
+group_in_compile_stack	./libiberty/regex.c	/^group_in_compile_stack (compile_stack_type compile_stack, regnum_t regnum)$/;"	f	file:
+group_match_null_string_p	./libiberty/regex.c	/^PREFIX(group_match_null_string_p) (UCHAR_T **p, UCHAR_T *end,$/;"	f	file:
+grow_vect	./libiberty/cplus-dem.c	/^grow_vect (char **old_vect, size_t *size, size_t min_size, int element_size)$/;"	f	file:
+h	./libiberty/alloca.c	/^    } h;$/;"	m	union:hdr	typeref:struct:hdr::__anon24	file:
+has_arg	./include/getopt.h	/^  int has_arg;$/;"	m	struct:option
+has_return_type	./libiberty/cp-demangle.c	/^has_return_type (struct demangle_component *dc)$/;"	f	file:
+hash_pointer	./libiberty/hashtab.c	/^hash_pointer (const PTR p)$/;"	f	file:
+hashval_t	./include/hashtab.h	/^typedef unsigned int hashval_t;$/;"	t
+hdr	./libiberty/alloca.c	/^typedef union hdr$/;"	u	file:
+header	./libiberty/alloca.c	/^} header;$/;"	t	typeref:union:hdr	file:
+hex_init	./libiberty/hex.c	/^hex_init (void)$/;"	f
+hex_p	./include/libiberty.h	359;"	d
+hex_value	./include/libiberty.h	362;"	d
+high_water	./libiberty/alloca.c	/^    long high_water;		\/* Stack high-water mark.  *\/$/;"	m	struct:stk_stat	file:
+higher_prime_index	./libiberty/hashtab.c	/^higher_prime_index (unsigned long n)$/;"	f	file:
+hits	./libiberty/alloca.c	/^    long hits;			\/* Number of internal buffer hits.  *\/$/;"	m	struct:stk_stat	file:
+hook_char_replace	./libiberty/testsuite/test-expandargv.c	/^hook_char_replace (char *string, size_t len, char replacethis, char withthis)$/;"	f
+hp_demangling	./include/demangle.h	/^  hp_demangling = DMGL_HP,$/;"	e	enum:demangling_styles
+htab	./include/hashtab.h	/^struct htab GTY(())$/;"	f
+htab_alloc	./include/hashtab.h	/^typedef void *(*htab_alloc) (size_t, size_t);$/;"	t
+htab_alloc_with_arg	./include/hashtab.h	/^typedef void *(*htab_alloc_with_arg) (void *, size_t, size_t);$/;"	t
+htab_clear_slot	./libiberty/hashtab.c	/^htab_clear_slot (htab_t htab, PTR *slot)$/;"	f
+htab_collisions	./libiberty/hashtab.c	/^htab_collisions (htab_t htab)$/;"	f
+htab_create	./libiberty/hashtab.c	/^htab_create (size_t size, htab_hash hash_f, htab_eq eq_f, htab_del del_f)$/;"	f
+htab_create	./libiberty/hashtab.c	370;"	d	file:
+htab_create_alloc	./libiberty/hashtab.c	/^htab_create_alloc (size_t size, htab_hash hash_f, htab_eq eq_f,$/;"	f
+htab_create_alloc_ex	./libiberty/hashtab.c	/^htab_create_alloc_ex (size_t size, htab_hash hash_f, htab_eq eq_f,$/;"	f
+htab_del	./include/hashtab.h	/^typedef void (*htab_del) (void *);$/;"	t
+htab_delete	./libiberty/hashtab.c	/^htab_delete (htab_t htab)$/;"	f
+htab_elements	./libiberty/hashtab.c	/^(htab_elements) (htab_t htab)$/;"	f
+htab_elements	./libiberty/hashtab.c	228;"	d	file:
+htab_empty	./libiberty/hashtab.c	/^htab_empty (htab_t htab)$/;"	f
+htab_eq	./include/hashtab.h	/^typedef int (*htab_eq) (const void *, const void *);$/;"	t
+htab_eq_pointer	./libiberty/hashtab.c	/^htab_eq htab_eq_pointer = eq_pointer;$/;"	v
+htab_expand	./libiberty/hashtab.c	/^htab_expand (htab_t htab)$/;"	f	file:
+htab_find	./libiberty/hashtab.c	/^htab_find (htab_t htab, const PTR element)$/;"	f
+htab_find_slot	./libiberty/hashtab.c	/^htab_find_slot (htab_t htab, const PTR element, enum insert_option insert)$/;"	f
+htab_find_slot_with_hash	./libiberty/hashtab.c	/^htab_find_slot_with_hash (htab_t htab, const PTR element,$/;"	f
+htab_find_with_hash	./libiberty/hashtab.c	/^htab_find_with_hash (htab_t htab, const PTR element, hashval_t hash)$/;"	f
+htab_free	./include/hashtab.h	/^typedef void (*htab_free) (void *);$/;"	t
+htab_free_with_arg	./include/hashtab.h	/^typedef void (*htab_free_with_arg) (void *, void *);$/;"	t
+htab_hash	./include/hashtab.h	/^typedef hashval_t (*htab_hash) (const void *);$/;"	t
+htab_hash_pointer	./libiberty/hashtab.c	/^htab_hash htab_hash_pointer = hash_pointer;$/;"	v
+htab_hash_string	./libiberty/hashtab.c	/^htab_hash_string (const PTR p)$/;"	f
+htab_mod	./libiberty/hashtab.c	/^htab_mod (hashval_t hash, htab_t htab)$/;"	f	file:
+htab_mod_1	./libiberty/hashtab.c	/^htab_mod_1 (hashval_t x, hashval_t y, hashval_t inv, int shift)$/;"	f	file:
+htab_mod_m2	./libiberty/hashtab.c	/^htab_mod_m2 (hashval_t hash, htab_t htab)$/;"	f	file:
+htab_remove_elt	./libiberty/hashtab.c	/^htab_remove_elt (htab_t htab, PTR element)$/;"	f
+htab_remove_elt_with_hash	./libiberty/hashtab.c	/^htab_remove_elt_with_hash (htab_t htab, PTR element, hashval_t hash)$/;"	f
+htab_set_functions_ex	./libiberty/hashtab.c	/^htab_set_functions_ex (htab_t htab, htab_hash hash_f, htab_eq eq_f,$/;"	f
+htab_size	./libiberty/hashtab.c	/^(htab_size) (htab_t htab)$/;"	f
+htab_size	./libiberty/hashtab.c	218;"	d	file:
+htab_t	./include/hashtab.h	/^typedef struct htab *htab_t;$/;"	t	typeref:struct:htab
+htab_trav	./include/hashtab.h	/^typedef int (*htab_trav) (void **, void *);$/;"	t
+htab_traverse	./libiberty/hashtab.c	/^htab_traverse (htab_t htab, htab_trav callback, PTR info)$/;"	f
+htab_traverse_noresize	./libiberty/hashtab.c	/^htab_traverse_noresize (htab_t htab, htab_trav callback, PTR info)$/;"	f
+htab_try_create	./libiberty/hashtab.c	/^htab_try_create (size_t size, htab_hash hash_f, htab_eq eq_f, htab_del del_f)$/;"	f
+i00afunc	./libiberty/alloca.c	/^i00afunc (long *address)$/;"	f	file:
+i00afunc	./libiberty/alloca.c	/^i00afunc (long address)$/;"	f	file:
+idx	./libiberty/pexecute.c	/^static int idx;$/;"	v	file:
+ieee_test	./libiberty/floatformat.c	/^ieee_test (double n)$/;"	f
+in	./libiberty/cplus-dem.c	/^  const char *const in;$/;"	m	struct:optable	file:
+ind	./libiberty/xatexit.c	/^	int	ind;			\/* next index in this table *\/$/;"	m	struct:xatexit	file:
+index	./libiberty/index.c	/^index (const char *s, int c)$/;"	f
+init_error_tables	./libiberty/strerror.c	/^init_error_tables (void)$/;"	f	file:
+init_signal_tables	./libiberty/strsignal.c	/^init_signal_tables (void)$/;"	f	file:
+init_syntax_once	./libiberty/regex.c	/^init_syntax_once (void)$/;"	f	file:
+initial_address	./libiberty/alloca.c	/^    long initial_address;	\/* Address of initial segment.  *\/$/;"	m	struct:stk_stat	file:
+initial_size	./libiberty/alloca.c	/^    long initial_size;		\/* Size of initial segment.  *\/$/;"	m	struct:stk_stat	file:
+initstate	./libiberty/random.c	/^initstate (unsigned int seed, PTR arg_state, unsigned long n)$/;"	f
+inline	./include/ansidecl.h	175;"	d
+inline	./include/ansidecl.h	180;"	d
+inline	./include/ansidecl.h	182;"	d
+inline	./include/ansidecl.h	220;"	d
+inline	./include/ansidecl.h	224;"	d
+inner_group_offset	./libiberty/regex.c	/^  pattern_offset_t inner_group_offset;$/;"	m	struct:__anon6	file:
+input_file	./libiberty/pex-common.h	/^  FILE *input_file;$/;"	m	struct:pex_obj
+insert_op1	./libiberty/regex.c	/^PREFIX(insert_op1) (re_opcode_t op, UCHAR_T *loc, int arg, UCHAR_T *end)$/;"	f	file:
+insert_op2	./libiberty/regex.c	/^PREFIX(insert_op2) (re_opcode_t op, UCHAR_T *loc, int arg1,$/;"	f	file:
+insert_option	./include/hashtab.h	/^enum insert_option {NO_INSERT, INSERT};$/;"	g
+insert_space	./libiberty/regex.c	/^insert_space (int num, CHAR_T *loc, CHAR_T *end)$/;"	f	file:
+insque	./libiberty/insque.c	/^insque (struct qelem *elem, struct qelem *pred)$/;"	f
+install_error_msg	./libiberty/pex-common.h	35;"	d
+int_vasprintf	./libiberty/vasprintf.c	/^int_vasprintf (char **result, const char *format, va_list args)$/;"	f	file:
+intbit	./include/floatformat.h	/^  enum floatformat_intbit intbit;$/;"	m	struct:floatformat	typeref:enum:floatformat::floatformat_intbit
+internal_cplus_demangle	./libiberty/cplus-dem.c	/^internal_cplus_demangle (struct work_stuff *work, const char *mangled)$/;"	f	file:
+inv	./libiberty/hashtab.c	/^  hashval_t inv;$/;"	m	struct:prime_ent	file:
+inv_m2	./libiberty/hashtab.c	/^  hashval_t inv_m2;	\/* inverse of prime-2 *\/$/;"	m	struct:prime_ent	file:
+is	./libiberty/safe-ctype.c	130;"	d	file:
+is_active	./libiberty/regex.c	/^    unsigned is_active : 1;$/;"	m	struct:__anon4::__anon5	file:
+is_ctor_dtor_or_conversion	./libiberty/cp-demangle.c	/^is_ctor_dtor_or_conversion (struct demangle_component *dc)$/;"	f	file:
+is_ctor_or_dtor	./libiberty/cp-demangle.c	/^is_ctor_or_dtor (const char *mangled,$/;"	f	file:
+is_gnu_v3_mangled_ctor	./libiberty/cp-demangle.c	/^is_gnu_v3_mangled_ctor (const char *name)$/;"	f
+is_gnu_v3_mangled_dtor	./libiberty/cp-demangle.c	/^is_gnu_v3_mangled_dtor (const char *name)$/;"	f
+is_mangled_char	./libiberty/cp-demangle.c	4877;"	d	file:
+is_valid	./include/floatformat.h	/^  int (*is_valid) (const struct floatformat *fmt, const void *from);$/;"	m	struct:floatformat
+isalnum	./include/safe-ctype.h	125;"	d
+isalnum	./include/safe-ctype.h	126;"	d
+isalpha	./include/safe-ctype.h	123;"	d
+isalpha	./include/safe-ctype.h	124;"	d
+iscntrl	./include/safe-ctype.h	127;"	d
+iscntrl	./include/safe-ctype.h	128;"	d
+isdigit	./include/safe-ctype.h	129;"	d
+isdigit	./include/safe-ctype.h	130;"	d
+isgraph	./include/safe-ctype.h	131;"	d
+isgraph	./include/safe-ctype.h	132;"	d
+islower	./include/safe-ctype.h	133;"	d
+islower	./include/safe-ctype.h	134;"	d
+isprint	./include/safe-ctype.h	135;"	d
+isprint	./include/safe-ctype.h	136;"	d
+ispunct	./include/safe-ctype.h	137;"	d
+ispunct	./include/safe-ctype.h	138;"	d
+isspace	./include/safe-ctype.h	139;"	d
+isspace	./include/safe-ctype.h	140;"	d
+isupper	./include/safe-ctype.h	141;"	d
+isupper	./include/safe-ctype.h	142;"	d
+isxdigit	./include/safe-ctype.h	143;"	d
+isxdigit	./include/safe-ctype.h	144;"	d
+iterate_demangle_function	./libiberty/cplus-dem.c	/^iterate_demangle_function (struct work_stuff *work, const char **mangled,$/;"	f	file:
+iterative_hash	./libiberty/hashtab.c	/^iterative_hash (const PTR k_in \/* the key *\/,$/;"	f
+iterative_hash_object	./include/hashtab.h	200;"	d
+java_demangle_v3	./libiberty/cp-demangle.c	/^java_demangle_v3 (const char *mangled)$/;"	f
+java_demangle_v3_callback	./libiberty/cp-demangle.c	/^java_demangle_v3_callback (const char *mangled,$/;"	f
+java_demangling	./include/demangle.h	/^  java_demangling = DMGL_JAVA,$/;"	e	enum:demangling_styles
+java_len	./libiberty/cp-demangle.h	/^  int java_len;$/;"	m	struct:demangle_builtin_type_info
+java_name	./libiberty/cp-demangle.h	/^  const char *java_name;$/;"	m	struct:demangle_builtin_type_info
+jump	./libiberty/regex.c	/^  jump,$/;"	e	enum:__anon1	file:
+jump_n	./libiberty/regex.c	/^  jump_n,$/;"	e	enum:__anon1	file:
+jump_past_alt	./libiberty/regex.c	/^  jump_past_alt,$/;"	e	enum:__anon1	file:
+key	./include/fibheap.h	/^  fibheapkey_t key;$/;"	m	struct:fibnode
+kind	./include/demangle.h	/^      enum gnu_v3_ctor_kinds kind;$/;"	m	struct:demangle_component::__anon30::__anon35	typeref:enum:demangle_component::__anon30::__anon35::gnu_v3_ctor_kinds
+kind	./include/demangle.h	/^      enum gnu_v3_dtor_kinds kind;$/;"	m	struct:demangle_component::__anon30::__anon36	typeref:enum:demangle_component::__anon30::__anon36::gnu_v3_dtor_kinds
+ksize	./libiberty/cplus-dem.c	/^  int ksize;$/;"	m	struct:work_stuff	file:
+ktypevec	./libiberty/cplus-dem.c	/^  char **ktypevec;$/;"	m	struct:work_stuff	file:
+lMEMORYSTATUSEX	./libiberty/physmem.c	/^} lMEMORYSTATUSEX;$/;"	t	typeref:struct:__anon25	file:
+last_alloca_header	./libiberty/alloca.c	/^static header *last_alloca_header = NULL;	\/* -> last alloca header.  *\/$/;"	v	file:
+last_char	./libiberty/cp-demangle.c	/^  char last_char;$/;"	m	struct:d_print_info	file:
+last_environ	./libiberty/setenv.c	/^static char **last_environ;$/;"	v	file:
+last_name	./libiberty/cp-demangle.h	/^  struct demangle_component *last_name;$/;"	m	struct:d_info	typeref:struct:d_info::demangle_component
+last_nonopt	./libiberty/getopt.c	/^static int last_nonopt;$/;"	v	file:
+laststart_offset	./libiberty/regex.c	/^  pattern_offset_t laststart_offset;$/;"	m	struct:__anon6	file:
+lbasename	./libiberty/lbasename.c	/^lbasename (const char *name)$/;"	f
+left	./include/demangle.h	/^      struct demangle_component *left;$/;"	m	struct:demangle_component::__anon30::__anon41	typeref:struct:demangle_component::__anon30::__anon41::demangle_component
+left	./include/fibheap.h	/^  struct fibnode *left;$/;"	m	struct:fibnode	typeref:struct:fibnode::fibnode
+len	./include/demangle.h	/^      int len;$/;"	m	struct:demangle_component::__anon30::__anon31
+len	./include/demangle.h	/^      int len;$/;"	m	struct:demangle_component::__anon30::__anon38
+len	./libiberty/cp-demangle.c	/^  size_t len;$/;"	m	struct:d_growable_string	file:
+len	./libiberty/cp-demangle.c	/^  size_t len;$/;"	m	struct:d_print_info	file:
+len	./libiberty/cp-demangle.h	/^  int len;$/;"	m	struct:demangle_builtin_type_info
+len	./libiberty/cp-demangle.h	/^  int len;$/;"	m	struct:demangle_operator_info
+length	./include/demangle.h	/^      struct demangle_component *length;$/;"	m	struct:demangle_component::__anon30::__anon34	typeref:struct:demangle_component::__anon30::__anon34::demangle_component
+length	./include/dyn-string.h	/^  int length;		\/* The actual length of the string.  *\/$/;"	m	struct:dyn_string
+libi_shostptr_t	./include/splay-tree.h	/^  typedef long int libi_shostptr_t;$/;"	t
+libi_shostptr_t	./include/splay-tree.h	/^  typedef long long libi_shostptr_t;$/;"	t
+libi_uhostptr_t	./include/splay-tree.h	/^  typedef unsigned long int libi_uhostptr_t;$/;"	t
+libi_uhostptr_t	./include/splay-tree.h	/^  typedef unsigned long long libi_uhostptr_t;$/;"	t
+libiberty_concat_ptr	./libiberty/concat.c	/^char *libiberty_concat_ptr;$/;"	v
+libiberty_demanglers	./libiberty/cplus-dem.c	/^const struct demangler_engine libiberty_demanglers[] =$/;"	v	typeref:struct:demangler_engine
+libiberty_len	./libiberty/alloca.c	/^unsigned long libiberty_len;$/;"	v
+libiberty_nptr	./libiberty/alloca.c	/^char *libiberty_nptr;$/;"	v
+libiberty_optr	./libiberty/alloca.c	/^const char *libiberty_optr;$/;"	v
+limit	./include/obstack.h	/^  char  *limit;			\/* 1 past end of this chunk *\/$/;"	m	struct:_obstack_chunk
+line	./libiberty/testsuite/test-demangle.c	/^struct line$/;"	s	file:
+lineno	./libiberty/testsuite/test-demangle.c	/^static unsigned int lineno;$/;"	v	file:
+link	./libiberty/alloca.c	/^    long link;			\/* Address of trailer block of previous$/;"	m	struct:stk_trailer	file:
+lo	./libiberty/safe-ctype.c	131;"	d	file:
+long_options	./libiberty/cp-demangle.c	/^static const struct option long_options[] = $/;"	v	typeref:struct:option	file:
+lrealpath	./libiberty/lrealpath.c	/^lrealpath (const char *filename)$/;"	f
+lstat	./libiberty/unlink-if-ordinary.c	58;"	d	file:
+lsw	./libiberty/copysign.c	/^    unsigned long lsw;$/;"	m	struct:__anon10::__anon13	file:
+lsw	./libiberty/copysign.c	/^    unsigned long lsw;$/;"	m	struct:__anon14::__anon17	file:
+lucid_demangling	./include/demangle.h	/^  lucid_demangling = DMGL_LUCID,$/;"	e	enum:demangling_styles
+main	./config.guess	/^		main()$/;"	f
+main	./config.guess	/^	main ()$/;"	f
+main	./config.guess	/^main ()$/;"	f
+main	./libiberty/_doprnt.c	/^main (void)$/;"	f
+main	./libiberty/argv.c	/^main (void)$/;"	f
+main	./libiberty/concat.c	/^main (void)$/;"	f
+main	./libiberty/cp-demangle.c	/^main (int argc, char *argv[])$/;"	f
+main	./libiberty/floatformat.c	/^main (void)$/;"	f
+main	./libiberty/getopt.c	/^main (int argc, char **argv)$/;"	f
+main	./libiberty/getopt1.c	/^main (int argc, char **argv)$/;"	f
+main	./libiberty/pex-win32.c	/^main (int argc ATTRIBUTE_UNUSED, char **argv)$/;"	f
+main	./libiberty/physmem.c	/^main (void)$/;"	f
+main	./libiberty/sort.c	/^int main (int argc, char **argv)$/;"	f
+main	./libiberty/strerror.c	/^main (void)$/;"	f
+main	./libiberty/strsignal.c	/^main (void)$/;"	f
+main	./libiberty/testsuite/test-demangle.c	/^main(argc, argv)$/;"	f
+main	./libiberty/testsuite/test-expandargv.c	/^main(int argc, char **argv)$/;"	f
+main	./libiberty/testsuite/test-pexecute.c	/^main (int argc, char **argv)$/;"	f
+main	./libiberty/vasprintf.c	/^main (void)$/;"	f
+main	./libiberty/vsnprintf.c	/^main (void)$/;"	f
+make_relative_prefix	./libiberty/make-relative-prefix.c	/^make_relative_prefix (const char *progname, const char *bin_prefix,$/;"	f
+make_relative_prefix_1	./libiberty/make-relative-prefix.c	/^make_relative_prefix_1 (const char *progname, const char *bin_prefix,$/;"	f	file:
+make_relative_prefix_ignore_links	./libiberty/make-relative-prefix.c	/^make_relative_prefix_ignore_links (const char *progname,$/;"	f
+make_temp_file	./libiberty/make-temp-file.c	/^make_temp_file (const char *suffix)$/;"	f
+man_len	./include/floatformat.h	/^  unsigned int man_len;$/;"	m	struct:floatformat
+man_start	./include/floatformat.h	/^  unsigned int man_start;$/;"	m	struct:floatformat
+mant_bits_set	./libiberty/floatformat.c	/^mant_bits_set (const struct floatformat *fmt, const unsigned char *ufrom)$/;"	f	file:
+mark	./include/fibheap.h	/^  __extension__ unsigned long int mark : 1;$/;"	m	struct:fibnode
+mark	./include/fibheap.h	/^  unsigned int mark : 1;$/;"	m	struct:fibnode
+match_null_string_p	./libiberty/regex.c	/^    unsigned match_null_string_p : 2;$/;"	m	struct:__anon4::__anon5	file:
+matched_something	./libiberty/regex.c	/^    unsigned matched_something : 1;$/;"	m	struct:__anon4::__anon5	file:
+maxc	./libiberty/alloca.c	/^    long maxc;			\/* Amount of contiguous space which would$/;"	m	struct:stk_stat	file:
+maxs	./libiberty/alloca.c	/^    long maxs;			\/* Maximum number of stack segments so far.  *\/$/;"	m	struct:stk_stat	file:
+maybe_empty_object	./include/obstack.h	/^  unsigned maybe_empty_object:1;\/* There is a possibility that the current$/;"	m	struct:obstack
+maybe_pop_jump	./libiberty/regex.c	/^  maybe_pop_jump,$/;"	e	enum:__anon1	file:
+md5_buffer	./libiberty/md5.c	/^md5_buffer (const char *buffer, size_t len, void *resblock)$/;"	f
+md5_ctx	./include/md5.h	/^struct md5_ctx$/;"	s
+md5_finish_ctx	./libiberty/md5.c	/^md5_finish_ctx (struct md5_ctx *ctx, void *resbuf)$/;"	f
+md5_init_ctx	./libiberty/md5.c	/^md5_init_ctx (struct md5_ctx *ctx)$/;"	f
+md5_process_block	./libiberty/md5.c	/^md5_process_block (const void *buffer, size_t len, struct md5_ctx *ctx)$/;"	f
+md5_process_bytes	./libiberty/md5.c	/^md5_process_bytes (const void *buffer, size_t len, struct md5_ctx *ctx)$/;"	f
+md5_read_ctx	./libiberty/md5.c	/^md5_read_ctx (const struct md5_ctx *ctx, void *resbuf)$/;"	f
+md5_stream	./libiberty/md5.c	/^md5_stream (FILE *stream, void *resblock)$/;"	f
+md5_uint32	./include/md5.h	/^     typedef unsigned long md5_uint32;$/;"	t
+md5_uint32	./include/md5.h	/^    typedef unsigned short md5_uint32;$/;"	t
+md5_uint32	./include/md5.h	/^   typedef unsigned int md5_uint32;$/;"	t
+md5_uint32	./include/md5.h	/^typedef u_int32_t md5_uint32;$/;"	t
+md5_uintptr	./include/md5.h	/^typedef uintptr_t md5_uintptr;$/;"	t
+md5_uintptr	./include/md5.h	/^typedef unsigned long int md5_uintptr;$/;"	t
+memchr	./libiberty/memchr.c	/^memchr (register const PTR src_void, int c, size_t length)$/;"	f
+memcmp	./libiberty/memcmp.c	/^memcmp (const PTR str1, const PTR str2, size_t count)$/;"	f
+memcmp	./libiberty/regex.c	160;"	d	file:
+memcpy	./libiberty/md5.c	35;"	d	file:
+memcpy	./libiberty/memcpy.c	/^memcpy (PTR out, const PTR in, size_t length)$/;"	f
+memcpy	./libiberty/regex.c	163;"	d	file:
+memmove	./libiberty/memmove.c	/^memmove (PTR s1, const PTR s2, size_t n)$/;"	f
+memoized_tmpdir	./libiberty/make-temp-file.c	/^static char *memoized_tmpdir;$/;"	v	file:
+mempcpy	./libiberty/mempcpy.c	/^mempcpy (PTR dst, const PTR src, size_t len)$/;"	f
+memset	./libiberty/memset.c	/^memset (PTR dest, register int val, register size_t len)$/;"	f
+min	./include/fibheap.h	/^  struct fibnode *min;$/;"	m	struct:fibheap	typeref:struct:fibheap::fibnode
+min	./libiberty/cplus-dem.c	67;"	d	file:
+min	./libiberty/floatformat.c	369;"	d	file:
+mingw_keys	./libiberty/pex-win32.c	/^static const char *mingw_keys[] = {"SOFTWARE", "Microsoft", "Windows", "CurrentVersion", "Uninstall", NULL};$/;"	v	file:
+mingw_rootify	./libiberty/pex-win32.c	/^mingw_rootify (const char *executable)$/;"	f	file:
+mix	./libiberty/hashtab.c	854;"	d	file:
+mkstemps	./libiberty/mkstemps.c	/^mkstemps (char *pattern, int suffix_len)$/;"	f
+mod	./libiberty/cp-demangle.c	/^  const struct demangle_component *mod;$/;"	m	struct:d_print_mod	typeref:struct:d_print_mod::demangle_component	file:
+modifiers	./libiberty/cp-demangle.c	/^  struct d_print_mod *modifiers;$/;"	m	struct:d_print_info	typeref:struct:d_print_info::d_print_mod	file:
+mop_up	./libiberty/cplus-dem.c	/^mop_up (struct work_stuff *work, string *declp, int success)$/;"	f	file:
+msg	./libiberty/msdos.c	/^char msg[] = "No vfork available - aborting\\n";$/;"	v
+msg	./libiberty/strerror.c	/^  const char *const msg;	\/* Short message about this value *\/$/;"	m	struct:error_info	file:
+msg	./libiberty/strerror.c	/^static struct { int value; const char *name, *msg; }$/;"	m	struct:__anon8	file:
+msg	./libiberty/strsignal.c	/^  const char *const msg;	\/* Short message about this value *\/$/;"	m	struct:signal_info	file:
+msw	./libiberty/copysign.c	/^    unsigned long msw;$/;"	m	struct:__anon10::__anon13	file:
+msw	./libiberty/copysign.c	/^    unsigned long msw;$/;"	m	struct:__anon14::__anon17	file:
+msys_rootify	./libiberty/pex-win32.c	/^msys_rootify (const char *executable)$/;"	f	file:
+my_index	./libiberty/getopt.c	/^my_index (const char *str, int chr)$/;"	f	file:
+my_index	./libiberty/getopt.c	202;"	d	file:
+n	./libiberty/cp-demangle.h	/^  const char *n;$/;"	m	struct:d_info
+name	./include/demangle.h	/^      struct demangle_component *name;$/;"	m	struct:demangle_component::__anon30::__anon33	typeref:struct:demangle_component::__anon30::__anon33::demangle_component
+name	./include/demangle.h	/^      struct demangle_component *name;$/;"	m	struct:demangle_component::__anon30::__anon35	typeref:struct:demangle_component::__anon30::__anon35::demangle_component
+name	./include/demangle.h	/^      struct demangle_component *name;$/;"	m	struct:demangle_component::__anon30::__anon36	typeref:struct:demangle_component::__anon30::__anon36::demangle_component
+name	./include/floatformat.h	/^  const char *name;$/;"	m	struct:floatformat
+name	./include/getopt.h	/^  const char *name;$/;"	m	struct:option
+name	./libiberty/cp-demangle.h	/^  const char *name;$/;"	m	struct:demangle_builtin_type_info
+name	./libiberty/cp-demangle.h	/^  const char *name;$/;"	m	struct:demangle_operator_info
+name	./libiberty/strerror.c	/^  const char *const name;	\/* The equivalent symbolic value *\/$/;"	m	struct:error_info	file:
+name	./libiberty/strerror.c	/^static struct { int value; const char *name, *msg; }$/;"	m	struct:__anon8	file:
+name	./libiberty/strsignal.c	/^  const char *const name;	\/* The equivalent symbolic value *\/$/;"	m	struct:signal_info	file:
+name	./libiberty/xmalloc.c	/^static const char *name = "";$/;"	v	file:
+nan	./libiberty/copysign.c	/^  } nan;$/;"	m	union:__anon10	typeref:struct:__anon10::__anon12	file:
+nan	./libiberty/copysign.c	/^  } nan;$/;"	m	union:__anon14	typeref:struct:__anon14::__anon16	file:
+nan	./libiberty/copysign.c	/^  } nan;$/;"	m	union:__anon18	typeref:struct:__anon18::__anon20	file:
+nan	./libiberty/copysign.c	/^  } nan;$/;"	m	union:__anon21	typeref:struct:__anon21::__anon23	file:
+newline_anchor	./include/xregex2.h	/^  unsigned newline_anchor : 1;$/;"	m	struct:re_pattern_buffer
+next	./include/partition.h	/^  struct partition_elem* next;$/;"	m	struct:partition_elem	typeref:struct:partition_elem::partition_elem
+next	./libiberty/alloca.c	/^      union hdr *next;		\/* For chaining headers.  *\/$/;"	m	struct:hdr::__anon24	typeref:union:hdr::__anon24::hdr	file:
+next	./libiberty/cp-demangle.c	/^  struct d_print_mod *next;$/;"	m	struct:d_print_mod	typeref:struct:d_print_mod::d_print_mod	file:
+next	./libiberty/cp-demangle.c	/^  struct d_print_template *next;$/;"	m	struct:d_print_template	typeref:struct:d_print_template::d_print_template	file:
+next	./libiberty/objalloc.c	/^  struct objalloc_chunk *next;$/;"	m	struct:objalloc_chunk	typeref:struct:objalloc_chunk::objalloc_chunk	file:
+next	./libiberty/pex-unix.c	/^  struct status_list *next;$/;"	m	struct:status_list	typeref:struct:status_list::status_list	file:
+next	./libiberty/xatexit.c	/^	struct	xatexit *next;		\/* next in list *\/$/;"	m	struct:xatexit	typeref:struct:xatexit::xatexit	file:
+next_comp	./libiberty/cp-demangle.h	/^  int next_comp;$/;"	m	struct:d_info
+next_free	./include/obstack.h	/^  char	*next_free;		\/* where to add next char to current object *\/$/;"	m	struct:obstack
+next_input	./libiberty/pex-common.h	/^  int next_input;$/;"	m	struct:pex_obj
+next_input_name	./libiberty/pex-common.h	/^  char *next_input_name;$/;"	m	struct:pex_obj
+next_input_name_allocated	./libiberty/pex-common.h	/^  int next_input_name_allocated;$/;"	m	struct:pex_obj
+next_sub	./libiberty/cp-demangle.h	/^  int next_sub;$/;"	m	struct:d_info
+nextchar	./libiberty/getopt.c	/^static char *nextchar;$/;"	v	file:
+no_argument	./include/getopt.h	98;"	d
+no_demangling	./include/demangle.h	/^  no_demangling = -1,$/;"	e	enum:demangling_styles
+no_op	./libiberty/regex.c	/^  no_op = 0,$/;"	e	enum:__anon1	file:
+no_sub	./include/xregex2.h	/^  unsigned no_sub : 1;$/;"	m	struct:re_pattern_buffer
+nodes	./include/fibheap.h	/^  size_t nodes;$/;"	m	struct:fibheap
+nonoption_flags_len	./libiberty/getopt.c	/^static int nonoption_flags_len;$/;"	v	file:
+nonoption_flags_max_len	./libiberty/getopt.c	/^static int nonoption_flags_max_len;$/;"	v	file:
+not_bol	./include/xregex2.h	/^  unsigned not_bol : 1;$/;"	m	struct:re_pattern_buffer
+not_eol	./include/xregex2.h	/^  unsigned not_eol : 1;$/;"	m	struct:re_pattern_buffer
+notsyntaxspec	./libiberty/regex.c	/^  notsyntaxspec$/;"	e	enum:__anon1	file:
+notwordbound	./libiberty/regex.c	/^  notwordbound	\/* Succeeds if not at a word boundary.  *\/$/;"	e	enum:__anon1	file:
+notwordchar	./libiberty/regex.c	/^  notwordchar,	\/* Matches any char that is not a word-constituent.  *\/$/;"	e	enum:__anon1	file:
+now	./libiberty/alloca.c	/^    long now;			\/* Current total stack size.  *\/$/;"	m	struct:stk_stat	file:
+nrepeats	./libiberty/cplus-dem.c	/^  int nrepeats;         \/* The number of times to repeat the previous$/;"	m	struct:work_stuff	file:
+ntmpl_args	./libiberty/cplus-dem.c	/^  int ntmpl_args;       \/* The number of template function arguments. *\/$/;"	m	struct:work_stuff	file:
+ntypes	./libiberty/cplus-dem.c	/^  int ntypes;$/;"	m	struct:work_stuff	file:
+num_comps	./libiberty/cp-demangle.h	/^  int num_comps;$/;"	m	struct:d_info
+num_elements	./include/partition.h	/^  int num_elements;$/;"	m	struct:partition_def
+num_error_names	./libiberty/strerror.c	/^static int num_error_names = 0;$/;"	v	file:
+num_regs	./include/xregex2.h	/^  unsigned num_regs;$/;"	m	struct:re_registers
+num_signal_names	./libiberty/strsignal.c	/^static int num_signal_names = 0;$/;"	v	file:
+num_subs	./libiberty/cp-demangle.h	/^  int num_subs;$/;"	m	struct:d_info
+numb	./libiberty/cplus-dem.c	/^  int numb;$/;"	m	struct:work_stuff	file:
+number	./include/demangle.h	/^      long number;$/;"	m	struct:demangle_component::__anon30::__anon39
+number	./libiberty/copysign.c	/^  } number;$/;"	m	union:__anon10	typeref:struct:__anon10::__anon11	file:
+number	./libiberty/copysign.c	/^  } number;$/;"	m	union:__anon14	typeref:struct:__anon14::__anon15	file:
+number	./libiberty/copysign.c	/^  } number;$/;"	m	union:__anon18	typeref:struct:__anon18::__anon19	file:
+number	./libiberty/copysign.c	/^  } number;$/;"	m	union:__anon21	typeref:struct:__anon21::__anon22	file:
+number_waited	./libiberty/pex-common.h	/^  int number_waited;$/;"	m	struct:pex_obj
+numk	./libiberty/cplus-dem.c	/^  int numk;$/;"	m	struct:work_stuff	file:
+nv	./libiberty/safe-ctype.c	132;"	d	file:
+objalloc	./include/objalloc.h	/^struct objalloc$/;"	s
+objalloc_align	./include/objalloc.h	/^struct objalloc_align { char x; double d; };$/;"	s
+objalloc_alloc	./include/objalloc.h	102;"	d
+objalloc_alloc	./include/objalloc.h	87;"	d
+objalloc_chunk	./libiberty/objalloc.c	/^struct objalloc_chunk$/;"	s	file:
+objalloc_create	./libiberty/objalloc.c	/^objalloc_create (void)$/;"	f
+objalloc_free	./libiberty/objalloc.c	/^objalloc_free (struct objalloc *o)$/;"	f
+objalloc_free_block	./libiberty/objalloc.c	/^objalloc_free_block (struct objalloc *o, PTR block)$/;"	f
+object_base	./include/obstack.h	/^  char	*object_base;		\/* address of object we are building *\/$/;"	m	struct:obstack
+obstack	./include/obstack.h	/^struct obstack		\/* control current object in current chunk *\/$/;"	s
+obstack_1grow	./include/obstack.h	352;"	d
+obstack_1grow	./include/obstack.h	482;"	d
+obstack_1grow_fast	./include/obstack.h	289;"	d
+obstack_alignment_mask	./include/obstack.h	262;"	d
+obstack_alloc	./include/obstack.h	401;"	d
+obstack_alloc	./include/obstack.h	509;"	d
+obstack_alloc_failed_handler	./libiberty/obstack.c	/^void (*obstack_alloc_failed_handler) (void) = print_and_abort;$/;"	v
+obstack_base	./include/obstack.h	250;"	d
+obstack_begin	./include/obstack.h	270;"	d
+obstack_blank	./include/obstack.h	392;"	d
+obstack_blank	./include/obstack.h	503;"	d
+obstack_blank_fast	./include/obstack.h	291;"	d
+obstack_chunk_size	./include/obstack.h	254;"	d
+obstack_chunkfun	./include/obstack.h	283;"	d
+obstack_copy	./include/obstack.h	407;"	d
+obstack_copy	./include/obstack.h	512;"	d
+obstack_copy0	./include/obstack.h	413;"	d
+obstack_copy0	./include/obstack.h	515;"	d
+obstack_empty_p	./include/obstack.h	326;"	d
+obstack_empty_p	./include/obstack.h	453;"	d
+obstack_exit_failure	./libiberty/obstack.c	/^int obstack_exit_failure = EXIT_FAILURE;$/;"	v
+obstack_finish	./include/obstack.h	421;"	d
+obstack_finish	./include/obstack.h	518;"	d
+obstack_free	./include/obstack.h	437;"	d
+obstack_free	./include/obstack.h	532;"	d
+obstack_free	./libiberty/obstack.c	/^obstack_free (struct obstack *h, POINTER obj)$/;"	f
+obstack_free	./libiberty/obstack.c	324;"	d	file:
+obstack_freefun	./include/obstack.h	286;"	d
+obstack_grow	./include/obstack.h	331;"	d
+obstack_grow	./include/obstack.h	467;"	d
+obstack_grow0	./include/obstack.h	341;"	d
+obstack_grow0	./include/obstack.h	474;"	d
+obstack_init	./include/obstack.h	266;"	d
+obstack_int_grow	./include/obstack.h	371;"	d
+obstack_int_grow	./include/obstack.h	492;"	d
+obstack_int_grow_fast	./include/obstack.h	385;"	d
+obstack_int_grow_fast	./include/obstack.h	500;"	d
+obstack_make_room	./include/obstack.h	318;"	d
+obstack_make_room	./include/obstack.h	462;"	d
+obstack_memory_used	./include/obstack.h	293;"	d
+obstack_next_free	./include/obstack.h	258;"	d
+obstack_object_size	./include/obstack.h	308;"	d
+obstack_object_size	./include/obstack.h	447;"	d
+obstack_ptr_grow	./include/obstack.h	364;"	d
+obstack_ptr_grow	./include/obstack.h	487;"	d
+obstack_ptr_grow_fast	./include/obstack.h	378;"	d
+obstack_ptr_grow_fast	./include/obstack.h	497;"	d
+obstack_room	./include/obstack.h	313;"	d
+obstack_room	./include/obstack.h	450;"	d
+obstack_specify_allocation	./include/obstack.h	274;"	d
+obstack_specify_allocation_with_arg	./include/obstack.h	278;"	d
+offsetof	./include/objalloc.h	61;"	d
+old_regend	./libiberty/regex.c	/^static const char ** old_regstart, ** old_regend;$/;"	v	file:
+old_regstart	./libiberty/regex.c	/^static const char ** old_regstart, ** old_regend;$/;"	v	file:
+on_failure_jump	./libiberty/regex.c	/^  on_failure_jump,$/;"	e	enum:__anon1	file:
+on_failure_keep_string_jump	./libiberty/regex.c	/^  on_failure_keep_string_jump,$/;"	e	enum:__anon1	file:
+op	./include/demangle.h	/^      const struct demangle_operator_info *op;$/;"	m	struct:demangle_component::__anon30::__anon32	typeref:struct:demangle_component::__anon30::__anon32::demangle_operator_info
+opaque	./libiberty/cp-demangle.c	/^  void *opaque;$/;"	m	struct:d_print_info	file:
+open_read	./libiberty/pex-common.h	/^  int (*open_read) (struct pex_obj *, const char *\/* name *\/, int \/* binary *\/);$/;"	m	struct:pex_funcs
+open_write	./libiberty/pex-common.h	/^  int (*open_write) (struct pex_obj *, const char *\/* name *\/,$/;"	m	struct:pex_funcs
+openkey	./libiberty/pex-win32.c	/^openkey (HKEY hStart, const char *keys[])$/;"	f	file:
+optable	./libiberty/cplus-dem.c	/^static const struct optable$/;"	s	file:
+optable	./libiberty/cplus-dem.c	/^} optable[] = {$/;"	v	typeref:struct:optable	file:
+optarg	./libiberty/getopt.c	/^char *optarg = NULL;$/;"	v
+opterr	./libiberty/getopt.c	/^int opterr = 1;$/;"	v
+optind	./libiberty/getopt.c	/^int optind = 1;$/;"	v
+option	./include/getopt.h	/^struct option$/;"	s
+optional_argument	./include/getopt.h	100;"	d
+options	./libiberty/cp-demangle.c	/^  int options;$/;"	m	struct:d_print_info	file:
+options	./libiberty/cp-demangle.h	/^  int options;$/;"	m	struct:d_info
+options	./libiberty/cplus-dem.c	/^  int options;$/;"	m	struct:work_stuff	file:
+optopt	./libiberty/getopt.c	/^int optopt = '?';$/;"	v
+ordering	./libiberty/getopt.c	/^} ordering;$/;"	v	typeref:enum:__anon9	file:
+original_argc	./libiberty/getopt.c	/^static int original_argc;$/;"	v	file:
+original_argv	./libiberty/getopt.c	/^static char *const *original_argv;$/;"	v	file:
+out	./libiberty/cplus-dem.c	/^  const char *const out;$/;"	m	struct:optable	file:
+overflows	./libiberty/alloca.c	/^    long overflows;		\/* Number of stack overflow ($STKOFEN) calls.  *\/$/;"	m	struct:stk_stat	file:
+p	./libiberty/cplus-dem.c	/^  char *p;			\/* pointer after last character *\/$/;"	m	struct:string	file:
+p1	./libiberty/copysign.c	/^  long p1;$/;"	m	union:__anon18	file:
+p1	./libiberty/copysign.c	/^  long p1;$/;"	m	union:__anon21	file:
+pack_index	./libiberty/cp-demangle.c	/^  int pack_index;$/;"	m	struct:d_print_info	file:
+pad_size	./libiberty/alloca.c	/^    long pad_size;		\/* Stack pad size.  *\/$/;"	m	struct:stk_stat	file:
+parent	./include/fibheap.h	/^  struct fibnode *parent;$/;"	m	struct:fibnode	typeref:struct:fibnode::fibnode
+partition	./include/partition.h	/^} *partition;$/;"	t	typeref:struct:partition_def
+partition_def	./include/partition.h	/^typedef struct partition_def $/;"	s
+partition_delete	./libiberty/partition.c	/^partition_delete (partition part)$/;"	f
+partition_elem	./include/partition.h	/^struct partition_elem$/;"	s
+partition_find	./include/partition.h	75;"	d
+partition_new	./libiberty/partition.c	/^partition_new (int num_elements)$/;"	f
+partition_print	./libiberty/partition.c	/^partition_print (partition part, FILE *fp)$/;"	f
+partition_union	./libiberty/partition.c	/^partition_union (partition part, int elem1, int elem2)$/;"	f
+parts	./libiberty/copysign.c	/^  } parts;$/;"	m	union:__anon10	typeref:struct:__anon10::__anon13	file:
+parts	./libiberty/copysign.c	/^  } parts;$/;"	m	union:__anon14	typeref:struct:__anon14::__anon17	file:
+pattern_offset_t	./libiberty/regex.c	/^typedef long pattern_offset_t;$/;"	t	file:
+pex	./libiberty/pexecute.c	/^static struct pex_obj *pex;$/;"	v	typeref:struct:pex_obj	file:
+pex_add_remove	./libiberty/pex-common.c	/^pex_add_remove (struct pex_obj *obj, const char *name, int allocated)$/;"	f	file:
+pex_child_error	./libiberty/pex-unix.c	/^pex_child_error (struct pex_obj *obj, const char *executable,$/;"	f	file:
+pex_djgpp_close	./libiberty/pex-djgpp.c	/^pex_djgpp_close (struct pex_obj *obj ATTRIBUTE_UNUSED, int fd)$/;"	f	file:
+pex_djgpp_exec_child	./libiberty/pex-djgpp.c	/^pex_djgpp_exec_child (struct pex_obj *obj, int flags, const char *executable,$/;"	f	file:
+pex_djgpp_open_read	./libiberty/pex-djgpp.c	/^pex_djgpp_open_read (struct pex_obj *obj ATTRIBUTE_UNUSED,$/;"	f	file:
+pex_djgpp_open_write	./libiberty/pex-djgpp.c	/^pex_djgpp_open_write (struct pex_obj *obj ATTRIBUTE_UNUSED,$/;"	f	file:
+pex_djgpp_wait	./libiberty/pex-djgpp.c	/^pex_djgpp_wait (struct pex_obj *obj, pid_t pid, int *status,$/;"	f	file:
+pex_free	./libiberty/pex-common.c	/^pex_free (struct pex_obj *obj)$/;"	f
+pex_funcs	./libiberty/pex-common.h	/^struct pex_funcs$/;"	s
+pex_get_status	./libiberty/pex-common.c	/^pex_get_status (struct pex_obj *obj, int count, int *vector)$/;"	f
+pex_get_status_and_time	./libiberty/pex-common.c	/^pex_get_status_and_time (struct pex_obj *obj, int done, const char **errmsg,$/;"	f	file:
+pex_get_times	./libiberty/pex-common.c	/^pex_get_times (struct pex_obj *obj, int count, struct pex_time *vector)$/;"	f
+pex_init	./libiberty/pex-djgpp.c	/^pex_init (int flags, const char *pname, const char *tempbase)$/;"	f
+pex_init	./libiberty/pex-msdos.c	/^pex_init (int flags, const char *pname, const char *tempbase)$/;"	f
+pex_init	./libiberty/pex-unix.c	/^pex_init (int flags, const char *pname, const char *tempbase)$/;"	f
+pex_init	./libiberty/pex-win32.c	/^pex_init (int flags, const char *pname, const char *tempbase)$/;"	f
+pex_init_common	./libiberty/pex-common.c	/^pex_init_common (int flags, const char *pname, const char *tempbase,$/;"	f
+pex_input_file	./libiberty/pex-common.c	/^pex_input_file (struct pex_obj *obj, int flags, const char *in_name)$/;"	f
+pex_input_pipe	./libiberty/pex-common.c	/^pex_input_pipe (struct pex_obj *obj, int binary)$/;"	f
+pex_msdos	./libiberty/pex-msdos.c	/^struct pex_msdos$/;"	s	file:
+pex_msdos_cleanup	./libiberty/pex-msdos.c	/^pex_msdos_cleanup (struct pex_obj  *obj)$/;"	f	file:
+pex_msdos_close	./libiberty/pex-msdos.c	/^pex_msdos_close (struct pex_obj *obj, int fd)$/;"	f	file:
+pex_msdos_exec_child	./libiberty/pex-msdos.c	/^pex_msdos_exec_child (struct pex_obj *obj, int flags, const char *executable,$/;"	f	file:
+pex_msdos_fdindex	./libiberty/pex-msdos.c	/^pex_msdos_fdindex (struct pex_msdos *ms, int fd)$/;"	f	file:
+pex_msdos_open	./libiberty/pex-msdos.c	/^pex_msdos_open (struct pex_obj *obj, const char *name,$/;"	f	file:
+pex_msdos_wait	./libiberty/pex-msdos.c	/^pex_msdos_wait (struct pex_obj *obj, pid_t pid, int *status,$/;"	f	file:
+pex_obj	./libiberty/pex-common.h	/^struct pex_obj$/;"	s
+pex_one	./libiberty/pex-one.c	/^pex_one (int flags, const char *executable, char * const *argv,$/;"	f
+pex_read_err	./libiberty/pex-common.c	/^pex_read_err (struct pex_obj *obj, int binary)$/;"	f
+pex_read_output	./libiberty/pex-common.c	/^pex_read_output (struct pex_obj *obj, int binary)$/;"	f
+pex_run	./libiberty/pex-common.c	/^pex_run (struct pex_obj *obj, int flags, const char *executable,$/;"	f
+pex_run_in_environment	./libiberty/pex-common.c	/^pex_run_in_environment (struct pex_obj *obj, int flags, const char *executable,$/;"	f
+pex_time	./include/libiberty.h	/^struct pex_time$/;"	s
+pex_unix_cleanup	./libiberty/pex-unix.c	/^pex_unix_cleanup (struct pex_obj *obj ATTRIBUTE_UNUSED)$/;"	f	file:
+pex_unix_close	./libiberty/pex-unix.c	/^pex_unix_close (struct pex_obj *obj ATTRIBUTE_UNUSED, int fd)$/;"	f	file:
+pex_unix_exec_child	./libiberty/pex-unix.c	/^pex_unix_exec_child (struct pex_obj *obj, int flags, const char *executable,$/;"	f	file:
+pex_unix_fdopenr	./libiberty/pex-unix.c	/^pex_unix_fdopenr (struct pex_obj *obj ATTRIBUTE_UNUSED, int fd,$/;"	f	file:
+pex_unix_fdopenw	./libiberty/pex-unix.c	/^pex_unix_fdopenw (struct pex_obj *obj ATTRIBUTE_UNUSED, int fd,$/;"	f	file:
+pex_unix_open_read	./libiberty/pex-unix.c	/^pex_unix_open_read (struct pex_obj *obj ATTRIBUTE_UNUSED, const char *name,$/;"	f	file:
+pex_unix_open_write	./libiberty/pex-unix.c	/^pex_unix_open_write (struct pex_obj *obj ATTRIBUTE_UNUSED, const char *name,$/;"	f	file:
+pex_unix_pipe	./libiberty/pex-unix.c	/^pex_unix_pipe (struct pex_obj *obj ATTRIBUTE_UNUSED, int *p,$/;"	f	file:
+pex_unix_wait	./libiberty/pex-unix.c	/^pex_unix_wait (struct pex_obj *obj, pid_t pid, int *status,$/;"	f	file:
+pex_wait	./libiberty/pex-unix.c	/^pex_wait (struct pex_obj *obj ATTRIBUTE_UNUSED, pid_t pid, int *status,$/;"	f	file:
+pex_wait	./libiberty/pex-unix.c	/^pex_wait (struct pex_obj *obj, pid_t pid, int *status, struct pex_time *time)$/;"	f	file:
+pex_win32_close	./libiberty/pex-win32.c	/^pex_win32_close (struct pex_obj *obj ATTRIBUTE_UNUSED, int fd)$/;"	f	file:
+pex_win32_exec_child	./libiberty/pex-win32.c	/^pex_win32_exec_child (struct pex_obj *obj ATTRIBUTE_UNUSED, int flags,$/;"	f	file:
+pex_win32_fdopenr	./libiberty/pex-win32.c	/^pex_win32_fdopenr (struct pex_obj *obj ATTRIBUTE_UNUSED, int fd,$/;"	f	file:
+pex_win32_fdopenw	./libiberty/pex-win32.c	/^pex_win32_fdopenw (struct pex_obj *obj ATTRIBUTE_UNUSED, int fd,$/;"	f	file:
+pex_win32_open_read	./libiberty/pex-win32.c	/^pex_win32_open_read (struct pex_obj *obj ATTRIBUTE_UNUSED, const char *name,$/;"	f	file:
+pex_win32_open_write	./libiberty/pex-win32.c	/^pex_win32_open_write (struct pex_obj *obj ATTRIBUTE_UNUSED, const char *name,$/;"	f	file:
+pex_win32_pipe	./libiberty/pex-win32.c	/^pex_win32_pipe (struct pex_obj *obj ATTRIBUTE_UNUSED, int *p,$/;"	f	file:
+pex_win32_wait	./libiberty/pex-win32.c	/^pex_win32_wait (struct pex_obj *obj ATTRIBUTE_UNUSED, pid_t pid,$/;"	f	file:
+pexecute	./libiberty/pexecute.c	/^pexecute (const char *program, char * const *argv, const char *pname,$/;"	f
+physmem_available	./libiberty/physmem.c	/^physmem_available (void)$/;"	f
+physmem_total	./libiberty/physmem.c	/^physmem_total (void)$/;"	f
+pid	./libiberty/pex-unix.c	/^  pid_t pid;$/;"	m	struct:status_list	file:
+pipe	./libiberty/pex-common.h	/^  int (*pipe) (struct pex_obj *, int * \/* p *\/, int \/* binary *\/);$/;"	m	struct:pex_funcs
+pn	./libiberty/safe-ctype.c	133;"	d	file:
+pname	./libiberty/pex-common.h	/^  const char *pname;$/;"	m	struct:pex_obj
+pop_failure_jump	./libiberty/regex.c	/^  pop_failure_jump,$/;"	e	enum:__anon1	file:
+posixly_correct	./libiberty/getopt.c	/^static char *posixly_correct;$/;"	v	file:
+pr	./libiberty/safe-ctype.c	134;"	d	file:
+prev	./include/obstack.h	/^  struct _obstack_chunk *prev;	\/* address of prior chunk or NULL *\/$/;"	m	struct:_obstack_chunk	typeref:struct:_obstack_chunk::_obstack_chunk
+previous_argument	./libiberty/cplus-dem.c	/^  string* previous_argument; \/* The last function argument demangled.  *\/$/;"	m	struct:work_stuff	file:
+prime	./libiberty/hashtab.c	/^  hashval_t prime;$/;"	m	struct:prime_ent	file:
+prime_ent	./libiberty/hashtab.c	/^struct prime_ent$/;"	s	file:
+prime_tab	./libiberty/hashtab.c	/^static struct prime_ent const prime_tab[] = {$/;"	v	file:
+print	./libiberty/cp-demangle.h	/^  enum d_builtin_type_print print;$/;"	m	struct:demangle_builtin_type_info	typeref:enum:demangle_builtin_type_info::d_builtin_type_print
+print_and_abort	./libiberty/obstack.c	/^print_and_abort (void)$/;"	f	file:
+print_compiled_pattern	./libiberty/regex.c	/^PREFIX(print_compiled_pattern) (struct re_pattern_buffer *bufp)$/;"	f
+print_double_string	./libiberty/regex.c	/^PREFIX(print_double_string) (const CHAR_T *where, const CHAR_T *string1,$/;"	f
+print_fastmap	./libiberty/regex.c	/^print_fastmap (char *fastmap)$/;"	f
+print_partial_compiled_pattern	./libiberty/regex.c	/^PREFIX(print_partial_compiled_pattern) (UCHAR_T *start, UCHAR_T *end)$/;"	f
+print_usage	./libiberty/cp-demangle.c	/^print_usage (FILE* fp, int exit_value)$/;"	f	file:
+printchar	./libiberty/regex.c	/^printchar (int c)$/;"	f
+printed	./libiberty/cp-demangle.c	/^  int printed;$/;"	m	struct:d_print_mod	file:
+program_name	./libiberty/cp-demangle.c	/^const char* program_name;$/;"	v
+protect_end	./libiberty/testsuite/test-demangle.c	/^protect_end (const char * s)$/;"	f	file:
+prototypes	./libiberty/configure	/^   function prototypes and stuff, but not '\\xHH' hex character constants.$/;"	f
+psignal	./libiberty/strsignal.c	/^psignal (int signo, char *message)$/;"	f
+push_dummy_failure	./libiberty/regex.c	/^  push_dummy_failure,$/;"	e	enum:__anon1	file:
+put_field	./libiberty/floatformat.c	/^put_field (unsigned char *data, enum floatformat_byteorders order,$/;"	f	file:
+putenv	./libiberty/putenv.c	/^putenv (const char *string)$/;"	f
+putenv	./libiberty/putenv.c	42;"	d	file:
+putenv	./libiberty/putenv.c	63;"	d	file:
+pwait	./libiberty/pexecute.c	/^pwait (int pid, int *status, int flags ATTRIBUTE_UNUSED)$/;"	f
+q_back	./libiberty/insque.c	/^  struct qelem *q_back;$/;"	m	struct:qelem	typeref:struct:qelem::qelem	file:
+q_forw	./libiberty/insque.c	/^  struct qelem *q_forw;$/;"	m	struct:qelem	typeref:struct:qelem::qelem	file:
+qelem	./libiberty/insque.c	/^struct qelem {$/;"	s	file:
+qualifier_string	./libiberty/cplus-dem.c	/^qualifier_string (int type_quals)$/;"	f	file:
+quiet	./libiberty/copysign.c	/^    unsigned int quiet:1;$/;"	m	struct:__anon10::__anon12	file:
+quiet	./libiberty/copysign.c	/^    unsigned int quiet:1;$/;"	m	struct:__anon14::__anon16	file:
+quiet	./libiberty/copysign.c	/^    unsigned int quiet:1;$/;"	m	struct:__anon18::__anon20	file:
+quiet	./libiberty/copysign.c	/^    unsigned int quiet:1;$/;"	m	struct:__anon21::__anon23	file:
+rand_deg	./libiberty/random.c	/^static int rand_deg = DEG_3;$/;"	v	file:
+rand_sep	./libiberty/random.c	/^static int rand_sep = SEP_3;$/;"	v	file:
+rand_type	./libiberty/random.c	/^static int rand_type = TYPE_3;$/;"	v	file:
+random	./libiberty/random.c	/^random (void)$/;"	f
+randtbl	./libiberty/random.c	/^static long int randtbl[DEG_3 + 1] =$/;"	v	file:
+re_comp	./include/xregex.h	23;"	d
+re_compile_fastmap	./include/xregex.h	18;"	d
+re_compile_fastmap	./libiberty/regex.c	/^PREFIX(re_compile_fastmap) (struct re_pattern_buffer *bufp)$/;"	f	file:
+re_compile_fastmap	./libiberty/regex.c	/^re_compile_fastmap (struct re_pattern_buffer *bufp)$/;"	f
+re_compile_fastmap	./libiberty/regex.c	84;"	d	file:
+re_compile_pattern	./include/xregex.h	15;"	d
+re_compile_pattern	./libiberty/regex.c	79;"	d	file:
+re_error_msgid	./libiberty/regex.c	/^static const char *re_error_msgid[] =$/;"	v	file:
+re_exec	./include/xregex.h	24;"	d
+re_match	./include/xregex.h	13;"	d
+re_match	./libiberty/regex.c	75;"	d	file:
+re_match_2	./include/xregex.h	12;"	d
+re_match_2	./libiberty/regex.c	/^re_match_2 (struct re_pattern_buffer *bufp, const char *string1, int size1,$/;"	f
+re_match_2	./libiberty/regex.c	73;"	d	file:
+re_max_failures	./include/xregex.h	20;"	d
+re_max_failures	./libiberty/regex.c	/^int re_max_failures = 2000;$/;"	v
+re_max_failures	./libiberty/regex.c	/^int re_max_failures = 4000;$/;"	v
+re_max_failures	./libiberty/regex.c	/^long int re_max_failures = 2000;$/;"	v
+re_max_failures	./libiberty/regex.c	/^long int re_max_failures = 4000;$/;"	v
+re_nsub	./include/xregex2.h	/^  size_t re_nsub;$/;"	m	struct:re_pattern_buffer
+re_opcode_t	./libiberty/regex.c	/^} re_opcode_t;$/;"	t	typeref:enum:__anon1	file:
+re_pattern_buffer	./include/xregex2.h	/^struct re_pattern_buffer$/;"	s
+re_registers	./include/xregex2.h	/^struct re_registers$/;"	s
+re_search	./include/xregex.h	14;"	d
+re_search	./libiberty/regex.c	77;"	d	file:
+re_search_2	./include/xregex.h	17;"	d
+re_search_2	./libiberty/regex.c	/^PREFIX(re_search_2) (struct re_pattern_buffer *bufp, const char *string1,$/;"	f	file:
+re_search_2	./libiberty/regex.c	82;"	d	file:
+re_set_registers	./include/xregex.h	11;"	d
+re_set_registers	./libiberty/regex.c	71;"	d	file:
+re_set_syntax	./include/xregex.h	16;"	d
+re_set_syntax	./libiberty/regex.c	/^re_set_syntax (reg_syntax_t syntax)$/;"	f
+re_set_syntax	./libiberty/regex.c	81;"	d	file:
+re_syntax_options	./include/xregex.h	19;"	d
+re_syntax_options	./libiberty/regex.c	/^reg_syntax_t re_syntax_options;$/;"	v
+re_syntax_table	./libiberty/regex.c	/^static char re_syntax_table[CHAR_SET_SIZE];$/;"	v	file:
+read_err	./libiberty/pex-common.h	/^  FILE *read_err;$/;"	m	struct:pex_obj
+read_output	./libiberty/pex-common.h	/^  FILE *read_output;$/;"	m	struct:pex_obj
+reconcat	./libiberty/concat.c	/^reconcat (char *optr, const char *first, ...)$/;"	f
+recursively_demangle	./libiberty/cplus-dem.c	/^recursively_demangle(struct work_stuff *work, const char **mangled,$/;"	f	file:
+reg_dummy	./libiberty/regex.c	/^static const char **reg_dummy;$/;"	v	file:
+reg_errcode_t	./include/xregex2.h	/^} reg_errcode_t;$/;"	t	typeref:enum:__anon27
+reg_syntax_t	./include/xregex2.h	/^typedef unsigned long int reg_syntax_t;$/;"	t
+regcomp	./include/xregex.h	9;"	d
+regcomp	./libiberty/regex.c	68;"	d	file:
+regend	./libiberty/regex.c	/^static const char **     regstart, **     regend;$/;"	v	file:
+regerror	./include/xregex.h	10;"	d
+regerror	./libiberty/regex.c	69;"	d	file:
+regex_compile	./libiberty/regex.c	/^PREFIX(regex_compile) (const char *ARG_PREFIX(pattern),$/;"	f	file:
+regex_grow_registers	./libiberty/regex.c	/^PREFIX(regex_grow_registers) (int num_regs)$/;"	f	file:
+regex_t	./include/xregex2.h	/^typedef struct re_pattern_buffer regex_t;$/;"	t	typeref:struct:re_pattern_buffer
+regexec	./include/xregex.h	8;"	d
+regexec	./libiberty/regex.c	67;"	d	file:
+regfree	./include/xregex.h	7;"	d
+regfree	./libiberty/regex.c	66;"	d	file:
+register_Btype	./libiberty/cplus-dem.c	/^register_Btype (struct work_stuff *work)$/;"	f	file:
+regmatch_t	./include/xregex2.h	/^} regmatch_t;$/;"	t	typeref:struct:__anon28
+regnum	./libiberty/regex.c	/^  regnum_t regnum;$/;"	m	struct:__anon6	file:
+regnum_t	./libiberty/regex.c	/^typedef unsigned regnum_t;$/;"	t	file:
+regoff_t	./include/xregex2.h	/^typedef int regoff_t;$/;"	t
+regs_allocated	./include/xregex2.h	/^  unsigned regs_allocated : 2;$/;"	m	struct:re_pattern_buffer
+regs_allocated_size	./libiberty/regex.c	/^static int regs_allocated_size;$/;"	v	file:
+regstart	./libiberty/regex.c	/^static const char **     regstart, **     regend;$/;"	v	file:
+remember_Btype	./libiberty/cplus-dem.c	/^remember_Btype (struct work_stuff *work, const char *start,$/;"	f	file:
+remember_Ktype	./libiberty/cplus-dem.c	/^remember_Ktype (struct work_stuff *work, const char *start, int len)$/;"	f	file:
+remember_type	./libiberty/cplus-dem.c	/^remember_type (struct work_stuff *work, const char *start, int len)$/;"	f	file:
+remove	./libiberty/pex-common.h	/^  char **remove;$/;"	m	struct:pex_obj
+remove_count	./libiberty/pex-common.h	/^  int remove_count;$/;"	m	struct:pex_obj
+remque	./libiberty/insque.c	/^remque (struct qelem *elem)$/;"	f
+rename	./libiberty/rename.c	/^rename (const char *zfrom, const char *zto)$/;"	f
+required_argument	./include/getopt.h	99;"	d
+right	./include/demangle.h	/^      struct demangle_component *right;$/;"	m	struct:demangle_component::__anon30::__anon41	typeref:struct:demangle_component::__anon30::__anon41::demangle_component
+right	./include/fibheap.h	/^  struct fibnode *right;$/;"	m	struct:fibnode	typeref:struct:fibnode::fibnode
+rindex	./libiberty/rindex.c	/^rindex (const char *s, int c)$/;"	f
+rm_eo	./include/xregex2.h	/^  regoff_t rm_eo;  \/* Byte offset from string's start to substring's end.  *\/$/;"	m	struct:__anon28
+rm_so	./include/xregex2.h	/^  regoff_t rm_so;  \/* Byte offset from string's start to substring's start.  *\/$/;"	m	struct:__anon28
+rol	./libiberty/sha1.c	306;"	d	file:
+root	./include/fibheap.h	/^  struct fibnode *root;$/;"	m	struct:fibheap	typeref:struct:fibheap::fibnode
+rotate_left	./libiberty/splay-tree.c	/^rotate_left (splay_tree_node *pp, splay_tree_node p, splay_tree_node n)$/;"	f	file:
+rotate_right	./libiberty/splay-tree.c	/^rotate_right (splay_tree_node *pp, splay_tree_node p, splay_tree_node n)$/;"	f	file:
+rptr	./libiberty/random.c	/^static long int *rptr = &randtbl[1];$/;"	v	file:
+run_replaces	./libiberty/testsuite/test-expandargv.c	/^run_replaces (char * string)$/;"	f
+run_tests	./libiberty/testsuite/test-expandargv.c	/^run_tests (const char **test_data)$/;"	f
+s	./include/demangle.h	/^      const char *s;$/;"	m	struct:demangle_component::__anon30::__anon31
+s	./include/dyn-string.h	/^  char *s;		\/* The string itself, NUL-terminated.  *\/$/;"	m	struct:dyn_string
+s	./libiberty/cp-demangle.h	/^  const char *s;$/;"	m	struct:d_info
+s_binary	./include/demangle.h	/^    } s_binary;$/;"	m	union:demangle_component::__anon30	typeref:struct:demangle_component::__anon30::__anon41
+s_builtin	./include/demangle.h	/^    } s_builtin;$/;"	m	union:demangle_component::__anon30	typeref:struct:demangle_component::__anon30::__anon37
+s_character	./include/demangle.h	/^    } s_character;$/;"	m	union:demangle_component::__anon30	typeref:struct:demangle_component::__anon30::__anon40
+s_ctor	./include/demangle.h	/^    } s_ctor;$/;"	m	union:demangle_component::__anon30	typeref:struct:demangle_component::__anon30::__anon35
+s_dtor	./include/demangle.h	/^    } s_dtor;$/;"	m	union:demangle_component::__anon30	typeref:struct:demangle_component::__anon30::__anon36
+s_extended_operator	./include/demangle.h	/^    } s_extended_operator;$/;"	m	union:demangle_component::__anon30	typeref:struct:demangle_component::__anon30::__anon33
+s_fixed	./include/demangle.h	/^    } s_fixed;$/;"	m	union:demangle_component::__anon30	typeref:struct:demangle_component::__anon30::__anon34
+s_name	./include/demangle.h	/^    } s_name;$/;"	m	union:demangle_component::__anon30	typeref:struct:demangle_component::__anon30::__anon31
+s_number	./include/demangle.h	/^    } s_number;$/;"	m	union:demangle_component::__anon30	typeref:struct:demangle_component::__anon30::__anon39
+s_operator	./include/demangle.h	/^    } s_operator;$/;"	m	union:demangle_component::__anon30	typeref:struct:demangle_component::__anon30::__anon32
+s_reg_t	./include/xregex2.h	/^typedef long int s_reg_t;$/;"	t
+s_string	./include/demangle.h	/^    } s_string;$/;"	m	union:demangle_component::__anon30	typeref:struct:demangle_component::__anon30::__anon38
+sat	./include/demangle.h	/^      short sat;$/;"	m	struct:demangle_component::__anon30::__anon34
+save_string	./libiberty/make-relative-prefix.c	/^save_string (const char *s, int len)$/;"	f	file:
+sccsid	./libiberty/strcasecmp.c	/^static char sccsid[] = "@(#)strcasecmp.c	5.5 (Berkeley) 11\/24\/87";$/;"	v	file:
+sccsid	./libiberty/strncasecmp.c	/^static char sccsid[] = "@(#)strcasecmp.c	5.5 (Berkeley) 11\/24\/87";$/;"	v	file:
+segments	./libiberty/alloca.c	/^    long segments;		\/* Current number of stack segments.  *\/$/;"	m	struct:stk_stat	file:
+send	./libiberty/cp-demangle.h	/^  const char *send;$/;"	m	struct:d_info
+seps	./libiberty/random.c	/^static int seps[MAX_TYPES] = { SEP_0, SEP_1, SEP_2, SEP_3, SEP_4 };$/;"	v	file:
+set_cplus_marker_for_demangling	./libiberty/cplus-dem.c	/^set_cplus_marker_for_demangling (int ch)$/;"	f
+set_last_name	./libiberty/cp-demangle.c	/^  const char *set_last_name;$/;"	m	struct:d_standard_sub_info	file:
+set_last_name_len	./libiberty/cp-demangle.c	/^  int set_last_name_len;$/;"	m	struct:d_standard_sub_info	file:
+set_number_at	./libiberty/regex.c	/^  set_number_at,$/;"	e	enum:__anon1	file:
+setenv	./libiberty/setenv.c	/^setenv (const char *name, const char *value, int replace)$/;"	f
+setenv	./libiberty/setenv.c	39;"	d	file:
+setenv	./libiberty/setenv.c	67;"	d	file:
+setstate	./libiberty/random.c	/^setstate (PTR arg_state)$/;"	f
+sha1_buffer	./libiberty/sha1.c	/^sha1_buffer (const char *buffer, size_t len, void *resblock)$/;"	f
+sha1_ctx	./include/sha1.h	/^struct sha1_ctx$/;"	s
+sha1_finish_ctx	./libiberty/sha1.c	/^sha1_finish_ctx (struct sha1_ctx *ctx, void *resbuf)$/;"	f
+sha1_init_ctx	./libiberty/sha1.c	/^sha1_init_ctx (struct sha1_ctx *ctx)$/;"	f
+sha1_process_block	./libiberty/sha1.c	/^sha1_process_block (const void *buffer, size_t len, struct sha1_ctx *ctx)$/;"	f
+sha1_process_bytes	./libiberty/sha1.c	/^sha1_process_bytes (const void *buffer, size_t len, struct sha1_ctx *ctx)$/;"	f
+sha1_read_ctx	./libiberty/sha1.c	/^sha1_read_ctx (const struct sha1_ctx *ctx, void *resbuf)$/;"	f
+sha1_stream	./libiberty/sha1.c	/^sha1_stream (FILE *stream, void *resblock)$/;"	f
+sha1_uint32	./include/sha1.h	/^     typedef unsigned long sha1_uint32;$/;"	t
+sha1_uint32	./include/sha1.h	/^    typedef unsigned short sha1_uint32;$/;"	t
+sha1_uint32	./include/sha1.h	/^   typedef unsigned int sha1_uint32;$/;"	t
+sha1_uint32	./include/sha1.h	/^typedef u_int32_t sha1_uint32;$/;"	t
+sha1_uintptr	./include/sha1.h	/^typedef uintptr_t sha1_uintptr;$/;"	t
+shaseg	./libiberty/alloca.c	/^    long shaseg:32;		\/* Size of increments to stack.  *\/$/;"	m	struct:stack_control_header	file:
+shgrow	./libiberty/alloca.c	/^    long shgrow:32;		\/* Number of times stack has grown.  *\/$/;"	m	struct:stack_control_header	file:
+shhwm	./libiberty/alloca.c	/^    long shhwm:32;		\/* High water mark of stack.  *\/$/;"	m	struct:stack_control_header	file:
+shift	./libiberty/hashtab.c	/^  hashval_t shift;$/;"	m	struct:prime_ent	file:
+shsize	./libiberty/alloca.c	/^    long shsize:32;		\/* Current size of stack (all segments).  *\/$/;"	m	struct:stack_control_header	file:
+sign	./libiberty/copysign.c	/^    unsigned int sign     : 1;$/;"	m	struct:__anon14::__anon15	file:
+sign	./libiberty/copysign.c	/^    unsigned int sign : 1;$/;"	m	struct:__anon10::__anon11	file:
+sign	./libiberty/copysign.c	/^    unsigned int sign : 1;$/;"	m	struct:__anon10::__anon12	file:
+sign	./libiberty/copysign.c	/^    unsigned int sign : 1;$/;"	m	struct:__anon14::__anon16	file:
+sign	./libiberty/copysign.c	/^    unsigned int sign : 1;$/;"	m	struct:__anon18::__anon19	file:
+sign	./libiberty/copysign.c	/^    unsigned int sign : 1;$/;"	m	struct:__anon21::__anon22	file:
+sign	./libiberty/copysign.c	/^    unsigned int sign:1;$/;"	m	struct:__anon18::__anon20	file:
+sign	./libiberty/copysign.c	/^    unsigned int sign:1;$/;"	m	struct:__anon21::__anon23	file:
+sign_start	./include/floatformat.h	/^  unsigned int sign_start;$/;"	m	struct:floatformat
+signal_info	./libiberty/strsignal.c	/^struct signal_info$/;"	s	file:
+signal_names	./libiberty/strsignal.c	/^static const char **signal_names;$/;"	v	file:
+signal_table	./libiberty/strsignal.c	/^static const struct signal_info signal_table[] =$/;"	v	typeref:struct:signal_info	file:
+signed	./include/ansidecl.h	171;"	d
+signed	./include/ansidecl.h	219;"	d
+signed	./include/ansidecl.h	223;"	d
+signo_max	./libiberty/strsignal.c	/^signo_max (void)$/;"	f
+sigsetmask	./libiberty/msdos.c	/^sigsetmask()$/;"	f
+sigsetmask	./libiberty/sigsetmask.c	/^sigsetmask (int set)$/;"	f
+simple_expansion	./libiberty/cp-demangle.c	/^  const char *simple_expansion;$/;"	m	struct:d_standard_sub_info	file:
+simple_len	./libiberty/cp-demangle.c	/^  int simple_len;$/;"	m	struct:d_standard_sub_info	file:
+size	./libiberty/regex.c	/^  unsigned long int size;$/;"	m	struct:__anon2	file:
+size	./libiberty/regex.c	/^  unsigned size;$/;"	m	struct:__anon3	file:
+size	./libiberty/regex.c	/^  unsigned size;$/;"	m	struct:__anon7	file:
+snarf_numeric_literal	./libiberty/cplus-dem.c	/^snarf_numeric_literal (const char **args, string *arg)$/;"	f	file:
+snprintf	./libiberty/snprintf.c	/^snprintf (char *s, size_t n, const char *format, ...)$/;"	f
+sort_pointers	./libiberty/sort.c	/^void sort_pointers (size_t n, void **pointers, void **work)$/;"	f
+sp	./libiberty/safe-ctype.c	135;"	d	file:
+spaces	./libiberty/spaces.c	/^spaces (int count)$/;"	f
+spawn_script	./libiberty/pex-win32.c	/^spawn_script (const char *executable, char *const *argv,$/;"	f	file:
+splay_tree	./include/splay-tree.h	/^typedef struct splay_tree_s *splay_tree;$/;"	t	typeref:struct:splay_tree_s
+splay_tree_allocate_fn	./include/splay-tree.h	/^typedef void *(*splay_tree_allocate_fn) (int, void *);$/;"	t
+splay_tree_compare_fn	./include/splay-tree.h	/^typedef int (*splay_tree_compare_fn) (splay_tree_key, splay_tree_key);$/;"	t
+splay_tree_compare_ints	./libiberty/splay-tree.c	/^splay_tree_compare_ints (splay_tree_key k1, splay_tree_key k2)$/;"	f
+splay_tree_compare_pointers	./libiberty/splay-tree.c	/^splay_tree_compare_pointers (splay_tree_key k1, splay_tree_key k2)$/;"	f
+splay_tree_deallocate_fn	./include/splay-tree.h	/^typedef void (*splay_tree_deallocate_fn) (void *, void *);$/;"	t
+splay_tree_delete	./libiberty/splay-tree.c	/^splay_tree_delete (splay_tree sp)$/;"	f
+splay_tree_delete_helper	./libiberty/splay-tree.c	/^splay_tree_delete_helper (splay_tree sp, splay_tree_node node)$/;"	f	file:
+splay_tree_delete_key_fn	./include/splay-tree.h	/^typedef void (*splay_tree_delete_key_fn) (splay_tree_key);$/;"	t
+splay_tree_delete_value_fn	./include/splay-tree.h	/^typedef void (*splay_tree_delete_value_fn) (splay_tree_value);$/;"	t
+splay_tree_foreach	./libiberty/splay-tree.c	/^splay_tree_foreach (splay_tree sp, splay_tree_foreach_fn fn, void *data)$/;"	f
+splay_tree_foreach_fn	./include/splay-tree.h	/^typedef int (*splay_tree_foreach_fn) (splay_tree_node, void*);$/;"	t
+splay_tree_foreach_helper	./libiberty/splay-tree.c	/^splay_tree_foreach_helper (splay_tree sp, splay_tree_node node,$/;"	f	file:
+splay_tree_insert	./libiberty/splay-tree.c	/^splay_tree_insert (splay_tree sp, splay_tree_key key, splay_tree_value value)$/;"	f
+splay_tree_key	./include/splay-tree.h	/^typedef libi_uhostptr_t splay_tree_key;$/;"	t
+splay_tree_lookup	./libiberty/splay-tree.c	/^splay_tree_lookup (splay_tree sp, splay_tree_key key)$/;"	f
+splay_tree_max	./libiberty/splay-tree.c	/^splay_tree_max (splay_tree sp)$/;"	f
+splay_tree_min	./libiberty/splay-tree.c	/^splay_tree_min (splay_tree sp)$/;"	f
+splay_tree_new	./libiberty/splay-tree.c	/^splay_tree_new (splay_tree_compare_fn compare_fn,$/;"	f
+splay_tree_new_with_allocator	./libiberty/splay-tree.c	/^splay_tree_new_with_allocator (splay_tree_compare_fn compare_fn,$/;"	f
+splay_tree_node	./include/splay-tree.h	/^typedef struct splay_tree_node_s *splay_tree_node;$/;"	t	typeref:struct:splay_tree_node_s
+splay_tree_node_s	./include/splay-tree.h	/^struct splay_tree_node_s GTY(())$/;"	f
+splay_tree_predecessor	./libiberty/splay-tree.c	/^splay_tree_predecessor (splay_tree sp, splay_tree_key key)$/;"	f
+splay_tree_remove	./libiberty/splay-tree.c	/^splay_tree_remove (splay_tree sp, splay_tree_key key)$/;"	f
+splay_tree_s	./include/splay-tree.h	/^struct splay_tree_s GTY(())$/;"	f
+splay_tree_splay	./libiberty/splay-tree.c	/^splay_tree_splay (splay_tree sp, splay_tree_key key)$/;"	f	file:
+splay_tree_successor	./libiberty/splay-tree.c	/^splay_tree_successor (splay_tree sp, splay_tree_key key)$/;"	f
+splay_tree_value	./include/splay-tree.h	/^typedef libi_uhostptr_t splay_tree_value;$/;"	t
+splay_tree_xmalloc_allocate	./libiberty/splay-tree.c	/^splay_tree_xmalloc_allocate (int size, void *data ATTRIBUTE_UNUSED)$/;"	f	file:
+splay_tree_xmalloc_deallocate	./libiberty/splay-tree.c	/^splay_tree_xmalloc_deallocate (void *object, void *data ATTRIBUTE_UNUSED)$/;"	f	file:
+split_directories	./libiberty/make-relative-prefix.c	/^split_directories (const char *name, int *ptr_num_dirs)$/;"	f	file:
+split_half	./include/floatformat.h	/^  const struct floatformat *split_half;$/;"	m	struct:floatformat	typeref:struct:floatformat::floatformat
+squangle_mop_up	./libiberty/cplus-dem.c	/^squangle_mop_up (struct work_stuff *work)$/;"	f	file:
+srandom	./libiberty/random.c	/^srandom (unsigned int x)$/;"	f
+ss	./libiberty/alloca.c	/^    long ss[0200];		\/* 0200 overflow words.  *\/$/;"	m	struct:stack_segment_linkage	file:
+ssa0	./libiberty/alloca.c	/^    long ssa0;$/;"	m	struct:stack_segment_linkage	file:
+ssa1	./libiberty/alloca.c	/^    long ssa1;$/;"	m	struct:stack_segment_linkage	file:
+ssa2	./libiberty/alloca.c	/^    long ssa2;$/;"	m	struct:stack_segment_linkage	file:
+ssa3	./libiberty/alloca.c	/^    long ssa3;$/;"	m	struct:stack_segment_linkage	file:
+ssa4	./libiberty/alloca.c	/^    long ssa4;$/;"	m	struct:stack_segment_linkage	file:
+ssa5	./libiberty/alloca.c	/^    long ssa5;$/;"	m	struct:stack_segment_linkage	file:
+ssa6	./libiberty/alloca.c	/^    long ssa6;$/;"	m	struct:stack_segment_linkage	file:
+ssa7	./libiberty/alloca.c	/^    long ssa7;$/;"	m	struct:stack_segment_linkage	file:
+ssbase	./libiberty/alloca.c	/^    long ssbase:32;		\/* Offset to stack base.  *\/$/;"	m	struct:stack_segment_linkage	file:
+sscray	./libiberty/alloca.c	/^    long sscray[7];		\/* Reserved for Cray Research.  *\/$/;"	m	struct:stack_segment_linkage	file:
+sscsnm	./libiberty/alloca.c	/^    long sscsnm;		\/* Private control structure number for$/;"	m	struct:stack_segment_linkage	file:
+ssgvup	./libiberty/alloca.c	/^    long ssgvup;		\/* Pointer to multitasking thread giveup.  *\/$/;"	m	struct:stack_segment_linkage	file:
+sspseg	./libiberty/alloca.c	/^    long sspseg:32;		\/* Offset to linkage control of previous$/;"	m	struct:stack_segment_linkage	file:
+sss0	./libiberty/alloca.c	/^    long sss0;$/;"	m	struct:stack_segment_linkage	file:
+sss1	./libiberty/alloca.c	/^    long sss1;$/;"	m	struct:stack_segment_linkage	file:
+sss2	./libiberty/alloca.c	/^    long sss2;$/;"	m	struct:stack_segment_linkage	file:
+sss3	./libiberty/alloca.c	/^    long sss3;$/;"	m	struct:stack_segment_linkage	file:
+sss4	./libiberty/alloca.c	/^    long sss4;$/;"	m	struct:stack_segment_linkage	file:
+sss5	./libiberty/alloca.c	/^    long sss5;$/;"	m	struct:stack_segment_linkage	file:
+sss6	./libiberty/alloca.c	/^    long sss6;$/;"	m	struct:stack_segment_linkage	file:
+sss7	./libiberty/alloca.c	/^    long sss7;$/;"	m	struct:stack_segment_linkage	file:
+sssize	./libiberty/alloca.c	/^    long sssize:32;		\/* Number of words in this segment.  *\/$/;"	m	struct:stack_segment_linkage	file:
+sstcpt	./libiberty/alloca.c	/^    long sstcpt:32;		\/* Pointer to task common address block.  *\/$/;"	m	struct:stack_segment_linkage	file:
+sstpid	./libiberty/alloca.c	/^    long sstpid;		\/* Process ID for pid based multi-tasking.  *\/$/;"	m	struct:stack_segment_linkage	file:
+ssusr1	./libiberty/alloca.c	/^    long ssusr1;		\/* Reserved for user.  *\/$/;"	m	struct:stack_segment_linkage	file:
+ssusr2	./libiberty/alloca.c	/^    long ssusr2;		\/* Reserved for user.  *\/$/;"	m	struct:stack_segment_linkage	file:
+stack	./libiberty/regex.c	/^  compile_stack_elt_t *stack;$/;"	m	struct:__anon7	file:
+stack_control_header	./libiberty/alloca.c	/^struct stack_control_header$/;"	s	file:
+stack_dir	./libiberty/alloca.c	/^static int stack_dir;		\/* 1 or -1 once known.  *\/$/;"	v	file:
+stack_segment_linkage	./libiberty/alloca.c	/^struct stack_segment_linkage$/;"	s	file:
+standard_subs	./libiberty/cp-demangle.c	/^static const struct d_standard_sub_info standard_subs[] =$/;"	v	typeref:struct:d_standard_sub_info	file:
+start	./include/xregex2.h	/^  regoff_t *start;$/;"	m	struct:re_registers
+start_memory	./libiberty/regex.c	/^  start_memory,$/;"	e	enum:__anon1	file:
+state	./libiberty/random.c	/^static long int *state = &randtbl[1];$/;"	v	file:
+static_type	./libiberty/cplus-dem.c	/^  int static_type;	\/* A static member function *\/$/;"	m	struct:work_stuff	file:
+status	./libiberty/pex-common.h	/^  int *status;$/;"	m	struct:pex_obj
+status	./libiberty/pex-unix.c	/^  int status;$/;"	m	struct:status_list	file:
+status_list	./libiberty/pex-unix.c	/^struct status_list$/;"	s	file:
+statuses	./libiberty/pex-msdos.c	/^  int *statuses;$/;"	m	struct:pex_msdos	file:
+std_suffixes	./libiberty/pex-win32.c	/^std_suffixes[] = {$/;"	v	file:
+stderr_pipe	./libiberty/pex-common.h	/^  int stderr_pipe;$/;"	m	struct:pex_obj
+stk_stat	./libiberty/alloca.c	/^struct stk_stat$/;"	s	file:
+stk_trailer	./libiberty/alloca.c	/^struct stk_trailer$/;"	s	file:
+stkm_free	./libiberty/alloca.c	/^    long stkm_free;		\/* Number of deallocations by $STKMRET.  *\/$/;"	m	struct:stk_stat	file:
+stko_free	./libiberty/alloca.c	/^    long stko_free;		\/* Number of deallocations by $STKRETN.  *\/$/;"	m	struct:stk_stat	file:
+stko_mallocs	./libiberty/alloca.c	/^    long stko_mallocs;		\/* Block allocations by $STKOFEN.  *\/$/;"	m	struct:stk_stat	file:
+stop_memory	./libiberty/regex.c	/^  stop_memory,$/;"	e	enum:__anon1	file:
+store_args_and_env	./libiberty/getopt.c	/^store_args_and_env (int argc, char *const *argv)$/;"	f	file:
+store_op1	./libiberty/regex.c	/^PREFIX(store_op1) (re_opcode_t op, UCHAR_T *loc, int arg)$/;"	f	file:
+store_op2	./libiberty/regex.c	/^PREFIX(store_op2) (re_opcode_t op, UCHAR_T *loc, int arg1, int arg2)$/;"	f	file:
+stpcpy	./libiberty/stpcpy.c	/^stpcpy (char *dst, const char *src)$/;"	f
+stpncpy	./libiberty/stpncpy.c	/^stpncpy (char *dst, const char *src, size_t len)$/;"	f
+strcasecmp	./libiberty/strcasecmp.c	/^strcasecmp(const char *s1, const char *s2)$/;"	f
+strchr	./libiberty/strchr.c	/^strchr (register const char *s, int c)$/;"	f
+strdup	./libiberty/strdup.c	/^strdup(const char *s)$/;"	f
+strerrno	./libiberty/strerror.c	/^strerrno (int errnoval)$/;"	f
+strerror	./libiberty/configure	/^strerror ();$/;"	f
+strerror	./libiberty/strerror.c	/^strerror (int errnoval)$/;"	f
+string	./include/demangle.h	/^      const char* string;$/;"	m	struct:demangle_component::__anon30::__anon38
+string	./libiberty/cplus-dem.c	/^typedef struct string		\/* Beware: these aren't required to be *\/$/;"	s	file:
+string	./libiberty/cplus-dem.c	/^} string;$/;"	t	typeref:struct:string	file:
+string_append	./libiberty/cplus-dem.c	/^string_append (string *p, const char *s)$/;"	f	file:
+string_append_template_idx	./libiberty/cplus-dem.c	/^string_append_template_idx (string *s, int idx)$/;"	f	file:
+string_appendn	./libiberty/cplus-dem.c	/^string_appendn (string *p, const char *s, int n)$/;"	f	file:
+string_appends	./libiberty/cplus-dem.c	/^string_appends (string *p, string *s)$/;"	f	file:
+string_clear	./libiberty/cplus-dem.c	/^string_clear (string *s)$/;"	f	file:
+string_delete	./libiberty/cplus-dem.c	/^string_delete (string *s)$/;"	f	file:
+string_init	./libiberty/cplus-dem.c	/^string_init (string *s)$/;"	f	file:
+string_need	./libiberty/cplus-dem.c	/^string_need (string *s, int n)$/;"	f	file:
+string_prepend	./libiberty/cplus-dem.c	/^string_prepend (string *p, const char *s)$/;"	f	file:
+string_prependn	./libiberty/cplus-dem.c	/^string_prependn (string *p, const char *s, int n)$/;"	f	file:
+string_prepends	./libiberty/cplus-dem.c	/^string_prepends (string *p, string *s)$/;"	f	file:
+strncasecmp	./libiberty/strncasecmp.c	/^strncasecmp(const char *s1, const char *s2, register size_t n)$/;"	f
+strncmp	./libiberty/strncmp.c	/^strncmp(const char *s1, const char *s2, register size_t n)$/;"	f
+strndup	./libiberty/strndup.c	/^strndup (const char *s, size_t n)$/;"	f
+strrchr	./libiberty/strrchr.c	/^strrchr (register const char *s, int c)$/;"	f
+strsignal	./libiberty/strsignal.c	/^strsignal (int signo)$/;"	f
+strsigno	./libiberty/strsignal.c	/^strsigno (int signo)$/;"	f
+strstr	./libiberty/strstr.c	/^strstr (const char *s1, const char *s2)$/;"	f
+strtod	./libiberty/strtod.c	/^strtod (char *str, char **ptr)$/;"	f
+strtoerrno	./libiberty/strerror.c	/^strtoerrno (const char *name)$/;"	f
+strtol	./libiberty/strtol.c	/^strtol(const char *nptr, char **endptr, register int base)$/;"	f
+strtosigno	./libiberty/strsignal.c	/^strtosigno (const char *name)$/;"	f
+strtoul	./libiberty/strtoul.c	/^strtoul(const char *nptr, char **endptr, register int base)$/;"	f
+strverscmp	./libiberty/strverscmp.c	/^strverscmp (const char *s1, const char *s2)$/;"	f
+subs	./libiberty/cp-demangle.h	/^  struct demangle_component **subs;$/;"	m	struct:d_info	typeref:struct:d_info::demangle_component
+succeed	./libiberty/regex.c	/^  succeed,$/;"	e	enum:__anon1	file:
+succeed_n	./libiberty/regex.c	/^  succeed_n,$/;"	e	enum:__anon1	file:
+syntax	./include/xregex2.h	/^  reg_syntax_t syntax;$/;"	m	struct:re_pattern_buffer
+syntaxspec	./libiberty/regex.c	/^  syntaxspec,$/;"	e	enum:__anon1	file:
+sys_errlist	./libiberty/strerror.c	/^static const char **sys_errlist;$/;"	v	file:
+sys_errlist	./libiberty/strerror.c	14;"	d	file:
+sys_errlist	./libiberty/strerror.c	25;"	d	file:
+sys_errlist	./libiberty/strerror.c	466;"	d	file:
+sys_nerr	./libiberty/strerror.c	/^static int sys_nerr;$/;"	v	file:
+sys_nerr	./libiberty/strerror.c	13;"	d	file:
+sys_nerr	./libiberty/strerror.c	24;"	d	file:
+sys_nerr	./libiberty/strerror.c	465;"	d	file:
+sys_nsig	./libiberty/strsignal.c	/^static int sys_nsig = NSIG;$/;"	v	file:
+sys_nsig	./libiberty/strsignal.c	/^static int sys_nsig = _NSIG;$/;"	v	file:
+sys_nsig	./libiberty/strsignal.c	/^static int sys_nsig;$/;"	v	file:
+sys_nsig	./libiberty/strsignal.c	19;"	d	file:
+sys_nsig	./libiberty/strsignal.c	41;"	d	file:
+sys_siglist	./libiberty/strsignal.c	/^static const char **sys_siglist;$/;"	v	file:
+sys_siglist	./libiberty/strsignal.c	18;"	d	file:
+sys_siglist	./libiberty/strsignal.c	40;"	d	file:
+sysdep	./libiberty/pex-common.h	/^  void *sysdep;$/;"	m	struct:pex_obj
+system_microseconds	./include/libiberty.h	/^  unsigned long system_microseconds;$/;"	m	struct:pex_time
+system_seconds	./include/libiberty.h	/^  unsigned long system_seconds;$/;"	m	struct:pex_time
+tack_on_executable	./libiberty/pex-win32.c	/^tack_on_executable (char *buf, const char *executable)$/;"	f	file:
+temp	./include/obstack.h	/^  PTR_INT_TYPE temp;		\/* Temporary for some macros.  *\/$/;"	m	struct:obstack
+temp_file	./libiberty/pex-common.c	/^temp_file (struct pex_obj *obj, int flags, char *name)$/;"	f	file:
+temp_start	./libiberty/cplus-dem.c	/^  int temp_start;       \/* index in demangled to start of template args *\/$/;"	m	struct:work_stuff	file:
+tempbase	./libiberty/pex-common.h	/^  const char *tempbase;$/;"	m	struct:pex_obj
+template_decl	./libiberty/cp-demangle.c	/^  const struct demangle_component *template_decl;$/;"	m	struct:d_print_template	typeref:struct:d_print_template::demangle_component	file:
+templates	./libiberty/cp-demangle.c	/^  struct d_print_template *templates;$/;"	m	struct:d_print_info	typeref:struct:d_print_info::d_print_template	file:
+templates	./libiberty/cp-demangle.c	/^  struct d_print_template *templates;$/;"	m	struct:d_print_mod	typeref:struct:d_print_mod::d_print_template	file:
+test_data	./libiberty/testsuite/test-expandargv.c	/^const char *test_data[] = {$/;"	v
+tests	./libiberty/argv.c	/^static const char *const tests[] =$/;"	v	file:
+this_address	./libiberty/alloca.c	/^    long this_address;		\/* Address of this block.  *\/$/;"	m	struct:stk_trailer	file:
+this_size	./libiberty/alloca.c	/^    long this_size;		\/* Size of this block (does not include$/;"	m	struct:stk_trailer	file:
+time	./libiberty/pex-common.h	/^  struct pex_time *time;$/;"	m	struct:pex_obj	typeref:struct:pex_obj::pex_time
+time	./libiberty/pex-unix.c	/^  struct pex_time time;$/;"	m	struct:status_list	typeref:struct:status_list::pex_time	file:
+tk_bool	./libiberty/cplus-dem.c	/^  tk_bool,$/;"	e	enum:type_kind_t	file:
+tk_char	./libiberty/cplus-dem.c	/^  tk_char,$/;"	e	enum:type_kind_t	file:
+tk_integral	./libiberty/cplus-dem.c	/^  tk_integral,$/;"	e	enum:type_kind_t	file:
+tk_none	./libiberty/cplus-dem.c	/^  tk_none,$/;"	e	enum:type_kind_t	file:
+tk_pointer	./libiberty/cplus-dem.c	/^  tk_pointer,$/;"	e	enum:type_kind_t	file:
+tk_real	./libiberty/cplus-dem.c	/^  tk_real$/;"	e	enum:type_kind_t	file:
+tk_reference	./libiberty/cplus-dem.c	/^  tk_reference,$/;"	e	enum:type_kind_t	file:
+tmp	./libiberty/make-temp-file.c	/^static const char tmp[] = { DIR_SEPARATOR, 't', 'm', 'p', 0 };$/;"	v	file:
+tmpl_argvec	./libiberty/cplus-dem.c	/^  char **tmpl_argvec;   \/* Template function arguments. *\/$/;"	m	struct:work_stuff	file:
+tmpnam	./libiberty/tmpnam.c	/^tmpnam (char *s)$/;"	f
+tmpnam_buffer	./libiberty/tmpnam.c	/^static char tmpnam_buffer[L_tmpnam];$/;"	v	file:
+tmpnam_counter	./libiberty/tmpnam.c	/^static int tmpnam_counter;$/;"	v	file:
+tolower	./include/safe-ctype.h	147;"	d
+tolower	./include/safe-ctype.h	148;"	d
+total	./include/md5.h	/^  md5_uint32 total[2];$/;"	m	struct:md5_ctx
+total	./include/sha1.h	/^  sha1_uint32 total[2];$/;"	m	struct:sha1_ctx
+totalsize	./include/floatformat.h	/^  unsigned int totalsize;	\/* Total size of number in bits *\/$/;"	m	struct:floatformat
+toupper	./include/safe-ctype.h	145;"	d
+toupper	./include/safe-ctype.h	146;"	d
+translate	./include/xregex2.h	/^  RE_TRANSLATE_TYPE translate;$/;"	m	struct:re_pattern_buffer
+true	./libiberty/regex.c	406;"	d	file:
+truncate_wchar	./libiberty/regex.c	/^truncate_wchar (CHAR_T c)$/;"	f	file:
+try_dir	./libiberty/make-temp-file.c	/^try_dir (const char *dir, const char *base)$/;"	f	file:
+type	./include/demangle.h	/^      const struct demangle_builtin_type_info *type;$/;"	m	struct:demangle_component::__anon30::__anon37	typeref:struct:demangle_component::__anon30::__anon37::demangle_builtin_type_info
+type	./include/demangle.h	/^  enum demangle_component_type type;$/;"	m	struct:demangle_component	typeref:enum:demangle_component::demangle_component_type
+type_kind_t	./libiberty/cplus-dem.c	/^typedef enum type_kind_t$/;"	g	file:
+type_kind_t	./libiberty/cplus-dem.c	/^} type_kind_t;$/;"	t	typeref:enum:type_kind_t	file:
+type_quals	./libiberty/cplus-dem.c	/^  int type_quals;       \/* The type qualifiers.  *\/$/;"	m	struct:work_stuff	file:
+typevec	./libiberty/cplus-dem.c	/^  char **typevec;$/;"	m	struct:work_stuff	file:
+typevec_size	./libiberty/cplus-dem.c	/^  int typevec_size;$/;"	m	struct:work_stuff	file:
+u	./include/demangle.h	/^  } u;$/;"	m	struct:demangle_component	typeref:union:demangle_component::__anon30
+uc	./libiberty/strcasecmp.c	/^typedef unsigned char uc;$/;"	t	file:
+uintptr_t	./libiberty/regex.c	/^typedef unsigned long int uintptr_t;$/;"	t	file:
+ullAvailExtendedVirtual	./libiberty/physmem.c	/^  DWORDLONG ullAvailExtendedVirtual;$/;"	m	struct:__anon25	file:
+ullAvailPageFile	./libiberty/physmem.c	/^  DWORDLONG ullAvailPageFile;$/;"	m	struct:__anon25	file:
+ullAvailPhys	./libiberty/physmem.c	/^  DWORDLONG ullAvailPhys;$/;"	m	struct:__anon25	file:
+ullAvailVirtual	./libiberty/physmem.c	/^  DWORDLONG ullAvailVirtual;$/;"	m	struct:__anon25	file:
+ullTotalPageFile	./libiberty/physmem.c	/^  DWORDLONG ullTotalPageFile;$/;"	m	struct:__anon25	file:
+ullTotalPhys	./libiberty/physmem.c	/^  DWORDLONG ullTotalPhys;$/;"	m	struct:__anon25	file:
+ullTotalVirtual	./libiberty/physmem.c	/^  DWORDLONG ullTotalVirtual;$/;"	m	struct:__anon25	file:
+underflows	./libiberty/alloca.c	/^    long underflows;		\/* Number of stack underflow calls ($STKRETN).  *\/$/;"	m	struct:stk_stat	file:
+unknown10	./libiberty/alloca.c	/^    long unknown10;$/;"	m	struct:stk_trailer	file:
+unknown11	./libiberty/alloca.c	/^    long unknown11;$/;"	m	struct:stk_trailer	file:
+unknown12	./libiberty/alloca.c	/^    long unknown12;$/;"	m	struct:stk_trailer	file:
+unknown13	./libiberty/alloca.c	/^    long unknown13;$/;"	m	struct:stk_trailer	file:
+unknown14	./libiberty/alloca.c	/^    long unknown14;$/;"	m	struct:stk_trailer	file:
+unknown2	./libiberty/alloca.c	/^    long unknown2;$/;"	m	struct:stk_trailer	file:
+unknown3	./libiberty/alloca.c	/^    long unknown3;$/;"	m	struct:stk_trailer	file:
+unknown5	./libiberty/alloca.c	/^    long unknown5;$/;"	m	struct:stk_trailer	file:
+unknown6	./libiberty/alloca.c	/^    long unknown6;$/;"	m	struct:stk_trailer	file:
+unknown7	./libiberty/alloca.c	/^    long unknown7;$/;"	m	struct:stk_trailer	file:
+unknown8	./libiberty/alloca.c	/^    long unknown8;$/;"	m	struct:stk_trailer	file:
+unknown9	./libiberty/alloca.c	/^    long unknown9;$/;"	m	struct:stk_trailer	file:
+unknown_demangling	./include/demangle.h	/^  unknown_demangling = 0,$/;"	e	enum:demangling_styles
+unlink_if_ordinary	./libiberty/unlink-if-ordinary.c	/^unlink_if_ordinary (const char *name)$/;"	f
+unlock_1	./libiberty/fopen_unlocked.c	/^unlock_1 (FILE *const fp ATTRIBUTE_UNUSED)$/;"	f	file:
+unlock_std_streams	./libiberty/fopen_unlocked.c	/^unlock_std_streams (void)$/;"	f
+unlock_stream	./libiberty/fopen_unlocked.c	/^unlock_stream (FILE *fp)$/;"	f
+unsetenv	./libiberty/setenv.c	/^unsetenv (const char *name)$/;"	f
+unsetenv	./libiberty/setenv.c	40;"	d	file:
+unsetenv	./libiberty/setenv.c	68;"	d	file:
+up	./libiberty/safe-ctype.c	136;"	d	file:
+use_extra_arg	./include/obstack.h	/^  unsigned use_extra_arg:1;	\/* chunk alloc\/dealloc funcs take extra arg *\/$/;"	m	struct:obstack
+used	./include/xregex2.h	/^  unsigned long int used;$/;"	m	struct:re_pattern_buffer
+user_microseconds	./include/libiberty.h	/^  unsigned long user_microseconds;$/;"	m	struct:pex_time
+user_seconds	./include/libiberty.h	/^  unsigned long user_seconds;$/;"	m	struct:pex_time
+usrtmp	./libiberty/make-temp-file.c	/^static const char usrtmp[] =$/;"	v	file:
+va_copy	./libiberty/vasprintf.c	27;"	d	file:
+val	./include/getopt.h	/^  int val;$/;"	m	struct:option
+value	./libiberty/copysign.c	/^  double value;$/;"	m	union:__anon10	file:
+value	./libiberty/copysign.c	/^  double value;$/;"	m	union:__anon14	file:
+value	./libiberty/copysign.c	/^  float value;$/;"	m	union:__anon18	file:
+value	./libiberty/copysign.c	/^  float value;$/;"	m	union:__anon21	file:
+value	./libiberty/strerror.c	/^  const int value;		\/* The numeric value from <errno.h> *\/$/;"	m	struct:error_info	file:
+value	./libiberty/strerror.c	/^static struct { int value; const char *name, *msg; }$/;"	m	struct:__anon8	file:
+value	./libiberty/strsignal.c	/^  const int value;		\/* The numeric value from <signal.h> *\/$/;"	m	struct:signal_info	file:
+vartmp	./libiberty/make-temp-file.c	/^static const char vartmp[] =$/;"	v	file:
+vasprintf	./libiberty/vasprintf.c	/^vasprintf (char **result, const char *format,$/;"	f
+vconcat_copy	./libiberty/concat.c	/^vconcat_copy (char *dst, const char *first, va_list args)$/;"	f	file:
+vconcat_length	./libiberty/concat.c	/^vconcat_length (const char *first, va_list args)$/;"	f	file:
+vfork	./libiberty/msdos.c	/^vfork()$/;"	f
+vfork	./libiberty/pex-unix.c	69;"	d	file:
+vfork	./libiberty/vfork.c	/^vfork (void)$/;"	f
+vfprintf	./libiberty/vfprintf.c	/^vfprintf (FILE *stream, const char *format, va_list ap)$/;"	f
+vfprintf	./libiberty/vfprintf.c	9;"	d	file:
+volatile	./include/ansidecl.h	170;"	d
+volatile	./include/ansidecl.h	218;"	d
+volatile	./include/ansidecl.h	222;"	d
+vprintf	./libiberty/vprintf.c	/^vprintf (const char *format, va_list ap)$/;"	f
+vprintf	./libiberty/vprintf.c	21;"	d	file:
+vs	./libiberty/safe-ctype.c	137;"	d	file:
+vsnprintf	./libiberty/vsnprintf.c	/^vsnprintf (char *s, size_t n, const char *format, va_list ap)$/;"	f
+vsprintf	./libiberty/vsprintf.c	/^vsprintf (char *buf, const char *format, va_list ap)$/;"	f
+vsprintf	./libiberty/vsprintf.c	32;"	d	file:
+wait	./libiberty/pex-common.h	/^  int (*wait) (struct pex_obj *, pid_t \/* child *\/, int * \/* status *\/,$/;"	m	struct:pex_funcs
+waitpid	./libiberty/msdos.c	/^waitpid()$/;"	f
+waitpid	./libiberty/waitpid.c	/^waitpid (pid_t pid, int *stat_loc, int options ATTRIBUTE_UNUSED)$/;"	f
+wcs_compile_range	./libiberty/regex.c	/^wcs_compile_range (CHAR_T range_start_char, const CHAR_T **p_ptr,$/;"	f	file:
+wcs_re_match_2_internal	./libiberty/regex.c	/^wcs_re_match_2_internal (struct re_pattern_buffer *bufp,$/;"	f	file:
+weak_alias	./libiberty/regex.c	/^weak_alias (__re_compile_fastmap, re_compile_fastmap)$/;"	f
+weak_alias	./libiberty/regex.c	/^weak_alias (__re_search, re_search)$/;"	f
+weak_alias	./libiberty/regex.c	/^weak_alias (__re_set_registers, re_set_registers)$/;"	f
+win32_spawn	./libiberty/pex-win32.c	/^win32_spawn (const char *executable,$/;"	f	file:
+wordbeg	./libiberty/regex.c	/^  wordbeg,	\/* Succeeds if at word beginning.  *\/$/;"	e	enum:__anon1	file:
+wordbound	./libiberty/regex.c	/^  wordbound,	\/* Succeeds if at a word boundary.  *\/$/;"	e	enum:__anon1	file:
+wordchar	./libiberty/regex.c	/^  wordchar,	\/* Matches any word-constituent character.  *\/$/;"	e	enum:__anon1	file:
+wordend	./libiberty/regex.c	/^  wordend,	\/* Succeeds if at word end.  *\/$/;"	e	enum:__anon1	file:
+work_stuff	./libiberty/cplus-dem.c	/^struct work_stuff$/;"	s	file:
+work_stuff_copy_to_from	./libiberty/cplus-dem.c	/^work_stuff_copy_to_from (struct work_stuff *to, struct work_stuff *from)$/;"	f	file:
+writeargv	./libiberty/argv.c	/^writeargv (char **argv, FILE *f)$/;"	f
+writeerr	./libiberty/pex-unix.c	342;"	d	file:
+writeout_test	./libiberty/testsuite/test-expandargv.c	/^writeout_test (int test, const char * test_data)$/;"	f
+x	./include/objalloc.h	/^struct objalloc_align { char x; double d; };$/;"	m	struct:objalloc_align
+x	./libiberty/obstack.c	/^struct fooalign {char x; double d;};$/;"	m	struct:fooalign	file:
+x	./libiberty/obstack.c	/^union fooround {long x; double d;};$/;"	m	union:fooround	file:
+xatexit	./libiberty/xatexit.c	/^struct xatexit {$/;"	s	file:
+xatexit	./libiberty/xatexit.c	/^xatexit (void (*fn) (void))$/;"	f
+xatexit_cleanup	./libiberty/xatexit.c	/^xatexit_cleanup (void)$/;"	f	file:
+xatexit_first	./libiberty/xatexit.c	/^static struct xatexit xatexit_first;$/;"	v	typeref:struct:xatexit	file:
+xatexit_head	./libiberty/xatexit.c	/^static struct xatexit *xatexit_head = &xatexit_first;$/;"	v	typeref:struct:xatexit	file:
+xcalloc	./libiberty/xmalloc.c	/^xcalloc (size_t nelem, size_t elsize)$/;"	f
+xd	./libiberty/safe-ctype.c	138;"	d	file:
+xexit	./libiberty/xexit.c	/^xexit (int code)$/;"	f
+xmalloc	./libiberty/sort.c	/^void *xmalloc (size_t n)$/;"	f
+xmalloc	./libiberty/xmalloc.c	/^xmalloc (size_t size)$/;"	f
+xmalloc_failed	./libiberty/xmalloc.c	/^xmalloc_failed (size_t size)$/;"	f
+xmalloc_set_program_name	./libiberty/xmalloc.c	/^xmalloc_set_program_name (const char *s)$/;"	f
+xmemdup	./libiberty/xmemdup.c	/^xmemdup (const PTR input, size_t copy_size, size_t alloc_size)$/;"	f
+xrealloc	./libiberty/xmalloc.c	/^xrealloc (PTR oldmem, size_t size)$/;"	f
+xstrdup	./libiberty/xstrdup.c	/^xstrdup (const char *s)$/;"	f
+xstrerror	./libiberty/xstrerror.c	/^xstrerror (int errnum)$/;"	f
+xstrerror_buf	./libiberty/xstrerror.c	/^static char xstrerror_buf[sizeof ERRSTR_FMT + 20];$/;"	v	file:
+xstrndup	./libiberty/xstrndup.c	/^xstrndup (const char *s, size_t n)$/;"	f
