@@ -62,9 +62,9 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_tree2vcg_OBJECTS = main.$(OBJEXT) yacc.$(OBJEXT) lex.$(OBJEXT) \
-	options.$(OBJEXT) gdl.$(OBJEXT) cfg.$(OBJEXT) \
-	fine-tune.$(OBJEXT) vcg.$(OBJEXT) output.$(OBJEXT)
+am_tree2vcg_OBJECTS = cfg.$(OBJEXT) fine-tune.$(OBJEXT) gdl.$(OBJEXT) \
+	yacc.$(OBJEXT) lex.$(OBJEXT) main.$(OBJEXT) options.$(OBJEXT) \
+	output.$(OBJEXT) vcg.$(OBJEXT)
 tree2vcg_OBJECTS = $(am_tree2vcg_OBJECTS)
 tree2vcg_LDADD = $(LDADD)
 tree2vcg_LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(tree2vcg_LDFLAGS) \
@@ -180,9 +180,17 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_YFLAGS = -d -t
 AM_CFLAGS = $(LIBERTY_INC)
-tree2vcg_SOURCES = main.c yacc.y lex.l tree2vcg.h options.c gdl.h \
-                   gdl.c cfg.h cfg.c fine-tune.c vcg.c output.c \
-                   edge-attr.def graph-attr.def node-attr.def
+tree2vcg_SOURCES = \
+  cfg.h cfg.c \
+  edge-attr.def \
+  fine-tune.c \
+  gdl.c gdl.h graph-attr.def \
+  yacc.y lex.l \
+  main.c \
+  node-attr.def \
+  options.c output.c \
+  tree2vcg.h \
+  vcg.c 
 
 tree2vcg_LDFLAGS = -liberty $(LIBERTY_LIB)
 all: all-am

@@ -25,13 +25,12 @@ tree2vcg_SOURCES = \
   edge-attr.def \
   fine-tune.c \
   gdl.c gdl.h graph-attr.def \
-  lex.l \
+  yacc.y lex.l \
   main.c \
   node-attr.def \
-  options.c output.c 
+  options.c output.c \
   tree2vcg.h \
-  vcg.c\
-  yacc.y
-
+  vcg.c 
+  
 tree2vcg_LDFLAGS = -liberty $(LIBERTY_LIB)
 
