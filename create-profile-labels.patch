@@ -215,7 +215,7 @@ diff -Nrup gcc-4.4.0/gcc/profile-label.c label-gcc-4.4.0/gcc/profile-label.c
 +  FOR_ALL_BB (bb)
 +    {
 +      sprintf (buf, "*%s_BB%d", BB_AUX(bb)->fun_name, BB_AUX (bb)->bb_id);
-+
++  #if 0
 +      if (BB_AUX (bb)->loop_id != 0)
 +        sprintf (buf + strlen (buf), "_LOOP%d", BB_AUX (bb)->loop_id);
 +
@@ -232,7 +232,7 @@ diff -Nrup gcc-4.4.0/gcc/profile-label.c label-gcc-4.4.0/gcc/profile-label.c
 +
 +      if (BB_AUX (bb)->pre_header_loop_id != 0)
 +        sprintf (buf + strlen (buf), "_PRE_HEADER_LOOP%d", BB_AUX (bb)->pre_header_loop_id);
-+
++  #endif
 +      insn = BB_HEAD (bb);
 +      label = gen_label_rtx ();
 +      /*label = gen_rtx_CODE_LABEL (VOIDmode, 0, NULL_RTX, NULL_RTX,
