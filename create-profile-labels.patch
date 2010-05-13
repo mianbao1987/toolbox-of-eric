@@ -1,0 +1,293 @@
+diff -Nrup gcc-4.4.0/gcc/common.opt label-gcc-4.4.0/gcc/common.opt
+--- gcc-4.4.0/gcc/common.opt	2009-03-29 01:28:45.000000000 +0800
++++ label-gcc-4.4.0/gcc/common.opt	2009-07-08 17:46:46.000000000 +0800
+@@ -389,6 +389,10 @@ fcprop-registers
+ Common Report Var(flag_cprop_registers) Optimization
+ Perform a register copy-propagation optimization pass
+ 
++fcreate-profile-labels
++Common Report Var(flag_create_profile_labels)
++Create labels for each basic block to help profile tool
++
+ fcrossjumping
+ Common Report Var(flag_crossjumping) Optimization
+ Perform cross-jumping optimization
+diff -Nrup gcc-4.4.0/gcc/Makefile.in label-gcc-4.4.0/gcc/Makefile.in
+--- gcc-4.4.0/gcc/Makefile.in	2009-03-25 20:00:32.000000000 +0800
++++ label-gcc-4.4.0/gcc/Makefile.in	2009-07-08 17:52:37.000000000 +0800
+@@ -1164,6 +1164,7 @@ OBJS-common = \
+ 	print-rtl.o \
+ 	print-tree.o \
+ 	profile.o \
++	profile-label.o \
+ 	real.o \
+ 	recog.o \
+ 	reg-stack.o \
+@@ -2980,6 +2981,13 @@ sel-sched-ir.o : sel-sched-ir.c $(CONFIG
+    $(FUNCTION_H) $(INSN_ATTR_H) toplev.h $(RECOG_H) except.h $(PARAMS_H) \
+    $(TM_P_H) $(TARGET_H) $(CFGLAYOUT_H) $(TIMEVAR_H) tree-pass.h \
+    $(SCHED_INT_H) $(GGC_H) $(TREE_H) $(LANGHOOKS_DEF_H) $(SEL_SCHED_IR_H)
++profile-label.o : profile-label.c $(CONFIG_H) $(SYSTEM_H) coretypes.h $(TM_H) $(RTL_H) \
++   $(TREE_H) $(FLAGS_H) intl.h $(REGS_H) $(RECOG_H) conditions.h \
++   insn-config.h $(INSN_ATTR_H) $(FUNCTION_H) output.h hard-reg-set.h \
++   except.h debug.h xcoffout.h $(TOPLEV_H) reload.h dwarf2out.h tree-pass.h \
++   $(BASIC_BLOCK_H) $(TM_P_H) $(TARGET_H) $(EXPR_H) $(CFGLAYOUT_H) dbxout.h \
++   $(TIMEVAR_H) $(CGRAPH_H) $(COVERAGE_H) $(REAL_H) $(DF_H) vecprim.h $(GGC_H) \
++   $(CFGLOOP_H) $(PARAMS_H)
+ final.o : final.c $(CONFIG_H) $(SYSTEM_H) coretypes.h $(TM_H) $(RTL_H) \
+    $(TREE_H) $(FLAGS_H) intl.h $(REGS_H) $(RECOG_H) conditions.h \
+    insn-config.h $(INSN_ATTR_H) $(FUNCTION_H) output.h hard-reg-set.h \
+diff -Nrup gcc-4.4.0/gcc/passes.c label-gcc-4.4.0/gcc/passes.c
+--- gcc-4.4.0/gcc/passes.c	2009-02-20 23:20:38.000000000 +0800
++++ label-gcc-4.4.0/gcc/passes.c	2009-07-16 14:39:48.000000000 +0800
+@@ -806,6 +806,7 @@ init_optimization_passes (void)
+ 	  NEXT_PASS (pass_delay_slots);
+ 	  NEXT_PASS (pass_split_for_shorten_branches);
+ 	  NEXT_PASS (pass_convert_to_eh_region_ranges);
++	  NEXT_PASS (pass_create_profile_labels);
+ 	  NEXT_PASS (pass_shorten_branches);
+ 	  NEXT_PASS (pass_set_nothrow_function_flags);
+ 	  NEXT_PASS (pass_final);
+diff -Nrup gcc-4.4.0/gcc/profile-label.c label-gcc-4.4.0/gcc/profile-label.c
+--- gcc-4.4.0/gcc/profile-label.c	1970-01-01 08:00:00.000000000 +0800
++++ label-gcc-4.4.0/gcc/profile-label.c	2009-07-22 17:32:25.000000000 +0800
+@@ -0,0 +1,228 @@
++/* 
++   Copyright (C) 2009
++   Free Software Foundation, Inc.
++
++This file is part of GCC.
++
++GCC is free software; you can redistribute it and/or modify it under
++the terms of the GNU General Public License as published by the Free
++Software Foundation; either version 3, or (at your option) any later
++version.
++
++GCC is distributed in the hope that it will be useful, but WITHOUT ANY
++WARRANTY; without even the implied warranty of MERCHANTABILITY or
++FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
++for more details.
++
++You should have received a copy of the GNU General Public License
++along with GCC; see the file COPYING3.  If not see
++<http://www.gnu.org/licenses/>.  */
++
++#include "config.h"
++#include "system.h"
++#include "coretypes.h"
++#include "tm.h"
++
++#include "tree.h"
++#include "rtl.h"
++#include "tm_p.h"
++#include "regs.h"
++#include "insn-config.h"
++#include "insn-attr.h"
++#include "recog.h"
++#include "conditions.h"
++#include "flags.h"
++#include "real.h"
++#include "hard-reg-set.h"
++#include "output.h"
++#include "except.h"
++#include "function.h"
++#include "toplev.h"
++#include "reload.h"
++#include "intl.h"
++#include "basic-block.h"
++#include "target.h"
++#include "debug.h"
++#include "expr.h"
++#include "cfglayout.h"
++#include "tree-pass.h"
++#include "timevar.h"
++#include "cgraph.h"
++#include "coverage.h"
++#include "df.h"
++#include "vecprim.h"
++#include "ggc.h"
++#include "cfgloop.h"
++#include "params.h"
++
++static int label_num;
++
++struct profile_label{
++  char *fun_name;
++  int bb_id;
++  int loop_id;
++  int outer_loop_id;
++  int pre_header_loop_id;
++  unsigned long start_line;
++  unsigned long end_line;
++  bool is_latch;
++  bool is_header;  
++};
++
++#define BB_AUX(bb) ((struct profile_label *)bb->aux)
++
++static unsigned int
++create_profile_labels (void)
++{
++  rtx x, insn, label, body;
++  const char *fnname;
++  basic_block bb;
++  struct loop *loop;
++  loop_iterator li;
++  edge e;
++  edge_iterator ei;
++  unsigned long lineno;
++  char buf[1024];
++
++  x = DECL_RTL (current_function_decl);
++  gcc_assert (MEM_P (x));
++  x = XEXP (x, 0);
++  gcc_assert (GET_CODE (x) == SYMBOL_REF);
++  fnname = XSTR (x, 0);
++  
++  label_num = max_label_num();
++
++  /* init loop */
++  loop_optimizer_init (AVOID_CFG_MODIFICATIONS);
++
++  FOR_ALL_BB (bb)
++    {
++      bb->aux = xmalloc (sizeof (struct profile_label));
++      gcc_assert (bb->aux);
++      memset (bb->aux, 0, sizeof (struct profile_label));
++
++      /* function name and bb index */
++      BB_AUX (bb)->fun_name = fnname;
++      BB_AUX (bb)->bb_id = bb->index;
++
++      /* start line and end line */
++      BB_AUX (bb)->start_line = LONG_MAX;
++      /* for (insn = BB_HEAD (bb); insn != 0; insn = NEXT_INSN (insn))*/
++      FOR_BB_INSNS (bb, insn)
++        {
++          if (!INSN_P (insn))
++            continue;
++
++          lineno = insn_line (insn);
++          if (BB_AUX (bb)->start_line > lineno)
++            BB_AUX (bb)->start_line = insn_line (insn);
++          
++          if (BB_AUX (bb)->end_line < lineno)
++            BB_AUX (bb)->end_line = insn_line (insn);
++
++          /*if (insn == BB_END (bb))
++            break;*/
++        }
++
++      /* loop id and outer loop id */
++      loop = bb->loop_father;
++      if (loop != 0)
++        {
++          BB_AUX (bb)->loop_id = loop->num;
++          loop = loop_outer (loop);
++          if (loop != 0)
++            {
++              BB_AUX (bb)->outer_loop_id = loop->num;
++            }
++        }
++    }
++
++  /* header and latch */
++  FOR_EACH_LOOP (li, loop, LI_FROM_INNERMOST)
++    {
++      bb = loop->header;
++      if (bb != 0)
++        {
++          BB_AUX (bb)->is_header = true;
++          FOR_EACH_EDGE (e, ei, bb->preds)
++            {
++              if (e->src != 0 && BB_AUX (e->src)->loop_id != loop->num)
++                {
++                  BB_AUX (e->src)->pre_header_loop_id = loop->num;
++                }
++            }
++        }
++      bb = loop->latch;
++      if (bb != 0)
++        BB_AUX (bb)->is_latch = true;
++    }
++
++  /* create and insert labels */
++  FOR_ALL_BB (bb)
++    {
++      sprintf (buf, "*%s_BB%d", BB_AUX(bb)->fun_name, BB_AUX (bb)->bb_id);
++
++      if (BB_AUX (bb)->loop_id != 0)
++        sprintf (buf + strlen (buf), "_LOOP%d", BB_AUX (bb)->loop_id);
++
++      if (BB_AUX (bb)->outer_loop_id != 0)
++        sprintf (buf + strlen (buf), "_PARENT%d", BB_AUX (bb)->outer_loop_id);
++
++      if (BB_AUX (bb)->is_latch != 0)
++        sprintf (buf + strlen (buf), "_BACKEDGE");
++
++      if (BB_AUX (bb)->is_header != 0)
++        sprintf (buf + strlen (buf), "_HEADER");
++
++      sprintf (buf + strlen (buf), "_SLINE%d_ELINE%d", BB_AUX (bb)->start_line, BB_AUX (bb)->end_line);
++
++      if (BB_AUX (bb)->pre_header_loop_id != 0)
++        sprintf (buf + strlen (buf), "_PRE_HEADER_LOOP%d", BB_AUX (bb)->pre_header_loop_id);
++
++      insn = BB_HEAD (bb);
++      label = gen_label_rtx ();
++      /*label = gen_rtx_CODE_LABEL (VOIDmode, 0, NULL_RTX, NULL_RTX,
++                                  NULL, label_num++, xstrdup(buf));*/
++      LABEL_NAME (label) = xstrdup (buf);
++      SET_LABEL_KIND (label, LABEL_STATIC_ENTRY);
++
++      while (insn != 0 && insn != BB_END (bb))
++        {
++          if (NOTE_P (insn) && NOTE_KIND (insn) == NOTE_INSN_BASIC_BLOCK)
++            {
++              emit_label_after (label, insn);
++              break;
++            }
++          insn = NEXT_INSN (insn);
++        }
++    }
++  loop_optimizer_finalize ();
++
++  return 0;
++}
++
++static bool
++gate_create_profile_labels (void)
++{
++  return (flag_create_profile_labels);
++}
++
++struct rtl_opt_pass pass_create_profile_labels =
++{
++ {
++  RTL_PASS,
++  "profile_lables",		/* name */
++  gate_create_profile_labels,	/* gate */
++  create_profile_labels,	/* execute */
++  NULL,				/* sub */
++  NULL,				/* next */
++  0,				/* static_pass_number */
++  0,				/* tv_id */
++  0,				/* properties_required */
++  0,				/* properties_provided */
++  0,				/* properties_destroyed */
++  0,				/* todo_flags_start */
++  TODO_dump_func		/* todo_flags_finish */
++ }
++};
++
+diff -Nrup gcc-4.4.0/gcc/tree-pass.h label-gcc-4.4.0/gcc/tree-pass.h
+--- gcc-4.4.0/gcc/tree-pass.h	2009-02-20 23:20:38.000000000 +0800
++++ label-gcc-4.4.0/gcc/tree-pass.h	2009-07-08 18:03:30.000000000 +0800
+@@ -503,6 +503,7 @@ extern struct rtl_opt_pass pass_split_be
+ extern struct rtl_opt_pass pass_convert_to_eh_region_ranges;
+ extern struct rtl_opt_pass pass_shorten_branches;
+ extern struct rtl_opt_pass pass_set_nothrow_function_flags;
++extern struct rtl_opt_pass pass_create_profile_labels;
+ extern struct rtl_opt_pass pass_final;
+ extern struct rtl_opt_pass pass_rtl_seqabstr;
+ extern struct gimple_opt_pass pass_release_ssa_names;
