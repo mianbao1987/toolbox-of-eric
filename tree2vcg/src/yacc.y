@@ -44,7 +44,6 @@
 %token FN_NAME
 %token BB_NUM PRED_NUM SUCC_NUM
 %token STMT
-%token NL
 
 %type <val> FN BB PRED SUCC
 %type <str> FN_NAME STMT BB_NUM PRED_NUM SUCC_NUM
@@ -59,7 +58,7 @@ input:	/* empty */
 ;
 
 line: FN FN_NAME {
-    finalize_last_bb ();
+    finish_previous_bb ();
 
     current_function = new_function ($<str>2); /* FN_NAME */
     if (first_function == NULL)
@@ -76,7 +75,7 @@ line: FN FN_NAME {
       }
   }
 	| BB BB_NUM {
-    finalize_last_bb ();
+    finish_previous_bb ();
 
     seen_bb = 1;
     current_bb = lookup_and_add_bb (current_function, $<str>2);
@@ -115,7 +114,7 @@ set_yy_debug (void)
 }
 
 void
-finalize_last_bb (void)
+finish_previous_bb (void)
 {
   if (seen_bb && current_bb != NULL)
     {

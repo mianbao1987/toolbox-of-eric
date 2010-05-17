@@ -24,8 +24,6 @@
 #include <libiberty.h>
 #include <obstack.h>
 
-#include <argp.h>
-
 #include "gdl.h"
 #include "tree2vcg.h"
 
@@ -69,7 +67,7 @@ main (int argc, char *argv[])
   yyin = fin;
   //set_yy_debug ();
   yyparse ();
-  finalize_last_bb ();
+  finish_previous_bb ();
 
   fine_tune_cfg ();
 

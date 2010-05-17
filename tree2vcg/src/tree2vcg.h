@@ -33,7 +33,7 @@ extern struct basic_block *current_bb;
 extern struct gdl_graph *top_graph;
 
 /* yacc.y */
-extern void finalize_last_bb (void);
+extern void finish_previous_bb (void);
 
 /* output.c */
 extern void output_vcg (void);
