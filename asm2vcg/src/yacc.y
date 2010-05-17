@@ -18,9 +18,19 @@
 %{
   #include <stdio.h>
   #include <string.h>
+  #include <assert.h>
+
   #include <libiberty.h>
   #include <obstack.h>
+
+  #include "gdl.h"
+  #include "cfg.h"
   #include "asm2vcg.h"
+
+  static char *insns;
+  static int len;
+  static int seen_bb = 0;
+  static int seen_label = 0;
 
   int yylex (void);
   void yyerror (char const *);
@@ -31,14 +41,13 @@
   char *str;
 }
 
-%token PU BB PRED SUCC
-%token PU_NAME
+%token FN BB PRED SUCC
+%token FN_NAME
 %token BB_NUM PRED_NUM SUCC_NUM
-%token LABEL INSN
-%token NL
+%token LABEL STMT
 
-%type <val> PU BB PRED SUCC BB_NUM PRED_NUM SUCC_NUM NL
-%type <str> PU_NAME LABEL INSN
+%type <val> FN BB PRED SUCC 
+%type <str> FN_NAME LABEL STMT BB_NUM PRED_NUM SUCC_NUM
 
 %debug 
 %verbose
@@ -49,48 +58,58 @@ input:	/* empty */
 	| input line
 ;
 
-line:	NL
-	| statement NL
-;
+line: FN FN_NAME {
+    finish_previous_bb ();
 
-statement: PU PU_NAME {
-    if (current_fun_name) 
-      { 
-        if (current_bb_num != -1)
-          {
-            output_graph_tailer_bb (current_fun_name, current_bb_num);
-            current_bb_num = -1;
-          }
-        output_graph_tailer_fun (current_fun_name);
-        free (current_fun_name);
-      }
-    current_fun_name = $<str>2; /* PU_NAME */
-    output_graph_header_fun(current_fun_name);
-  }
-	| BB BB_NUM NL PRED pred_nums NL SUCC succ_nums {
-    if (current_bb_num != -1)
+    current_function = new_function ($<str>2); /* FN_NAME */
+    if (first_function == NULL)
       {
-        output_graph_tailer_bb (current_fun_name, current_bb_num);
+        first_function = current_function;
+        last_function = current_function;
       }
-    current_bb_num = $<val>2; /* BB_NUM */
-    output_edges_bb (current_fun_name, current_bb_num, &pred_obstack, &succ_obstack);
-    output_graph_header_bb (current_fun_name, current_bb_num);
+    else
+      {
+        assert (last_function != NULL);
+
+        last_function->next = current_function;
+        last_function = current_function;
+      }
+
   }
+	| BB BB_NUM {
+    finish_previous_bb ();
+
+    seen_bb = 1;
+    current_bb = lookup_and_add_bb (current_function, $<str>2);
+  }
+        | PRED pred_nums
+        | SUCC succ_nums 
 	| LABEL {
     seen_label = 1;
-    if (current_label)
-      free (current_label);
-    current_label = xstrdup ($<str>1);
+    obstack_grow (&label_obstack, $<str>1, strlen ($<str>1));
+    obstack_grow (&label_obstack, "  \n", 3);
     free ($<str>1);
   }
-	| INSN {
+	| STMT {
     if (seen_label)
       {
+        len = obstack_object_size (&label_obstack);
+        if (len > 0)
+          {
+            insns = (char *)obstack_finish (&label_obstack);
+            assert (insns[len-1] == '\n');
+            assert (insns[len-2] == ' ');
+            insns[len-1] = '\0';
+            insns[len-2] = '\n';
+            obstack_grow (&insn_obstack, insns, strlen (insns));
+          }
+        else
+          {
+            assert (0); /* must error */
+          }
         seen_label = 0;
-        obstack_grow (&insn_obstack, current_label, strlen (current_label));
-        obstack_1grow (&insn_obstack, '\n');
       }
-    obstack_grow (&insn_obstack, "  ", 2);
+
     obstack_grow (&insn_obstack, $<str>1, strlen ($<str>1));
     obstack_grow (&insn_obstack, "  \n", 3);
     free ($<str>1);
@@ -98,12 +117,12 @@ statement: PU PU_NAME {
 
 pred_nums:	/* empty */
 	| pred_nums PRED_NUM {
-    obstack_int_grow (&pred_obstack, $<val>2);
+    lookup_and_add_edge (current_function, $<str>2, current_bb->name);
   }
 
 succ_nums:	/* empty */
 	| succ_nums SUCC_NUM {
-    obstack_int_grow (&succ_obstack, $<val>2);
+    lookup_and_add_edge (current_function, current_bb->name, $<str>2);
   }
 
 %%
@@ -119,3 +138,25 @@ set_yy_debug (void)
 {
   yydebug = 1;
 }
+
+void
+finish_previous_bb (void)
+{
+  if (seen_bb && current_bb != NULL)
+    {
+      len = obstack_object_size (&insn_obstack);
+      if (len > 0)
+        {
+          insns = (char *)obstack_finish (&insn_obstack);
+          assert (insns[len-1] == '\n');
+          insns[len-1] = '\0';
+          current_bb->text = insns;
+        }
+      else
+        {
+          current_bb->text = "   ";
+        }
+    }
+  seen_bb = 0;
+}
+

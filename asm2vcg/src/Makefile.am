@@ -20,6 +20,17 @@ bin_PROGRAMS = asm2vcg
 AM_YFLAGS = -d -t
 AM_CFLAGS = $(LIBERTY_INC)
 
-asm2vcg_SOURCES = main.c yacc.y lex.l asm2vcg.h
+asm2vcg_SOURCES = \
+  asm2vcg.h \
+  cfg.h cfg.c \
+  edge-attr.def \
+  fine-tune.c \
+  gdl.c gdl.h graph-attr.def \
+  yacc.y lex.l \
+  main.c \
+  node-attr.def \
+  options.c output.c \
+  vcg.c
+
 asm2vcg_LDFLAGS = -liberty $(LIBERTY_LIB)
 

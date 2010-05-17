@@ -18,24 +18,32 @@
 #ifndef ASM2VCG_H
 #define ASM2VCG_H
 
-extern char *current_fun_name;
-extern int current_bb_num;
-extern char *current_label;
-extern char *current_insn;
+#include "gdl.h"
+#include "cfg.h"
 
-extern int seen_label;
+extern FILE *fin, *fout;
 
-extern struct obstack pred_obstack;
-extern struct obstack succ_obstack;
 extern struct obstack insn_obstack;
+extern struct obstack label_obstack;
 
-extern void output_graph_header_fun (const char *fun_name);
-extern void output_graph_tailer_fun (const char *fun_name);
-extern void output_graph_header_bb (const char *fun_name, const int bb_num);
-extern void output_graph_tailer_bb (const char *fun_name, const int bb_num);
-extern void output_edges_bb (const char *fun_name, const int bb_num,
-                             struct obstack *pred_obstack,
-                             struct obstack *succ_obstack);
-extern void output_node_insn (const char *fun_name, const char *insn);
+extern struct function *first_function;
+extern struct function *last_function;
+extern struct function *current_function;
+extern struct basic_block *current_bb;
+
+extern struct gdl_graph *top_graph;
+
+/* yacc.y */
+extern void finish_previous_bb (void);
+
+/* output.c */
+extern void output_vcg (void);
+
+/* options.c */
+extern void handle_options (int argc, char *argv[]);
+
+/* fine_tune.c */
+extern void fine_tune_vcg (void);
+
 
 #endif

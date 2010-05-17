@@ -28,14 +28,69 @@ identifier [[:alpha:]][[:alnum:]_]*
 
 %option noyywrap
 
-%s pu
+%s fn 
 %s bb
 %s pred
 %s succ
 
 %%
 
-^{blanks}"$"?{identifier}":".* {
+^{blanks}".ent"/.* {
+    BEGIN (fn);
+    return FN;
+  }
+
+<fn>{identifier} {
+    yylval.str = xstrdup (yytext);
+    return FN_NAME;
+  }
+
+^{blanks}"# BLOCK" {
+    BEGIN (bb);
+    return BB;
+  }
+
+<bb>{digits} {
+    yylval.str = xstrdup (yytext);
+    BEGIN (INITIAL);
+    return BB_NUM;
+  }
+
+^{blanks}"# PRED:" {
+    BEGIN (pred);
+    return PRED;
+  }
+
+<pred>"ENTRY" {
+    yylval.str = xstrdup (yytext);
+    BEGIN (INITIAL);
+    return PRED_NUM;
+  }
+
+<pred>{digits} {
+    yylval.str = xstrdup (yytext);
+    BEGIN (INITIAL);
+    return PRED_NUM;
+  }
+
+^{blanks}"# SUCC:" {
+    BEGIN (succ);
+    return SUCC;
+  }
+
+<succ>"EXIT" {
+    yylval.str = xstrdup (yytext);
+    BEGIN (INITIAL);
+    return SUCC_NUM;
+  }
+
+<succ>{digits} {
+    yylval.str = xstrdup (yytext);
+    BEGIN (INITIAL);
+    return SUCC_NUM;
+  }
+
+^{blanks}"."?{identifier}":".* {
     char *s, *t;
 
     for (s = yytext; *s == ' ' || *s == '\t'; s++);
@@ -55,62 +110,11 @@ identifier [[:alpha:]][[:alnum:]_]*
     while (*t == ' ' || *t == '\t') t--;
     assert (s < t);
     yylval.str = xstrndup (s, t - s + 1);
-    return INSN;
-  }
-
-^{blanks}".ent"/.* {
-    BEGIN (pu);
-    return PU;
-  }
-
-^{blanks}"# BLOCK" {
-    BEGIN (bb);
-    return BB;
-  }
-
-^{blanks}"# PRED:" {
-    BEGIN (pred);
-    return PRED;
-  }
-
-^{blanks}"# SUCC:" {
-    BEGIN (succ);
-    return SUCC;
+    return STMT;
   }
 
 <pred,succ>"("[^\)]*")" { /* omit */ }
 <pred,succ>"["[^\]]*"]" { /* omit */ }
-
-<bb>{digits} {
-    yylval.val = atoi (yytext);
-    BEGIN (INITIAL);
-    return BB_NUM;
-  }
-
-<pred>"ENTRY" {
-    yylval.val = 0;
-    return PRED_NUM;
-  }
-
-<pred>{digits} {
-    yylval.val = atoi (yytext);
-    return PRED_NUM;
-  }
-
-<succ>"EXIT" {
-    yylval.val = 1;
-    return SUCC_NUM;
-  }
-
-<succ>{digits} {
-    yylval.val = atoi (yytext);
-    return SUCC_NUM;
-  }
-
-<pu>{identifier} {
-    yylval.str = xstrdup (yytext);
-    return PU_NAME;
-  }
 
 "#".* {
     /* omit other comments */
@@ -120,11 +124,7 @@ identifier [[:alpha:]][[:alnum:]_]*
     /* omit other asm directive */
   }
 
-\n { 
-    BEGIN (INITIAL);
-    return NL; 
-  }
-
 . { /* omit others */ }
+\n { /* omit others */ }
 
 %%
