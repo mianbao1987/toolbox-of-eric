@@ -90,6 +90,7 @@ cfg_to_vcg (void)
           else
             gdl_set_node_label (node, bb->text);
 
+          gdl_set_node_vertical_order (node, bb->max_distance);
           gdl_add_node (bb_graph, node);
         }
 
