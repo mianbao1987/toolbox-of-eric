@@ -1,0 +1,1076 @@
+
+;; Function search (search)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 8 7 3 9 4 5 10 11 6
+;;
+;; Loop 1
+;;  header 3, latch 10
+;;  depth 1, outer 0
+;;  nodes: 3 10 5 9 4
+;; 2 succs { 7 8 }
+;; 8 succs { 6 }
+;; 7 succs { 3 }
+;; 3 succs { 4 9 }
+;; 9 succs { 5 }
+;; 4 succs { 5 }
+;; 5 succs { 10 11 }
+;; 10 succs { 3 }
+;; 11 succs { 6 }
+;; 6 succs { 1 }
+
+Pass statistics:
+----------------
+
+search (struct basic_block * bbD.4175)
+{
+  struct basic_block * pretmp.19D.5624;
+  struct edge * pretmp.18D.5623;
+  intD.0 pretmp.17D.5622;
+  struct basic_block * pretmp.16D.5621;
+  struct edge * pretmp.15D.5620;
+  intD.0 pretmp.14D.5619;
+  struct edge * eD.4180;
+  struct vec_edge * veD.4179;
+  struct basic_block * succ_bbD.4178;
+  intD.0 count.11D.5608;
+  intD.0 count.10D.5607;
+  intD.0 D.5604;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # .MEMD.5609_14 = VDEF <.MEMD.5609_13(D)>
+  bbD.4175_2(D)->visitedD.4144 = 1;
+  # VUSE <.MEMD.5609_14>
+  veD.4179_3 = bbD.4175_2(D)->succD.4149;
+  # DEBUG veD.4179 => veD.4179_3
+  # DEBUG veD.4179 => veD.4179_3
+  if (veD.4179_3 != 0B)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 8 freq:81
+  # PRED: 2 [9.0%]  (false,exec)
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 7 freq:819
+  # PRED: 2 [91.0%]  (true,exec)
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:9100
+  # PRED: 10 [100.0%]  (fallthru) 7 [100.0%]  (fallthru)
+  # veD.4179_9 = PHI <veD.4179_7(10), veD.4179_3(7)>
+  # .MEMD.5609_19 = PHI <.MEMD.5609_11(10), .MEMD.5609_14(7)>
+  # VUSE <.MEMD.5609_19>
+  eD.4180_4 = veD.4179_9->edgeD.4138;
+  # DEBUG eD.4180 => eD.4180_4
+  # VUSE <.MEMD.5609_19>
+  succ_bbD.4178_5 = eD.4180_4->targetD.4135;
+  # DEBUG succ_bbD.4178 => succ_bbD.4178_5
+  # VUSE <.MEMD.5609_19>
+  D.5604_6 = succ_bbD.4178_5->visitedD.4144;
+  if (D.5604_6 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 9>;
+  # SUCC: 4 [29.0%]  (true,exec) 9 [71.0%]  (false,exec)
+
+  # BLOCK 9 freq:6461
+  # PRED: 3 [71.0%]  (false,exec)
+  goto <bb 5>;
+  # SUCC: 5 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5609_15 = VDEF <.MEMD.5609_19>
+  eD.4180_4->typeD.4133 = 1;
+  # .MEMD.5609_16 = VDEF <.MEMD.5609_15>
+  searchD.4176 (succ_bbD.4178_5);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 9 [100.0%]  (fallthru) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5609_11 = PHI <.MEMD.5609_19(9), .MEMD.5609_16(4)>
+  # VUSE <.MEMD.5609_11>
+  veD.4179_7 = veD.4179_9->nextD.4139;
+  # DEBUG veD.4179 => veD.4179_7
+  # DEBUG veD.4179 => veD.4179_7
+  if (veD.4179_7 != 0B)
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+  # SUCC: 10 [91.0%]  (true,exec) 11 [9.0%]  (false,exec)
+
+  # BLOCK 10 freq:8281
+  # PRED: 5 [91.0%]  (true,exec)
+  goto <bb 3>;
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 11 freq:819
+  # PRED: 5 [9.0%]  (false,exec)
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 6 freq:900
+  # PRED: 11 [100.0%]  (fallthru) 8 [100.0%]  (fallthru)
+  # .MEMD.5609_22 = PHI <.MEMD.5609_11(11), .MEMD.5609_14(8)>
+  # VUSE <.MEMD.5609_22>
+  count.10D.5607_8 = countD.4173;
+  # .MEMD.5609_17 = VDEF <.MEMD.5609_22>
+  bbD.4175_2(D)->dfs_orderD.4145 = count.10D.5607_8;
+  count.11D.5608_10 = count.10D.5607_8 + -1;
+  # .MEMD.5609_18 = VDEF <.MEMD.5609_17>
+  countD.4173 = count.11D.5608_10;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function depth_first_search (depth_first_search)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 6 5 3 7 8 4
+;;
+;; Loop 1
+;;  header 3, latch 7
+;;  depth 1, outer 0
+;;  nodes: 3 7
+;; 2 succs { 5 6 }
+;; 6 succs { 4 }
+;; 5 succs { 3 }
+;; 3 succs { 7 8 }
+;; 7 succs { 3 }
+;; 8 succs { 4 }
+;; 4 succs { 1 }
+
+Pass statistics:
+----------------
+
+depth_first_search ()
+{
+  struct basic_block * bbD.4187;
+  struct basic_block * D.5603;
+  intD.0 count.9D.5602;
+  struct control_flow_graph * cfg.8D.5601;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5610_10(D)>
+  cfg.8D.5601_2 = cfgD.4174;
+  # VUSE <.MEMD.5610_10(D)>
+  bbD.4187_3 = cfg.8D.5601_2->bbD.4157;
+  # DEBUG bbD.4187 => bbD.4187_3
+  # DEBUG bbD.4187 => bbD.4187_3
+  if (bbD.4187_3 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [91.0%]  (true,exec) 6 [9.0%]  (false,exec)
+
+  # BLOCK 6 freq:81
+  # PRED: 2 [9.0%]  (false,exec)
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 5 freq:819
+  # PRED: 2 [91.0%]  (true,exec)
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:9100
+  # PRED: 7 [100.0%]  (fallthru) 5 [100.0%]  (fallthru)
+  # bbD.4187_14 = PHI <bbD.4187_4(7), bbD.4187_3(5)>
+  # .MEMD.5610_15 = PHI <.MEMD.5610_11(7), .MEMD.5610_10(D)(5)>
+  # .MEMD.5610_11 = VDEF <.MEMD.5610_15>
+  bbD.4187_14->visitedD.4144 = 0;
+  # VUSE <.MEMD.5610_11>
+  bbD.4187_4 = bbD.4187_14->nextD.4151;
+  # DEBUG bbD.4187 => bbD.4187_4
+  # DEBUG bbD.4187 => bbD.4187_4
+  if (bbD.4187_4 != 0B)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:8281
+  # PRED: 3 [91.0%]  (true,exec)
+  goto <bb 3>;
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 8 freq:819
+  # PRED: 3 [9.0%]  (false,exec)
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:900
+  # PRED: 8 [100.0%]  (fallthru) 6 [100.0%]  (fallthru)
+  # .MEMD.5610_16 = PHI <.MEMD.5610_11(8), .MEMD.5610_10(D)(6)>
+  # VUSE <.MEMD.5610_16>
+  count.9D.5602_6 = cfg.8D.5601_2->bb_numD.4153;
+  # .MEMD.5610_12 = VDEF <.MEMD.5610_16>
+  countD.4173 = count.9D.5602_6;
+  # VUSE <.MEMD.5610_12>
+  D.5603_8 = cfg.8D.5601_2->entryD.4155;
+  # .MEMD.5610_13 = VDEF <.MEMD.5610_12>
+  searchD.4176 (D.5603_8);
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function is_ancestor (is_ancestor)
+
+
+Pass statistics:
+----------------
+
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 12 11 3 13 14 4 15 5 16 6 19 18 7 17 8 20 9 21 10
+;;
+;; Loop 1
+;;  header 4, latch 14
+;;  depth 1, outer 0
+;;  nodes: 4 14 3 9 7 20 15 8 19 17 5 6 18 16
+;;
+;; Loop 2
+;;  header 8, latch 19
+;;  depth 2, outer 1
+;;  nodes: 8 19 6
+;; 2 succs { 11 12 }
+;; 12 succs { 4 }
+;; 11 succs { 10 }
+;; 3 succs { 13 14 }
+;; 13 succs { 10 }
+;; 14 succs { 4 }
+;; 4 succs { 5 15 }
+;; 15 succs { 9 }
+;; 5 succs { 16 17 }
+;; 16 succs { 7 }
+;; 6 succs { 18 19 }
+;; 19 succs { 8 }
+;; 18 succs { 7 }
+;; 7 succs { 9 }
+;; 17 succs { 8 }
+;; 8 succs { 6 20 }
+;; 20 succs { 9 }
+;; 9 succs { 3 21 }
+;; 21 succs { 10 }
+;; 10 succs { 1 }
+
+Pass statistics:
+----------------
+
+is_ancestor (struct basic_block * sourceD.4191, struct basic_block * targetD.4192)
+{
+  struct basic_block * prephitmp.27D.5632;
+  struct basic_block * pretmp.26D.5631;
+  struct control_flow_graph * prephitmp.25D.5630;
+  struct control_flow_graph * pretmp.24D.5629;
+  struct edge * eD.4197;
+  struct vec_edge * veD.4196;
+  struct basic_block * bbD.4195;
+  struct basic_block * D.5599;
+  struct control_flow_graph * cfg.7D.5598;
+  edge_type D.5595;
+  intD.0 D.5594;
+
+  # BLOCK 2 freq:165
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  if (targetD.4192_5(D) == sourceD.4191_7(D))
+    goto <bb 11>;
+  else
+    goto <bb 12>;
+  # SUCC: 11 [4.5%]  (true,exec) 12 [95.5%]  (false,exec)
+
+  # BLOCK 12 freq:158
+  # PRED: 2 [95.5%]  (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  pretmp.24D.5629_1 = cfgD.4174;
+  # VUSE <.MEMD.5611_17(D)>
+  pretmp.26D.5631_19 = pretmp.24D.5629_1->entryD.4155;
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 11 freq:7
+  # PRED: 2 [4.5%]  (true,exec)
+  goto <bb 10>;
+  # SUCC: 10 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:756
+  # PRED: 9 [86.0%]  (true,exec)
+  # DEBUG bbD.4195 => bbD.4195_2
+  if (bbD.4195_2 == sourceD.4191_7(D))
+    goto <bb 13>;
+  else
+    goto <bb 14>;
+  # SUCC: 13 [4.5%]  (true,exec) 14 [95.5%]  (false,exec)
+
+  # BLOCK 13 freq:34
+  # PRED: 3 [4.5%]  (true,exec)
+  goto <bb 10>;
+  # SUCC: 10 [100.0%]  (fallthru)
+
+  # BLOCK 14 freq:722
+  # PRED: 3 [95.5%]  (false,exec)
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:880
+  # PRED: 14 [100.0%]  (fallthru) 12 [100.0%]  (fallthru)
+  # bbD.4195_21 = PHI <bbD.4195_2(14), targetD.4192_5(D)(12)>
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_9 = bbD.4195_21->predD.4147;
+  # DEBUG veD.4196 => veD.4196_9
+  # DEBUG veD.4196 => veD.4196_9
+  if (veD.4196_9 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 15>;
+  # SUCC: 5 [95.5%]  (true,exec) 15 [4.5%]  (false,exec)
+
+  # BLOCK 15 freq:40
+  # PRED: 4 [4.5%]  (false,exec)
+  goto <bb 9>;
+  # SUCC: 9 [100.0%]  (fallthru)
+
+  # BLOCK 5 freq:840
+  # PRED: 4 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_20 = veD.4196_9->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_20
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_23 = eD.4197_20->typeD.4133;
+  if (D.5595_23 == 1)
+    goto <bb 16>;
+  else
+    goto <bb 17>;
+  # SUCC: 16 [4.5%]  (true,exec) 17 [95.5%]  (false,exec)
+
+  # BLOCK 16 freq:38
+  # PRED: 5 [4.5%]  (true,exec)
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 6 freq:8710
+  # PRED: 8 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_10 = veD.4196_13->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_10
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_11 = eD.4197_10->typeD.4133;
+  if (D.5595_11 == 1)
+    goto <bb 18>;
+  else
+    goto <bb 19>;
+  # SUCC: 18 [4.5%]  (true,exec) 19 [95.5%]  (false,exec)
+
+  # BLOCK 19 freq:8318
+  # PRED: 6 [95.5%]  (false,exec)
+  goto <bb 8>;
+  # SUCC: 8 [100.0%]  (fallthru)
+
+  # BLOCK 18 freq:392
+  # PRED: 6 [4.5%]  (true,exec)
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 7 freq:430
+  # PRED: 18 [100.0%]  (fallthru) 16 [100.0%]  (fallthru)
+  # eD.4197_18 = PHI <eD.4197_10(18), eD.4197_20(16)>
+  # VUSE <.MEMD.5611_17(D)>
+  bbD.4195_12 = eD.4197_18->sourceD.4134;
+  # DEBUG bbD.4195 => bbD.4195_12
+  goto <bb 9>;
+  # SUCC: 9 [100.0%]  (fallthru,exec)
+
+  # BLOCK 17 freq:802
+  # PRED: 5 [95.5%]  (false,exec)
+  # SUCC: 8 [100.0%]  (fallthru)
+
+  # BLOCK 8 freq:9120
+  # PRED: 19 [100.0%]  (fallthru) 17 [100.0%]  (fallthru)
+  # veD.4196_24 = PHI <veD.4196_13(19), veD.4196_9(17)>
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_13 = veD.4196_24->nextD.4139;
+  # DEBUG veD.4196 => veD.4196_13
+  # DEBUG veD.4196 => veD.4196_13
+  if (veD.4196_13 != 0B)
+    goto <bb 6>;
+  else
+    goto <bb 20>;
+  # SUCC: 6 [95.5%]  (true,exec) 20 [4.5%]  (false,exec)
+
+  # BLOCK 20 freq:410
+  # PRED: 8 [4.5%]  (false,exec)
+  # SUCC: 9 [100.0%]  (fallthru)
+
+  # BLOCK 9 freq:880
+  # PRED: 7 [100.0%]  (fallthru,exec) 20 [100.0%]  (fallthru) 15 [100.0%]  (fallthru)
+  # bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_21(20), bbD.4195_21(15)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  cfg.7D.5598_14 = pretmp.24D.5629_1;
+  D.5599_15 = pretmp.26D.5631_19;
+  if (D.5599_15 != bbD.4195_2)
+    goto <bb 3>;
+  else
+    goto <bb 21>;
+  # SUCC: 3 [86.0%]  (true,exec) 21 [14.0%]  (false,exec)
+
+  # BLOCK 21 freq:123
+  # PRED: 9 [14.0%]  (false,exec)
+  # SUCC: 10 [100.0%]  (fallthru)
+
+  # BLOCK 10 freq:165
+  # PRED: 13 [100.0%]  (fallthru) 21 [100.0%]  (fallthru) 11 [100.0%]  (fallthru)
+  # D.5594_4 = PHI <1(13), 0(21), 1(11)>
+  return D.5594_4;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edge (mark_edge)
+
+
+Pass statistics:
+----------------
+
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7
+;; 2 succs { 3 4 }
+;; 3 succs { 7 }
+;; 4 succs { 5 6 }
+;; 5 succs { 7 }
+;; 6 succs { 7 }
+;; 7 succs { 1 }
+
+Pass statistics:
+----------------
+
+mark_edge (struct edge * eD.4203)
+{
+  struct basic_block * targetD.4207;
+  struct basic_block * sourceD.4206;
+  intD.0 D.5588;
+  intD.0 D.5584;
+
+  # BLOCK 2 freq:10000
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  sourceD.4206_2 = eD.4203_1(D)->sourceD.4134;
+  # DEBUG sourceD.4206 => sourceD.4206_2
+  # VUSE <.MEMD.5612_6(D)>
+  targetD.4207_3 = eD.4203_1(D)->targetD.4135;
+  # DEBUG targetD.4207 => targetD.4207_3
+  # VUSE <.MEMD.5612_6(D)>
+  D.5584_4 = is_ancestorD.4193 (targetD.4207_3, sourceD.4206_2);
+  if (D.5584_4 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [61.0%]  (true,exec) 4 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:6102
+  # PRED: 2 [61.0%]  (true,exec)
+  # .MEMD.5612_7 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 3;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:3898
+  # PRED: 2 [39.0%]  (false,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  D.5588_5 = is_ancestorD.4193 (sourceD.4206_2, targetD.4207_3);
+  if (D.5588_5 != 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [39.0%]  (true,exec) 6 [61.0%]  (false,exec)
+
+  # BLOCK 5 freq:1520
+  # PRED: 4 [39.0%]  (true,exec)
+  # .MEMD.5612_8 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 2;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:2378
+  # PRED: 4 [61.0%]  (false,exec)
+  # .MEMD.5612_9 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 4;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 3 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edges (mark_edges)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 8 7 3 9 4 5 10 11 6
+;;
+;; Loop 1
+;;  header 3, latch 10
+;;  depth 1, outer 0
+;;  nodes: 3 10 5 9 4
+;; 2 succs { 7 8 }
+;; 8 succs { 6 }
+;; 7 succs { 3 }
+;; 3 succs { 4 9 }
+;; 9 succs { 5 }
+;; 4 succs { 5 }
+;; 5 succs { 10 11 }
+;; 10 succs { 3 }
+;; 11 succs { 6 }
+;; 6 succs { 1 }
+
+Pass statistics:
+----------------
+
+mark_edges ()
+{
+  struct edge * eD.4212;
+  struct control_flow_graph * cfgD.4211;
+  edge_type D.5581;
+  struct function * current_function.6D.5580;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5613_9(D)>
+  current_function.6D.5580_2 = current_functionD.4113;
+  # VUSE <.MEMD.5613_9(D)>
+  cfgD.4211_3 = current_function.6D.5580_2->cfgD.4162;
+  # DEBUG cfgD.4211 => cfgD.4211_3
+  # VUSE <.MEMD.5613_9(D)>
+  eD.4212_4 = cfgD.4211_3->edgeD.4159;
+  # DEBUG eD.4212 => eD.4212_4
+  # DEBUG eD.4212 => eD.4212_4
+  if (eD.4212_4 != 0B)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 8 freq:81
+  # PRED: 2 [9.0%]  (false,exec)
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 7 freq:819
+  # PRED: 2 [91.0%]  (true,exec)
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:9100
+  # PRED: 10 [100.0%]  (fallthru) 7 [100.0%]  (fallthru)
+  # eD.4212_13 = PHI <eD.4212_6(10), eD.4212_4(7)>
+  # .MEMD.5613_14 = PHI <.MEMD.5613_7(10), .MEMD.5613_9(D)(7)>
+  # VUSE <.MEMD.5613_14>
+  D.5581_5 = eD.4212_13->typeD.4133;
+  if (D.5581_5 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 9>;
+  # SUCC: 4 [29.0%]  (true,exec) 9 [71.0%]  (false,exec)
+
+  # BLOCK 9 freq:6461
+  # PRED: 3 [71.0%]  (false,exec)
+  goto <bb 5>;
+  # SUCC: 5 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5613_10 = VDEF <.MEMD.5613_14>
+  mark_edgeD.4204 (eD.4212_13);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 9 [100.0%]  (fallthru) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5613_7 = PHI <.MEMD.5613_14(9), .MEMD.5613_10(4)>
+  # VUSE <.MEMD.5613_7>
+  eD.4212_6 = eD.4212_13->nextD.4136;
+  # DEBUG eD.4212 => eD.4212_6
+  # DEBUG eD.4212 => eD.4212_6
+  if (eD.4212_6 != 0B)
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+  # SUCC: 10 [91.0%]  (true,exec) 11 [9.0%]  (false,exec)
+
+  # BLOCK 10 freq:8281
+  # PRED: 5 [91.0%]  (true,exec)
+  goto <bb 3>;
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 11 freq:819
+  # PRED: 5 [9.0%]  (false,exec)
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 6 freq:900
+  # PRED: 11 [100.0%]  (fallthru) 8 [100.0%]  (fallthru)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance_recursive (calc_max_distance_recursive)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 9 3 11 10 4 12 5 6 13 14 7 8
+;;
+;; Loop 1
+;;  header 4, latch 13
+;;  depth 1, outer 0
+;;  nodes: 4 13 6 12 5
+;; 2 succs { 3 9 }
+;; 9 succs { 8 }
+;; 3 succs { 10 11 }
+;; 11 succs { 7 }
+;; 10 succs { 4 }
+;; 4 succs { 12 5 }
+;; 12 succs { 6 }
+;; 5 succs { 6 }
+;; 6 succs { 13 14 }
+;; 13 succs { 4 }
+;; 14 succs { 7 }
+;; 7 succs { 8 }
+;; 8 succs { 1 }
+
+Pass statistics:
+----------------
+
+calc_max_distance_recursive (struct basic_block * bbD.4216)
+{
+  intD.0 pretmp.36D.5641;
+  intD.0 prephitmp.35D.5640;
+  struct edge * pretmp.34D.5639;
+  struct edge * eD.4222;
+  struct vec_edge * veD.4221;
+  intD.0 maxD.4220;
+  intD.0 valD.4219;
+  intD.0 D.5578;
+  intD.0 D.5577;
+  struct basic_block * D.5576;
+  edge_type D.5573;
+  intD.0 D.5570;
+
+  # BLOCK 2 freq:1475
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4220 => 0
+  # VUSE <.MEMD.5614_19(D)>
+  D.5570_6 = bbD.4216_5(D)->max_distanceD.4146;
+  if (D.5570_6 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 9>;
+  # SUCC: 3 [61.0%]  (true,exec) 9 [39.0%]  (false,exec)
+
+  # BLOCK 9 freq:575
+  # PRED: 2 [39.0%]  (false,exec)
+  goto <bb 8>;
+  # SUCC: 8 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:900
+  # PRED: 2 [61.0%]  (true,exec)
+  # VUSE <.MEMD.5614_19(D)>
+  veD.4221_7 = bbD.4216_5(D)->predD.4147;
+  # DEBUG veD.4221 => veD.4221_7
+  # DEBUG veD.4221 => veD.4221_7
+  # DEBUG maxD.4220 => 0
+  if (veD.4221_7 != 0B)
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+  # SUCC: 10 [91.0%]  (true,exec) 11 [9.0%]  (false,exec)
+
+  # BLOCK 11 freq:81
+  # PRED: 3 [9.0%]  (false,exec)
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 10 freq:819
+  # PRED: 3 [91.0%]  (true,exec)
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:9100
+  # PRED: 13 [100.0%]  (fallthru) 10 [100.0%]  (fallthru)
+  # maxD.4220_24 = PHI <maxD.4220_1(13), 0(10)>
+  # veD.4221_27 = PHI <veD.4221_13(13), veD.4221_7(10)>
+  # .MEMD.5614_28 = PHI <.MEMD.5614_16(13), .MEMD.5614_19(D)(10)>
+  # VUSE <.MEMD.5614_28>
+  eD.4222_8 = veD.4221_27->edgeD.4138;
+  # DEBUG eD.4222 => eD.4222_8
+  # VUSE <.MEMD.5614_28>
+  D.5573_9 = eD.4222_8->typeD.4133;
+  if (D.5573_9 == 3)
+    goto <bb 12>;
+  else
+    goto <bb 5>;
+  # SUCC: 12 [48.8%]  (true,exec) 5 [51.2%]  (false,exec)
+
+  # BLOCK 12 freq:4438
+  # PRED: 4 [48.8%]  (true,exec)
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 5 freq:4662
+  # PRED: 4 [51.2%]  (false,exec)
+  # VUSE <.MEMD.5614_28>
+  D.5576_10 = eD.4222_8->sourceD.4134;
+  # .MEMD.5614_20 = VDEF <.MEMD.5614_28>
+  valD.4219_11 = calc_max_distance_recursiveD.4217 (D.5576_10);
+  # DEBUG valD.4219 => valD.4219_11
+  maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_24>;
+  # DEBUG maxD.4220 => maxD.4220_12
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 12 [100.0%]  (fallthru) 5 [100.0%]  (fallthru,exec)
+  # maxD.4220_1 = PHI <maxD.4220_24(12), maxD.4220_12(5)>
+  # .MEMD.5614_16 = PHI <.MEMD.5614_28(12), .MEMD.5614_20(5)>
+  # DEBUG maxD.4220 => maxD.4220_1
+  # VUSE <.MEMD.5614_16>
+  veD.4221_13 = veD.4221_27->nextD.4139;
+  # DEBUG veD.4221 => veD.4221_13
+  # DEBUG veD.4221 => veD.4221_13
+  # DEBUG maxD.4220 => maxD.4220_1
+  if (veD.4221_13 != 0B)
+    goto <bb 13>;
+  else
+    goto <bb 14>;
+  # SUCC: 13 [91.0%]  (true,exec) 14 [9.0%]  (false,exec)
+
+  # BLOCK 13 freq:8281
+  # PRED: 6 [91.0%]  (true,exec)
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 14 freq:819
+  # PRED: 6 [9.0%]  (false,exec)
+  pretmp.36D.5641_25 = maxD.4220_1 + 1;
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 7 freq:900
+  # PRED: 14 [100.0%]  (fallthru) 11 [100.0%]  (fallthru)
+  # maxD.4220_22 = PHI <maxD.4220_1(14), 0(11)>
+  # .MEMD.5614_29 = PHI <.MEMD.5614_16(14), .MEMD.5614_19(D)(11)>
+  # prephitmp.35D.5640_23 = PHI <pretmp.36D.5641_25(14), 1(11)>
+  D.5577_14 = prephitmp.35D.5640_23;
+  # .MEMD.5614_21 = VDEF <.MEMD.5614_29>
+  bbD.4216_5(D)->max_distanceD.4146 = D.5577_14;
+  # SUCC: 8 [100.0%]  (fallthru,exec)
+
+  # BLOCK 8 freq:1475
+  # PRED: 9 [100.0%]  (fallthru) 7 [100.0%]  (fallthru,exec)
+  # .MEMD.5614_18 = PHI <.MEMD.5614_19(D)(9), .MEMD.5614_21(7)>
+  # prephitmp.35D.5640_2 = PHI <D.5570_6(9), D.5577_14(7)>
+  D.5578_15 = prephitmp.35D.5640_2;
+  return D.5578_15;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance (calc_max_distance)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 9 8 3 10 4 11 5 6 12 13 7
+;;
+;; Loop 1
+;;  header 3, latch 12
+;;  depth 1, outer 0
+;;  nodes: 3 12 6 10 11 5 4
+;; 2 succs { 8 9 }
+;; 9 succs { 7 }
+;; 8 succs { 3 }
+;; 3 succs { 4 10 }
+;; 10 succs { 6 }
+;; 4 succs { 5 11 }
+;; 11 succs { 6 }
+;; 5 succs { 6 }
+;; 6 succs { 12 13 }
+;; 12 succs { 3 }
+;; 13 succs { 7 }
+;; 7 succs { 1 }
+
+Pass statistics:
+----------------
+
+calc_max_distance ()
+{
+  struct basic_block * bbD.4232;
+  intD.0 maxD.4231;
+  intD.0 valD.4230;
+  intD.0 D.5563;
+  struct basic_block * D.5562;
+  struct control_flow_graph * cfg.4D.5561;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4231 => 0
+  # .MEMD.5615_22 = VDEF <.MEMD.5615_21(D)>
+  depth_first_searchD.4185 ();
+  # .MEMD.5615_23 = VDEF <.MEMD.5615_22>
+  mark_edgesD.4209 ();
+  # VUSE <.MEMD.5615_23>
+  cfg.4D.5561_6 = cfgD.4174;
+  # VUSE <.MEMD.5615_23>
+  D.5562_7 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_24 = VDEF <.MEMD.5615_23>
+  maxD.4231_8 = calc_max_distance_recursiveD.4217 (D.5562_7);
+  # DEBUG maxD.4231 => maxD.4231_8
+  # VUSE <.MEMD.5615_24>
+  bbD.4232_10 = cfg.4D.5561_6->bbD.4157;
+  # DEBUG bbD.4232 => bbD.4232_10
+  # DEBUG bbD.4232 => bbD.4232_10
+  # DEBUG maxD.4231 => maxD.4231_8
+  if (bbD.4232_10 != 0B)
+    goto <bb 8>;
+  else
+    goto <bb 9>;
+  # SUCC: 8 [91.0%]  (true,exec) 9 [9.0%]  (false,exec)
+
+  # BLOCK 9 freq:81
+  # PRED: 2 [9.0%]  (false,exec)
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 8 freq:819
+  # PRED: 2 [91.0%]  (true,exec)
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:9100
+  # PRED: 12 [100.0%]  (fallthru) 8 [100.0%]  (fallthru)
+  # maxD.4231_27 = PHI <maxD.4231_1(12), maxD.4231_8(8)>
+  # bbD.4232_28 = PHI <bbD.4232_16(12), bbD.4232_10(8)>
+  # .MEMD.5615_30 = PHI <.MEMD.5615_19(12), .MEMD.5615_24(8)>
+  # VUSE <.MEMD.5615_30>
+  D.5563_11 = bbD.4232_28->max_distanceD.4146;
+  if (D.5563_11 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 10>;
+  # SUCC: 4 [29.0%]  (true,exec) 10 [71.0%]  (false,exec)
+
+  # BLOCK 10 freq:6461
+  # PRED: 3 [71.0%]  (false,exec)
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5615_25 = VDEF <.MEMD.5615_30>
+  valD.4230_12 = calc_max_distance_recursiveD.4217 (bbD.4232_28);
+  # DEBUG valD.4230 => valD.4230_12
+  if (valD.4230_12 >= maxD.4231_27)
+    goto <bb 5>;
+  else
+    goto <bb 11>;
+  # SUCC: 5 [50.0%]  (true,exec) 11 [50.0%]  (false,exec)
+
+  # BLOCK 11 freq:1320
+  # PRED: 4 [50.0%]  (false,exec)
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 5 freq:1319
+  # PRED: 4 [50.0%]  (true,exec)
+  maxD.4231_13 = valD.4230_12 + 1;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 10 [100.0%]  (fallthru) 11 [100.0%]  (fallthru) 5 [100.0%]  (fallthru,exec)
+  # maxD.4231_1 = PHI <maxD.4231_27(10), maxD.4231_27(11), maxD.4231_13(5)>
+  # .MEMD.5615_19 = PHI <.MEMD.5615_30(10), .MEMD.5615_25(11), .MEMD.5615_25(5)>
+  # DEBUG maxD.4231 => maxD.4231_1
+  # VUSE <.MEMD.5615_19>
+  bbD.4232_16 = bbD.4232_28->nextD.4151;
+  # DEBUG bbD.4232 => bbD.4232_16
+  # DEBUG bbD.4232 => bbD.4232_16
+  # DEBUG maxD.4231 => maxD.4231_1
+  if (bbD.4232_16 != 0B)
+    goto <bb 12>;
+  else
+    goto <bb 13>;
+  # SUCC: 12 [91.0%]  (true,exec) 13 [9.0%]  (false,exec)
+
+  # BLOCK 12 freq:8281
+  # PRED: 6 [91.0%]  (true,exec)
+  goto <bb 3>;
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 13 freq:819
+  # PRED: 6 [9.0%]  (false,exec)
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 7 freq:900
+  # PRED: 13 [100.0%]  (fallthru) 9 [100.0%]  (fallthru)
+  # maxD.4231_4 = PHI <maxD.4231_1(13), maxD.4231_8(9)>
+  # .MEMD.5615_31 = PHI <.MEMD.5615_19(13), .MEMD.5615_24(9)>
+  # VUSE <.MEMD.5615_31>
+  D.5562_18 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_26 = VDEF <.MEMD.5615_31>
+  D.5562_18->max_distanceD.4146 = maxD.4231_4;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function fine_tune_cfg (fine_tune_cfg)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 6 5 3 7 8 4
+;;
+;; Loop 1
+;;  header 3, latch 7
+;;  depth 1, outer 0
+;;  nodes: 3 7
+;; 2 succs { 5 6 }
+;; 6 succs { 4 }
+;; 5 succs { 3 }
+;; 3 succs { 7 8 }
+;; 7 succs { 3 }
+;; 8 succs { 4 }
+;; 4 succs { 1 }
+
+Pass statistics:
+----------------
+
+fine_tune_cfg ()
+{
+  struct function * current_function.3D.5560;
+  struct control_flow_graph * cfg.2D.5559;
+  struct function * current_function.1D.5558;
+  struct function * first_function.0D.5557;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5616_8(D)>
+  first_function.0D.5557_1 = first_functionD.4111;
+  # .MEMD.5616_9 = VDEF <.MEMD.5616_8(D)>
+  current_functionD.4113 = first_function.0D.5557_1;
+  if (first_function.0D.5557_1 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [91.0%]  (true,exec) 6 [9.0%]  (false,exec)
+
+  # BLOCK 6 freq:81
+  # PRED: 2 [9.0%]  (false,exec)
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 5 freq:819
+  # PRED: 2 [91.0%]  (true,exec)
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:9100
+  # PRED: 7 [100.0%]  (fallthru) 5 [100.0%]  (fallthru)
+  # current_function.1D.5558_14 = PHI <current_function.3D.5560_6(7), first_function.0D.5557_1(5)>
+  # .MEMD.5616_15 = PHI <.MEMD.5616_12(7), .MEMD.5616_9(5)>
+  # VUSE <.MEMD.5616_15>
+  cfg.2D.5559_4 = current_function.1D.5558_14->cfgD.4162;
+  # .MEMD.5616_10 = VDEF <.MEMD.5616_15>
+  cfgD.4174 = cfg.2D.5559_4;
+  # .MEMD.5616_11 = VDEF <.MEMD.5616_10>
+  calc_max_distanceD.4228 ();
+  # VUSE <.MEMD.5616_11>
+  current_function.1D.5558_5 = current_functionD.4113;
+  # VUSE <.MEMD.5616_11>
+  current_function.3D.5560_6 = current_function.1D.5558_5->nextD.4163;
+  # .MEMD.5616_12 = VDEF <.MEMD.5616_11>
+  current_functionD.4113 = current_function.3D.5560_6;
+  if (current_function.3D.5560_6 != 0B)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:8281
+  # PRED: 3 [91.0%]  (true,exec)
+  goto <bb 3>;
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 8 freq:819
+  # PRED: 3 [9.0%]  (false,exec)
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:900
+  # PRED: 8 [100.0%]  (fallthru) 6 [100.0%]  (fallthru)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+

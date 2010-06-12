@@ -1,0 +1,1454 @@
+
+;; Function vprintf (null)
+;; enabled by -tree-original
+
+
+{
+  return vfprintf ((struct FILE * restrict) stdout, __fmt, __arg);
+}
+
+
+
+;; Function getchar (null)
+;; enabled by -tree-original
+
+{
+  return _IO_getc ((struct _IO_FILE *) stdin);
+}
+
+
+
+;; Function fgetc_unlocked (null)
+;; enabled by -tree-original
+
+{
+  return __builtin_expect (__fp->_IO_read_ptr >= __fp->_IO_read_end, 0) != 0 ? __uflow ((struct _IO_FILE *) __fp) : (int) *(unsigned char *) __fp->_IO_read_ptr++ ;
+}
+
+
+
+;; Function getc_unlocked (null)
+;; enabled by -tree-original
+
+{
+  return __builtin_expect (__fp->_IO_read_ptr >= __fp->_IO_read_end, 0) != 0 ? __uflow ((struct _IO_FILE *) __fp) : (int) *(unsigned char *) __fp->_IO_read_ptr++ ;
+}
+
+
+
+;; Function getchar_unlocked (null)
+;; enabled by -tree-original
+
+{
+  return __builtin_expect (stdin->_IO_read_ptr >= stdin->_IO_read_end, 0) != 0 ? __uflow ((struct _IO_FILE *) stdin) : (int) *(unsigned char *) stdin->_IO_read_ptr++ ;
+}
+
+
+
+;; Function putchar (null)
+;; enabled by -tree-original
+
+{
+  return _IO_putc (__c, (struct _IO_FILE *) stdout);
+}
+
+
+
+;; Function fputc_unlocked (null)
+;; enabled by -tree-original
+
+{
+  return __builtin_expect (__stream->_IO_write_ptr >= __stream->_IO_write_end, 0) != 0 ? __overflow ((struct _IO_FILE *) __stream, (int) (unsigned char) __c) : (int) (unsigned char) (*__stream->_IO_write_ptr++  = (char) __c);
+}
+
+
+
+;; Function putc_unlocked (null)
+;; enabled by -tree-original
+
+{
+  return __builtin_expect (__stream->_IO_write_ptr >= __stream->_IO_write_end, 0) != 0 ? __overflow ((struct _IO_FILE *) __stream, (int) (unsigned char) __c) : (int) (unsigned char) (*__stream->_IO_write_ptr++  = (char) __c);
+}
+
+
+
+;; Function putchar_unlocked (null)
+;; enabled by -tree-original
+
+{
+  return __builtin_expect (stdout->_IO_write_ptr >= stdout->_IO_write_end, 0) != 0 ? __overflow ((struct _IO_FILE *) stdout, (int) (unsigned char) __c) : (int) (unsigned char) (*stdout->_IO_write_ptr++  = (char) __c);
+}
+
+
+
+;; Function feof_unlocked (null)
+;; enabled by -tree-original
+
+{
+  return (__stream->_flags & 16) != 0;
+}
+
+
+
+;; Function ferror_unlocked (null)
+;; enabled by -tree-original
+
+{
+  return (__stream->_flags & 32) != 0;
+}
+
+
+
+;; Function atof (null)
+;; enabled by -tree-original
+
+{
+  return strtod (__nptr, 0B);
+}
+
+
+
+;; Function atoi (null)
+;; enabled by -tree-original
+
+{
+  return (int) strtol (__nptr, 0B, 10);
+}
+
+
+
+;; Function atol (null)
+;; enabled by -tree-original
+
+{
+  return strtol (__nptr, 0B, 10);
+}
+
+
+
+;; Function atoll (null)
+;; enabled by -tree-original
+
+{
+  return strtoll (__nptr, 0B, 10);
+}
+
+
+
+;; Function gnu_dev_major (null)
+;; enabled by -tree-original
+
+{
+  return (unsigned int) (__dev >> 8) & 4095 | (unsigned int) (__dev >> 32) & 0x0fffff000;
+}
+
+
+
+;; Function gnu_dev_minor (null)
+;; enabled by -tree-original
+
+{
+  return (unsigned int) __dev & 255 | (unsigned int) (__dev >> 12) & 0x0ffffff00;
+}
+
+
+
+;; Function gnu_dev_makedev (null)
+;; enabled by -tree-original
+
+{
+  return ((long long unsigned int) (__minor & 255 | (__major & 4095) << 8) | ((long long unsigned int) __minor & 0x0ffffff00) << 12) | ((long long unsigned int) __major & 0x0fffff000) << 32;
+}
+
+
+
+;; Function error (null)
+;; enabled by -tree-original
+
+{
+  if (__builtin_constant_p (__status) != 0 && __status != 0)
+    {
+      __error_noreturn (__status, __errnum, __format, __builtin_va_arg_pack ());
+    }
+  else
+    {
+      __error_alias (__status, __errnum, __format, __builtin_va_arg_pack ());
+    }
+}
+
+
+
+;; Function error_at_line (null)
+;; enabled by -tree-original
+
+{
+  if (__builtin_constant_p (__status) != 0 && __status != 0)
+    {
+      __error_at_line_noreturn (__status, __errnum, __fname, __line, __format, __builtin_va_arg_pack ());
+    }
+  else
+    {
+      __error_at_line_alias (__status, __errnum, __fname, __line, __format, __builtin_va_arg_pack ());
+    }
+}
+
+
+
+;; Function __strcspn_c1 (null)
+;; enabled by -tree-original
+
+{
+  register size_t __result = 0;
+
+    register size_t __result = 0;
+  goto <D.3218>;
+  <D.3217>:;
+   ++__result;
+  <D.3218>:;
+  if ((signed char) *(__s + (unsigned int) __result) != 0 && (int) *(__s + (unsigned int) __result) != __reject) goto <D.3217>; else goto <D.3219>;
+  <D.3219>:;
+  return __result;
+}
+
+
+
+;; Function __strcspn_c2 (null)
+;; enabled by -tree-original
+
+{
+  register size_t __result = 0;
+
+    register size_t __result = 0;
+  goto <D.3231>;
+  <D.3230>:;
+   ++__result;
+  <D.3231>:;
+  if (((signed char) *(__s + (unsigned int) __result) != 0 && (int) *(__s + (unsigned int) __result) != __reject1) && (int) *(__s + (unsigned int) __result) != __reject2) goto <D.3230>; else goto <D.3232>;
+  <D.3232>:;
+  return __result;
+}
+
+
+
+;; Function __strcspn_c3 (null)
+;; enabled by -tree-original
+
+{
+  register size_t __result = 0;
+
+    register size_t __result = 0;
+  goto <D.3246>;
+  <D.3245>:;
+   ++__result;
+  <D.3246>:;
+  if ((((signed char) *(__s + (unsigned int) __result) != 0 && (int) *(__s + (unsigned int) __result) != __reject1) && (int) *(__s + (unsigned int) __result) != __reject2) && (int) *(__s + (unsigned int) __result) != __reject3) goto <D.3245>; else goto <D.3247>;
+  <D.3247>:;
+  return __result;
+}
+
+
+
+;; Function __strspn_c1 (null)
+;; enabled by -tree-original
+
+{
+  register size_t __result = 0;
+
+    register size_t __result = 0;
+  goto <D.3257>;
+  <D.3256>:;
+   ++__result;
+  <D.3257>:;
+  if ((int) *(__s + (unsigned int) __result) == __accept) goto <D.3256>; else goto <D.3258>;
+  <D.3258>:;
+  return __result;
+}
+
+
+
+;; Function __strspn_c2 (null)
+;; enabled by -tree-original
+
+{
+  register size_t __result = 0;
+
+    register size_t __result = 0;
+  goto <D.3270>;
+  <D.3269>:;
+   ++__result;
+  <D.3270>:;
+  if ((int) *(__s + (unsigned int) __result) == __accept1 || (int) *(__s + (unsigned int) __result) == __accept2) goto <D.3269>; else goto <D.3271>;
+  <D.3271>:;
+  return __result;
+}
+
+
+
+;; Function __strspn_c3 (null)
+;; enabled by -tree-original
+
+{
+  register size_t __result = 0;
+
+    register size_t __result = 0;
+  goto <D.3285>;
+  <D.3284>:;
+   ++__result;
+  <D.3285>:;
+  if (((int) *(__s + (unsigned int) __result) == __accept1 || (int) *(__s + (unsigned int) __result) == __accept2) || (int) *(__s + (unsigned int) __result) == __accept3) goto <D.3284>; else goto <D.3286>;
+  <D.3286>:;
+  return __result;
+}
+
+
+
+;; Function __strpbrk_c2 (null)
+;; enabled by -tree-original
+
+{
+  goto <D.3297>;
+  <D.3296>:;
+   ++__s;
+  <D.3297>:;
+  if (((signed char) *__s != 0 && (int) *__s != __accept1) && (int) *__s != __accept2) goto <D.3296>; else goto <D.3298>;
+  <D.3298>:;
+  return (signed char) *__s != 0 ? (char *) __s : 0B;
+}
+
+
+
+;; Function __strpbrk_c3 (null)
+;; enabled by -tree-original
+
+{
+  goto <D.3311>;
+  <D.3310>:;
+   ++__s;
+  <D.3311>:;
+  if ((((signed char) *__s != 0 && (int) *__s != __accept1) && (int) *__s != __accept2) && (int) *__s != __accept3) goto <D.3310>; else goto <D.3312>;
+  <D.3312>:;
+  return (signed char) *__s != 0 ? (char *) __s : 0B;
+}
+
+
+
+;; Function __strtok_r_1c (null)
+;; enabled by -tree-original
+
+{
+  char * __result;
+
+    char * __result;
+  if (__s == 0B)
+    {
+      __s = *__nextp;
+    }
+  goto <D.3324>;
+  <D.3323>:;
+   ++__s;
+  <D.3324>:;
+  if ((signed char) *__s == (signed char) __sep) goto <D.3323>; else goto <D.3325>;
+  <D.3325>:;
+  __result = 0B;
+  if ((signed char) *__s != 0)
+    {
+      __result = __s++ ;
+      goto <D.3328>;
+      <D.3327>:;
+      if ((signed char) *__s++  == (signed char) __sep)
+        {
+          *(__s + -1) = 0;
+          goto <D.3326>;
+        }
+      <D.3328>:;
+      if ((signed char) *__s != 0) goto <D.3327>; else goto <D.3326>;
+      <D.3326>:;
+    }
+  *__nextp = __s;
+  return __result;
+}
+
+
+
+;; Function __strsep_1c (null)
+;; enabled by -tree-original
+
+{
+  register char * __retval = *__s;
+
+    register char * __retval = *__s;
+  if (__retval != 0B && (*__s = __builtin_constant_p ((int) __reject) != 0 && (signed char) __reject == 0 ? (char *) __rawmemchr ((const void *) __retval, (int) __reject) : __builtin_strchr ((const char *) __retval, (int) __reject)) != 0B)
+    {
+      **__s++  = 0;
+    }
+  return __retval;
+}
+
+
+
+;; Function __strsep_2c (null)
+;; enabled by -tree-original
+
+{
+  register char * __retval = *__s;
+
+    register char * __retval = *__s;
+  if (__retval != 0B)
+    {
+      {
+        register char * __cp = __retval;
+
+                register char * __cp = __retval;
+        <D.3352>:;
+        if ((signed char) *__cp == 0)
+          {
+            __cp = 0B;
+            goto <D.3351>;
+          }
+        if ((signed char) *__cp == (signed char) __reject1 || (signed char) *__cp == (signed char) __reject2)
+          {
+            *__cp++  = 0;
+            goto <D.3351>;
+          }
+         ++__cp;
+        goto <D.3352>;
+        <D.3351>:;
+        *__s = __cp;
+      }
+    }
+  return __retval;
+}
+
+
+
+;; Function __strsep_3c (null)
+;; enabled by -tree-original
+
+{
+  register char * __retval = *__s;
+
+    register char * __retval = *__s;
+  if (__retval != 0B)
+    {
+      {
+        register char * __cp = __retval;
+
+                register char * __cp = __retval;
+        <D.3367>:;
+        if ((signed char) *__cp == 0)
+          {
+            __cp = 0B;
+            goto <D.3366>;
+          }
+        if (((signed char) *__cp == (signed char) __reject1 || (signed char) *__cp == (signed char) __reject2) || (signed char) *__cp == (signed char) __reject3)
+          {
+            *__cp++  = 0;
+            goto <D.3366>;
+          }
+         ++__cp;
+        goto <D.3367>;
+        <D.3366>:;
+        *__s = __cp;
+      }
+    }
+  return __retval;
+}
+
+
+
+;; Function tolower (null)
+;; enabled by -tree-original
+
+{
+  return (unsigned int) __c + 128 <= 383 ? (int) *(*__ctype_tolower_loc () + (unsigned int) ((unsigned int) __c * 4)) : __c;
+}
+
+
+
+;; Function toupper (null)
+;; enabled by -tree-original
+
+{
+  return (unsigned int) __c + 128 <= 383 ? (int) *(*__ctype_toupper_loc () + (unsigned int) ((unsigned int) __c * 4)) : __c;
+}
+
+
+
+;; Function argp_usage (null)
+;; enabled by -tree-original
+
+{
+  argp_state_help (__state, (struct FILE * restrict) stderr, 262);
+}
+
+
+
+;; Function _option_is_short (null)
+;; enabled by -tree-original
+
+{
+  if (((int) __opt->flags & 8) != 0)
+    {
+      return 0;
+    }
+  else
+    {
+      {
+        int __key = __opt->key;
+
+                int __key = __opt->key;
+        return (unsigned int) __key + 0x0ffffffff <= 254 && ((int) *(*__ctype_b_loc () + (unsigned int) ((unsigned int) __key * 2)) & 16384) != 0;
+      }
+    }
+}
+
+
+
+;; Function _option_is_end (null)
+;; enabled by -tree-original
+
+{
+  return (((int) __opt->key == 0 && __opt->name == 0B) && __opt->doc == 0B) && (int) __opt->group == 0;
+}
+
+
+
+;; Function gdl_get_node_bordercolor (null)
+;; enabled by -tree-original
+
+{
+  return node->attr.bordercolor;
+}
+
+
+
+;; Function gdl_get_node_borderwidth (null)
+;; enabled by -tree-original
+
+{
+  return node->attr.borderwidth;
+}
+
+
+
+;; Function gdl_get_node_color (null)
+;; enabled by -tree-original
+
+{
+  return node->attr.color;
+}
+
+
+
+;; Function gdl_get_node_height (null)
+;; enabled by -tree-original
+
+{
+  return node->attr.height;
+}
+
+
+
+;; Function gdl_get_node_importance (null)
+;; enabled by -tree-original
+
+{
+  return node->attr.importance;
+}
+
+
+
+;; Function gdl_get_node_label (null)
+;; enabled by -tree-original
+
+{
+  return node->attr.label;
+}
+
+
+
+;; Function gdl_get_node_shape (null)
+;; enabled by -tree-original
+
+{
+  return node->attr.shape;
+}
+
+
+
+;; Function gdl_get_node_shrink (null)
+;; enabled by -tree-original
+
+{
+  return node->attr.shrink;
+}
+
+
+
+;; Function gdl_get_node_textcolor (null)
+;; enabled by -tree-original
+
+{
+  return node->attr.textcolor;
+}
+
+
+
+;; Function gdl_get_node_title (null)
+;; enabled by -tree-original
+
+{
+  return node->attr.title;
+}
+
+
+
+;; Function gdl_get_node_vertical_order (null)
+;; enabled by -tree-original
+
+{
+  return node->attr.vertical_order;
+}
+
+
+
+;; Function gdl_get_node_width (null)
+;; enabled by -tree-original
+
+{
+  return node->attr.width;
+}
+
+
+
+;; Function gdl_get_edge_label (null)
+;; enabled by -tree-original
+
+{
+  return edge->attr.label;
+}
+
+
+
+;; Function gdl_get_edge_linestyle (null)
+;; enabled by -tree-original
+
+{
+  return edge->attr.linestyle;
+}
+
+
+
+;; Function gdl_get_edge_source (null)
+;; enabled by -tree-original
+
+{
+  return edge->attr.source;
+}
+
+
+
+;; Function gdl_get_edge_target (null)
+;; enabled by -tree-original
+
+{
+  return edge->attr.target;
+}
+
+
+
+;; Function gdl_get_edge_thickness (null)
+;; enabled by -tree-original
+
+{
+  return edge->attr.thickness;
+}
+
+
+
+;; Function gdl_get_graph_node_borderwidth (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.node_borderwidth;
+}
+
+
+
+;; Function gdl_get_graph_edge_thickness (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.edge_thickness;
+}
+
+
+
+;; Function gdl_get_graph_color (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.color;
+}
+
+
+
+;; Function gdl_get_graph_node_color (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.node_color;
+}
+
+
+
+;; Function gdl_get_graph_label (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.label;
+}
+
+
+
+;; Function gdl_get_graph_layout_algorithm (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.layout_algorithm;
+}
+
+
+
+;; Function gdl_get_graph_node_margin (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.node_margin;
+}
+
+
+
+;; Function gdl_get_graph_near_edges (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.near_edges;
+}
+
+
+
+;; Function gdl_get_graph_port_sharing (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.port_sharing;
+}
+
+
+
+;; Function gdl_get_graph_shape (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.shape;
+}
+
+
+
+;; Function gdl_get_graph_node_shape (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.node_shape;
+}
+
+
+
+;; Function gdl_get_graph_splines (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.splines;
+}
+
+
+
+;; Function gdl_get_graph_folding (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.folding;
+}
+
+
+
+;; Function gdl_get_graph_title (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.title;
+}
+
+
+
+;; Function gdl_get_graph_vertical_order (null)
+;; enabled by -tree-original
+
+{
+  return graph->attr.vertical_order;
+}
+
+
+
+;; Function gdl_set_node_bordercolor (null)
+;; enabled by -tree-original
+
+{
+  node->attr.bordercolor = value;
+}
+
+
+
+;; Function gdl_set_node_borderwidth (null)
+;; enabled by -tree-original
+
+{
+  node->attr.borderwidth = value;
+}
+
+
+
+;; Function gdl_set_node_color (null)
+;; enabled by -tree-original
+
+{
+  node->attr.color = value;
+}
+
+
+
+;; Function gdl_set_node_height (null)
+;; enabled by -tree-original
+
+{
+  node->attr.height = value;
+}
+
+
+
+;; Function gdl_set_node_importance (null)
+;; enabled by -tree-original
+
+{
+  node->attr.importance = value;
+}
+
+
+
+;; Function gdl_set_node_label (null)
+;; enabled by -tree-original
+
+{
+  node->attr.label = value;
+}
+
+
+
+;; Function gdl_set_node_shape (null)
+;; enabled by -tree-original
+
+{
+  node->attr.shape = value;
+}
+
+
+
+;; Function gdl_set_node_shrink (null)
+;; enabled by -tree-original
+
+{
+  node->attr.shrink = value;
+}
+
+
+
+;; Function gdl_set_node_textcolor (null)
+;; enabled by -tree-original
+
+{
+  node->attr.textcolor = value;
+}
+
+
+
+;; Function gdl_set_node_title (null)
+;; enabled by -tree-original
+
+{
+  node->attr.title = value;
+}
+
+
+
+;; Function gdl_set_node_vertical_order (null)
+;; enabled by -tree-original
+
+{
+  node->attr.vertical_order = value;
+}
+
+
+
+;; Function gdl_set_node_width (null)
+;; enabled by -tree-original
+
+{
+  node->attr.width = value;
+}
+
+
+
+;; Function gdl_set_edge_label (null)
+;; enabled by -tree-original
+
+{
+  edge->attr.label = value;
+}
+
+
+
+;; Function gdl_set_edge_linestyle (null)
+;; enabled by -tree-original
+
+{
+  edge->attr.linestyle = value;
+}
+
+
+
+;; Function gdl_set_edge_source (null)
+;; enabled by -tree-original
+
+{
+  edge->attr.source = value;
+}
+
+
+
+;; Function gdl_set_edge_target (null)
+;; enabled by -tree-original
+
+{
+  edge->attr.target = value;
+}
+
+
+
+;; Function gdl_set_edge_thickness (null)
+;; enabled by -tree-original
+
+{
+  edge->attr.thickness = value;
+}
+
+
+
+;; Function gdl_set_graph_node_borderwidth (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.node_borderwidth = value;
+}
+
+
+
+;; Function gdl_set_graph_edge_thickness (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.edge_thickness = value;
+}
+
+
+
+;; Function gdl_set_graph_color (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.color = value;
+}
+
+
+
+;; Function gdl_set_graph_node_color (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.node_color = value;
+}
+
+
+
+;; Function gdl_set_graph_label (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.label = value;
+}
+
+
+
+;; Function gdl_set_graph_layout_algorithm (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.layout_algorithm = value;
+}
+
+
+
+;; Function gdl_set_graph_node_margin (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.node_margin = value;
+}
+
+
+
+;; Function gdl_set_graph_near_edges (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.near_edges = value;
+}
+
+
+
+;; Function gdl_set_graph_port_sharing (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.port_sharing = value;
+}
+
+
+
+;; Function gdl_set_graph_shape (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.shape = value;
+}
+
+
+
+;; Function gdl_set_graph_node_shape (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.node_shape = value;
+}
+
+
+
+;; Function gdl_set_graph_splines (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.splines = value;
+}
+
+
+
+;; Function gdl_set_graph_folding (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.folding = value;
+}
+
+
+
+;; Function gdl_set_graph_title (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.title = value;
+}
+
+
+
+;; Function gdl_set_graph_vertical_order (null)
+;; enabled by -tree-original
+
+{
+  graph->attr.vertical_order = value;
+}
+
+
+
+;; Function gdl_get_node_shape_s (null)
+;; enabled by -tree-original
+
+{
+  static const char __PRETTY_FUNCTION__[21] = "gdl_get_node_shape_s";
+
+    static const char __PRETTY_FUNCTION__[21] = "gdl_get_node_shape_s";
+  if ((unsigned int) node->attr.shape > 4)
+    {
+      __assert_fail ((const char *) "node->attr.shape >= 0 && node->attr.shape <= SHAPE_DEFAULT", (const char *) "../../tree2vcg/src/gdl.h", 143, (const char *) &__PRETTY_FUNCTION__);
+    }
+  else
+    {
+      (void) 0;
+    }
+  return shape_s[(unsigned int) node->attr.shape];
+}
+
+
+
+;; Function gdl_get_node_color_s (null)
+;; enabled by -tree-original
+
+{
+  static const char __PRETTY_FUNCTION__[21] = "gdl_get_node_color_s";
+
+    static const char __PRETTY_FUNCTION__[21] = "gdl_get_node_color_s";
+  if ((unsigned int) node->attr.color > 8)
+    {
+      __assert_fail ((const char *) "node->attr.color >= 0 && node->attr.color <= COLOR_DEFAULT", (const char *) "../../tree2vcg/src/gdl.h", 150, (const char *) &__PRETTY_FUNCTION__);
+    }
+  else
+    {
+      (void) 0;
+    }
+  return color_s[(unsigned int) node->attr.color];
+}
+
+
+
+;; Function gdl_get_edge_linestyle_s (null)
+;; enabled by -tree-original
+
+{
+  return linestyle_s[(unsigned int) edge->attr.linestyle];
+}
+
+
+
+;; Function gdl_get_graph_color_s (null)
+;; enabled by -tree-original
+
+{
+  return color_s[(unsigned int) graph->attr.color];
+}
+
+
+
+;; Function gdl_get_graph_node_color_s (null)
+;; enabled by -tree-original
+
+{
+  return color_s[(unsigned int) graph->attr.node_color];
+}
+
+
+
+;; Function gdl_get_graph_shape_s (null)
+;; enabled by -tree-original
+
+{
+  static const char __PRETTY_FUNCTION__[22] = "gdl_get_graph_shape_s";
+
+    static const char __PRETTY_FUNCTION__[22] = "gdl_get_graph_shape_s";
+  if ((unsigned int) graph->attr.shape > 4)
+    {
+      __assert_fail ((const char *) "graph->attr.shape >= 0 && graph->attr.shape <= SHAPE_DEFAULT", (const char *) "../../tree2vcg/src/gdl.h", 175, (const char *) &__PRETTY_FUNCTION__);
+    }
+  else
+    {
+      (void) 0;
+    }
+  return shape_s[(unsigned int) graph->attr.shape];
+}
+
+
+
+;; Function gdl_get_graph_layout_algorithm_s (null)
+;; enabled by -tree-original
+
+{
+  static const char __PRETTY_FUNCTION__[33] = "gdl_get_graph_layout_algorithm_s";
+
+    static const char __PRETTY_FUNCTION__[33] = "gdl_get_graph_layout_algorithm_s";
+  if ((unsigned int) graph->attr.layout_algorithm > 2)
+    {
+      __assert_fail ((const char *) "graph->attr.layout_algorithm >= 0 && graph->attr.layout_algorithm <= LAYOUT_ALGORITHM_DEFAULT", (const char *) "../../tree2vcg/src/gdl.h", 183, (const char *) &__PRETTY_FUNCTION__);
+    }
+  else
+    {
+      (void) 0;
+    }
+  return layout_algorithm_s[(unsigned int) graph->attr.layout_algorithm];
+}
+
+
+
+;; Function gdl_get_graph_node (null)
+;; enabled by -tree-original
+
+{
+  return graph->node;
+}
+
+
+
+;; Function gdl_get_graph_edge (null)
+;; enabled by -tree-original
+
+{
+  return graph->edge;
+}
+
+
+
+;; Function gdl_get_graph_subgraph (null)
+;; enabled by -tree-original
+
+{
+  return graph->subgraph;
+}
+
+
+
+;; Function search (null)
+;; enabled by -tree-original
+
+{
+  struct basic_block * succ_bb;
+  struct vec_edge * ve;
+  struct edge * e;
+
+    struct basic_block * succ_bb;
+    struct vec_edge * ve;
+    struct edge * e;
+  bb->visited = 1;
+  ve = bb->succ;
+  goto <D.4182>;
+  <D.4181>:;
+  e = ve->edge;
+  succ_bb = e->target;
+  if (succ_bb->visited == 0)
+    {
+      e->type = 1;
+      search (succ_bb);
+    }
+  ve = ve->next;
+  <D.4182>:;
+  if (ve != 0B) goto <D.4181>; else goto <D.4183>;
+  <D.4183>:;
+  bb->dfs_order = count;
+  count-- ;
+}
+
+
+
+;; Function depth_first_search (null)
+;; enabled by -tree-original
+
+{
+  struct basic_block * bb;
+
+    struct basic_block * bb;
+  bb = cfg->bb;
+  goto <D.4189>;
+  <D.4188>:;
+  bb->visited = 0;
+  bb = bb->next;
+  <D.4189>:;
+  if (bb != 0B) goto <D.4188>; else goto <D.4190>;
+  <D.4190>:;
+  count = cfg->bb_num;
+  search (cfg->entry);
+}
+
+
+
+;; Function is_ancestor (null)
+;; enabled by -tree-original
+
+{
+  struct basic_block * bb;
+  struct vec_edge * ve;
+  struct edge * e;
+
+    struct basic_block * bb;
+    struct vec_edge * ve;
+    struct edge * e;
+  bb = target;
+  <D.4201>:;
+  if (bb == source)
+    {
+      return 1;
+    }
+  ve = bb->pred;
+  goto <D.4200>;
+  <D.4199>:;
+  e = ve->edge;
+  if ((unsigned int) e->type == 1)
+    {
+      bb = e->source;
+      goto <D.4198>;
+    }
+  ve = ve->next;
+  <D.4200>:;
+  if (ve != 0B) goto <D.4199>; else goto <D.4198>;
+  <D.4198>:;
+  if (cfg->entry != bb) goto <D.4201>; else goto <D.4202>;
+  <D.4202>:;
+  return 0;
+}
+
+
+
+;; Function mark_edge (null)
+;; enabled by -tree-original
+
+{
+  struct basic_block * source;
+  struct basic_block * target;
+
+    struct basic_block * source;
+    struct basic_block * target;
+  source = e->source;
+  target = e->target;
+  if (is_ancestor (target, source) != 0)
+    {
+      e->type = 3;
+    }
+  else
+    {
+      if (is_ancestor (source, target) != 0)
+        {
+          e->type = 2;
+        }
+      else
+        {
+          e->type = 4;
+        }
+    }
+}
+
+
+
+;; Function mark_edges (null)
+;; enabled by -tree-original
+
+{
+  struct control_flow_graph * cfg = current_function->cfg;
+  struct edge * e;
+
+    struct control_flow_graph * cfg = current_function->cfg;
+    struct edge * e;
+  e = cfg->edge;
+  goto <D.4214>;
+  <D.4213>:;
+  if ((unsigned int) e->type == 0)
+    {
+      mark_edge (e);
+    }
+  e = e->next;
+  <D.4214>:;
+  if (e != 0B) goto <D.4213>; else goto <D.4215>;
+  <D.4215>:;
+}
+
+
+
+;; Function calc_max_distance_recursive (null)
+;; enabled by -tree-original
+
+{
+  int val;
+  int max = 0;
+  struct vec_edge * ve;
+  struct edge * e;
+
+    int val;
+    int max = 0;
+    struct vec_edge * ve;
+    struct edge * e;
+  if (bb->max_distance == 0)
+    {
+      ve = bb->pred;
+      goto <D.4225>;
+      <D.4224>:;
+      e = ve->edge;
+      if ((unsigned int) e->type == 3)
+        {
+          // predicted unlikely by continue predictor.;
+          goto <D.4223>;
+        }
+      val = calc_max_distance_recursive (e->source);
+      max = MAX_EXPR <val, max>;
+      <D.4223>:;
+      ve = ve->next;
+      <D.4225>:;
+      if (ve != 0B) goto <D.4224>; else goto <D.4226>;
+      <D.4226>:;
+      bb->max_distance = max + 1;
+    }
+  return bb->max_distance;
+}
+
+
+
+;; Function calc_max_distance (null)
+;; enabled by -tree-original
+
+{
+  int val;
+  int max = 0;
+  struct basic_block * bb;
+
+    int val;
+    int max = 0;
+    struct basic_block * bb;
+  depth_first_search ();
+  mark_edges ();
+  max = calc_max_distance_recursive (cfg->exit);
+  bb = cfg->bb;
+  goto <D.4234>;
+  <D.4233>:;
+  if (bb->max_distance == 0)
+    {
+      val = calc_max_distance_recursive (bb);
+      max = max <= val ? val + 1 : max;
+    }
+  bb = bb->next;
+  <D.4234>:;
+  if (bb != 0B) goto <D.4233>; else goto <D.4235>;
+  <D.4235>:;
+  cfg->exit->max_distance = max;
+}
+
+
+
+;; Function fine_tune_cfg (null)
+;; enabled by -tree-original
+
+{
+  current_function = first_function;
+  goto <D.4240>;
+  <D.4239>:;
+  cfg = current_function->cfg;
+  calc_max_distance ();
+  current_function = current_function->next;
+  <D.4240>:;
+  if (current_function != 0B) goto <D.4239>; else goto <D.4241>;
+  <D.4241>:;
+}
+
+

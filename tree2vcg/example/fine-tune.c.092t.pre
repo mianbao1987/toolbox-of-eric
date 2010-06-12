@@ -1,0 +1,3679 @@
+
+;; Function search (search)
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+bb = &NONLOCAL
+ve_3 = *bb + 288
+ve_9 = ve_7
+ve_9 = ve_3
+e_4 = *ve_9
+succ_bb_5 = *e_4 + 64
+ESCAPED = succ_bb_5
+ve_7 = *ve_9 + 32
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 7, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 5, location:4
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 9, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 10, location:0
+Equivalence classes for Direct node node id 8:bb are pointer: 11, location:0
+Equivalence classes for Indirect node node id 9:ve_3 are pointer: 12, location:0
+Equivalence classes for Direct node node id 10:ve_9 are pointer: 14, location:0
+Equivalence classes for Indirect node node id 11:ve_7 are pointer: 13, location:0
+Equivalence classes for Direct node node id 12:e_4 are pointer: 15, location:0
+Equivalence classes for Indirect node node id 13:succ_bb_5 are pointer: 4, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               6
+Non-pointer vars:          1
+Statically unified vars:  0
+Dynamically unified vars: 0
+Iterations:               2
+Number of edges:          8
+Number of implicit edges: 9
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = { ESCAPED NONLOCAL }
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+bb = { NONLOCAL }
+ve_3 = { ESCAPED NONLOCAL }
+ve_9 = { ESCAPED NONLOCAL }
+ve_7 = { ESCAPED NONLOCAL }
+e_4 = { ESCAPED NONLOCAL }
+succ_bb_5 = { ESCAPED NONLOCAL }
+
+
+Alias information for search
+
+Aliased symbols
+
+.MEMD.5609, UID D.5609, voidD.32, is global, call clobbered, default def: .MEMD.5609_13(D)
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+bbD.4175_2(D), points-to non-local, points-to vars: { }
+veD.4179_3, points-to non-local, points-to escaped, points-to vars: { }
+eD.4180_4, points-to non-local, points-to escaped, points-to vars: { }
+succ_bbD.4178_5, points-to non-local, points-to escaped, points-to vars: { }
+veD.4179_7, points-to non-local, points-to escaped, points-to vars: { }
+veD.4179_9, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in search: 9
+
+Variable: D.5604, UID D.5604, intD.0
+Variable: countD.4173, UID D.4173, intD.0, is global, call clobbered
+Variable: bbD.4175, UID D.4175, struct basic_block *, default def: bbD.4175_2(D), initial: struct basic_block *
+Variable: succ_bbD.4178, UID D.4178, struct basic_block *
+Variable: veD.4179, UID D.4179, struct vec_edge *
+Variable: eD.4180, UID D.4180, struct edge *
+Variable: count.10D.5607, UID D.5607, intD.0
+Variable: count.11D.5608, UID D.5608, intD.0
+Variable: .MEMD.5609, UID D.5609, voidD.32, is global, call clobbered, default def: .MEMD.5609_13(D)
+
+Points to sets created:8
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 8 7 3 9 4 5 10 11 6
+;;
+;; Loop 1
+;;  header 3, latch 10
+;;  depth 1, outer 0
+;;  nodes: 3 10 5 9 4
+;; 2 succs { 7 8 }
+;; 8 succs { 6 }
+;; 7 succs { 3 }
+;; 3 succs { 4 9 }
+;; 9 succs { 5 }
+;; 4 succs { 5 }
+;; 5 succs { 10 11 }
+;; 10 succs { 3 }
+;; 11 succs { 6 }
+;; 6 succs { 1 }
+SCC consists of: bb_2(D) 
+Setting value number of bb_2(D) to bb_2(D)
+SCC consists of: .MEM_13(D) 
+Setting value number of .MEM_13(D) to .MEM_13(D) (changed)
+SCC consists of: .MEM_14 
+Value numbering .MEM_14 stmt = bb_2(D)->visited = 1;
+No store match
+Value numbering store bb_2(D)->visited to 1
+Setting value number of .MEM_14 to .MEM_14 (changed)
+SCC consists of: ve_3 
+Value numbering ve_3 stmt = ve_3 = bb_2(D)->succ;
+Setting value number of ve_3 to ve_3 (changed)
+SCC consists of: ve_9 .MEM_19 e_4 succ_bb_5 .MEM_15 .MEM_16 .MEM_11 ve_7 
+Value numbering ve_9 stmt = ve_9 = PHI <ve_7(10), ve_3(7)>
+Setting value number of ve_9 to ve_3 (changed)
+Value numbering .MEM_19 stmt = .MEM_19 = PHI <.MEM_11(10), .MEM_14(7)>
+Setting value number of .MEM_19 to .MEM_14 (changed)
+Value numbering e_4 stmt = e_4 = ve_9->edge;
+Setting value number of e_4 to e_4 (changed)
+Value numbering succ_bb_5 stmt = succ_bb_5 = e_4->target;
+Setting value number of succ_bb_5 to succ_bb_5 (changed)
+Value numbering .MEM_15 stmt = e_4->type = 1;
+No store match
+Value numbering store e_4->type to 1
+Setting value number of .MEM_15 to .MEM_15 (changed)
+Value numbering .MEM_16 stmt = search (succ_bb_5);
+Setting value number of .MEM_16 to .MEM_16 (changed)
+Value numbering .MEM_11 stmt = .MEM_11 = PHI <.MEM_19(9), .MEM_16(4)>
+Setting value number of .MEM_11 to .MEM_11 (changed)
+Value numbering ve_7 stmt = ve_7 = ve_9->next;
+Setting value number of ve_7 to ve_7 (changed)
+Value numbering ve_9 stmt = ve_9 = PHI <ve_7(10), ve_3(7)>
+Setting value number of ve_9 to ve_9 (changed)
+Value numbering .MEM_19 stmt = .MEM_19 = PHI <.MEM_11(10), .MEM_14(7)>
+Setting value number of .MEM_19 to .MEM_19 (changed)
+Value numbering e_4 stmt = e_4 = ve_9->edge;
+Setting value number of e_4 to e_4
+Value numbering succ_bb_5 stmt = succ_bb_5 = e_4->target;
+Setting value number of succ_bb_5 to succ_bb_5
+Value numbering .MEM_15 stmt = e_4->type = 1;
+No store match
+Value numbering store e_4->type to 1
+Setting value number of .MEM_15 to .MEM_15
+Value numbering .MEM_16 stmt = search (succ_bb_5);
+Setting value number of .MEM_16 to .MEM_16
+Value numbering .MEM_11 stmt = .MEM_11 = PHI <.MEM_19(9), .MEM_16(4)>
+Setting value number of .MEM_11 to .MEM_11
+Value numbering ve_7 stmt = ve_7 = ve_9->next;
+Setting value number of ve_7 to ve_7
+Value numbering ve_9 stmt = ve_9 = PHI <ve_7(10), ve_3(7)>
+Setting value number of ve_9 to ve_9
+Value numbering .MEM_19 stmt = .MEM_19 = PHI <.MEM_11(10), .MEM_14(7)>
+Setting value number of .MEM_19 to .MEM_19
+Value numbering e_4 stmt = e_4 = ve_9->edge;
+Setting value number of e_4 to e_4
+Value numbering succ_bb_5 stmt = succ_bb_5 = e_4->target;
+Setting value number of succ_bb_5 to succ_bb_5
+Value numbering .MEM_15 stmt = e_4->type = 1;
+No store match
+Value numbering store e_4->type to 1
+Setting value number of .MEM_15 to .MEM_15
+Value numbering .MEM_16 stmt = search (succ_bb_5);
+Setting value number of .MEM_16 to .MEM_16
+Value numbering .MEM_11 stmt = .MEM_11 = PHI <.MEM_19(9), .MEM_16(4)>
+Setting value number of .MEM_11 to .MEM_11
+Value numbering ve_7 stmt = ve_7 = ve_9->next;
+Setting value number of ve_7 to ve_7
+SCC consists of: D.5604_6 
+Value numbering D.5604_6 stmt = D.5604_6 = succ_bb_5->visited;
+Setting value number of D.5604_6 to D.5604_6 (changed)
+SCC consists of: .MEM_22 
+Value numbering .MEM_22 stmt = .MEM_22 = PHI <.MEM_11(11), .MEM_14(8)>
+Setting value number of .MEM_22 to .MEM_22 (changed)
+SCC consists of: count.10_8 
+Value numbering count.10_8 stmt = count.10_8 = count;
+Setting value number of count.10_8 to count.10_8 (changed)
+SCC consists of: count.11_10 
+Value numbering count.11_10 stmt = count.11_10 = count.10_8 + -1;
+Setting value number of count.11_10 to count.11_10 (changed)
+SCC consists of: .MEM_17 
+Value numbering .MEM_17 stmt = bb_2(D)->dfs_order = count.10_8;
+No store match
+Value numbering store bb_2(D)->dfs_order to count.10_8
+Setting value number of .MEM_17 to .MEM_17 (changed)
+Value numbers:
+exp_gen[0] := {  }
+phi_gen[0] := {  }
+tmp_gen[0] := { bb_2(D) (0003) }
+avail_out[0] := { bb_2(D) (0003) }
+exp_gen[2] := { bb_2(D) (0003), {component_ref<succ>,indirect_ref,bb_2(D)}@.MEM_13(D) (0004) }
+phi_gen[2] := {  }
+tmp_gen[2] := { ve_3 (0004) }
+avail_out[2] := { bb_2(D) (0003), ve_3 (0004) }
+exp_gen[8] := {  }
+phi_gen[8] := {  }
+tmp_gen[8] := {  }
+avail_out[8] := { bb_2(D) (0003), ve_3 (0004) }
+exp_gen[7] := {  }
+phi_gen[7] := {  }
+tmp_gen[7] := {  }
+avail_out[7] := { bb_2(D) (0003), ve_3 (0004) }
+exp_gen[3] := { ve_9 (0010), {component_ref<edge>,indirect_ref,ve_9}@.MEM_19 (0005), {component_ref<target>,indirect_ref,e_4}@.MEM_19 (0006), {component_ref<visited>,indirect_ref,succ_bb_5}@.MEM_19 (0007) }
+phi_gen[3] := { ve_9 (0010) }
+tmp_gen[3] := { e_4 (0005), succ_bb_5 (0006), D.5604_6 (0007) }
+avail_out[3] := { bb_2(D) (0003), ve_3 (0004), ve_9 (0010), e_4 (0005), succ_bb_5 (0006), D.5604_6 (0007) }
+exp_gen[9] := {  }
+phi_gen[9] := {  }
+tmp_gen[9] := {  }
+avail_out[9] := { bb_2(D) (0003), ve_3 (0004), ve_9 (0010), e_4 (0005), succ_bb_5 (0006), D.5604_6 (0007) }
+exp_gen[4] := { e_4 (0005) }
+phi_gen[4] := {  }
+tmp_gen[4] := {  }
+avail_out[4] := { bb_2(D) (0003), ve_3 (0004), ve_9 (0010), e_4 (0005), succ_bb_5 (0006), D.5604_6 (0007) }
+exp_gen[5] := { ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_11 (0008) }
+phi_gen[5] := {  }
+tmp_gen[5] := { ve_7 (0008) }
+avail_out[5] := { bb_2(D) (0003), ve_3 (0004), ve_9 (0010), ve_7 (0008), e_4 (0005), succ_bb_5 (0006), D.5604_6 (0007) }
+exp_gen[10] := {  }
+phi_gen[10] := {  }
+tmp_gen[10] := {  }
+avail_out[10] := { bb_2(D) (0003), ve_3 (0004), ve_9 (0010), ve_7 (0008), e_4 (0005), succ_bb_5 (0006), D.5604_6 (0007) }
+exp_gen[11] := {  }
+phi_gen[11] := {  }
+tmp_gen[11] := {  }
+avail_out[11] := { bb_2(D) (0003), ve_3 (0004), ve_9 (0010), ve_7 (0008), e_4 (0005), succ_bb_5 (0006), D.5604_6 (0007) }
+exp_gen[6] := { bb_2(D) (0003), {count}@.MEM_22 (0009), {plus_expr,count.10_8,-1} (0011) }
+phi_gen[6] := {  }
+tmp_gen[6] := { count.10_8 (0009), count.11_10 (0011) }
+avail_out[6] := { bb_2(D) (0003), ve_3 (0004), count.10_8 (0009), count.11_10 (0011) }
+exp_gen[1] := {  }
+phi_gen[1] := {  }
+tmp_gen[1] := {  }
+avail_out[1] := {  }
+Starting iteration 0
+Block 10 was deferred for a future iteration.
+ANTIC_OUT[6] := {  }
+ANTIC_IN[6] := { bb_2(D) (0003), {count}@.MEM_22 (0009), {plus_expr,count.10_8,-1} (0011) }
+S[6] := {  }
+Could not find SSA_NAME representative for expression:{count}@.MEM_11
+Created SSA_NAME representative pretmp.14_12 for expression:{count}@.MEM_11
+ANTIC_OUT[11] := { bb_2(D) (0003), {count}@.MEM_11 (0021), {plus_expr,pretmp.14_12,-1} (0022) }
+ANTIC_IN[11] := { bb_2(D) (0003), {count}@.MEM_11 (0021), {plus_expr,pretmp.14_12,-1} (0022) }
+S[11] := { bb_2(D) (0003), {count}@.MEM_11 (0021), {plus_expr,pretmp.14_12,-1} (0022) }
+ANTIC_OUT[5] := { bb_2(D) (0003), {count}@.MEM_11 (0021), {plus_expr,pretmp.14_12,-1} (0022) }
+ANTIC_IN[5] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_11 (0008), {count}@.MEM_11 (0021), {plus_expr,pretmp.14_12,-1} (0022) }
+S[5] := { bb_2(D) (0003), {count}@.MEM_11 (0021), {plus_expr,pretmp.14_12,-1} (0022) }
+Could not find SSA_NAME representative for expression:{count}@.MEM_16
+Created SSA_NAME representative pretmp.14_1 for expression:{count}@.MEM_16
+ANTIC_OUT[4] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_16 (0023), {count}@.MEM_16 (0024), {plus_expr,pretmp.14_1,-1} (0025) }
+ANTIC_IN[4] := { bb_2(D) (0003), ve_9 (0010), e_4 (0005) }
+S[4] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_16 (0023), {count}@.MEM_16 (0024), {plus_expr,pretmp.14_1,-1} (0025) }
+Could not find SSA_NAME representative for expression:{count}@.MEM_19
+Created SSA_NAME representative pretmp.14_20 for expression:{count}@.MEM_19
+ANTIC_OUT[9] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_19 (0026), {count}@.MEM_19 (0027), {plus_expr,pretmp.14_20,-1} (0028) }
+ANTIC_IN[9] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_19 (0026), {count}@.MEM_19 (0027), {plus_expr,pretmp.14_20,-1} (0028) }
+S[9] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_19 (0026), {count}@.MEM_19 (0027), {plus_expr,pretmp.14_20,-1} (0028) }
+ANTIC_OUT[3] := { bb_2(D) (0003), ve_9 (0010) }
+ANTIC_IN[3] := { bb_2(D) (0003), ve_9 (0010), {component_ref<edge>,indirect_ref,ve_9}@.MEM_19 (0005), {component_ref<target>,indirect_ref,e_4}@.MEM_19 (0006), {component_ref<visited>,indirect_ref,succ_bb_5}@.MEM_19 (0007) }
+S[3] := { bb_2(D) (0003), ve_9 (0010) }
+Could not find SSA_NAME representative for expression:{component_ref<edge>,indirect_ref,ve_3}@.MEM_14
+Created SSA_NAME representative pretmp.15_21 for expression:{component_ref<edge>,indirect_ref,ve_3}@.MEM_14
+Could not find SSA_NAME representative for expression:{component_ref<target>,indirect_ref,pretmp.15_21}@.MEM_14
+Created SSA_NAME representative pretmp.16_23 for expression:{component_ref<target>,indirect_ref,pretmp.15_21}@.MEM_14
+ANTIC_OUT[7] := { bb_2(D) (0003), ve_3 (0004), {component_ref<edge>,indirect_ref,ve_3}@.MEM_14 (0029), {component_ref<target>,indirect_ref,pretmp.15_21}@.MEM_14 (0030), {component_ref<visited>,indirect_ref,pretmp.16_23}@.MEM_14 (0031) }
+ANTIC_IN[7] := { bb_2(D) (0003), ve_3 (0004), {component_ref<edge>,indirect_ref,ve_3}@.MEM_14 (0029), {component_ref<target>,indirect_ref,pretmp.15_21}@.MEM_14 (0030), {component_ref<visited>,indirect_ref,pretmp.16_23}@.MEM_14 (0031) }
+S[7] := { bb_2(D) (0003), ve_3 (0004), {component_ref<edge>,indirect_ref,ve_3}@.MEM_14 (0029), {component_ref<target>,indirect_ref,pretmp.15_21}@.MEM_14 (0030), {component_ref<visited>,indirect_ref,pretmp.16_23}@.MEM_14 (0031) }
+Could not find SSA_NAME representative for expression:{count}@.MEM_14
+Created SSA_NAME representative pretmp.17_24 for expression:{count}@.MEM_14
+ANTIC_OUT[8] := { bb_2(D) (0003), {count}@.MEM_14 (0032), {plus_expr,pretmp.17_24,-1} (0033) }
+ANTIC_IN[8] := { bb_2(D) (0003), {count}@.MEM_14 (0032), {plus_expr,pretmp.17_24,-1} (0033) }
+S[8] := { bb_2(D) (0003), {count}@.MEM_14 (0032), {plus_expr,pretmp.17_24,-1} (0033) }
+ANTIC_OUT[2] := { bb_2(D) (0003) }
+ANTIC_IN[2] := { bb_2(D) (0003), {component_ref<succ>,indirect_ref,bb_2(D)}@.MEM_13(D) (0004) }
+S[2] := { bb_2(D) (0003) }
+Starting iteration 1
+Could not find SSA_NAME representative for expression:{component_ref<edge>,indirect_ref,ve_7}@.MEM_11
+Created SSA_NAME representative pretmp.18_25 for expression:{component_ref<edge>,indirect_ref,ve_7}@.MEM_11
+Could not find SSA_NAME representative for expression:{component_ref<target>,indirect_ref,pretmp.18_25}@.MEM_11
+Created SSA_NAME representative pretmp.19_26 for expression:{component_ref<target>,indirect_ref,pretmp.18_25}@.MEM_11
+ANTIC_OUT[10] := { bb_2(D) (0003), ve_7 (0008), {component_ref<edge>,indirect_ref,ve_7}@.MEM_11 (0034), {component_ref<target>,indirect_ref,pretmp.18_25}@.MEM_11 (0035), {component_ref<visited>,indirect_ref,pretmp.19_26}@.MEM_11 (0036) }
+ANTIC_IN[10] := { bb_2(D) (0003), ve_7 (0008), {component_ref<edge>,indirect_ref,ve_7}@.MEM_11 (0034), {component_ref<target>,indirect_ref,pretmp.18_25}@.MEM_11 (0035), {component_ref<visited>,indirect_ref,pretmp.19_26}@.MEM_11 (0036) }
+S[10] := { bb_2(D) (0003), ve_7 (0008), {component_ref<edge>,indirect_ref,ve_7}@.MEM_11 (0034), {component_ref<target>,indirect_ref,pretmp.18_25}@.MEM_11 (0035), {component_ref<visited>,indirect_ref,pretmp.19_26}@.MEM_11 (0036) }
+ANTIC_OUT[6] := {  }
+ANTIC_IN[6] := { bb_2(D) (0003), {count}@.MEM_22 (0009), {plus_expr,count.10_8,-1} (0011) }
+S[6] := {  }
+ANTIC_OUT[11] := { bb_2(D) (0003), {count}@.MEM_11 (0021), {plus_expr,pretmp.14_12,-1} (0022) }
+ANTIC_IN[11] := { bb_2(D) (0003), {count}@.MEM_11 (0021), {plus_expr,pretmp.14_12,-1} (0022) }
+S[11] := { bb_2(D) (0003), {count}@.MEM_11 (0021), {plus_expr,pretmp.14_12,-1} (0022) }
+ANTIC_OUT[5] := { bb_2(D) (0003) }
+ANTIC_IN[5] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_11 (0008) }
+S[5] := { bb_2(D) (0003) }
+ANTIC_OUT[4] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_16 (0023) }
+ANTIC_IN[4] := { bb_2(D) (0003), ve_9 (0010), e_4 (0005) }
+S[4] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_16 (0023) }
+ANTIC_OUT[9] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_19 (0026) }
+ANTIC_IN[9] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_19 (0026) }
+S[9] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_19 (0026) }
+ANTIC_OUT[3] := { bb_2(D) (0003), ve_9 (0010) }
+ANTIC_IN[3] := { bb_2(D) (0003), ve_9 (0010), {component_ref<edge>,indirect_ref,ve_9}@.MEM_19 (0005), {component_ref<target>,indirect_ref,e_4}@.MEM_19 (0006), {component_ref<visited>,indirect_ref,succ_bb_5}@.MEM_19 (0007) }
+S[3] := { bb_2(D) (0003), ve_9 (0010) }
+ANTIC_OUT[7] := { bb_2(D) (0003), ve_3 (0004), {component_ref<edge>,indirect_ref,ve_3}@.MEM_14 (0029), {component_ref<target>,indirect_ref,pretmp.15_21}@.MEM_14 (0030), {component_ref<visited>,indirect_ref,pretmp.16_23}@.MEM_14 (0031) }
+ANTIC_IN[7] := { bb_2(D) (0003), ve_3 (0004), {component_ref<edge>,indirect_ref,ve_3}@.MEM_14 (0029), {component_ref<target>,indirect_ref,pretmp.15_21}@.MEM_14 (0030), {component_ref<visited>,indirect_ref,pretmp.16_23}@.MEM_14 (0031) }
+S[7] := { bb_2(D) (0003), ve_3 (0004), {component_ref<edge>,indirect_ref,ve_3}@.MEM_14 (0029), {component_ref<target>,indirect_ref,pretmp.15_21}@.MEM_14 (0030), {component_ref<visited>,indirect_ref,pretmp.16_23}@.MEM_14 (0031) }
+ANTIC_OUT[8] := { bb_2(D) (0003), {count}@.MEM_14 (0032), {plus_expr,pretmp.17_24,-1} (0033) }
+ANTIC_IN[8] := { bb_2(D) (0003), {count}@.MEM_14 (0032), {plus_expr,pretmp.17_24,-1} (0033) }
+S[8] := { bb_2(D) (0003), {count}@.MEM_14 (0032), {plus_expr,pretmp.17_24,-1} (0033) }
+ANTIC_OUT[2] := { bb_2(D) (0003) }
+ANTIC_IN[2] := { bb_2(D) (0003), {component_ref<succ>,indirect_ref,bb_2(D)}@.MEM_13(D) (0004) }
+S[2] := { bb_2(D) (0003) }
+Starting iteration 2
+ANTIC_OUT[10] := { bb_2(D) (0003), ve_7 (0008), {component_ref<edge>,indirect_ref,ve_7}@.MEM_11 (0034), {component_ref<target>,indirect_ref,pretmp.18_25}@.MEM_11 (0035), {component_ref<visited>,indirect_ref,pretmp.19_26}@.MEM_11 (0036) }
+ANTIC_IN[10] := { bb_2(D) (0003), ve_7 (0008), {component_ref<edge>,indirect_ref,ve_7}@.MEM_11 (0034), {component_ref<target>,indirect_ref,pretmp.18_25}@.MEM_11 (0035), {component_ref<visited>,indirect_ref,pretmp.19_26}@.MEM_11 (0036) }
+S[10] := { bb_2(D) (0003), ve_7 (0008), {component_ref<edge>,indirect_ref,ve_7}@.MEM_11 (0034), {component_ref<target>,indirect_ref,pretmp.18_25}@.MEM_11 (0035), {component_ref<visited>,indirect_ref,pretmp.19_26}@.MEM_11 (0036) }
+ANTIC_OUT[5] := { bb_2(D) (0003) }
+ANTIC_IN[5] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_11 (0008) }
+S[5] := { bb_2(D) (0003) }
+ANTIC_OUT[9] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_19 (0026) }
+ANTIC_IN[9] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_19 (0026) }
+S[9] := { bb_2(D) (0003), ve_9 (0010), {component_ref<next>,indirect_ref,ve_9}@.MEM_19 (0026) }
+
+Pass statistics:
+----------------
+compute_antic iterations == 3: 1
+SCC iterations == 3: 1
+insert iterations == 1: 1
+
+search (struct basic_block * bbD.4175)
+{
+  struct basic_block * pretmp.19D.5624;
+  struct edge * pretmp.18D.5623;
+  intD.0 pretmp.17D.5622;
+  struct basic_block * pretmp.16D.5621;
+  struct edge * pretmp.15D.5620;
+  intD.0 pretmp.14D.5619;
+  struct edge * eD.4180;
+  struct vec_edge * veD.4179;
+  struct basic_block * succ_bbD.4178;
+  intD.0 count.11D.5608;
+  intD.0 count.10D.5607;
+  intD.0 D.5604;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # .MEMD.5609_14 = VDEF <.MEMD.5609_13(D)>
+  bbD.4175_2(D)->visitedD.4144 = 1;
+  # VUSE <.MEMD.5609_14>
+  veD.4179_3 = bbD.4175_2(D)->succD.4149;
+  # DEBUG veD.4179 => veD.4179_3
+  # DEBUG veD.4179 => veD.4179_3
+  if (veD.4179_3 != 0B)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 8 freq:81
+  # PRED: 2 [9.0%]  (false,exec)
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 7 freq:819
+  # PRED: 2 [91.0%]  (true,exec)
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:9100
+  # PRED: 10 [100.0%]  (fallthru) 7 [100.0%]  (fallthru)
+  # veD.4179_9 = PHI <veD.4179_7(10), veD.4179_3(7)>
+  # .MEMD.5609_19 = PHI <.MEMD.5609_11(10), .MEMD.5609_14(7)>
+  # VUSE <.MEMD.5609_19>
+  eD.4180_4 = veD.4179_9->edgeD.4138;
+  # DEBUG eD.4180 => eD.4180_4
+  # VUSE <.MEMD.5609_19>
+  succ_bbD.4178_5 = eD.4180_4->targetD.4135;
+  # DEBUG succ_bbD.4178 => succ_bbD.4178_5
+  # VUSE <.MEMD.5609_19>
+  D.5604_6 = succ_bbD.4178_5->visitedD.4144;
+  if (D.5604_6 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 9>;
+  # SUCC: 4 [29.0%]  (true,exec) 9 [71.0%]  (false,exec)
+
+  # BLOCK 9 freq:6461
+  # PRED: 3 [71.0%]  (false,exec)
+  goto <bb 5>;
+  # SUCC: 5 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5609_15 = VDEF <.MEMD.5609_19>
+  eD.4180_4->typeD.4133 = 1;
+  # .MEMD.5609_16 = VDEF <.MEMD.5609_15>
+  searchD.4176 (succ_bbD.4178_5);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 9 [100.0%]  (fallthru) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5609_11 = PHI <.MEMD.5609_19(9), .MEMD.5609_16(4)>
+  # VUSE <.MEMD.5609_11>
+  veD.4179_7 = veD.4179_9->nextD.4139;
+  # DEBUG veD.4179 => veD.4179_7
+  # DEBUG veD.4179 => veD.4179_7
+  if (veD.4179_7 != 0B)
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+  # SUCC: 10 [91.0%]  (true,exec) 11 [9.0%]  (false,exec)
+
+  # BLOCK 10 freq:8281
+  # PRED: 5 [91.0%]  (true,exec)
+  goto <bb 3>;
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 11 freq:819
+  # PRED: 5 [9.0%]  (false,exec)
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 6 freq:900
+  # PRED: 11 [100.0%]  (fallthru) 8 [100.0%]  (fallthru)
+  # .MEMD.5609_22 = PHI <.MEMD.5609_11(11), .MEMD.5609_14(8)>
+  # VUSE <.MEMD.5609_22>
+  count.10D.5607_8 = countD.4173;
+  # .MEMD.5609_17 = VDEF <.MEMD.5609_22>
+  bbD.4175_2(D)->dfs_orderD.4145 = count.10D.5607_8;
+  count.11D.5608_10 = count.10D.5607_8 + -1;
+  # .MEMD.5609_18 = VDEF <.MEMD.5609_17>
+  countD.4173 = count.11D.5608_10;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function depth_first_search (depth_first_search)
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+cfg = NONLOCAL
+cfg.8_2 = cfg
+bb_3 = *cfg.8_2 + 128
+bb_14 = bb_4
+bb_14 = bb_3
+bb_4 = *bb_14 + 352
+D.5603_8 = *cfg.8_2 + 64
+ESCAPED = D.5603_8
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Found location equivalence for node NONLOCAL
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 7, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 5, location:3
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 9, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 10, location:0
+Equivalence classes for Direct node node id 8:cfg.8_2 are pointer: 5, location:0
+Equivalence classes for Direct node node id 9:cfg are pointer: 5, location:0
+Equivalence classes for Indirect node node id 10:bb_3 are pointer: 11, location:0
+Equivalence classes for Direct node node id 11:bb_14 are pointer: 13, location:0
+Equivalence classes for Indirect node node id 12:bb_4 are pointer: 12, location:0
+Equivalence classes for Indirect node node id 13:D.5603_8 are pointer: 4, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Unifying cfg.8_2 to cfg
+Uniting pointer but not location equivalent variables
+Unifying NONLOCAL to cfg
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               6
+Non-pointer vars:          1
+Statically unified vars:  2
+Dynamically unified vars: 0
+Iterations:               2
+Number of edges:          12
+Number of implicit edges: 10
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = same as cfg
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+cfg.8_2 = same as cfg
+cfg = { ESCAPED NONLOCAL }
+bb_3 = { ESCAPED NONLOCAL }
+bb_14 = { ESCAPED NONLOCAL }
+bb_4 = { ESCAPED NONLOCAL }
+D.5603_8 = { ESCAPED NONLOCAL }
+
+
+Alias information for depth_first_search
+
+Aliased symbols
+
+.MEMD.5610, UID D.5610, voidD.32, is global, call clobbered, default def: .MEMD.5610_10(D)
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+cfg.8D.5601_2, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4187_3, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4187_4, points-to non-local, points-to escaped, points-to vars: { }
+D.5603_8, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4187_14, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in depth_first_search: 7
+
+Variable: bbD.4187, UID D.4187, struct basic_block *
+Variable: countD.4173, UID D.4173, intD.0, is global, call clobbered
+Variable: cfgD.4174, UID D.4174, struct control_flow_graph *, is global, call clobbered
+Variable: cfg.8D.5601, UID D.5601, struct control_flow_graph *
+Variable: count.9D.5602, UID D.5602, intD.0
+Variable: D.5603, UID D.5603, struct basic_block *
+Variable: .MEMD.5610, UID D.5610, voidD.32, is global, call clobbered, default def: .MEMD.5610_10(D)
+
+Points to sets created:7
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 6 5 3 7 8 4
+;;
+;; Loop 1
+;;  header 3, latch 7
+;;  depth 1, outer 0
+;;  nodes: 3 7
+;; 2 succs { 5 6 }
+;; 6 succs { 4 }
+;; 5 succs { 3 }
+;; 3 succs { 7 8 }
+;; 7 succs { 3 }
+;; 8 succs { 4 }
+;; 4 succs { 1 }
+SCC consists of: .MEM_10(D) 
+Setting value number of .MEM_10(D) to .MEM_10(D) (changed)
+SCC consists of: cfg.8_2 
+Value numbering cfg.8_2 stmt = cfg.8_2 = cfg;
+Setting value number of cfg.8_2 to cfg.8_2 (changed)
+SCC consists of: bb_3 
+Value numbering bb_3 stmt = bb_3 = cfg.8_2->bb;
+Setting value number of bb_3 to bb_3 (changed)
+SCC consists of: bb_14 .MEM_15 .MEM_11 bb_4 
+Value numbering bb_14 stmt = bb_14 = PHI <bb_4(7), bb_3(5)>
+Setting value number of bb_14 to bb_3 (changed)
+Value numbering .MEM_15 stmt = .MEM_15 = PHI <.MEM_11(7), .MEM_10(D)(5)>
+Setting value number of .MEM_15 to .MEM_10(D) (changed)
+Value numbering .MEM_11 stmt = bb_14->visited = 0;
+No store match
+Value numbering store bb_14->visited to 0
+Setting value number of .MEM_11 to .MEM_11 (changed)
+Value numbering bb_4 stmt = bb_4 = bb_14->next;
+Setting value number of bb_4 to bb_4 (changed)
+Value numbering bb_14 stmt = bb_14 = PHI <bb_4(7), bb_3(5)>
+Setting value number of bb_14 to bb_14 (changed)
+Value numbering .MEM_15 stmt = .MEM_15 = PHI <.MEM_11(7), .MEM_10(D)(5)>
+Setting value number of .MEM_15 to .MEM_15 (changed)
+Value numbering .MEM_11 stmt = bb_14->visited = 0;
+No store match
+Value numbering store bb_14->visited to 0
+Setting value number of .MEM_11 to .MEM_11
+Value numbering bb_4 stmt = bb_4 = bb_14->next;
+Setting value number of bb_4 to bb_4
+Value numbering bb_14 stmt = bb_14 = PHI <bb_4(7), bb_3(5)>
+Setting value number of bb_14 to bb_14
+Value numbering .MEM_15 stmt = .MEM_15 = PHI <.MEM_11(7), .MEM_10(D)(5)>
+Setting value number of .MEM_15 to .MEM_15
+Value numbering .MEM_11 stmt = bb_14->visited = 0;
+No store match
+Value numbering store bb_14->visited to 0
+Setting value number of .MEM_11 to .MEM_11
+Value numbering bb_4 stmt = bb_4 = bb_14->next;
+Setting value number of bb_4 to bb_4
+SCC consists of: .MEM_16 
+Value numbering .MEM_16 stmt = .MEM_16 = PHI <.MEM_11(8), .MEM_10(D)(6)>
+Setting value number of .MEM_16 to .MEM_16 (changed)
+SCC consists of: count.9_6 
+Value numbering count.9_6 stmt = count.9_6 = cfg.8_2->bb_num;
+Setting value number of count.9_6 to count.9_6 (changed)
+SCC consists of: .MEM_12 
+Value numbering .MEM_12 stmt = count = count.9_6;
+No store match
+Value numbering store count to count.9_6
+Setting value number of .MEM_12 to .MEM_12 (changed)
+SCC consists of: D.5603_8 
+Value numbering D.5603_8 stmt = D.5603_8 = cfg.8_2->entry;
+Setting value number of D.5603_8 to D.5603_8 (changed)
+Value numbers:
+exp_gen[0] := {  }
+phi_gen[0] := {  }
+tmp_gen[0] := {  }
+avail_out[0] := {  }
+exp_gen[2] := { {cfg}@.MEM_10(D) (0002), {component_ref<bb>,indirect_ref,cfg.8_2}@.MEM_10(D) (0003) }
+phi_gen[2] := {  }
+tmp_gen[2] := { cfg.8_2 (0002), bb_3 (0003) }
+avail_out[2] := { cfg.8_2 (0002), bb_3 (0003) }
+exp_gen[6] := {  }
+phi_gen[6] := {  }
+tmp_gen[6] := {  }
+avail_out[6] := { cfg.8_2 (0002), bb_3 (0003) }
+exp_gen[5] := {  }
+phi_gen[5] := {  }
+tmp_gen[5] := {  }
+avail_out[5] := { cfg.8_2 (0002), bb_3 (0003) }
+exp_gen[3] := { bb_14 (0011), {component_ref<next>,indirect_ref,bb_14}@.MEM_10(D) (0004) }
+phi_gen[3] := { bb_14 (0011) }
+tmp_gen[3] := { bb_4 (0004) }
+avail_out[3] := { cfg.8_2 (0002), bb_3 (0003), bb_14 (0011), bb_4 (0004) }
+exp_gen[7] := {  }
+phi_gen[7] := {  }
+tmp_gen[7] := {  }
+avail_out[7] := { cfg.8_2 (0002), bb_3 (0003), bb_14 (0011), bb_4 (0004) }
+exp_gen[8] := {  }
+phi_gen[8] := {  }
+tmp_gen[8] := {  }
+avail_out[8] := { cfg.8_2 (0002), bb_3 (0003), bb_14 (0011), bb_4 (0004) }
+exp_gen[4] := { cfg.8_2 (0002), {component_ref<bb_num>,indirect_ref,cfg.8_2}@.MEM_10(D) (0005), {component_ref<entry>,indirect_ref,cfg.8_2}@.MEM_10(D) (0006) }
+phi_gen[4] := {  }
+tmp_gen[4] := { count.9_6 (0005), D.5603_8 (0006) }
+avail_out[4] := { cfg.8_2 (0002), bb_3 (0003), count.9_6 (0005), D.5603_8 (0006) }
+exp_gen[1] := {  }
+phi_gen[1] := {  }
+tmp_gen[1] := {  }
+avail_out[1] := {  }
+Starting iteration 0
+Block 7 was deferred for a future iteration.
+ANTIC_OUT[4] := {  }
+ANTIC_IN[4] := { cfg.8_2 (0002) }
+S[4] := {  }
+ANTIC_OUT[8] := { cfg.8_2 (0002) }
+ANTIC_IN[8] := { cfg.8_2 (0002) }
+S[8] := { cfg.8_2 (0002) }
+ANTIC_OUT[3] := { cfg.8_2 (0002) }
+ANTIC_IN[3] := { cfg.8_2 (0002), bb_14 (0011), {component_ref<next>,indirect_ref,bb_14}@.MEM_10(D) (0004) }
+S[3] := { cfg.8_2 (0002) }
+ANTIC_OUT[5] := { cfg.8_2 (0002), bb_3 (0003), {component_ref<next>,indirect_ref,bb_3}@.MEM_10(D) (0014) }
+ANTIC_IN[5] := { cfg.8_2 (0002), bb_3 (0003), {component_ref<next>,indirect_ref,bb_3}@.MEM_10(D) (0014) }
+S[5] := { cfg.8_2 (0002), bb_3 (0003), {component_ref<next>,indirect_ref,bb_3}@.MEM_10(D) (0014) }
+ANTIC_OUT[6] := { cfg.8_2 (0002) }
+ANTIC_IN[6] := { cfg.8_2 (0002) }
+S[6] := { cfg.8_2 (0002) }
+ANTIC_OUT[2] := { cfg.8_2 (0002) }
+ANTIC_IN[2] := { {cfg}@.MEM_10(D) (0002), {component_ref<bb>,indirect_ref,cfg.8_2}@.MEM_10(D) (0003) }
+S[2] := {  }
+Starting iteration 1
+ANTIC_OUT[7] := { cfg.8_2 (0002), bb_4 (0004), {component_ref<next>,indirect_ref,bb_4}@.MEM_10(D) (0015) }
+ANTIC_IN[7] := { cfg.8_2 (0002), bb_4 (0004), {component_ref<next>,indirect_ref,bb_4}@.MEM_10(D) (0015) }
+S[7] := { cfg.8_2 (0002), bb_4 (0004), {component_ref<next>,indirect_ref,bb_4}@.MEM_10(D) (0015) }
+ANTIC_OUT[4] := {  }
+ANTIC_IN[4] := { cfg.8_2 (0002) }
+S[4] := {  }
+ANTIC_OUT[8] := { cfg.8_2 (0002) }
+ANTIC_IN[8] := { cfg.8_2 (0002) }
+S[8] := { cfg.8_2 (0002) }
+ANTIC_OUT[3] := { cfg.8_2 (0002) }
+ANTIC_IN[3] := { cfg.8_2 (0002), bb_14 (0011), {component_ref<next>,indirect_ref,bb_14}@.MEM_10(D) (0004) }
+S[3] := { cfg.8_2 (0002) }
+ANTIC_OUT[5] := { cfg.8_2 (0002), bb_3 (0003), {component_ref<next>,indirect_ref,bb_3}@.MEM_10(D) (0014) }
+ANTIC_IN[5] := { cfg.8_2 (0002), bb_3 (0003), {component_ref<next>,indirect_ref,bb_3}@.MEM_10(D) (0014) }
+S[5] := { cfg.8_2 (0002), bb_3 (0003), {component_ref<next>,indirect_ref,bb_3}@.MEM_10(D) (0014) }
+ANTIC_OUT[6] := { cfg.8_2 (0002) }
+ANTIC_IN[6] := { cfg.8_2 (0002) }
+S[6] := { cfg.8_2 (0002) }
+ANTIC_OUT[2] := { cfg.8_2 (0002) }
+ANTIC_IN[2] := { {cfg}@.MEM_10(D) (0002), {component_ref<bb>,indirect_ref,cfg.8_2}@.MEM_10(D) (0003) }
+S[2] := {  }
+Starting iteration 2
+ANTIC_OUT[7] := { cfg.8_2 (0002), bb_4 (0004), {component_ref<next>,indirect_ref,bb_4}@.MEM_10(D) (0015) }
+ANTIC_IN[7] := { cfg.8_2 (0002), bb_4 (0004), {component_ref<next>,indirect_ref,bb_4}@.MEM_10(D) (0015) }
+S[7] := { cfg.8_2 (0002), bb_4 (0004), {component_ref<next>,indirect_ref,bb_4}@.MEM_10(D) (0015) }
+
+Pass statistics:
+----------------
+compute_antic iterations == 3: 1
+SCC iterations == 3: 1
+insert iterations == 1: 1
+
+depth_first_search ()
+{
+  struct basic_block * bbD.4187;
+  struct basic_block * D.5603;
+  intD.0 count.9D.5602;
+  struct control_flow_graph * cfg.8D.5601;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5610_10(D)>
+  cfg.8D.5601_2 = cfgD.4174;
+  # VUSE <.MEMD.5610_10(D)>
+  bbD.4187_3 = cfg.8D.5601_2->bbD.4157;
+  # DEBUG bbD.4187 => bbD.4187_3
+  # DEBUG bbD.4187 => bbD.4187_3
+  if (bbD.4187_3 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [91.0%]  (true,exec) 6 [9.0%]  (false,exec)
+
+  # BLOCK 6 freq:81
+  # PRED: 2 [9.0%]  (false,exec)
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 5 freq:819
+  # PRED: 2 [91.0%]  (true,exec)
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:9100
+  # PRED: 7 [100.0%]  (fallthru) 5 [100.0%]  (fallthru)
+  # bbD.4187_14 = PHI <bbD.4187_4(7), bbD.4187_3(5)>
+  # .MEMD.5610_15 = PHI <.MEMD.5610_11(7), .MEMD.5610_10(D)(5)>
+  # .MEMD.5610_11 = VDEF <.MEMD.5610_15>
+  bbD.4187_14->visitedD.4144 = 0;
+  # VUSE <.MEMD.5610_11>
+  bbD.4187_4 = bbD.4187_14->nextD.4151;
+  # DEBUG bbD.4187 => bbD.4187_4
+  # DEBUG bbD.4187 => bbD.4187_4
+  if (bbD.4187_4 != 0B)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:8281
+  # PRED: 3 [91.0%]  (true,exec)
+  goto <bb 3>;
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 8 freq:819
+  # PRED: 3 [9.0%]  (false,exec)
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:900
+  # PRED: 8 [100.0%]  (fallthru) 6 [100.0%]  (fallthru)
+  # .MEMD.5610_16 = PHI <.MEMD.5610_11(8), .MEMD.5610_10(D)(6)>
+  # VUSE <.MEMD.5610_16>
+  count.9D.5602_6 = cfg.8D.5601_2->bb_numD.4153;
+  # .MEMD.5610_12 = VDEF <.MEMD.5610_16>
+  countD.4173 = count.9D.5602_6;
+  # VUSE <.MEMD.5610_12>
+  D.5603_8 = cfg.8D.5601_2->entryD.4155;
+  # .MEMD.5610_13 = VDEF <.MEMD.5610_12>
+  searchD.4176 (D.5603_8);
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function is_ancestor (is_ancestor)
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+source = &NONLOCAL
+target = &NONLOCAL
+bb_21 = bb_2
+bb_21 = target
+ve_9 = *bb_21 + 224
+e_20 = *ve_9
+e_10 = *ve_13
+e_18 = e_10
+e_18 = e_20
+bb_12 = *e_18 + 32
+ve_24 = ve_13
+ve_24 = ve_9
+ve_13 = *ve_24 + 32
+bb_2 = bb_12
+bb_2 = bb_21
+bb_2 = bb_21
+cfg = NONLOCAL
+cfg.7_14 = cfg
+D.5599_15 = *cfg.7_14 + 64
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 6, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 4, location:4
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 8, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 9, location:0
+Equivalence classes for Direct node node id 8:source are pointer: 10, location:0
+Equivalence classes for Direct node node id 9:target are pointer: 10, location:0
+Equivalence classes for Direct node node id 10:bb_21 are pointer: 12, location:0
+Equivalence classes for Direct node node id 11:bb_2 are pointer: 12, location:0
+Equivalence classes for Indirect node node id 12:ve_9 are pointer: 13, location:0
+Equivalence classes for Direct node node id 13:e_20 are pointer: 14, location:0
+Equivalence classes for Direct node node id 14:e_10 are pointer: 15, location:0
+Equivalence classes for Indirect node node id 15:ve_13 are pointer: 16, location:0
+Equivalence classes for Direct node node id 16:e_18 are pointer: 17, location:0
+Equivalence classes for Indirect node node id 17:bb_12 are pointer: 11, location:0
+Equivalence classes for Direct node node id 18:ve_24 are pointer: 18, location:0
+Equivalence classes for Direct node node id 19:cfg.7_14 are pointer: 4, location:0
+Equivalence classes for Direct node node id 20:cfg are pointer: 4, location:0
+Equivalence classes for Indirect node node id 21:D.5599_15 are pointer: 19, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Unifying target to source
+Unifying bb_2 to bb_21
+Unifying cfg.7_14 to cfg
+Uniting pointer but not location equivalent variables
+Unifying NONLOCAL to cfg
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               14
+Non-pointer vars:          1
+Statically unified vars:  4
+Dynamically unified vars: 0
+Iterations:               3
+Number of edges:          18
+Number of implicit edges: 17
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { }
+NONLOCAL = same as cfg
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+source = { NONLOCAL }
+target = same as source
+bb_21 = { ESCAPED NONLOCAL }
+bb_2 = same as bb_21
+ve_9 = { ESCAPED NONLOCAL }
+e_20 = { ESCAPED NONLOCAL }
+e_10 = { ESCAPED NONLOCAL }
+ve_13 = { ESCAPED NONLOCAL }
+e_18 = { ESCAPED NONLOCAL }
+bb_12 = { ESCAPED NONLOCAL }
+ve_24 = { ESCAPED NONLOCAL }
+cfg.7_14 = same as cfg
+cfg = { ESCAPED NONLOCAL }
+D.5599_15 = { ESCAPED NONLOCAL }
+
+
+Alias information for is_ancestor
+
+Aliased symbols
+
+.MEMD.5611, UID D.5611, voidD.32, is global, call clobbered, default def: .MEMD.5611_17(D)
+
+Call clobber information
+
+ESCAPED, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+bbD.4195_2, points-to non-local, points-to escaped, points-to vars: { }
+targetD.4192_5(D), points-to non-local, points-to vars: { }
+sourceD.4191_7(D), points-to non-local, points-to vars: { }
+veD.4196_9, points-to non-local, points-to escaped, points-to vars: { }
+eD.4197_10, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4195_12, points-to non-local, points-to escaped, points-to vars: { }
+veD.4196_13, points-to non-local, points-to escaped, points-to vars: { }
+cfg.7D.5598_14, points-to non-local, points-to escaped, points-to vars: { }
+D.5599_15, points-to non-local, points-to escaped, points-to vars: { }
+eD.4197_18, points-to non-local, points-to escaped, points-to vars: { }
+eD.4197_20, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4195_21, points-to non-local, points-to escaped, points-to vars: { }
+veD.4196_24, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in is_ancestor: 11
+
+Variable: .MEMD.5611, UID D.5611, voidD.32, is global, call clobbered, default def: .MEMD.5611_17(D)
+Variable: sourceD.4191, UID D.4191, struct basic_block *, default def: sourceD.4191_7(D), initial: struct basic_block *
+Variable: targetD.4192, UID D.4192, struct basic_block *, default def: targetD.4192_5(D), initial: struct basic_block *
+Variable: bbD.4195, UID D.4195, struct basic_block *
+Variable: veD.4196, UID D.4196, struct vec_edge *
+Variable: eD.4197, UID D.4197, struct edge *
+Variable: D.5594, UID D.5594, intD.0
+Variable: D.5595, UID D.5595, edge_type
+Variable: cfg.7D.5598, UID D.5598, struct control_flow_graph *
+Variable: D.5599, UID D.5599, struct basic_block *
+Variable: cfgD.4174, UID D.4174, struct control_flow_graph *, is global, call clobbered
+
+Points to sets created:15
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 12 11 3 13 14 4 15 5 16 6 19 18 7 17 8 20 9 21 10
+;;
+;; Loop 1
+;;  header 4, latch 14
+;;  depth 1, outer 0
+;;  nodes: 4 14 3 9 7 20 15 8 19 17 5 6 18 16
+;;
+;; Loop 2
+;;  header 8, latch 19
+;;  depth 2, outer 1
+;;  nodes: 8 19 6
+;; 2 succs { 11 12 }
+;; 12 succs { 4 }
+;; 11 succs { 10 }
+;; 3 succs { 13 14 }
+;; 13 succs { 10 }
+;; 14 succs { 4 }
+;; 4 succs { 5 15 }
+;; 15 succs { 9 }
+;; 5 succs { 16 17 }
+;; 16 succs { 7 }
+;; 6 succs { 18 19 }
+;; 19 succs { 8 }
+;; 18 succs { 7 }
+;; 7 succs { 9 }
+;; 17 succs { 8 }
+;; 8 succs { 6 20 }
+;; 20 succs { 9 }
+;; 9 succs { 3 21 }
+;; 21 succs { 10 }
+;; 10 succs { 1 }
+SCC consists of: .MEM_17(D) 
+Setting value number of .MEM_17(D) to .MEM_17(D) (changed)
+SCC consists of: target_5(D) 
+Setting value number of target_5(D) to target_5(D)
+SCC consists of: bb_21 ve_9 e_20 ve_24 ve_13 e_10 e_18 bb_12 bb_2 
+Value numbering bb_21 stmt = bb_21 = PHI <bb_2(14), target_5(D)(12)>
+Setting value number of bb_21 to target_5(D) (changed)
+Value numbering ve_9 stmt = ve_9 = bb_21->pred;
+Setting value number of ve_9 to ve_9 (changed)
+Value numbering e_20 stmt = e_20 = ve_9->edge;
+Setting value number of e_20 to e_20 (changed)
+Value numbering ve_24 stmt = ve_24 = PHI <ve_13(19), ve_9(17)>
+Setting value number of ve_24 to ve_9 (changed)
+Value numbering ve_13 stmt = ve_13 = ve_24->next;
+Setting value number of ve_13 to ve_13 (changed)
+Value numbering e_10 stmt = e_10 = ve_13->edge;
+Setting value number of e_10 to e_10 (changed)
+Value numbering e_18 stmt = e_18 = PHI <e_10(18), e_20(16)>
+Setting value number of e_18 to e_18 (changed)
+Value numbering bb_12 stmt = bb_12 = e_18->source;
+Setting value number of bb_12 to bb_12 (changed)
+Value numbering bb_2 stmt = bb_2 = PHI <bb_12(7), bb_21(20), bb_21(15)>
+Setting value number of bb_2 to bb_2 (changed)
+Value numbering bb_21 stmt = bb_21 = PHI <bb_2(14), target_5(D)(12)>
+Setting value number of bb_21 to bb_21 (changed)
+Value numbering ve_9 stmt = ve_9 = bb_21->pred;
+Setting value number of ve_9 to ve_9
+Value numbering e_20 stmt = e_20 = ve_9->edge;
+Setting value number of e_20 to e_20
+Value numbering ve_24 stmt = ve_24 = PHI <ve_13(19), ve_9(17)>
+Setting value number of ve_24 to ve_24 (changed)
+Value numbering ve_13 stmt = ve_13 = ve_24->next;
+Setting value number of ve_13 to ve_13
+Value numbering e_10 stmt = e_10 = ve_13->edge;
+Setting value number of e_10 to e_10
+Value numbering e_18 stmt = e_18 = PHI <e_10(18), e_20(16)>
+Setting value number of e_18 to e_18
+Value numbering bb_12 stmt = bb_12 = e_18->source;
+Setting value number of bb_12 to bb_12
+Value numbering bb_2 stmt = bb_2 = PHI <bb_12(7), bb_21(20), bb_21(15)>
+Setting value number of bb_2 to bb_2
+Value numbering bb_21 stmt = bb_21 = PHI <bb_2(14), target_5(D)(12)>
+Setting value number of bb_21 to bb_21
+Value numbering ve_9 stmt = ve_9 = bb_21->pred;
+Setting value number of ve_9 to ve_9
+Value numbering e_20 stmt = e_20 = ve_9->edge;
+Setting value number of e_20 to e_20
+Value numbering ve_24 stmt = ve_24 = PHI <ve_13(19), ve_9(17)>
+Setting value number of ve_24 to ve_24
+Value numbering ve_13 stmt = ve_13 = ve_24->next;
+Setting value number of ve_13 to ve_13
+Value numbering e_10 stmt = e_10 = ve_13->edge;
+Setting value number of e_10 to e_10
+Value numbering e_18 stmt = e_18 = PHI <e_10(18), e_20(16)>
+Setting value number of e_18 to e_18
+Value numbering bb_12 stmt = bb_12 = e_18->source;
+Setting value number of bb_12 to bb_12
+Value numbering bb_2 stmt = bb_2 = PHI <bb_12(7), bb_21(20), bb_21(15)>
+Setting value number of bb_2 to bb_2
+SCC consists of: D.5594_4 
+Value numbering D.5594_4 stmt = D.5594_4 = PHI <1(13), 0(21), 1(11)>
+Setting value number of D.5594_4 to D.5594_4 (changed)
+SCC consists of: source_7(D) 
+Setting value number of source_7(D) to source_7(D)
+SCC consists of: D.5595_11 
+Value numbering D.5595_11 stmt = D.5595_11 = e_10->type;
+Setting value number of D.5595_11 to D.5595_11 (changed)
+SCC consists of: cfg.7_14 
+Value numbering cfg.7_14 stmt = cfg.7_14 = cfg;
+Setting value number of cfg.7_14 to cfg.7_14 (changed)
+SCC consists of: D.5599_15 
+Value numbering D.5599_15 stmt = D.5599_15 = cfg.7_14->entry;
+Setting value number of D.5599_15 to D.5599_15 (changed)
+SCC consists of: D.5595_23 
+Value numbering D.5595_23 stmt = D.5595_23 = e_20->type;
+Setting value number of D.5595_23 to D.5595_23 (changed)
+Value numbers:
+exp_gen[0] := {  }
+phi_gen[0] := {  }
+tmp_gen[0] := { target_5(D) (0003), source_7(D) (0004) }
+avail_out[0] := { target_5(D) (0003), source_7(D) (0004) }
+exp_gen[2] := {  }
+phi_gen[2] := {  }
+tmp_gen[2] := {  }
+avail_out[2] := { target_5(D) (0003), source_7(D) (0004) }
+exp_gen[12] := {  }
+phi_gen[12] := {  }
+tmp_gen[12] := {  }
+avail_out[12] := { target_5(D) (0003), source_7(D) (0004) }
+exp_gen[11] := {  }
+phi_gen[11] := {  }
+tmp_gen[11] := {  }
+avail_out[11] := { target_5(D) (0003), source_7(D) (0004) }
+exp_gen[3] := {  }
+phi_gen[3] := {  }
+tmp_gen[3] := {  }
+avail_out[3] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), bb_2 (0001), ve_9 (0005), cfg.7_14 (0010), D.5599_15 (0011) }
+exp_gen[13] := {  }
+phi_gen[13] := {  }
+tmp_gen[13] := {  }
+avail_out[13] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), bb_2 (0001), ve_9 (0005), cfg.7_14 (0010), D.5599_15 (0011) }
+exp_gen[14] := {  }
+phi_gen[14] := {  }
+tmp_gen[14] := {  }
+avail_out[14] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), bb_2 (0001), ve_9 (0005), cfg.7_14 (0010), D.5599_15 (0011) }
+exp_gen[4] := { bb_21 (0015), {component_ref<pred>,indirect_ref,bb_21}@.MEM_17(D) (0005) }
+phi_gen[4] := { bb_21 (0015) }
+tmp_gen[4] := { ve_9 (0005) }
+avail_out[4] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), ve_9 (0005) }
+exp_gen[15] := {  }
+phi_gen[15] := {  }
+tmp_gen[15] := {  }
+avail_out[15] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), ve_9 (0005) }
+exp_gen[5] := { ve_9 (0005), {component_ref<edge>,indirect_ref,ve_9}@.MEM_17(D) (0014), {component_ref<type>,indirect_ref,e_20}@.MEM_17(D) (0016) }
+phi_gen[5] := {  }
+tmp_gen[5] := { e_20 (0014), D.5595_23 (0016) }
+avail_out[5] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), ve_9 (0005), e_20 (0014), D.5595_23 (0016) }
+exp_gen[16] := {  }
+phi_gen[16] := {  }
+tmp_gen[16] := {  }
+avail_out[16] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), ve_9 (0005), e_20 (0014), D.5595_23 (0016) }
+exp_gen[6] := { ve_13 (0009), {component_ref<edge>,indirect_ref,ve_13}@.MEM_17(D) (0006), {component_ref<type>,indirect_ref,e_10}@.MEM_17(D) (0007) }
+phi_gen[6] := {  }
+tmp_gen[6] := { e_10 (0006), D.5595_11 (0007) }
+avail_out[6] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), ve_9 (0005), e_20 (0014), D.5595_23 (0016), e_10 (0006), ve_24 (0017), ve_13 (0009), D.5595_11 (0007) }
+exp_gen[19] := {  }
+phi_gen[19] := {  }
+tmp_gen[19] := {  }
+avail_out[19] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), ve_9 (0005), e_20 (0014), D.5595_23 (0016), e_10 (0006), ve_24 (0017), ve_13 (0009), D.5595_11 (0007) }
+exp_gen[18] := {  }
+phi_gen[18] := {  }
+tmp_gen[18] := {  }
+avail_out[18] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), ve_9 (0005), e_20 (0014), D.5595_23 (0016), e_10 (0006), ve_24 (0017), ve_13 (0009), D.5595_11 (0007) }
+exp_gen[7] := { e_18 (0013), {component_ref<source>,indirect_ref,e_18}@.MEM_17(D) (0008) }
+phi_gen[7] := { e_18 (0013) }
+tmp_gen[7] := { bb_12 (0008) }
+avail_out[7] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), ve_9 (0005), e_20 (0014), D.5595_23 (0016), e_18 (0013), bb_12 (0008) }
+exp_gen[17] := {  }
+phi_gen[17] := {  }
+tmp_gen[17] := {  }
+avail_out[17] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), ve_9 (0005), e_20 (0014), D.5595_23 (0016) }
+exp_gen[8] := { ve_24 (0017), {component_ref<next>,indirect_ref,ve_24}@.MEM_17(D) (0009) }
+phi_gen[8] := { ve_24 (0017) }
+tmp_gen[8] := { ve_13 (0009) }
+avail_out[8] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), ve_9 (0005), e_20 (0014), D.5595_23 (0016), ve_24 (0017), ve_13 (0009) }
+exp_gen[20] := {  }
+phi_gen[20] := {  }
+tmp_gen[20] := {  }
+avail_out[20] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), ve_9 (0005), e_20 (0014), D.5595_23 (0016), ve_24 (0017), ve_13 (0009) }
+exp_gen[9] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+phi_gen[9] := { bb_2 (0001) }
+tmp_gen[9] := { cfg.7_14 (0010), D.5599_15 (0011) }
+avail_out[9] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), bb_2 (0001), ve_9 (0005), cfg.7_14 (0010), D.5599_15 (0011) }
+exp_gen[21] := {  }
+phi_gen[21] := {  }
+tmp_gen[21] := {  }
+avail_out[21] := { target_5(D) (0003), source_7(D) (0004), bb_21 (0015), bb_2 (0001), ve_9 (0005), cfg.7_14 (0010), D.5599_15 (0011) }
+exp_gen[10] := { D.5594_4 (0002) }
+phi_gen[10] := { D.5594_4 (0002) }
+tmp_gen[10] := {  }
+avail_out[10] := { target_5(D) (0003), source_7(D) (0004), D.5594_4 (0002) }
+exp_gen[1] := {  }
+phi_gen[1] := {  }
+tmp_gen[1] := {  }
+avail_out[1] := {  }
+Starting iteration 0
+ANTIC_OUT[10] := {  }
+ANTIC_IN[10] := { D.5594_4 (0002) }
+S[10] := {  }
+ANTIC_OUT[11] := {  }
+ANTIC_IN[11] := {  }
+S[11] := {  }
+ANTIC_OUT[13] := {  }
+ANTIC_IN[13] := {  }
+S[13] := {  }
+Block 14 was deferred for a future iteration.
+ANTIC_OUT[3] := {  }
+ANTIC_IN[3] := {  }
+S[3] := {  }
+ANTIC_OUT[21] := {  }
+ANTIC_IN[21] := {  }
+S[21] := {  }
+ANTIC_OUT[9] := {  }
+ANTIC_IN[9] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[9] := {  }
+ANTIC_OUT[7] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[7] := { e_18 (0013), {component_ref<source>,indirect_ref,e_18}@.MEM_17(D) (0008), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[7] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[16] := { e_20 (0014), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_20}@.MEM_17(D) (0020) }
+ANTIC_IN[16] := { e_20 (0014), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_20}@.MEM_17(D) (0020) }
+S[16] := { e_20 (0014), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_20}@.MEM_17(D) (0020) }
+ANTIC_OUT[18] := { e_10 (0006), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_10}@.MEM_17(D) (0021) }
+ANTIC_IN[18] := { e_10 (0006), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_10}@.MEM_17(D) (0021) }
+S[18] := { e_10 (0006), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_10}@.MEM_17(D) (0021) }
+Block 19 was deferred for a future iteration.
+ANTIC_OUT[6] := { e_10 (0006), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_10}@.MEM_17(D) (0021) }
+ANTIC_IN[6] := { ve_13 (0009), {component_ref<edge>,indirect_ref,ve_13}@.MEM_17(D) (0006), {component_ref<type>,indirect_ref,e_10}@.MEM_17(D) (0007), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_10}@.MEM_17(D) (0021) }
+S[6] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_10}@.MEM_17(D) (0021) }
+ANTIC_OUT[20] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[20] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[20] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[8] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[8] := { ve_24 (0017), {component_ref<next>,indirect_ref,ve_24}@.MEM_17(D) (0009), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[8] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[17] := { ve_9 (0005), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<next>,indirect_ref,ve_9}@.MEM_17(D) (0022) }
+ANTIC_IN[17] := { ve_9 (0005), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<next>,indirect_ref,ve_9}@.MEM_17(D) (0022) }
+S[17] := { ve_9 (0005), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<next>,indirect_ref,ve_9}@.MEM_17(D) (0022) }
+ANTIC_OUT[5] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[5] := { ve_9 (0005), {component_ref<edge>,indirect_ref,ve_9}@.MEM_17(D) (0014), {component_ref<type>,indirect_ref,e_20}@.MEM_17(D) (0016), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[5] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[15] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[15] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[15] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[4] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[4] := { bb_21 (0015), {component_ref<pred>,indirect_ref,bb_21}@.MEM_17(D) (0005), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[4] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[12] := { target_5(D) (0003), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<pred>,indirect_ref,target_5(D)}@.MEM_17(D) (0023) }
+ANTIC_IN[12] := { target_5(D) (0003), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<pred>,indirect_ref,target_5(D)}@.MEM_17(D) (0023) }
+S[12] := { target_5(D) (0003), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<pred>,indirect_ref,target_5(D)}@.MEM_17(D) (0023) }
+ANTIC_OUT[2] := {  }
+ANTIC_IN[2] := {  }
+S[2] := {  }
+Starting iteration 1
+ANTIC_OUT[10] := {  }
+ANTIC_IN[10] := { D.5594_4 (0002) }
+S[10] := {  }
+ANTIC_OUT[14] := { bb_2 (0001), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<pred>,indirect_ref,bb_2}@.MEM_17(D) (0024) }
+ANTIC_IN[14] := { bb_2 (0001), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<pred>,indirect_ref,bb_2}@.MEM_17(D) (0024) }
+S[14] := { bb_2 (0001), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<pred>,indirect_ref,bb_2}@.MEM_17(D) (0024) }
+ANTIC_OUT[3] := {  }
+ANTIC_IN[3] := {  }
+S[3] := {  }
+ANTIC_OUT[9] := {  }
+ANTIC_IN[9] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[9] := {  }
+ANTIC_OUT[7] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[7] := { e_18 (0013), {component_ref<source>,indirect_ref,e_18}@.MEM_17(D) (0008), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[7] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[16] := { e_20 (0014), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_20}@.MEM_17(D) (0020) }
+ANTIC_IN[16] := { e_20 (0014), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_20}@.MEM_17(D) (0020) }
+S[16] := { e_20 (0014), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_20}@.MEM_17(D) (0020) }
+ANTIC_OUT[18] := { e_10 (0006), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_10}@.MEM_17(D) (0021) }
+ANTIC_IN[18] := { e_10 (0006), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_10}@.MEM_17(D) (0021) }
+S[18] := { e_10 (0006), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<source>,indirect_ref,e_10}@.MEM_17(D) (0021) }
+ANTIC_OUT[19] := { ve_13 (0009), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<next>,indirect_ref,ve_13}@.MEM_17(D) (0025) }
+ANTIC_IN[19] := { ve_13 (0009), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<next>,indirect_ref,ve_13}@.MEM_17(D) (0025) }
+S[19] := { ve_13 (0009), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<next>,indirect_ref,ve_13}@.MEM_17(D) (0025) }
+ANTIC_OUT[6] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[6] := { ve_13 (0009), {component_ref<edge>,indirect_ref,ve_13}@.MEM_17(D) (0006), {component_ref<type>,indirect_ref,e_10}@.MEM_17(D) (0007), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[6] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[20] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[20] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[20] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[8] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[8] := { ve_24 (0017), {component_ref<next>,indirect_ref,ve_24}@.MEM_17(D) (0009), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[8] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[17] := { ve_9 (0005), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<next>,indirect_ref,ve_9}@.MEM_17(D) (0022) }
+ANTIC_IN[17] := { ve_9 (0005), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<next>,indirect_ref,ve_9}@.MEM_17(D) (0022) }
+S[17] := { ve_9 (0005), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<next>,indirect_ref,ve_9}@.MEM_17(D) (0022) }
+ANTIC_OUT[5] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[5] := { ve_9 (0005), {component_ref<edge>,indirect_ref,ve_9}@.MEM_17(D) (0014), {component_ref<type>,indirect_ref,e_20}@.MEM_17(D) (0016), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[5] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[15] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[15] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[15] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[4] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[4] := { bb_21 (0015), {component_ref<pred>,indirect_ref,bb_21}@.MEM_17(D) (0005), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[4] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_OUT[12] := { target_5(D) (0003), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<pred>,indirect_ref,target_5(D)}@.MEM_17(D) (0023) }
+ANTIC_IN[12] := { target_5(D) (0003), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<pred>,indirect_ref,target_5(D)}@.MEM_17(D) (0023) }
+S[12] := { target_5(D) (0003), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<pred>,indirect_ref,target_5(D)}@.MEM_17(D) (0023) }
+Starting iteration 2
+ANTIC_OUT[14] := { bb_2 (0001), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<pred>,indirect_ref,bb_2}@.MEM_17(D) (0024) }
+ANTIC_IN[14] := { bb_2 (0001), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<pred>,indirect_ref,bb_2}@.MEM_17(D) (0024) }
+S[14] := { bb_2 (0001), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<pred>,indirect_ref,bb_2}@.MEM_17(D) (0024) }
+ANTIC_OUT[19] := { ve_13 (0009), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<next>,indirect_ref,ve_13}@.MEM_17(D) (0025) }
+ANTIC_IN[19] := { ve_13 (0009), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<next>,indirect_ref,ve_13}@.MEM_17(D) (0025) }
+S[19] := { ve_13 (0009), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011), {component_ref<next>,indirect_ref,ve_13}@.MEM_17(D) (0025) }
+ANTIC_OUT[6] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+ANTIC_IN[6] := { ve_13 (0009), {component_ref<edge>,indirect_ref,ve_13}@.MEM_17(D) (0006), {component_ref<type>,indirect_ref,e_10}@.MEM_17(D) (0007), {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+S[6] := { {cfg}@.MEM_17(D) (0010), {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011) }
+Found partial redundancy for expression {cfg}@.MEM_17(D) (0010)
+Inserted pretmp.24_1 = cfg;
+ in predecessor 12
+Created phi prephitmp.25_3 = PHI <cfg.7_14(14), pretmp.24_1(12)>
+ in block 4
+Found partial redundancy for expression {component_ref<entry>,indirect_ref,cfg.7_14}@.MEM_17(D) (0011)
+Inserted pretmp.26_19 = pretmp.24_1->entry;
+ in predecessor 12
+Created phi prephitmp.27_22 = PHI <D.5599_15(14), pretmp.26_19(12)>
+ in block 4
+Found fully redundant value
+Found fully redundant value
+Found fully redundant value
+Found fully redundant value
+Found fully redundant value
+Found fully redundant value
+Found fully redundant value
+Found fully redundant value
+Found fully redundant value
+Found fully redundant value
+Found fully redundant value
+Found fully redundant value
+Replaced cfg with pretmp.24_1 in cfg.7_14 = cfg;
+Replaced cfg.7_14->entry with pretmp.26_19 in D.5599_15 = cfg.7_14->entry;
+Removing unnecessary insertion:prephitmp.25_3 = PHI <cfg.7_14(14), pretmp.24_1(12)>
+Removing unnecessary insertion:prephitmp.27_22 = PHI <D.5599_15(14), pretmp.26_19(12)>
+
+Pass statistics:
+----------------
+compute_antic iterations == 3: 1
+Insertions: 2
+New PHIs: 2
+SCC iterations == 3: 1
+insert iterations == 2: 1
+Eliminated: 2
+
+
+
+Registering new PHI nodes in block #0
+
+
+
+Registering new PHI nodes in block #2
+
+
+
+Registering new PHI nodes in block #12
+
+Updating SSA information for statement pretmp.24_1 = cfg;
+
+Updating SSA information for statement pretmp.26_19 = pretmp.24_1->entry;
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement ve_9 = bb_21->pred;
+
+
+
+Registering new PHI nodes in block #15
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement e_20 = ve_9->edge;
+
+Updating SSA information for statement D.5595_23 = e_20->type;
+
+
+
+Registering new PHI nodes in block #16
+
+
+
+Registering new PHI nodes in block #7
+
+Updating SSA information for statement bb_12 = e_18->source;
+
+
+
+Registering new PHI nodes in block #17
+
+
+
+Registering new PHI nodes in block #8
+
+Updating SSA information for statement ve_13 = ve_24->next;
+
+
+
+Registering new PHI nodes in block #6
+
+Updating SSA information for statement e_10 = ve_13->edge;
+
+Updating SSA information for statement D.5595_11 = e_10->type;
+
+
+
+Registering new PHI nodes in block #19
+
+
+
+Registering new PHI nodes in block #18
+
+
+
+Registering new PHI nodes in block #20
+
+
+
+Registering new PHI nodes in block #9
+
+
+
+Registering new PHI nodes in block #3
+
+
+
+Registering new PHI nodes in block #13
+
+
+
+Registering new PHI nodes in block #14
+
+
+
+Registering new PHI nodes in block #21
+
+
+
+Registering new PHI nodes in block #11
+
+
+
+Registering new PHI nodes in block #10
+
+
+DFA Statistics for is_ancestor
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                     15         60b
+Variables annotated                      15        180b
+USE operands                             32        128b
+DEF operands                             11         44b
+VUSE operands                             9         36b
+VDEF operands                             0          0b
+PHI nodes                                 5        300b
+PHI arguments                            12        288b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                 1036b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.4 (max: 3)
+
+
+Hash table statistics:
+    def_blocks:   size 31, 1 elements, 0.000000 collision/search ratio
+    repl_tbl:     size 31, 0 elements, 0.000000 collision/search ratio
+
+
+
+Symbols to be put in SSA form
+
+{ .MEM }
+
+
+Incremental SSA update started at block: 0
+
+Number of blocks in CFG: 22
+Number of blocks to update: 21 ( 95%)
+
+Affected blocks: 0 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 
+
+
+is_ancestor (struct basic_block * sourceD.4191, struct basic_block * targetD.4192)
+{
+  struct basic_block * prephitmp.27D.5632;
+  struct basic_block * pretmp.26D.5631;
+  struct control_flow_graph * prephitmp.25D.5630;
+  struct control_flow_graph * pretmp.24D.5629;
+  struct edge * eD.4197;
+  struct vec_edge * veD.4196;
+  struct basic_block * bbD.4195;
+  struct basic_block * D.5599;
+  struct control_flow_graph * cfg.7D.5598;
+  edge_type D.5595;
+  intD.0 D.5594;
+
+  # BLOCK 2 freq:165
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  if (targetD.4192_5(D) == sourceD.4191_7(D))
+    goto <bb 11>;
+  else
+    goto <bb 12>;
+  # SUCC: 11 [4.5%]  (true,exec) 12 [95.5%]  (false,exec)
+
+  # BLOCK 12 freq:158
+  # PRED: 2 [95.5%]  (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  pretmp.24D.5629_1 = cfgD.4174;
+  # VUSE <.MEMD.5611_17(D)>
+  pretmp.26D.5631_19 = pretmp.24D.5629_1->entryD.4155;
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 11 freq:7
+  # PRED: 2 [4.5%]  (true,exec)
+  goto <bb 10>;
+  # SUCC: 10 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:756
+  # PRED: 9 [86.0%]  (true,exec)
+  # DEBUG bbD.4195 => bbD.4195_2
+  if (bbD.4195_2 == sourceD.4191_7(D))
+    goto <bb 13>;
+  else
+    goto <bb 14>;
+  # SUCC: 13 [4.5%]  (true,exec) 14 [95.5%]  (false,exec)
+
+  # BLOCK 13 freq:34
+  # PRED: 3 [4.5%]  (true,exec)
+  goto <bb 10>;
+  # SUCC: 10 [100.0%]  (fallthru)
+
+  # BLOCK 14 freq:722
+  # PRED: 3 [95.5%]  (false,exec)
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:880
+  # PRED: 14 [100.0%]  (fallthru) 12 [100.0%]  (fallthru)
+  # bbD.4195_21 = PHI <bbD.4195_2(14), targetD.4192_5(D)(12)>
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_9 = bbD.4195_21->predD.4147;
+  # DEBUG veD.4196 => veD.4196_9
+  # DEBUG veD.4196 => veD.4196_9
+  if (veD.4196_9 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 15>;
+  # SUCC: 5 [95.5%]  (true,exec) 15 [4.5%]  (false,exec)
+
+  # BLOCK 15 freq:40
+  # PRED: 4 [4.5%]  (false,exec)
+  goto <bb 9>;
+  # SUCC: 9 [100.0%]  (fallthru)
+
+  # BLOCK 5 freq:840
+  # PRED: 4 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_20 = veD.4196_9->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_20
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_23 = eD.4197_20->typeD.4133;
+  if (D.5595_23 == 1)
+    goto <bb 16>;
+  else
+    goto <bb 17>;
+  # SUCC: 16 [4.5%]  (true,exec) 17 [95.5%]  (false,exec)
+
+  # BLOCK 16 freq:38
+  # PRED: 5 [4.5%]  (true,exec)
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 6 freq:8710
+  # PRED: 8 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_10 = veD.4196_13->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_10
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_11 = eD.4197_10->typeD.4133;
+  if (D.5595_11 == 1)
+    goto <bb 18>;
+  else
+    goto <bb 19>;
+  # SUCC: 18 [4.5%]  (true,exec) 19 [95.5%]  (false,exec)
+
+  # BLOCK 19 freq:8318
+  # PRED: 6 [95.5%]  (false,exec)
+  goto <bb 8>;
+  # SUCC: 8 [100.0%]  (fallthru)
+
+  # BLOCK 18 freq:392
+  # PRED: 6 [4.5%]  (true,exec)
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 7 freq:430
+  # PRED: 18 [100.0%]  (fallthru) 16 [100.0%]  (fallthru)
+  # eD.4197_18 = PHI <eD.4197_10(18), eD.4197_20(16)>
+  # VUSE <.MEMD.5611_17(D)>
+  bbD.4195_12 = eD.4197_18->sourceD.4134;
+  # DEBUG bbD.4195 => bbD.4195_12
+  goto <bb 9>;
+  # SUCC: 9 [100.0%]  (fallthru,exec)
+
+  # BLOCK 17 freq:802
+  # PRED: 5 [95.5%]  (false,exec)
+  # SUCC: 8 [100.0%]  (fallthru)
+
+  # BLOCK 8 freq:9120
+  # PRED: 19 [100.0%]  (fallthru) 17 [100.0%]  (fallthru)
+  # veD.4196_24 = PHI <veD.4196_13(19), veD.4196_9(17)>
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_13 = veD.4196_24->nextD.4139;
+  # DEBUG veD.4196 => veD.4196_13
+  # DEBUG veD.4196 => veD.4196_13
+  if (veD.4196_13 != 0B)
+    goto <bb 6>;
+  else
+    goto <bb 20>;
+  # SUCC: 6 [95.5%]  (true,exec) 20 [4.5%]  (false,exec)
+
+  # BLOCK 20 freq:410
+  # PRED: 8 [4.5%]  (false,exec)
+  # SUCC: 9 [100.0%]  (fallthru)
+
+  # BLOCK 9 freq:880
+  # PRED: 7 [100.0%]  (fallthru,exec) 20 [100.0%]  (fallthru) 15 [100.0%]  (fallthru)
+  # bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_21(20), bbD.4195_21(15)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  cfg.7D.5598_14 = pretmp.24D.5629_1;
+  D.5599_15 = pretmp.26D.5631_19;
+  if (D.5599_15 != bbD.4195_2)
+    goto <bb 3>;
+  else
+    goto <bb 21>;
+  # SUCC: 3 [86.0%]  (true,exec) 21 [14.0%]  (false,exec)
+
+  # BLOCK 21 freq:123
+  # PRED: 9 [14.0%]  (false,exec)
+  # SUCC: 10 [100.0%]  (fallthru)
+
+  # BLOCK 10 freq:165
+  # PRED: 13 [100.0%]  (fallthru) 21 [100.0%]  (fallthru) 11 [100.0%]  (fallthru)
+  # D.5594_4 = PHI <1(13), 0(21), 1(11)>
+  return D.5594_4;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edge (mark_edge)
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+e = &NONLOCAL
+source_2 = *e + 32
+target_3 = *e + 64
+CALLUSED = target_3
+CALLUSED = source_2
+CALLUSED = source_2
+CALLUSED = target_3
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 6, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 4, location:4
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 10, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 11, location:0
+Equivalence classes for Direct node node id 8:e are pointer: 12, location:0
+Equivalence classes for Indirect node node id 9:source_2 are pointer: 7, location:0
+Equivalence classes for Indirect node node id 10:target_3 are pointer: 8, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               3
+Non-pointer vars:          1
+Statically unified vars:  0
+Dynamically unified vars: 0
+Iterations:               1
+Number of edges:          5
+Number of implicit edges: 8
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { }
+NONLOCAL = { ESCAPED NONLOCAL }
+CALLUSED = { ESCAPED NONLOCAL }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+e = { NONLOCAL }
+source_2 = { ESCAPED NONLOCAL }
+target_3 = { ESCAPED NONLOCAL }
+
+
+Alias information for mark_edge
+
+Aliased symbols
+
+.MEMD.5612, UID D.5612, voidD.32, is global, call clobbered, default def: .MEMD.5612_6(D)
+
+Call clobber information
+
+ESCAPED, points-to vars: { }
+CALLUSED, points-to non-local, points-to escaped, points-to vars: { }
+
+Flow-insensitive points-to information
+
+eD.4203_1(D), points-to non-local, points-to vars: { }
+sourceD.4206_2, points-to non-local, points-to escaped, points-to vars: { }
+targetD.4207_3, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in mark_edge: 6
+
+Variable: .MEMD.5612, UID D.5612, voidD.32, is global, call clobbered, default def: .MEMD.5612_6(D)
+Variable: D.5584, UID D.5584, intD.0
+Variable: D.5588, UID D.5588, intD.0
+Variable: eD.4203, UID D.4203, struct edge *, default def: eD.4203_1(D), initial: struct edge *
+Variable: sourceD.4206, UID D.4206, struct basic_block *
+Variable: targetD.4207, UID D.4207, struct basic_block *
+
+Points to sets created:5
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7
+;; 2 succs { 3 4 }
+;; 3 succs { 7 }
+;; 4 succs { 5 6 }
+;; 5 succs { 7 }
+;; 6 succs { 7 }
+;; 7 succs { 1 }
+SCC consists of: e_1(D) 
+Setting value number of e_1(D) to e_1(D)
+SCC consists of: .MEM_6(D) 
+Setting value number of .MEM_6(D) to .MEM_6(D) (changed)
+SCC consists of: source_2 
+Value numbering source_2 stmt = source_2 = e_1(D)->source;
+Setting value number of source_2 to source_2 (changed)
+SCC consists of: target_3 
+Value numbering target_3 stmt = target_3 = e_1(D)->target;
+Setting value number of target_3 to target_3 (changed)
+SCC consists of: D.5584_4 
+Value numbering D.5584_4 stmt = D.5584_4 = is_ancestor (target_3, source_2);
+Setting value number of D.5584_4 to D.5584_4 (changed)
+SCC consists of: D.5588_5 
+Value numbering D.5588_5 stmt = D.5588_5 = is_ancestor (source_2, target_3);
+Setting value number of D.5588_5 to D.5588_5 (changed)
+Value numbers:
+exp_gen[0] := {  }
+phi_gen[0] := {  }
+tmp_gen[0] := { e_1(D) (0001) }
+avail_out[0] := { e_1(D) (0001) }
+exp_gen[2] := { e_1(D) (0001), {component_ref<source>,indirect_ref,e_1(D)}@.MEM_6(D) (0002), {component_ref<target>,indirect_ref,e_1(D)}@.MEM_6(D) (0003), {call_expr<is_ancestor>,target_3,source_2}@.MEM_6(D) (0004) }
+phi_gen[2] := {  }
+tmp_gen[2] := { source_2 (0002), target_3 (0003), D.5584_4 (0004) }
+avail_out[2] := { e_1(D) (0001), source_2 (0002), target_3 (0003), D.5584_4 (0004) }
+exp_gen[3] := { e_1(D) (0001) }
+phi_gen[3] := {  }
+tmp_gen[3] := {  }
+avail_out[3] := { e_1(D) (0001), source_2 (0002), target_3 (0003), D.5584_4 (0004) }
+exp_gen[4] := { source_2 (0002), target_3 (0003), {call_expr<is_ancestor>,source_2,target_3}@.MEM_6(D) (0005) }
+phi_gen[4] := {  }
+tmp_gen[4] := { D.5588_5 (0005) }
+avail_out[4] := { e_1(D) (0001), source_2 (0002), target_3 (0003), D.5584_4 (0004), D.5588_5 (0005) }
+exp_gen[5] := { e_1(D) (0001) }
+phi_gen[5] := {  }
+tmp_gen[5] := {  }
+avail_out[5] := { e_1(D) (0001), source_2 (0002), target_3 (0003), D.5584_4 (0004), D.5588_5 (0005) }
+exp_gen[6] := { e_1(D) (0001) }
+phi_gen[6] := {  }
+tmp_gen[6] := {  }
+avail_out[6] := { e_1(D) (0001), source_2 (0002), target_3 (0003), D.5584_4 (0004), D.5588_5 (0005) }
+exp_gen[7] := {  }
+phi_gen[7] := {  }
+tmp_gen[7] := {  }
+avail_out[7] := { e_1(D) (0001), source_2 (0002), target_3 (0003), D.5584_4 (0004) }
+exp_gen[1] := {  }
+phi_gen[1] := {  }
+tmp_gen[1] := {  }
+avail_out[1] := {  }
+Starting iteration 0
+ANTIC_OUT[7] := {  }
+ANTIC_IN[7] := {  }
+S[7] := {  }
+ANTIC_OUT[3] := {  }
+ANTIC_IN[3] := { e_1(D) (0001) }
+S[3] := {  }
+ANTIC_OUT[5] := {  }
+ANTIC_IN[5] := { e_1(D) (0001) }
+S[5] := {  }
+ANTIC_OUT[6] := {  }
+ANTIC_IN[6] := { e_1(D) (0001) }
+S[6] := {  }
+ANTIC_OUT[4] := { e_1(D) (0001) }
+ANTIC_IN[4] := { e_1(D) (0001), source_2 (0002), target_3 (0003), {call_expr<is_ancestor>,source_2,target_3}@.MEM_6(D) (0005) }
+S[4] := { e_1(D) (0001) }
+ANTIC_OUT[2] := { e_1(D) (0001) }
+ANTIC_IN[2] := { e_1(D) (0001), {component_ref<source>,indirect_ref,e_1(D)}@.MEM_6(D) (0002), {component_ref<target>,indirect_ref,e_1(D)}@.MEM_6(D) (0003), {call_expr<is_ancestor>,target_3,source_2}@.MEM_6(D) (0004) }
+S[2] := { e_1(D) (0001) }
+Starting iteration 1
+ANTIC_OUT[3] := {  }
+ANTIC_IN[3] := { e_1(D) (0001) }
+S[3] := {  }
+ANTIC_OUT[5] := {  }
+ANTIC_IN[5] := { e_1(D) (0001) }
+S[5] := {  }
+ANTIC_OUT[6] := {  }
+ANTIC_IN[6] := { e_1(D) (0001) }
+S[6] := {  }
+ANTIC_OUT[4] := { e_1(D) (0001) }
+ANTIC_IN[4] := { e_1(D) (0001), source_2 (0002), target_3 (0003), {call_expr<is_ancestor>,source_2,target_3}@.MEM_6(D) (0005) }
+S[4] := { e_1(D) (0001) }
+ANTIC_OUT[2] := { e_1(D) (0001) }
+ANTIC_IN[2] := { e_1(D) (0001), {component_ref<source>,indirect_ref,e_1(D)}@.MEM_6(D) (0002), {component_ref<target>,indirect_ref,e_1(D)}@.MEM_6(D) (0003), {call_expr<is_ancestor>,target_3,source_2}@.MEM_6(D) (0004) }
+S[2] := { e_1(D) (0001) }
+
+Pass statistics:
+----------------
+compute_antic iterations == 2: 1
+insert iterations == 1: 1
+
+mark_edge (struct edge * eD.4203)
+{
+  struct basic_block * targetD.4207;
+  struct basic_block * sourceD.4206;
+  intD.0 D.5588;
+  intD.0 D.5584;
+
+  # BLOCK 2 freq:10000
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  sourceD.4206_2 = eD.4203_1(D)->sourceD.4134;
+  # DEBUG sourceD.4206 => sourceD.4206_2
+  # VUSE <.MEMD.5612_6(D)>
+  targetD.4207_3 = eD.4203_1(D)->targetD.4135;
+  # DEBUG targetD.4207 => targetD.4207_3
+  # VUSE <.MEMD.5612_6(D)>
+  D.5584_4 = is_ancestorD.4193 (targetD.4207_3, sourceD.4206_2);
+  if (D.5584_4 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [61.0%]  (true,exec) 4 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:6102
+  # PRED: 2 [61.0%]  (true,exec)
+  # .MEMD.5612_7 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 3;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:3898
+  # PRED: 2 [39.0%]  (false,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  D.5588_5 = is_ancestorD.4193 (sourceD.4206_2, targetD.4207_3);
+  if (D.5588_5 != 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [39.0%]  (true,exec) 6 [61.0%]  (false,exec)
+
+  # BLOCK 5 freq:1520
+  # PRED: 4 [39.0%]  (true,exec)
+  # .MEMD.5612_8 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 2;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:2378
+  # PRED: 4 [61.0%]  (false,exec)
+  # .MEMD.5612_9 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 4;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 3 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edges (mark_edges)
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+current_function = NONLOCAL
+current_function.6_2 = current_function
+cfg_3 = *current_function.6_2 + 32
+e_4 = *cfg_3 + 192
+e_13 = e_6
+e_13 = e_4
+ESCAPED = e_13
+e_6 = *e_13 + 96
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Found location equivalence for node NONLOCAL
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 9, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 7, location:3
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 11, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 12, location:0
+Equivalence classes for Direct node node id 8:current_function.6_2 are pointer: 7, location:0
+Equivalence classes for Direct node node id 9:current_function are pointer: 7, location:0
+Equivalence classes for Indirect node node id 10:cfg_3 are pointer: 13, location:0
+Equivalence classes for Indirect node node id 11:e_4 are pointer: 4, location:0
+Equivalence classes for Direct node node id 12:e_13 are pointer: 6, location:0
+Equivalence classes for Indirect node node id 13:e_6 are pointer: 5, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Unifying current_function.6_2 to current_function
+Uniting pointer but not location equivalent variables
+Unifying NONLOCAL to current_function
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               6
+Non-pointer vars:          1
+Statically unified vars:  2
+Dynamically unified vars: 0
+Iterations:               3
+Number of edges:          12
+Number of implicit edges: 10
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = same as current_function
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+current_function.6_2 = same as current_function
+current_function = { ESCAPED NONLOCAL }
+cfg_3 = { ESCAPED NONLOCAL }
+e_4 = { ESCAPED NONLOCAL }
+e_13 = { ESCAPED NONLOCAL }
+e_6 = { ESCAPED NONLOCAL }
+
+
+Alias information for mark_edges
+
+Aliased symbols
+
+.MEMD.5613, UID D.5613, voidD.32, is global, call clobbered, default def: .MEMD.5613_9(D)
+current_functionD.4113, UID D.4113, struct function *, is global, call clobbered
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+current_function.6D.5580_2, points-to non-local, points-to escaped, points-to vars: { }
+cfgD.4211_3, points-to non-local, points-to escaped, points-to vars: { }
+eD.4212_4, points-to non-local, points-to escaped, points-to vars: { }
+eD.4212_6, points-to non-local, points-to escaped, points-to vars: { }
+eD.4212_13, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in mark_edges: 6
+
+Variable: current_function.6D.5580, UID D.5580, struct function *
+Variable: D.5581, UID D.5581, edge_type
+Variable: .MEMD.5613, UID D.5613, voidD.32, is global, call clobbered, default def: .MEMD.5613_9(D)
+Variable: current_functionD.4113, UID D.4113, struct function *, is global, call clobbered
+Variable: cfgD.4211, UID D.4211, struct control_flow_graph *
+Variable: eD.4212, UID D.4212, struct edge *
+
+Points to sets created:7
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 8 7 3 9 4 5 10 11 6
+;;
+;; Loop 1
+;;  header 3, latch 10
+;;  depth 1, outer 0
+;;  nodes: 3 10 5 9 4
+;; 2 succs { 7 8 }
+;; 8 succs { 6 }
+;; 7 succs { 3 }
+;; 3 succs { 4 9 }
+;; 9 succs { 5 }
+;; 4 succs { 5 }
+;; 5 succs { 10 11 }
+;; 10 succs { 3 }
+;; 11 succs { 6 }
+;; 6 succs { 1 }
+SCC consists of: .MEM_9(D) 
+Setting value number of .MEM_9(D) to .MEM_9(D) (changed)
+SCC consists of: current_function.6_2 
+Value numbering current_function.6_2 stmt = current_function.6_2 = current_function;
+Setting value number of current_function.6_2 to current_function.6_2 (changed)
+SCC consists of: cfg_3 
+Value numbering cfg_3 stmt = cfg_3 = current_function.6_2->cfg;
+Setting value number of cfg_3 to cfg_3 (changed)
+SCC consists of: e_4 
+Value numbering e_4 stmt = e_4 = cfg_3->edge;
+Setting value number of e_4 to e_4 (changed)
+SCC consists of: e_13 .MEM_14 .MEM_10 .MEM_7 e_6 
+Value numbering e_13 stmt = e_13 = PHI <e_6(10), e_4(7)>
+Setting value number of e_13 to e_4 (changed)
+Value numbering .MEM_14 stmt = .MEM_14 = PHI <.MEM_7(10), .MEM_9(D)(7)>
+Setting value number of .MEM_14 to .MEM_9(D) (changed)
+Value numbering .MEM_10 stmt = mark_edge (e_13);
+Setting value number of .MEM_10 to .MEM_10 (changed)
+Value numbering .MEM_7 stmt = .MEM_7 = PHI <.MEM_14(9), .MEM_10(4)>
+Setting value number of .MEM_7 to .MEM_7 (changed)
+Value numbering e_6 stmt = e_6 = e_13->next;
+Setting value number of e_6 to e_6 (changed)
+Value numbering e_13 stmt = e_13 = PHI <e_6(10), e_4(7)>
+Setting value number of e_13 to e_13 (changed)
+Value numbering .MEM_14 stmt = .MEM_14 = PHI <.MEM_7(10), .MEM_9(D)(7)>
+Setting value number of .MEM_14 to .MEM_14 (changed)
+Value numbering .MEM_10 stmt = mark_edge (e_13);
+Setting value number of .MEM_10 to .MEM_10
+Value numbering .MEM_7 stmt = .MEM_7 = PHI <.MEM_14(9), .MEM_10(4)>
+Setting value number of .MEM_7 to .MEM_7
+Value numbering e_6 stmt = e_6 = e_13->next;
+Setting value number of e_6 to e_6
+Value numbering e_13 stmt = e_13 = PHI <e_6(10), e_4(7)>
+Setting value number of e_13 to e_13
+Value numbering .MEM_14 stmt = .MEM_14 = PHI <.MEM_7(10), .MEM_9(D)(7)>
+Setting value number of .MEM_14 to .MEM_14
+Value numbering .MEM_10 stmt = mark_edge (e_13);
+Setting value number of .MEM_10 to .MEM_10
+Value numbering .MEM_7 stmt = .MEM_7 = PHI <.MEM_14(9), .MEM_10(4)>
+Setting value number of .MEM_7 to .MEM_7
+Value numbering e_6 stmt = e_6 = e_13->next;
+Setting value number of e_6 to e_6
+SCC consists of: D.5581_5 
+Value numbering D.5581_5 stmt = D.5581_5 = e_13->type;
+Setting value number of D.5581_5 to D.5581_5 (changed)
+Value numbers:
+exp_gen[0] := {  }
+phi_gen[0] := {  }
+tmp_gen[0] := {  }
+avail_out[0] := {  }
+exp_gen[2] := { {current_function}@.MEM_9(D) (0001), {component_ref<cfg>,indirect_ref,current_function.6_2}@.MEM_9(D) (0002), {component_ref<edge>,indirect_ref,cfg_3}@.MEM_9(D) (0003) }
+phi_gen[2] := {  }
+tmp_gen[2] := { current_function.6_2 (0001), cfg_3 (0002), e_4 (0003) }
+avail_out[2] := { current_function.6_2 (0001), cfg_3 (0002), e_4 (0003) }
+exp_gen[8] := {  }
+phi_gen[8] := {  }
+tmp_gen[8] := {  }
+avail_out[8] := { current_function.6_2 (0001), cfg_3 (0002), e_4 (0003) }
+exp_gen[7] := {  }
+phi_gen[7] := {  }
+tmp_gen[7] := {  }
+avail_out[7] := { current_function.6_2 (0001), cfg_3 (0002), e_4 (0003) }
+exp_gen[3] := { e_13 (0009), {component_ref<type>,indirect_ref,e_13}@.MEM_14 (0004) }
+phi_gen[3] := { e_13 (0009) }
+tmp_gen[3] := { D.5581_5 (0004) }
+avail_out[3] := { current_function.6_2 (0001), cfg_3 (0002), e_4 (0003), e_13 (0009), D.5581_5 (0004) }
+exp_gen[9] := {  }
+phi_gen[9] := {  }
+tmp_gen[9] := {  }
+avail_out[9] := { current_function.6_2 (0001), cfg_3 (0002), e_4 (0003), e_13 (0009), D.5581_5 (0004) }
+exp_gen[4] := {  }
+phi_gen[4] := {  }
+tmp_gen[4] := {  }
+avail_out[4] := { current_function.6_2 (0001), cfg_3 (0002), e_4 (0003), e_13 (0009), D.5581_5 (0004) }
+exp_gen[5] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_7 (0005) }
+phi_gen[5] := {  }
+tmp_gen[5] := { e_6 (0005) }
+avail_out[5] := { current_function.6_2 (0001), cfg_3 (0002), e_4 (0003), e_13 (0009), e_6 (0005), D.5581_5 (0004) }
+exp_gen[10] := {  }
+phi_gen[10] := {  }
+tmp_gen[10] := {  }
+avail_out[10] := { current_function.6_2 (0001), cfg_3 (0002), e_4 (0003), e_13 (0009), e_6 (0005), D.5581_5 (0004) }
+exp_gen[11] := {  }
+phi_gen[11] := {  }
+tmp_gen[11] := {  }
+avail_out[11] := { current_function.6_2 (0001), cfg_3 (0002), e_4 (0003), e_13 (0009), e_6 (0005), D.5581_5 (0004) }
+exp_gen[6] := {  }
+phi_gen[6] := {  }
+tmp_gen[6] := {  }
+avail_out[6] := { current_function.6_2 (0001), cfg_3 (0002), e_4 (0003) }
+exp_gen[1] := {  }
+phi_gen[1] := {  }
+tmp_gen[1] := {  }
+avail_out[1] := {  }
+Starting iteration 0
+Block 10 was deferred for a future iteration.
+ANTIC_OUT[6] := {  }
+ANTIC_IN[6] := {  }
+S[6] := {  }
+ANTIC_OUT[11] := {  }
+ANTIC_IN[11] := {  }
+S[11] := {  }
+ANTIC_OUT[5] := {  }
+ANTIC_IN[5] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_7 (0005) }
+S[5] := {  }
+ANTIC_OUT[4] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_10 (0011) }
+ANTIC_IN[4] := { e_13 (0009) }
+S[4] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_10 (0011) }
+ANTIC_OUT[9] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_14 (0012) }
+ANTIC_IN[9] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_14 (0012) }
+S[9] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_14 (0012) }
+ANTIC_OUT[3] := { e_13 (0009) }
+ANTIC_IN[3] := { e_13 (0009), {component_ref<type>,indirect_ref,e_13}@.MEM_14 (0004) }
+S[3] := { e_13 (0009) }
+ANTIC_OUT[7] := { e_4 (0003), {component_ref<type>,indirect_ref,e_4}@.MEM_9(D) (0013) }
+ANTIC_IN[7] := { e_4 (0003), {component_ref<type>,indirect_ref,e_4}@.MEM_9(D) (0013) }
+S[7] := { e_4 (0003), {component_ref<type>,indirect_ref,e_4}@.MEM_9(D) (0013) }
+ANTIC_OUT[8] := {  }
+ANTIC_IN[8] := {  }
+S[8] := {  }
+ANTIC_OUT[2] := {  }
+ANTIC_IN[2] := { {current_function}@.MEM_9(D) (0001), {component_ref<cfg>,indirect_ref,current_function.6_2}@.MEM_9(D) (0002), {component_ref<edge>,indirect_ref,cfg_3}@.MEM_9(D) (0003) }
+S[2] := {  }
+Starting iteration 1
+ANTIC_OUT[10] := { e_6 (0005), {component_ref<type>,indirect_ref,e_6}@.MEM_7 (0014) }
+ANTIC_IN[10] := { e_6 (0005), {component_ref<type>,indirect_ref,e_6}@.MEM_7 (0014) }
+S[10] := { e_6 (0005), {component_ref<type>,indirect_ref,e_6}@.MEM_7 (0014) }
+ANTIC_OUT[5] := {  }
+ANTIC_IN[5] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_7 (0005) }
+S[5] := {  }
+ANTIC_OUT[4] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_10 (0011) }
+ANTIC_IN[4] := { e_13 (0009) }
+S[4] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_10 (0011) }
+ANTIC_OUT[9] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_14 (0012) }
+ANTIC_IN[9] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_14 (0012) }
+S[9] := { e_13 (0009), {component_ref<next>,indirect_ref,e_13}@.MEM_14 (0012) }
+ANTIC_OUT[3] := { e_13 (0009) }
+ANTIC_IN[3] := { e_13 (0009), {component_ref<type>,indirect_ref,e_13}@.MEM_14 (0004) }
+S[3] := { e_13 (0009) }
+ANTIC_OUT[7] := { e_4 (0003), {component_ref<type>,indirect_ref,e_4}@.MEM_9(D) (0013) }
+ANTIC_IN[7] := { e_4 (0003), {component_ref<type>,indirect_ref,e_4}@.MEM_9(D) (0013) }
+S[7] := { e_4 (0003), {component_ref<type>,indirect_ref,e_4}@.MEM_9(D) (0013) }
+ANTIC_OUT[2] := {  }
+ANTIC_IN[2] := { {current_function}@.MEM_9(D) (0001), {component_ref<cfg>,indirect_ref,current_function.6_2}@.MEM_9(D) (0002), {component_ref<edge>,indirect_ref,cfg_3}@.MEM_9(D) (0003) }
+S[2] := {  }
+Starting iteration 2
+ANTIC_OUT[10] := { e_6 (0005), {component_ref<type>,indirect_ref,e_6}@.MEM_7 (0014) }
+ANTIC_IN[10] := { e_6 (0005), {component_ref<type>,indirect_ref,e_6}@.MEM_7 (0014) }
+S[10] := { e_6 (0005), {component_ref<type>,indirect_ref,e_6}@.MEM_7 (0014) }
+
+Pass statistics:
+----------------
+compute_antic iterations == 3: 1
+SCC iterations == 3: 1
+insert iterations == 1: 1
+
+mark_edges ()
+{
+  struct edge * eD.4212;
+  struct control_flow_graph * cfgD.4211;
+  edge_type D.5581;
+  struct function * current_function.6D.5580;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5613_9(D)>
+  current_function.6D.5580_2 = current_functionD.4113;
+  # VUSE <.MEMD.5613_9(D)>
+  cfgD.4211_3 = current_function.6D.5580_2->cfgD.4162;
+  # DEBUG cfgD.4211 => cfgD.4211_3
+  # VUSE <.MEMD.5613_9(D)>
+  eD.4212_4 = cfgD.4211_3->edgeD.4159;
+  # DEBUG eD.4212 => eD.4212_4
+  # DEBUG eD.4212 => eD.4212_4
+  if (eD.4212_4 != 0B)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 8 freq:81
+  # PRED: 2 [9.0%]  (false,exec)
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 7 freq:819
+  # PRED: 2 [91.0%]  (true,exec)
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:9100
+  # PRED: 10 [100.0%]  (fallthru) 7 [100.0%]  (fallthru)
+  # eD.4212_13 = PHI <eD.4212_6(10), eD.4212_4(7)>
+  # .MEMD.5613_14 = PHI <.MEMD.5613_7(10), .MEMD.5613_9(D)(7)>
+  # VUSE <.MEMD.5613_14>
+  D.5581_5 = eD.4212_13->typeD.4133;
+  if (D.5581_5 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 9>;
+  # SUCC: 4 [29.0%]  (true,exec) 9 [71.0%]  (false,exec)
+
+  # BLOCK 9 freq:6461
+  # PRED: 3 [71.0%]  (false,exec)
+  goto <bb 5>;
+  # SUCC: 5 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5613_10 = VDEF <.MEMD.5613_14>
+  mark_edgeD.4204 (eD.4212_13);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 9 [100.0%]  (fallthru) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5613_7 = PHI <.MEMD.5613_14(9), .MEMD.5613_10(4)>
+  # VUSE <.MEMD.5613_7>
+  eD.4212_6 = eD.4212_13->nextD.4136;
+  # DEBUG eD.4212 => eD.4212_6
+  # DEBUG eD.4212 => eD.4212_6
+  if (eD.4212_6 != 0B)
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+  # SUCC: 10 [91.0%]  (true,exec) 11 [9.0%]  (false,exec)
+
+  # BLOCK 10 freq:8281
+  # PRED: 5 [91.0%]  (true,exec)
+  goto <bb 3>;
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 11 freq:819
+  # PRED: 5 [9.0%]  (false,exec)
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 6 freq:900
+  # PRED: 11 [100.0%]  (fallthru) 8 [100.0%]  (fallthru)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance_recursive (calc_max_distance_recursive)
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+bb = &NONLOCAL
+ve_7 = *bb + 224
+ve_27 = ve_13
+ve_27 = ve_7
+e_8 = *ve_27
+D.5576_10 = *e_8 + 32
+ESCAPED = D.5576_10
+ve_13 = *ve_27 + 32
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 7, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 5, location:4
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 9, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 10, location:0
+Equivalence classes for Direct node node id 8:bb are pointer: 11, location:0
+Equivalence classes for Indirect node node id 9:ve_7 are pointer: 12, location:0
+Equivalence classes for Direct node node id 10:ve_27 are pointer: 14, location:0
+Equivalence classes for Indirect node node id 11:ve_13 are pointer: 13, location:0
+Equivalence classes for Direct node node id 12:e_8 are pointer: 15, location:0
+Equivalence classes for Indirect node node id 13:D.5576_10 are pointer: 4, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               6
+Non-pointer vars:          1
+Statically unified vars:  0
+Dynamically unified vars: 0
+Iterations:               2
+Number of edges:          8
+Number of implicit edges: 9
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = { ESCAPED NONLOCAL }
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+bb = { NONLOCAL }
+ve_7 = { ESCAPED NONLOCAL }
+ve_27 = { ESCAPED NONLOCAL }
+ve_13 = { ESCAPED NONLOCAL }
+e_8 = { ESCAPED NONLOCAL }
+D.5576_10 = { ESCAPED NONLOCAL }
+
+
+Alias information for calc_max_distance_recursive
+
+Aliased symbols
+
+.MEMD.5614, UID D.5614, voidD.32, is global, call clobbered, default def: .MEMD.5614_19(D)
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+bbD.4216_5(D), points-to non-local, points-to vars: { }
+veD.4221_7, points-to non-local, points-to escaped, points-to vars: { }
+eD.4222_8, points-to non-local, points-to escaped, points-to vars: { }
+D.5576_10, points-to non-local, points-to escaped, points-to vars: { }
+veD.4221_13, points-to non-local, points-to escaped, points-to vars: { }
+veD.4221_27, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in calc_max_distance_recursive: 11
+
+Variable: bbD.4216, UID D.4216, struct basic_block *, default def: bbD.4216_5(D), initial: struct basic_block *
+Variable: valD.4219, UID D.4219, intD.0
+Variable: maxD.4220, UID D.4220, intD.0
+Variable: veD.4221, UID D.4221, struct vec_edge *
+Variable: eD.4222, UID D.4222, struct edge *
+Variable: .MEMD.5614, UID D.5614, voidD.32, is global, call clobbered, default def: .MEMD.5614_19(D)
+Variable: D.5570, UID D.5570, intD.0
+Variable: D.5573, UID D.5573, edge_type
+Variable: D.5576, UID D.5576, struct basic_block *
+Variable: D.5577, UID D.5577, intD.0
+Variable: D.5578, UID D.5578, intD.0
+
+Points to sets created:8
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 9 3 11 10 4 12 5 6 13 14 7 8
+;;
+;; Loop 1
+;;  header 4, latch 13
+;;  depth 1, outer 0
+;;  nodes: 4 13 6 12 5
+;; 2 succs { 3 9 }
+;; 9 succs { 8 }
+;; 3 succs { 10 11 }
+;; 11 succs { 7 }
+;; 10 succs { 4 }
+;; 4 succs { 12 5 }
+;; 12 succs { 6 }
+;; 5 succs { 6 }
+;; 6 succs { 13 14 }
+;; 13 succs { 4 }
+;; 14 succs { 7 }
+;; 7 succs { 8 }
+;; 8 succs { 1 }
+SCC consists of: .MEM_19(D) 
+Setting value number of .MEM_19(D) to .MEM_19(D) (changed)
+SCC consists of: bb_5(D) 
+Setting value number of bb_5(D) to bb_5(D)
+SCC consists of: ve_7 
+Value numbering ve_7 stmt = ve_7 = bb_5(D)->pred;
+Setting value number of ve_7 to ve_7 (changed)
+SCC consists of: ve_27 .MEM_28 e_8 D.5576_10 .MEM_20 .MEM_16 ve_13 
+Value numbering ve_27 stmt = ve_27 = PHI <ve_13(13), ve_7(10)>
+Setting value number of ve_27 to ve_7 (changed)
+Value numbering .MEM_28 stmt = .MEM_28 = PHI <.MEM_16(13), .MEM_19(D)(10)>
+Setting value number of .MEM_28 to .MEM_19(D) (changed)
+Value numbering e_8 stmt = e_8 = ve_27->edge;
+Setting value number of e_8 to e_8 (changed)
+Value numbering D.5576_10 stmt = D.5576_10 = e_8->source;
+Setting value number of D.5576_10 to D.5576_10 (changed)
+Value numbering .MEM_20 stmt = val_11 = calc_max_distance_recursive (D.5576_10);
+Setting value number of .MEM_20 to .MEM_20 (changed)
+Setting value number of val_11 to val_11 (changed)
+Value numbering .MEM_16 stmt = .MEM_16 = PHI <.MEM_28(12), .MEM_20(5)>
+Setting value number of .MEM_16 to .MEM_16 (changed)
+Value numbering ve_13 stmt = ve_13 = ve_27->next;
+Setting value number of ve_13 to ve_13 (changed)
+Value numbering ve_27 stmt = ve_27 = PHI <ve_13(13), ve_7(10)>
+Setting value number of ve_27 to ve_27 (changed)
+Value numbering .MEM_28 stmt = .MEM_28 = PHI <.MEM_16(13), .MEM_19(D)(10)>
+Setting value number of .MEM_28 to .MEM_28 (changed)
+Value numbering e_8 stmt = e_8 = ve_27->edge;
+Setting value number of e_8 to e_8
+Value numbering D.5576_10 stmt = D.5576_10 = e_8->source;
+Setting value number of D.5576_10 to D.5576_10
+Value numbering .MEM_20 stmt = val_11 = calc_max_distance_recursive (D.5576_10);
+Setting value number of .MEM_20 to .MEM_20
+Setting value number of val_11 to val_11
+Value numbering .MEM_16 stmt = .MEM_16 = PHI <.MEM_28(12), .MEM_20(5)>
+Setting value number of .MEM_16 to .MEM_16
+Value numbering ve_13 stmt = ve_13 = ve_27->next;
+Setting value number of ve_13 to ve_13
+Value numbering ve_27 stmt = ve_27 = PHI <ve_13(13), ve_7(10)>
+Setting value number of ve_27 to ve_27
+Value numbering .MEM_28 stmt = .MEM_28 = PHI <.MEM_16(13), .MEM_19(D)(10)>
+Setting value number of .MEM_28 to .MEM_28
+Value numbering e_8 stmt = e_8 = ve_27->edge;
+Setting value number of e_8 to e_8
+Value numbering D.5576_10 stmt = D.5576_10 = e_8->source;
+Setting value number of D.5576_10 to D.5576_10
+Value numbering .MEM_20 stmt = val_11 = calc_max_distance_recursive (D.5576_10);
+Setting value number of .MEM_20 to .MEM_20
+Setting value number of val_11 to val_11
+Value numbering .MEM_16 stmt = .MEM_16 = PHI <.MEM_28(12), .MEM_20(5)>
+Setting value number of .MEM_16 to .MEM_16
+Value numbering ve_13 stmt = ve_13 = ve_27->next;
+Setting value number of ve_13 to ve_13
+SCC consists of: val_11 
+SCC consists of: max_24 max_12 max_1 
+Value numbering max_24 stmt = max_24 = PHI <max_1(13), 0(10)>
+Setting value number of max_24 to 0 (changed)
+Value numbering max_12 stmt = max_12 = MAX_EXPR <val_11, max_24>;
+Setting value number of max_12 to max_12 (changed)
+Value numbering max_1 stmt = max_1 = PHI <max_24(12), max_12(5)>
+Setting value number of max_1 to max_1 (changed)
+Value numbering max_24 stmt = max_24 = PHI <max_1(13), 0(10)>
+Setting value number of max_24 to max_24 (changed)
+Value numbering max_12 stmt = max_12 = MAX_EXPR <val_11, max_24>;
+Setting value number of max_12 to max_12
+Value numbering max_1 stmt = max_1 = PHI <max_24(12), max_12(5)>
+Setting value number of max_1 to max_1
+Value numbering max_24 stmt = max_24 = PHI <max_1(13), 0(10)>
+Setting value number of max_24 to max_24
+Value numbering max_12 stmt = max_12 = MAX_EXPR <val_11, max_24>;
+Setting value number of max_12 to max_12
+Value numbering max_1 stmt = max_1 = PHI <max_24(12), max_12(5)>
+Setting value number of max_1 to max_1
+SCC consists of: D.5570_6 
+Value numbering D.5570_6 stmt = D.5570_6 = bb_5(D)->max_distance;
+Setting value number of D.5570_6 to D.5570_6 (changed)
+SCC consists of: D.5573_9 
+Value numbering D.5573_9 stmt = D.5573_9 = e_8->type;
+Setting value number of D.5573_9 to D.5573_9 (changed)
+SCC consists of: max_22 
+Value numbering max_22 stmt = max_22 = PHI <max_1(14), 0(11)>
+Setting value number of max_22 to max_22 (changed)
+SCC consists of: D.5577_14 
+Value numbering D.5577_14 stmt = D.5577_14 = max_22 + 1;
+Setting value number of D.5577_14 to D.5577_14 (changed)
+SCC consists of: .MEM_29 
+Value numbering .MEM_29 stmt = .MEM_29 = PHI <.MEM_16(14), .MEM_19(D)(11)>
+Setting value number of .MEM_29 to .MEM_29 (changed)
+SCC consists of: .MEM_21 
+Value numbering .MEM_21 stmt = bb_5(D)->max_distance = D.5577_14;
+No store match
+Value numbering store bb_5(D)->max_distance to D.5577_14
+Setting value number of .MEM_21 to .MEM_21 (changed)
+SCC consists of: .MEM_18 
+Value numbering .MEM_18 stmt = .MEM_18 = PHI <.MEM_19(D)(9), .MEM_21(7)>
+Setting value number of .MEM_18 to .MEM_18 (changed)
+SCC consists of: D.5578_15 
+Value numbering D.5578_15 stmt = D.5578_15 = bb_5(D)->max_distance;
+Setting value number of D.5578_15 to D.5578_15 (changed)
+Value numbers:
+exp_gen[0] := {  }
+phi_gen[0] := {  }
+tmp_gen[0] := { bb_5(D) (0002) }
+avail_out[0] := { bb_5(D) (0002) }
+exp_gen[2] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_19(D) (0003) }
+phi_gen[2] := {  }
+tmp_gen[2] := { D.5570_6 (0003) }
+avail_out[2] := { bb_5(D) (0002), D.5570_6 (0003) }
+exp_gen[9] := {  }
+phi_gen[9] := {  }
+tmp_gen[9] := {  }
+avail_out[9] := { bb_5(D) (0002), D.5570_6 (0003) }
+exp_gen[3] := { bb_5(D) (0002), {component_ref<pred>,indirect_ref,bb_5(D)}@.MEM_19(D) (0004) }
+phi_gen[3] := {  }
+tmp_gen[3] := { ve_7 (0004) }
+avail_out[3] := { bb_5(D) (0002), D.5570_6 (0003), ve_7 (0004) }
+exp_gen[11] := {  }
+phi_gen[11] := {  }
+tmp_gen[11] := {  }
+avail_out[11] := { bb_5(D) (0002), D.5570_6 (0003), ve_7 (0004) }
+exp_gen[10] := {  }
+phi_gen[10] := {  }
+tmp_gen[10] := {  }
+avail_out[10] := { bb_5(D) (0002), D.5570_6 (0003), ve_7 (0004) }
+exp_gen[4] := { ve_27 (0020), {component_ref<edge>,indirect_ref,ve_27}@.MEM_28 (0005), {component_ref<type>,indirect_ref,e_8}@.MEM_28 (0006) }
+phi_gen[4] := { max_24 (0019), ve_27 (0020) }
+tmp_gen[4] := { e_8 (0005), D.5573_9 (0006) }
+avail_out[4] := { bb_5(D) (0002), D.5570_6 (0003), ve_7 (0004), max_24 (0019), ve_27 (0020), e_8 (0005), D.5573_9 (0006) }
+exp_gen[12] := {  }
+phi_gen[12] := {  }
+tmp_gen[12] := {  }
+avail_out[12] := { bb_5(D) (0002), D.5570_6 (0003), ve_7 (0004), max_24 (0019), ve_27 (0020), e_8 (0005), D.5573_9 (0006) }
+exp_gen[5] := { max_24 (0019), e_8 (0005), {component_ref<source>,indirect_ref,e_8}@.MEM_28 (0007), val_11 (0008), {max_expr,val_11,max_24} (0009) }
+phi_gen[5] := {  }
+tmp_gen[5] := { D.5576_10 (0007), val_11 (0008), max_12 (0009) }
+avail_out[5] := { bb_5(D) (0002), D.5570_6 (0003), ve_7 (0004), max_24 (0019), ve_27 (0020), e_8 (0005), D.5573_9 (0006), D.5576_10 (0007), val_11 (0008), max_12 (0009) }
+exp_gen[6] := { ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_16 (0010) }
+phi_gen[6] := { max_1 (0001) }
+tmp_gen[6] := { ve_13 (0010) }
+avail_out[6] := { bb_5(D) (0002), D.5570_6 (0003), ve_7 (0004), max_24 (0019), max_1 (0001), ve_27 (0020), ve_13 (0010), e_8 (0005), D.5573_9 (0006) }
+exp_gen[13] := {  }
+phi_gen[13] := {  }
+tmp_gen[13] := {  }
+avail_out[13] := { bb_5(D) (0002), D.5570_6 (0003), ve_7 (0004), max_24 (0019), max_1 (0001), ve_27 (0020), ve_13 (0010), e_8 (0005), D.5573_9 (0006) }
+exp_gen[14] := {  }
+phi_gen[14] := {  }
+tmp_gen[14] := {  }
+avail_out[14] := { bb_5(D) (0002), D.5570_6 (0003), ve_7 (0004), max_24 (0019), max_1 (0001), ve_27 (0020), ve_13 (0010), e_8 (0005), D.5573_9 (0006) }
+exp_gen[7] := { bb_5(D) (0002), max_22 (0018), {plus_expr,max_22,1} (0011) }
+phi_gen[7] := { max_22 (0018) }
+tmp_gen[7] := { D.5577_14 (0011) }
+avail_out[7] := { bb_5(D) (0002), D.5570_6 (0003), ve_7 (0004), max_22 (0018), D.5577_14 (0011) }
+exp_gen[8] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_18 (0012) }
+phi_gen[8] := {  }
+tmp_gen[8] := { D.5578_15 (0012) }
+avail_out[8] := { bb_5(D) (0002), D.5570_6 (0003), D.5578_15 (0012) }
+exp_gen[1] := {  }
+phi_gen[1] := {  }
+tmp_gen[1] := {  }
+avail_out[1] := {  }
+Starting iteration 0
+Block 13 was deferred for a future iteration.
+ANTIC_OUT[8] := {  }
+ANTIC_IN[8] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_18 (0012) }
+S[8] := {  }
+ANTIC_OUT[7] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_21 (0011) }
+ANTIC_IN[7] := { bb_5(D) (0002), max_22 (0018), {plus_expr,max_22,1} (0011) }
+S[7] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_21 (0011) }
+ANTIC_OUT[14] := { bb_5(D) (0002), max_1 (0001), {plus_expr,max_1,1} (0023) }
+ANTIC_IN[14] := { bb_5(D) (0002), max_1 (0001), {plus_expr,max_1,1} (0023) }
+S[14] := { bb_5(D) (0002), max_1 (0001), {plus_expr,max_1,1} (0023) }
+ANTIC_OUT[6] := { bb_5(D) (0002), max_1 (0001), {plus_expr,max_1,1} (0023) }
+ANTIC_IN[6] := { bb_5(D) (0002), max_1 (0001), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_16 (0010), {plus_expr,max_1,1} (0023) }
+S[6] := { bb_5(D) (0002), max_1 (0001), {plus_expr,max_1,1} (0023) }
+ANTIC_OUT[12] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_28 (0024), {plus_expr,max_24,1} (0025) }
+ANTIC_IN[12] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_28 (0024), {plus_expr,max_24,1} (0025) }
+S[12] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_28 (0024), {plus_expr,max_24,1} (0025) }
+ANTIC_OUT[5] := { bb_5(D) (0002), ve_27 (0020), max_12 (0009), {component_ref<next>,indirect_ref,ve_27}@.MEM_20 (0026), {plus_expr,max_12,1} (0027) }
+ANTIC_IN[5] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), e_8 (0005), {component_ref<source>,indirect_ref,e_8}@.MEM_28 (0007) }
+S[5] := { bb_5(D) (0002), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_20 (0026), {plus_expr,max_12,1} (0027) }
+ANTIC_OUT[4] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020) }
+ANTIC_IN[4] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), {component_ref<edge>,indirect_ref,ve_27}@.MEM_28 (0005), {component_ref<type>,indirect_ref,e_8}@.MEM_28 (0006) }
+S[4] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020) }
+Could not find SSA_NAME representative for expression:{component_ref<edge>,indirect_ref,ve_7}@.MEM_19(D)
+Created SSA_NAME representative pretmp.34_17 for expression:{component_ref<edge>,indirect_ref,ve_7}@.MEM_19(D)
+ANTIC_OUT[10] := { bb_5(D) (0002), ve_7 (0004), {component_ref<edge>,indirect_ref,ve_7}@.MEM_19(D) (0028), {component_ref<type>,indirect_ref,pretmp.34_17}@.MEM_19(D) (0029) }
+ANTIC_IN[10] := { bb_5(D) (0002), ve_7 (0004), {component_ref<edge>,indirect_ref,ve_7}@.MEM_19(D) (0028), {component_ref<type>,indirect_ref,pretmp.34_17}@.MEM_19(D) (0029) }
+S[10] := { bb_5(D) (0002), ve_7 (0004), {component_ref<edge>,indirect_ref,ve_7}@.MEM_19(D) (0028), {component_ref<type>,indirect_ref,pretmp.34_17}@.MEM_19(D) (0029) }
+ANTIC_OUT[11] := { bb_5(D) (0002) }
+ANTIC_IN[11] := { bb_5(D) (0002) }
+S[11] := { bb_5(D) (0002) }
+ANTIC_OUT[3] := { bb_5(D) (0002) }
+ANTIC_IN[3] := { bb_5(D) (0002), {component_ref<pred>,indirect_ref,bb_5(D)}@.MEM_19(D) (0004) }
+S[3] := { bb_5(D) (0002) }
+ANTIC_OUT[9] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_19(D) (0003) }
+ANTIC_IN[9] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_19(D) (0003) }
+S[9] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_19(D) (0003) }
+ANTIC_OUT[2] := { bb_5(D) (0002) }
+ANTIC_IN[2] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_19(D) (0003) }
+S[2] := { bb_5(D) (0002) }
+Starting iteration 1
+Could not find SSA_NAME representative for expression:{component_ref<edge>,indirect_ref,ve_13}@.MEM_16
+Created SSA_NAME representative pretmp.34_3 for expression:{component_ref<edge>,indirect_ref,ve_13}@.MEM_16
+ANTIC_OUT[13] := { bb_5(D) (0002), max_1 (0001), ve_13 (0010), {component_ref<edge>,indirect_ref,ve_13}@.MEM_16 (0033), {component_ref<type>,indirect_ref,pretmp.34_3}@.MEM_16 (0034) }
+ANTIC_IN[13] := { bb_5(D) (0002), max_1 (0001), ve_13 (0010), {component_ref<edge>,indirect_ref,ve_13}@.MEM_16 (0033), {component_ref<type>,indirect_ref,pretmp.34_3}@.MEM_16 (0034) }
+S[13] := { bb_5(D) (0002), max_1 (0001), ve_13 (0010), {component_ref<edge>,indirect_ref,ve_13}@.MEM_16 (0033), {component_ref<type>,indirect_ref,pretmp.34_3}@.MEM_16 (0034) }
+ANTIC_OUT[8] := {  }
+ANTIC_IN[8] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_18 (0012) }
+S[8] := {  }
+ANTIC_OUT[7] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_21 (0011) }
+ANTIC_IN[7] := { bb_5(D) (0002), max_22 (0018), {plus_expr,max_22,1} (0011) }
+S[7] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_21 (0011) }
+ANTIC_OUT[14] := { bb_5(D) (0002), max_1 (0001), {plus_expr,max_1,1} (0023) }
+ANTIC_IN[14] := { bb_5(D) (0002), max_1 (0001), {plus_expr,max_1,1} (0023) }
+S[14] := { bb_5(D) (0002), max_1 (0001), {plus_expr,max_1,1} (0023) }
+ANTIC_OUT[6] := { bb_5(D) (0002), max_1 (0001) }
+ANTIC_IN[6] := { bb_5(D) (0002), max_1 (0001), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_16 (0010) }
+S[6] := { bb_5(D) (0002), max_1 (0001) }
+ANTIC_OUT[12] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_28 (0024) }
+ANTIC_IN[12] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_28 (0024) }
+S[12] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_28 (0024) }
+ANTIC_OUT[5] := { bb_5(D) (0002), ve_27 (0020), max_12 (0009), {component_ref<next>,indirect_ref,ve_27}@.MEM_20 (0026) }
+ANTIC_IN[5] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), e_8 (0005), {component_ref<source>,indirect_ref,e_8}@.MEM_28 (0007) }
+S[5] := { bb_5(D) (0002), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_20 (0026) }
+ANTIC_OUT[4] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020) }
+ANTIC_IN[4] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), {component_ref<edge>,indirect_ref,ve_27}@.MEM_28 (0005), {component_ref<type>,indirect_ref,e_8}@.MEM_28 (0006) }
+S[4] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020) }
+ANTIC_OUT[10] := { bb_5(D) (0002), ve_7 (0004), {component_ref<edge>,indirect_ref,ve_7}@.MEM_19(D) (0028), {component_ref<type>,indirect_ref,pretmp.34_17}@.MEM_19(D) (0029) }
+ANTIC_IN[10] := { bb_5(D) (0002), ve_7 (0004), {component_ref<edge>,indirect_ref,ve_7}@.MEM_19(D) (0028), {component_ref<type>,indirect_ref,pretmp.34_17}@.MEM_19(D) (0029) }
+S[10] := { bb_5(D) (0002), ve_7 (0004), {component_ref<edge>,indirect_ref,ve_7}@.MEM_19(D) (0028), {component_ref<type>,indirect_ref,pretmp.34_17}@.MEM_19(D) (0029) }
+ANTIC_OUT[11] := { bb_5(D) (0002) }
+ANTIC_IN[11] := { bb_5(D) (0002) }
+S[11] := { bb_5(D) (0002) }
+ANTIC_OUT[3] := { bb_5(D) (0002) }
+ANTIC_IN[3] := { bb_5(D) (0002), {component_ref<pred>,indirect_ref,bb_5(D)}@.MEM_19(D) (0004) }
+S[3] := { bb_5(D) (0002) }
+ANTIC_OUT[9] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_19(D) (0003) }
+ANTIC_IN[9] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_19(D) (0003) }
+S[9] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_19(D) (0003) }
+ANTIC_OUT[2] := { bb_5(D) (0002) }
+ANTIC_IN[2] := { bb_5(D) (0002), {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_19(D) (0003) }
+S[2] := { bb_5(D) (0002) }
+Starting iteration 2
+ANTIC_OUT[13] := { bb_5(D) (0002), max_1 (0001), ve_13 (0010), {component_ref<edge>,indirect_ref,ve_13}@.MEM_16 (0033), {component_ref<type>,indirect_ref,pretmp.34_3}@.MEM_16 (0034) }
+ANTIC_IN[13] := { bb_5(D) (0002), max_1 (0001), ve_13 (0010), {component_ref<edge>,indirect_ref,ve_13}@.MEM_16 (0033), {component_ref<type>,indirect_ref,pretmp.34_3}@.MEM_16 (0034) }
+S[13] := { bb_5(D) (0002), max_1 (0001), ve_13 (0010), {component_ref<edge>,indirect_ref,ve_13}@.MEM_16 (0033), {component_ref<type>,indirect_ref,pretmp.34_3}@.MEM_16 (0034) }
+ANTIC_OUT[6] := { bb_5(D) (0002), max_1 (0001) }
+ANTIC_IN[6] := { bb_5(D) (0002), max_1 (0001), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_16 (0010) }
+S[6] := { bb_5(D) (0002), max_1 (0001) }
+ANTIC_OUT[12] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_28 (0024) }
+ANTIC_IN[12] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_28 (0024) }
+S[12] := { bb_5(D) (0002), max_24 (0019), ve_27 (0020), {component_ref<next>,indirect_ref,ve_27}@.MEM_28 (0024) }
+Found partial redundancy for expression {component_ref<max_distance>,indirect_ref,bb_5(D)}@.MEM_18 (0012)
+Created phi prephitmp.35_2 = PHI <D.5570_6(9), D.5577_14(7)>
+ in block 8
+Found partial redundancy for expression {plus_expr,max_22,1} (0011)
+Inserted pretmp.36_25 = max_1 + 1;
+ in predecessor 14
+Created phi prephitmp.35_23 = PHI <pretmp.36_25(14), 1(11)>
+ in block 7
+Replaced max_22 + 1 with prephitmp.35_23 in D.5577_14 = max_22 + 1;
+Replaced bb_5(D)->max_distance with prephitmp.35_2 in D.5578_15 = bb_5(D)->max_distance;
+
+Pass statistics:
+----------------
+compute_antic iterations == 3: 1
+Insertions: 1
+New PHIs: 2
+SCC iterations == 3: 2
+insert iterations == 2: 1
+Eliminated: 2
+
+calc_max_distance_recursive (struct basic_block * bbD.4216)
+{
+  intD.0 pretmp.36D.5641;
+  intD.0 prephitmp.35D.5640;
+  struct edge * pretmp.34D.5639;
+  struct edge * eD.4222;
+  struct vec_edge * veD.4221;
+  intD.0 maxD.4220;
+  intD.0 valD.4219;
+  intD.0 D.5578;
+  intD.0 D.5577;
+  struct basic_block * D.5576;
+  edge_type D.5573;
+  intD.0 D.5570;
+
+  # BLOCK 2 freq:1475
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4220 => 0
+  # VUSE <.MEMD.5614_19(D)>
+  D.5570_6 = bbD.4216_5(D)->max_distanceD.4146;
+  if (D.5570_6 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 9>;
+  # SUCC: 3 [61.0%]  (true,exec) 9 [39.0%]  (false,exec)
+
+  # BLOCK 9 freq:575
+  # PRED: 2 [39.0%]  (false,exec)
+  goto <bb 8>;
+  # SUCC: 8 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:900
+  # PRED: 2 [61.0%]  (true,exec)
+  # VUSE <.MEMD.5614_19(D)>
+  veD.4221_7 = bbD.4216_5(D)->predD.4147;
+  # DEBUG veD.4221 => veD.4221_7
+  # DEBUG veD.4221 => veD.4221_7
+  # DEBUG maxD.4220 => 0
+  if (veD.4221_7 != 0B)
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+  # SUCC: 10 [91.0%]  (true,exec) 11 [9.0%]  (false,exec)
+
+  # BLOCK 11 freq:81
+  # PRED: 3 [9.0%]  (false,exec)
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 10 freq:819
+  # PRED: 3 [91.0%]  (true,exec)
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:9100
+  # PRED: 13 [100.0%]  (fallthru) 10 [100.0%]  (fallthru)
+  # maxD.4220_24 = PHI <maxD.4220_1(13), 0(10)>
+  # veD.4221_27 = PHI <veD.4221_13(13), veD.4221_7(10)>
+  # .MEMD.5614_28 = PHI <.MEMD.5614_16(13), .MEMD.5614_19(D)(10)>
+  # VUSE <.MEMD.5614_28>
+  eD.4222_8 = veD.4221_27->edgeD.4138;
+  # DEBUG eD.4222 => eD.4222_8
+  # VUSE <.MEMD.5614_28>
+  D.5573_9 = eD.4222_8->typeD.4133;
+  if (D.5573_9 == 3)
+    goto <bb 12>;
+  else
+    goto <bb 5>;
+  # SUCC: 12 [48.8%]  (true,exec) 5 [51.2%]  (false,exec)
+
+  # BLOCK 12 freq:4438
+  # PRED: 4 [48.8%]  (true,exec)
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 5 freq:4662
+  # PRED: 4 [51.2%]  (false,exec)
+  # VUSE <.MEMD.5614_28>
+  D.5576_10 = eD.4222_8->sourceD.4134;
+  # .MEMD.5614_20 = VDEF <.MEMD.5614_28>
+  valD.4219_11 = calc_max_distance_recursiveD.4217 (D.5576_10);
+  # DEBUG valD.4219 => valD.4219_11
+  maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_24>;
+  # DEBUG maxD.4220 => maxD.4220_12
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 12 [100.0%]  (fallthru) 5 [100.0%]  (fallthru,exec)
+  # maxD.4220_1 = PHI <maxD.4220_24(12), maxD.4220_12(5)>
+  # .MEMD.5614_16 = PHI <.MEMD.5614_28(12), .MEMD.5614_20(5)>
+  # DEBUG maxD.4220 => maxD.4220_1
+  # VUSE <.MEMD.5614_16>
+  veD.4221_13 = veD.4221_27->nextD.4139;
+  # DEBUG veD.4221 => veD.4221_13
+  # DEBUG veD.4221 => veD.4221_13
+  # DEBUG maxD.4220 => maxD.4220_1
+  if (veD.4221_13 != 0B)
+    goto <bb 13>;
+  else
+    goto <bb 14>;
+  # SUCC: 13 [91.0%]  (true,exec) 14 [9.0%]  (false,exec)
+
+  # BLOCK 13 freq:8281
+  # PRED: 6 [91.0%]  (true,exec)
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 14 freq:819
+  # PRED: 6 [9.0%]  (false,exec)
+  pretmp.36D.5641_25 = maxD.4220_1 + 1;
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 7 freq:900
+  # PRED: 14 [100.0%]  (fallthru) 11 [100.0%]  (fallthru)
+  # maxD.4220_22 = PHI <maxD.4220_1(14), 0(11)>
+  # .MEMD.5614_29 = PHI <.MEMD.5614_16(14), .MEMD.5614_19(D)(11)>
+  # prephitmp.35D.5640_23 = PHI <pretmp.36D.5641_25(14), 1(11)>
+  D.5577_14 = prephitmp.35D.5640_23;
+  # .MEMD.5614_21 = VDEF <.MEMD.5614_29>
+  bbD.4216_5(D)->max_distanceD.4146 = D.5577_14;
+  # SUCC: 8 [100.0%]  (fallthru,exec)
+
+  # BLOCK 8 freq:1475
+  # PRED: 9 [100.0%]  (fallthru) 7 [100.0%]  (fallthru,exec)
+  # .MEMD.5614_18 = PHI <.MEMD.5614_19(D)(9), .MEMD.5614_21(7)>
+  # prephitmp.35D.5640_2 = PHI <D.5570_6(9), D.5577_14(7)>
+  D.5578_15 = prephitmp.35D.5640_2;
+  return D.5578_15;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance (calc_max_distance)
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+cfg = NONLOCAL
+cfg.4_6 = cfg
+D.5562_7 = *cfg.4_6 + 96
+ESCAPED = D.5562_7
+bb_10 = *cfg.4_6 + 128
+bb_28 = bb_16
+bb_28 = bb_10
+ESCAPED = bb_28
+bb_16 = *bb_28 + 352
+D.5562_18 = *cfg.4_6 + 96
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Found location equivalence for node NONLOCAL
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 10, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 8, location:3
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 12, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 13, location:0
+Equivalence classes for Direct node node id 8:cfg.4_6 are pointer: 8, location:0
+Equivalence classes for Direct node node id 9:cfg are pointer: 8, location:0
+Equivalence classes for Indirect node node id 10:D.5562_7 are pointer: 4, location:0
+Equivalence classes for Indirect node node id 11:bb_10 are pointer: 5, location:0
+Equivalence classes for Direct node node id 12:bb_28 are pointer: 7, location:0
+Equivalence classes for Indirect node node id 13:bb_16 are pointer: 6, location:0
+Equivalence classes for Indirect node node id 14:D.5562_18 are pointer: 14, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Unifying cfg.4_6 to cfg
+Uniting pointer but not location equivalent variables
+Unifying NONLOCAL to cfg
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               7
+Non-pointer vars:          1
+Statically unified vars:  2
+Dynamically unified vars: 0
+Iterations:               2
+Number of edges:          15
+Number of implicit edges: 11
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = same as cfg
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+cfg.4_6 = same as cfg
+cfg = { ESCAPED NONLOCAL }
+D.5562_7 = { ESCAPED NONLOCAL }
+bb_10 = { ESCAPED NONLOCAL }
+bb_28 = { ESCAPED NONLOCAL }
+bb_16 = { ESCAPED NONLOCAL }
+D.5562_18 = { ESCAPED NONLOCAL }
+
+
+Alias information for calc_max_distance
+
+Aliased symbols
+
+.MEMD.5615, UID D.5615, voidD.32, is global, call clobbered, default def: .MEMD.5615_21(D)
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+cfg.4D.5561_6, points-to non-local, points-to escaped, points-to vars: { }
+D.5562_7, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4232_10, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4232_16, points-to non-local, points-to escaped, points-to vars: { }
+D.5562_18, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4232_28, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in calc_max_distance: 8
+
+Variable: .MEMD.5615, UID D.5615, voidD.32, is global, call clobbered, default def: .MEMD.5615_21(D)
+Variable: valD.4230, UID D.4230, intD.0
+Variable: cfg.4D.5561, UID D.5561, struct control_flow_graph *
+Variable: D.5562, UID D.5562, struct basic_block *
+Variable: D.5563, UID D.5563, intD.0
+Variable: maxD.4231, UID D.4231, intD.0
+Variable: bbD.4232, UID D.4232, struct basic_block *
+Variable: cfgD.4174, UID D.4174, struct control_flow_graph *, is global, call clobbered
+
+Points to sets created:8
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 9 8 3 10 4 11 5 6 12 13 7
+;;
+;; Loop 1
+;;  header 3, latch 12
+;;  depth 1, outer 0
+;;  nodes: 3 12 6 10 11 5 4
+;; 2 succs { 8 9 }
+;; 9 succs { 7 }
+;; 8 succs { 3 }
+;; 3 succs { 4 10 }
+;; 10 succs { 6 }
+;; 4 succs { 5 11 }
+;; 11 succs { 6 }
+;; 5 succs { 6 }
+;; 6 succs { 12 13 }
+;; 12 succs { 3 }
+;; 13 succs { 7 }
+;; 7 succs { 1 }
+SCC consists of: .MEM_21(D) 
+Setting value number of .MEM_21(D) to .MEM_21(D) (changed)
+SCC consists of: .MEM_22 
+Value numbering .MEM_22 stmt = depth_first_search ();
+Setting value number of .MEM_22 to .MEM_22 (changed)
+SCC consists of: .MEM_23 
+Value numbering .MEM_23 stmt = mark_edges ();
+Setting value number of .MEM_23 to .MEM_23 (changed)
+SCC consists of: cfg.4_6 
+Value numbering cfg.4_6 stmt = cfg.4_6 = cfg;
+Setting value number of cfg.4_6 to cfg.4_6 (changed)
+SCC consists of: D.5562_7 
+Value numbering D.5562_7 stmt = D.5562_7 = cfg.4_6->exit;
+Setting value number of D.5562_7 to D.5562_7 (changed)
+SCC consists of: max_8 
+Value numbering max_8 stmt = max_8 = calc_max_distance_recursive (D.5562_7);
+Setting value number of .MEM_24 to .MEM_24 (changed)
+Setting value number of max_8 to max_8 (changed)
+SCC consists of: .MEM_24 
+SCC consists of: bb_10 
+Value numbering bb_10 stmt = bb_10 = cfg.4_6->bb;
+Setting value number of bb_10 to bb_10 (changed)
+SCC consists of: bb_28 .MEM_30 .MEM_25 .MEM_19 bb_16 
+Value numbering bb_28 stmt = bb_28 = PHI <bb_16(12), bb_10(8)>
+Setting value number of bb_28 to bb_10 (changed)
+Value numbering .MEM_30 stmt = .MEM_30 = PHI <.MEM_19(12), .MEM_24(8)>
+Setting value number of .MEM_30 to .MEM_24 (changed)
+Value numbering .MEM_25 stmt = val_12 = calc_max_distance_recursive (bb_28);
+Setting value number of .MEM_25 to .MEM_25 (changed)
+Setting value number of val_12 to val_12 (changed)
+Value numbering .MEM_19 stmt = .MEM_19 = PHI <.MEM_30(10), .MEM_25(11), .MEM_25(5)>
+Setting value number of .MEM_19 to .MEM_19 (changed)
+Value numbering bb_16 stmt = bb_16 = bb_28->next;
+Setting value number of bb_16 to bb_16 (changed)
+Value numbering bb_28 stmt = bb_28 = PHI <bb_16(12), bb_10(8)>
+Setting value number of bb_28 to bb_28 (changed)
+Value numbering .MEM_30 stmt = .MEM_30 = PHI <.MEM_19(12), .MEM_24(8)>
+Setting value number of .MEM_30 to .MEM_30 (changed)
+Value numbering .MEM_25 stmt = val_12 = calc_max_distance_recursive (bb_28);
+Setting value number of .MEM_25 to .MEM_25
+Setting value number of val_12 to val_12
+Value numbering .MEM_19 stmt = .MEM_19 = PHI <.MEM_30(10), .MEM_25(11), .MEM_25(5)>
+Setting value number of .MEM_19 to .MEM_19
+Value numbering bb_16 stmt = bb_16 = bb_28->next;
+Setting value number of bb_16 to bb_16
+Value numbering bb_28 stmt = bb_28 = PHI <bb_16(12), bb_10(8)>
+Setting value number of bb_28 to bb_28
+Value numbering .MEM_30 stmt = .MEM_30 = PHI <.MEM_19(12), .MEM_24(8)>
+Setting value number of .MEM_30 to .MEM_30
+Value numbering .MEM_25 stmt = val_12 = calc_max_distance_recursive (bb_28);
+Setting value number of .MEM_25 to .MEM_25
+Setting value number of val_12 to val_12
+Value numbering .MEM_19 stmt = .MEM_19 = PHI <.MEM_30(10), .MEM_25(11), .MEM_25(5)>
+Setting value number of .MEM_19 to .MEM_19
+Value numbering bb_16 stmt = bb_16 = bb_28->next;
+Setting value number of bb_16 to bb_16
+SCC consists of: val_12 
+SCC consists of: max_13 
+Value numbering max_13 stmt = max_13 = val_12 + 1;
+Setting value number of max_13 to max_13 (changed)
+SCC consists of: max_27 max_1 
+Value numbering max_27 stmt = max_27 = PHI <max_1(12), max_8(8)>
+Setting value number of max_27 to max_8 (changed)
+Value numbering max_1 stmt = max_1 = PHI <max_27(10), max_27(11), max_13(5)>
+Setting value number of max_1 to max_1 (changed)
+Value numbering max_27 stmt = max_27 = PHI <max_1(12), max_8(8)>
+Setting value number of max_27 to max_27 (changed)
+Value numbering max_1 stmt = max_1 = PHI <max_27(10), max_27(11), max_13(5)>
+Setting value number of max_1 to max_1
+Value numbering max_27 stmt = max_27 = PHI <max_1(12), max_8(8)>
+Setting value number of max_27 to max_27
+Value numbering max_1 stmt = max_1 = PHI <max_27(10), max_27(11), max_13(5)>
+Setting value number of max_1 to max_1
+SCC consists of: max_4 
+Value numbering max_4 stmt = max_4 = PHI <max_1(13), max_8(9)>
+Setting value number of max_4 to max_4 (changed)
+SCC consists of: D.5563_11 
+Value numbering D.5563_11 stmt = D.5563_11 = bb_28->max_distance;
+Setting value number of D.5563_11 to D.5563_11 (changed)
+SCC consists of: .MEM_31 
+Value numbering .MEM_31 stmt = .MEM_31 = PHI <.MEM_19(13), .MEM_24(9)>
+Setting value number of .MEM_31 to .MEM_31 (changed)
+SCC consists of: D.5562_18 
+Value numbering D.5562_18 stmt = D.5562_18 = cfg.4_6->exit;
+Setting value number of D.5562_18 to D.5562_18 (changed)
+Value numbers:
+exp_gen[0] := {  }
+phi_gen[0] := {  }
+tmp_gen[0] := {  }
+avail_out[0] := {  }
+exp_gen[2] := { {cfg}@.MEM_21(D) (0003), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_23 (0004), {component_ref<bb>,indirect_ref,cfg.4_6}@.MEM_24 (0006) }
+phi_gen[2] := {  }
+tmp_gen[2] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006) }
+avail_out[2] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006) }
+exp_gen[9] := {  }
+phi_gen[9] := {  }
+tmp_gen[9] := {  }
+avail_out[9] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006) }
+exp_gen[8] := {  }
+phi_gen[8] := {  }
+tmp_gen[8] := {  }
+avail_out[8] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006) }
+exp_gen[3] := { bb_28 (0020), {component_ref<max_distance>,indirect_ref,bb_28}@.MEM_30 (0007) }
+phi_gen[3] := { max_27 (0019), bb_28 (0020) }
+tmp_gen[3] := { D.5563_11 (0007) }
+avail_out[3] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006), max_27 (0019), bb_28 (0020), D.5563_11 (0007) }
+exp_gen[10] := {  }
+phi_gen[10] := {  }
+tmp_gen[10] := {  }
+avail_out[10] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006), max_27 (0019), bb_28 (0020), D.5563_11 (0007) }
+exp_gen[4] := {  }
+phi_gen[4] := {  }
+tmp_gen[4] := { val_12 (0008) }
+avail_out[4] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006), max_27 (0019), bb_28 (0020), D.5563_11 (0007), val_12 (0008) }
+exp_gen[11] := {  }
+phi_gen[11] := {  }
+tmp_gen[11] := {  }
+avail_out[11] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006), max_27 (0019), bb_28 (0020), D.5563_11 (0007), val_12 (0008) }
+exp_gen[5] := { val_12 (0008), {plus_expr,val_12,1} (0009) }
+phi_gen[5] := {  }
+tmp_gen[5] := { max_13 (0009) }
+avail_out[5] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006), max_27 (0019), bb_28 (0020), D.5563_11 (0007), val_12 (0008), max_13 (0009) }
+exp_gen[6] := { bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_19 (0010) }
+phi_gen[6] := { max_1 (0001) }
+tmp_gen[6] := { bb_16 (0010) }
+avail_out[6] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006), max_27 (0019), max_1 (0001), bb_28 (0020), bb_16 (0010), D.5563_11 (0007) }
+exp_gen[12] := {  }
+phi_gen[12] := {  }
+tmp_gen[12] := {  }
+avail_out[12] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006), max_27 (0019), max_1 (0001), bb_28 (0020), bb_16 (0010), D.5563_11 (0007) }
+exp_gen[13] := {  }
+phi_gen[13] := {  }
+tmp_gen[13] := {  }
+avail_out[13] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006), max_27 (0019), max_1 (0001), bb_28 (0020), bb_16 (0010), D.5563_11 (0007) }
+exp_gen[7] := { cfg.4_6 (0003), max_4 (0002), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_31 (0011) }
+phi_gen[7] := { max_4 (0002) }
+tmp_gen[7] := { D.5562_18 (0011) }
+avail_out[7] := { cfg.4_6 (0003), D.5562_7 (0004), max_8 (0005), bb_10 (0006), max_4 (0002), D.5562_18 (0011) }
+exp_gen[1] := {  }
+phi_gen[1] := {  }
+tmp_gen[1] := {  }
+avail_out[1] := {  }
+Starting iteration 0
+Block 12 was deferred for a future iteration.
+ANTIC_OUT[7] := {  }
+ANTIC_IN[7] := { cfg.4_6 (0003), max_4 (0002), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_31 (0011) }
+S[7] := {  }
+ANTIC_OUT[13] := { cfg.4_6 (0003), max_1 (0001), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_19 (0023) }
+ANTIC_IN[13] := { cfg.4_6 (0003), max_1 (0001), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_19 (0023) }
+S[13] := { cfg.4_6 (0003), max_1 (0001), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_19 (0023) }
+ANTIC_OUT[6] := { cfg.4_6 (0003), max_1 (0001), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_19 (0023) }
+ANTIC_IN[6] := { cfg.4_6 (0003), max_1 (0001), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_19 (0010), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_19 (0023) }
+S[6] := { cfg.4_6 (0003), max_1 (0001), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_19 (0023) }
+ANTIC_OUT[5] := { cfg.4_6 (0003), bb_28 (0020), max_13 (0009), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_25 (0025) }
+ANTIC_IN[5] := { cfg.4_6 (0003), bb_28 (0020), val_12 (0008), {plus_expr,val_12,1} (0009), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_25 (0025) }
+S[5] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_25 (0025) }
+ANTIC_OUT[11] := { cfg.4_6 (0003), max_27 (0019), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_25 (0025) }
+ANTIC_IN[11] := { cfg.4_6 (0003), max_27 (0019), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_25 (0025) }
+S[11] := { cfg.4_6 (0003), max_27 (0019), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_25 (0025) }
+ANTIC_OUT[4] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_25 (0025) }
+ANTIC_IN[4] := { cfg.4_6 (0003), bb_28 (0020) }
+S[4] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_25 (0025) }
+ANTIC_OUT[10] := { cfg.4_6 (0003), max_27 (0019), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_30 (0026), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_30 (0027) }
+ANTIC_IN[10] := { cfg.4_6 (0003), max_27 (0019), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_30 (0026), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_30 (0027) }
+S[10] := { cfg.4_6 (0003), max_27 (0019), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_30 (0026), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_30 (0027) }
+ANTIC_OUT[3] := { cfg.4_6 (0003), bb_28 (0020) }
+ANTIC_IN[3] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<max_distance>,indirect_ref,bb_28}@.MEM_30 (0007) }
+S[3] := { cfg.4_6 (0003), bb_28 (0020) }
+ANTIC_OUT[8] := { cfg.4_6 (0003), bb_10 (0006), {component_ref<max_distance>,indirect_ref,bb_10}@.MEM_24 (0028) }
+ANTIC_IN[8] := { cfg.4_6 (0003), bb_10 (0006), {component_ref<max_distance>,indirect_ref,bb_10}@.MEM_24 (0028) }
+S[8] := { cfg.4_6 (0003), bb_10 (0006), {component_ref<max_distance>,indirect_ref,bb_10}@.MEM_24 (0028) }
+ANTIC_OUT[9] := { cfg.4_6 (0003), max_8 (0005), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_24 (0029) }
+ANTIC_IN[9] := { cfg.4_6 (0003), max_8 (0005), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_24 (0029) }
+S[9] := { cfg.4_6 (0003), max_8 (0005), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_24 (0029) }
+ANTIC_OUT[2] := { cfg.4_6 (0003) }
+ANTIC_IN[2] := { {cfg}@.MEM_21(D) (0003) }
+S[2] := {  }
+Starting iteration 1
+ANTIC_OUT[12] := { cfg.4_6 (0003), bb_16 (0010), {component_ref<max_distance>,indirect_ref,bb_16}@.MEM_19 (0030) }
+ANTIC_IN[12] := { cfg.4_6 (0003), bb_16 (0010), {component_ref<max_distance>,indirect_ref,bb_16}@.MEM_19 (0030) }
+S[12] := { cfg.4_6 (0003), bb_16 (0010), {component_ref<max_distance>,indirect_ref,bb_16}@.MEM_19 (0030) }
+ANTIC_OUT[7] := {  }
+ANTIC_IN[7] := { cfg.4_6 (0003), max_4 (0002), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_31 (0011) }
+S[7] := {  }
+ANTIC_OUT[13] := { cfg.4_6 (0003), max_1 (0001), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_19 (0023) }
+ANTIC_IN[13] := { cfg.4_6 (0003), max_1 (0001), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_19 (0023) }
+S[13] := { cfg.4_6 (0003), max_1 (0001), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_19 (0023) }
+ANTIC_OUT[6] := { cfg.4_6 (0003) }
+ANTIC_IN[6] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_19 (0010) }
+S[6] := { cfg.4_6 (0003) }
+ANTIC_OUT[5] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+ANTIC_IN[5] := { cfg.4_6 (0003), bb_28 (0020), val_12 (0008), {plus_expr,val_12,1} (0009), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+S[5] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+ANTIC_OUT[11] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+ANTIC_IN[11] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+S[11] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+ANTIC_OUT[4] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+ANTIC_IN[4] := { cfg.4_6 (0003), bb_28 (0020) }
+S[4] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+ANTIC_OUT[10] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_30 (0026) }
+ANTIC_IN[10] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_30 (0026) }
+S[10] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_30 (0026) }
+ANTIC_OUT[3] := { cfg.4_6 (0003), bb_28 (0020) }
+ANTIC_IN[3] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<max_distance>,indirect_ref,bb_28}@.MEM_30 (0007) }
+S[3] := { cfg.4_6 (0003), bb_28 (0020) }
+ANTIC_OUT[8] := { cfg.4_6 (0003), bb_10 (0006), {component_ref<max_distance>,indirect_ref,bb_10}@.MEM_24 (0028) }
+ANTIC_IN[8] := { cfg.4_6 (0003), bb_10 (0006), {component_ref<max_distance>,indirect_ref,bb_10}@.MEM_24 (0028) }
+S[8] := { cfg.4_6 (0003), bb_10 (0006), {component_ref<max_distance>,indirect_ref,bb_10}@.MEM_24 (0028) }
+ANTIC_OUT[9] := { cfg.4_6 (0003), max_8 (0005), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_24 (0029) }
+ANTIC_IN[9] := { cfg.4_6 (0003), max_8 (0005), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_24 (0029) }
+S[9] := { cfg.4_6 (0003), max_8 (0005), {component_ref<exit>,indirect_ref,cfg.4_6}@.MEM_24 (0029) }
+ANTIC_OUT[2] := { cfg.4_6 (0003) }
+ANTIC_IN[2] := { {cfg}@.MEM_21(D) (0003) }
+S[2] := {  }
+Starting iteration 2
+ANTIC_OUT[12] := { cfg.4_6 (0003), bb_16 (0010), {component_ref<max_distance>,indirect_ref,bb_16}@.MEM_19 (0030) }
+ANTIC_IN[12] := { cfg.4_6 (0003), bb_16 (0010), {component_ref<max_distance>,indirect_ref,bb_16}@.MEM_19 (0030) }
+S[12] := { cfg.4_6 (0003), bb_16 (0010), {component_ref<max_distance>,indirect_ref,bb_16}@.MEM_19 (0030) }
+ANTIC_OUT[6] := { cfg.4_6 (0003) }
+ANTIC_IN[6] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_19 (0010) }
+S[6] := { cfg.4_6 (0003) }
+ANTIC_OUT[5] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+ANTIC_IN[5] := { cfg.4_6 (0003), bb_28 (0020), val_12 (0008), {plus_expr,val_12,1} (0009), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+S[5] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+ANTIC_OUT[11] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+ANTIC_IN[11] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+S[11] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_25 (0024) }
+ANTIC_OUT[10] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_30 (0026) }
+ANTIC_IN[10] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_30 (0026) }
+S[10] := { cfg.4_6 (0003), bb_28 (0020), {component_ref<next>,indirect_ref,bb_28}@.MEM_30 (0026) }
+
+Pass statistics:
+----------------
+compute_antic iterations == 3: 1
+SCC iterations == 3: 2
+insert iterations == 1: 1
+
+calc_max_distance ()
+{
+  struct basic_block * bbD.4232;
+  intD.0 maxD.4231;
+  intD.0 valD.4230;
+  intD.0 D.5563;
+  struct basic_block * D.5562;
+  struct control_flow_graph * cfg.4D.5561;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4231 => 0
+  # .MEMD.5615_22 = VDEF <.MEMD.5615_21(D)>
+  depth_first_searchD.4185 ();
+  # .MEMD.5615_23 = VDEF <.MEMD.5615_22>
+  mark_edgesD.4209 ();
+  # VUSE <.MEMD.5615_23>
+  cfg.4D.5561_6 = cfgD.4174;
+  # VUSE <.MEMD.5615_23>
+  D.5562_7 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_24 = VDEF <.MEMD.5615_23>
+  maxD.4231_8 = calc_max_distance_recursiveD.4217 (D.5562_7);
+  # DEBUG maxD.4231 => maxD.4231_8
+  # VUSE <.MEMD.5615_24>
+  bbD.4232_10 = cfg.4D.5561_6->bbD.4157;
+  # DEBUG bbD.4232 => bbD.4232_10
+  # DEBUG bbD.4232 => bbD.4232_10
+  # DEBUG maxD.4231 => maxD.4231_8
+  if (bbD.4232_10 != 0B)
+    goto <bb 8>;
+  else
+    goto <bb 9>;
+  # SUCC: 8 [91.0%]  (true,exec) 9 [9.0%]  (false,exec)
+
+  # BLOCK 9 freq:81
+  # PRED: 2 [9.0%]  (false,exec)
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 8 freq:819
+  # PRED: 2 [91.0%]  (true,exec)
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:9100
+  # PRED: 12 [100.0%]  (fallthru) 8 [100.0%]  (fallthru)
+  # maxD.4231_27 = PHI <maxD.4231_1(12), maxD.4231_8(8)>
+  # bbD.4232_28 = PHI <bbD.4232_16(12), bbD.4232_10(8)>
+  # .MEMD.5615_30 = PHI <.MEMD.5615_19(12), .MEMD.5615_24(8)>
+  # VUSE <.MEMD.5615_30>
+  D.5563_11 = bbD.4232_28->max_distanceD.4146;
+  if (D.5563_11 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 10>;
+  # SUCC: 4 [29.0%]  (true,exec) 10 [71.0%]  (false,exec)
+
+  # BLOCK 10 freq:6461
+  # PRED: 3 [71.0%]  (false,exec)
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5615_25 = VDEF <.MEMD.5615_30>
+  valD.4230_12 = calc_max_distance_recursiveD.4217 (bbD.4232_28);
+  # DEBUG valD.4230 => valD.4230_12
+  if (valD.4230_12 >= maxD.4231_27)
+    goto <bb 5>;
+  else
+    goto <bb 11>;
+  # SUCC: 5 [50.0%]  (true,exec) 11 [50.0%]  (false,exec)
+
+  # BLOCK 11 freq:1320
+  # PRED: 4 [50.0%]  (false,exec)
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru)
+
+  # BLOCK 5 freq:1319
+  # PRED: 4 [50.0%]  (true,exec)
+  maxD.4231_13 = valD.4230_12 + 1;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 10 [100.0%]  (fallthru) 11 [100.0%]  (fallthru) 5 [100.0%]  (fallthru,exec)
+  # maxD.4231_1 = PHI <maxD.4231_27(10), maxD.4231_27(11), maxD.4231_13(5)>
+  # .MEMD.5615_19 = PHI <.MEMD.5615_30(10), .MEMD.5615_25(11), .MEMD.5615_25(5)>
+  # DEBUG maxD.4231 => maxD.4231_1
+  # VUSE <.MEMD.5615_19>
+  bbD.4232_16 = bbD.4232_28->nextD.4151;
+  # DEBUG bbD.4232 => bbD.4232_16
+  # DEBUG bbD.4232 => bbD.4232_16
+  # DEBUG maxD.4231 => maxD.4231_1
+  if (bbD.4232_16 != 0B)
+    goto <bb 12>;
+  else
+    goto <bb 13>;
+  # SUCC: 12 [91.0%]  (true,exec) 13 [9.0%]  (false,exec)
+
+  # BLOCK 12 freq:8281
+  # PRED: 6 [91.0%]  (true,exec)
+  goto <bb 3>;
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 13 freq:819
+  # PRED: 6 [9.0%]  (false,exec)
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 7 freq:900
+  # PRED: 13 [100.0%]  (fallthru) 9 [100.0%]  (fallthru)
+  # maxD.4231_4 = PHI <maxD.4231_1(13), maxD.4231_8(9)>
+  # .MEMD.5615_31 = PHI <.MEMD.5615_19(13), .MEMD.5615_24(9)>
+  # VUSE <.MEMD.5615_31>
+  D.5562_18 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_26 = VDEF <.MEMD.5615_31>
+  D.5562_18->max_distanceD.4146 = maxD.4231_4;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function fine_tune_cfg (fine_tune_cfg)
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+first_function = NONLOCAL
+first_function.0_1 = first_function
+current_function = NONLOCAL
+current_function = first_function.0_1
+ESCAPED = first_function.0_1
+current_function.1_14 = current_function.3_6
+current_function.1_14 = first_function.0_1
+cfg.2_4 = *current_function.1_14 + 32
+cfg = NONLOCAL
+cfg = cfg.2_4
+ESCAPED = cfg.2_4
+current_function.1_5 = current_function
+current_function.3_6 = *current_function.1_5 + 64
+current_function = current_function.3_6
+ESCAPED = current_function.3_6
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Found location equivalence for node NONLOCAL
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 7, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 4, location:3
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 9, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 10, location:0
+Equivalence classes for Direct node node id 8:first_function.0_1 are pointer: 4, location:0
+Equivalence classes for Direct node node id 9:first_function are pointer: 4, location:0
+Equivalence classes for Direct node node id 10:current_function are pointer: 11, location:0
+Equivalence classes for Direct node node id 11:current_function.1_14 are pointer: 11, location:0
+Equivalence classes for Indirect node node id 12:current_function.3_6 are pointer: 5, location:0
+Equivalence classes for Indirect node node id 13:cfg.2_4 are pointer: 6, location:0
+Equivalence classes for Direct node node id 14:cfg are pointer: 12, location:0
+Equivalence classes for Direct node node id 15:current_function.1_5 are pointer: 11, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Unifying first_function.0_1 to first_function
+Unifying current_function.1_14 to current_function
+Unifying current_function.1_5 to current_function
+Uniting pointer but not location equivalent variables
+Unifying NONLOCAL to first_function
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               8
+Non-pointer vars:          1
+Statically unified vars:  4
+Dynamically unified vars: 0
+Iterations:               2
+Number of edges:          14
+Number of implicit edges: 18
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = same as first_function
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+first_function.0_1 = same as first_function
+first_function = { ESCAPED NONLOCAL }
+current_function = { ESCAPED NONLOCAL }
+current_function.1_14 = same as current_function
+current_function.3_6 = { ESCAPED NONLOCAL }
+cfg.2_4 = { ESCAPED NONLOCAL }
+cfg = { ESCAPED NONLOCAL }
+current_function.1_5 = same as current_function
+
+
+Alias information for fine_tune_cfg
+
+Aliased symbols
+
+.MEMD.5616, UID D.5616, voidD.32, is global, call clobbered, default def: .MEMD.5616_8(D)
+first_functionD.4111, UID D.4111, struct function *, is global, call clobbered
+current_functionD.4113, UID D.4113, struct function *, is global, call clobbered
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+first_function.0D.5557_1, points-to non-local, points-to escaped, points-to vars: { }
+cfg.2D.5559_4, points-to non-local, points-to escaped, points-to vars: { }
+current_function.1D.5558_5, points-to non-local, points-to escaped, points-to vars: { }
+current_function.3D.5560_6, points-to non-local, points-to escaped, points-to vars: { }
+current_function.1D.5558_14, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in fine_tune_cfg: 8
+
+Variable: .MEMD.5616, UID D.5616, voidD.32, is global, call clobbered, default def: .MEMD.5616_8(D)
+Variable: first_function.0D.5557, UID D.5557, struct function *
+Variable: current_function.1D.5558, UID D.5558, struct function *
+Variable: cfg.2D.5559, UID D.5559, struct control_flow_graph *
+Variable: current_function.3D.5560, UID D.5560, struct function *
+Variable: first_functionD.4111, UID D.4111, struct function *, is global, call clobbered
+Variable: cfgD.4174, UID D.4174, struct control_flow_graph *, is global, call clobbered
+Variable: current_functionD.4113, UID D.4113, struct function *, is global, call clobbered
+
+Points to sets created:7
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 6 5 3 7 8 4
+;;
+;; Loop 1
+;;  header 3, latch 7
+;;  depth 1, outer 0
+;;  nodes: 3 7
+;; 2 succs { 5 6 }
+;; 6 succs { 4 }
+;; 5 succs { 3 }
+;; 3 succs { 7 8 }
+;; 7 succs { 3 }
+;; 8 succs { 4 }
+;; 4 succs { 1 }
+SCC consists of: .MEM_8(D) 
+Setting value number of .MEM_8(D) to .MEM_8(D) (changed)
+SCC consists of: first_function.0_1 
+Value numbering first_function.0_1 stmt = first_function.0_1 = first_function;
+Setting value number of first_function.0_1 to first_function.0_1 (changed)
+SCC consists of: .MEM_9 
+Value numbering .MEM_9 stmt = current_function = first_function.0_1;
+No store match
+Value numbering store current_function to first_function.0_1
+Setting value number of .MEM_9 to .MEM_9 (changed)
+SCC consists of: current_function.1_14 .MEM_15 cfg.2_4 .MEM_10 .MEM_11 current_function.1_5 current_function.3_6 .MEM_12 
+Value numbering current_function.1_14 stmt = current_function.1_14 = PHI <current_function.3_6(7), first_function.0_1(5)>
+Setting value number of current_function.1_14 to first_function.0_1 (changed)
+Value numbering .MEM_15 stmt = .MEM_15 = PHI <.MEM_12(7), .MEM_9(5)>
+Setting value number of .MEM_15 to .MEM_9 (changed)
+Value numbering cfg.2_4 stmt = cfg.2_4 = current_function.1_14->cfg;
+Setting value number of cfg.2_4 to cfg.2_4 (changed)
+Value numbering .MEM_10 stmt = cfg = cfg.2_4;
+No store match
+Value numbering store cfg to cfg.2_4
+Setting value number of .MEM_10 to .MEM_10 (changed)
+Value numbering .MEM_11 stmt = calc_max_distance ();
+Setting value number of .MEM_11 to .MEM_11 (changed)
+Value numbering current_function.1_5 stmt = current_function.1_5 = current_function;
+Setting value number of current_function.1_5 to current_function.1_5 (changed)
+Value numbering current_function.3_6 stmt = current_function.3_6 = current_function.1_5->next;
+Setting value number of current_function.3_6 to current_function.3_6 (changed)
+Value numbering .MEM_12 stmt = current_function = current_function.3_6;
+No store match
+Value numbering store current_function to current_function.3_6
+Setting value number of .MEM_12 to .MEM_12 (changed)
+Value numbering current_function.1_14 stmt = current_function.1_14 = PHI <current_function.3_6(7), first_function.0_1(5)>
+Setting value number of current_function.1_14 to current_function.1_14 (changed)
+Value numbering .MEM_15 stmt = .MEM_15 = PHI <.MEM_12(7), .MEM_9(5)>
+Setting value number of .MEM_15 to .MEM_15 (changed)
+Value numbering cfg.2_4 stmt = cfg.2_4 = current_function.1_14->cfg;
+Setting value number of cfg.2_4 to cfg.2_4
+Value numbering .MEM_10 stmt = cfg = cfg.2_4;
+No store match
+Value numbering store cfg to cfg.2_4
+Setting value number of .MEM_10 to .MEM_10
+Value numbering .MEM_11 stmt = calc_max_distance ();
+Setting value number of .MEM_11 to .MEM_11
+Value numbering current_function.1_5 stmt = current_function.1_5 = current_function;
+Setting value number of current_function.1_5 to current_function.1_5
+Value numbering current_function.3_6 stmt = current_function.3_6 = current_function.1_5->next;
+Setting value number of current_function.3_6 to current_function.3_6
+Value numbering .MEM_12 stmt = current_function = current_function.3_6;
+No store match
+Value numbering store current_function to current_function.3_6
+Setting value number of .MEM_12 to .MEM_12
+Value numbering current_function.1_14 stmt = current_function.1_14 = PHI <current_function.3_6(7), first_function.0_1(5)>
+Setting value number of current_function.1_14 to current_function.1_14
+Value numbering .MEM_15 stmt = .MEM_15 = PHI <.MEM_12(7), .MEM_9(5)>
+Setting value number of .MEM_15 to .MEM_15
+Value numbering cfg.2_4 stmt = cfg.2_4 = current_function.1_14->cfg;
+Setting value number of cfg.2_4 to cfg.2_4
+Value numbering .MEM_10 stmt = cfg = cfg.2_4;
+No store match
+Value numbering store cfg to cfg.2_4
+Setting value number of .MEM_10 to .MEM_10
+Value numbering .MEM_11 stmt = calc_max_distance ();
+Setting value number of .MEM_11 to .MEM_11
+Value numbering current_function.1_5 stmt = current_function.1_5 = current_function;
+Setting value number of current_function.1_5 to current_function.1_5
+Value numbering current_function.3_6 stmt = current_function.3_6 = current_function.1_5->next;
+Setting value number of current_function.3_6 to current_function.3_6
+Value numbering .MEM_12 stmt = current_function = current_function.3_6;
+No store match
+Value numbering store current_function to current_function.3_6
+Setting value number of .MEM_12 to .MEM_12
+Value numbers:
+exp_gen[0] := {  }
+phi_gen[0] := {  }
+tmp_gen[0] := {  }
+avail_out[0] := {  }
+exp_gen[2] := { {first_function}@.MEM_8(D) (0001) }
+phi_gen[2] := {  }
+tmp_gen[2] := { first_function.0_1 (0001) }
+avail_out[2] := { first_function.0_1 (0001) }
+exp_gen[6] := {  }
+phi_gen[6] := {  }
+tmp_gen[6] := {  }
+avail_out[6] := { first_function.0_1 (0001) }
+exp_gen[5] := {  }
+phi_gen[5] := {  }
+tmp_gen[5] := {  }
+avail_out[5] := { first_function.0_1 (0001) }
+exp_gen[3] := { current_function.1_14 (0010), {component_ref<cfg>,indirect_ref,current_function.1_14}@.MEM_15 (0002), {current_function}@.MEM_11 (0003), {component_ref<next>,indirect_ref,current_function.1_5}@.MEM_11 (0004) }
+phi_gen[3] := { current_function.1_14 (0010) }
+tmp_gen[3] := { current_function.3_6 (0004), cfg.2_4 (0002), current_function.1_5 (0003) }
+avail_out[3] := { first_function.0_1 (0001), current_function.1_14 (0010), current_function.3_6 (0004), cfg.2_4 (0002), current_function.1_5 (0003) }
+exp_gen[7] := {  }
+phi_gen[7] := {  }
+tmp_gen[7] := {  }
+avail_out[7] := { first_function.0_1 (0001), current_function.1_14 (0010), current_function.3_6 (0004), cfg.2_4 (0002), current_function.1_5 (0003) }
+exp_gen[8] := {  }
+phi_gen[8] := {  }
+tmp_gen[8] := {  }
+avail_out[8] := { first_function.0_1 (0001), current_function.1_14 (0010), current_function.3_6 (0004), cfg.2_4 (0002), current_function.1_5 (0003) }
+exp_gen[4] := {  }
+phi_gen[4] := {  }
+tmp_gen[4] := {  }
+avail_out[4] := { first_function.0_1 (0001) }
+exp_gen[1] := {  }
+phi_gen[1] := {  }
+tmp_gen[1] := {  }
+avail_out[1] := {  }
+Starting iteration 0
+Block 7 was deferred for a future iteration.
+ANTIC_OUT[4] := {  }
+ANTIC_IN[4] := {  }
+S[4] := {  }
+ANTIC_OUT[8] := {  }
+ANTIC_IN[8] := {  }
+S[8] := {  }
+ANTIC_OUT[3] := {  }
+ANTIC_IN[3] := { current_function.1_14 (0010), {component_ref<cfg>,indirect_ref,current_function.1_14}@.MEM_15 (0002) }
+S[3] := {  }
+ANTIC_OUT[5] := { first_function.0_1 (0001), {component_ref<cfg>,indirect_ref,first_function.0_1}@.MEM_9 (0012) }
+ANTIC_IN[5] := { first_function.0_1 (0001), {component_ref<cfg>,indirect_ref,first_function.0_1}@.MEM_9 (0012) }
+S[5] := { first_function.0_1 (0001), {component_ref<cfg>,indirect_ref,first_function.0_1}@.MEM_9 (0012) }
+ANTIC_OUT[6] := {  }
+ANTIC_IN[6] := {  }
+S[6] := {  }
+ANTIC_OUT[2] := {  }
+ANTIC_IN[2] := { {first_function}@.MEM_8(D) (0001) }
+S[2] := {  }
+Starting iteration 1
+ANTIC_OUT[7] := { current_function.3_6 (0004), {component_ref<cfg>,indirect_ref,current_function.3_6}@.MEM_12 (0013) }
+ANTIC_IN[7] := { current_function.3_6 (0004), {component_ref<cfg>,indirect_ref,current_function.3_6}@.MEM_12 (0013) }
+S[7] := { current_function.3_6 (0004), {component_ref<cfg>,indirect_ref,current_function.3_6}@.MEM_12 (0013) }
+ANTIC_OUT[3] := {  }
+ANTIC_IN[3] := { current_function.1_14 (0010), {component_ref<cfg>,indirect_ref,current_function.1_14}@.MEM_15 (0002) }
+S[3] := {  }
+ANTIC_OUT[5] := { first_function.0_1 (0001), {component_ref<cfg>,indirect_ref,first_function.0_1}@.MEM_9 (0012) }
+ANTIC_IN[5] := { first_function.0_1 (0001), {component_ref<cfg>,indirect_ref,first_function.0_1}@.MEM_9 (0012) }
+S[5] := { first_function.0_1 (0001), {component_ref<cfg>,indirect_ref,first_function.0_1}@.MEM_9 (0012) }
+ANTIC_OUT[2] := {  }
+ANTIC_IN[2] := { {first_function}@.MEM_8(D) (0001) }
+S[2] := {  }
+Starting iteration 2
+ANTIC_OUT[7] := { current_function.3_6 (0004), {component_ref<cfg>,indirect_ref,current_function.3_6}@.MEM_12 (0013) }
+ANTIC_IN[7] := { current_function.3_6 (0004), {component_ref<cfg>,indirect_ref,current_function.3_6}@.MEM_12 (0013) }
+S[7] := { current_function.3_6 (0004), {component_ref<cfg>,indirect_ref,current_function.3_6}@.MEM_12 (0013) }
+
+Pass statistics:
+----------------
+compute_antic iterations == 3: 1
+SCC iterations == 3: 1
+insert iterations == 1: 1
+
+fine_tune_cfg ()
+{
+  struct function * current_function.3D.5560;
+  struct control_flow_graph * cfg.2D.5559;
+  struct function * current_function.1D.5558;
+  struct function * first_function.0D.5557;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5616_8(D)>
+  first_function.0D.5557_1 = first_functionD.4111;
+  # .MEMD.5616_9 = VDEF <.MEMD.5616_8(D)>
+  current_functionD.4113 = first_function.0D.5557_1;
+  if (first_function.0D.5557_1 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [91.0%]  (true,exec) 6 [9.0%]  (false,exec)
+
+  # BLOCK 6 freq:81
+  # PRED: 2 [9.0%]  (false,exec)
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 5 freq:819
+  # PRED: 2 [91.0%]  (true,exec)
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 3 freq:9100
+  # PRED: 7 [100.0%]  (fallthru) 5 [100.0%]  (fallthru)
+  # current_function.1D.5558_14 = PHI <current_function.3D.5560_6(7), first_function.0D.5557_1(5)>
+  # .MEMD.5616_15 = PHI <.MEMD.5616_12(7), .MEMD.5616_9(5)>
+  # VUSE <.MEMD.5616_15>
+  cfg.2D.5559_4 = current_function.1D.5558_14->cfgD.4162;
+  # .MEMD.5616_10 = VDEF <.MEMD.5616_15>
+  cfgD.4174 = cfg.2D.5559_4;
+  # .MEMD.5616_11 = VDEF <.MEMD.5616_10>
+  calc_max_distanceD.4228 ();
+  # VUSE <.MEMD.5616_11>
+  current_function.1D.5558_5 = current_functionD.4113;
+  # VUSE <.MEMD.5616_11>
+  current_function.3D.5560_6 = current_function.1D.5558_5->nextD.4163;
+  # .MEMD.5616_12 = VDEF <.MEMD.5616_11>
+  current_functionD.4113 = current_function.3D.5560_6;
+  if (current_function.3D.5560_6 != 0B)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:8281
+  # PRED: 3 [91.0%]  (true,exec)
+  goto <bb 3>;
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 8 freq:819
+  # PRED: 3 [9.0%]  (false,exec)
+  # SUCC: 4 [100.0%]  (fallthru)
+
+  # BLOCK 4 freq:900
+  # PRED: 8 [100.0%]  (fallthru) 6 [100.0%]  (fallthru)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+

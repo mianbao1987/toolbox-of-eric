@@ -1,0 +1,717 @@
+
+;; Function search (search)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+search (struct basic_block * bbD.4175)
+{
+  struct edge * eD.4180;
+  struct vec_edge * veD.4179;
+  struct basic_block * succ_bbD.4178;
+  intD.0 count.11D.5608;
+  intD.0 count.10D.5607;
+  intD.0 D.5604;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # .MEMD.5609_14 = VDEF <.MEMD.5609_13(D)>
+  bbD.4175_2(D)->visitedD.4144 = 1;
+  # VUSE <.MEMD.5609_14>
+  veD.4179_3 = bbD.4175_2(D)->succD.4149;
+  # DEBUG veD.4179 => veD.4179_3
+  goto <bb 6>;
+  # SUCC: 6 (fallthru,exec)
+
+  # BLOCK 3
+  # PRED: 6 (true,exec)
+  # VUSE <.MEMD.5609_12>
+  eD.4180_4 = veD.4179_1->edgeD.4138;
+  # DEBUG eD.4180 => eD.4180_4
+  # VUSE <.MEMD.5609_12>
+  succ_bbD.4178_5 = eD.4180_4->targetD.4135;
+  # DEBUG succ_bbD.4178 => succ_bbD.4178_5
+  # VUSE <.MEMD.5609_12>
+  D.5604_6 = succ_bbD.4178_5->visitedD.4144;
+  if (D.5604_6 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 (true,exec) 5 (false,exec)
+
+  # BLOCK 4
+  # PRED: 3 (true,exec)
+  # .MEMD.5609_15 = VDEF <.MEMD.5609_12>
+  eD.4180_4->typeD.4133 = 1;
+  # .MEMD.5609_16 = VDEF <.MEMD.5609_15>
+  searchD.4176 (succ_bbD.4178_5);
+  # SUCC: 5 (fallthru,exec)
+
+  # BLOCK 5
+  # PRED: 3 (false,exec) 4 (fallthru,exec)
+  # .MEMD.5609_11 = PHI <.MEMD.5609_12(3), .MEMD.5609_16(4)>
+  # VUSE <.MEMD.5609_11>
+  veD.4179_7 = veD.4179_1->nextD.4139;
+  # DEBUG veD.4179 => veD.4179_7
+  # SUCC: 6 (fallthru,exec)
+
+  # BLOCK 6
+  # PRED: 2 (fallthru,exec) 5 (fallthru,exec)
+  # veD.4179_1 = PHI <veD.4179_3(2), veD.4179_7(5)>
+  # .MEMD.5609_12 = PHI <.MEMD.5609_14(2), .MEMD.5609_11(5)>
+  # DEBUG veD.4179 => veD.4179_1
+  if (veD.4179_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 (true,exec) 7 (false,exec)
+
+  # BLOCK 7
+  # PRED: 6 (false,exec)
+  # VUSE <.MEMD.5609_12>
+  count.10D.5607_8 = countD.4173;
+  # .MEMD.5609_17 = VDEF <.MEMD.5609_12>
+  bbD.4175_2(D)->dfs_orderD.4145 = count.10D.5607_8;
+  # VUSE <.MEMD.5609_17>
+  count.10D.5607_9 = countD.4173;
+  count.11D.5608_10 = count.10D.5607_9 - 1;
+  # .MEMD.5609_18 = VDEF <.MEMD.5609_17>
+  countD.4173 = count.11D.5608_10;
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function depth_first_search (depth_first_search)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+depth_first_search ()
+{
+  struct basic_block * bbD.4187;
+  struct basic_block * D.5603;
+  intD.0 count.9D.5602;
+  struct control_flow_graph * cfg.8D.5601;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # VUSE <.MEMD.5610_10(D)>
+  cfg.8D.5601_2 = cfgD.4174;
+  # VUSE <.MEMD.5610_10(D)>
+  bbD.4187_3 = cfg.8D.5601_2->bbD.4157;
+  # DEBUG bbD.4187 => bbD.4187_3
+  goto <bb 4>;
+  # SUCC: 4 (fallthru,exec)
+
+  # BLOCK 3
+  # PRED: 4 (true,exec)
+  # .MEMD.5610_11 = VDEF <.MEMD.5610_9>
+  bbD.4187_1->visitedD.4144 = 0;
+  # VUSE <.MEMD.5610_11>
+  bbD.4187_4 = bbD.4187_1->nextD.4151;
+  # DEBUG bbD.4187 => bbD.4187_4
+  # SUCC: 4 (fallthru,exec)
+
+  # BLOCK 4
+  # PRED: 2 (fallthru,exec) 3 (fallthru,exec)
+  # bbD.4187_1 = PHI <bbD.4187_3(2), bbD.4187_4(3)>
+  # .MEMD.5610_9 = PHI <.MEMD.5610_10(D)(2), .MEMD.5610_11(3)>
+  # DEBUG bbD.4187 => bbD.4187_1
+  if (bbD.4187_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 (true,exec) 5 (false,exec)
+
+  # BLOCK 5
+  # PRED: 4 (false,exec)
+  # VUSE <.MEMD.5610_9>
+  cfg.8D.5601_5 = cfgD.4174;
+  # VUSE <.MEMD.5610_9>
+  count.9D.5602_6 = cfg.8D.5601_5->bb_numD.4153;
+  # .MEMD.5610_12 = VDEF <.MEMD.5610_9>
+  countD.4173 = count.9D.5602_6;
+  # VUSE <.MEMD.5610_12>
+  cfg.8D.5601_7 = cfgD.4174;
+  # VUSE <.MEMD.5610_12>
+  D.5603_8 = cfg.8D.5601_7->entryD.4155;
+  # .MEMD.5610_13 = VDEF <.MEMD.5610_12>
+  searchD.4176 (D.5603_8);
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function is_ancestor (is_ancestor)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+is_ancestor (struct basic_block * sourceD.4191, struct basic_block * targetD.4192)
+{
+  struct edge * eD.4197;
+  struct vec_edge * veD.4196;
+  struct basic_block * bbD.4195;
+  struct basic_block * D.5599;
+  struct control_flow_graph * cfg.7D.5598;
+  edge_type D.5595;
+  intD.0 D.5594;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  bbD.4195_6 = targetD.4192_5(D);
+  # DEBUG bbD.4195 => bbD.4195_6
+  # SUCC: 3 (fallthru,exec)
+
+  # BLOCK 3
+  # PRED: 2 (fallthru,exec) 10 (true,exec)
+  # bbD.4195_1 = PHI <bbD.4195_6(2), bbD.4195_2(10)>
+  # DEBUG bbD.4195 => bbD.4195_1
+  if (bbD.4195_1 == sourceD.4191_7(D))
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 (true,exec) 5 (false,exec)
+
+  # BLOCK 4
+  # PRED: 3 (true,exec)
+  D.5594_8 = 1;
+  goto <bb 12>;
+  # SUCC: 12 (fallthru,exec)
+
+  # BLOCK 5
+  # PRED: 3 (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_9 = bbD.4195_1->predD.4147;
+  # DEBUG veD.4196 => veD.4196_9
+  goto <bb 9>;
+  # SUCC: 9 (fallthru,exec)
+
+  # BLOCK 6
+  # PRED: 9 (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_10 = veD.4196_3->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_10
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_11 = eD.4197_10->typeD.4133;
+  if (D.5595_11 == 1)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 (true,exec) 8 (false,exec)
+
+  # BLOCK 7
+  # PRED: 6 (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  bbD.4195_12 = eD.4197_10->sourceD.4134;
+  # DEBUG bbD.4195 => bbD.4195_12
+  goto <bb 10>;
+  # SUCC: 10 (fallthru,exec)
+
+  # BLOCK 8
+  # PRED: 6 (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_13 = veD.4196_3->nextD.4139;
+  # DEBUG veD.4196 => veD.4196_13
+  # SUCC: 9 (fallthru,exec)
+
+  # BLOCK 9
+  # PRED: 5 (fallthru,exec) 8 (fallthru,exec)
+  # veD.4196_3 = PHI <veD.4196_9(5), veD.4196_13(8)>
+  # DEBUG veD.4196 => veD.4196_3
+  if (veD.4196_3 != 0B)
+    goto <bb 6>;
+  else
+    goto <bb 10>;
+  # SUCC: 6 (true,exec) 10 (false,exec)
+
+  # BLOCK 10
+  # PRED: 7 (fallthru,exec) 9 (false,exec)
+  # bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_1(9)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  # VUSE <.MEMD.5611_17(D)>
+  cfg.7D.5598_14 = cfgD.4174;
+  # VUSE <.MEMD.5611_17(D)>
+  D.5599_15 = cfg.7D.5598_14->entryD.4155;
+  if (D.5599_15 != bbD.4195_2)
+    goto <bb 3>;
+  else
+    goto <bb 11>;
+  # SUCC: 3 (true,exec) 11 (false,exec)
+
+  # BLOCK 11
+  # PRED: 10 (false,exec)
+  D.5594_16 = 0;
+  # SUCC: 12 (fallthru,exec)
+
+  # BLOCK 12
+  # PRED: 4 (fallthru,exec) 11 (fallthru,exec)
+  # D.5594_4 = PHI <1(4), 0(11)>
+  return D.5594_4;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function mark_edge (mark_edge)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+mark_edge (struct edge * eD.4203)
+{
+  struct basic_block * targetD.4207;
+  struct basic_block * sourceD.4206;
+  intD.0 D.5588;
+  intD.0 D.5584;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  sourceD.4206_2 = eD.4203_1(D)->sourceD.4134;
+  # DEBUG sourceD.4206 => sourceD.4206_2
+  # VUSE <.MEMD.5612_6(D)>
+  targetD.4207_3 = eD.4203_1(D)->targetD.4135;
+  # DEBUG targetD.4207 => targetD.4207_3
+  # VUSE <.MEMD.5612_6(D)>
+  D.5584_4 = is_ancestorD.4193 (targetD.4207_3, sourceD.4206_2);
+  if (D.5584_4 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 (true,exec) 4 (false,exec)
+
+  # BLOCK 3
+  # PRED: 2 (true,exec)
+  # .MEMD.5612_7 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 3;
+  goto <bb 7>;
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 4
+  # PRED: 2 (false,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  D.5588_5 = is_ancestorD.4193 (sourceD.4206_2, targetD.4207_3);
+  if (D.5588_5 != 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 (true,exec) 6 (false,exec)
+
+  # BLOCK 5
+  # PRED: 4 (true,exec)
+  # .MEMD.5612_8 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 2;
+  goto <bb 7>;
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 6
+  # PRED: 4 (false,exec)
+  # .MEMD.5612_9 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 4;
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 7
+  # PRED: 3 (fallthru,exec) 5 (fallthru,exec) 6 (fallthru,exec)
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function mark_edges (mark_edges)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+mark_edges ()
+{
+  struct edge * eD.4212;
+  struct control_flow_graph * cfgD.4211;
+  edge_type D.5581;
+  struct function * current_function.6D.5580;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # VUSE <.MEMD.5613_9(D)>
+  current_function.6D.5580_2 = current_functionD.4113;
+  # VUSE <.MEMD.5613_9(D)>
+  cfgD.4211_3 = current_function.6D.5580_2->cfgD.4162;
+  # DEBUG cfgD.4211 => cfgD.4211_3
+  # VUSE <.MEMD.5613_9(D)>
+  eD.4212_4 = cfgD.4211_3->edgeD.4159;
+  # DEBUG eD.4212 => eD.4212_4
+  goto <bb 6>;
+  # SUCC: 6 (fallthru,exec)
+
+  # BLOCK 3
+  # PRED: 6 (true,exec)
+  # VUSE <.MEMD.5613_8>
+  D.5581_5 = eD.4212_1->typeD.4133;
+  if (D.5581_5 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 (true,exec) 5 (false,exec)
+
+  # BLOCK 4
+  # PRED: 3 (true,exec)
+  # .MEMD.5613_10 = VDEF <.MEMD.5613_8>
+  mark_edgeD.4204 (eD.4212_1);
+  # SUCC: 5 (fallthru,exec)
+
+  # BLOCK 5
+  # PRED: 3 (false,exec) 4 (fallthru,exec)
+  # .MEMD.5613_7 = PHI <.MEMD.5613_8(3), .MEMD.5613_10(4)>
+  # VUSE <.MEMD.5613_7>
+  eD.4212_6 = eD.4212_1->nextD.4136;
+  # DEBUG eD.4212 => eD.4212_6
+  # SUCC: 6 (fallthru,exec)
+
+  # BLOCK 6
+  # PRED: 2 (fallthru,exec) 5 (fallthru,exec)
+  # eD.4212_1 = PHI <eD.4212_4(2), eD.4212_6(5)>
+  # .MEMD.5613_8 = PHI <.MEMD.5613_9(D)(2), .MEMD.5613_7(5)>
+  # DEBUG eD.4212 => eD.4212_1
+  if (eD.4212_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 (true,exec) 7 (false,exec)
+
+  # BLOCK 7
+  # PRED: 6 (false,exec)
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function calc_max_distance_recursive (calc_max_distance_recursive)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+calc_max_distance_recursive (struct basic_block * bbD.4216)
+{
+  struct edge * eD.4222;
+  struct vec_edge * veD.4221;
+  intD.0 maxD.4220;
+  intD.0 valD.4219;
+  intD.0 D.5578;
+  intD.0 D.5577;
+  struct basic_block * D.5576;
+  edge_type D.5573;
+  intD.0 D.5570;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  maxD.4220_4 = 0;
+  # DEBUG maxD.4220 => 0
+  # VUSE <.MEMD.5614_19(D)>
+  D.5570_6 = bbD.4216_5(D)->max_distanceD.4146;
+  if (D.5570_6 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 10>;
+  # SUCC: 3 (true,exec) 10 (false,exec)
+
+  # BLOCK 3
+  # PRED: 2 (true,exec)
+  # VUSE <.MEMD.5614_19(D)>
+  veD.4221_7 = bbD.4216_5(D)->predD.4147;
+  # DEBUG veD.4221 => veD.4221_7
+  goto <bb 8>;
+  # SUCC: 8 (fallthru,exec)
+
+  # BLOCK 4
+  # PRED: 8 (true,exec)
+  # VUSE <.MEMD.5614_17>
+  eD.4222_8 = veD.4221_3->edgeD.4138;
+  # DEBUG eD.4222 => eD.4222_8
+  # VUSE <.MEMD.5614_17>
+  D.5573_9 = eD.4222_8->typeD.4133;
+  if (D.5573_9 == 3)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 (true,exec) 6 (false,exec)
+
+  # BLOCK 5
+  # PRED: 4 (true,exec)
+  // predicted unlikely by continue predictor.
+  goto <bb 7>;
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 6
+  # PRED: 4 (false,exec)
+  # VUSE <.MEMD.5614_17>
+  D.5576_10 = eD.4222_8->sourceD.4134;
+  # .MEMD.5614_20 = VDEF <.MEMD.5614_17>
+  valD.4219_11 = calc_max_distance_recursiveD.4217 (D.5576_10);
+  # DEBUG valD.4219 => valD.4219_11
+  maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_2>;
+  # DEBUG maxD.4220 => maxD.4220_12
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 7
+  # PRED: 5 (fallthru,exec) 6 (fallthru,exec)
+  # maxD.4220_1 = PHI <maxD.4220_2(5), maxD.4220_12(6)>
+  # .MEMD.5614_16 = PHI <.MEMD.5614_17(5), .MEMD.5614_20(6)>
+  # DEBUG maxD.4220 => maxD.4220_1
+  # VUSE <.MEMD.5614_16>
+  veD.4221_13 = veD.4221_3->nextD.4139;
+  # DEBUG veD.4221 => veD.4221_13
+  # SUCC: 8 (fallthru,exec)
+
+  # BLOCK 8
+  # PRED: 3 (fallthru,exec) 7 (fallthru,exec)
+  # maxD.4220_2 = PHI <0(3), maxD.4220_1(7)>
+  # veD.4221_3 = PHI <veD.4221_7(3), veD.4221_13(7)>
+  # .MEMD.5614_17 = PHI <.MEMD.5614_19(D)(3), .MEMD.5614_16(7)>
+  # DEBUG veD.4221 => veD.4221_3
+  # DEBUG maxD.4220 => maxD.4220_2
+  if (veD.4221_3 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 9>;
+  # SUCC: 4 (true,exec) 9 (false,exec)
+
+  # BLOCK 9
+  # PRED: 8 (false,exec)
+  D.5577_14 = maxD.4220_2 + 1;
+  # .MEMD.5614_21 = VDEF <.MEMD.5614_17>
+  bbD.4216_5(D)->max_distanceD.4146 = D.5577_14;
+  # SUCC: 10 (fallthru,exec)
+
+  # BLOCK 10
+  # PRED: 2 (false,exec) 9 (fallthru,exec)
+  # .MEMD.5614_18 = PHI <.MEMD.5614_19(D)(2), .MEMD.5614_21(9)>
+  # VUSE <.MEMD.5614_18>
+  D.5578_15 = bbD.4216_5(D)->max_distanceD.4146;
+  return D.5578_15;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function calc_max_distance (calc_max_distance)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+calc_max_distance ()
+{
+  struct basic_block * bbD.4232;
+  intD.0 maxD.4231;
+  intD.0 valD.4230;
+  intD.0 D.5563;
+  struct basic_block * D.5562;
+  struct control_flow_graph * cfg.4D.5561;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # DEBUG maxD.4231 => 0
+  # .MEMD.5615_22 = VDEF <.MEMD.5615_21(D)>
+  depth_first_searchD.4185 ();
+  # .MEMD.5615_23 = VDEF <.MEMD.5615_22>
+  mark_edgesD.4209 ();
+  # VUSE <.MEMD.5615_23>
+  cfg.4D.5561_6 = cfgD.4174;
+  # VUSE <.MEMD.5615_23>
+  D.5562_7 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_24 = VDEF <.MEMD.5615_23>
+  maxD.4231_8 = calc_max_distance_recursiveD.4217 (D.5562_7);
+  # DEBUG maxD.4231 => maxD.4231_8
+  # VUSE <.MEMD.5615_24>
+  cfg.4D.5561_9 = cfgD.4174;
+  # VUSE <.MEMD.5615_24>
+  bbD.4232_10 = cfg.4D.5561_9->bbD.4157;
+  # DEBUG bbD.4232 => bbD.4232_10
+  goto <bb 9>;
+  # SUCC: 9 (fallthru,exec)
+
+  # BLOCK 3
+  # PRED: 9 (true,exec)
+  # VUSE <.MEMD.5615_20>
+  D.5563_11 = bbD.4232_3->max_distanceD.4146;
+  if (D.5563_11 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 8>;
+  # SUCC: 4 (true,exec) 8 (false,exec)
+
+  # BLOCK 4
+  # PRED: 3 (true,exec)
+  # .MEMD.5615_25 = VDEF <.MEMD.5615_20>
+  valD.4230_12 = calc_max_distance_recursiveD.4217 (bbD.4232_3);
+  # DEBUG valD.4230 => valD.4230_12
+  if (maxD.4231_2 <= valD.4230_12)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 (true,exec) 6 (false,exec)
+
+  # BLOCK 5
+  # PRED: 4 (true,exec)
+  maxD.4231_13 = valD.4230_12 + 1;
+  goto <bb 7>;
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 6
+  # PRED: 4 (false,exec)
+  maxD.4231_14 = maxD.4231_2;
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 7
+  # PRED: 5 (fallthru,exec) 6 (fallthru,exec)
+  # maxD.4231_4 = PHI <maxD.4231_13(5), maxD.4231_14(6)>
+  maxD.4231_15 = maxD.4231_4;
+  # DEBUG maxD.4231 => maxD.4231_15
+  # SUCC: 8 (fallthru,exec)
+
+  # BLOCK 8
+  # PRED: 3 (false,exec) 7 (fallthru,exec)
+  # maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_15(7)>
+  # .MEMD.5615_19 = PHI <.MEMD.5615_20(3), .MEMD.5615_25(7)>
+  # DEBUG maxD.4231 => maxD.4231_1
+  # VUSE <.MEMD.5615_19>
+  bbD.4232_16 = bbD.4232_3->nextD.4151;
+  # DEBUG bbD.4232 => bbD.4232_16
+  # SUCC: 9 (fallthru,exec)
+
+  # BLOCK 9
+  # PRED: 2 (fallthru,exec) 8 (fallthru,exec)
+  # maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(8)>
+  # bbD.4232_3 = PHI <bbD.4232_10(2), bbD.4232_16(8)>
+  # .MEMD.5615_20 = PHI <.MEMD.5615_24(2), .MEMD.5615_19(8)>
+  # DEBUG bbD.4232 => bbD.4232_3
+  # DEBUG maxD.4231 => maxD.4231_2
+  if (bbD.4232_3 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 10>;
+  # SUCC: 3 (true,exec) 10 (false,exec)
+
+  # BLOCK 10
+  # PRED: 9 (false,exec)
+  # VUSE <.MEMD.5615_20>
+  cfg.4D.5561_17 = cfgD.4174;
+  # VUSE <.MEMD.5615_20>
+  D.5562_18 = cfg.4D.5561_17->exitD.4156;
+  # .MEMD.5615_26 = VDEF <.MEMD.5615_20>
+  D.5562_18->max_distanceD.4146 = maxD.4231_2;
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function fine_tune_cfg (fine_tune_cfg)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+fine_tune_cfg ()
+{
+  struct function * current_function.3D.5560;
+  struct control_flow_graph * cfg.2D.5559;
+  struct function * current_function.1D.5558;
+  struct function * first_function.0D.5557;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # VUSE <.MEMD.5616_8(D)>
+  first_function.0D.5557_1 = first_functionD.4111;
+  # .MEMD.5616_9 = VDEF <.MEMD.5616_8(D)>
+  current_functionD.4113 = first_function.0D.5557_1;
+  goto <bb 4>;
+  # SUCC: 4 (fallthru,exec)
+
+  # BLOCK 3
+  # PRED: 4 (true,exec)
+  # VUSE <.MEMD.5616_7>
+  current_function.1D.5558_3 = current_functionD.4113;
+  # VUSE <.MEMD.5616_7>
+  cfg.2D.5559_4 = current_function.1D.5558_3->cfgD.4162;
+  # .MEMD.5616_10 = VDEF <.MEMD.5616_7>
+  cfgD.4174 = cfg.2D.5559_4;
+  # .MEMD.5616_11 = VDEF <.MEMD.5616_10>
+  calc_max_distanceD.4228 ();
+  # VUSE <.MEMD.5616_11>
+  current_function.1D.5558_5 = current_functionD.4113;
+  # VUSE <.MEMD.5616_11>
+  current_function.3D.5560_6 = current_function.1D.5558_5->nextD.4163;
+  # .MEMD.5616_12 = VDEF <.MEMD.5616_11>
+  current_functionD.4113 = current_function.3D.5560_6;
+  # SUCC: 4 (fallthru,exec)
+
+  # BLOCK 4
+  # PRED: 2 (fallthru,exec) 3 (fallthru,exec)
+  # .MEMD.5616_7 = PHI <.MEMD.5616_9(2), .MEMD.5616_12(3)>
+  # VUSE <.MEMD.5616_7>
+  current_function.1D.5558_2 = current_functionD.4113;
+  if (current_function.1D.5558_2 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 (true,exec) 5 (false,exec)
+
+  # BLOCK 5
+  # PRED: 4 (false,exec)
+  return;
+  # SUCC: EXIT
+
+}
+
+

@@ -1,0 +1,2158 @@
+
+;; Function search (search)
+
+
+Pass statistics:
+----------------
+
+
+
+Renaming block #0
+
+
+
+Renaming block #2
+
+Renaming statement bb->visited = 1;
+
+Renaming statement ve = bb->succ;
+
+
+
+Renaming block #6
+
+Renaming statement if (ve != 0B)
+
+
+
+Renaming block #3
+
+Renaming statement e = ve->edge;
+
+Renaming statement succ_bb = e->target;
+
+Renaming statement D.5604 = succ_bb->visited;
+
+Renaming statement if (D.5604 == 0)
+
+
+
+Renaming block #4
+
+Renaming statement e->type = 1;
+
+Renaming statement search (succ_bb);
+
+
+
+Renaming block #5
+
+Renaming statement ve = ve->next;
+
+
+
+Renaming block #7
+
+Renaming statement count.10 = count;
+
+Renaming statement bb->dfs_order = count.10;
+
+Renaming statement count.10 = count;
+
+Renaming statement count.11 = count.10 - 1;
+
+Renaming statement count = count.11;
+
+
+DFA Statistics for search
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      9         36b
+Variables annotated                       9        108b
+USE operands                             19         76b
+DEF operands                              8         32b
+VUSE operands                            12         48b
+VDEF operands                             5         20b
+PHI nodes                                 1         60b
+PHI arguments                             2         48b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  428b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 13, 7 elements, 0.129032 collision/search ratio
+
+
+Pass statistics:
+----------------
+
+
+
+Registering new PHI nodes in block #0
+
+
+
+Registering new PHI nodes in block #2
+
+Updating SSA information for statement bb_2(D)->visited = 1;
+
+Updating SSA information for statement ve_3 = bb_2(D)->succ;
+
+
+
+Registering new PHI nodes in block #6
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement e_4 = ve_1->edge;
+
+Updating SSA information for statement succ_bb_5 = e_4->target;
+
+Updating SSA information for statement D.5604_6 = succ_bb_5->visited;
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement e_4->type = 1;
+
+Updating SSA information for statement search (succ_bb_5);
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement ve_7 = ve_1->next;
+
+
+
+Registering new PHI nodes in block #7
+
+Updating SSA information for statement count.10_8 = count;
+
+Updating SSA information for statement bb_2(D)->dfs_order = count.10_8;
+
+Updating SSA information for statement count.10_9 = count;
+
+Updating SSA information for statement count = count.11_10;
+
+
+DFA Statistics for search
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      9         36b
+Variables annotated                       9        108b
+USE operands                             19         76b
+DEF operands                              8         32b
+VUSE operands                            12         48b
+VDEF operands                             5         20b
+PHI nodes                                 3        180b
+PHI arguments                             6        144b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  644b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 13, 1 elements, 0.000000 collision/search ratio
+    repl_tbl:     size 31, 0 elements, 0.000000 collision/search ratio
+
+
+
+Symbols to be put in SSA form
+
+{ .MEM }
+
+
+Incremental SSA update started at block: 0
+
+Number of blocks in CFG: 8
+Number of blocks to update: 7 ( 88%)
+
+Affected blocks: 0 2 3 4 5 6 7 
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  struct basic_block * succ_bbD.4178;
+  struct vec_edge * veD.4179;
+  struct edge * eD.4180;
+
+}
+search (struct basic_block * bbD.4175)
+{
+  struct edge * eD.4180;
+  struct vec_edge * veD.4179;
+  struct basic_block * succ_bbD.4178;
+  intD.0 count.11D.5608;
+  intD.0 count.10D.5607;
+  intD.0 D.5604;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru)
+  # .MEMD.5609_14 = VDEF <.MEMD.5609_13(D)>
+  bbD.4175_2(D)->visitedD.4144 = 1;
+  # VUSE <.MEMD.5609_14>
+  veD.4179_3 = bbD.4175_2(D)->succD.4149;
+  # DEBUG veD.4179 => veD.4179_3
+  goto <bb 6>;
+  # SUCC: 6 (fallthru)
+
+  # BLOCK 3
+  # PRED: 6 (true)
+  # VUSE <.MEMD.5609_12>
+  eD.4180_4 = veD.4179_1->edgeD.4138;
+  # DEBUG eD.4180 => eD.4180_4
+  # VUSE <.MEMD.5609_12>
+  succ_bbD.4178_5 = eD.4180_4->targetD.4135;
+  # DEBUG succ_bbD.4178 => succ_bbD.4178_5
+  # VUSE <.MEMD.5609_12>
+  D.5604_6 = succ_bbD.4178_5->visitedD.4144;
+  if (D.5604_6 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 (true) 5 (false)
+
+  # BLOCK 4
+  # PRED: 3 (true)
+  # .MEMD.5609_15 = VDEF <.MEMD.5609_12>
+  eD.4180_4->typeD.4133 = 1;
+  # .MEMD.5609_16 = VDEF <.MEMD.5609_15>
+  searchD.4176 (succ_bbD.4178_5);
+  # SUCC: 5 (fallthru)
+
+  # BLOCK 5
+  # PRED: 3 (false) 4 (fallthru)
+  # .MEMD.5609_11 = PHI <.MEMD.5609_12(3), .MEMD.5609_16(4)>
+  # VUSE <.MEMD.5609_11>
+  veD.4179_7 = veD.4179_1->nextD.4139;
+  # DEBUG veD.4179 => veD.4179_7
+  # SUCC: 6 (fallthru)
+
+  # BLOCK 6
+  # PRED: 2 (fallthru) 5 (fallthru)
+  # veD.4179_1 = PHI <veD.4179_3(2), veD.4179_7(5)>
+  # .MEMD.5609_12 = PHI <.MEMD.5609_14(2), .MEMD.5609_11(5)>
+  # DEBUG veD.4179 => veD.4179_1
+  if (veD.4179_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 (true) 7 (false)
+
+  # BLOCK 7
+  # PRED: 6 (false)
+  # VUSE <.MEMD.5609_12>
+  count.10D.5607_8 = countD.4173;
+  # .MEMD.5609_17 = VDEF <.MEMD.5609_12>
+  bbD.4175_2(D)->dfs_orderD.4145 = count.10D.5607_8;
+  # VUSE <.MEMD.5609_17>
+  count.10D.5607_9 = countD.4173;
+  count.11D.5608_10 = count.10D.5607_9 - 1;
+  # .MEMD.5609_18 = VDEF <.MEMD.5609_17>
+  countD.4173 = count.11D.5608_10;
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function depth_first_search (depth_first_search)
+
+
+Pass statistics:
+----------------
+
+
+
+Renaming block #0
+
+
+
+Renaming block #2
+
+Renaming statement cfg.8 = cfg;
+
+Renaming statement bb = cfg.8->bb;
+
+
+
+Renaming block #4
+
+Renaming statement if (bb != 0B)
+
+
+
+Renaming block #3
+
+Renaming statement bb->visited = 0;
+
+Renaming statement bb = bb->next;
+
+
+
+Renaming block #5
+
+Renaming statement cfg.8 = cfg;
+
+Renaming statement count.9 = cfg.8->bb_num;
+
+Renaming statement count = count.9;
+
+Renaming statement cfg.8 = cfg;
+
+Renaming statement D.5603 = cfg.8->entry;
+
+Renaming statement search (D.5603);
+
+
+DFA Statistics for depth_first_search
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      7         28b
+Variables annotated                       7         84b
+USE operands                             11         44b
+DEF operands                              7         28b
+VUSE operands                            10         40b
+VDEF operands                             3         12b
+PHI nodes                                 1         60b
+PHI arguments                             2         48b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  344b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 7, 4 elements, 0.142857 collision/search ratio
+
+
+Pass statistics:
+----------------
+
+
+
+Registering new PHI nodes in block #0
+
+
+
+Registering new PHI nodes in block #2
+
+Updating SSA information for statement cfg.8_2 = cfg;
+
+Updating SSA information for statement bb_3 = cfg.8_2->bb;
+
+
+
+Registering new PHI nodes in block #4
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement bb_1->visited = 0;
+
+Updating SSA information for statement bb_4 = bb_1->next;
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement cfg.8_5 = cfg;
+
+Updating SSA information for statement count.9_6 = cfg.8_5->bb_num;
+
+Updating SSA information for statement count = count.9_6;
+
+Updating SSA information for statement cfg.8_7 = cfg;
+
+Updating SSA information for statement D.5603_8 = cfg.8_7->entry;
+
+Updating SSA information for statement search (D.5603_8);
+
+
+DFA Statistics for depth_first_search
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      7         28b
+Variables annotated                       7         84b
+USE operands                             11         44b
+DEF operands                              7         28b
+VUSE operands                            10         40b
+VDEF operands                             3         12b
+PHI nodes                                 2        120b
+PHI arguments                             4         96b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  452b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 13, 1 elements, 0.000000 collision/search ratio
+    repl_tbl:     size 31, 0 elements, 0.000000 collision/search ratio
+
+
+
+Symbols to be put in SSA form
+
+{ .MEM }
+
+
+Incremental SSA update started at block: 0
+
+Number of blocks in CFG: 6
+Number of blocks to update: 5 ( 83%)
+
+Affected blocks: 0 2 3 4 5 
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  struct basic_block * bbD.4187;
+
+}
+depth_first_search ()
+{
+  struct basic_block * bbD.4187;
+  struct basic_block * D.5603;
+  intD.0 count.9D.5602;
+  struct control_flow_graph * cfg.8D.5601;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru)
+  # VUSE <.MEMD.5610_10(D)>
+  cfg.8D.5601_2 = cfgD.4174;
+  # VUSE <.MEMD.5610_10(D)>
+  bbD.4187_3 = cfg.8D.5601_2->bbD.4157;
+  # DEBUG bbD.4187 => bbD.4187_3
+  goto <bb 4>;
+  # SUCC: 4 (fallthru)
+
+  # BLOCK 3
+  # PRED: 4 (true)
+  # .MEMD.5610_11 = VDEF <.MEMD.5610_9>
+  bbD.4187_1->visitedD.4144 = 0;
+  # VUSE <.MEMD.5610_11>
+  bbD.4187_4 = bbD.4187_1->nextD.4151;
+  # DEBUG bbD.4187 => bbD.4187_4
+  # SUCC: 4 (fallthru)
+
+  # BLOCK 4
+  # PRED: 2 (fallthru) 3 (fallthru)
+  # bbD.4187_1 = PHI <bbD.4187_3(2), bbD.4187_4(3)>
+  # .MEMD.5610_9 = PHI <.MEMD.5610_10(D)(2), .MEMD.5610_11(3)>
+  # DEBUG bbD.4187 => bbD.4187_1
+  if (bbD.4187_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 (true) 5 (false)
+
+  # BLOCK 5
+  # PRED: 4 (false)
+  # VUSE <.MEMD.5610_9>
+  cfg.8D.5601_5 = cfgD.4174;
+  # VUSE <.MEMD.5610_9>
+  count.9D.5602_6 = cfg.8D.5601_5->bb_numD.4153;
+  # .MEMD.5610_12 = VDEF <.MEMD.5610_9>
+  countD.4173 = count.9D.5602_6;
+  # VUSE <.MEMD.5610_12>
+  cfg.8D.5601_7 = cfgD.4174;
+  # VUSE <.MEMD.5610_12>
+  D.5603_8 = cfg.8D.5601_7->entryD.4155;
+  # .MEMD.5610_13 = VDEF <.MEMD.5610_12>
+  searchD.4176 (D.5603_8);
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function is_ancestor (is_ancestor)
+
+
+Pass statistics:
+----------------
+
+
+
+Renaming block #0
+
+
+
+Renaming block #2
+
+Renaming statement bb = target;
+
+
+
+Renaming block #3
+
+Renaming statement if (bb == source)
+
+
+
+Renaming block #4
+
+Renaming statement D.5594 = 1;
+
+
+
+Renaming block #5
+
+Renaming statement ve = bb->pred;
+
+
+
+Renaming block #9
+
+Renaming statement if (ve != 0B)
+
+
+
+Renaming block #6
+
+Renaming statement e = ve->edge;
+
+Renaming statement D.5595 = e->type;
+
+Renaming statement if (D.5595 == 1)
+
+
+
+Renaming block #7
+
+Renaming statement bb = e->source;
+
+
+
+Renaming block #8
+
+Renaming statement ve = ve->next;
+
+
+
+Renaming block #10
+
+Renaming statement cfg.7 = cfg;
+
+Renaming statement D.5599 = cfg.7->entry;
+
+Renaming statement if (D.5599 != bb)
+
+
+
+Renaming block #11
+
+Renaming statement D.5594 = 0;
+
+
+
+Renaming block #12
+
+Renaming statement return D.5594;
+
+
+DFA Statistics for is_ancestor
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                     11         44b
+Variables annotated                      11        132b
+USE operands                             22         88b
+DEF operands                             10         40b
+VUSE operands                             7         28b
+VDEF operands                             0          0b
+PHI nodes                                 4        240b
+PHI arguments                             8        192b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  764b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 13, 9 elements, 0.512195 collision/search ratio
+
+
+Pass statistics:
+----------------
+
+
+
+Registering new PHI nodes in block #0
+
+
+
+Registering new PHI nodes in block #2
+
+
+
+Registering new PHI nodes in block #3
+
+
+
+Registering new PHI nodes in block #4
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement ve_9 = bb_1->pred;
+
+
+
+Registering new PHI nodes in block #9
+
+
+
+Registering new PHI nodes in block #6
+
+Updating SSA information for statement e_10 = ve_3->edge;
+
+Updating SSA information for statement D.5595_11 = e_10->type;
+
+
+
+Registering new PHI nodes in block #7
+
+Updating SSA information for statement bb_12 = e_10->source;
+
+
+
+Registering new PHI nodes in block #8
+
+Updating SSA information for statement ve_13 = ve_3->next;
+
+
+
+Registering new PHI nodes in block #10
+
+Updating SSA information for statement cfg.7_14 = cfg;
+
+Updating SSA information for statement D.5599_15 = cfg.7_14->entry;
+
+
+
+Registering new PHI nodes in block #11
+
+
+
+Registering new PHI nodes in block #12
+
+
+DFA Statistics for is_ancestor
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                     11         44b
+Variables annotated                      11        132b
+USE operands                             22         88b
+DEF operands                             10         40b
+VUSE operands                             7         28b
+VDEF operands                             0          0b
+PHI nodes                                 4        240b
+PHI arguments                             8        192b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  764b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 31, 1 elements, 0.000000 collision/search ratio
+    repl_tbl:     size 31, 0 elements, 0.000000 collision/search ratio
+
+
+
+Symbols to be put in SSA form
+
+{ .MEM }
+
+
+Incremental SSA update started at block: 0
+
+Number of blocks in CFG: 13
+Number of blocks to update: 12 ( 92%)
+
+Affected blocks: 0 2 3 4 5 6 7 8 9 10 11 12 
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  struct basic_block * bbD.4195;
+  struct vec_edge * veD.4196;
+  struct edge * eD.4197;
+
+}
+is_ancestor (struct basic_block * sourceD.4191, struct basic_block * targetD.4192)
+{
+  struct edge * eD.4197;
+  struct vec_edge * veD.4196;
+  struct basic_block * bbD.4195;
+  struct basic_block * D.5599;
+  struct control_flow_graph * cfg.7D.5598;
+  edge_type D.5595;
+  intD.0 D.5594;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru)
+  bbD.4195_6 = targetD.4192_5(D);
+  # DEBUG bbD.4195 => bbD.4195_6
+  # SUCC: 3 (fallthru)
+
+  # BLOCK 3
+  # PRED: 2 (fallthru) 10 (true)
+  # bbD.4195_1 = PHI <bbD.4195_6(2), bbD.4195_2(10)>
+  # DEBUG bbD.4195 => bbD.4195_1
+  if (bbD.4195_1 == sourceD.4191_7(D))
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 (true) 5 (false)
+
+  # BLOCK 4
+  # PRED: 3 (true)
+  D.5594_8 = 1;
+  goto <bb 12>;
+  # SUCC: 12 (fallthru)
+
+  # BLOCK 5
+  # PRED: 3 (false)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_9 = bbD.4195_1->predD.4147;
+  # DEBUG veD.4196 => veD.4196_9
+  goto <bb 9>;
+  # SUCC: 9 (fallthru)
+
+  # BLOCK 6
+  # PRED: 9 (true)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_10 = veD.4196_3->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_10
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_11 = eD.4197_10->typeD.4133;
+  if (D.5595_11 == 1)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 (true) 8 (false)
+
+  # BLOCK 7
+  # PRED: 6 (true)
+  # VUSE <.MEMD.5611_17(D)>
+  bbD.4195_12 = eD.4197_10->sourceD.4134;
+  # DEBUG bbD.4195 => bbD.4195_12
+  goto <bb 10>;
+  # SUCC: 10 (fallthru)
+
+  # BLOCK 8
+  # PRED: 6 (false)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_13 = veD.4196_3->nextD.4139;
+  # DEBUG veD.4196 => veD.4196_13
+  # SUCC: 9 (fallthru)
+
+  # BLOCK 9
+  # PRED: 5 (fallthru) 8 (fallthru)
+  # veD.4196_3 = PHI <veD.4196_9(5), veD.4196_13(8)>
+  # DEBUG veD.4196 => veD.4196_3
+  if (veD.4196_3 != 0B)
+    goto <bb 6>;
+  else
+    goto <bb 10>;
+  # SUCC: 6 (true) 10 (false)
+
+  # BLOCK 10
+  # PRED: 7 (fallthru) 9 (false)
+  # bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_1(9)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  # VUSE <.MEMD.5611_17(D)>
+  cfg.7D.5598_14 = cfgD.4174;
+  # VUSE <.MEMD.5611_17(D)>
+  D.5599_15 = cfg.7D.5598_14->entryD.4155;
+  if (D.5599_15 != bbD.4195_2)
+    goto <bb 3>;
+  else
+    goto <bb 11>;
+  # SUCC: 3 (true) 11 (false)
+
+  # BLOCK 11
+  # PRED: 10 (false)
+  D.5594_16 = 0;
+  # SUCC: 12 (fallthru)
+
+  # BLOCK 12
+  # PRED: 4 (fallthru) 11 (fallthru)
+  # D.5594_4 = PHI <D.5594_8(4), D.5594_16(11)>
+  return D.5594_4;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function mark_edge (mark_edge)
+
+
+Pass statistics:
+----------------
+
+
+
+Renaming block #0
+
+
+
+Renaming block #2
+
+Renaming statement source = e->source;
+
+Renaming statement target = e->target;
+
+Renaming statement D.5584 = is_ancestor (target, source);
+
+Renaming statement if (D.5584 != 0)
+
+
+
+Renaming block #3
+
+Renaming statement e->type = 3;
+
+
+
+Renaming block #4
+
+Renaming statement D.5588 = is_ancestor (source, target);
+
+Renaming statement if (D.5588 != 0)
+
+
+
+Renaming block #5
+
+Renaming statement e->type = 2;
+
+
+
+Renaming block #6
+
+Renaming statement e->type = 4;
+
+
+
+Renaming block #7
+
+
+DFA Statistics for mark_edge
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      6         24b
+Variables annotated                       6         72b
+USE operands                             13         52b
+DEF operands                              4         16b
+VUSE operands                             7         28b
+VDEF operands                             3         12b
+PHI nodes                                 0          0b
+PHI arguments                             0          0b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  204b
+---------------------------------------------------------
+
+
+
+Hash table statistics:
+    def_blocks:   size 7, 5 elements, 0.157895 collision/search ratio
+
+
+Pass statistics:
+----------------
+
+
+
+Registering new PHI nodes in block #0
+
+
+
+Registering new PHI nodes in block #2
+
+Updating SSA information for statement source_2 = e_1(D)->source;
+
+Updating SSA information for statement target_3 = e_1(D)->target;
+
+Updating SSA information for statement D.5584_4 = is_ancestor (target_3, source_2);
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement e_1(D)->type = 3;
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement D.5588_5 = is_ancestor (source_2, target_3);
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement e_1(D)->type = 2;
+
+
+
+Registering new PHI nodes in block #6
+
+Updating SSA information for statement e_1(D)->type = 4;
+
+
+
+Registering new PHI nodes in block #7
+
+
+DFA Statistics for mark_edge
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      6         24b
+Variables annotated                       6         72b
+USE operands                             13         52b
+DEF operands                              4         16b
+VUSE operands                             7         28b
+VDEF operands                             3         12b
+PHI nodes                                 0          0b
+PHI arguments                             0          0b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  204b
+---------------------------------------------------------
+
+
+
+Hash table statistics:
+    def_blocks:   size 7, 1 elements, 0.000000 collision/search ratio
+    repl_tbl:     size 31, 0 elements, 0.000000 collision/search ratio
+
+
+
+Symbols to be put in SSA form
+
+{ .MEM }
+
+
+Incremental SSA update started at block: 0
+
+Number of blocks in CFG: 8
+Number of blocks to update: 7 ( 88%)
+
+Affected blocks: 0 2 3 4 5 6 7 
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  struct basic_block * sourceD.4206;
+  struct basic_block * targetD.4207;
+
+}
+mark_edge (struct edge * eD.4203)
+{
+  struct basic_block * targetD.4207;
+  struct basic_block * sourceD.4206;
+  intD.0 D.5588;
+  intD.0 D.5584;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru)
+  # VUSE <.MEMD.5612_6(D)>
+  sourceD.4206_2 = eD.4203_1(D)->sourceD.4134;
+  # DEBUG sourceD.4206 => sourceD.4206_2
+  # VUSE <.MEMD.5612_6(D)>
+  targetD.4207_3 = eD.4203_1(D)->targetD.4135;
+  # DEBUG targetD.4207 => targetD.4207_3
+  # VUSE <.MEMD.5612_6(D)>
+  D.5584_4 = is_ancestorD.4193 (targetD.4207_3, sourceD.4206_2);
+  if (D.5584_4 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 (true) 4 (false)
+
+  # BLOCK 3
+  # PRED: 2 (true)
+  # .MEMD.5612_7 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 3;
+  goto <bb 7>;
+  # SUCC: 7 (fallthru)
+
+  # BLOCK 4
+  # PRED: 2 (false)
+  # VUSE <.MEMD.5612_6(D)>
+  D.5588_5 = is_ancestorD.4193 (sourceD.4206_2, targetD.4207_3);
+  if (D.5588_5 != 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 (true) 6 (false)
+
+  # BLOCK 5
+  # PRED: 4 (true)
+  # .MEMD.5612_8 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 2;
+  goto <bb 7>;
+  # SUCC: 7 (fallthru)
+
+  # BLOCK 6
+  # PRED: 4 (false)
+  # .MEMD.5612_9 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 4;
+  # SUCC: 7 (fallthru)
+
+  # BLOCK 7
+  # PRED: 3 (fallthru) 5 (fallthru) 6 (fallthru)
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function mark_edges (mark_edges)
+
+
+Pass statistics:
+----------------
+
+
+
+Renaming block #0
+
+
+
+Renaming block #2
+
+Renaming statement current_function.6 = current_function;
+
+Renaming statement cfg = current_function.6->cfg;
+
+Renaming statement e = cfg->edge;
+
+
+
+Renaming block #6
+
+Renaming statement if (e != 0B)
+
+
+
+Renaming block #3
+
+Renaming statement D.5581 = e->type;
+
+Renaming statement if (D.5581 == 0)
+
+
+
+Renaming block #4
+
+Renaming statement mark_edge (e);
+
+
+
+Renaming block #5
+
+Renaming statement e = e->next;
+
+
+
+Renaming block #7
+
+
+DFA Statistics for mark_edges
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      6         24b
+Variables annotated                       6         72b
+USE operands                             11         44b
+DEF operands                              5         20b
+VUSE operands                             6         24b
+VDEF operands                             1          4b
+PHI nodes                                 1         60b
+PHI arguments                             2         48b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  296b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 7, 4 elements, 1.117647 collision/search ratio
+
+
+Pass statistics:
+----------------
+
+
+
+Registering new PHI nodes in block #0
+
+
+
+Registering new PHI nodes in block #2
+
+Updating SSA information for statement current_function.6_2 = current_function;
+
+Updating SSA information for statement cfg_3 = current_function.6_2->cfg;
+
+Updating SSA information for statement e_4 = cfg_3->edge;
+
+
+
+Registering new PHI nodes in block #6
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement D.5581_5 = e_1->type;
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement mark_edge (e_1);
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement e_6 = e_1->next;
+
+
+
+Registering new PHI nodes in block #7
+
+
+DFA Statistics for mark_edges
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      6         24b
+Variables annotated                       6         72b
+USE operands                             11         44b
+DEF operands                              5         20b
+VUSE operands                             6         24b
+VDEF operands                             1          4b
+PHI nodes                                 3        180b
+PHI arguments                             6        144b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  512b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 7, 1 elements, 0.000000 collision/search ratio
+    repl_tbl:     size 31, 0 elements, 0.000000 collision/search ratio
+
+
+
+Symbols to be put in SSA form
+
+{ .MEM }
+
+
+Incremental SSA update started at block: 0
+
+Number of blocks in CFG: 8
+Number of blocks to update: 7 ( 88%)
+
+Affected blocks: 0 2 3 4 5 6 7 
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  struct control_flow_graph * cfgD.4211;
+  struct edge * eD.4212;
+
+}
+mark_edges ()
+{
+  struct edge * eD.4212;
+  struct control_flow_graph * cfgD.4211;
+  edge_type D.5581;
+  struct function * current_function.6D.5580;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru)
+  # VUSE <.MEMD.5613_9(D)>
+  current_function.6D.5580_2 = current_functionD.4113;
+  # VUSE <.MEMD.5613_9(D)>
+  cfgD.4211_3 = current_function.6D.5580_2->cfgD.4162;
+  # DEBUG cfgD.4211 => cfgD.4211_3
+  # VUSE <.MEMD.5613_9(D)>
+  eD.4212_4 = cfgD.4211_3->edgeD.4159;
+  # DEBUG eD.4212 => eD.4212_4
+  goto <bb 6>;
+  # SUCC: 6 (fallthru)
+
+  # BLOCK 3
+  # PRED: 6 (true)
+  # VUSE <.MEMD.5613_8>
+  D.5581_5 = eD.4212_1->typeD.4133;
+  if (D.5581_5 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 (true) 5 (false)
+
+  # BLOCK 4
+  # PRED: 3 (true)
+  # .MEMD.5613_10 = VDEF <.MEMD.5613_8>
+  mark_edgeD.4204 (eD.4212_1);
+  # SUCC: 5 (fallthru)
+
+  # BLOCK 5
+  # PRED: 3 (false) 4 (fallthru)
+  # .MEMD.5613_7 = PHI <.MEMD.5613_8(3), .MEMD.5613_10(4)>
+  # VUSE <.MEMD.5613_7>
+  eD.4212_6 = eD.4212_1->nextD.4136;
+  # DEBUG eD.4212 => eD.4212_6
+  # SUCC: 6 (fallthru)
+
+  # BLOCK 6
+  # PRED: 2 (fallthru) 5 (fallthru)
+  # eD.4212_1 = PHI <eD.4212_4(2), eD.4212_6(5)>
+  # .MEMD.5613_8 = PHI <.MEMD.5613_9(D)(2), .MEMD.5613_7(5)>
+  # DEBUG eD.4212 => eD.4212_1
+  if (eD.4212_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 (true) 7 (false)
+
+  # BLOCK 7
+  # PRED: 6 (false)
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function calc_max_distance_recursive (calc_max_distance_recursive)
+
+
+Pass statistics:
+----------------
+
+
+
+Renaming block #0
+
+
+
+Renaming block #2
+
+Renaming statement max = 0;
+
+Renaming statement D.5570 = bb->max_distance;
+
+Renaming statement if (D.5570 == 0)
+
+
+
+Renaming block #3
+
+Renaming statement ve = bb->pred;
+
+
+
+Renaming block #8
+
+Renaming statement if (ve != 0B)
+
+
+
+Renaming block #4
+
+Renaming statement e = ve->edge;
+
+Renaming statement D.5573 = e->type;
+
+Renaming statement if (D.5573 == 3)
+
+
+
+Renaming block #5
+
+
+
+Renaming block #6
+
+Renaming statement D.5576 = e->source;
+
+Renaming statement val = calc_max_distance_recursive (D.5576);
+
+Renaming statement max = MAX_EXPR <val, max>;
+
+
+
+Renaming block #7
+
+Renaming statement ve = ve->next;
+
+
+
+Renaming block #9
+
+Renaming statement D.5577 = max + 1;
+
+Renaming statement bb->max_distance = D.5577;
+
+
+
+Renaming block #10
+
+Renaming statement D.5578 = bb->max_distance;
+
+Renaming statement return D.5578;
+
+
+DFA Statistics for calc_max_distance_recursive
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                     11         44b
+Variables annotated                      11        132b
+USE operands                             26        104b
+DEF operands                             11         44b
+VUSE operands                             9         36b
+VDEF operands                             2          8b
+PHI nodes                                 3        180b
+PHI arguments                             6        144b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  692b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 13, 10 elements, 0.184211 collision/search ratio
+
+
+Pass statistics:
+----------------
+
+
+
+Registering new PHI nodes in block #0
+
+
+
+Registering new PHI nodes in block #2
+
+Updating SSA information for statement D.5570_6 = bb_5(D)->max_distance;
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement ve_7 = bb_5(D)->pred;
+
+
+
+Registering new PHI nodes in block #8
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement e_8 = ve_3->edge;
+
+Updating SSA information for statement D.5573_9 = e_8->type;
+
+
+
+Registering new PHI nodes in block #5
+
+
+
+Registering new PHI nodes in block #6
+
+Updating SSA information for statement D.5576_10 = e_8->source;
+
+Updating SSA information for statement val_11 = calc_max_distance_recursive (D.5576_10);
+
+
+
+Registering new PHI nodes in block #7
+
+Updating SSA information for statement ve_13 = ve_3->next;
+
+
+
+Registering new PHI nodes in block #9
+
+Updating SSA information for statement bb_5(D)->max_distance = D.5577_14;
+
+
+
+Registering new PHI nodes in block #10
+
+Updating SSA information for statement D.5578_15 = bb_5(D)->max_distance;
+
+
+DFA Statistics for calc_max_distance_recursive
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                     11         44b
+Variables annotated                      11        132b
+USE operands                             26        104b
+DEF operands                             11         44b
+VUSE operands                             9         36b
+VDEF operands                             2          8b
+PHI nodes                                 6        360b
+PHI arguments                            12        288b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                 1016b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 31, 1 elements, 0.000000 collision/search ratio
+    repl_tbl:     size 31, 0 elements, 0.000000 collision/search ratio
+
+
+
+Symbols to be put in SSA form
+
+{ .MEM }
+
+
+Incremental SSA update started at block: 0
+
+Number of blocks in CFG: 11
+Number of blocks to update: 10 ( 91%)
+
+Affected blocks: 0 2 3 4 5 6 7 8 9 10 
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  intD.0 valD.4219;
+  intD.0 maxD.4220;
+  struct vec_edge * veD.4221;
+  struct edge * eD.4222;
+
+}
+calc_max_distance_recursive (struct basic_block * bbD.4216)
+{
+  struct edge * eD.4222;
+  struct vec_edge * veD.4221;
+  intD.0 maxD.4220;
+  intD.0 valD.4219;
+  intD.0 D.5578;
+  intD.0 D.5577;
+  struct basic_block * D.5576;
+  edge_type D.5573;
+  intD.0 D.5570;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru)
+  maxD.4220_4 = 0;
+  # DEBUG maxD.4220 => maxD.4220_4
+  # VUSE <.MEMD.5614_19(D)>
+  D.5570_6 = bbD.4216_5(D)->max_distanceD.4146;
+  if (D.5570_6 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 10>;
+  # SUCC: 3 (true) 10 (false)
+
+  # BLOCK 3
+  # PRED: 2 (true)
+  # VUSE <.MEMD.5614_19(D)>
+  veD.4221_7 = bbD.4216_5(D)->predD.4147;
+  # DEBUG veD.4221 => veD.4221_7
+  goto <bb 8>;
+  # SUCC: 8 (fallthru)
+
+  # BLOCK 4
+  # PRED: 8 (true)
+  # VUSE <.MEMD.5614_17>
+  eD.4222_8 = veD.4221_3->edgeD.4138;
+  # DEBUG eD.4222 => eD.4222_8
+  # VUSE <.MEMD.5614_17>
+  D.5573_9 = eD.4222_8->typeD.4133;
+  if (D.5573_9 == 3)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 (true) 6 (false)
+
+  # BLOCK 5
+  # PRED: 4 (true)
+  // predicted unlikely by continue predictor.
+  goto <bb 7>;
+  # SUCC: 7 (fallthru)
+
+  # BLOCK 6
+  # PRED: 4 (false)
+  # VUSE <.MEMD.5614_17>
+  D.5576_10 = eD.4222_8->sourceD.4134;
+  # .MEMD.5614_20 = VDEF <.MEMD.5614_17>
+  valD.4219_11 = calc_max_distance_recursiveD.4217 (D.5576_10);
+  # DEBUG valD.4219 => valD.4219_11
+  maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_2>;
+  # DEBUG maxD.4220 => maxD.4220_12
+  # SUCC: 7 (fallthru)
+
+  # BLOCK 7
+  # PRED: 5 (fallthru) 6 (fallthru)
+  # maxD.4220_1 = PHI <maxD.4220_2(5), maxD.4220_12(6)>
+  # .MEMD.5614_16 = PHI <.MEMD.5614_17(5), .MEMD.5614_20(6)>
+  # DEBUG maxD.4220 => maxD.4220_1
+  # VUSE <.MEMD.5614_16>
+  veD.4221_13 = veD.4221_3->nextD.4139;
+  # DEBUG veD.4221 => veD.4221_13
+  # SUCC: 8 (fallthru)
+
+  # BLOCK 8
+  # PRED: 3 (fallthru) 7 (fallthru)
+  # maxD.4220_2 = PHI <maxD.4220_4(3), maxD.4220_1(7)>
+  # veD.4221_3 = PHI <veD.4221_7(3), veD.4221_13(7)>
+  # .MEMD.5614_17 = PHI <.MEMD.5614_19(D)(3), .MEMD.5614_16(7)>
+  # DEBUG veD.4221 => veD.4221_3
+  # DEBUG maxD.4220 => maxD.4220_2
+  if (veD.4221_3 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 9>;
+  # SUCC: 4 (true) 9 (false)
+
+  # BLOCK 9
+  # PRED: 8 (false)
+  D.5577_14 = maxD.4220_2 + 1;
+  # .MEMD.5614_21 = VDEF <.MEMD.5614_17>
+  bbD.4216_5(D)->max_distanceD.4146 = D.5577_14;
+  # SUCC: 10 (fallthru)
+
+  # BLOCK 10
+  # PRED: 2 (false) 9 (fallthru)
+  # .MEMD.5614_18 = PHI <.MEMD.5614_19(D)(2), .MEMD.5614_21(9)>
+  # VUSE <.MEMD.5614_18>
+  D.5578_15 = bbD.4216_5(D)->max_distanceD.4146;
+  return D.5578_15;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function calc_max_distance (calc_max_distance)
+
+
+Pass statistics:
+----------------
+
+
+
+Renaming block #0
+
+
+
+Renaming block #2
+
+Renaming statement max = 0;
+
+Renaming statement cfg.4 = cfg;
+
+Renaming statement D.5562 = cfg.4->exit;
+
+Renaming statement max = calc_max_distance_recursive (D.5562);
+
+Renaming statement cfg.4 = cfg;
+
+Renaming statement bb = cfg.4->bb;
+
+
+
+Renaming block #9
+
+Renaming statement if (bb != 0B)
+
+
+
+Renaming block #3
+
+Renaming statement D.5563 = bb->max_distance;
+
+Renaming statement if (D.5563 == 0)
+
+
+
+Renaming block #4
+
+Renaming statement val = calc_max_distance_recursive (bb);
+
+Renaming statement if (max <= val)
+
+
+
+Renaming block #5
+
+Renaming statement iftmp.5 = val + 1;
+
+
+
+Renaming block #6
+
+Renaming statement iftmp.5 = max;
+
+
+
+Renaming block #7
+
+Renaming statement max = iftmp.5;
+
+
+
+Renaming block #8
+
+Renaming statement bb = bb->next;
+
+
+
+Renaming block #10
+
+Renaming statement cfg.4 = cfg;
+
+Renaming statement D.5562 = cfg.4->exit;
+
+Renaming statement D.5562->max_distance = max;
+
+
+DFA Statistics for calc_max_distance
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      9         36b
+Variables annotated                       9        108b
+USE operands                             25        100b
+DEF operands                             14         56b
+VUSE operands                            13         52b
+VDEF operands                             5         20b
+PHI nodes                                 4        240b
+PHI arguments                             8        192b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  804b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 13, 7 elements, 0.119048 collision/search ratio
+
+
+Pass statistics:
+----------------
+
+
+
+Registering new PHI nodes in block #0
+
+
+
+Registering new PHI nodes in block #2
+
+Updating SSA information for statement depth_first_search ();
+
+Updating SSA information for statement mark_edges ();
+
+Updating SSA information for statement cfg.4_6 = cfg;
+
+Updating SSA information for statement D.5562_7 = cfg.4_6->exit;
+
+Updating SSA information for statement max_8 = calc_max_distance_recursive (D.5562_7);
+
+Updating SSA information for statement cfg.4_9 = cfg;
+
+Updating SSA information for statement bb_10 = cfg.4_9->bb;
+
+
+
+Registering new PHI nodes in block #9
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement D.5563_11 = bb_3->max_distance;
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement val_12 = calc_max_distance_recursive (bb_3);
+
+
+
+Registering new PHI nodes in block #5
+
+
+
+Registering new PHI nodes in block #6
+
+
+
+Registering new PHI nodes in block #7
+
+
+
+Registering new PHI nodes in block #8
+
+Updating SSA information for statement bb_16 = bb_3->next;
+
+
+
+Registering new PHI nodes in block #10
+
+Updating SSA information for statement cfg.4_17 = cfg;
+
+Updating SSA information for statement D.5562_18 = cfg.4_17->exit;
+
+Updating SSA information for statement D.5562_18->max_distance = max_2;
+
+
+DFA Statistics for calc_max_distance
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      9         36b
+Variables annotated                       9        108b
+USE operands                             25        100b
+DEF operands                             14         56b
+VUSE operands                            13         52b
+VDEF operands                             5         20b
+PHI nodes                                 6        360b
+PHI arguments                            12        288b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                 1020b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 31, 1 elements, 0.000000 collision/search ratio
+    repl_tbl:     size 31, 0 elements, 0.000000 collision/search ratio
+
+
+
+Symbols to be put in SSA form
+
+{ .MEM }
+
+
+Incremental SSA update started at block: 0
+
+Number of blocks in CFG: 11
+Number of blocks to update: 10 ( 91%)
+
+Affected blocks: 0 2 3 4 5 6 7 8 9 10 
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  intD.0 valD.4230;
+  intD.0 maxD.4231;
+  struct basic_block * bbD.4232;
+
+}
+calc_max_distance ()
+{
+  struct basic_block * bbD.4232;
+  intD.0 maxD.4231;
+  intD.0 valD.4230;
+  intD.0 iftmp.5D.5566;
+  intD.0 D.5563;
+  struct basic_block * D.5562;
+  struct control_flow_graph * cfg.4D.5561;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru)
+  maxD.4231_5 = 0;
+  # DEBUG maxD.4231 => maxD.4231_5
+  # .MEMD.5615_22 = VDEF <.MEMD.5615_21(D)>
+  depth_first_searchD.4185 ();
+  # .MEMD.5615_23 = VDEF <.MEMD.5615_22>
+  mark_edgesD.4209 ();
+  # VUSE <.MEMD.5615_23>
+  cfg.4D.5561_6 = cfgD.4174;
+  # VUSE <.MEMD.5615_23>
+  D.5562_7 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_24 = VDEF <.MEMD.5615_23>
+  maxD.4231_8 = calc_max_distance_recursiveD.4217 (D.5562_7);
+  # DEBUG maxD.4231 => maxD.4231_8
+  # VUSE <.MEMD.5615_24>
+  cfg.4D.5561_9 = cfgD.4174;
+  # VUSE <.MEMD.5615_24>
+  bbD.4232_10 = cfg.4D.5561_9->bbD.4157;
+  # DEBUG bbD.4232 => bbD.4232_10
+  goto <bb 9>;
+  # SUCC: 9 (fallthru)
+
+  # BLOCK 3
+  # PRED: 9 (true)
+  # VUSE <.MEMD.5615_20>
+  D.5563_11 = bbD.4232_3->max_distanceD.4146;
+  if (D.5563_11 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 8>;
+  # SUCC: 4 (true) 8 (false)
+
+  # BLOCK 4
+  # PRED: 3 (true)
+  # .MEMD.5615_25 = VDEF <.MEMD.5615_20>
+  valD.4230_12 = calc_max_distance_recursiveD.4217 (bbD.4232_3);
+  # DEBUG valD.4230 => valD.4230_12
+  if (maxD.4231_2 <= valD.4230_12)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 (true) 6 (false)
+
+  # BLOCK 5
+  # PRED: 4 (true)
+  iftmp.5D.5566_13 = valD.4230_12 + 1;
+  goto <bb 7>;
+  # SUCC: 7 (fallthru)
+
+  # BLOCK 6
+  # PRED: 4 (false)
+  iftmp.5D.5566_14 = maxD.4231_2;
+  # SUCC: 7 (fallthru)
+
+  # BLOCK 7
+  # PRED: 5 (fallthru) 6 (fallthru)
+  # iftmp.5D.5566_4 = PHI <iftmp.5D.5566_13(5), iftmp.5D.5566_14(6)>
+  maxD.4231_15 = iftmp.5D.5566_4;
+  # DEBUG maxD.4231 => maxD.4231_15
+  # SUCC: 8 (fallthru)
+
+  # BLOCK 8
+  # PRED: 3 (false) 7 (fallthru)
+  # maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_15(7)>
+  # .MEMD.5615_19 = PHI <.MEMD.5615_20(3), .MEMD.5615_25(7)>
+  # DEBUG maxD.4231 => maxD.4231_1
+  # VUSE <.MEMD.5615_19>
+  bbD.4232_16 = bbD.4232_3->nextD.4151;
+  # DEBUG bbD.4232 => bbD.4232_16
+  # SUCC: 9 (fallthru)
+
+  # BLOCK 9
+  # PRED: 2 (fallthru) 8 (fallthru)
+  # maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(8)>
+  # bbD.4232_3 = PHI <bbD.4232_10(2), bbD.4232_16(8)>
+  # .MEMD.5615_20 = PHI <.MEMD.5615_24(2), .MEMD.5615_19(8)>
+  # DEBUG bbD.4232 => bbD.4232_3
+  # DEBUG maxD.4231 => maxD.4231_2
+  if (bbD.4232_3 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 10>;
+  # SUCC: 3 (true) 10 (false)
+
+  # BLOCK 10
+  # PRED: 9 (false)
+  # VUSE <.MEMD.5615_20>
+  cfg.4D.5561_17 = cfgD.4174;
+  # VUSE <.MEMD.5615_20>
+  D.5562_18 = cfg.4D.5561_17->exitD.4156;
+  # .MEMD.5615_26 = VDEF <.MEMD.5615_20>
+  D.5562_18->max_distanceD.4146 = maxD.4231_2;
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function fine_tune_cfg (fine_tune_cfg)
+
+
+Pass statistics:
+----------------
+
+
+
+Renaming block #0
+
+
+
+Renaming block #2
+
+Renaming statement first_function.0 = first_function;
+
+Renaming statement current_function = first_function.0;
+
+
+
+Renaming block #4
+
+Renaming statement current_function.1 = current_function;
+
+Renaming statement if (current_function.1 != 0B)
+
+
+
+Renaming block #3
+
+Renaming statement current_function.1 = current_function;
+
+Renaming statement cfg.2 = current_function.1->cfg;
+
+Renaming statement cfg = cfg.2;
+
+Renaming statement current_function.1 = current_function;
+
+Renaming statement current_function.3 = current_function.1->next;
+
+Renaming statement current_function = current_function.3;
+
+
+
+Renaming block #5
+
+
+DFA Statistics for fine_tune_cfg
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      8         32b
+Variables annotated                       8         96b
+USE operands                              6         24b
+DEF operands                              6         24b
+VUSE operands                            10         40b
+VDEF operands                             4         16b
+PHI nodes                                 0          0b
+PHI arguments                             0          0b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  232b
+---------------------------------------------------------
+
+
+
+Hash table statistics:
+    def_blocks:   size 13, 4 elements, 0.000000 collision/search ratio
+
+
+Pass statistics:
+----------------
+
+
+
+Registering new PHI nodes in block #0
+
+
+
+Registering new PHI nodes in block #2
+
+Updating SSA information for statement first_function.0_1 = first_function;
+
+Updating SSA information for statement current_function = first_function.0_1;
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement current_function.1_2 = current_function;
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement current_function.1_3 = current_function;
+
+Updating SSA information for statement cfg.2_4 = current_function.1_3->cfg;
+
+Updating SSA information for statement cfg = cfg.2_4;
+
+Updating SSA information for statement calc_max_distance ();
+
+Updating SSA information for statement current_function.1_5 = current_function;
+
+Updating SSA information for statement current_function.3_6 = current_function.1_5->next;
+
+Updating SSA information for statement current_function = current_function.3_6;
+
+
+
+Registering new PHI nodes in block #5
+
+
+DFA Statistics for fine_tune_cfg
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      8         32b
+Variables annotated                       8         96b
+USE operands                              6         24b
+DEF operands                              6         24b
+VUSE operands                            10         40b
+VDEF operands                             4         16b
+PHI nodes                                 1         60b
+PHI arguments                             2         48b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  340b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 7, 1 elements, 0.000000 collision/search ratio
+    repl_tbl:     size 31, 0 elements, 0.000000 collision/search ratio
+
+
+
+Symbols to be put in SSA form
+
+{ .MEM }
+
+
+Incremental SSA update started at block: 0
+
+Number of blocks in CFG: 6
+Number of blocks to update: 5 ( 83%)
+
+Affected blocks: 0 2 3 4 5 
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+
+}
+fine_tune_cfg ()
+{
+  struct function * current_function.3D.5560;
+  struct control_flow_graph * cfg.2D.5559;
+  struct function * current_function.1D.5558;
+  struct function * first_function.0D.5557;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru)
+  # VUSE <.MEMD.5616_8(D)>
+  first_function.0D.5557_1 = first_functionD.4111;
+  # .MEMD.5616_9 = VDEF <.MEMD.5616_8(D)>
+  current_functionD.4113 = first_function.0D.5557_1;
+  goto <bb 4>;
+  # SUCC: 4 (fallthru)
+
+  # BLOCK 3
+  # PRED: 4 (true)
+  # VUSE <.MEMD.5616_7>
+  current_function.1D.5558_3 = current_functionD.4113;
+  # VUSE <.MEMD.5616_7>
+  cfg.2D.5559_4 = current_function.1D.5558_3->cfgD.4162;
+  # .MEMD.5616_10 = VDEF <.MEMD.5616_7>
+  cfgD.4174 = cfg.2D.5559_4;
+  # .MEMD.5616_11 = VDEF <.MEMD.5616_10>
+  calc_max_distanceD.4228 ();
+  # VUSE <.MEMD.5616_11>
+  current_function.1D.5558_5 = current_functionD.4113;
+  # VUSE <.MEMD.5616_11>
+  current_function.3D.5560_6 = current_function.1D.5558_5->nextD.4163;
+  # .MEMD.5616_12 = VDEF <.MEMD.5616_11>
+  current_functionD.4113 = current_function.3D.5560_6;
+  # SUCC: 4 (fallthru)
+
+  # BLOCK 4
+  # PRED: 2 (fallthru) 3 (fallthru)
+  # .MEMD.5616_7 = PHI <.MEMD.5616_9(2), .MEMD.5616_12(3)>
+  # VUSE <.MEMD.5616_7>
+  current_function.1D.5558_2 = current_functionD.4113;
+  if (current_function.1D.5558_2 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 (true) 5 (false)
+
+  # BLOCK 5
+  # PRED: 4 (false)
+  return;
+  # SUCC: EXIT
+
+}
+
+

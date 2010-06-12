@@ -1,0 +1,2752 @@
+
+;; Function search (search)
+
+Immediate_uses: 
+
+bb_2(D) : -->3 uses.
+ve_3 = bb_2(D)->succ;
+bb_2(D)->dfs_order = count.10_8;
+bb_2(D)->visited = 1;
+
+ve_3 : -->2 uses.
+ve_9 = PHI <ve_7(5), ve_3(2)>
+# DEBUG ve => ve_3
+if (ve_3 != 0B)
+# DEBUG ve => ve_3
+
+e_4 : -->2 uses.
+succ_bb_5 = e_4->target;
+e_4->type = 1;
+# DEBUG e => e_4
+
+succ_bb_5 : -->2 uses.
+D.5604_6 = succ_bb_5->visited;
+search (succ_bb_5);
+# DEBUG succ_bb => succ_bb_5
+
+D.5604_6 : --> single use.
+if (D.5604_6 == 0)
+
+ve_7 : -->2 uses.
+ve_9 = PHI <ve_7(5), ve_3(2)>
+# DEBUG ve => ve_7
+if (ve_7 != 0B)
+# DEBUG ve => ve_7
+
+count.10_8 : -->2 uses.
+count.11_10 = count.10_8 + -1;
+bb_2(D)->dfs_order = count.10_8;
+
+ve_9 : -->2 uses.
+e_4 = ve_9->edge;
+ve_7 = ve_9->next;
+
+count.11_10 : --> single use.
+count = count.11_10;
+
+.MEM_11 : -->3 uses.
+.MEM_19 = PHI <.MEM_11(5), .MEM_14(2)>
+# VUSE <.MEM_11>
+ve_7 = ve_9->next;
+.MEM_22 = PHI <.MEM_11(5), .MEM_14(2)>
+
+.MEM_13(D) : --> single use.
+# .MEM_14 = VDEF <.MEM_13(D)>
+bb_2(D)->visited = 1;
+
+.MEM_14 : -->3 uses.
+.MEM_19 = PHI <.MEM_11(5), .MEM_14(2)>
+.MEM_22 = PHI <.MEM_11(5), .MEM_14(2)>
+# VUSE <.MEM_14>
+ve_3 = bb_2(D)->succ;
+
+.MEM_15 : --> single use.
+# .MEM_16 = VDEF <.MEM_15>
+search (succ_bb_5);
+
+.MEM_16 : --> single use.
+.MEM_11 = PHI <.MEM_19(3), .MEM_16(4)>
+
+.MEM_17 : --> single use.
+# .MEM_18 = VDEF <.MEM_17>
+count = count.11_10;
+
+.MEM_18 : --> no uses.
+
+.MEM_19 : -->5 uses.
+# VUSE <.MEM_19>
+D.5604_6 = succ_bb_5->visited;
+# VUSE <.MEM_19>
+succ_bb_5 = e_4->target;
+# VUSE <.MEM_19>
+e_4 = ve_9->edge;
+# .MEM_15 = VDEF <.MEM_19>
+e_4->type = 1;
+.MEM_11 = PHI <.MEM_19(3), .MEM_16(4)>
+
+.MEM_22 : -->2 uses.
+# .MEM_17 = VDEF <.MEM_22>
+bb_2(D)->dfs_order = count.10_8;
+# VUSE <.MEM_22>
+count.10_8 = count;
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+# VUSE <.MEMD.5609_14>
+veD.4179_3 = bbD.4175_2(D)->succD.4149;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (veD.4179_3 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (2 -> 3) to worklist
+
+Adding Destination of edge (2 -> 6) to worklist
+
+
+Simulating statement (from ssa_edges): veD.4179_9 = PHI <veD.4179_7(5), veD.4179_3(2)>
+
+Visiting PHI node: veD.4179_9 = PHI <veD.4179_7(5), veD.4179_3(2)>
+
+    Argument #0 (5 -> 3 not executable)
+
+    Argument #1 (2 -> 3 executable)
+	veD.4179_3	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5609_11>
+veD.4179_7 = veD.4179_9->nextD.4139;
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5609_19>
+eD.4180_4 = veD.4179_9->edgeD.4138;
+
+Simulating block 3
+
+Visiting statement:
+# VUSE <.MEMD.5609_19>
+eD.4180_4 = veD.4179_9->edgeD.4138;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5609_19>
+succ_bbD.4178_5 = eD.4180_4->targetD.4135;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5609_19>
+D.5604_6 = succ_bbD.4178_5->visitedD.4144;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (D.5604_6 == 0)
+which is likely CONSTANT
+Adding Destination of edge (3 -> 4) to worklist
+
+Adding Destination of edge (3 -> 5) to worklist
+
+
+Simulating block 4
+
+Simulating block 6
+
+Visiting statement:
+# VUSE <.MEMD.5609_22>
+count.10D.5607_8 = countD.4173;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+count.11D.5608_10 = count.10D.5607_8 + -1;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+return;
+No interesting values produced.  Marked VARYING.
+
+Simulating block 5
+
+Visiting statement:
+# VUSE <.MEMD.5609_11>
+veD.4179_7 = veD.4179_9->nextD.4139;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (veD.4179_7 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (5 -> 3) to worklist
+
+Adding Destination of edge (5 -> 6) to worklist
+
+
+Simulating block 3
+
+Simulating block 6
+
+Substituting values and folding statements
+
+Folding statement: if (ve_3 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: # DEBUG ve => ve_3
+Not folded
+Folding statement: # DEBUG ve => ve_3
+Not folded
+Folding statement: ve_3 = bb_2(D)->succ;
+Not folded
+Folding statement: bb_2(D)->visited = 1;
+Not folded
+Folding PHI node: ve_9 = PHI <ve_7(5), ve_3(2)>
+No folding possible
+Folding PHI node: .MEM_19 = PHI <.MEM_11(5), .MEM_14(2)>
+No folding possible
+Folding statement: if (D.5604_6 == 0)
+which is likely CONSTANT
+Not folded
+Folding statement: D.5604_6 = succ_bb_5->visited;
+Not folded
+Folding statement: # DEBUG succ_bb => succ_bb_5
+Not folded
+Folding statement: succ_bb_5 = e_4->target;
+Not folded
+Folding statement: # DEBUG e => e_4
+Not folded
+Folding statement: e_4 = ve_9->edge;
+Not folded
+Folding statement: search (succ_bb_5);
+Not folded
+Folding statement: e_4->type = 1;
+Not folded
+Folding PHI node: .MEM_11 = PHI <.MEM_19(3), .MEM_16(4)>
+No folding possible
+Folding statement: if (ve_7 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: # DEBUG ve => ve_7
+Not folded
+Folding statement: # DEBUG ve => ve_7
+Not folded
+Folding statement: ve_7 = ve_9->next;
+Not folded
+Folding PHI node: .MEM_22 = PHI <.MEM_11(5), .MEM_14(2)>
+No folding possible
+Folding statement: return;
+Not folded
+Folding statement: count = count.11_10;
+Not folded
+Folding statement: count.11_10 = count.10_8 + -1;
+Not folded
+Folding statement: bb_2(D)->dfs_order = count.10_8;
+Not folded
+Folding statement: count.10_8 = count;
+Not folded
+
+Pass statistics:
+----------------
+
+search (struct basic_block * bbD.4175)
+{
+  struct edge * eD.4180;
+  struct vec_edge * veD.4179;
+  struct basic_block * succ_bbD.4178;
+  intD.0 count.11D.5608;
+  intD.0 count.10D.5607;
+  intD.0 D.5604;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # .MEMD.5609_14 = VDEF <.MEMD.5609_13(D)>
+  bbD.4175_2(D)->visitedD.4144 = 1;
+  # VUSE <.MEMD.5609_14>
+  veD.4179_3 = bbD.4175_2(D)->succD.4149;
+  # DEBUG veD.4179 => veD.4179_3
+  # DEBUG veD.4179 => veD.4179_3
+  if (veD.4179_3 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 6>;
+  # SUCC: 3 [91.0%]  (true,exec) 6 [9.0%]  (false,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 5 [91.0%]  (true,exec) 2 [91.0%]  (true,exec)
+  # veD.4179_9 = PHI <veD.4179_7(5), veD.4179_3(2)>
+  # .MEMD.5609_19 = PHI <.MEMD.5609_11(5), .MEMD.5609_14(2)>
+  # VUSE <.MEMD.5609_19>
+  eD.4180_4 = veD.4179_9->edgeD.4138;
+  # DEBUG eD.4180 => eD.4180_4
+  # VUSE <.MEMD.5609_19>
+  succ_bbD.4178_5 = eD.4180_4->targetD.4135;
+  # DEBUG succ_bbD.4178 => succ_bbD.4178_5
+  # VUSE <.MEMD.5609_19>
+  D.5604_6 = succ_bbD.4178_5->visitedD.4144;
+  if (D.5604_6 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 [29.0%]  (true,exec) 5 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5609_15 = VDEF <.MEMD.5609_19>
+  eD.4180_4->typeD.4133 = 1;
+  # .MEMD.5609_16 = VDEF <.MEMD.5609_15>
+  searchD.4176 (succ_bbD.4178_5);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5609_11 = PHI <.MEMD.5609_19(3), .MEMD.5609_16(4)>
+  # VUSE <.MEMD.5609_11>
+  veD.4179_7 = veD.4179_9->nextD.4139;
+  # DEBUG veD.4179 => veD.4179_7
+  # DEBUG veD.4179 => veD.4179_7
+  if (veD.4179_7 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 6>;
+  # SUCC: 3 [91.0%]  (true,exec) 6 [9.0%]  (false,exec)
+
+  # BLOCK 6 freq:900
+  # PRED: 5 [9.0%]  (false,exec) 2 [9.0%]  (false,exec)
+  # .MEMD.5609_22 = PHI <.MEMD.5609_11(5), .MEMD.5609_14(2)>
+  # VUSE <.MEMD.5609_22>
+  count.10D.5607_8 = countD.4173;
+  # .MEMD.5609_17 = VDEF <.MEMD.5609_22>
+  bbD.4175_2(D)->dfs_orderD.4145 = count.10D.5607_8;
+  count.11D.5608_10 = count.10D.5607_8 + -1;
+  # .MEMD.5609_18 = VDEF <.MEMD.5609_17>
+  countD.4173 = count.11D.5608_10;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function depth_first_search (depth_first_search)
+
+Immediate_uses: 
+
+cfg.8_2 : -->3 uses.
+count.9_6 = cfg.8_2->bb_num;
+D.5603_8 = cfg.8_2->entry;
+bb_3 = cfg.8_2->bb;
+
+bb_3 : -->2 uses.
+bb_14 = PHI <bb_4(3), bb_3(2)>
+# DEBUG bb => bb_3
+if (bb_3 != 0B)
+# DEBUG bb => bb_3
+
+bb_4 : -->2 uses.
+bb_14 = PHI <bb_4(3), bb_3(2)>
+# DEBUG bb => bb_4
+if (bb_4 != 0B)
+# DEBUG bb => bb_4
+
+count.9_6 : --> single use.
+count = count.9_6;
+
+D.5603_8 : --> single use.
+search (D.5603_8);
+
+.MEM_10(D) : -->4 uses.
+.MEM_15 = PHI <.MEM_11(3), .MEM_10(D)(2)>
+.MEM_16 = PHI <.MEM_11(3), .MEM_10(D)(2)>
+# VUSE <.MEM_10(D)>
+bb_3 = cfg.8_2->bb;
+# VUSE <.MEM_10(D)>
+cfg.8_2 = cfg;
+
+.MEM_11 : -->3 uses.
+.MEM_15 = PHI <.MEM_11(3), .MEM_10(D)(2)>
+# VUSE <.MEM_11>
+bb_4 = bb_14->next;
+.MEM_16 = PHI <.MEM_11(3), .MEM_10(D)(2)>
+
+.MEM_12 : -->2 uses.
+# VUSE <.MEM_12>
+D.5603_8 = cfg.8_2->entry;
+# .MEM_13 = VDEF <.MEM_12>
+search (D.5603_8);
+
+.MEM_13 : --> no uses.
+
+bb_14 : -->2 uses.
+bb_4 = bb_14->next;
+bb_14->visited = 0;
+
+.MEM_15 : --> single use.
+# .MEM_11 = VDEF <.MEM_15>
+bb_14->visited = 0;
+
+.MEM_16 : -->2 uses.
+# .MEM_12 = VDEF <.MEM_16>
+count = count.9_6;
+# VUSE <.MEM_16>
+count.9_6 = cfg.8_2->bb_num;
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+# VUSE <.MEMD.5610_10(D)>
+cfg.8D.5601_2 = cfgD.4174;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5610_10(D)>
+bbD.4187_3 = cfg.8D.5601_2->bbD.4157;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (bbD.4187_3 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (2 -> 3) to worklist
+
+Adding Destination of edge (2 -> 4) to worklist
+
+
+Simulating statement (from ssa_edges): bbD.4187_14 = PHI <bbD.4187_4(3), bbD.4187_3(2)>
+
+Visiting PHI node: bbD.4187_14 = PHI <bbD.4187_4(3), bbD.4187_3(2)>
+
+    Argument #0 (3 -> 3 not executable)
+
+    Argument #1 (2 -> 3 executable)
+	bbD.4187_3	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5610_11>
+bbD.4187_4 = bbD.4187_14->nextD.4151;
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5610_12>
+D.5603_8 = cfg.8D.5601_2->entryD.4155;
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5610_16>
+count.9D.5602_6 = cfg.8D.5601_2->bb_numD.4153;
+
+Simulating block 3
+
+Visiting statement:
+# VUSE <.MEMD.5610_11>
+bbD.4187_4 = bbD.4187_14->nextD.4151;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (bbD.4187_4 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (3 -> 3) to worklist
+
+
+Simulating block 4
+
+Visiting statement:
+# VUSE <.MEMD.5610_16>
+count.9D.5602_6 = cfg.8D.5601_2->bb_numD.4153;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5610_12>
+D.5603_8 = cfg.8D.5601_2->entryD.4155;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+return;
+No interesting values produced.  Marked VARYING.
+
+Simulating block 3
+
+Substituting values and folding statements
+
+Folding statement: if (bb_3 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: # DEBUG bb => bb_3
+Not folded
+Folding statement: # DEBUG bb => bb_3
+Not folded
+Folding statement: bb_3 = cfg.8_2->bb;
+Not folded
+Folding statement: cfg.8_2 = cfg;
+Not folded
+Folding PHI node: bb_14 = PHI <bb_4(3), bb_3(2)>
+No folding possible
+Folding PHI node: .MEM_15 = PHI <.MEM_11(3), .MEM_10(D)(2)>
+No folding possible
+Folding statement: if (bb_4 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: # DEBUG bb => bb_4
+Not folded
+Folding statement: # DEBUG bb => bb_4
+Not folded
+Folding statement: bb_4 = bb_14->next;
+Not folded
+Folding statement: bb_14->visited = 0;
+Not folded
+Folding PHI node: .MEM_16 = PHI <.MEM_11(3), .MEM_10(D)(2)>
+No folding possible
+Folding statement: return;
+Not folded
+Folding statement: search (D.5603_8);
+Not folded
+Folding statement: D.5603_8 = cfg.8_2->entry;
+Not folded
+Folding statement: count = count.9_6;
+Not folded
+Folding statement: count.9_6 = cfg.8_2->bb_num;
+Not folded
+
+Pass statistics:
+----------------
+
+depth_first_search ()
+{
+  struct basic_block * bbD.4187;
+  struct basic_block * D.5603;
+  intD.0 count.9D.5602;
+  struct control_flow_graph * cfg.8D.5601;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5610_10(D)>
+  cfg.8D.5601_2 = cfgD.4174;
+  # VUSE <.MEMD.5610_10(D)>
+  bbD.4187_3 = cfg.8D.5601_2->bbD.4157;
+  # DEBUG bbD.4187 => bbD.4187_3
+  # DEBUG bbD.4187 => bbD.4187_3
+  if (bbD.4187_3 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [91.0%]  (true,exec) 4 [9.0%]  (false,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 3 [91.0%]  (true,exec) 2 [91.0%]  (true,exec)
+  # bbD.4187_14 = PHI <bbD.4187_4(3), bbD.4187_3(2)>
+  # .MEMD.5610_15 = PHI <.MEMD.5610_11(3), .MEMD.5610_10(D)(2)>
+  # .MEMD.5610_11 = VDEF <.MEMD.5610_15>
+  bbD.4187_14->visitedD.4144 = 0;
+  # VUSE <.MEMD.5610_11>
+  bbD.4187_4 = bbD.4187_14->nextD.4151;
+  # DEBUG bbD.4187 => bbD.4187_4
+  # DEBUG bbD.4187 => bbD.4187_4
+  if (bbD.4187_4 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [91.0%]  (true,exec) 4 [9.0%]  (false,exec)
+
+  # BLOCK 4 freq:900
+  # PRED: 3 [9.0%]  (false,exec) 2 [9.0%]  (false,exec)
+  # .MEMD.5610_16 = PHI <.MEMD.5610_11(3), .MEMD.5610_10(D)(2)>
+  # VUSE <.MEMD.5610_16>
+  count.9D.5602_6 = cfg.8D.5601_2->bb_numD.4153;
+  # .MEMD.5610_12 = VDEF <.MEMD.5610_16>
+  countD.4173 = count.9D.5602_6;
+  # VUSE <.MEMD.5610_12>
+  D.5603_8 = cfg.8D.5601_2->entryD.4155;
+  # .MEMD.5610_13 = VDEF <.MEMD.5610_12>
+  searchD.4176 (D.5603_8);
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function is_ancestor (is_ancestor)
+
+Immediate_uses: 
+
+bb_2 : -->3 uses.
+bb_21 = PHI <bb_2(3), target_5(D)(2)>
+if (bb_2 == source_7(D))
+# DEBUG bb => bb_2
+if (D.5599_15 != bb_2)
+# DEBUG bb => bb_2
+
+D.5594_4 : --> single use.
+return D.5594_4;
+
+target_5(D) : -->2 uses.
+bb_21 = PHI <bb_2(3), target_5(D)(2)>
+# DEBUG bb => target_5(D)
+if (target_5(D) == source_7(D))
+# DEBUG bb => target_5(D)
+
+source_7(D) : -->2 uses.
+if (bb_2 == source_7(D))
+if (target_5(D) == source_7(D))
+
+ve_9 : -->3 uses.
+ve_24 = PHI <ve_13(6), ve_9(5)>
+# DEBUG ve => ve_9
+if (ve_9 != 0B)
+e_20 = ve_9->edge;
+# DEBUG ve => ve_9
+
+e_10 : -->2 uses.
+e_18 = PHI <e_10(6), e_20(5)>
+D.5595_11 = e_10->type;
+# DEBUG e => e_10
+
+D.5595_11 : --> single use.
+if (D.5595_11 == 1)
+
+bb_12 : --> single use.
+bb_2 = PHI <bb_12(7), bb_21(8), bb_21(4)>
+# DEBUG bb => bb_12
+
+ve_13 : -->3 uses.
+ve_24 = PHI <ve_13(6), ve_9(5)>
+# DEBUG ve => ve_13
+if (ve_13 != 0B)
+e_10 = ve_13->edge;
+# DEBUG ve => ve_13
+
+cfg.7_14 : --> single use.
+D.5599_15 = cfg.7_14->entry;
+
+D.5599_15 : --> single use.
+if (D.5599_15 != bb_2)
+
+.MEM_17(D) : -->9 uses.
+# VUSE <.MEM_17(D)>
+ve_9 = bb_21->pred;
+# VUSE <.MEM_17(D)>
+D.5599_15 = cfg.7_14->entry;
+# VUSE <.MEM_17(D)>
+cfg.7_14 = cfg;
+# VUSE <.MEM_17(D)>
+ve_13 = ve_24->next;
+# VUSE <.MEM_17(D)>
+e_10 = ve_13->edge;
+# VUSE <.MEM_17(D)>
+e_20 = ve_9->edge;
+# VUSE <.MEM_17(D)>
+D.5595_23 = e_20->type;
+# VUSE <.MEM_17(D)>
+bb_12 = e_18->source;
+# VUSE <.MEM_17(D)>
+D.5595_11 = e_10->type;
+
+e_18 : --> single use.
+bb_12 = e_18->source;
+
+e_20 : -->2 uses.
+e_18 = PHI <e_10(6), e_20(5)>
+D.5595_23 = e_20->type;
+# DEBUG e => e_20
+
+bb_21 : -->3 uses.
+ve_9 = bb_21->pred;
+bb_2 = PHI <bb_12(7), bb_21(8), bb_21(4)>
+bb_2 = PHI <bb_12(7), bb_21(8), bb_21(4)>
+
+D.5595_23 : --> single use.
+if (D.5595_23 == 1)
+
+ve_24 : --> single use.
+ve_13 = ve_24->next;
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+if (targetD.4192_5(D) == sourceD.4191_7(D))
+which is likely VARYING
+Adding Destination of edge (2 -> 10) to worklist
+
+Adding Destination of edge (2 -> 4) to worklist
+
+
+Simulating block 4
+
+Visiting PHI node: bbD.4195_21 = PHI <bbD.4195_2(3), targetD.4192_5(D)(2)>
+
+    Argument #0 (3 -> 4 not executable)
+
+    Argument #1 (2 -> 4 executable)
+	targetD.4192_5(D)	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5611_17(D)>
+veD.4196_9 = bbD.4195_21->predD.4147;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (veD.4196_9 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (4 -> 5) to worklist
+
+Adding Destination of edge (4 -> 9) to worklist
+
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5611_17(D)>
+eD.4197_20 = veD.4196_9->edgeD.4138;
+
+Simulating statement (from ssa_edges): veD.4196_24 = PHI <veD.4196_13(6), veD.4196_9(5)>
+
+Visiting PHI node: veD.4196_24 = PHI <veD.4196_13(6), veD.4196_9(5)>
+
+    Argument #0 (6 -> 8 not executable)
+
+    Argument #1 (5 -> 8 not executable)
+
+    PHI node value: UNDEFINED
+
+
+Simulating statement (from ssa_edges): bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_21(8), bbD.4195_21(4)>
+
+Visiting PHI node: bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_21(8), bbD.4195_21(4)>
+
+    Argument #0 (7 -> 9 not executable)
+
+    Argument #1 (8 -> 9 not executable)
+
+    Argument #2 (4 -> 9 executable)
+	bbD.4195_21	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): if (D.5599_15 != bbD.4195_2)
+
+Simulating statement (from ssa_edges): if (bbD.4195_2 == sourceD.4191_7(D))
+
+Simulating block 5
+
+Visiting statement:
+# VUSE <.MEMD.5611_17(D)>
+eD.4197_20 = veD.4196_9->edgeD.4138;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5611_17(D)>
+D.5595_23 = eD.4197_20->typeD.4133;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (D.5595_23 == 1)
+which is likely CONSTANT
+Adding Destination of edge (5 -> 7) to worklist
+
+Adding Destination of edge (5 -> 8) to worklist
+
+
+Simulating statement (from ssa_edges): eD.4197_18 = PHI <eD.4197_10(6), eD.4197_20(5)>
+
+Visiting PHI node: eD.4197_18 = PHI <eD.4197_10(6), eD.4197_20(5)>
+
+    Argument #0 (6 -> 7 not executable)
+
+    Argument #1 (5 -> 7 executable)
+	eD.4197_20	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5611_17(D)>
+bbD.4195_12 = eD.4197_18->sourceD.4134;
+
+Simulating block 7
+
+Visiting statement:
+# VUSE <.MEMD.5611_17(D)>
+bbD.4195_12 = eD.4197_18->sourceD.4134;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating block 10
+
+Visiting PHI node: D.5594_4 = PHI <1(3), 0(9), 1(2)>
+
+    Argument #0 (3 -> 10 not executable)
+
+    Argument #1 (9 -> 10 not executable)
+
+    Argument #2 (2 -> 10 executable)
+	1	Value: CONSTANT 1
+
+    PHI node value: CONSTANT 1
+
+Lattice value changed to CONSTANT 1.  Adding SSA edges to worklist.
+
+Visiting statement:
+return D.5594_4;
+No interesting values produced.  Marked VARYING.
+
+Simulating block 9
+
+Visiting statement:
+# VUSE <.MEMD.5611_17(D)>
+cfg.7D.5598_14 = cfgD.4174;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5611_17(D)>
+D.5599_15 = cfg.7D.5598_14->entryD.4155;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (D.5599_15 != bbD.4195_2)
+which is likely VARYING
+Adding Destination of edge (9 -> 3) to worklist
+
+Adding Destination of edge (9 -> 10) to worklist
+
+
+Simulating block 3
+
+Visiting statement:
+if (bbD.4195_2 == sourceD.4191_7(D))
+which is likely VARYING
+Adding Destination of edge (3 -> 4) to worklist
+
+
+Simulating block 8
+
+Visiting PHI node: veD.4196_24 = PHI <veD.4196_13(6), veD.4196_9(5)>
+
+    Argument #0 (6 -> 8 not executable)
+
+    Argument #1 (5 -> 8 executable)
+	veD.4196_9	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5611_17(D)>
+veD.4196_13 = veD.4196_24->nextD.4139;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (veD.4196_13 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (8 -> 6) to worklist
+
+Adding Destination of edge (8 -> 9) to worklist
+
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5611_17(D)>
+eD.4197_10 = veD.4196_13->edgeD.4138;
+
+Simulating block 6
+
+Visiting statement:
+# VUSE <.MEMD.5611_17(D)>
+eD.4197_10 = veD.4196_13->edgeD.4138;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5611_17(D)>
+D.5595_11 = eD.4197_10->typeD.4133;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (D.5595_11 == 1)
+which is likely CONSTANT
+Adding Destination of edge (6 -> 7) to worklist
+
+Adding Destination of edge (6 -> 8) to worklist
+
+
+Simulating block 7
+
+Simulating block 10
+
+Visiting PHI node: D.5594_4 = PHI <1(3), 0(9), 1(2)>
+
+    Argument #0 (3 -> 10 executable)
+	1	Value: CONSTANT 1
+
+    Argument #1 (9 -> 10 executable)
+	0	Value: CONSTANT 0
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating block 4
+
+Simulating block 9
+
+Simulating block 8
+
+Substituting values and folding statements
+
+Folding statement: if (target_5(D) == source_7(D))
+which is likely VARYING
+Not folded
+Folding statement: # DEBUG bb => target_5(D)
+Not folded
+Folding statement: # DEBUG bb => target_5(D)
+Not folded
+Folding statement: if (bb_2 == source_7(D))
+which is likely VARYING
+Not folded
+Folding statement: # DEBUG bb => bb_2
+Not folded
+Folding PHI node: bb_21 = PHI <bb_2(3), target_5(D)(2)>
+No folding possible
+Folding statement: if (ve_9 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: # DEBUG ve => ve_9
+Not folded
+Folding statement: # DEBUG ve => ve_9
+Not folded
+Folding statement: ve_9 = bb_21->pred;
+Not folded
+Folding statement: if (D.5595_23 == 1)
+which is likely CONSTANT
+Not folded
+Folding statement: D.5595_23 = e_20->type;
+Not folded
+Folding statement: # DEBUG e => e_20
+Not folded
+Folding statement: e_20 = ve_9->edge;
+Not folded
+Folding statement: if (D.5595_11 == 1)
+which is likely CONSTANT
+Not folded
+Folding statement: D.5595_11 = e_10->type;
+Not folded
+Folding statement: # DEBUG e => e_10
+Not folded
+Folding statement: e_10 = ve_13->edge;
+Not folded
+Folding PHI node: e_18 = PHI <e_10(6), e_20(5)>
+No folding possible
+Folding statement: # DEBUG bb => bb_12
+Not folded
+Folding statement: bb_12 = e_18->source;
+Not folded
+Folding PHI node: ve_24 = PHI <ve_13(6), ve_9(5)>
+No folding possible
+Folding statement: if (ve_13 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: # DEBUG ve => ve_13
+Not folded
+Folding statement: # DEBUG ve => ve_13
+Not folded
+Folding statement: ve_13 = ve_24->next;
+Not folded
+Folding PHI node: bb_2 = PHI <bb_12(7), bb_21(8), bb_21(4)>
+No folding possible
+Folding statement: if (D.5599_15 != bb_2)
+which is likely VARYING
+Not folded
+Folding statement: D.5599_15 = cfg.7_14->entry;
+Not folded
+Folding statement: cfg.7_14 = cfg;
+Not folded
+Folding statement: # DEBUG bb => bb_2
+Not folded
+Folding PHI node: D.5594_4 = PHI <1(3), 0(9), 1(2)>
+No folding possible
+Folding statement: return D.5594_4;
+Not folded
+
+Pass statistics:
+----------------
+
+is_ancestor (struct basic_block * sourceD.4191, struct basic_block * targetD.4192)
+{
+  struct edge * eD.4197;
+  struct vec_edge * veD.4196;
+  struct basic_block * bbD.4195;
+  struct basic_block * D.5599;
+  struct control_flow_graph * cfg.7D.5598;
+  edge_type D.5595;
+  intD.0 D.5594;
+
+  # BLOCK 2 freq:165
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  if (targetD.4192_5(D) == sourceD.4191_7(D))
+    goto <bb 10>;
+  else
+    goto <bb 4>;
+  # SUCC: 10 [4.5%]  (true,exec) 4 [95.5%]  (false,exec)
+
+  # BLOCK 3 freq:756
+  # PRED: 9 [86.0%]  (true,exec)
+  # DEBUG bbD.4195 => bbD.4195_2
+  if (bbD.4195_2 == sourceD.4191_7(D))
+    goto <bb 10>;
+  else
+    goto <bb 4>;
+  # SUCC: 10 [4.5%]  (true,exec) 4 [95.5%]  (false,exec)
+
+  # BLOCK 4 freq:880
+  # PRED: 3 [95.5%]  (false,exec) 2 [95.5%]  (false,exec)
+  # bbD.4195_21 = PHI <bbD.4195_2(3), targetD.4192_5(D)(2)>
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_9 = bbD.4195_21->predD.4147;
+  # DEBUG veD.4196 => veD.4196_9
+  # DEBUG veD.4196 => veD.4196_9
+  if (veD.4196_9 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+  # SUCC: 5 [95.5%]  (true,exec) 9 [4.5%]  (false,exec)
+
+  # BLOCK 5 freq:840
+  # PRED: 4 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_20 = veD.4196_9->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_20
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_23 = eD.4197_20->typeD.4133;
+  if (D.5595_23 == 1)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 [4.5%]  (true,exec) 8 [95.5%]  (false,exec)
+
+  # BLOCK 6 freq:8710
+  # PRED: 8 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_10 = veD.4196_13->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_10
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_11 = eD.4197_10->typeD.4133;
+  if (D.5595_11 == 1)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 [4.5%]  (true,exec) 8 [95.5%]  (false,exec)
+
+  # BLOCK 7 freq:430
+  # PRED: 6 [4.5%]  (true,exec) 5 [4.5%]  (true,exec)
+  # eD.4197_18 = PHI <eD.4197_10(6), eD.4197_20(5)>
+  # VUSE <.MEMD.5611_17(D)>
+  bbD.4195_12 = eD.4197_18->sourceD.4134;
+  # DEBUG bbD.4195 => bbD.4195_12
+  goto <bb 9>;
+  # SUCC: 9 [100.0%]  (fallthru,exec)
+
+  # BLOCK 8 freq:9120
+  # PRED: 6 [95.5%]  (false,exec) 5 [95.5%]  (false,exec)
+  # veD.4196_24 = PHI <veD.4196_13(6), veD.4196_9(5)>
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_13 = veD.4196_24->nextD.4139;
+  # DEBUG veD.4196 => veD.4196_13
+  # DEBUG veD.4196 => veD.4196_13
+  if (veD.4196_13 != 0B)
+    goto <bb 6>;
+  else
+    goto <bb 9>;
+  # SUCC: 6 [95.5%]  (true,exec) 9 [4.5%]  (false,exec)
+
+  # BLOCK 9 freq:880
+  # PRED: 7 [100.0%]  (fallthru,exec) 8 [4.5%]  (false,exec) 4 [4.5%]  (false,exec)
+  # bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_21(8), bbD.4195_21(4)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  # VUSE <.MEMD.5611_17(D)>
+  cfg.7D.5598_14 = cfgD.4174;
+  # VUSE <.MEMD.5611_17(D)>
+  D.5599_15 = cfg.7D.5598_14->entryD.4155;
+  if (D.5599_15 != bbD.4195_2)
+    goto <bb 3>;
+  else
+    goto <bb 10>;
+  # SUCC: 3 [86.0%]  (true,exec) 10 [14.0%]  (false,exec)
+
+  # BLOCK 10 freq:165
+  # PRED: 3 [4.5%]  (true,exec) 9 [14.0%]  (false,exec) 2 [4.5%]  (true,exec)
+  # D.5594_4 = PHI <1(3), 0(9), 1(2)>
+  return D.5594_4;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edge (mark_edge)
+
+Immediate_uses: 
+
+e_1(D) : -->5 uses.
+target_3 = e_1(D)->target;
+e_1(D)->type = 3;
+e_1(D)->type = 2;
+e_1(D)->type = 4;
+source_2 = e_1(D)->source;
+
+source_2 : -->2 uses.
+D.5588_5 = is_ancestor (source_2, target_3);
+D.5584_4 = is_ancestor (target_3, source_2);
+# DEBUG source => source_2
+
+target_3 : -->2 uses.
+D.5588_5 = is_ancestor (source_2, target_3);
+D.5584_4 = is_ancestor (target_3, source_2);
+# DEBUG target => target_3
+
+D.5584_4 : --> single use.
+if (D.5584_4 != 0)
+
+D.5588_5 : --> single use.
+if (D.5588_5 != 0)
+
+.MEM_6(D) : -->7 uses.
+# VUSE <.MEM_6(D)>
+D.5588_5 = is_ancestor (source_2, target_3);
+# VUSE <.MEM_6(D)>
+D.5584_4 = is_ancestor (target_3, source_2);
+# .MEM_9 = VDEF <.MEM_6(D)>
+e_1(D)->type = 4;
+# .MEM_8 = VDEF <.MEM_6(D)>
+e_1(D)->type = 2;
+# .MEM_7 = VDEF <.MEM_6(D)>
+e_1(D)->type = 3;
+# VUSE <.MEM_6(D)>
+target_3 = e_1(D)->target;
+# VUSE <.MEM_6(D)>
+source_2 = e_1(D)->source;
+
+.MEM_7 : --> no uses.
+
+.MEM_8 : --> no uses.
+
+.MEM_9 : --> no uses.
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+# VUSE <.MEMD.5612_6(D)>
+sourceD.4206_2 = eD.4203_1(D)->sourceD.4134;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5612_6(D)>
+targetD.4207_3 = eD.4203_1(D)->targetD.4135;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (D.5584_4 != 0)
+which is likely CONSTANT
+Adding Destination of edge (2 -> 3) to worklist
+
+Adding Destination of edge (2 -> 4) to worklist
+
+
+Simulating block 3
+Adding Destination of edge (3 -> 7) to worklist
+
+
+Simulating block 4
+
+Visiting statement:
+if (D.5588_5 != 0)
+which is likely CONSTANT
+Adding Destination of edge (4 -> 5) to worklist
+
+Adding Destination of edge (4 -> 6) to worklist
+
+
+Simulating block 5
+
+Simulating block 7
+
+Visiting statement:
+return;
+No interesting values produced.  Marked VARYING.
+
+Simulating block 6
+Adding Destination of edge (6 -> 7) to worklist
+
+
+Simulating block 7
+
+Substituting values and folding statements
+
+Folding statement: if (D.5584_4 != 0)
+which is likely CONSTANT
+Not folded
+Folding statement: D.5584_4 = is_ancestor (target_3, source_2);
+Not folded
+Folding statement: # DEBUG target => target_3
+Not folded
+Folding statement: target_3 = e_1(D)->target;
+Not folded
+Folding statement: # DEBUG source => source_2
+Not folded
+Folding statement: source_2 = e_1(D)->source;
+Not folded
+Folding statement: e_1(D)->type = 3;
+Not folded
+Folding statement: if (D.5588_5 != 0)
+which is likely CONSTANT
+Not folded
+Folding statement: D.5588_5 = is_ancestor (source_2, target_3);
+Not folded
+Folding statement: e_1(D)->type = 2;
+Not folded
+Folding statement: e_1(D)->type = 4;
+Not folded
+Folding statement: return;
+Not folded
+
+Pass statistics:
+----------------
+
+mark_edge (struct edge * eD.4203)
+{
+  struct basic_block * targetD.4207;
+  struct basic_block * sourceD.4206;
+  intD.0 D.5588;
+  intD.0 D.5584;
+
+  # BLOCK 2 freq:10000
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  sourceD.4206_2 = eD.4203_1(D)->sourceD.4134;
+  # DEBUG sourceD.4206 => sourceD.4206_2
+  # VUSE <.MEMD.5612_6(D)>
+  targetD.4207_3 = eD.4203_1(D)->targetD.4135;
+  # DEBUG targetD.4207 => targetD.4207_3
+  # VUSE <.MEMD.5612_6(D)>
+  D.5584_4 = is_ancestorD.4193 (targetD.4207_3, sourceD.4206_2);
+  if (D.5584_4 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [61.0%]  (true,exec) 4 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:6102
+  # PRED: 2 [61.0%]  (true,exec)
+  # .MEMD.5612_7 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 3;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:3898
+  # PRED: 2 [39.0%]  (false,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  D.5588_5 = is_ancestorD.4193 (sourceD.4206_2, targetD.4207_3);
+  if (D.5588_5 != 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [39.0%]  (true,exec) 6 [61.0%]  (false,exec)
+
+  # BLOCK 5 freq:1520
+  # PRED: 4 [39.0%]  (true,exec)
+  # .MEMD.5612_8 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 2;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:2378
+  # PRED: 4 [61.0%]  (false,exec)
+  # .MEMD.5612_9 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 4;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 3 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edges (mark_edges)
+
+Immediate_uses: 
+
+current_function.6_2 : --> single use.
+cfg_3 = current_function.6_2->cfg;
+
+cfg_3 : --> single use.
+e_4 = cfg_3->edge;
+# DEBUG cfg => cfg_3
+
+e_4 : -->2 uses.
+e_13 = PHI <e_6(5), e_4(2)>
+# DEBUG e => e_4
+if (e_4 != 0B)
+# DEBUG e => e_4
+
+D.5581_5 : --> single use.
+if (D.5581_5 == 0)
+
+e_6 : -->2 uses.
+e_13 = PHI <e_6(5), e_4(2)>
+# DEBUG e => e_6
+if (e_6 != 0B)
+# DEBUG e => e_6
+
+.MEM_7 : -->2 uses.
+.MEM_14 = PHI <.MEM_7(5), .MEM_9(D)(2)>
+# VUSE <.MEM_7>
+e_6 = e_13->next;
+
+.MEM_9(D) : -->4 uses.
+.MEM_14 = PHI <.MEM_7(5), .MEM_9(D)(2)>
+# VUSE <.MEM_9(D)>
+e_4 = cfg_3->edge;
+# VUSE <.MEM_9(D)>
+cfg_3 = current_function.6_2->cfg;
+# VUSE <.MEM_9(D)>
+current_function.6_2 = current_function;
+
+.MEM_10 : --> single use.
+.MEM_7 = PHI <.MEM_14(3), .MEM_10(4)>
+
+e_13 : -->3 uses.
+D.5581_5 = e_13->type;
+e_6 = e_13->next;
+mark_edge (e_13);
+
+.MEM_14 : -->3 uses.
+# VUSE <.MEM_14>
+D.5581_5 = e_13->type;
+# .MEM_10 = VDEF <.MEM_14>
+mark_edge (e_13);
+.MEM_7 = PHI <.MEM_14(3), .MEM_10(4)>
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+# VUSE <.MEMD.5613_9(D)>
+current_function.6D.5580_2 = current_functionD.4113;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5613_9(D)>
+cfgD.4211_3 = current_function.6D.5580_2->cfgD.4162;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5613_9(D)>
+eD.4212_4 = cfgD.4211_3->edgeD.4159;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (eD.4212_4 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (2 -> 3) to worklist
+
+Adding Destination of edge (2 -> 6) to worklist
+
+
+Simulating statement (from ssa_edges): eD.4212_13 = PHI <eD.4212_6(5), eD.4212_4(2)>
+
+Visiting PHI node: eD.4212_13 = PHI <eD.4212_6(5), eD.4212_4(2)>
+
+    Argument #0 (5 -> 3 not executable)
+
+    Argument #1 (2 -> 3 executable)
+	eD.4212_4	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5613_7>
+eD.4212_6 = eD.4212_13->nextD.4136;
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5613_14>
+D.5581_5 = eD.4212_13->typeD.4133;
+
+Simulating block 3
+
+Visiting statement:
+# VUSE <.MEMD.5613_14>
+D.5581_5 = eD.4212_13->typeD.4133;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (D.5581_5 == 0)
+which is likely CONSTANT
+Adding Destination of edge (3 -> 4) to worklist
+
+Adding Destination of edge (3 -> 5) to worklist
+
+
+Simulating block 4
+
+Simulating block 6
+
+Visiting statement:
+return;
+No interesting values produced.  Marked VARYING.
+
+Simulating block 5
+
+Visiting statement:
+# VUSE <.MEMD.5613_7>
+eD.4212_6 = eD.4212_13->nextD.4136;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (eD.4212_6 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (5 -> 3) to worklist
+
+Adding Destination of edge (5 -> 6) to worklist
+
+
+Simulating block 3
+
+Simulating block 6
+
+Substituting values and folding statements
+
+Folding statement: if (e_4 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: # DEBUG e => e_4
+Not folded
+Folding statement: # DEBUG e => e_4
+Not folded
+Folding statement: e_4 = cfg_3->edge;
+Not folded
+Folding statement: # DEBUG cfg => cfg_3
+Not folded
+Folding statement: cfg_3 = current_function.6_2->cfg;
+Not folded
+Folding statement: current_function.6_2 = current_function;
+Not folded
+Folding PHI node: e_13 = PHI <e_6(5), e_4(2)>
+No folding possible
+Folding PHI node: .MEM_14 = PHI <.MEM_7(5), .MEM_9(D)(2)>
+No folding possible
+Folding statement: if (D.5581_5 == 0)
+which is likely CONSTANT
+Not folded
+Folding statement: D.5581_5 = e_13->type;
+Not folded
+Folding statement: mark_edge (e_13);
+Not folded
+Folding PHI node: .MEM_7 = PHI <.MEM_14(3), .MEM_10(4)>
+No folding possible
+Folding statement: if (e_6 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: # DEBUG e => e_6
+Not folded
+Folding statement: # DEBUG e => e_6
+Not folded
+Folding statement: e_6 = e_13->next;
+Not folded
+Folding statement: return;
+Not folded
+
+Pass statistics:
+----------------
+
+mark_edges ()
+{
+  struct edge * eD.4212;
+  struct control_flow_graph * cfgD.4211;
+  edge_type D.5581;
+  struct function * current_function.6D.5580;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5613_9(D)>
+  current_function.6D.5580_2 = current_functionD.4113;
+  # VUSE <.MEMD.5613_9(D)>
+  cfgD.4211_3 = current_function.6D.5580_2->cfgD.4162;
+  # DEBUG cfgD.4211 => cfgD.4211_3
+  # VUSE <.MEMD.5613_9(D)>
+  eD.4212_4 = cfgD.4211_3->edgeD.4159;
+  # DEBUG eD.4212 => eD.4212_4
+  # DEBUG eD.4212 => eD.4212_4
+  if (eD.4212_4 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 6>;
+  # SUCC: 3 [91.0%]  (true,exec) 6 [9.0%]  (false,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 5 [91.0%]  (true,exec) 2 [91.0%]  (true,exec)
+  # eD.4212_13 = PHI <eD.4212_6(5), eD.4212_4(2)>
+  # .MEMD.5613_14 = PHI <.MEMD.5613_7(5), .MEMD.5613_9(D)(2)>
+  # VUSE <.MEMD.5613_14>
+  D.5581_5 = eD.4212_13->typeD.4133;
+  if (D.5581_5 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 [29.0%]  (true,exec) 5 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5613_10 = VDEF <.MEMD.5613_14>
+  mark_edgeD.4204 (eD.4212_13);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5613_7 = PHI <.MEMD.5613_14(3), .MEMD.5613_10(4)>
+  # VUSE <.MEMD.5613_7>
+  eD.4212_6 = eD.4212_13->nextD.4136;
+  # DEBUG eD.4212 => eD.4212_6
+  # DEBUG eD.4212 => eD.4212_6
+  if (eD.4212_6 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 6>;
+  # SUCC: 3 [91.0%]  (true,exec) 6 [9.0%]  (false,exec)
+
+  # BLOCK 6 freq:900
+  # PRED: 5 [9.0%]  (false,exec) 2 [9.0%]  (false,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance_recursive (calc_max_distance_recursive)
+
+Immediate_uses: 
+
+max_1 : -->2 uses.
+max_24 = PHI <max_1(6), 0(3)>
+# DEBUG max => max_1
+max_22 = PHI <max_1(6), 0(3)>
+# DEBUG max => max_1
+
+bb_5(D) : -->4 uses.
+bb_5(D)->max_distance = D.5577_14;
+ve_7 = bb_5(D)->pred;
+D.5578_15 = bb_5(D)->max_distance;
+D.5570_6 = bb_5(D)->max_distance;
+
+D.5570_6 : --> single use.
+if (D.5570_6 == 0)
+
+ve_7 : -->2 uses.
+ve_27 = PHI <ve_13(6), ve_7(3)>
+# DEBUG ve => ve_7
+if (ve_7 != 0B)
+# DEBUG ve => ve_7
+
+e_8 : -->2 uses.
+D.5573_9 = e_8->type;
+D.5576_10 = e_8->source;
+# DEBUG e => e_8
+
+D.5573_9 : --> single use.
+if (D.5573_9 == 3)
+
+D.5576_10 : --> single use.
+val_11 = calc_max_distance_recursive (D.5576_10);
+
+val_11 : --> single use.
+max_12 = MAX_EXPR <val_11, max_24>;
+# DEBUG val => val_11
+
+max_12 : --> single use.
+max_1 = PHI <max_24(4), max_12(5)>
+# DEBUG max => max_12
+
+ve_13 : -->2 uses.
+ve_27 = PHI <ve_13(6), ve_7(3)>
+# DEBUG ve => ve_13
+if (ve_13 != 0B)
+# DEBUG ve => ve_13
+
+D.5577_14 : --> single use.
+bb_5(D)->max_distance = D.5577_14;
+
+D.5578_15 : --> single use.
+return D.5578_15;
+
+.MEM_16 : -->3 uses.
+.MEM_28 = PHI <.MEM_16(6), .MEM_19(D)(3)>
+# VUSE <.MEM_16>
+ve_13 = ve_27->next;
+.MEM_29 = PHI <.MEM_16(6), .MEM_19(D)(3)>
+
+.MEM_18 : --> single use.
+# VUSE <.MEM_18>
+D.5578_15 = bb_5(D)->max_distance;
+
+.MEM_19(D) : -->5 uses.
+.MEM_28 = PHI <.MEM_16(6), .MEM_19(D)(3)>
+.MEM_29 = PHI <.MEM_16(6), .MEM_19(D)(3)>
+# VUSE <.MEM_19(D)>
+ve_7 = bb_5(D)->pred;
+.MEM_18 = PHI <.MEM_19(D)(2), .MEM_21(7)>
+# VUSE <.MEM_19(D)>
+D.5570_6 = bb_5(D)->max_distance;
+
+.MEM_20 : --> single use.
+.MEM_16 = PHI <.MEM_28(4), .MEM_20(5)>
+
+.MEM_21 : --> single use.
+.MEM_18 = PHI <.MEM_19(D)(2), .MEM_21(7)>
+
+max_22 : --> single use.
+D.5577_14 = max_22 + 1;
+
+max_24 : -->2 uses.
+max_12 = MAX_EXPR <val_11, max_24>;
+max_1 = PHI <max_24(4), max_12(5)>
+
+ve_27 : -->2 uses.
+e_8 = ve_27->edge;
+ve_13 = ve_27->next;
+
+.MEM_28 : -->5 uses.
+# VUSE <.MEM_28>
+D.5573_9 = e_8->type;
+# VUSE <.MEM_28>
+e_8 = ve_27->edge;
+# .MEM_20 = VDEF <.MEM_28>
+val_11 = calc_max_distance_recursive (D.5576_10);
+# VUSE <.MEM_28>
+D.5576_10 = e_8->source;
+.MEM_16 = PHI <.MEM_28(4), .MEM_20(5)>
+
+.MEM_29 : --> single use.
+# .MEM_21 = VDEF <.MEM_29>
+bb_5(D)->max_distance = D.5577_14;
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+# VUSE <.MEMD.5614_19(D)>
+D.5570_6 = bbD.4216_5(D)->max_distanceD.4146;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (D.5570_6 == 0)
+which is likely CONSTANT
+Adding Destination of edge (2 -> 3) to worklist
+
+Adding Destination of edge (2 -> 8) to worklist
+
+
+Simulating block 3
+
+Visiting statement:
+# VUSE <.MEMD.5614_19(D)>
+veD.4221_7 = bbD.4216_5(D)->predD.4147;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (veD.4221_7 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (3 -> 4) to worklist
+
+Adding Destination of edge (3 -> 7) to worklist
+
+
+Simulating statement (from ssa_edges): veD.4221_27 = PHI <veD.4221_13(6), veD.4221_7(3)>
+
+Visiting PHI node: veD.4221_27 = PHI <veD.4221_13(6), veD.4221_7(3)>
+
+    Argument #0 (6 -> 4 not executable)
+
+    Argument #1 (3 -> 4 executable)
+	veD.4221_7	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5614_16>
+veD.4221_13 = veD.4221_27->nextD.4139;
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5614_28>
+eD.4222_8 = veD.4221_27->edgeD.4138;
+
+Simulating block 8
+
+Visiting statement:
+# VUSE <.MEMD.5614_18>
+D.5578_15 = bbD.4216_5(D)->max_distanceD.4146;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+return D.5578_15;
+No interesting values produced.  Marked VARYING.
+
+Simulating block 4
+
+Visiting PHI node: maxD.4220_24 = PHI <maxD.4220_1(6), 0(3)>
+
+    Argument #0 (6 -> 4 not executable)
+
+    Argument #1 (3 -> 4 executable)
+	0	Value: CONSTANT 0
+
+    PHI node value: CONSTANT 0
+
+Lattice value changed to CONSTANT 0.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5614_28>
+eD.4222_8 = veD.4221_27->edgeD.4138;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5614_28>
+D.5573_9 = eD.4222_8->typeD.4133;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (D.5573_9 == 3)
+which is likely CONSTANT
+Adding Destination of edge (4 -> 6) to worklist
+
+Adding Destination of edge (4 -> 5) to worklist
+
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5614_28>
+D.5576_10 = eD.4222_8->sourceD.4134;
+
+Simulating statement (from ssa_edges): maxD.4220_1 = PHI <maxD.4220_24(4), maxD.4220_12(5)>
+
+Visiting PHI node: maxD.4220_1 = PHI <maxD.4220_24(4), maxD.4220_12(5)>
+
+    Argument #0 (4 -> 6 executable)
+	maxD.4220_24	Value: CONSTANT 0
+
+    Argument #1 (5 -> 6 not executable)
+
+    PHI node value: CONSTANT 0
+
+Lattice value changed to CONSTANT 0.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): maxD.4220_22 = PHI <maxD.4220_1(6), 0(3)>
+
+Visiting PHI node: maxD.4220_22 = PHI <maxD.4220_1(6), 0(3)>
+
+    Argument #0 (6 -> 7 not executable)
+
+    Argument #1 (3 -> 7 executable)
+	0	Value: CONSTANT 0
+
+    PHI node value: CONSTANT 0
+
+Lattice value changed to CONSTANT 0.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): D.5577_14 = maxD.4220_22 + 1;
+
+Simulating statement (from ssa_edges): maxD.4220_24 = PHI <maxD.4220_1(6), 0(3)>
+
+Visiting PHI node: maxD.4220_24 = PHI <maxD.4220_1(6), 0(3)>
+
+    Argument #0 (6 -> 4 not executable)
+
+    Argument #1 (3 -> 4 executable)
+	0	Value: CONSTANT 0
+
+    PHI node value: CONSTANT 0
+
+
+Simulating statement (from ssa_edges): maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_24>;
+
+Simulating block 5
+
+Visiting statement:
+# VUSE <.MEMD.5614_28>
+D.5576_10 = eD.4222_8->sourceD.4134;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_24>;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): maxD.4220_1 = PHI <maxD.4220_24(4), maxD.4220_12(5)>
+
+Visiting PHI node: maxD.4220_1 = PHI <maxD.4220_24(4), maxD.4220_12(5)>
+
+    Argument #0 (4 -> 6 executable)
+	maxD.4220_24	Value: CONSTANT 0
+
+    Argument #1 (5 -> 6 executable)
+	maxD.4220_12	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): maxD.4220_22 = PHI <maxD.4220_1(6), 0(3)>
+
+Visiting PHI node: maxD.4220_22 = PHI <maxD.4220_1(6), 0(3)>
+
+    Argument #0 (6 -> 7 not executable)
+
+    Argument #1 (3 -> 7 executable)
+	0	Value: CONSTANT 0
+
+    PHI node value: CONSTANT 0
+
+
+Simulating statement (from ssa_edges): maxD.4220_24 = PHI <maxD.4220_1(6), 0(3)>
+
+Visiting PHI node: maxD.4220_24 = PHI <maxD.4220_1(6), 0(3)>
+
+    Argument #0 (6 -> 4 not executable)
+
+    Argument #1 (3 -> 4 executable)
+	0	Value: CONSTANT 0
+
+    PHI node value: CONSTANT 0
+
+
+Simulating block 7
+
+Visiting PHI node: maxD.4220_22 = PHI <maxD.4220_1(6), 0(3)>
+
+    Argument #0 (6 -> 7 not executable)
+
+    Argument #1 (3 -> 7 executable)
+	0	Value: CONSTANT 0
+
+    PHI node value: CONSTANT 0
+
+
+Visiting statement:
+D.5577_14 = maxD.4220_22 + 1;
+which is likely CONSTANT
+Lattice value changed to CONSTANT 1.  Adding SSA edges to worklist.
+Adding Destination of edge (7 -> 8) to worklist
+
+
+Simulating block 6
+
+Visiting statement:
+# VUSE <.MEMD.5614_16>
+veD.4221_13 = veD.4221_27->nextD.4139;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (veD.4221_13 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (6 -> 4) to worklist
+
+Adding Destination of edge (6 -> 7) to worklist
+
+
+Simulating block 8
+
+Simulating block 4
+
+Visiting PHI node: maxD.4220_24 = PHI <maxD.4220_1(6), 0(3)>
+
+    Argument #0 (6 -> 4 executable)
+	maxD.4220_1	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating block 7
+
+Visiting PHI node: maxD.4220_22 = PHI <maxD.4220_1(6), 0(3)>
+
+    Argument #0 (6 -> 7 executable)
+	maxD.4220_1	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): D.5577_14 = maxD.4220_22 + 1;
+
+Visiting statement:
+D.5577_14 = maxD.4220_22 + 1;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Substituting values and folding statements
+
+Folding statement: if (D.5570_6 == 0)
+which is likely CONSTANT
+Not folded
+Folding statement: D.5570_6 = bb_5(D)->max_distance;
+Not folded
+Folding statement: # DEBUG max => 0
+Not folded
+Folding statement: if (ve_7 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: # DEBUG max => 0
+Not folded
+Folding statement: # DEBUG ve => ve_7
+Not folded
+Folding statement: # DEBUG ve => ve_7
+Not folded
+Folding statement: ve_7 = bb_5(D)->pred;
+Not folded
+Folding PHI node: max_24 = PHI <max_1(6), 0(3)>
+No folding possible
+Folding PHI node: ve_27 = PHI <ve_13(6), ve_7(3)>
+No folding possible
+Folding PHI node: .MEM_28 = PHI <.MEM_16(6), .MEM_19(D)(3)>
+No folding possible
+Folding statement: if (D.5573_9 == 3)
+which is likely CONSTANT
+Not folded
+Folding statement: D.5573_9 = e_8->type;
+Not folded
+Folding statement: # DEBUG e => e_8
+Not folded
+Folding statement: e_8 = ve_27->edge;
+Not folded
+Folding statement: # DEBUG max => max_12
+Not folded
+Folding statement: max_12 = MAX_EXPR <val_11, max_24>;
+Not folded
+Folding statement: # DEBUG val => val_11
+Not folded
+Folding statement: val_11 = calc_max_distance_recursive (D.5576_10);
+Not folded
+Folding statement: D.5576_10 = e_8->source;
+Not folded
+Folding PHI node: max_1 = PHI <max_24(4), max_12(5)>
+No folding possible
+Folding PHI node: .MEM_16 = PHI <.MEM_28(4), .MEM_20(5)>
+No folding possible
+Folding statement: if (ve_13 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: # DEBUG max => max_1
+Not folded
+Folding statement: # DEBUG ve => ve_13
+Not folded
+Folding statement: # DEBUG ve => ve_13
+Not folded
+Folding statement: ve_13 = ve_27->next;
+Not folded
+Folding statement: # DEBUG max => max_1
+Not folded
+Folding PHI node: max_22 = PHI <max_1(6), 0(3)>
+No folding possible
+Folding PHI node: .MEM_29 = PHI <.MEM_16(6), .MEM_19(D)(3)>
+No folding possible
+Folding statement: bb_5(D)->max_distance = D.5577_14;
+Not folded
+Folding statement: D.5577_14 = max_22 + 1;
+Not folded
+Folding PHI node: .MEM_18 = PHI <.MEM_19(D)(2), .MEM_21(7)>
+No folding possible
+Folding statement: return D.5578_15;
+Not folded
+Folding statement: D.5578_15 = bb_5(D)->max_distance;
+Not folded
+
+Pass statistics:
+----------------
+
+calc_max_distance_recursive (struct basic_block * bbD.4216)
+{
+  struct edge * eD.4222;
+  struct vec_edge * veD.4221;
+  intD.0 maxD.4220;
+  intD.0 valD.4219;
+  intD.0 D.5578;
+  intD.0 D.5577;
+  struct basic_block * D.5576;
+  edge_type D.5573;
+  intD.0 D.5570;
+
+  # BLOCK 2 freq:1475
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4220 => 0
+  # VUSE <.MEMD.5614_19(D)>
+  D.5570_6 = bbD.4216_5(D)->max_distanceD.4146;
+  if (D.5570_6 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 8>;
+  # SUCC: 3 [61.0%]  (true,exec) 8 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:900
+  # PRED: 2 [61.0%]  (true,exec)
+  # VUSE <.MEMD.5614_19(D)>
+  veD.4221_7 = bbD.4216_5(D)->predD.4147;
+  # DEBUG veD.4221 => veD.4221_7
+  # DEBUG veD.4221 => veD.4221_7
+  # DEBUG maxD.4220 => 0
+  if (veD.4221_7 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 7>;
+  # SUCC: 4 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 4 freq:9100
+  # PRED: 6 [91.0%]  (true,exec) 3 [91.0%]  (true,exec)
+  # maxD.4220_24 = PHI <maxD.4220_1(6), 0(3)>
+  # veD.4221_27 = PHI <veD.4221_13(6), veD.4221_7(3)>
+  # .MEMD.5614_28 = PHI <.MEMD.5614_16(6), .MEMD.5614_19(D)(3)>
+  # VUSE <.MEMD.5614_28>
+  eD.4222_8 = veD.4221_27->edgeD.4138;
+  # DEBUG eD.4222 => eD.4222_8
+  # VUSE <.MEMD.5614_28>
+  D.5573_9 = eD.4222_8->typeD.4133;
+  if (D.5573_9 == 3)
+    goto <bb 6>;
+  else
+    goto <bb 5>;
+  # SUCC: 6 [48.8%]  (true,exec) 5 [51.2%]  (false,exec)
+
+  # BLOCK 5 freq:4662
+  # PRED: 4 [51.2%]  (false,exec)
+  # VUSE <.MEMD.5614_28>
+  D.5576_10 = eD.4222_8->sourceD.4134;
+  # .MEMD.5614_20 = VDEF <.MEMD.5614_28>
+  valD.4219_11 = calc_max_distance_recursiveD.4217 (D.5576_10);
+  # DEBUG valD.4219 => valD.4219_11
+  maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_24>;
+  # DEBUG maxD.4220 => maxD.4220_12
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 4 [48.8%]  (true,exec) 5 [100.0%]  (fallthru,exec)
+  # maxD.4220_1 = PHI <maxD.4220_24(4), maxD.4220_12(5)>
+  # .MEMD.5614_16 = PHI <.MEMD.5614_28(4), .MEMD.5614_20(5)>
+  # DEBUG maxD.4220 => maxD.4220_1
+  # VUSE <.MEMD.5614_16>
+  veD.4221_13 = veD.4221_27->nextD.4139;
+  # DEBUG veD.4221 => veD.4221_13
+  # DEBUG veD.4221 => veD.4221_13
+  # DEBUG maxD.4220 => maxD.4220_1
+  if (veD.4221_13 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 7>;
+  # SUCC: 4 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:900
+  # PRED: 6 [9.0%]  (false,exec) 3 [9.0%]  (false,exec)
+  # maxD.4220_22 = PHI <maxD.4220_1(6), 0(3)>
+  # .MEMD.5614_29 = PHI <.MEMD.5614_16(6), .MEMD.5614_19(D)(3)>
+  D.5577_14 = maxD.4220_22 + 1;
+  # .MEMD.5614_21 = VDEF <.MEMD.5614_29>
+  bbD.4216_5(D)->max_distanceD.4146 = D.5577_14;
+  # SUCC: 8 [100.0%]  (fallthru,exec)
+
+  # BLOCK 8 freq:1475
+  # PRED: 2 [39.0%]  (false,exec) 7 [100.0%]  (fallthru,exec)
+  # .MEMD.5614_18 = PHI <.MEMD.5614_19(D)(2), .MEMD.5614_21(7)>
+  # VUSE <.MEMD.5614_18>
+  D.5578_15 = bbD.4216_5(D)->max_distanceD.4146;
+  return D.5578_15;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance (calc_max_distance)
+
+Immediate_uses: 
+
+max_1 : -->2 uses.
+max_27 = PHI <max_1(6), max_8(2)>
+# DEBUG max => max_1
+max_4 = PHI <max_1(6), max_8(2)>
+# DEBUG max => max_1
+
+max_4 : --> single use.
+D.5562_18->max_distance = max_4;
+
+cfg.4_6 : -->3 uses.
+bb_10 = cfg.4_6->bb;
+D.5562_18 = cfg.4_6->exit;
+D.5562_7 = cfg.4_6->exit;
+
+D.5562_7 : --> single use.
+max_8 = calc_max_distance_recursive (D.5562_7);
+
+max_8 : -->2 uses.
+max_27 = PHI <max_1(6), max_8(2)>
+# DEBUG max => max_8
+max_4 = PHI <max_1(6), max_8(2)>
+# DEBUG max => max_8
+
+bb_10 : -->2 uses.
+bb_28 = PHI <bb_16(6), bb_10(2)>
+# DEBUG bb => bb_10
+if (bb_10 != 0B)
+# DEBUG bb => bb_10
+
+D.5563_11 : --> single use.
+if (D.5563_11 == 0)
+
+val_12 : -->2 uses.
+if (val_12 >= max_27)
+max_13 = val_12 + 1;
+# DEBUG val => val_12
+
+max_13 : --> single use.
+max_1 = PHI <max_27(3), max_27(4), max_13(5)>
+
+bb_16 : -->2 uses.
+bb_28 = PHI <bb_16(6), bb_10(2)>
+# DEBUG bb => bb_16
+if (bb_16 != 0B)
+# DEBUG bb => bb_16
+
+D.5562_18 : --> single use.
+D.5562_18->max_distance = max_4;
+
+.MEM_19 : -->3 uses.
+.MEM_30 = PHI <.MEM_19(6), .MEM_24(2)>
+# VUSE <.MEM_19>
+bb_16 = bb_28->next;
+.MEM_31 = PHI <.MEM_19(6), .MEM_24(2)>
+
+.MEM_21(D) : --> single use.
+# .MEM_22 = VDEF <.MEM_21(D)>
+depth_first_search ();
+
+.MEM_22 : --> single use.
+# .MEM_23 = VDEF <.MEM_22>
+mark_edges ();
+
+.MEM_23 : -->3 uses.
+# .MEM_24 = VDEF <.MEM_23>
+max_8 = calc_max_distance_recursive (D.5562_7);
+# VUSE <.MEM_23>
+D.5562_7 = cfg.4_6->exit;
+# VUSE <.MEM_23>
+cfg.4_6 = cfg;
+
+.MEM_24 : -->3 uses.
+.MEM_30 = PHI <.MEM_19(6), .MEM_24(2)>
+.MEM_31 = PHI <.MEM_19(6), .MEM_24(2)>
+# VUSE <.MEM_24>
+bb_10 = cfg.4_6->bb;
+
+.MEM_25 : -->2 uses.
+.MEM_19 = PHI <.MEM_30(3), .MEM_25(4), .MEM_25(5)>
+.MEM_19 = PHI <.MEM_30(3), .MEM_25(4), .MEM_25(5)>
+
+.MEM_26 : --> no uses.
+
+max_27 : -->3 uses.
+if (val_12 >= max_27)
+max_1 = PHI <max_27(3), max_27(4), max_13(5)>
+max_1 = PHI <max_27(3), max_27(4), max_13(5)>
+
+bb_28 : -->3 uses.
+D.5563_11 = bb_28->max_distance;
+bb_16 = bb_28->next;
+val_12 = calc_max_distance_recursive (bb_28);
+
+.MEM_30 : -->3 uses.
+# VUSE <.MEM_30>
+D.5563_11 = bb_28->max_distance;
+# .MEM_25 = VDEF <.MEM_30>
+val_12 = calc_max_distance_recursive (bb_28);
+.MEM_19 = PHI <.MEM_30(3), .MEM_25(4), .MEM_25(5)>
+
+.MEM_31 : -->2 uses.
+# .MEM_26 = VDEF <.MEM_31>
+D.5562_18->max_distance = max_4;
+# VUSE <.MEM_31>
+D.5562_18 = cfg.4_6->exit;
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+# VUSE <.MEMD.5615_23>
+cfg.4D.5561_6 = cfgD.4174;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5615_23>
+D.5562_7 = cfg.4D.5561_6->exitD.4156;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5615_24>
+bbD.4232_10 = cfg.4D.5561_6->bbD.4157;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (bbD.4232_10 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (2 -> 3) to worklist
+
+Adding Destination of edge (2 -> 7) to worklist
+
+
+Simulating statement (from ssa_edges): bbD.4232_28 = PHI <bbD.4232_16(6), bbD.4232_10(2)>
+
+Visiting PHI node: bbD.4232_28 = PHI <bbD.4232_16(6), bbD.4232_10(2)>
+
+    Argument #0 (6 -> 3 not executable)
+
+    Argument #1 (2 -> 3 executable)
+	bbD.4232_10	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5615_19>
+bbD.4232_16 = bbD.4232_28->nextD.4151;
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5615_30>
+D.5563_11 = bbD.4232_28->max_distanceD.4146;
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5615_31>
+D.5562_18 = cfg.4D.5561_6->exitD.4156;
+
+Simulating block 3
+
+Visiting PHI node: maxD.4231_27 = PHI <maxD.4231_1(6), maxD.4231_8(2)>
+
+    Argument #0 (6 -> 3 not executable)
+
+    Argument #1 (2 -> 3 executable)
+	maxD.4231_8	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5615_30>
+D.5563_11 = bbD.4232_28->max_distanceD.4146;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (D.5563_11 == 0)
+which is likely CONSTANT
+Adding Destination of edge (3 -> 4) to worklist
+
+Adding Destination of edge (3 -> 6) to worklist
+
+
+Simulating statement (from ssa_edges): maxD.4231_1 = PHI <maxD.4231_27(3), maxD.4231_27(4), maxD.4231_13(5)>
+
+Visiting PHI node: maxD.4231_1 = PHI <maxD.4231_27(3), maxD.4231_27(4), maxD.4231_13(5)>
+
+    Argument #0 (3 -> 6 executable)
+	maxD.4231_27	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): maxD.4231_4 = PHI <maxD.4231_1(6), maxD.4231_8(2)>
+
+Visiting PHI node: maxD.4231_4 = PHI <maxD.4231_1(6), maxD.4231_8(2)>
+
+    Argument #0 (6 -> 7 not executable)
+
+    Argument #1 (2 -> 7 executable)
+	maxD.4231_8	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): if (valD.4230_12 >= maxD.4231_27)
+
+Simulating block 4
+
+Visiting statement:
+if (valD.4230_12 >= maxD.4231_27)
+which is likely VARYING
+Adding Destination of edge (4 -> 5) to worklist
+
+
+Simulating block 5
+
+Visiting statement:
+maxD.4231_13 = valD.4230_12 + 1;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating block 7
+
+Visiting statement:
+# VUSE <.MEMD.5615_31>
+D.5562_18 = cfg.4D.5561_6->exitD.4156;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+return;
+No interesting values produced.  Marked VARYING.
+
+Simulating block 6
+
+Visiting statement:
+# VUSE <.MEMD.5615_19>
+bbD.4232_16 = bbD.4232_28->nextD.4151;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (bbD.4232_16 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (6 -> 3) to worklist
+
+Adding Destination of edge (6 -> 7) to worklist
+
+
+Simulating block 3
+
+Simulating block 7
+
+Substituting values and folding statements
+
+Folding statement: if (bb_10 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: # DEBUG max => max_8
+Not folded
+Folding statement: # DEBUG bb => bb_10
+Not folded
+Folding statement: # DEBUG bb => bb_10
+Not folded
+Folding statement: bb_10 = cfg.4_6->bb;
+Not folded
+Folding statement: # DEBUG max => max_8
+Not folded
+Folding statement: max_8 = calc_max_distance_recursive (D.5562_7);
+Not folded
+Folding statement: D.5562_7 = cfg.4_6->exit;
+Not folded
+Folding statement: cfg.4_6 = cfg;
+Not folded
+Folding statement: mark_edges ();
+Not folded
+Folding statement: depth_first_search ();
+Not folded
+Folding statement: # DEBUG max => 0
+Not folded
+Folding PHI node: max_27 = PHI <max_1(6), max_8(2)>
+No folding possible
+Folding PHI node: bb_28 = PHI <bb_16(6), bb_10(2)>
+No folding possible
+Folding PHI node: .MEM_30 = PHI <.MEM_19(6), .MEM_24(2)>
+No folding possible
+Folding statement: if (D.5563_11 == 0)
+which is likely CONSTANT
+Not folded
+Folding statement: D.5563_11 = bb_28->max_distance;
+Not folded
+Folding statement: if (val_12 >= max_27)
+which is likely VARYING
+Not folded
+Folding statement: # DEBUG val => val_12
+Not folded
+Folding statement: val_12 = calc_max_distance_recursive (bb_28);
+Not folded
+Folding statement: max_13 = val_12 + 1;
+Not folded
+Folding PHI node: max_1 = PHI <max_27(3), max_27(4), max_13(5)>
+No folding possible
+Folding PHI node: .MEM_19 = PHI <.MEM_30(3), .MEM_25(4), .MEM_25(5)>
+No folding possible
+Folding statement: if (bb_16 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: # DEBUG max => max_1
+Not folded
+Folding statement: # DEBUG bb => bb_16
+Not folded
+Folding statement: # DEBUG bb => bb_16
+Not folded
+Folding statement: bb_16 = bb_28->next;
+Not folded
+Folding statement: # DEBUG max => max_1
+Not folded
+Folding PHI node: max_4 = PHI <max_1(6), max_8(2)>
+No folding possible
+Folding PHI node: .MEM_31 = PHI <.MEM_19(6), .MEM_24(2)>
+No folding possible
+Folding statement: return;
+Not folded
+Folding statement: D.5562_18->max_distance = max_4;
+Not folded
+Folding statement: D.5562_18 = cfg.4_6->exit;
+Not folded
+
+Pass statistics:
+----------------
+
+calc_max_distance ()
+{
+  struct basic_block * bbD.4232;
+  intD.0 maxD.4231;
+  intD.0 valD.4230;
+  intD.0 D.5563;
+  struct basic_block * D.5562;
+  struct control_flow_graph * cfg.4D.5561;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4231 => 0
+  # .MEMD.5615_22 = VDEF <.MEMD.5615_21(D)>
+  depth_first_searchD.4185 ();
+  # .MEMD.5615_23 = VDEF <.MEMD.5615_22>
+  mark_edgesD.4209 ();
+  # VUSE <.MEMD.5615_23>
+  cfg.4D.5561_6 = cfgD.4174;
+  # VUSE <.MEMD.5615_23>
+  D.5562_7 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_24 = VDEF <.MEMD.5615_23>
+  maxD.4231_8 = calc_max_distance_recursiveD.4217 (D.5562_7);
+  # DEBUG maxD.4231 => maxD.4231_8
+  # VUSE <.MEMD.5615_24>
+  bbD.4232_10 = cfg.4D.5561_6->bbD.4157;
+  # DEBUG bbD.4232 => bbD.4232_10
+  # DEBUG bbD.4232 => bbD.4232_10
+  # DEBUG maxD.4231 => maxD.4231_8
+  if (bbD.4232_10 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 6 [91.0%]  (true,exec) 2 [91.0%]  (true,exec)
+  # maxD.4231_27 = PHI <maxD.4231_1(6), maxD.4231_8(2)>
+  # bbD.4232_28 = PHI <bbD.4232_16(6), bbD.4232_10(2)>
+  # .MEMD.5615_30 = PHI <.MEMD.5615_19(6), .MEMD.5615_24(2)>
+  # VUSE <.MEMD.5615_30>
+  D.5563_11 = bbD.4232_28->max_distanceD.4146;
+  if (D.5563_11 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 6>;
+  # SUCC: 4 [29.0%]  (true,exec) 6 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5615_25 = VDEF <.MEMD.5615_30>
+  valD.4230_12 = calc_max_distance_recursiveD.4217 (bbD.4232_28);
+  # DEBUG valD.4230 => valD.4230_12
+  if (valD.4230_12 >= maxD.4231_27)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [50.0%]  (true,exec) 6 [50.0%]  (false,exec)
+
+  # BLOCK 5 freq:1319
+  # PRED: 4 [50.0%]  (true,exec)
+  maxD.4231_13 = valD.4230_12 + 1;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [50.0%]  (false,exec) 5 [100.0%]  (fallthru,exec)
+  # maxD.4231_1 = PHI <maxD.4231_27(3), maxD.4231_27(4), maxD.4231_13(5)>
+  # .MEMD.5615_19 = PHI <.MEMD.5615_30(3), .MEMD.5615_25(4), .MEMD.5615_25(5)>
+  # DEBUG maxD.4231 => maxD.4231_1
+  # VUSE <.MEMD.5615_19>
+  bbD.4232_16 = bbD.4232_28->nextD.4151;
+  # DEBUG bbD.4232 => bbD.4232_16
+  # DEBUG bbD.4232 => bbD.4232_16
+  # DEBUG maxD.4231 => maxD.4231_1
+  if (bbD.4232_16 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:900
+  # PRED: 6 [9.0%]  (false,exec) 2 [9.0%]  (false,exec)
+  # maxD.4231_4 = PHI <maxD.4231_1(6), maxD.4231_8(2)>
+  # .MEMD.5615_31 = PHI <.MEMD.5615_19(6), .MEMD.5615_24(2)>
+  # VUSE <.MEMD.5615_31>
+  D.5562_18 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_26 = VDEF <.MEMD.5615_31>
+  D.5562_18->max_distanceD.4146 = maxD.4231_4;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function fine_tune_cfg (fine_tune_cfg)
+
+Immediate_uses: 
+
+first_function.0_1 : -->3 uses.
+current_function.1_14 = PHI <current_function.3_6(3), first_function.0_1(2)>
+if (first_function.0_1 != 0B)
+current_function = first_function.0_1;
+
+cfg.2_4 : --> single use.
+cfg = cfg.2_4;
+
+current_function.1_5 : --> single use.
+current_function.3_6 = current_function.1_5->next;
+
+current_function.3_6 : -->3 uses.
+current_function.1_14 = PHI <current_function.3_6(3), first_function.0_1(2)>
+if (current_function.3_6 != 0B)
+current_function = current_function.3_6;
+
+.MEM_8(D) : -->2 uses.
+# .MEM_9 = VDEF <.MEM_8(D)>
+current_function = first_function.0_1;
+# VUSE <.MEM_8(D)>
+first_function.0_1 = first_function;
+
+.MEM_9 : --> single use.
+.MEM_15 = PHI <.MEM_12(3), .MEM_9(2)>
+
+.MEM_10 : --> single use.
+# .MEM_11 = VDEF <.MEM_10>
+calc_max_distance ();
+
+.MEM_11 : -->3 uses.
+# VUSE <.MEM_11>
+current_function.3_6 = current_function.1_5->next;
+# VUSE <.MEM_11>
+current_function.1_5 = current_function;
+# .MEM_12 = VDEF <.MEM_11>
+current_function = current_function.3_6;
+
+.MEM_12 : --> single use.
+.MEM_15 = PHI <.MEM_12(3), .MEM_9(2)>
+
+current_function.1_14 : --> single use.
+cfg.2_4 = current_function.1_14->cfg;
+
+.MEM_15 : -->2 uses.
+# VUSE <.MEM_15>
+cfg.2_4 = current_function.1_14->cfg;
+# .MEM_10 = VDEF <.MEM_15>
+cfg = cfg.2_4;
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+# VUSE <.MEMD.5616_8(D)>
+first_function.0D.5557_1 = first_functionD.4111;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (first_function.0D.5557_1 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (2 -> 3) to worklist
+
+Adding Destination of edge (2 -> 4) to worklist
+
+
+Simulating statement (from ssa_edges): current_function.1D.5558_14 = PHI <current_function.3D.5560_6(3), first_function.0D.5557_1(2)>
+
+Visiting PHI node: current_function.1D.5558_14 = PHI <current_function.3D.5560_6(3), first_function.0D.5557_1(2)>
+
+    Argument #0 (3 -> 3 not executable)
+
+    Argument #1 (2 -> 3 executable)
+	first_function.0D.5557_1	Value: VARYING
+
+    PHI node value: VARYING
+
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Simulating statement (from ssa_edges): # VUSE <.MEMD.5616_15>
+cfg.2D.5559_4 = current_function.1D.5558_14->cfgD.4162;
+
+Simulating block 3
+
+Visiting statement:
+# VUSE <.MEMD.5616_15>
+cfg.2D.5559_4 = current_function.1D.5558_14->cfgD.4162;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5616_11>
+current_function.1D.5558_5 = current_functionD.4113;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+# VUSE <.MEMD.5616_11>
+current_function.3D.5560_6 = current_function.1D.5558_5->nextD.4163;
+which is likely CONSTANT
+Lattice value changed to VARYING.  Adding SSA edges to worklist.
+
+Visiting statement:
+if (current_function.3D.5560_6 != 0B)
+which is likely CONSTANT
+Adding Destination of edge (3 -> 3) to worklist
+
+
+Simulating block 4
+
+Visiting statement:
+return;
+No interesting values produced.  Marked VARYING.
+
+Simulating block 3
+
+Substituting values and folding statements
+
+Folding statement: if (first_function.0_1 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: current_function = first_function.0_1;
+Not folded
+Folding statement: first_function.0_1 = first_function;
+Not folded
+Folding PHI node: current_function.1_14 = PHI <current_function.3_6(3), first_function.0_1(2)>
+No folding possible
+Folding PHI node: .MEM_15 = PHI <.MEM_12(3), .MEM_9(2)>
+No folding possible
+Folding statement: if (current_function.3_6 != 0B)
+which is likely CONSTANT
+Not folded
+Folding statement: current_function = current_function.3_6;
+Not folded
+Folding statement: current_function.3_6 = current_function.1_5->next;
+Not folded
+Folding statement: current_function.1_5 = current_function;
+Not folded
+Folding statement: calc_max_distance ();
+Not folded
+Folding statement: cfg = cfg.2_4;
+Not folded
+Folding statement: cfg.2_4 = current_function.1_14->cfg;
+Not folded
+Folding statement: return;
+Not folded
+
+Pass statistics:
+----------------
+
+fine_tune_cfg ()
+{
+  struct function * current_function.3D.5560;
+  struct control_flow_graph * cfg.2D.5559;
+  struct function * current_function.1D.5558;
+  struct function * first_function.0D.5557;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5616_8(D)>
+  first_function.0D.5557_1 = first_functionD.4111;
+  # .MEMD.5616_9 = VDEF <.MEMD.5616_8(D)>
+  current_functionD.4113 = first_function.0D.5557_1;
+  if (first_function.0D.5557_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [91.0%]  (true,exec) 4 [9.0%]  (false,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 3 [91.0%]  (true,exec) 2 [91.0%]  (true,exec)
+  # current_function.1D.5558_14 = PHI <current_function.3D.5560_6(3), first_function.0D.5557_1(2)>
+  # .MEMD.5616_15 = PHI <.MEMD.5616_12(3), .MEMD.5616_9(2)>
+  # VUSE <.MEMD.5616_15>
+  cfg.2D.5559_4 = current_function.1D.5558_14->cfgD.4162;
+  # .MEMD.5616_10 = VDEF <.MEMD.5616_15>
+  cfgD.4174 = cfg.2D.5559_4;
+  # .MEMD.5616_11 = VDEF <.MEMD.5616_10>
+  calc_max_distanceD.4228 ();
+  # VUSE <.MEMD.5616_11>
+  current_function.1D.5558_5 = current_functionD.4113;
+  # VUSE <.MEMD.5616_11>
+  current_function.3D.5560_6 = current_function.1D.5558_5->nextD.4163;
+  # .MEMD.5616_12 = VDEF <.MEMD.5616_11>
+  current_functionD.4113 = current_function.3D.5560_6;
+  if (current_function.3D.5560_6 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [91.0%]  (true,exec) 4 [9.0%]  (false,exec)
+
+  # BLOCK 4 freq:900
+  # PRED: 3 [9.0%]  (false,exec) 2 [9.0%]  (false,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+

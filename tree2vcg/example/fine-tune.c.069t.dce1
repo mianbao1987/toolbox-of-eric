@@ -1,0 +1,1195 @@
+
+;; Function search (search)
+
+
+Pass statistics:
+----------------
+
+Marking useful stmt: bb_2(D)->visited = 1;
+
+Marking useful stmt: # DEBUG ve => ve_3
+
+Marking useful stmt: # DEBUG e => e_4
+
+Marking useful stmt: # DEBUG succ_bb => succ_bb_5
+
+Marking useful stmt: if (D.5604_6 == 0)
+
+Marking useful stmt: e_4->type = 1;
+
+Marking useful stmt: search (succ_bb_5);
+
+Marking useful stmt: # DEBUG ve => ve_7
+
+Marking useful stmt: # DEBUG ve => ve_1
+
+Marking useful stmt: if (ve_1 != 0B)
+
+Marking useful stmt: bb_2(D)->dfs_order = count.10_8;
+
+Marking useful stmt: count = count.11_10;
+
+Marking useful stmt: return;
+
+
+Processing worklist:
+processing: return;
+
+processing: count = count.11_10;
+
+marking necessary through count.11_10 stmt count.11_10 = count.10_8 + -1;
+processing: count.11_10 = count.10_8 + -1;
+
+marking necessary through count.10_8 stmt count.10_8 = count;
+processing: count.10_8 = count;
+
+processing: bb_2(D)->dfs_order = count.10_8;
+
+processing: if (ve_1 != 0B)
+
+marking necessary through ve_1 stmt ve_1 = PHI <ve_3(2), ve_7(5)>
+processing: ve_1 = PHI <ve_3(2), ve_7(5)>
+
+marking necessary through ve_3 stmt ve_3 = bb_2(D)->succ;
+marking necessary through ve_7 stmt ve_7 = ve_1->next;
+processing: ve_7 = ve_1->next;
+
+processing: ve_3 = bb_2(D)->succ;
+
+processing: search (succ_bb_5);
+
+marking necessary through succ_bb_5 stmt succ_bb_5 = e_4->target;
+processing: succ_bb_5 = e_4->target;
+
+marking necessary through e_4 stmt e_4 = ve_1->edge;
+processing: e_4 = ve_1->edge;
+
+processing: e_4->type = 1;
+
+processing: if (D.5604_6 == 0)
+
+marking necessary through D.5604_6 stmt D.5604_6 = succ_bb_5->visited;
+processing: D.5604_6 = succ_bb_5->visited;
+
+processing: bb_2(D)->visited = 1;
+
+
+Eliminating unnecessary statements:
+Removed 0 of 20 statements (0%)
+Removed 0 of 3 PHI nodes (0%)
+
+Pass statistics:
+----------------
+
+search (struct basic_block * bbD.4175)
+{
+  struct edge * eD.4180;
+  struct vec_edge * veD.4179;
+  struct basic_block * succ_bbD.4178;
+  intD.0 count.11D.5608;
+  intD.0 count.10D.5607;
+  intD.0 D.5604;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # .MEMD.5609_14 = VDEF <.MEMD.5609_13(D)>
+  bbD.4175_2(D)->visitedD.4144 = 1;
+  # VUSE <.MEMD.5609_14>
+  veD.4179_3 = bbD.4175_2(D)->succD.4149;
+  # DEBUG veD.4179 => veD.4179_3
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 6 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5609_12>
+  eD.4180_4 = veD.4179_1->edgeD.4138;
+  # DEBUG eD.4180 => eD.4180_4
+  # VUSE <.MEMD.5609_12>
+  succ_bbD.4178_5 = eD.4180_4->targetD.4135;
+  # DEBUG succ_bbD.4178 => succ_bbD.4178_5
+  # VUSE <.MEMD.5609_12>
+  D.5604_6 = succ_bbD.4178_5->visitedD.4144;
+  if (D.5604_6 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 [29.0%]  (true,exec) 5 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5609_15 = VDEF <.MEMD.5609_12>
+  eD.4180_4->typeD.4133 = 1;
+  # .MEMD.5609_16 = VDEF <.MEMD.5609_15>
+  searchD.4176 (succ_bbD.4178_5);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5609_11 = PHI <.MEMD.5609_12(3), .MEMD.5609_16(4)>
+  # VUSE <.MEMD.5609_11>
+  veD.4179_7 = veD.4179_1->nextD.4139;
+  # DEBUG veD.4179 => veD.4179_7
+  # SUCC: 6 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 6 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,dfs_back,exec)
+  # veD.4179_1 = PHI <veD.4179_3(2), veD.4179_7(5)>
+  # .MEMD.5609_12 = PHI <.MEMD.5609_14(2), .MEMD.5609_11(5)>
+  # DEBUG veD.4179 => veD.4179_1
+  if (veD.4179_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:900
+  # PRED: 6 [9.0%]  (false,exec)
+  # VUSE <.MEMD.5609_12>
+  count.10D.5607_8 = countD.4173;
+  # .MEMD.5609_17 = VDEF <.MEMD.5609_12>
+  bbD.4175_2(D)->dfs_orderD.4145 = count.10D.5607_8;
+  count.11D.5608_10 = count.10D.5607_8 + -1;
+  # .MEMD.5609_18 = VDEF <.MEMD.5609_17>
+  countD.4173 = count.11D.5608_10;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function depth_first_search (depth_first_search)
+
+
+Pass statistics:
+----------------
+
+Marking useful stmt: # DEBUG bb => bb_3
+
+Marking useful stmt: bb_1->visited = 0;
+
+Marking useful stmt: # DEBUG bb => bb_4
+
+Marking useful stmt: # DEBUG bb => bb_1
+
+Marking useful stmt: if (bb_1 != 0B)
+
+Marking useful stmt: count = count.9_6;
+
+Marking useful stmt: search (D.5603_8);
+
+Marking useful stmt: return;
+
+
+Processing worklist:
+processing: return;
+
+processing: search (D.5603_8);
+
+marking necessary through D.5603_8 stmt D.5603_8 = cfg.8_2->entry;
+processing: D.5603_8 = cfg.8_2->entry;
+
+marking necessary through cfg.8_2 stmt cfg.8_2 = cfg;
+processing: cfg.8_2 = cfg;
+
+processing: count = count.9_6;
+
+marking necessary through count.9_6 stmt count.9_6 = cfg.8_2->bb_num;
+processing: count.9_6 = cfg.8_2->bb_num;
+
+processing: if (bb_1 != 0B)
+
+marking necessary through bb_1 stmt bb_1 = PHI <bb_3(2), bb_4(3)>
+processing: bb_1 = PHI <bb_3(2), bb_4(3)>
+
+marking necessary through bb_3 stmt bb_3 = cfg.8_2->bb;
+marking necessary through bb_4 stmt bb_4 = bb_1->next;
+processing: bb_4 = bb_1->next;
+
+processing: bb_3 = cfg.8_2->bb;
+
+processing: bb_1->visited = 0;
+
+
+Eliminating unnecessary statements:
+Removed 0 of 13 statements (0%)
+Removed 0 of 2 PHI nodes (0%)
+
+Pass statistics:
+----------------
+
+depth_first_search ()
+{
+  struct basic_block * bbD.4187;
+  struct basic_block * D.5603;
+  intD.0 count.9D.5602;
+  struct control_flow_graph * cfg.8D.5601;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5610_10(D)>
+  cfg.8D.5601_2 = cfgD.4174;
+  # VUSE <.MEMD.5610_10(D)>
+  bbD.4187_3 = cfg.8D.5601_2->bbD.4157;
+  # DEBUG bbD.4187 => bbD.4187_3
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 4 [91.0%]  (true,exec)
+  # .MEMD.5610_11 = VDEF <.MEMD.5610_9>
+  bbD.4187_1->visitedD.4144 = 0;
+  # VUSE <.MEMD.5610_11>
+  bbD.4187_4 = bbD.4187_1->nextD.4151;
+  # DEBUG bbD.4187 => bbD.4187_4
+  # SUCC: 4 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 4 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 3 [100.0%]  (fallthru,dfs_back,exec)
+  # bbD.4187_1 = PHI <bbD.4187_3(2), bbD.4187_4(3)>
+  # .MEMD.5610_9 = PHI <.MEMD.5610_10(D)(2), .MEMD.5610_11(3)>
+  # DEBUG bbD.4187 => bbD.4187_1
+  if (bbD.4187_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 [91.0%]  (true,exec) 5 [9.0%]  (false,exec)
+
+  # BLOCK 5 freq:900
+  # PRED: 4 [9.0%]  (false,exec)
+  # VUSE <.MEMD.5610_9>
+  count.9D.5602_6 = cfg.8D.5601_2->bb_numD.4153;
+  # .MEMD.5610_12 = VDEF <.MEMD.5610_9>
+  countD.4173 = count.9D.5602_6;
+  # VUSE <.MEMD.5610_12>
+  D.5603_8 = cfg.8D.5601_2->entryD.4155;
+  # .MEMD.5610_13 = VDEF <.MEMD.5610_12>
+  searchD.4176 (D.5603_8);
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function is_ancestor (is_ancestor)
+
+
+Pass statistics:
+----------------
+
+Marking useful stmt: # DEBUG bb => target_5(D)
+
+Marking useful stmt: # DEBUG bb => bb_1
+
+Marking useful stmt: if (bb_1 == source_7(D))
+
+Marking useful stmt: # DEBUG ve => ve_9
+
+Marking useful stmt: # DEBUG e => e_10
+
+Marking useful stmt: if (D.5595_11 == 1)
+
+Marking useful stmt: # DEBUG bb => bb_12
+
+Marking useful stmt: # DEBUG ve => ve_13
+
+Marking useful stmt: # DEBUG ve => ve_3
+
+Marking useful stmt: if (ve_3 != 0B)
+
+Marking useful stmt: # DEBUG bb => bb_2
+
+Marking useful stmt: if (D.5599_15 != bb_2)
+
+Marking useful stmt: return D.5594_4;
+
+
+Processing worklist:
+processing: return D.5594_4;
+
+marking necessary through D.5594_4 stmt D.5594_4 = PHI <1(3), 0(9)>
+processing: D.5594_4 = PHI <1(3), 0(9)>
+
+processing: if (D.5599_15 != bb_2)
+
+marking necessary through D.5599_15 stmt D.5599_15 = cfg.7_14->entry;
+marking necessary through bb_2 stmt bb_2 = PHI <bb_12(6), bb_1(8)>
+processing: bb_2 = PHI <bb_12(6), bb_1(8)>
+
+marking necessary through bb_12 stmt bb_12 = e_18->source;
+marking necessary through bb_1 stmt bb_1 = PHI <target_5(D)(2), bb_2(9)>
+processing: bb_1 = PHI <target_5(D)(2), bb_2(9)>
+
+processing: bb_12 = e_18->source;
+
+marking necessary through e_18 stmt e_18 = PHI <e_10(5)>
+processing: e_18 = PHI <e_10(5)>
+
+marking necessary through e_10 stmt e_10 = ve_3->edge;
+processing: e_10 = ve_3->edge;
+
+marking necessary through ve_3 stmt ve_3 = PHI <ve_9(4), ve_13(7)>
+processing: ve_3 = PHI <ve_9(4), ve_13(7)>
+
+marking necessary through ve_9 stmt ve_9 = bb_1->pred;
+marking necessary through ve_13 stmt ve_13 = ve_3->next;
+processing: ve_13 = ve_3->next;
+
+processing: ve_9 = bb_1->pred;
+
+processing: D.5599_15 = cfg.7_14->entry;
+
+marking necessary through cfg.7_14 stmt cfg.7_14 = cfg;
+processing: cfg.7_14 = cfg;
+
+processing: if (ve_3 != 0B)
+
+processing: if (D.5595_11 == 1)
+
+marking necessary through D.5595_11 stmt D.5595_11 = e_10->type;
+processing: D.5595_11 = e_10->type;
+
+processing: if (bb_1 == source_7(D))
+
+
+Eliminating unnecessary statements:
+Removed 0 of 20 statements (0%)
+Removed 0 of 5 PHI nodes (0%)
+
+Pass statistics:
+----------------
+
+is_ancestor (struct basic_block * sourceD.4191, struct basic_block * targetD.4192)
+{
+  struct edge * eD.4197;
+  struct vec_edge * veD.4196;
+  struct basic_block * bbD.4195;
+  struct basic_block * D.5599;
+  struct control_flow_graph * cfg.7D.5598;
+  edge_type D.5595;
+  intD.0 D.5594;
+
+  # BLOCK 2 freq:165
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  # SUCC: 3 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:921
+  # PRED: 2 [100.0%]  (fallthru,exec) 9 [86.0%]  (true,exec)
+  # bbD.4195_1 = PHI <targetD.4192_5(D)(2), bbD.4195_2(9)>
+  # DEBUG bbD.4195 => bbD.4195_1
+  if (bbD.4195_1 == sourceD.4191_7(D))
+    goto <bb 10>;
+  else
+    goto <bb 4>;
+  # SUCC: 10 [4.5%]  (true,exec) 4 [95.5%]  (false,exec)
+
+  # BLOCK 4 freq:880
+  # PRED: 3 [95.5%]  (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_9 = bbD.4195_1->predD.4147;
+  # DEBUG veD.4196 => veD.4196_9
+  goto <bb 8>;
+  # SUCC: 8 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9550
+  # PRED: 8 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_10 = veD.4196_3->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_10
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_11 = eD.4197_10->typeD.4133;
+  if (D.5595_11 == 1)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+  # SUCC: 6 [4.5%]  (true,exec) 7 [95.5%]  (false,exec)
+
+  # BLOCK 6 freq:430
+  # PRED: 5 [4.5%]  (true,exec)
+  # eD.4197_18 = PHI <eD.4197_10(5)>
+  # VUSE <.MEMD.5611_17(D)>
+  bbD.4195_12 = eD.4197_18->sourceD.4134;
+  # DEBUG bbD.4195 => bbD.4195_12
+  goto <bb 9>;
+  # SUCC: 9 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:9120
+  # PRED: 5 [95.5%]  (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_13 = veD.4196_3->nextD.4139;
+  # DEBUG veD.4196 => veD.4196_13
+  # SUCC: 8 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 8 freq:10000
+  # PRED: 4 [100.0%]  (fallthru,exec) 7 [100.0%]  (fallthru,dfs_back,exec)
+  # veD.4196_3 = PHI <veD.4196_9(4), veD.4196_13(7)>
+  # DEBUG veD.4196 => veD.4196_3
+  if (veD.4196_3 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+  # SUCC: 5 [95.5%]  (true,exec) 9 [4.5%]  (false,exec)
+
+  # BLOCK 9 freq:880
+  # PRED: 6 [100.0%]  (fallthru,exec) 8 [4.5%]  (false,exec)
+  # bbD.4195_2 = PHI <bbD.4195_12(6), bbD.4195_1(8)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  # VUSE <.MEMD.5611_17(D)>
+  cfg.7D.5598_14 = cfgD.4174;
+  # VUSE <.MEMD.5611_17(D)>
+  D.5599_15 = cfg.7D.5598_14->entryD.4155;
+  if (D.5599_15 != bbD.4195_2)
+    goto <bb 3>;
+  else
+    goto <bb 10>;
+  # SUCC: 3 [86.0%]  (true,exec) 10 [14.0%]  (false,exec)
+
+  # BLOCK 10 freq:165
+  # PRED: 3 [4.5%]  (true,exec) 9 [14.0%]  (false,exec)
+  # D.5594_4 = PHI <1(3), 0(9)>
+  return D.5594_4;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edge (mark_edge)
+
+
+Pass statistics:
+----------------
+
+Marking useful stmt: # DEBUG source => source_2
+
+Marking useful stmt: # DEBUG target => target_3
+
+Marking useful stmt: D.5584_4 = is_ancestor (target_3, source_2);
+
+Marking useful stmt: if (D.5584_4 != 0)
+
+Marking useful stmt: e_1(D)->type = 3;
+
+Marking useful stmt: D.5588_5 = is_ancestor (source_2, target_3);
+
+Marking useful stmt: if (D.5588_5 != 0)
+
+Marking useful stmt: e_1(D)->type = 2;
+
+Marking useful stmt: e_1(D)->type = 4;
+
+Marking useful stmt: return;
+
+
+Processing worklist:
+processing: return;
+
+processing: e_1(D)->type = 4;
+
+processing: e_1(D)->type = 2;
+
+processing: if (D.5588_5 != 0)
+
+processing: D.5588_5 = is_ancestor (source_2, target_3);
+
+marking necessary through source_2 stmt source_2 = e_1(D)->source;
+marking necessary through target_3 stmt target_3 = e_1(D)->target;
+processing: target_3 = e_1(D)->target;
+
+processing: source_2 = e_1(D)->source;
+
+processing: e_1(D)->type = 3;
+
+processing: if (D.5584_4 != 0)
+
+processing: D.5584_4 = is_ancestor (target_3, source_2);
+
+
+Eliminating unnecessary statements:
+Removed 0 of 12 statements (0%)
+Removed 0 of 0 PHI nodes (0%)
+
+Pass statistics:
+----------------
+
+mark_edge (struct edge * eD.4203)
+{
+  struct basic_block * targetD.4207;
+  struct basic_block * sourceD.4206;
+  intD.0 D.5588;
+  intD.0 D.5584;
+
+  # BLOCK 2 freq:10000
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  sourceD.4206_2 = eD.4203_1(D)->sourceD.4134;
+  # DEBUG sourceD.4206 => sourceD.4206_2
+  # VUSE <.MEMD.5612_6(D)>
+  targetD.4207_3 = eD.4203_1(D)->targetD.4135;
+  # DEBUG targetD.4207 => targetD.4207_3
+  # VUSE <.MEMD.5612_6(D)>
+  D.5584_4 = is_ancestorD.4193 (targetD.4207_3, sourceD.4206_2);
+  if (D.5584_4 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [61.0%]  (true,exec) 4 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:6102
+  # PRED: 2 [61.0%]  (true,exec)
+  # .MEMD.5612_7 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 3;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:3898
+  # PRED: 2 [39.0%]  (false,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  D.5588_5 = is_ancestorD.4193 (sourceD.4206_2, targetD.4207_3);
+  if (D.5588_5 != 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [39.0%]  (true,exec) 6 [61.0%]  (false,exec)
+
+  # BLOCK 5 freq:1520
+  # PRED: 4 [39.0%]  (true,exec)
+  # .MEMD.5612_8 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 2;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:2378
+  # PRED: 4 [61.0%]  (false,exec)
+  # .MEMD.5612_9 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 4;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 3 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edges (mark_edges)
+
+
+Pass statistics:
+----------------
+
+Marking useful stmt: # DEBUG cfg => cfg_3
+
+Marking useful stmt: # DEBUG e => e_4
+
+Marking useful stmt: if (D.5581_5 == 0)
+
+Marking useful stmt: mark_edge (e_1);
+
+Marking useful stmt: # DEBUG e => e_6
+
+Marking useful stmt: # DEBUG e => e_1
+
+Marking useful stmt: if (e_1 != 0B)
+
+Marking useful stmt: return;
+
+
+Processing worklist:
+processing: return;
+
+processing: if (e_1 != 0B)
+
+marking necessary through e_1 stmt e_1 = PHI <e_4(2), e_6(5)>
+processing: e_1 = PHI <e_4(2), e_6(5)>
+
+marking necessary through e_4 stmt e_4 = cfg_3->edge;
+marking necessary through e_6 stmt e_6 = e_1->next;
+processing: e_6 = e_1->next;
+
+processing: e_4 = cfg_3->edge;
+
+marking necessary through cfg_3 stmt cfg_3 = current_function.6_2->cfg;
+processing: cfg_3 = current_function.6_2->cfg;
+
+marking necessary through current_function.6_2 stmt current_function.6_2 = current_function;
+processing: current_function.6_2 = current_function;
+
+processing: mark_edge (e_1);
+
+processing: if (D.5581_5 == 0)
+
+marking necessary through D.5581_5 stmt D.5581_5 = e_1->type;
+processing: D.5581_5 = e_1->type;
+
+
+Eliminating unnecessary statements:
+Removed 0 of 13 statements (0%)
+Removed 0 of 3 PHI nodes (0%)
+
+Pass statistics:
+----------------
+
+mark_edges ()
+{
+  struct edge * eD.4212;
+  struct control_flow_graph * cfgD.4211;
+  edge_type D.5581;
+  struct function * current_function.6D.5580;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5613_9(D)>
+  current_function.6D.5580_2 = current_functionD.4113;
+  # VUSE <.MEMD.5613_9(D)>
+  cfgD.4211_3 = current_function.6D.5580_2->cfgD.4162;
+  # DEBUG cfgD.4211 => cfgD.4211_3
+  # VUSE <.MEMD.5613_9(D)>
+  eD.4212_4 = cfgD.4211_3->edgeD.4159;
+  # DEBUG eD.4212 => eD.4212_4
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 6 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5613_8>
+  D.5581_5 = eD.4212_1->typeD.4133;
+  if (D.5581_5 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 [29.0%]  (true,exec) 5 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5613_10 = VDEF <.MEMD.5613_8>
+  mark_edgeD.4204 (eD.4212_1);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5613_7 = PHI <.MEMD.5613_8(3), .MEMD.5613_10(4)>
+  # VUSE <.MEMD.5613_7>
+  eD.4212_6 = eD.4212_1->nextD.4136;
+  # DEBUG eD.4212 => eD.4212_6
+  # SUCC: 6 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 6 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,dfs_back,exec)
+  # eD.4212_1 = PHI <eD.4212_4(2), eD.4212_6(5)>
+  # .MEMD.5613_8 = PHI <.MEMD.5613_9(D)(2), .MEMD.5613_7(5)>
+  # DEBUG eD.4212 => eD.4212_1
+  if (eD.4212_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:900
+  # PRED: 6 [9.0%]  (false,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance_recursive (calc_max_distance_recursive)
+
+
+Pass statistics:
+----------------
+
+Marking useful stmt: # DEBUG max => 0
+
+Marking useful stmt: if (D.5570_6 == 0)
+
+Marking useful stmt: # DEBUG ve => ve_7
+
+Marking useful stmt: # DEBUG e => e_8
+
+Marking useful stmt: if (D.5573_9 == 3)
+
+Marking useful stmt: val_11 = calc_max_distance_recursive (D.5576_10);
+
+Marking useful stmt: # DEBUG val => val_11
+
+Marking useful stmt: # DEBUG max => max_12
+
+Marking useful stmt: # DEBUG max => max_1
+
+Marking useful stmt: # DEBUG ve => ve_13
+
+Marking useful stmt: # DEBUG ve => ve_3
+
+Marking useful stmt: # DEBUG max => max_2
+
+Marking useful stmt: if (ve_3 != 0B)
+
+Marking useful stmt: bb_5(D)->max_distance = D.5577_14;
+
+Marking useful stmt: return D.5578_15;
+
+
+Processing worklist:
+processing: return D.5578_15;
+
+marking necessary through D.5578_15 stmt D.5578_15 = bb_5(D)->max_distance;
+processing: D.5578_15 = bb_5(D)->max_distance;
+
+processing: bb_5(D)->max_distance = D.5577_14;
+
+marking necessary through D.5577_14 stmt D.5577_14 = max_22 + 1;
+processing: D.5577_14 = max_22 + 1;
+
+marking necessary through max_22 stmt max_22 = PHI <max_2(7)>
+processing: max_22 = PHI <max_2(7)>
+
+marking necessary through max_2 stmt max_2 = PHI <0(3), max_1(6)>
+processing: max_2 = PHI <0(3), max_1(6)>
+
+marking necessary through max_1 stmt max_1 = PHI <max_2(4), max_12(5)>
+processing: max_1 = PHI <max_2(4), max_12(5)>
+
+marking necessary through max_12 stmt max_12 = MAX_EXPR <val_11, max_2>;
+processing: max_12 = MAX_EXPR <val_11, max_2>;
+
+processing: if (ve_3 != 0B)
+
+marking necessary through ve_3 stmt ve_3 = PHI <ve_7(3), ve_13(6)>
+processing: ve_3 = PHI <ve_7(3), ve_13(6)>
+
+marking necessary through ve_7 stmt ve_7 = bb_5(D)->pred;
+marking necessary through ve_13 stmt ve_13 = ve_3->next;
+processing: ve_13 = ve_3->next;
+
+processing: ve_7 = bb_5(D)->pred;
+
+processing: val_11 = calc_max_distance_recursive (D.5576_10);
+
+marking necessary through D.5576_10 stmt D.5576_10 = e_8->source;
+processing: D.5576_10 = e_8->source;
+
+marking necessary through e_8 stmt e_8 = ve_3->edge;
+processing: e_8 = ve_3->edge;
+
+processing: if (D.5573_9 == 3)
+
+marking necessary through D.5573_9 stmt D.5573_9 = e_8->type;
+processing: D.5573_9 = e_8->type;
+
+processing: if (D.5570_6 == 0)
+
+marking necessary through D.5570_6 stmt D.5570_6 = bb_5(D)->max_distance;
+processing: D.5570_6 = bb_5(D)->max_distance;
+
+
+Eliminating unnecessary statements:
+Removed 0 of 24 statements (0%)
+Removed 0 of 7 PHI nodes (0%)
+
+Pass statistics:
+----------------
+
+calc_max_distance_recursive (struct basic_block * bbD.4216)
+{
+  struct edge * eD.4222;
+  struct vec_edge * veD.4221;
+  intD.0 maxD.4220;
+  intD.0 valD.4219;
+  intD.0 D.5578;
+  intD.0 D.5577;
+  struct basic_block * D.5576;
+  edge_type D.5573;
+  intD.0 D.5570;
+
+  # BLOCK 2 freq:1475
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4220 => 0
+  # VUSE <.MEMD.5614_19(D)>
+  D.5570_6 = bbD.4216_5(D)->max_distanceD.4146;
+  if (D.5570_6 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 9>;
+  # SUCC: 3 [61.0%]  (true,exec) 9 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:900
+  # PRED: 2 [61.0%]  (true,exec)
+  # VUSE <.MEMD.5614_19(D)>
+  veD.4221_7 = bbD.4216_5(D)->predD.4147;
+  # DEBUG veD.4221 => veD.4221_7
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:9100
+  # PRED: 7 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5614_17>
+  eD.4222_8 = veD.4221_3->edgeD.4138;
+  # DEBUG eD.4222 => eD.4222_8
+  # VUSE <.MEMD.5614_17>
+  D.5573_9 = eD.4222_8->typeD.4133;
+  if (D.5573_9 == 3)
+    goto <bb 6>;
+  else
+    goto <bb 5>;
+  # SUCC: 6 [48.8%]  (true,exec) 5 [51.2%]  (false,exec)
+
+  # BLOCK 5 freq:4662
+  # PRED: 4 [51.2%]  (false,exec)
+  # VUSE <.MEMD.5614_17>
+  D.5576_10 = eD.4222_8->sourceD.4134;
+  # .MEMD.5614_20 = VDEF <.MEMD.5614_17>
+  valD.4219_11 = calc_max_distance_recursiveD.4217 (D.5576_10);
+  # DEBUG valD.4219 => valD.4219_11
+  maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_2>;
+  # DEBUG maxD.4220 => maxD.4220_12
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 4 [48.8%]  (true,exec) 5 [100.0%]  (fallthru,exec)
+  # maxD.4220_1 = PHI <maxD.4220_2(4), maxD.4220_12(5)>
+  # .MEMD.5614_16 = PHI <.MEMD.5614_17(4), .MEMD.5614_20(5)>
+  # DEBUG maxD.4220 => maxD.4220_1
+  # VUSE <.MEMD.5614_16>
+  veD.4221_13 = veD.4221_3->nextD.4139;
+  # DEBUG veD.4221 => veD.4221_13
+  # SUCC: 7 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 3 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,dfs_back,exec)
+  # maxD.4220_2 = PHI <0(3), maxD.4220_1(6)>
+  # veD.4221_3 = PHI <veD.4221_7(3), veD.4221_13(6)>
+  # .MEMD.5614_17 = PHI <.MEMD.5614_19(D)(3), .MEMD.5614_16(6)>
+  # DEBUG veD.4221 => veD.4221_3
+  # DEBUG maxD.4220 => maxD.4220_2
+  if (veD.4221_3 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 8>;
+  # SUCC: 4 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 8 freq:900
+  # PRED: 7 [9.0%]  (false,exec)
+  # maxD.4220_22 = PHI <maxD.4220_2(7)>
+  D.5577_14 = maxD.4220_22 + 1;
+  # .MEMD.5614_21 = VDEF <.MEMD.5614_17>
+  bbD.4216_5(D)->max_distanceD.4146 = D.5577_14;
+  # SUCC: 9 [100.0%]  (fallthru,exec)
+
+  # BLOCK 9 freq:1475
+  # PRED: 2 [39.0%]  (false,exec) 8 [100.0%]  (fallthru,exec)
+  # .MEMD.5614_18 = PHI <.MEMD.5614_19(D)(2), .MEMD.5614_21(8)>
+  # VUSE <.MEMD.5614_18>
+  D.5578_15 = bbD.4216_5(D)->max_distanceD.4146;
+  return D.5578_15;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance (calc_max_distance)
+
+
+Pass statistics:
+----------------
+
+Marking useful stmt: # DEBUG max => 0
+
+Marking useful stmt: depth_first_search ();
+
+Marking useful stmt: mark_edges ();
+
+Marking useful stmt: max_8 = calc_max_distance_recursive (D.5562_7);
+
+Marking useful stmt: # DEBUG max => max_8
+
+Marking useful stmt: # DEBUG bb => bb_10
+
+Marking useful stmt: if (D.5563_11 == 0)
+
+Marking useful stmt: val_12 = calc_max_distance_recursive (bb_3);
+
+Marking useful stmt: # DEBUG val => val_12
+
+Marking useful stmt: if (max_2 <= val_12)
+
+Marking useful stmt: # DEBUG max => max_1
+
+Marking useful stmt: # DEBUG bb => bb_16
+
+Marking useful stmt: # DEBUG bb => bb_3
+
+Marking useful stmt: # DEBUG max => max_2
+
+Marking useful stmt: if (bb_3 != 0B)
+
+Marking useful stmt: D.5562_18->max_distance = max_4;
+
+Marking useful stmt: return;
+
+
+Processing worklist:
+processing: return;
+
+processing: D.5562_18->max_distance = max_4;
+
+marking necessary through D.5562_18 stmt D.5562_18 = cfg.4_6->exit;
+marking necessary through max_4 stmt max_4 = PHI <max_2(7)>
+processing: max_4 = PHI <max_2(7)>
+
+marking necessary through max_2 stmt max_2 = PHI <max_8(2), max_1(6)>
+processing: max_2 = PHI <max_8(2), max_1(6)>
+
+marking necessary through max_1 stmt max_1 = PHI <max_2(3), max_2(4), max_13(5)>
+processing: max_1 = PHI <max_2(3), max_2(4), max_13(5)>
+
+marking necessary through max_13 stmt max_13 = val_12 + 1;
+processing: max_13 = val_12 + 1;
+
+processing: D.5562_18 = cfg.4_6->exit;
+
+marking necessary through cfg.4_6 stmt cfg.4_6 = cfg;
+processing: cfg.4_6 = cfg;
+
+processing: if (bb_3 != 0B)
+
+marking necessary through bb_3 stmt bb_3 = PHI <bb_10(2), bb_16(6)>
+processing: bb_3 = PHI <bb_10(2), bb_16(6)>
+
+marking necessary through bb_10 stmt bb_10 = cfg.4_6->bb;
+marking necessary through bb_16 stmt bb_16 = bb_3->next;
+processing: bb_16 = bb_3->next;
+
+processing: bb_10 = cfg.4_6->bb;
+
+processing: if (max_2 <= val_12)
+
+processing: val_12 = calc_max_distance_recursive (bb_3);
+
+processing: if (D.5563_11 == 0)
+
+marking necessary through D.5563_11 stmt D.5563_11 = bb_3->max_distance;
+processing: D.5563_11 = bb_3->max_distance;
+
+processing: max_8 = calc_max_distance_recursive (D.5562_7);
+
+marking necessary through D.5562_7 stmt D.5562_7 = cfg.4_6->exit;
+processing: D.5562_7 = cfg.4_6->exit;
+
+processing: mark_edges ();
+
+processing: depth_first_search ();
+
+
+Eliminating unnecessary statements:
+Removed 0 of 24 statements (0%)
+Removed 0 of 6 PHI nodes (0%)
+
+Pass statistics:
+----------------
+
+calc_max_distance ()
+{
+  struct basic_block * bbD.4232;
+  intD.0 maxD.4231;
+  intD.0 valD.4230;
+  intD.0 D.5563;
+  struct basic_block * D.5562;
+  struct control_flow_graph * cfg.4D.5561;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4231 => 0
+  # .MEMD.5615_22 = VDEF <.MEMD.5615_21(D)>
+  depth_first_searchD.4185 ();
+  # .MEMD.5615_23 = VDEF <.MEMD.5615_22>
+  mark_edgesD.4209 ();
+  # VUSE <.MEMD.5615_23>
+  cfg.4D.5561_6 = cfgD.4174;
+  # VUSE <.MEMD.5615_23>
+  D.5562_7 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_24 = VDEF <.MEMD.5615_23>
+  maxD.4231_8 = calc_max_distance_recursiveD.4217 (D.5562_7);
+  # DEBUG maxD.4231 => maxD.4231_8
+  # VUSE <.MEMD.5615_24>
+  bbD.4232_10 = cfg.4D.5561_6->bbD.4157;
+  # DEBUG bbD.4232 => bbD.4232_10
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 7 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5615_20>
+  D.5563_11 = bbD.4232_3->max_distanceD.4146;
+  if (D.5563_11 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 6>;
+  # SUCC: 4 [29.0%]  (true,exec) 6 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5615_25 = VDEF <.MEMD.5615_20>
+  valD.4230_12 = calc_max_distance_recursiveD.4217 (bbD.4232_3);
+  # DEBUG valD.4230 => valD.4230_12
+  if (maxD.4231_2 <= valD.4230_12)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [50.0%]  (true,exec) 6 [50.0%]  (false,exec)
+
+  # BLOCK 5 freq:1319
+  # PRED: 4 [50.0%]  (true,exec)
+  maxD.4231_13 = valD.4230_12 + 1;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [50.0%]  (false,exec) 5 [100.0%]  (fallthru,exec)
+  # maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_2(4), maxD.4231_13(5)>
+  # .MEMD.5615_19 = PHI <.MEMD.5615_20(3), .MEMD.5615_25(4), .MEMD.5615_25(5)>
+  # DEBUG maxD.4231 => maxD.4231_1
+  # VUSE <.MEMD.5615_19>
+  bbD.4232_16 = bbD.4232_3->nextD.4151;
+  # DEBUG bbD.4232 => bbD.4232_16
+  # SUCC: 7 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,dfs_back,exec)
+  # maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(6)>
+  # bbD.4232_3 = PHI <bbD.4232_10(2), bbD.4232_16(6)>
+  # .MEMD.5615_20 = PHI <.MEMD.5615_24(2), .MEMD.5615_19(6)>
+  # DEBUG bbD.4232 => bbD.4232_3
+  # DEBUG maxD.4231 => maxD.4231_2
+  if (bbD.4232_3 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 8>;
+  # SUCC: 3 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 8 freq:900
+  # PRED: 7 [9.0%]  (false,exec)
+  # maxD.4231_4 = PHI <maxD.4231_2(7)>
+  # VUSE <.MEMD.5615_20>
+  D.5562_18 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_26 = VDEF <.MEMD.5615_20>
+  D.5562_18->max_distanceD.4146 = maxD.4231_4;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function fine_tune_cfg (fine_tune_cfg)
+
+
+Pass statistics:
+----------------
+
+Marking useful stmt: current_function = first_function.0_1;
+
+Marking useful stmt: cfg = cfg.2_4;
+
+Marking useful stmt: calc_max_distance ();
+
+Marking useful stmt: current_function = current_function.3_6;
+
+Marking useful stmt: if (current_function.1_2 != 0B)
+
+Marking useful stmt: return;
+
+
+Processing worklist:
+processing: return;
+
+processing: if (current_function.1_2 != 0B)
+
+marking necessary through current_function.1_2 stmt current_function.1_2 = current_function;
+processing: current_function.1_2 = current_function;
+
+processing: current_function = current_function.3_6;
+
+marking necessary through current_function.3_6 stmt current_function.3_6 = current_function.1_5->next;
+processing: current_function.3_6 = current_function.1_5->next;
+
+marking necessary through current_function.1_5 stmt current_function.1_5 = current_function;
+processing: current_function.1_5 = current_function;
+
+processing: calc_max_distance ();
+
+processing: cfg = cfg.2_4;
+
+marking necessary through cfg.2_4 stmt cfg.2_4 = current_function.1_2->cfg;
+processing: cfg.2_4 = current_function.1_2->cfg;
+
+processing: current_function = first_function.0_1;
+
+marking necessary through first_function.0_1 stmt first_function.0_1 = first_function;
+processing: first_function.0_1 = first_function;
+
+
+Eliminating unnecessary statements:
+Removed 0 of 11 statements (0%)
+Removed 0 of 1 PHI nodes (0%)
+
+Pass statistics:
+----------------
+
+fine_tune_cfg ()
+{
+  struct function * current_function.3D.5560;
+  struct control_flow_graph * cfg.2D.5559;
+  struct function * current_function.1D.5558;
+  struct function * first_function.0D.5557;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5616_8(D)>
+  first_function.0D.5557_1 = first_functionD.4111;
+  # .MEMD.5616_9 = VDEF <.MEMD.5616_8(D)>
+  current_functionD.4113 = first_function.0D.5557_1;
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 4 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5616_7>
+  cfg.2D.5559_4 = current_function.1D.5558_2->cfgD.4162;
+  # .MEMD.5616_10 = VDEF <.MEMD.5616_7>
+  cfgD.4174 = cfg.2D.5559_4;
+  # .MEMD.5616_11 = VDEF <.MEMD.5616_10>
+  calc_max_distanceD.4228 ();
+  # VUSE <.MEMD.5616_11>
+  current_function.1D.5558_5 = current_functionD.4113;
+  # VUSE <.MEMD.5616_11>
+  current_function.3D.5560_6 = current_function.1D.5558_5->nextD.4163;
+  # .MEMD.5616_12 = VDEF <.MEMD.5616_11>
+  current_functionD.4113 = current_function.3D.5560_6;
+  # SUCC: 4 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 4 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 3 [100.0%]  (fallthru,dfs_back,exec)
+  # .MEMD.5616_7 = PHI <.MEMD.5616_9(2), .MEMD.5616_12(3)>
+  # VUSE <.MEMD.5616_7>
+  current_function.1D.5558_2 = current_functionD.4113;
+  if (current_function.1D.5558_2 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 [91.0%]  (true,exec) 5 [9.0%]  (false,exec)
+
+  # BLOCK 5 freq:900
+  # PRED: 4 [9.0%]  (false,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+

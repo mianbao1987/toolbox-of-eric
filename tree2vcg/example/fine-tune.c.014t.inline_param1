@@ -1,0 +1,213 @@
+
+;; Function fine_tune_cfg (fine_tune_cfg)
+
+
+Pass statistics:
+----------------
+
+Analyzing function body size: fine_tune_cfg
+  freq:  1000 size:  1 time:  1 first_function.0 = first_function;
+  freq:  1000 size:  1 time:  1 current_function = first_function.0;
+  freq:  1000 size:  1 time:  1 current_function.1 = current_function;
+  freq:  1000 size:  1 time:  1 cfg.2 = current_function.1->cfg;
+  freq:  1000 size:  1 time:  1 cfg = cfg.2;
+  freq:  1000 size:  1 time: 10 calc_max_distance ();
+  freq:  1000 size:  1 time:  1 current_function.1 = current_function;
+  freq:  1000 size:  1 time:  1 current_function.3 = current_function.1->next;
+  freq:  1000 size:  1 time:  1 current_function = current_function.3;
+  freq:  1000 size:  1 time:  1 current_function.1 = current_function;
+  freq:  1000 size:  2 time:  2 if (current_function.1 != 0B)
+  freq:  1000 size:  0 time:  0 return;
+    Likely eliminated
+Overall function body time: 21-0 size: 12-0
+With function call overhead time: 21-10 size: 12-1
+
+;; Function calc_max_distance (calc_max_distance)
+
+
+Pass statistics:
+----------------
+
+Analyzing function body size: calc_max_distance
+  freq:  1000 size:  0 time:  0 max = 0;
+  freq:  1000 size:  1 time: 10 depth_first_search ();
+  freq:  1000 size:  1 time: 10 mark_edges ();
+  freq:  1000 size:  1 time:  1 cfg.4 = cfg;
+  freq:  1000 size:  1 time:  1 D.5562 = cfg.4->exit;
+  freq:  1000 size:  3 time: 12 max = calc_max_distance_recursive (D.5562);
+  freq:  1000 size:  1 time:  1 cfg.4 = cfg;
+  freq:  1000 size:  1 time:  1 bb = cfg.4->bb;
+  freq:  1000 size:  1 time:  1 D.5563 = bb->max_distance;
+  freq:  1000 size:  2 time:  2 if (D.5563 == 0)
+  freq:  1000 size:  3 time: 12 val = calc_max_distance_recursive (bb);
+  freq:  1000 size:  2 time:  2 if (max <= val)
+  freq:  1000 size:  1 time:  1 iftmp.5 = val + 1;
+  freq:  1000 size:  0 time:  0 iftmp.5 = max;
+  freq:  1000 size:  0 time:  0 max = iftmp.5;
+  freq:  1000 size:  1 time:  1 bb = bb->next;
+  freq:  1000 size:  2 time:  2 if (bb != 0B)
+  freq:  1000 size:  1 time:  1 cfg.4 = cfg;
+  freq:  1000 size:  1 time:  1 D.5562 = cfg.4->exit;
+  freq:  1000 size:  1 time:  1 D.5562->max_distance = max;
+  freq:  1000 size:  0 time:  0 return;
+    Likely eliminated
+Overall function body time: 60-0 size: 24-0
+With function call overhead time: 60-10 size: 24-1
+
+;; Function calc_max_distance_recursive (calc_max_distance_recursive)
+
+
+Pass statistics:
+----------------
+
+Analyzing function body size: calc_max_distance_recursive
+  freq:  1000 size:  0 time:  0 max = 0;
+  freq:  1000 size:  1 time:  1 D.5570 = bb->max_distance;
+    Likely eliminated
+  freq:  1000 size:  2 time:  2 if (D.5570 == 0)
+  freq:  1000 size:  1 time:  1 ve = bb->pred;
+    Likely eliminated
+  freq:  1000 size:  1 time:  1 e = ve->edge;
+  freq:  1000 size:  1 time:  1 D.5573 = e->type;
+  freq:  1000 size:  2 time:  2 if (D.5573 == 3)
+  freq:  1000 size:  0 time:  0 // predicted unlikely by continue predictor.
+  freq:  1000 size:  1 time:  1 D.5576 = e->source;
+  freq:  1000 size:  3 time: 12 val = calc_max_distance_recursive (D.5576);
+  freq:  1000 size:  1 time:  1 max = MAX_EXPR <val, max>;
+  freq:  1000 size:  1 time:  1 ve = ve->next;
+  freq:  1000 size:  2 time:  2 if (ve != 0B)
+  freq:  1000 size:  1 time:  1 D.5577 = max + 1;
+  freq:  1000 size:  1 time:  1 bb->max_distance = D.5577;
+    Likely eliminated
+  freq:  1000 size:  1 time:  1 D.5578 = bb->max_distance;
+    Likely eliminated
+  freq:  1000 size:  0 time:  0 return D.5578;
+    Likely eliminated
+Overall function body time: 28-4 size: 19-4
+With function call overhead time: 28-16 size: 19-7
+
+;; Function mark_edges (mark_edges)
+
+
+Pass statistics:
+----------------
+
+Analyzing function body size: mark_edges
+  freq:  1000 size:  1 time:  1 current_function.6 = current_function;
+  freq:  1000 size:  1 time:  1 cfg = current_function.6->cfg;
+  freq:  1000 size:  1 time:  1 e = cfg->edge;
+  freq:  1000 size:  1 time:  1 D.5581 = e->type;
+  freq:  1000 size:  2 time:  2 if (D.5581 == 0)
+  freq:  1000 size:  2 time: 11 mark_edge (e);
+  freq:  1000 size:  1 time:  1 e = e->next;
+  freq:  1000 size:  2 time:  2 if (e != 0B)
+  freq:  1000 size:  0 time:  0 return;
+    Likely eliminated
+Overall function body time: 20-0 size: 11-0
+With function call overhead time: 20-10 size: 11-1
+
+;; Function mark_edge (mark_edge)
+
+
+Pass statistics:
+----------------
+
+Analyzing function body size: mark_edge
+  freq:  1000 size:  1 time:  1 source = e->source;
+    Likely eliminated
+  freq:  1000 size:  1 time:  1 target = e->target;
+    Likely eliminated
+  freq:  1000 size:  4 time: 13 D.5584 = is_ancestor (target, source);
+  freq:  1000 size:  2 time:  2 if (D.5584 != 0)
+  freq:  1000 size:  1 time:  1 e->type = 3;
+    Likely eliminated
+  freq:  1000 size:  4 time: 13 D.5588 = is_ancestor (source, target);
+  freq:  1000 size:  2 time:  2 if (D.5588 != 0)
+  freq:  1000 size:  1 time:  1 e->type = 2;
+    Likely eliminated
+  freq:  1000 size:  1 time:  1 e->type = 4;
+    Likely eliminated
+  freq:  1000 size:  0 time:  0 return;
+    Likely eliminated
+Overall function body time: 35-5 size: 17-5
+With function call overhead time: 35-16 size: 17-7
+
+;; Function is_ancestor (is_ancestor)
+
+
+Pass statistics:
+----------------
+
+Analyzing function body size: is_ancestor
+  freq:  1000 size:  0 time:  0 bb = target;
+    Likely eliminated
+  freq:  1000 size:  2 time:  2 if (bb == source)
+  freq:  1000 size:  0 time:  0 D.5594 = 1;
+  freq:  1000 size:  1 time:  1 ve = bb->pred;
+  freq:  1000 size:  1 time:  1 e = ve->edge;
+  freq:  1000 size:  1 time:  1 D.5595 = e->type;
+  freq:  1000 size:  2 time:  2 if (D.5595 == 1)
+  freq:  1000 size:  1 time:  1 bb = e->source;
+  freq:  1000 size:  1 time:  1 ve = ve->next;
+  freq:  1000 size:  2 time:  2 if (ve != 0B)
+  freq:  1000 size:  1 time:  1 cfg.7 = cfg;
+  freq:  1000 size:  1 time:  1 D.5599 = cfg.7->entry;
+  freq:  1000 size:  2 time:  2 if (D.5599 != bb)
+  freq:  1000 size:  0 time:  0 D.5594 = 0;
+  freq:  1000 size:  0 time:  0 return D.5594;
+    Likely eliminated
+Overall function body time: 15-0 size: 15-0
+With function call overhead time: 15-13 size: 15-4
+
+;; Function depth_first_search (depth_first_search)
+
+
+Pass statistics:
+----------------
+
+Analyzing function body size: depth_first_search
+  freq:  1000 size:  1 time:  1 cfg.8 = cfg;
+  freq:  1000 size:  1 time:  1 bb = cfg.8->bb;
+  freq:  1000 size:  1 time:  1 bb->visited = 0;
+  freq:  1000 size:  1 time:  1 bb = bb->next;
+  freq:  1000 size:  2 time:  2 if (bb != 0B)
+  freq:  1000 size:  1 time:  1 cfg.8 = cfg;
+  freq:  1000 size:  1 time:  1 count.9 = cfg.8->bb_num;
+  freq:  1000 size:  1 time:  1 count = count.9;
+  freq:  1000 size:  1 time:  1 cfg.8 = cfg;
+  freq:  1000 size:  1 time:  1 D.5603 = cfg.8->entry;
+  freq:  1000 size:  2 time: 11 search (D.5603);
+  freq:  1000 size:  0 time:  0 return;
+    Likely eliminated
+Overall function body time: 22-0 size: 13-0
+With function call overhead time: 22-10 size: 13-1
+
+;; Function search (search)
+
+
+Pass statistics:
+----------------
+
+Analyzing function body size: search
+  freq:  1000 size:  1 time:  1 bb->visited = 1;
+    Likely eliminated
+  freq:  1000 size:  1 time:  1 ve = bb->succ;
+    Likely eliminated
+  freq:  1000 size:  1 time:  1 e = ve->edge;
+  freq:  1000 size:  1 time:  1 succ_bb = e->target;
+  freq:  1000 size:  1 time:  1 D.5604 = succ_bb->visited;
+  freq:  1000 size:  2 time:  2 if (D.5604 == 0)
+  freq:  1000 size:  1 time:  1 e->type = 1;
+  freq:  1000 size:  2 time: 11 search (succ_bb);
+  freq:  1000 size:  1 time:  1 ve = ve->next;
+  freq:  1000 size:  2 time:  2 if (ve != 0B)
+  freq:  1000 size:  1 time:  1 count.10 = count;
+  freq:  1000 size:  1 time:  1 bb->dfs_order = count.10;
+    Likely eliminated
+  freq:  1000 size:  1 time:  1 count.10 = count;
+  freq:  1000 size:  1 time:  1 count.11 = count.10 - 1;
+  freq:  1000 size:  1 time:  1 count = count.11;
+  freq:  1000 size:  0 time:  0 return;
+    Likely eliminated
+Overall function body time: 27-3 size: 18-3
+With function call overhead time: 27-14 size: 18-5

@@ -1,0 +1,601 @@
+
+;; Function search (search)
+
+
+
+ local analysis of search
+   scanning: bb_2(D)->visited = 1;
+    Indirect ref write is not const/pure
+  scanning: ve_3 = bb_2(D)->succ;
+    Indirect ref read is not const
+  scanning: if (ve_3 != 0B)
+  scanning: e_4 = ve_9->edge;
+    Indirect ref read is not const
+  scanning: succ_bb_5 = e_4->target;
+    Indirect ref read is not const
+  scanning: D.5604_6 = succ_bb_5->visited;
+    Indirect ref read is not const
+  scanning: if (D.5604_6 == 0)
+  scanning: e_4->type = 1;
+    Indirect ref write is not const/pure
+  scanning: search (succ_bb_5);
+  scanning: ve_7 = ve_9->next;
+    Indirect ref read is not const
+  scanning: if (ve_7 != 0B)
+  scanning: count.10_8 = count;
+    static memory read is not const
+  scanning: bb_2(D)->dfs_order = count.10_8;
+    Indirect ref write is not const/pure
+  scanning: count.11_10 = count.10_8 + -1;
+  scanning: count = count.11_10;
+    static/global memory write is not const/pure
+  scanning: return;
+Function is locally looping.
+
+Pass statistics:
+----------------
+
+
+;; Function depth_first_search (depth_first_search)
+
+
+
+ local analysis of depth_first_search
+   scanning: cfg.8_2 = cfg;
+    static memory read is not const
+  scanning: bb_3 = cfg.8_2->bb;
+    Indirect ref read is not const
+  scanning: if (bb_3 != 0B)
+  scanning: bb_14->visited = 0;
+    Indirect ref write is not const/pure
+  scanning: bb_4 = bb_14->next;
+    Indirect ref read is not const
+  scanning: if (bb_4 != 0B)
+  scanning: count.9_6 = cfg.8_2->bb_num;
+    Indirect ref read is not const
+  scanning: count = count.9_6;
+    static/global memory write is not const/pure
+  scanning: D.5603_8 = cfg.8_2->entry;
+    Indirect ref read is not const
+  scanning: search (D.5603_8); [tail call]
+    uknown function call is not const/pure
+  scanning: return;
+Function is locally looping.
+
+Pass statistics:
+----------------
+
+
+;; Function is_ancestor (is_ancestor)
+
+
+
+ local analysis of is_ancestor
+   scanning: if (target_5(D) == source_7(D))
+  scanning: pretmp.24_1 = cfg;
+    static memory read is not const
+  scanning: pretmp.26_19 = pretmp.24_1->entry;
+    Indirect ref read is not const
+  scanning: if (bb_2 == source_7(D))
+  scanning: ve_9 = bb_21->pred;
+    Indirect ref read is not const
+  scanning: if (ve_9 != 0B)
+  scanning: e_20 = ve_9->edge;
+    Indirect ref read is not const
+  scanning: D.5595_23 = e_20->type;
+    Indirect ref read is not const
+  scanning: if (D.5595_23 == 1)
+  scanning: e_10 = ve_13->edge;
+    Indirect ref read is not const
+  scanning: D.5595_11 = e_10->type;
+    Indirect ref read is not const
+  scanning: if (D.5595_11 == 1)
+  scanning: bb_12 = e_18->source;
+    Indirect ref read is not const
+  scanning: ve_13 = ve_24->next;
+    Indirect ref read is not const
+  scanning: if (ve_13 != 0B)
+  scanning: if (bb_2 != pretmp.26_19)
+  scanning: return D.5594_4;
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 13 5 6 7 14 8 9 12 10 11
+;;
+;; Loop 1
+;;  header 5, latch 13
+;;  depth 1, outer 0
+;;  nodes: 5 13 4 10 8 12 9 14 7 6
+;;
+;; Loop 2
+;;  header 12, latch 14
+;;  depth 2, outer 1
+;;  nodes: 12 14 7
+;; 2 succs { 11 3 }
+;; 3 succs { 5 }
+;; 4 succs { 11 13 }
+;; 13 succs { 5 }
+;; 5 succs { 6 10 }
+;; 6 succs { 8 9 }
+;; 7 succs { 8 14 }
+;; 14 succs { 12 }
+;; 8 succs { 10 }
+;; 9 succs { 12 }
+;; 12 succs { 7 10 }
+;; 10 succs { 4 11 }
+;; 11 succs { 1 }
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 13 5 6 7 14 8 9 12 10 11
+;;
+;; Loop 1
+;;  header 5, latch 13
+;;  depth 1, outer 0
+;;  nodes: 5 13 4 10 8 12 9 14 7 6
+;;
+;; Loop 2
+;;  header 12, latch 14
+;;  depth 2, outer 1
+;;  nodes: 12 14 7
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = bb_2)
+(get_scalar_evolution 
+  (scalar = bb_2)
+  (scalar_evolution = ))
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = bb_12)
+(get_scalar_evolution 
+  (scalar = bb_12)
+  (scalar_evolution = ))
+(set_scalar_evolution 
+  instantiated_below = 3 
+  (scalar = bb_12)
+  (scalar_evolution = bb_12))
+)
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = bb_21)
+(get_scalar_evolution 
+  (scalar = bb_21)
+  (scalar_evolution = ))
+(analyze_initial_condition 
+  (loop_phi_node = 
+bb_21 = PHI <bb_2(13), target_5(D)(3)>
+)
+  (init_cond = target_5(D)))
+(analyze_evolution_in_loop 
+  (loop_phi_node = bb_21 = PHI <bb_2(13), target_5(D)(3)>
+)
+  (evolution_function = scev_not_known))
+(set_scalar_evolution 
+  instantiated_below = 3 
+  (scalar = bb_21)
+  (scalar_evolution = bb_21))
+)
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = bb_21)
+(get_scalar_evolution 
+  (scalar = bb_21)
+  (scalar_evolution = bb_21))
+(set_scalar_evolution 
+  instantiated_below = 3 
+  (scalar = bb_21)
+  (scalar_evolution = bb_21))
+)
+(set_scalar_evolution 
+  instantiated_below = 3 
+  (scalar = bb_2)
+  (scalar_evolution = bb_2))
+)
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = bb_2)
+(get_scalar_evolution 
+  (scalar = bb_2)
+  (scalar_evolution = bb_2))
+(set_scalar_evolution 
+  instantiated_below = 3 
+  (scalar = bb_2)
+  (scalar_evolution = bb_2))
+)
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = bb_2)
+(get_scalar_evolution 
+  (scalar = bb_2)
+  (scalar_evolution = bb_2))
+(set_scalar_evolution 
+  instantiated_below = 3 
+  (scalar = bb_2)
+  (scalar_evolution = bb_2))
+)
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = bb_2)
+(get_scalar_evolution 
+  (scalar = bb_2)
+  (scalar_evolution = bb_2))
+(set_scalar_evolution 
+  instantiated_below = 3 
+  (scalar = bb_2)
+  (scalar_evolution = bb_2))
+)
+    can not prove finiteness of loop 1
+Function is locally looping.
+Function is locally pure.
+Function found to be looping pure: is_ancestor
+
+;; Function is_ancestor
+
+;; 
+15 basic blocks, 21 edges, last basic block 15.
+
+Basic block 2 (new, reachable)
+Predecessors:  ENTRY [100.0%]  (fallthru,exec)
+Successors:  11 [4.5%]  (true,exec) 3 [95.5%]  (false,exec)
+
+Basic block 3 (new)
+Predecessors:  2 [95.5%]  (false,exec)
+Successors:  5 [100.0%]  (fallthru,exec)
+
+Basic block 4 (new, reachable)
+Predecessors:  10 [86.0%]  (true,exec)
+Successors:  11 [4.5%]  (true,exec) 13 [95.5%]  (false,exec)
+
+Basic block 13 (new)
+Predecessors:  4 [95.5%]  (false,exec)
+Successors:  5 [100.0%]  (fallthru,dfs_back)
+
+Basic block 5 (new, reachable)
+Predecessors:  13 [100.0%]  (fallthru,dfs_back) 3 [100.0%]  (fallthru,exec)
+Successors:  6 [95.5%]  (true,exec) 10 [4.5%]  (false,exec)
+
+Basic block 6 (new, reachable)
+Predecessors:  5 [95.5%]  (true,exec)
+Successors:  8 [4.5%]  (true,exec) 9 [95.5%]  (false,exec)
+
+Basic block 7 (new, reachable)
+Predecessors:  12 [95.5%]  (true,exec)
+Successors:  8 [4.5%]  (true,exec) 14 [95.5%]  (false,exec)
+
+Basic block 14 (new)
+Predecessors:  7 [95.5%]  (false,exec)
+Successors:  12 [100.0%]  (fallthru,dfs_back)
+
+Basic block 8 (new, reachable)
+Predecessors:  7 [4.5%]  (true,exec) 6 [4.5%]  (true,exec)
+Successors:  10 [100.0%]  (fallthru,exec)
+
+Basic block 9 (new)
+Predecessors:  6 [95.5%]  (false,exec)
+Successors:  12 [100.0%]  (fallthru)
+
+Basic block 12 (new)
+Predecessors:  9 [100.0%]  (fallthru) 14 [100.0%]  (fallthru,dfs_back)
+Successors:  7 [95.5%]  (true,exec) 10 [4.5%]  (false,exec)
+
+Basic block 10 (new, reachable)
+Predecessors:  8 [100.0%]  (fallthru,exec) 12 [4.5%]  (false,exec) 5 [4.5%]  (false,exec)
+Successors:  4 [86.0%]  (true,exec) 11 [14.0%]  (false,exec)
+
+Basic block 11 (new, reachable)
+Predecessors:  4 [4.5%]  (true,exec) 10 [14.0%]  (false,exec) 2 [4.5%]  (true,exec)
+Successors:  EXIT [100.0%] 
+
+
+
+CFG Statistics for is_ancestor
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Basic blocks                             15        960b
+Edges                                    20        880b
+---------------------------------------------------------
+Total memory used by CFG data                     1840b
+---------------------------------------------------------
+
+Coalesced label blocks: 0 (Max so far: 0)
+
+is_ancestor (struct basic_block * sourceD.4191, struct basic_block * targetD.4192)
+{
+  struct basic_block * pretmp.26D.5631;
+  struct control_flow_graph * pretmp.24D.5629;
+  struct edge * eD.4197;
+  struct vec_edge * veD.4196;
+  struct basic_block * bbD.4195;
+  edge_type D.5595;
+  intD.0 D.5594;
+
+  # BLOCK 2 freq:165
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  if (targetD.4192_5(D) == sourceD.4191_7(D))
+    goto <bb 11>;
+  else
+    goto <bb 3>;
+  # SUCC: 11 [4.5%]  (true,exec) 3 [95.5%]  (false,exec)
+
+  # BLOCK 3 freq:158
+  # PRED: 2 [95.5%]  (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  pretmp.24D.5629_1 = cfgD.4174;
+  # VUSE <.MEMD.5611_17(D)>
+  pretmp.26D.5631_19 = pretmp.24D.5629_1->entryD.4155;
+  goto <bb 5>;
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:756
+  # PRED: 10 [86.0%]  (true,exec)
+  # DEBUG bbD.4195 => bbD.4195_2
+  if (bbD.4195_2 == sourceD.4191_7(D))
+    goto <bb 11>;
+  else
+    goto <bb 13>;
+  # SUCC: 11 [4.5%]  (true,exec) 13 [95.5%]  (false,exec)
+
+  # BLOCK 13 freq:722
+  # PRED: 4 [95.5%]  (false,exec)
+  # SUCC: 5 [100.0%]  (fallthru,dfs_back)
+
+  # BLOCK 5 freq:880
+  # PRED: 13 [100.0%]  (fallthru,dfs_back) 3 [100.0%]  (fallthru,exec)
+  # bbD.4195_21 = PHI <bbD.4195_2(13), targetD.4192_5(D)(3)>
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_9 = bbD.4195_21->predD.4147;
+  # DEBUG veD.4196 => veD.4196_9
+  # DEBUG veD.4196 => veD.4196_9
+  if (veD.4196_9 != 0B)
+    goto <bb 6>;
+  else
+    goto <bb 10>;
+  # SUCC: 6 [95.5%]  (true,exec) 10 [4.5%]  (false,exec)
+
+  # BLOCK 6 freq:840
+  # PRED: 5 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_20 = veD.4196_9->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_20
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_23 = eD.4197_20->typeD.4133;
+  if (D.5595_23 == 1)
+    goto <bb 8>;
+  else
+    goto <bb 9>;
+  # SUCC: 8 [4.5%]  (true,exec) 9 [95.5%]  (false,exec)
+
+  # BLOCK 7 freq:8710
+  # PRED: 12 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_10 = veD.4196_13->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_10
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_11 = eD.4197_10->typeD.4133;
+  if (D.5595_11 == 1)
+    goto <bb 8>;
+  else
+    goto <bb 14>;
+  # SUCC: 8 [4.5%]  (true,exec) 14 [95.5%]  (false,exec)
+
+  # BLOCK 14 freq:8318
+  # PRED: 7 [95.5%]  (false,exec)
+  goto <bb 12>;
+  # SUCC: 12 [100.0%]  (fallthru,dfs_back)
+
+  # BLOCK 8 freq:430
+  # PRED: 7 [4.5%]  (true,exec) 6 [4.5%]  (true,exec)
+  # eD.4197_18 = PHI <eD.4197_10(7), eD.4197_20(6)>
+  # VUSE <.MEMD.5611_17(D)>
+  bbD.4195_12 = eD.4197_18->sourceD.4134;
+  # DEBUG bbD.4195 => bbD.4195_12
+  goto <bb 10>;
+  # SUCC: 10 [100.0%]  (fallthru,exec)
+
+  # BLOCK 9 freq:802
+  # PRED: 6 [95.5%]  (false,exec)
+  # veD.4196_22 = PHI <veD.4196_9(6)>
+  # SUCC: 12 [100.0%]  (fallthru)
+
+  # BLOCK 12 freq:9120
+  # PRED: 9 [100.0%]  (fallthru) 14 [100.0%]  (fallthru,dfs_back)
+  # veD.4196_24 = PHI <veD.4196_22(9), veD.4196_13(14)>
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_13 = veD.4196_24->nextD.4139;
+  # DEBUG veD.4196 => veD.4196_13
+  # DEBUG veD.4196 => veD.4196_13
+  if (veD.4196_13 != 0B)
+    goto <bb 7>;
+  else
+    goto <bb 10>;
+  # SUCC: 7 [95.5%]  (true,exec) 10 [4.5%]  (false,exec)
+
+  # BLOCK 10 freq:880
+  # PRED: 8 [100.0%]  (fallthru,exec) 12 [4.5%]  (false,exec) 5 [4.5%]  (false,exec)
+  # bbD.4195_2 = PHI <bbD.4195_12(8), bbD.4195_21(12), bbD.4195_21(5)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  if (bbD.4195_2 != pretmp.26D.5631_19)
+    goto <bb 4>;
+  else
+    goto <bb 11>;
+  # SUCC: 4 [86.0%]  (true,exec) 11 [14.0%]  (false,exec)
+
+  # BLOCK 11 freq:165
+  # PRED: 4 [4.5%]  (true,exec) 10 [14.0%]  (false,exec) 2 [4.5%]  (true,exec)
+  # D.5594_4 = PHI <1(4), 0(10), 1(2)>
+  return D.5594_4;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+Pass statistics:
+----------------
+
+
+;; Function mark_edge (mark_edge)
+
+
+
+ local analysis of mark_edge
+   scanning: source_2 = e_1(D)->source;
+    Indirect ref read is not const
+  scanning: target_3 = e_1(D)->target;
+    Indirect ref read is not const
+  scanning: D.5584_4 = is_ancestor (target_3, source_2);
+    pure function call in not const
+  scanning: if (D.5584_4 != 0)
+  scanning: e_1(D)->type = 3;
+    Indirect ref write is not const/pure
+  scanning: D.5588_5 = is_ancestor (source_2, target_3);
+    pure function call in not const
+  scanning: if (D.5588_5 != 0)
+  scanning: e_1(D)->type = 2;
+    Indirect ref write is not const/pure
+  scanning: e_1(D)->type = 4;
+    Indirect ref write is not const/pure
+  scanning: return;
+Function is locally looping.
+
+Pass statistics:
+----------------
+
+
+;; Function mark_edges (mark_edges)
+
+
+
+ local analysis of mark_edges
+   scanning: current_function.6_2 = current_function;
+    global memory read is not const
+  scanning: cfg_3 = current_function.6_2->cfg;
+    Indirect ref read is not const
+  scanning: e_4 = cfg_3->edge;
+    Indirect ref read is not const
+  scanning: if (e_4 != 0B)
+  scanning: D.5581_5 = e_13->type;
+    Indirect ref read is not const
+  scanning: if (D.5581_5 == 0)
+  scanning: mark_edge (e_13);
+    uknown function call is not const/pure
+  scanning: e_6 = e_13->next;
+    Indirect ref read is not const
+  scanning: if (e_6 != 0B)
+  scanning: return;
+Function is locally looping.
+
+Pass statistics:
+----------------
+
+
+;; Function calc_max_distance_recursive (calc_max_distance_recursive)
+
+
+
+ local analysis of calc_max_distance_recursive
+   scanning: prephitmp.35_6 = bb_5(D)->max_distance;
+    Indirect ref read is not const
+  scanning: if (prephitmp.35_6 == 0)
+  scanning: ve_7 = bb_5(D)->pred;
+    Indirect ref read is not const
+  scanning: if (ve_7 != 0B)
+  scanning: e_8 = ve_27->edge;
+    Indirect ref read is not const
+  scanning: D.5573_9 = e_8->type;
+    Indirect ref read is not const
+  scanning: if (D.5573_9 == 3)
+  scanning: D.5576_10 = e_8->source;
+    Indirect ref read is not const
+  scanning: val_11 = calc_max_distance_recursive (D.5576_10);
+  scanning: max_12 = MAX_EXPR <val_11, max_24>;
+  scanning: ve_13 = ve_27->next;
+    Indirect ref read is not const
+  scanning: if (ve_13 != 0B)
+  scanning: prephitmp.35_25 = max_26 + 1;
+  scanning: bb_5(D)->max_distance = prephitmp.35_23;
+    Indirect ref write is not const/pure
+  scanning: return prephitmp.35_2;
+Function is locally looping.
+
+Pass statistics:
+----------------
+
+
+;; Function calc_max_distance (calc_max_distance)
+
+
+
+ local analysis of calc_max_distance
+   scanning: depth_first_search ();
+    uknown function call is not const/pure
+  scanning: mark_edges ();
+    uknown function call is not const/pure
+  scanning: cfg.4_6 = cfg;
+    static memory read is not const
+  scanning: D.5562_7 = cfg.4_6->exit;
+    Indirect ref read is not const
+  scanning: max_8 = calc_max_distance_recursive (D.5562_7);
+    uknown function call is not const/pure
+  scanning: bb_10 = cfg.4_6->bb;
+    Indirect ref read is not const
+  scanning: if (bb_10 != 0B)
+  scanning: D.5563_11 = bb_28->max_distance;
+    Indirect ref read is not const
+  scanning: if (D.5563_11 == 0)
+  scanning: val_12 = calc_max_distance_recursive (bb_28);
+    uknown function call is not const/pure
+  scanning: if (val_12 >= max_27)
+  scanning: max_13 = val_12 + 1;
+  scanning: bb_16 = bb_28->next;
+    Indirect ref read is not const
+  scanning: if (bb_16 != 0B)
+  scanning: D.5562_18 = cfg.4_6->exit;
+    Indirect ref read is not const
+  scanning: D.5562_18->max_distance = max_4;
+    Indirect ref write is not const/pure
+  scanning: return;
+Function is locally looping.
+
+Pass statistics:
+----------------
+
+
+;; Function fine_tune_cfg (fine_tune_cfg)
+
+
+
+ local analysis of fine_tune_cfg
+   scanning: current_function.1_1 = first_function;
+    global memory read is not const
+  scanning: current_function = current_function.1_1;
+    static/global memory write is not const/pure
+  scanning: if (current_function.1_1 != 0B)
+  scanning: cfg.2_4 = current_function.1_14->cfg;
+    Indirect ref read is not const
+  scanning: cfg = cfg.2_4;
+    static/global memory write is not const/pure
+  scanning: calc_max_distance ();
+    uknown function call is not const/pure
+  scanning: current_function.1_5 = current_function;
+    global memory read is not const
+  scanning: current_function.1_6 = current_function.1_5->next;
+    Indirect ref read is not const
+  scanning: current_function = current_function.1_6;
+    static/global memory write is not const/pure
+  scanning: if (current_function.1_6 != 0B)
+  scanning: return;
+Function is locally looping.
+
+Pass statistics:
+----------------
+

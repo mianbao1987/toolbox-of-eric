@@ -1,0 +1,7 @@
+graph: {
+node.borderwidth: 1
+//node.margin: 1
+edge.thickness: 1
+splines: yes
+//layoutalgorithm: max_depth
+}

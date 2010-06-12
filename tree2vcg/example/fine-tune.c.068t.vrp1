@@ -1,0 +1,4986 @@
+
+;; Function search (search)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7
+;;
+;; Loop 1
+;;  header 6, latch 5
+;;  depth 1, outer 0
+;;  nodes: 6 5 3 4
+;; 2 succs { 6 }
+;; 3 succs { 4 5 }
+;; 4 succs { 5 }
+;; 5 succs { 6 }
+;; 6 succs { 3 7 }
+;; 7 succs { 1 }
+
+ASSERT_EXPRs to be inserted
+
+Assertions to be inserted for ve_1
+	if (ve_1 != 0B)
+
+	BB #3
+	EDGE 6->3 6 [91.0%]  (true,exec)
+	PREDICATE: ve_1 ne_expr 0B
+
+
+Assertions to be inserted for bb_2(D)
+	bb_2(D)->visited = 1;
+
+	BB #2
+	PREDICATE: bb_2(D) ne_expr 0B
+
+
+Assertions to be inserted for e_4
+	succ_bb_5 = e_4->target;
+
+	BB #3
+	PREDICATE: e_4 ne_expr 0B
+
+
+Assertions to be inserted for succ_bb_5
+	D.5604_6 = succ_bb_5->visited;
+
+	BB #3
+	PREDICATE: succ_bb_5 ne_expr 0B
+
+
+
+
+
+Registering new PHI nodes in block #2
+
+Updating SSA information for statement bb_2(D)->visited = 1;
+
+Updating SSA information for statement bb_19 = ASSERT_EXPR <bb_2(D), bb_2(D) != 0B>;
+
+Updating SSA information for statement ve_3 = bb_2(D)->succ;
+
+
+
+Registering new PHI nodes in block #6
+
+Updating SSA information for statement # DEBUG ve => ve_1
+
+Updating SSA information for statement if (ve_1 != 0B)
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement ve_9 = ASSERT_EXPR <ve_1, ve_1 != 0B>;
+
+Updating SSA information for statement e_4 = ve_1->edge;
+
+Updating SSA information for statement # DEBUG e => e_4
+
+Updating SSA information for statement succ_bb_5 = e_4->target;
+
+Updating SSA information for statement e_20 = ASSERT_EXPR <e_4, e_4 != 0B>;
+
+Updating SSA information for statement # DEBUG succ_bb => succ_bb_5
+
+Updating SSA information for statement D.5604_6 = succ_bb_5->visited;
+
+Updating SSA information for statement succ_bb_21 = ASSERT_EXPR <succ_bb_5, succ_bb_5 != 0B>;
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement e_4->type = 1;
+
+Updating SSA information for statement search (succ_bb_5);
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement ve_7 = ve_1->next;
+
+
+
+Registering new PHI nodes in block #7
+
+Updating SSA information for statement bb_2(D)->dfs_order = count.10_8;
+
+
+DFA Statistics for search
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      9         36b
+Variables annotated                       9        108b
+USE operands                             27        108b
+DEF operands                             11         44b
+VUSE operands                            11         44b
+VDEF operands                             5         20b
+PHI nodes                                 3        180b
+PHI arguments                             6        144b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  684b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+ve_9 -> { ve_1 }
+bb_19 -> { bb_2(D) }
+e_20 -> { e_4 }
+succ_bb_21 -> { succ_bb_5 }
+
+Number of virtual NEW -> OLD mappings:       0
+Number of real NEW -> OLD mappings:          4
+Number of total NEW -> OLD mappings:         4
+
+Number of virtual symbols: 0
+
+
+Incremental SSA update started at block: 2
+
+Number of blocks in CFG: 8
+Number of blocks to update: 6 ( 75%)
+
+Affected blocks: 2 3 4 5 6 7 
+
+
+
+SSA form after inserting ASSERT_EXPRs
+search (struct basic_block * bbD.4175)
+{
+  struct edge * eD.4180;
+  struct vec_edge * veD.4179;
+  struct basic_block * succ_bbD.4178;
+  intD.0 count.11D.5608;
+  intD.0 count.10D.5607;
+  intD.0 D.5604;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # .MEMD.5609_14 = VDEF <.MEMD.5609_13(D)>
+  bbD.4175_2(D)->visitedD.4144 = 1;
+  bbD.4175_19 = ASSERT_EXPR <bbD.4175_2(D), bbD.4175_2(D) != 0B>;
+  # VUSE <.MEMD.5609_14>
+  veD.4179_3 = bbD.4175_19->succD.4149;
+  # DEBUG veD.4179 => veD.4179_3
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 6 [91.0%]  (true,exec)
+  veD.4179_9 = ASSERT_EXPR <veD.4179_1, veD.4179_1 != 0B>;
+  # VUSE <.MEMD.5609_12>
+  eD.4180_4 = veD.4179_9->edgeD.4138;
+  # DEBUG eD.4180 => eD.4180_4
+  # VUSE <.MEMD.5609_12>
+  succ_bbD.4178_5 = eD.4180_4->targetD.4135;
+  eD.4180_20 = ASSERT_EXPR <eD.4180_4, eD.4180_4 != 0B>;
+  # DEBUG succ_bbD.4178 => succ_bbD.4178_5
+  # VUSE <.MEMD.5609_12>
+  D.5604_6 = succ_bbD.4178_5->visitedD.4144;
+  succ_bbD.4178_21 = ASSERT_EXPR <succ_bbD.4178_5, succ_bbD.4178_5 != 0B>;
+  if (D.5604_6 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 [29.0%]  (true,exec) 5 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5609_15 = VDEF <.MEMD.5609_12>
+  eD.4180_20->typeD.4133 = 1;
+  # .MEMD.5609_16 = VDEF <.MEMD.5609_15>
+  searchD.4176 (succ_bbD.4178_21);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5609_11 = PHI <.MEMD.5609_12(3), .MEMD.5609_16(4)>
+  # VUSE <.MEMD.5609_11>
+  veD.4179_7 = veD.4179_9->nextD.4139;
+  # DEBUG veD.4179 => veD.4179_7
+  # SUCC: 6 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 6 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,dfs_back,exec)
+  # veD.4179_1 = PHI <veD.4179_3(2), veD.4179_7(5)>
+  # .MEMD.5609_12 = PHI <.MEMD.5609_14(2), .MEMD.5609_11(5)>
+  # DEBUG veD.4179 => veD.4179_1
+  if (veD.4179_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:900
+  # PRED: 6 [9.0%]  (false,exec)
+  # VUSE <.MEMD.5609_12>
+  count.10D.5607_8 = countD.4173;
+  # .MEMD.5609_17 = VDEF <.MEMD.5609_12>
+  bbD.4175_19->dfs_orderD.4145 = count.10D.5607_8;
+  count.11D.5608_10 = count.10D.5607_8 + -1;
+  # .MEMD.5609_18 = VDEF <.MEMD.5609_17>
+  countD.4173 = count.11D.5608_10;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+Immediate_uses: 
+
+ve_1 : -->3 uses.
+ve_9 = ASSERT_EXPR <ve_1, ve_1 != 0B>;
+ve_9 = ASSERT_EXPR <ve_1, ve_1 != 0B>;
+if (ve_1 != 0B)
+# DEBUG ve => ve_1
+
+bb_2(D) : -->3 uses.
+bb_19 = ASSERT_EXPR <bb_2(D), bb_2(D) != 0B>;
+bb_19 = ASSERT_EXPR <bb_2(D), bb_2(D) != 0B>;
+bb_2(D)->visited = 1;
+
+ve_3 : --> single use.
+ve_1 = PHI <ve_3(2), ve_7(5)>
+# DEBUG ve => ve_3
+
+e_4 : -->3 uses.
+e_20 = ASSERT_EXPR <e_4, e_4 != 0B>;
+e_20 = ASSERT_EXPR <e_4, e_4 != 0B>;
+succ_bb_5 = e_4->target;
+# DEBUG e => e_4
+
+succ_bb_5 : -->3 uses.
+succ_bb_21 = ASSERT_EXPR <succ_bb_5, succ_bb_5 != 0B>;
+succ_bb_21 = ASSERT_EXPR <succ_bb_5, succ_bb_5 != 0B>;
+D.5604_6 = succ_bb_5->visited;
+# DEBUG succ_bb => succ_bb_5
+
+D.5604_6 : --> single use.
+if (D.5604_6 == 0)
+
+ve_7 : --> single use.
+ve_1 = PHI <ve_3(2), ve_7(5)>
+# DEBUG ve => ve_7
+
+count.10_8 : -->2 uses.
+count.11_10 = count.10_8 + -1;
+bb_19->dfs_order = count.10_8;
+
+ve_9 : -->2 uses.
+ve_7 = ve_9->next;
+e_4 = ve_9->edge;
+
+count.11_10 : --> single use.
+count = count.11_10;
+
+.MEM_11 : -->2 uses.
+.MEM_12 = PHI <.MEM_14(2), .MEM_11(5)>
+# VUSE <.MEM_11>
+ve_7 = ve_9->next;
+
+.MEM_12 : -->7 uses.
+# .MEM_17 = VDEF <.MEM_12>
+bb_19->dfs_order = count.10_8;
+# VUSE <.MEM_12>
+count.10_8 = count;
+# .MEM_15 = VDEF <.MEM_12>
+e_20->type = 1;
+.MEM_11 = PHI <.MEM_12(3), .MEM_16(4)>
+# VUSE <.MEM_12>
+D.5604_6 = succ_bb_5->visited;
+# VUSE <.MEM_12>
+succ_bb_5 = e_4->target;
+# VUSE <.MEM_12>
+e_4 = ve_9->edge;
+
+.MEM_13(D) : --> single use.
+# .MEM_14 = VDEF <.MEM_13(D)>
+bb_2(D)->visited = 1;
+
+.MEM_14 : -->2 uses.
+.MEM_12 = PHI <.MEM_14(2), .MEM_11(5)>
+# VUSE <.MEM_14>
+ve_3 = bb_19->succ;
+
+.MEM_15 : --> single use.
+# .MEM_16 = VDEF <.MEM_15>
+search (succ_bb_21);
+
+.MEM_16 : --> single use.
+.MEM_11 = PHI <.MEM_12(3), .MEM_16(4)>
+
+.MEM_17 : --> single use.
+# .MEM_18 = VDEF <.MEM_17>
+count = count.11_10;
+
+.MEM_18 : --> no uses.
+
+bb_19 : -->2 uses.
+bb_19->dfs_order = count.10_8;
+ve_3 = bb_19->succ;
+
+e_20 : --> single use.
+e_20->type = 1;
+
+succ_bb_21 : --> single use.
+search (succ_bb_21);
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+bbD.4175_19 = ASSERT_EXPR <bbD.4175_2(D), bbD.4175_2(D) != 0B>;
+
+Found new range for bb_19: ~[0B, 0B]
+
+Adding Destination of edge (2 -> 6) to worklist
+
+
+Simulating block 6
+
+Visiting PHI node: veD.4179_1 = PHI <veD.4179_3(2), veD.4179_7(5)>
+
+    Argument #0 (2 -> 6 executable)
+	veD.4179_3
+	Value: VARYING
+
+Visiting statement:
+if (veD.4179_1 != 0B)
+
+
+Visiting conditional with predicate: if (ve_1 != 0B)
+
+With known ranges
+	ve_1: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (6 -> 3) to worklist
+
+Adding Destination of edge (6 -> 7) to worklist
+
+
+Simulating statement (from ssa_edges): veD.4179_9 = ASSERT_EXPR <veD.4179_1, veD.4179_1 != 0B>;
+
+Simulating block 3
+
+Visiting statement:
+veD.4179_9 = ASSERT_EXPR <veD.4179_1, veD.4179_1 != 0B>;
+
+Found new range for ve_9: ~[0B, 0B]
+
+
+Visiting statement:
+eD.4180_20 = ASSERT_EXPR <eD.4180_4, eD.4180_4 != 0B>;
+
+Found new range for e_20: ~[0B, 0B]
+
+
+Visiting statement:
+succ_bbD.4178_21 = ASSERT_EXPR <succ_bbD.4178_5, succ_bbD.4178_5 != 0B>;
+
+Found new range for succ_bb_21: ~[0B, 0B]
+
+
+Visiting statement:
+if (D.5604_6 == 0)
+
+
+Visiting conditional with predicate: if (D.5604_6 == 0)
+
+With known ranges
+	D.5604_6: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (3 -> 4) to worklist
+
+Adding Destination of edge (3 -> 5) to worklist
+
+
+Simulating block 7
+
+Visiting statement:
+count.11D.5608_10 = count.10D.5607_8 + -1;
+
+(analyze_scalar_evolution 
+  (loop_nb = 0)
+  (scalar = count.11_10)
+(get_scalar_evolution 
+  (scalar = count.11_10)
+  (scalar_evolution = ))
+(analyze_scalar_evolution 
+  (loop_nb = 0)
+  (scalar = count.10_8)
+(get_scalar_evolution 
+  (scalar = count.10_8)
+  (scalar_evolution = ))
+(set_scalar_evolution 
+  instantiated_below = 0 
+  (scalar = count.10_8)
+  (scalar_evolution = count.10_8))
+)
+(analyze_scalar_evolution 
+  (loop_nb = 0)
+  (scalar = -1)
+(get_scalar_evolution 
+  (scalar = -1)
+  (scalar_evolution = -1))
+)
+(set_scalar_evolution 
+  instantiated_below = 0 
+  (scalar = count.11_10)
+  (scalar_evolution = count.10_8 + -1))
+)
+(instantiate_scev 
+  (instantiate_below = 0)
+  (evolution_loop = 0)
+  (chrec = count.10_8 + -1)
+  (res = count.10_8 + -1))
+Found new range for count.11_10: VARYING
+
+
+Visiting statement:
+return;
+
+
+Simulating block 4
+
+Simulating block 5
+Adding Destination of edge (5 -> 6) to worklist
+
+
+Simulating block 6
+
+Value ranges after VRP:
+
+ve_1: VARYING
+bb_2(D): VARYING
+ve_3: VARYING
+e_4: VARYING
+succ_bb_5: VARYING
+D.5604_6: VARYING
+ve_7: VARYING
+count.10_8: VARYING
+ve_9: ~[0B, 0B]  EQUIVALENCES: { ve_1 } (1 elements)
+count.11_10: VARYING
+.MEM_11: VARYING
+.MEM_12: VARYING
+bb_19: ~[0B, 0B]  EQUIVALENCES: { bb_2(D) } (1 elements)
+e_20: ~[0B, 0B]  EQUIVALENCES: { e_4 } (1 elements)
+succ_bb_21: ~[0B, 0B]  EQUIVALENCES: { succ_bb_5 } (1 elements)
+
+
+
+Substituting values and folding statements
+
+Folding statement: # DEBUG ve => ve_3
+Not folded
+Folding statement: ve_3 = bb_19->succ;
+Not folded
+Folding statement: bb_2(D)->visited = 1;
+Not folded
+Folding statement: if (D.5604_6 == 0)
+Not folded
+Folding statement: D.5604_6 = succ_bb_5->visited;
+Not folded
+Folding statement: # DEBUG succ_bb => succ_bb_5
+Not folded
+Folding statement: succ_bb_5 = e_4->target;
+Not folded
+Folding statement: # DEBUG e => e_4
+Not folded
+Folding statement: e_4 = ve_9->edge;
+Not folded
+Folding statement: search (succ_bb_21);
+Not folded
+Folding statement: e_20->type = 1;
+Not folded
+Folding statement: # DEBUG ve => ve_7
+Not folded
+Folding statement: ve_7 = ve_9->next;
+Not folded
+Folding statement: if (ve_1 != 0B)
+Not folded
+Folding statement: # DEBUG ve => ve_1
+Not folded
+Folding statement: return;
+Not folded
+Folding statement: count = count.11_10;
+Not folded
+Folding statement: count.11_10 = count.10_8 + -1;
+Not folded
+Folding statement: bb_19->dfs_order = count.10_8;
+Not folded
+Folding statement: count.10_8 = count;
+Not folded
+
+Pass statistics:
+----------------
+Number of ASSERT_EXPR expressions inserted: 4
+
+search (struct basic_block * bbD.4175)
+{
+  struct edge * eD.4180;
+  struct vec_edge * veD.4179;
+  struct basic_block * succ_bbD.4178;
+  intD.0 count.11D.5608;
+  intD.0 count.10D.5607;
+  intD.0 D.5604;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # .MEMD.5609_14 = VDEF <.MEMD.5609_13(D)>
+  bbD.4175_2(D)->visitedD.4144 = 1;
+  # VUSE <.MEMD.5609_14>
+  veD.4179_3 = bbD.4175_2(D)->succD.4149;
+  # DEBUG veD.4179 => veD.4179_3
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 6 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5609_12>
+  eD.4180_4 = veD.4179_1->edgeD.4138;
+  # DEBUG eD.4180 => eD.4180_4
+  # VUSE <.MEMD.5609_12>
+  succ_bbD.4178_5 = eD.4180_4->targetD.4135;
+  # DEBUG succ_bbD.4178 => succ_bbD.4178_5
+  # VUSE <.MEMD.5609_12>
+  D.5604_6 = succ_bbD.4178_5->visitedD.4144;
+  if (D.5604_6 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 [29.0%]  (true,exec) 5 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5609_15 = VDEF <.MEMD.5609_12>
+  eD.4180_4->typeD.4133 = 1;
+  # .MEMD.5609_16 = VDEF <.MEMD.5609_15>
+  searchD.4176 (succ_bbD.4178_5);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5609_11 = PHI <.MEMD.5609_12(3), .MEMD.5609_16(4)>
+  # VUSE <.MEMD.5609_11>
+  veD.4179_7 = veD.4179_1->nextD.4139;
+  # DEBUG veD.4179 => veD.4179_7
+  # SUCC: 6 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 6 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,dfs_back,exec)
+  # veD.4179_1 = PHI <veD.4179_3(2), veD.4179_7(5)>
+  # .MEMD.5609_12 = PHI <.MEMD.5609_14(2), .MEMD.5609_11(5)>
+  # DEBUG veD.4179 => veD.4179_1
+  if (veD.4179_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:900
+  # PRED: 6 [9.0%]  (false,exec)
+  # VUSE <.MEMD.5609_12>
+  count.10D.5607_8 = countD.4173;
+  # .MEMD.5609_17 = VDEF <.MEMD.5609_12>
+  bbD.4175_2(D)->dfs_orderD.4145 = count.10D.5607_8;
+  count.11D.5608_10 = count.10D.5607_8 + -1;
+  # .MEMD.5609_18 = VDEF <.MEMD.5609_17>
+  countD.4173 = count.11D.5608_10;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function depth_first_search (depth_first_search)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5
+;;
+;; Loop 1
+;;  header 4, latch 3
+;;  depth 1, outer 0
+;;  nodes: 4 3
+;; 2 succs { 4 }
+;; 3 succs { 4 }
+;; 4 succs { 3 5 }
+;; 5 succs { 1 }
+
+ASSERT_EXPRs to be inserted
+
+Assertions to be inserted for bb_1
+	if (bb_1 != 0B)
+
+	BB #3
+	EDGE 4->3 4 [91.0%]  (true,exec)
+	PREDICATE: bb_1 ne_expr 0B
+
+
+Assertions to be inserted for cfg.8_2
+	bb_3 = cfg.8_2->bb;
+
+	BB #2
+	PREDICATE: cfg.8_2 ne_expr 0B
+
+
+
+
+
+Registering new PHI nodes in block #2
+
+Updating SSA information for statement cfg.8_2 = cfg;
+
+Updating SSA information for statement bb_3 = cfg.8_2->bb;
+
+Updating SSA information for statement cfg.8_7 = ASSERT_EXPR <cfg.8_2, cfg.8_2 != 0B>;
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement # DEBUG bb => bb_1
+
+Updating SSA information for statement if (bb_1 != 0B)
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement bb_5 = ASSERT_EXPR <bb_1, bb_1 != 0B>;
+
+Updating SSA information for statement bb_1->visited = 0;
+
+Updating SSA information for statement bb_4 = bb_1->next;
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement count.9_6 = cfg.8_2->bb_num;
+
+Updating SSA information for statement D.5603_8 = cfg.8_2->entry;
+
+
+DFA Statistics for depth_first_search
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      7         28b
+Variables annotated                       7         84b
+USE operands                             15         60b
+DEF operands                              7         28b
+VUSE operands                             8         32b
+VDEF operands                             3         12b
+PHI nodes                                 2        120b
+PHI arguments                             4         96b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  460b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+bb_5 -> { bb_1 }
+cfg.8_7 -> { cfg.8_2 }
+
+Number of virtual NEW -> OLD mappings:       0
+Number of real NEW -> OLD mappings:          2
+Number of total NEW -> OLD mappings:         2
+
+Number of virtual symbols: 0
+
+
+Incremental SSA update started at block: 2
+
+Number of blocks in CFG: 6
+Number of blocks to update: 4 ( 67%)
+
+Affected blocks: 2 3 4 5 
+
+
+
+SSA form after inserting ASSERT_EXPRs
+depth_first_search ()
+{
+  struct basic_block * bbD.4187;
+  struct basic_block * D.5603;
+  intD.0 count.9D.5602;
+  struct control_flow_graph * cfg.8D.5601;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5610_10(D)>
+  cfg.8D.5601_2 = cfgD.4174;
+  # VUSE <.MEMD.5610_10(D)>
+  bbD.4187_3 = cfg.8D.5601_2->bbD.4157;
+  cfg.8D.5601_7 = ASSERT_EXPR <cfg.8D.5601_2, cfg.8D.5601_2 != 0B>;
+  # DEBUG bbD.4187 => bbD.4187_3
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 4 [91.0%]  (true,exec)
+  bbD.4187_5 = ASSERT_EXPR <bbD.4187_1, bbD.4187_1 != 0B>;
+  # .MEMD.5610_11 = VDEF <.MEMD.5610_9>
+  bbD.4187_5->visitedD.4144 = 0;
+  # VUSE <.MEMD.5610_11>
+  bbD.4187_4 = bbD.4187_5->nextD.4151;
+  # DEBUG bbD.4187 => bbD.4187_4
+  # SUCC: 4 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 4 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 3 [100.0%]  (fallthru,dfs_back,exec)
+  # bbD.4187_1 = PHI <bbD.4187_3(2), bbD.4187_4(3)>
+  # .MEMD.5610_9 = PHI <.MEMD.5610_10(D)(2), .MEMD.5610_11(3)>
+  # DEBUG bbD.4187 => bbD.4187_1
+  if (bbD.4187_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 [91.0%]  (true,exec) 5 [9.0%]  (false,exec)
+
+  # BLOCK 5 freq:900
+  # PRED: 4 [9.0%]  (false,exec)
+  # VUSE <.MEMD.5610_9>
+  count.9D.5602_6 = cfg.8D.5601_7->bb_numD.4153;
+  # .MEMD.5610_12 = VDEF <.MEMD.5610_9>
+  countD.4173 = count.9D.5602_6;
+  # VUSE <.MEMD.5610_12>
+  D.5603_8 = cfg.8D.5601_7->entryD.4155;
+  # .MEMD.5610_13 = VDEF <.MEMD.5610_12>
+  searchD.4176 (D.5603_8);
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+Immediate_uses: 
+
+bb_1 : -->3 uses.
+bb_5 = ASSERT_EXPR <bb_1, bb_1 != 0B>;
+bb_5 = ASSERT_EXPR <bb_1, bb_1 != 0B>;
+if (bb_1 != 0B)
+# DEBUG bb => bb_1
+
+cfg.8_2 : -->3 uses.
+cfg.8_7 = ASSERT_EXPR <cfg.8_2, cfg.8_2 != 0B>;
+cfg.8_7 = ASSERT_EXPR <cfg.8_2, cfg.8_2 != 0B>;
+bb_3 = cfg.8_2->bb;
+
+bb_3 : --> single use.
+bb_1 = PHI <bb_3(2), bb_4(3)>
+# DEBUG bb => bb_3
+
+bb_4 : --> single use.
+bb_1 = PHI <bb_3(2), bb_4(3)>
+# DEBUG bb => bb_4
+
+bb_5 : -->2 uses.
+bb_4 = bb_5->next;
+bb_5->visited = 0;
+
+count.9_6 : --> single use.
+count = count.9_6;
+
+cfg.8_7 : -->2 uses.
+D.5603_8 = cfg.8_7->entry;
+count.9_6 = cfg.8_7->bb_num;
+
+D.5603_8 : --> single use.
+search (D.5603_8);
+
+.MEM_9 : -->3 uses.
+# VUSE <.MEM_9>
+count.9_6 = cfg.8_7->bb_num;
+# .MEM_12 = VDEF <.MEM_9>
+count = count.9_6;
+# .MEM_11 = VDEF <.MEM_9>
+bb_5->visited = 0;
+
+.MEM_10(D) : -->3 uses.
+.MEM_9 = PHI <.MEM_10(D)(2), .MEM_11(3)>
+# VUSE <.MEM_10(D)>
+bb_3 = cfg.8_2->bb;
+# VUSE <.MEM_10(D)>
+cfg.8_2 = cfg;
+
+.MEM_11 : -->2 uses.
+.MEM_9 = PHI <.MEM_10(D)(2), .MEM_11(3)>
+# VUSE <.MEM_11>
+bb_4 = bb_5->next;
+
+.MEM_12 : -->2 uses.
+# VUSE <.MEM_12>
+D.5603_8 = cfg.8_7->entry;
+# .MEM_13 = VDEF <.MEM_12>
+search (D.5603_8);
+
+.MEM_13 : --> no uses.
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+cfg.8D.5601_7 = ASSERT_EXPR <cfg.8D.5601_2, cfg.8D.5601_2 != 0B>;
+
+Found new range for cfg.8_7: ~[0B, 0B]
+
+Adding Destination of edge (2 -> 4) to worklist
+
+
+Simulating block 4
+
+Visiting PHI node: bbD.4187_1 = PHI <bbD.4187_3(2), bbD.4187_4(3)>
+
+    Argument #0 (2 -> 4 executable)
+	bbD.4187_3
+	Value: VARYING
+
+Visiting statement:
+if (bbD.4187_1 != 0B)
+
+
+Visiting conditional with predicate: if (bb_1 != 0B)
+
+With known ranges
+	bb_1: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (4 -> 3) to worklist
+
+Adding Destination of edge (4 -> 5) to worklist
+
+
+Simulating statement (from ssa_edges): bbD.4187_5 = ASSERT_EXPR <bbD.4187_1, bbD.4187_1 != 0B>;
+
+Simulating block 3
+
+Visiting statement:
+bbD.4187_5 = ASSERT_EXPR <bbD.4187_1, bbD.4187_1 != 0B>;
+
+Found new range for bb_5: ~[0B, 0B]
+
+Adding Destination of edge (3 -> 4) to worklist
+
+
+Simulating block 5
+
+Visiting statement:
+return;
+
+
+Simulating block 4
+
+Value ranges after VRP:
+
+bb_1: VARYING
+cfg.8_2: VARYING
+bb_3: VARYING
+bb_4: VARYING
+bb_5: ~[0B, 0B]  EQUIVALENCES: { bb_1 } (1 elements)
+count.9_6: VARYING
+cfg.8_7: ~[0B, 0B]  EQUIVALENCES: { cfg.8_2 } (1 elements)
+D.5603_8: VARYING
+.MEM_9: VARYING
+
+
+
+Substituting values and folding statements
+
+Folding statement: # DEBUG bb => bb_3
+Not folded
+Folding statement: bb_3 = cfg.8_2->bb;
+Not folded
+Folding statement: cfg.8_2 = cfg;
+Not folded
+Folding statement: # DEBUG bb => bb_4
+Not folded
+Folding statement: bb_4 = bb_5->next;
+Not folded
+Folding statement: bb_5->visited = 0;
+Not folded
+Folding statement: if (bb_1 != 0B)
+Not folded
+Folding statement: # DEBUG bb => bb_1
+Not folded
+Folding statement: return;
+Not folded
+Folding statement: search (D.5603_8);
+Not folded
+Folding statement: D.5603_8 = cfg.8_7->entry;
+Not folded
+Folding statement: count = count.9_6;
+Not folded
+Folding statement: count.9_6 = cfg.8_7->bb_num;
+Not folded
+
+Pass statistics:
+----------------
+Number of ASSERT_EXPR expressions inserted: 2
+
+depth_first_search ()
+{
+  struct basic_block * bbD.4187;
+  struct basic_block * D.5603;
+  intD.0 count.9D.5602;
+  struct control_flow_graph * cfg.8D.5601;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5610_10(D)>
+  cfg.8D.5601_2 = cfgD.4174;
+  # VUSE <.MEMD.5610_10(D)>
+  bbD.4187_3 = cfg.8D.5601_2->bbD.4157;
+  # DEBUG bbD.4187 => bbD.4187_3
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 4 [91.0%]  (true,exec)
+  # .MEMD.5610_11 = VDEF <.MEMD.5610_9>
+  bbD.4187_1->visitedD.4144 = 0;
+  # VUSE <.MEMD.5610_11>
+  bbD.4187_4 = bbD.4187_1->nextD.4151;
+  # DEBUG bbD.4187 => bbD.4187_4
+  # SUCC: 4 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 4 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 3 [100.0%]  (fallthru,dfs_back,exec)
+  # bbD.4187_1 = PHI <bbD.4187_3(2), bbD.4187_4(3)>
+  # .MEMD.5610_9 = PHI <.MEMD.5610_10(D)(2), .MEMD.5610_11(3)>
+  # DEBUG bbD.4187 => bbD.4187_1
+  if (bbD.4187_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 [91.0%]  (true,exec) 5 [9.0%]  (false,exec)
+
+  # BLOCK 5 freq:900
+  # PRED: 4 [9.0%]  (false,exec)
+  # VUSE <.MEMD.5610_9>
+  count.9D.5602_6 = cfg.8D.5601_2->bb_numD.4153;
+  # .MEMD.5610_12 = VDEF <.MEMD.5610_9>
+  countD.4173 = count.9D.5602_6;
+  # VUSE <.MEMD.5610_12>
+  D.5603_8 = cfg.8D.5601_2->entryD.4155;
+  # .MEMD.5610_13 = VDEF <.MEMD.5610_12>
+  searchD.4176 (D.5603_8);
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function is_ancestor (is_ancestor)
+
+
+Pass statistics:
+----------------
+
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9 11 10
+;;
+;; Loop 1
+;;  header 3, latch 11
+;;  depth 1, outer 0
+;;  nodes: 3 11 9 6 8 4 7 5
+;;
+;; Loop 2
+;;  header 8, latch 7
+;;  depth 2, outer 1
+;;  nodes: 8 7 5
+;; 2 succs { 3 }
+;; 3 succs { 10 4 }
+;; 4 succs { 8 }
+;; 5 succs { 6 7 }
+;; 6 succs { 9 }
+;; 7 succs { 8 }
+;; 8 succs { 5 9 }
+;; 9 succs { 11 10 }
+;; 11 succs { 3 }
+;; 10 succs { 1 }
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement e_10 = ve_3->edge;
+
+Updating SSA information for statement # DEBUG e => e_10
+
+Updating SSA information for statement D.5595_11 = e_10->type;
+
+
+
+Registering new PHI nodes in block #6
+
+Updating SSA information for statement bb_12 = e_10->source;
+
+
+
+Registering new PHI nodes in block #7
+
+
+DFA Statistics for is_ancestor
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                     11         44b
+Variables annotated                      11        132b
+USE operands                             21         84b
+DEF operands                              7         28b
+VUSE operands                             7         28b
+VDEF operands                             0          0b
+PHI nodes                                 5        300b
+PHI arguments                             9        216b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  832b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 1.8 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 31, 2 elements, 0.000000 collision/search ratio
+    repl_tbl:     size 31, 1 elements, 0.000000 collision/search ratio
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+e_18 -> { e_10 }
+
+Number of virtual NEW -> OLD mappings:       0
+Number of real NEW -> OLD mappings:          1
+Number of total NEW -> OLD mappings:         1
+
+Number of virtual symbols: 0
+
+
+Incremental SSA update started at block: 5
+
+Number of blocks in CFG: 12
+Number of blocks to update: 2 ( 17%)
+
+Affected blocks: 5 6 
+
+
+
+ASSERT_EXPRs to be inserted
+
+Assertions to be inserted for bb_1
+	ve_9 = bb_1->pred;
+
+	BB #4
+	PREDICATE: bb_1 ne_expr 0B
+
+	if (bb_1 == source_7(D))
+
+	BB #4
+	EDGE 3->4 3 [95.5%]  (false,exec)
+	PREDICATE: bb_1 ne_expr source_7(D)
+
+
+Assertions to be inserted for ve_3
+	if (ve_3 != 0B)
+
+	BB #5
+	EDGE 8->5 8 [95.5%]  (true,exec)
+	PREDICATE: ve_3 ne_expr 0B
+
+
+Assertions to be inserted for e_10
+	D.5595_11 = e_10->type;
+
+	BB #5
+	PREDICATE: e_10 ne_expr 0B
+
+
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement # DEBUG bb => bb_1
+
+Updating SSA information for statement if (bb_1 == source_7(D))
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement bb_20 = ASSERT_EXPR <bb_1, bb_1 != source_7(D)>;
+
+Updating SSA information for statement ve_9 = bb_1->pred;
+
+Updating SSA information for statement bb_19 = ASSERT_EXPR <bb_1, bb_1 != 0B>;
+
+
+
+Registering new PHI nodes in block #8
+
+Updating SSA information for statement # DEBUG ve => ve_3
+
+Updating SSA information for statement if (ve_3 != 0B)
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement ve_21 = ASSERT_EXPR <ve_3, ve_3 != 0B>;
+
+Updating SSA information for statement e_10 = ve_3->edge;
+
+Updating SSA information for statement # DEBUG e => e_10
+
+Updating SSA information for statement D.5595_11 = e_10->type;
+
+Updating SSA information for statement e_22 = ASSERT_EXPR <e_10, e_10 != 0B>;
+
+
+
+Registering new PHI nodes in block #6
+
+
+
+Registering new PHI nodes in block #7
+
+Updating SSA information for statement ve_13 = ve_3->next;
+
+
+
+Registering new PHI nodes in block #9
+
+
+
+Registering new PHI nodes in block #11
+
+
+
+Registering new PHI nodes in block #10
+
+
+DFA Statistics for is_ancestor
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                     11         44b
+Variables annotated                      11        132b
+USE operands                             30        120b
+DEF operands                             11         44b
+VUSE operands                             7         28b
+VDEF operands                             0          0b
+PHI nodes                                 5        300b
+PHI arguments                             9        216b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  884b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 1.8 (max: 2)
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+bb_19 -> { bb_1 }
+bb_20 -> { bb_1 }
+ve_21 -> { ve_3 }
+e_22 -> { e_10 }
+
+Number of virtual NEW -> OLD mappings:       0
+Number of real NEW -> OLD mappings:          4
+Number of total NEW -> OLD mappings:         4
+
+Number of virtual symbols: 0
+
+
+Incremental SSA update started at block: 3
+
+Number of blocks in CFG: 12
+Number of blocks to update: 7 ( 58%)
+
+Affected blocks: 3 4 5 6 7 8 9 
+
+
+
+SSA form after inserting ASSERT_EXPRs
+is_ancestor (struct basic_block * sourceD.4191, struct basic_block * targetD.4192)
+{
+  struct edge * eD.4197;
+  struct vec_edge * veD.4196;
+  struct basic_block * bbD.4195;
+  struct basic_block * D.5599;
+  struct control_flow_graph * cfg.7D.5598;
+  edge_type D.5595;
+  intD.0 D.5594;
+
+  # BLOCK 2 freq:165
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  # SUCC: 3 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:921
+  # PRED: 2 [100.0%]  (fallthru,exec) 11 [100.0%]  (fallthru)
+  # bbD.4195_1 = PHI <targetD.4192_5(D)(2), bbD.4195_2(11)>
+  # DEBUG bbD.4195 => bbD.4195_1
+  if (bbD.4195_1 == sourceD.4191_7(D))
+    goto <bb 10>;
+  else
+    goto <bb 4>;
+  # SUCC: 10 [4.5%]  (true,exec) 4 [95.5%]  (false,exec)
+
+  # BLOCK 4 freq:880
+  # PRED: 3 [95.5%]  (false,exec)
+  bbD.4195_20 = ASSERT_EXPR <bbD.4195_1, bbD.4195_1 != sourceD.4191_7(D)>;
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_9 = bbD.4195_20->predD.4147;
+  bbD.4195_19 = ASSERT_EXPR <bbD.4195_20, bbD.4195_20 != 0B>;
+  # DEBUG veD.4196 => veD.4196_9
+  goto <bb 8>;
+  # SUCC: 8 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9550
+  # PRED: 8 [95.5%]  (true,exec)
+  veD.4196_21 = ASSERT_EXPR <veD.4196_3, veD.4196_3 != 0B>;
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_10 = veD.4196_21->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_10
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_11 = eD.4197_10->typeD.4133;
+  eD.4197_22 = ASSERT_EXPR <eD.4197_10, eD.4197_10 != 0B>;
+  if (D.5595_11 == 1)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+  # SUCC: 6 [4.5%]  (true,exec) 7 [95.5%]  (false,exec)
+
+  # BLOCK 6 freq:430
+  # PRED: 5 [4.5%]  (true,exec)
+  # eD.4197_18 = PHI <eD.4197_22(5)>
+  # VUSE <.MEMD.5611_17(D)>
+  bbD.4195_12 = eD.4197_18->sourceD.4134;
+  # DEBUG bbD.4195 => bbD.4195_12
+  goto <bb 9>;
+  # SUCC: 9 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:9120
+  # PRED: 5 [95.5%]  (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_13 = veD.4196_21->nextD.4139;
+  # DEBUG veD.4196 => veD.4196_13
+  # SUCC: 8 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 8 freq:10000
+  # PRED: 4 [100.0%]  (fallthru,exec) 7 [100.0%]  (fallthru,dfs_back,exec)
+  # veD.4196_3 = PHI <veD.4196_9(4), veD.4196_13(7)>
+  # DEBUG veD.4196 => veD.4196_3
+  if (veD.4196_3 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+  # SUCC: 5 [95.5%]  (true,exec) 9 [4.5%]  (false,exec)
+
+  # BLOCK 9 freq:880
+  # PRED: 6 [100.0%]  (fallthru,exec) 8 [4.5%]  (false,exec)
+  # bbD.4195_2 = PHI <bbD.4195_12(6), bbD.4195_19(8)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  # VUSE <.MEMD.5611_17(D)>
+  cfg.7D.5598_14 = cfgD.4174;
+  # VUSE <.MEMD.5611_17(D)>
+  D.5599_15 = cfg.7D.5598_14->entryD.4155;
+  if (D.5599_15 != bbD.4195_2)
+    goto <bb 11>;
+  else
+    goto <bb 10>;
+  # SUCC: 11 [86.0%]  (true,exec) 10 [14.0%]  (false,exec)
+
+  # BLOCK 11 freq:757
+  # PRED: 9 [86.0%]  (true,exec)
+  goto <bb 3>;
+  # SUCC: 3 [100.0%]  (fallthru)
+
+  # BLOCK 10 freq:165
+  # PRED: 3 [4.5%]  (true,exec) 9 [14.0%]  (false,exec)
+  # D.5594_4 = PHI <1(3), 0(9)>
+  return D.5594_4;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+Immediate_uses: 
+
+bb_1 : -->3 uses.
+bb_20 = ASSERT_EXPR <bb_1, bb_1 != source_7(D)>;
+bb_20 = ASSERT_EXPR <bb_1, bb_1 != source_7(D)>;
+if (bb_1 == source_7(D))
+# DEBUG bb => bb_1
+
+bb_2 : -->2 uses.
+bb_1 = PHI <target_5(D)(2), bb_2(11)>
+if (D.5599_15 != bb_2)
+# DEBUG bb => bb_2
+
+ve_3 : -->3 uses.
+ve_21 = ASSERT_EXPR <ve_3, ve_3 != 0B>;
+ve_21 = ASSERT_EXPR <ve_3, ve_3 != 0B>;
+if (ve_3 != 0B)
+# DEBUG ve => ve_3
+
+D.5594_4 : --> single use.
+return D.5594_4;
+
+target_5(D) : --> single use.
+bb_1 = PHI <target_5(D)(2), bb_2(11)>
+# DEBUG bb => target_5(D)
+
+source_7(D) : -->2 uses.
+bb_20 = ASSERT_EXPR <bb_1, bb_1 != source_7(D)>;
+if (bb_1 == source_7(D))
+
+ve_9 : --> single use.
+ve_3 = PHI <ve_9(4), ve_13(7)>
+# DEBUG ve => ve_9
+
+e_10 : -->3 uses.
+e_22 = ASSERT_EXPR <e_10, e_10 != 0B>;
+e_22 = ASSERT_EXPR <e_10, e_10 != 0B>;
+D.5595_11 = e_10->type;
+# DEBUG e => e_10
+
+D.5595_11 : --> single use.
+if (D.5595_11 == 1)
+
+bb_12 : --> single use.
+bb_2 = PHI <bb_12(6), bb_19(8)>
+# DEBUG bb => bb_12
+
+ve_13 : --> single use.
+ve_3 = PHI <ve_9(4), ve_13(7)>
+# DEBUG ve => ve_13
+
+cfg.7_14 : --> single use.
+D.5599_15 = cfg.7_14->entry;
+
+D.5599_15 : --> single use.
+if (D.5599_15 != bb_2)
+
+.MEM_17(D) : -->7 uses.
+# VUSE <.MEM_17(D)>
+D.5599_15 = cfg.7_14->entry;
+# VUSE <.MEM_17(D)>
+cfg.7_14 = cfg;
+# VUSE <.MEM_17(D)>
+ve_13 = ve_21->next;
+# VUSE <.MEM_17(D)>
+bb_12 = e_18->source;
+# VUSE <.MEM_17(D)>
+D.5595_11 = e_10->type;
+# VUSE <.MEM_17(D)>
+e_10 = ve_21->edge;
+# VUSE <.MEM_17(D)>
+ve_9 = bb_20->pred;
+
+e_18 : --> single use.
+bb_12 = e_18->source;
+
+bb_19 : --> single use.
+bb_2 = PHI <bb_12(6), bb_19(8)>
+
+bb_20 : -->3 uses.
+bb_19 = ASSERT_EXPR <bb_20, bb_20 != 0B>;
+bb_19 = ASSERT_EXPR <bb_20, bb_20 != 0B>;
+ve_9 = bb_20->pred;
+
+ve_21 : -->2 uses.
+ve_13 = ve_21->next;
+e_10 = ve_21->edge;
+
+e_22 : --> single use.
+e_18 = PHI <e_22(5)>
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+Adding Destination of edge (2 -> 3) to worklist
+
+
+Simulating block 3
+
+Visiting PHI node: bbD.4195_1 = PHI <targetD.4192_5(D)(2), bbD.4195_2(11)>
+
+    Argument #0 (2 -> 3 executable)
+	targetD.4192_5(D)
+	Value: VARYING
+
+Visiting statement:
+if (bbD.4195_1 == sourceD.4191_7(D))
+
+
+Visiting conditional with predicate: if (bb_1 == source_7(D))
+
+With known ranges
+	bb_1: VARYING	source_7(D): []
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (3 -> 10) to worklist
+
+Adding Destination of edge (3 -> 4) to worklist
+
+
+Simulating statement (from ssa_edges): bbD.4195_20 = ASSERT_EXPR <bbD.4195_1, bbD.4195_1 != sourceD.4191_7(D)>;
+
+Simulating block 4
+
+Visiting statement:
+bbD.4195_20 = ASSERT_EXPR <bbD.4195_1, bbD.4195_1 != sourceD.4191_7(D)>;
+
+Found new range for bb_20: ~[source_7(D), source_7(D)]
+
+
+Visiting statement:
+bbD.4195_19 = ASSERT_EXPR <bbD.4195_20, bbD.4195_20 != 0B>;
+
+Found new range for bb_19: ~[0B, 0B]
+
+Adding Destination of edge (4 -> 8) to worklist
+
+
+Simulating statement (from ssa_edges): bbD.4195_2 = PHI <bbD.4195_12(6), bbD.4195_19(8)>
+
+Visiting PHI node: bbD.4195_2 = PHI <bbD.4195_12(6), bbD.4195_19(8)>
+
+    Argument #0 (6 -> 9 not executable)
+
+    Argument #1 (8 -> 9 not executable)
+
+Simulating block 10
+
+Visiting PHI node: D.5594_4 = PHI <1(3), 0(9)>
+
+    Argument #0 (3 -> 10 executable)
+	1
+	Value: [1, 1]
+
+    Argument #1 (9 -> 10 not executable)
+
+Visiting statement:
+return D.5594_4;
+
+
+Simulating block 8
+
+Visiting PHI node: veD.4196_3 = PHI <veD.4196_9(4), veD.4196_13(7)>
+
+    Argument #0 (4 -> 8 executable)
+	veD.4196_9
+	Value: VARYING
+
+Visiting statement:
+if (veD.4196_3 != 0B)
+
+
+Visiting conditional with predicate: if (ve_3 != 0B)
+
+With known ranges
+	ve_3: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (8 -> 5) to worklist
+
+Adding Destination of edge (8 -> 9) to worklist
+
+
+Simulating statement (from ssa_edges): veD.4196_21 = ASSERT_EXPR <veD.4196_3, veD.4196_3 != 0B>;
+
+Simulating block 5
+
+Visiting statement:
+veD.4196_21 = ASSERT_EXPR <veD.4196_3, veD.4196_3 != 0B>;
+
+Found new range for ve_21: ~[0B, 0B]
+
+
+Visiting statement:
+eD.4197_22 = ASSERT_EXPR <eD.4197_10, eD.4197_10 != 0B>;
+
+Found new range for e_22: ~[0B, 0B]
+
+
+Visiting statement:
+if (D.5595_11 == 1)
+
+
+Visiting conditional with predicate: if (D.5595_11 == 1)
+
+With known ranges
+	D.5595_11: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (5 -> 6) to worklist
+
+Adding Destination of edge (5 -> 7) to worklist
+
+
+Simulating statement (from ssa_edges): eD.4197_18 = PHI <eD.4197_22(5)>
+
+Visiting PHI node: eD.4197_18 = PHI <eD.4197_22(5)>
+
+    Argument #0 (5 -> 6 executable)
+	eD.4197_22
+	Value: ~[0B, 0B]  EQUIVALENCES: { e_10 } (1 elements)
+
+Simulating block 6
+
+Visiting PHI node: eD.4197_18 = PHI <eD.4197_22(5)>
+
+    Argument #0 (5 -> 6 executable)
+	eD.4197_22
+	Value: ~[0B, 0B]  EQUIVALENCES: { e_10 } (1 elements)
+
+Simulating block 9
+
+Visiting PHI node: bbD.4195_2 = PHI <bbD.4195_12(6), bbD.4195_19(8)>
+
+    Argument #0 (6 -> 9 executable)
+	bbD.4195_12
+	Value: VARYING
+
+Visiting statement:
+if (D.5599_15 != bbD.4195_2)
+
+
+Visiting conditional with predicate: if (D.5599_15 != bb_2)
+
+With known ranges
+	D.5599_15: VARYING	bb_2: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (9 -> 11) to worklist
+
+Adding Destination of edge (9 -> 10) to worklist
+
+
+Simulating block 7
+Adding Destination of edge (7 -> 8) to worklist
+
+
+Simulating block 11
+Adding Destination of edge (11 -> 3) to worklist
+
+
+Simulating block 10
+
+Visiting PHI node: D.5594_4 = PHI <1(3), 0(9)>
+
+    Argument #0 (3 -> 10 executable)
+	1
+	Value: [1, 1]
+
+    Argument #1 (9 -> 10 executable)
+	0
+	Value: [0, 0]
+
+Simulating block 8
+
+Simulating block 3
+
+Value ranges after VRP:
+
+bb_1: VARYING
+bb_2: VARYING
+ve_3: VARYING
+D.5594_4: [0, 1]
+target_5(D): VARYING
+source_7(D): VARYING
+ve_9: VARYING
+e_10: VARYING
+D.5595_11: VARYING
+bb_12: VARYING
+ve_13: VARYING
+cfg.7_14: VARYING
+D.5599_15: VARYING
+e_18: ~[0B, 0B]  EQUIVALENCES: { e_10 } (1 elements)
+bb_19: ~[0B, 0B]  EQUIVALENCES: { bb_1 bb_20 } (2 elements)
+bb_20: ~[source_7(D), source_7(D)]  EQUIVALENCES: { bb_1 } (1 elements)
+ve_21: ~[0B, 0B]  EQUIVALENCES: { ve_3 } (1 elements)
+e_22: ~[0B, 0B]  EQUIVALENCES: { e_10 } (1 elements)
+
+
+
+Substituting values and folding statements
+
+Folding statement: # DEBUG bb => target_5(D)
+Not folded
+Folding statement: if (bb_1 == source_7(D))
+Not folded
+Folding statement: # DEBUG bb => bb_1
+Not folded
+Folding statement: # DEBUG ve => ve_9
+Not folded
+Folding statement: ve_9 = bb_20->pred;
+Not folded
+Folding statement: if (D.5595_11 == 1)
+Not folded
+Folding statement: D.5595_11 = e_10->type;
+Not folded
+Folding statement: # DEBUG e => e_10
+Not folded
+Folding statement: e_10 = ve_21->edge;
+Not folded
+Folding statement: # DEBUG bb => bb_12
+Not folded
+Folding statement: bb_12 = e_18->source;
+Not folded
+Folding statement: # DEBUG ve => ve_13
+Not folded
+Folding statement: ve_13 = ve_21->next;
+Not folded
+Folding statement: if (ve_3 != 0B)
+Not folded
+Folding statement: # DEBUG ve => ve_3
+Not folded
+Folding statement: if (D.5599_15 != bb_2)
+Not folded
+Folding statement: D.5599_15 = cfg.7_14->entry;
+Not folded
+Folding statement: cfg.7_14 = cfg;
+Not folded
+Folding statement: # DEBUG bb => bb_2
+Not folded
+Folding statement: return D.5594_4;
+Not folded
+
+Pass statistics:
+----------------
+Number of ASSERT_EXPR expressions inserted: 4
+
+Removing basic block 11
+;; basic block 11, loop depth 1, count 0
+;; prev block 9, next block 10
+;; pred:      
+;; succ:       3 [100.0%]  (fallthru,dfs_back,exec)
+<bb 11>:
+Invalid sum of incoming frequencies 0, should be 757
+goto <bb 3>;
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  struct basic_block * bbD.4195;
+  struct vec_edge * veD.4196;
+  struct edge * eD.4197;
+
+}
+is_ancestor (struct basic_block * sourceD.4191, struct basic_block * targetD.4192)
+{
+  struct edge * eD.4197;
+  struct vec_edge * veD.4196;
+  struct basic_block * bbD.4195;
+  struct basic_block * D.5599;
+  struct control_flow_graph * cfg.7D.5598;
+  edge_type D.5595;
+  intD.0 D.5594;
+
+  # BLOCK 2 freq:165
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  # SUCC: 3 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:921
+  # PRED: 2 [100.0%]  (fallthru,exec) 9 [86.0%]  (true,exec)
+  # bbD.4195_1 = PHI <targetD.4192_5(D)(2), bbD.4195_2(9)>
+  # DEBUG bbD.4195 => bbD.4195_1
+  if (bbD.4195_1 == sourceD.4191_7(D))
+    goto <bb 10>;
+  else
+    goto <bb 4>;
+  # SUCC: 10 [4.5%]  (true,exec) 4 [95.5%]  (false,exec)
+
+  # BLOCK 4 freq:880
+  # PRED: 3 [95.5%]  (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_9 = bbD.4195_1->predD.4147;
+  # DEBUG veD.4196 => veD.4196_9
+  goto <bb 8>;
+  # SUCC: 8 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9550
+  # PRED: 8 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_10 = veD.4196_3->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_10
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_11 = eD.4197_10->typeD.4133;
+  if (D.5595_11 == 1)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+  # SUCC: 6 [4.5%]  (true,exec) 7 [95.5%]  (false,exec)
+
+  # BLOCK 6 freq:430
+  # PRED: 5 [4.5%]  (true,exec)
+  # eD.4197_18 = PHI <eD.4197_10(5)>
+  # VUSE <.MEMD.5611_17(D)>
+  bbD.4195_12 = eD.4197_18->sourceD.4134;
+  # DEBUG bbD.4195 => bbD.4195_12
+  goto <bb 9>;
+  # SUCC: 9 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:9120
+  # PRED: 5 [95.5%]  (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_13 = veD.4196_3->nextD.4139;
+  # DEBUG veD.4196 => veD.4196_13
+  # SUCC: 8 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 8 freq:10000
+  # PRED: 4 [100.0%]  (fallthru,exec) 7 [100.0%]  (fallthru,dfs_back,exec)
+  # veD.4196_3 = PHI <veD.4196_9(4), veD.4196_13(7)>
+  # DEBUG veD.4196 => veD.4196_3
+  if (veD.4196_3 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+  # SUCC: 5 [95.5%]  (true,exec) 9 [4.5%]  (false,exec)
+
+  # BLOCK 9 freq:880
+  # PRED: 6 [100.0%]  (fallthru,exec) 8 [4.5%]  (false,exec)
+  # bbD.4195_2 = PHI <bbD.4195_12(6), bbD.4195_1(8)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  # VUSE <.MEMD.5611_17(D)>
+  cfg.7D.5598_14 = cfgD.4174;
+  # VUSE <.MEMD.5611_17(D)>
+  D.5599_15 = cfg.7D.5598_14->entryD.4155;
+  if (D.5599_15 != bbD.4195_2)
+    goto <bb 3>;
+  else
+    goto <bb 10>;
+  # SUCC: 3 [86.0%]  (true,exec) 10 [14.0%]  (false,exec)
+
+  # BLOCK 10 freq:165
+  # PRED: 3 [4.5%]  (true,exec) 9 [14.0%]  (false,exec)
+  # D.5594_4 = PHI <1(3), 0(9)>
+  return D.5594_4;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edge (mark_edge)
+
+
+Pass statistics:
+----------------
+
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7
+;; 2 succs { 3 4 }
+;; 3 succs { 7 }
+;; 4 succs { 5 6 }
+;; 5 succs { 7 }
+;; 6 succs { 7 }
+;; 7 succs { 1 }
+
+ASSERT_EXPRs to be inserted
+
+Assertions to be inserted for e_1(D)
+	source_2 = e_1(D)->source;
+
+	BB #2
+	PREDICATE: e_1(D) ne_expr 0B
+
+	e_1(D)->type = 2;
+
+	BB #5
+	PREDICATE: e_1(D) ne_expr 0B
+
+	e_1(D)->type = 4;
+
+	BB #6
+	PREDICATE: e_1(D) ne_expr 0B
+
+
+
+
+
+Registering new PHI nodes in block #2
+
+Updating SSA information for statement source_2 = e_1(D)->source;
+
+Updating SSA information for statement e_10 = ASSERT_EXPR <e_1(D), e_1(D) != 0B>;
+
+Updating SSA information for statement target_3 = e_1(D)->target;
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement e_1(D)->type = 3;
+
+
+
+Registering new PHI nodes in block #4
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement e_1(D)->type = 2;
+
+Updating SSA information for statement e_11 = ASSERT_EXPR <e_1(D), e_1(D) != 0B>;
+
+
+
+Registering new PHI nodes in block #6
+
+Updating SSA information for statement e_1(D)->type = 4;
+
+Updating SSA information for statement e_12 = ASSERT_EXPR <e_1(D), e_1(D) != 0B>;
+
+
+
+Registering new PHI nodes in block #7
+
+
+DFA Statistics for mark_edge
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      6         24b
+Variables annotated                       6         72b
+USE operands                             19         76b
+DEF operands                              7         28b
+VUSE operands                             7         28b
+VDEF operands                             3         12b
+PHI nodes                                 0          0b
+PHI arguments                             0          0b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  240b
+---------------------------------------------------------
+
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+e_10 -> { e_1(D) }
+e_11 -> { e_1(D) }
+e_12 -> { e_1(D) }
+
+Number of virtual NEW -> OLD mappings:       0
+Number of real NEW -> OLD mappings:          3
+Number of total NEW -> OLD mappings:         3
+
+Number of virtual symbols: 0
+
+
+Incremental SSA update started at block: 2
+
+Number of blocks in CFG: 8
+Number of blocks to update: 4 ( 50%)
+
+Affected blocks: 2 3 5 6 
+
+
+
+SSA form after inserting ASSERT_EXPRs
+mark_edge (struct edge * eD.4203)
+{
+  struct basic_block * targetD.4207;
+  struct basic_block * sourceD.4206;
+  intD.0 D.5588;
+  intD.0 D.5584;
+
+  # BLOCK 2 freq:10000
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  sourceD.4206_2 = eD.4203_1(D)->sourceD.4134;
+  eD.4203_10 = ASSERT_EXPR <eD.4203_1(D), eD.4203_1(D) != 0B>;
+  # DEBUG sourceD.4206 => sourceD.4206_2
+  # VUSE <.MEMD.5612_6(D)>
+  targetD.4207_3 = eD.4203_10->targetD.4135;
+  # DEBUG targetD.4207 => targetD.4207_3
+  # VUSE <.MEMD.5612_6(D)>
+  D.5584_4 = is_ancestorD.4193 (targetD.4207_3, sourceD.4206_2);
+  if (D.5584_4 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [61.0%]  (true,exec) 4 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:6102
+  # PRED: 2 [61.0%]  (true,exec)
+  # .MEMD.5612_7 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_10->typeD.4133 = 3;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:3898
+  # PRED: 2 [39.0%]  (false,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  D.5588_5 = is_ancestorD.4193 (sourceD.4206_2, targetD.4207_3);
+  if (D.5588_5 != 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [39.0%]  (true,exec) 6 [61.0%]  (false,exec)
+
+  # BLOCK 5 freq:1520
+  # PRED: 4 [39.0%]  (true,exec)
+  # .MEMD.5612_8 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_10->typeD.4133 = 2;
+  eD.4203_11 = ASSERT_EXPR <eD.4203_10, eD.4203_10 != 0B>;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:2378
+  # PRED: 4 [61.0%]  (false,exec)
+  # .MEMD.5612_9 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_10->typeD.4133 = 4;
+  eD.4203_12 = ASSERT_EXPR <eD.4203_10, eD.4203_10 != 0B>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 3 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+Immediate_uses: 
+
+e_1(D) : -->3 uses.
+e_10 = ASSERT_EXPR <e_1(D), e_1(D) != 0B>;
+e_10 = ASSERT_EXPR <e_1(D), e_1(D) != 0B>;
+source_2 = e_1(D)->source;
+
+source_2 : -->2 uses.
+D.5588_5 = is_ancestor (source_2, target_3);
+D.5584_4 = is_ancestor (target_3, source_2);
+# DEBUG source => source_2
+
+target_3 : -->2 uses.
+D.5588_5 = is_ancestor (source_2, target_3);
+D.5584_4 = is_ancestor (target_3, source_2);
+# DEBUG target => target_3
+
+D.5584_4 : --> single use.
+if (D.5584_4 != 0)
+
+D.5588_5 : --> single use.
+if (D.5588_5 != 0)
+
+.MEM_6(D) : -->7 uses.
+# VUSE <.MEM_6(D)>
+D.5588_5 = is_ancestor (source_2, target_3);
+# VUSE <.MEM_6(D)>
+D.5584_4 = is_ancestor (target_3, source_2);
+# .MEM_9 = VDEF <.MEM_6(D)>
+e_10->type = 4;
+# .MEM_8 = VDEF <.MEM_6(D)>
+e_10->type = 2;
+# .MEM_7 = VDEF <.MEM_6(D)>
+e_10->type = 3;
+# VUSE <.MEM_6(D)>
+target_3 = e_10->target;
+# VUSE <.MEM_6(D)>
+source_2 = e_1(D)->source;
+
+.MEM_7 : --> no uses.
+
+.MEM_8 : --> no uses.
+
+.MEM_9 : --> no uses.
+
+e_10 : -->8 uses.
+e_12 = ASSERT_EXPR <e_10, e_10 != 0B>;
+e_12 = ASSERT_EXPR <e_10, e_10 != 0B>;
+e_10->type = 4;
+e_11 = ASSERT_EXPR <e_10, e_10 != 0B>;
+e_11 = ASSERT_EXPR <e_10, e_10 != 0B>;
+e_10->type = 2;
+e_10->type = 3;
+target_3 = e_10->target;
+
+e_11 : --> no uses.
+
+e_12 : --> no uses.
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+eD.4203_10 = ASSERT_EXPR <eD.4203_1(D), eD.4203_1(D) != 0B>;
+
+Found new range for e_10: ~[0B, 0B]
+
+
+Visiting statement:
+if (D.5584_4 != 0)
+
+
+Visiting conditional with predicate: if (D.5584_4 != 0)
+
+With known ranges
+	D.5584_4: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (2 -> 3) to worklist
+
+Adding Destination of edge (2 -> 4) to worklist
+
+
+Simulating statement (from ssa_edges): eD.4203_11 = ASSERT_EXPR <eD.4203_10, eD.4203_10 != 0B>;
+
+Simulating statement (from ssa_edges): eD.4203_12 = ASSERT_EXPR <eD.4203_10, eD.4203_10 != 0B>;
+
+Simulating block 3
+Adding Destination of edge (3 -> 7) to worklist
+
+
+Simulating block 4
+
+Visiting statement:
+if (D.5588_5 != 0)
+
+
+Visiting conditional with predicate: if (D.5588_5 != 0)
+
+With known ranges
+	D.5588_5: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (4 -> 5) to worklist
+
+Adding Destination of edge (4 -> 6) to worklist
+
+
+Simulating block 5
+
+Visiting statement:
+eD.4203_11 = ASSERT_EXPR <eD.4203_10, eD.4203_10 != 0B>;
+
+Found new range for e_11: ~[0B, 0B]
+
+
+Simulating block 7
+
+Visiting statement:
+return;
+
+
+Simulating block 6
+
+Visiting statement:
+eD.4203_12 = ASSERT_EXPR <eD.4203_10, eD.4203_10 != 0B>;
+
+Found new range for e_12: ~[0B, 0B]
+
+Adding Destination of edge (6 -> 7) to worklist
+
+
+Simulating block 7
+
+Value ranges after VRP:
+
+e_1(D): VARYING
+source_2: VARYING
+target_3: VARYING
+D.5584_4: VARYING
+D.5588_5: VARYING
+e_10: ~[0B, 0B]  EQUIVALENCES: { e_1(D) } (1 elements)
+e_11: ~[0B, 0B]  EQUIVALENCES: { e_1(D) e_10 } (2 elements)
+e_12: ~[0B, 0B]  EQUIVALENCES: { e_1(D) e_10 } (2 elements)
+
+
+
+Substituting values and folding statements
+
+Folding statement: if (D.5584_4 != 0)
+Not folded
+Folding statement: D.5584_4 = is_ancestor (target_3, source_2);
+Not folded
+Folding statement: # DEBUG target => target_3
+Not folded
+Folding statement: target_3 = e_10->target;
+Not folded
+Folding statement: # DEBUG source => source_2
+Not folded
+Folding statement: source_2 = e_1(D)->source;
+Not folded
+Folding statement: e_10->type = 3;
+Not folded
+Folding statement: if (D.5588_5 != 0)
+Not folded
+Folding statement: D.5588_5 = is_ancestor (source_2, target_3);
+Not folded
+Folding statement: e_10->type = 2;
+Not folded
+Folding statement: e_10->type = 4;
+Not folded
+Folding statement: return;
+Not folded
+
+Pass statistics:
+----------------
+Number of ASSERT_EXPR expressions inserted: 3
+
+mark_edge (struct edge * eD.4203)
+{
+  struct basic_block * targetD.4207;
+  struct basic_block * sourceD.4206;
+  intD.0 D.5588;
+  intD.0 D.5584;
+
+  # BLOCK 2 freq:10000
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  sourceD.4206_2 = eD.4203_1(D)->sourceD.4134;
+  # DEBUG sourceD.4206 => sourceD.4206_2
+  # VUSE <.MEMD.5612_6(D)>
+  targetD.4207_3 = eD.4203_1(D)->targetD.4135;
+  # DEBUG targetD.4207 => targetD.4207_3
+  # VUSE <.MEMD.5612_6(D)>
+  D.5584_4 = is_ancestorD.4193 (targetD.4207_3, sourceD.4206_2);
+  if (D.5584_4 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [61.0%]  (true,exec) 4 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:6102
+  # PRED: 2 [61.0%]  (true,exec)
+  # .MEMD.5612_7 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 3;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:3898
+  # PRED: 2 [39.0%]  (false,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  D.5588_5 = is_ancestorD.4193 (sourceD.4206_2, targetD.4207_3);
+  if (D.5588_5 != 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [39.0%]  (true,exec) 6 [61.0%]  (false,exec)
+
+  # BLOCK 5 freq:1520
+  # PRED: 4 [39.0%]  (true,exec)
+  # .MEMD.5612_8 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 2;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:2378
+  # PRED: 4 [61.0%]  (false,exec)
+  # .MEMD.5612_9 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 4;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 3 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edges (mark_edges)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7
+;;
+;; Loop 1
+;;  header 6, latch 5
+;;  depth 1, outer 0
+;;  nodes: 6 5 3 4
+;; 2 succs { 6 }
+;; 3 succs { 4 5 }
+;; 4 succs { 5 }
+;; 5 succs { 6 }
+;; 6 succs { 3 7 }
+;; 7 succs { 1 }
+
+ASSERT_EXPRs to be inserted
+
+Assertions to be inserted for e_1
+	if (e_1 != 0B)
+
+	BB #3
+	EDGE 6->3 6 [91.0%]  (true,exec)
+	PREDICATE: e_1 ne_expr 0B
+
+
+
+
+
+Registering new PHI nodes in block #6
+
+Updating SSA information for statement # DEBUG e => e_1
+
+Updating SSA information for statement if (e_1 != 0B)
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement e_11 = ASSERT_EXPR <e_1, e_1 != 0B>;
+
+Updating SSA information for statement D.5581_5 = e_1->type;
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement mark_edge (e_1);
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement e_6 = e_1->next;
+
+
+
+Registering new PHI nodes in block #7
+
+
+DFA Statistics for mark_edges
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      6         24b
+Variables annotated                       6         72b
+USE operands                             13         52b
+DEF operands                              6         24b
+VUSE operands                             6         24b
+VDEF operands                             1          4b
+PHI nodes                                 3        180b
+PHI arguments                             6        144b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  524b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+e_11 -> { e_1 }
+
+Number of virtual NEW -> OLD mappings:       0
+Number of real NEW -> OLD mappings:          1
+Number of total NEW -> OLD mappings:         1
+
+Number of virtual symbols: 0
+
+
+Incremental SSA update started at block: 6
+
+Number of blocks in CFG: 8
+Number of blocks to update: 4 ( 50%)
+
+Affected blocks: 3 4 5 6 
+
+
+
+SSA form after inserting ASSERT_EXPRs
+mark_edges ()
+{
+  struct edge * eD.4212;
+  struct control_flow_graph * cfgD.4211;
+  edge_type D.5581;
+  struct function * current_function.6D.5580;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5613_9(D)>
+  current_function.6D.5580_2 = current_functionD.4113;
+  # VUSE <.MEMD.5613_9(D)>
+  cfgD.4211_3 = current_function.6D.5580_2->cfgD.4162;
+  # DEBUG cfgD.4211 => cfgD.4211_3
+  # VUSE <.MEMD.5613_9(D)>
+  eD.4212_4 = cfgD.4211_3->edgeD.4159;
+  # DEBUG eD.4212 => eD.4212_4
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 6 [91.0%]  (true,exec)
+  eD.4212_11 = ASSERT_EXPR <eD.4212_1, eD.4212_1 != 0B>;
+  # VUSE <.MEMD.5613_8>
+  D.5581_5 = eD.4212_11->typeD.4133;
+  if (D.5581_5 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 [29.0%]  (true,exec) 5 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5613_10 = VDEF <.MEMD.5613_8>
+  mark_edgeD.4204 (eD.4212_11);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5613_7 = PHI <.MEMD.5613_8(3), .MEMD.5613_10(4)>
+  # VUSE <.MEMD.5613_7>
+  eD.4212_6 = eD.4212_11->nextD.4136;
+  # DEBUG eD.4212 => eD.4212_6
+  # SUCC: 6 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 6 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,dfs_back,exec)
+  # eD.4212_1 = PHI <eD.4212_4(2), eD.4212_6(5)>
+  # .MEMD.5613_8 = PHI <.MEMD.5613_9(D)(2), .MEMD.5613_7(5)>
+  # DEBUG eD.4212 => eD.4212_1
+  if (eD.4212_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:900
+  # PRED: 6 [9.0%]  (false,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+Immediate_uses: 
+
+e_1 : -->3 uses.
+e_11 = ASSERT_EXPR <e_1, e_1 != 0B>;
+e_11 = ASSERT_EXPR <e_1, e_1 != 0B>;
+if (e_1 != 0B)
+# DEBUG e => e_1
+
+current_function.6_2 : --> single use.
+cfg_3 = current_function.6_2->cfg;
+
+cfg_3 : --> single use.
+e_4 = cfg_3->edge;
+# DEBUG cfg => cfg_3
+
+e_4 : --> single use.
+e_1 = PHI <e_4(2), e_6(5)>
+# DEBUG e => e_4
+
+D.5581_5 : --> single use.
+if (D.5581_5 == 0)
+
+e_6 : --> single use.
+e_1 = PHI <e_4(2), e_6(5)>
+# DEBUG e => e_6
+
+.MEM_7 : -->2 uses.
+.MEM_8 = PHI <.MEM_9(D)(2), .MEM_7(5)>
+# VUSE <.MEM_7>
+e_6 = e_11->next;
+
+.MEM_8 : -->3 uses.
+# .MEM_10 = VDEF <.MEM_8>
+mark_edge (e_11);
+.MEM_7 = PHI <.MEM_8(3), .MEM_10(4)>
+# VUSE <.MEM_8>
+D.5581_5 = e_11->type;
+
+.MEM_9(D) : -->4 uses.
+.MEM_8 = PHI <.MEM_9(D)(2), .MEM_7(5)>
+# VUSE <.MEM_9(D)>
+e_4 = cfg_3->edge;
+# VUSE <.MEM_9(D)>
+cfg_3 = current_function.6_2->cfg;
+# VUSE <.MEM_9(D)>
+current_function.6_2 = current_function;
+
+.MEM_10 : --> single use.
+.MEM_7 = PHI <.MEM_8(3), .MEM_10(4)>
+
+e_11 : -->3 uses.
+e_6 = e_11->next;
+mark_edge (e_11);
+D.5581_5 = e_11->type;
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+Adding Destination of edge (2 -> 6) to worklist
+
+
+Simulating block 6
+
+Visiting PHI node: eD.4212_1 = PHI <eD.4212_4(2), eD.4212_6(5)>
+
+    Argument #0 (2 -> 6 executable)
+	eD.4212_4
+	Value: VARYING
+
+Visiting statement:
+if (eD.4212_1 != 0B)
+
+
+Visiting conditional with predicate: if (e_1 != 0B)
+
+With known ranges
+	e_1: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (6 -> 3) to worklist
+
+Adding Destination of edge (6 -> 7) to worklist
+
+
+Simulating statement (from ssa_edges): eD.4212_11 = ASSERT_EXPR <eD.4212_1, eD.4212_1 != 0B>;
+
+Simulating block 3
+
+Visiting statement:
+eD.4212_11 = ASSERT_EXPR <eD.4212_1, eD.4212_1 != 0B>;
+
+Found new range for e_11: ~[0B, 0B]
+
+
+Visiting statement:
+if (D.5581_5 == 0)
+
+
+Visiting conditional with predicate: if (D.5581_5 == 0)
+
+With known ranges
+	D.5581_5: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (3 -> 4) to worklist
+
+Adding Destination of edge (3 -> 5) to worklist
+
+
+Simulating block 7
+
+Visiting statement:
+return;
+
+
+Simulating block 4
+
+Simulating block 5
+Adding Destination of edge (5 -> 6) to worklist
+
+
+Simulating block 6
+
+Value ranges after VRP:
+
+e_1: VARYING
+current_function.6_2: VARYING
+cfg_3: VARYING
+e_4: VARYING
+D.5581_5: VARYING
+e_6: VARYING
+.MEM_7: VARYING
+.MEM_8: VARYING
+e_11: ~[0B, 0B]  EQUIVALENCES: { e_1 } (1 elements)
+
+
+
+Substituting values and folding statements
+
+Folding statement: # DEBUG e => e_4
+Not folded
+Folding statement: e_4 = cfg_3->edge;
+Not folded
+Folding statement: # DEBUG cfg => cfg_3
+Not folded
+Folding statement: cfg_3 = current_function.6_2->cfg;
+Not folded
+Folding statement: current_function.6_2 = current_function;
+Not folded
+Folding statement: if (D.5581_5 == 0)
+Not folded
+Folding statement: D.5581_5 = e_11->type;
+Not folded
+Folding statement: mark_edge (e_11);
+Not folded
+Folding statement: # DEBUG e => e_6
+Not folded
+Folding statement: e_6 = e_11->next;
+Not folded
+Folding statement: if (e_1 != 0B)
+Not folded
+Folding statement: # DEBUG e => e_1
+Not folded
+Folding statement: return;
+Not folded
+
+Pass statistics:
+----------------
+Number of ASSERT_EXPR expressions inserted: 1
+
+mark_edges ()
+{
+  struct edge * eD.4212;
+  struct control_flow_graph * cfgD.4211;
+  edge_type D.5581;
+  struct function * current_function.6D.5580;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5613_9(D)>
+  current_function.6D.5580_2 = current_functionD.4113;
+  # VUSE <.MEMD.5613_9(D)>
+  cfgD.4211_3 = current_function.6D.5580_2->cfgD.4162;
+  # DEBUG cfgD.4211 => cfgD.4211_3
+  # VUSE <.MEMD.5613_9(D)>
+  eD.4212_4 = cfgD.4211_3->edgeD.4159;
+  # DEBUG eD.4212 => eD.4212_4
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 6 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5613_8>
+  D.5581_5 = eD.4212_1->typeD.4133;
+  if (D.5581_5 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 [29.0%]  (true,exec) 5 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5613_10 = VDEF <.MEMD.5613_8>
+  mark_edgeD.4204 (eD.4212_1);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5613_7 = PHI <.MEMD.5613_8(3), .MEMD.5613_10(4)>
+  # VUSE <.MEMD.5613_7>
+  eD.4212_6 = eD.4212_1->nextD.4136;
+  # DEBUG eD.4212 => eD.4212_6
+  # SUCC: 6 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 6 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,dfs_back,exec)
+  # eD.4212_1 = PHI <eD.4212_4(2), eD.4212_6(5)>
+  # .MEMD.5613_8 = PHI <.MEMD.5613_9(D)(2), .MEMD.5613_7(5)>
+  # DEBUG eD.4212 => eD.4212_1
+  if (eD.4212_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:900
+  # PRED: 6 [9.0%]  (false,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance_recursive (calc_max_distance_recursive)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9
+;;
+;; Loop 1
+;;  header 7, latch 6
+;;  depth 1, outer 0
+;;  nodes: 7 6 4 5
+;; 2 succs { 3 9 }
+;; 3 succs { 7 }
+;; 4 succs { 6 5 }
+;; 5 succs { 6 }
+;; 6 succs { 7 }
+;; 7 succs { 4 8 }
+;; 8 succs { 9 }
+;; 9 succs { 1 }
+
+
+Registering new PHI nodes in block #7
+
+Updating SSA information for statement # DEBUG max => max_2
+
+
+
+Registering new PHI nodes in block #4
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement max_12 = MAX_EXPR <val_11, max_2>;
+
+
+
+Registering new PHI nodes in block #6
+
+
+
+Registering new PHI nodes in block #8
+
+Updating SSA information for statement D.5577_14 = max_2 + 1;
+
+
+DFA Statistics for calc_max_distance_recursive
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                     11         44b
+Variables annotated                      11        132b
+USE operands                             25        100b
+DEF operands                             10         40b
+VUSE operands                             9         36b
+VDEF operands                             2          8b
+PHI nodes                                 7        420b
+PHI arguments                            13        312b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                 1092b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 1.9 (max: 2)
+
+
+Hash table statistics:
+    def_blocks:   size 31, 2 elements, 0.000000 collision/search ratio
+    repl_tbl:     size 31, 1 elements, 0.000000 collision/search ratio
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+max_22 -> { max_2 }
+
+Number of virtual NEW -> OLD mappings:       0
+Number of real NEW -> OLD mappings:          1
+Number of total NEW -> OLD mappings:         1
+
+Number of virtual symbols: 0
+
+
+Incremental SSA update started at block: 7
+
+Number of blocks in CFG: 10
+Number of blocks to update: 5 ( 50%)
+
+Affected blocks: 4 5 6 7 8 
+
+
+
+ASSERT_EXPRs to be inserted
+
+Assertions to be inserted for ve_3
+	if (ve_3 != 0B)
+
+	BB #4
+	EDGE 7->4 7 [91.0%]  (true,exec)
+	PREDICATE: ve_3 ne_expr 0B
+
+
+Assertions to be inserted for bb_5(D)
+	D.5570_6 = bb_5(D)->max_distance;
+
+	BB #2
+	PREDICATE: bb_5(D) ne_expr 0B
+
+	ve_7 = bb_5(D)->pred;
+
+	BB #3
+	PREDICATE: bb_5(D) ne_expr 0B
+
+
+Assertions to be inserted for e_8
+	D.5573_9 = e_8->type;
+
+	BB #4
+	PREDICATE: e_8 ne_expr 0B
+
+
+
+
+
+Registering new PHI nodes in block #2
+
+Updating SSA information for statement D.5570_6 = bb_5(D)->max_distance;
+
+Updating SSA information for statement bb_24 = ASSERT_EXPR <bb_5(D), bb_5(D) != 0B>;
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement ve_7 = bb_5(D)->pred;
+
+Updating SSA information for statement bb_25 = ASSERT_EXPR <bb_5(D), bb_5(D) != 0B>;
+
+
+
+Registering new PHI nodes in block #7
+
+Updating SSA information for statement # DEBUG ve => ve_3
+
+Updating SSA information for statement if (ve_3 != 0B)
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement ve_23 = ASSERT_EXPR <ve_3, ve_3 != 0B>;
+
+Updating SSA information for statement e_8 = ve_3->edge;
+
+Updating SSA information for statement # DEBUG e => e_8
+
+Updating SSA information for statement D.5573_9 = e_8->type;
+
+Updating SSA information for statement e_26 = ASSERT_EXPR <e_8, e_8 != 0B>;
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement D.5576_10 = e_8->source;
+
+
+
+Registering new PHI nodes in block #6
+
+Updating SSA information for statement ve_13 = ve_3->next;
+
+
+
+Registering new PHI nodes in block #8
+
+Updating SSA information for statement bb_5(D)->max_distance = D.5577_14;
+
+
+
+Registering new PHI nodes in block #9
+
+Updating SSA information for statement D.5578_15 = bb_5(D)->max_distance;
+
+
+DFA Statistics for calc_max_distance_recursive
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                     11         44b
+Variables annotated                      11        132b
+USE operands                             33        132b
+DEF operands                             14         56b
+VUSE operands                             9         36b
+VDEF operands                             2          8b
+PHI nodes                                 7        420b
+PHI arguments                            13        312b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                 1140b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 1.9 (max: 2)
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+ve_23 -> { ve_3 }
+bb_24 -> { bb_5(D) }
+bb_25 -> { bb_5(D) }
+e_26 -> { e_8 }
+
+Number of virtual NEW -> OLD mappings:       0
+Number of real NEW -> OLD mappings:          4
+Number of total NEW -> OLD mappings:         4
+
+Number of virtual symbols: 0
+
+
+Incremental SSA update started at block: 2
+
+Number of blocks in CFG: 10
+Number of blocks to update: 8 ( 80%)
+
+Affected blocks: 2 3 4 5 6 7 8 9 
+
+
+
+SSA form after inserting ASSERT_EXPRs
+calc_max_distance_recursive (struct basic_block * bbD.4216)
+{
+  struct edge * eD.4222;
+  struct vec_edge * veD.4221;
+  intD.0 maxD.4220;
+  intD.0 valD.4219;
+  intD.0 D.5578;
+  intD.0 D.5577;
+  struct basic_block * D.5576;
+  edge_type D.5573;
+  intD.0 D.5570;
+
+  # BLOCK 2 freq:1475
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4220 => 0
+  # VUSE <.MEMD.5614_19(D)>
+  D.5570_6 = bbD.4216_5(D)->max_distanceD.4146;
+  bbD.4216_24 = ASSERT_EXPR <bbD.4216_5(D), bbD.4216_5(D) != 0B>;
+  if (D.5570_6 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 9>;
+  # SUCC: 3 [61.0%]  (true,exec) 9 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:900
+  # PRED: 2 [61.0%]  (true,exec)
+  # VUSE <.MEMD.5614_19(D)>
+  veD.4221_7 = bbD.4216_24->predD.4147;
+  bbD.4216_25 = ASSERT_EXPR <bbD.4216_24, bbD.4216_24 != 0B>;
+  # DEBUG veD.4221 => veD.4221_7
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:9100
+  # PRED: 7 [91.0%]  (true,exec)
+  veD.4221_23 = ASSERT_EXPR <veD.4221_3, veD.4221_3 != 0B>;
+  # VUSE <.MEMD.5614_17>
+  eD.4222_8 = veD.4221_23->edgeD.4138;
+  # DEBUG eD.4222 => eD.4222_8
+  # VUSE <.MEMD.5614_17>
+  D.5573_9 = eD.4222_8->typeD.4133;
+  eD.4222_26 = ASSERT_EXPR <eD.4222_8, eD.4222_8 != 0B>;
+  if (D.5573_9 == 3)
+    goto <bb 6>;
+  else
+    goto <bb 5>;
+  # SUCC: 6 [48.8%]  (true,exec) 5 [51.2%]  (false,exec)
+
+  # BLOCK 5 freq:4662
+  # PRED: 4 [51.2%]  (false,exec)
+  # VUSE <.MEMD.5614_17>
+  D.5576_10 = eD.4222_26->sourceD.4134;
+  # .MEMD.5614_20 = VDEF <.MEMD.5614_17>
+  valD.4219_11 = calc_max_distance_recursiveD.4217 (D.5576_10);
+  # DEBUG valD.4219 => valD.4219_11
+  maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_2>;
+  # DEBUG maxD.4220 => maxD.4220_12
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 4 [48.8%]  (true,exec) 5 [100.0%]  (fallthru,exec)
+  # maxD.4220_1 = PHI <maxD.4220_2(4), maxD.4220_12(5)>
+  # .MEMD.5614_16 = PHI <.MEMD.5614_17(4), .MEMD.5614_20(5)>
+  # DEBUG maxD.4220 => maxD.4220_1
+  # VUSE <.MEMD.5614_16>
+  veD.4221_13 = veD.4221_23->nextD.4139;
+  # DEBUG veD.4221 => veD.4221_13
+  # SUCC: 7 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 3 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,dfs_back,exec)
+  # maxD.4220_2 = PHI <0(3), maxD.4220_1(6)>
+  # veD.4221_3 = PHI <veD.4221_7(3), veD.4221_13(6)>
+  # .MEMD.5614_17 = PHI <.MEMD.5614_19(D)(3), .MEMD.5614_16(6)>
+  # DEBUG veD.4221 => veD.4221_3
+  # DEBUG maxD.4220 => maxD.4220_2
+  if (veD.4221_3 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 8>;
+  # SUCC: 4 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 8 freq:900
+  # PRED: 7 [9.0%]  (false,exec)
+  # maxD.4220_22 = PHI <maxD.4220_2(7)>
+  D.5577_14 = maxD.4220_22 + 1;
+  # .MEMD.5614_21 = VDEF <.MEMD.5614_17>
+  bbD.4216_25->max_distanceD.4146 = D.5577_14;
+  # SUCC: 9 [100.0%]  (fallthru,exec)
+
+  # BLOCK 9 freq:1475
+  # PRED: 2 [39.0%]  (false,exec) 8 [100.0%]  (fallthru,exec)
+  # .MEMD.5614_18 = PHI <.MEMD.5614_19(D)(2), .MEMD.5614_21(8)>
+  # VUSE <.MEMD.5614_18>
+  D.5578_15 = bbD.4216_24->max_distanceD.4146;
+  return D.5578_15;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+Immediate_uses: 
+
+max_1 : --> single use.
+max_2 = PHI <0(3), max_1(6)>
+# DEBUG max => max_1
+
+max_2 : -->3 uses.
+max_1 = PHI <max_2(4), max_12(5)>
+max_22 = PHI <max_2(7)>
+max_12 = MAX_EXPR <val_11, max_2>;
+# DEBUG max => max_2
+
+ve_3 : -->3 uses.
+ve_23 = ASSERT_EXPR <ve_3, ve_3 != 0B>;
+ve_23 = ASSERT_EXPR <ve_3, ve_3 != 0B>;
+if (ve_3 != 0B)
+# DEBUG ve => ve_3
+
+bb_5(D) : -->3 uses.
+bb_24 = ASSERT_EXPR <bb_5(D), bb_5(D) != 0B>;
+bb_24 = ASSERT_EXPR <bb_5(D), bb_5(D) != 0B>;
+D.5570_6 = bb_5(D)->max_distance;
+
+D.5570_6 : --> single use.
+if (D.5570_6 == 0)
+
+ve_7 : --> single use.
+ve_3 = PHI <ve_7(3), ve_13(6)>
+# DEBUG ve => ve_7
+
+e_8 : -->3 uses.
+e_26 = ASSERT_EXPR <e_8, e_8 != 0B>;
+e_26 = ASSERT_EXPR <e_8, e_8 != 0B>;
+D.5573_9 = e_8->type;
+# DEBUG e => e_8
+
+D.5573_9 : --> single use.
+if (D.5573_9 == 3)
+
+D.5576_10 : --> single use.
+val_11 = calc_max_distance_recursive (D.5576_10);
+
+val_11 : --> single use.
+max_12 = MAX_EXPR <val_11, max_2>;
+# DEBUG val => val_11
+
+max_12 : --> single use.
+max_1 = PHI <max_2(4), max_12(5)>
+# DEBUG max => max_12
+
+ve_13 : --> single use.
+ve_3 = PHI <ve_7(3), ve_13(6)>
+# DEBUG ve => ve_13
+
+D.5577_14 : --> single use.
+bb_25->max_distance = D.5577_14;
+
+D.5578_15 : --> single use.
+return D.5578_15;
+
+.MEM_16 : -->2 uses.
+.MEM_17 = PHI <.MEM_19(D)(3), .MEM_16(6)>
+# VUSE <.MEM_16>
+ve_13 = ve_23->next;
+
+.MEM_17 : -->6 uses.
+.MEM_16 = PHI <.MEM_17(4), .MEM_20(5)>
+# .MEM_21 = VDEF <.MEM_17>
+bb_25->max_distance = D.5577_14;
+# .MEM_20 = VDEF <.MEM_17>
+val_11 = calc_max_distance_recursive (D.5576_10);
+# VUSE <.MEM_17>
+D.5576_10 = e_26->source;
+# VUSE <.MEM_17>
+D.5573_9 = e_8->type;
+# VUSE <.MEM_17>
+e_8 = ve_23->edge;
+
+.MEM_18 : --> single use.
+# VUSE <.MEM_18>
+D.5578_15 = bb_24->max_distance;
+
+.MEM_19(D) : -->4 uses.
+.MEM_17 = PHI <.MEM_19(D)(3), .MEM_16(6)>
+# VUSE <.MEM_19(D)>
+ve_7 = bb_24->pred;
+.MEM_18 = PHI <.MEM_19(D)(2), .MEM_21(8)>
+# VUSE <.MEM_19(D)>
+D.5570_6 = bb_5(D)->max_distance;
+
+.MEM_20 : --> single use.
+.MEM_16 = PHI <.MEM_17(4), .MEM_20(5)>
+
+.MEM_21 : --> single use.
+.MEM_18 = PHI <.MEM_19(D)(2), .MEM_21(8)>
+
+max_22 : --> single use.
+D.5577_14 = max_22 + 1;
+
+ve_23 : -->2 uses.
+ve_13 = ve_23->next;
+e_8 = ve_23->edge;
+
+bb_24 : -->4 uses.
+D.5578_15 = bb_24->max_distance;
+bb_25 = ASSERT_EXPR <bb_24, bb_24 != 0B>;
+bb_25 = ASSERT_EXPR <bb_24, bb_24 != 0B>;
+ve_7 = bb_24->pred;
+
+bb_25 : --> single use.
+bb_25->max_distance = D.5577_14;
+
+e_26 : --> single use.
+D.5576_10 = e_26->source;
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+bbD.4216_24 = ASSERT_EXPR <bbD.4216_5(D), bbD.4216_5(D) != 0B>;
+
+Found new range for bb_24: ~[0B, 0B]
+
+
+Visiting statement:
+if (D.5570_6 == 0)
+
+
+Visiting conditional with predicate: if (D.5570_6 == 0)
+
+With known ranges
+	D.5570_6: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (2 -> 3) to worklist
+
+Adding Destination of edge (2 -> 9) to worklist
+
+
+Simulating statement (from ssa_edges): bbD.4216_25 = ASSERT_EXPR <bbD.4216_24, bbD.4216_24 != 0B>;
+
+Simulating block 3
+
+Visiting statement:
+bbD.4216_25 = ASSERT_EXPR <bbD.4216_24, bbD.4216_24 != 0B>;
+
+Found new range for bb_25: ~[0B, 0B]
+
+Adding Destination of edge (3 -> 7) to worklist
+
+
+Simulating block 9
+
+Visiting statement:
+return D.5578_15;
+
+
+Simulating block 7
+
+Visiting PHI node: maxD.4220_2 = PHI <0(3), maxD.4220_1(6)>
+
+    Argument #0 (3 -> 7 executable)
+	0
+	Value: [0, 0]
+
+    Argument #1 (6 -> 7 not executable)
+
+Visiting PHI node: veD.4221_3 = PHI <veD.4221_7(3), veD.4221_13(6)>
+
+    Argument #0 (3 -> 7 executable)
+	veD.4221_7
+	Value: VARYING
+
+Visiting statement:
+if (veD.4221_3 != 0B)
+
+
+Visiting conditional with predicate: if (ve_3 != 0B)
+
+With known ranges
+	ve_3: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (7 -> 4) to worklist
+
+Adding Destination of edge (7 -> 8) to worklist
+
+
+Simulating statement (from ssa_edges): veD.4221_23 = ASSERT_EXPR <veD.4221_3, veD.4221_3 != 0B>;
+
+Simulating statement (from ssa_edges): maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_2>;
+
+Simulating statement (from ssa_edges): maxD.4220_22 = PHI <maxD.4220_2(7)>
+
+Visiting PHI node: maxD.4220_22 = PHI <maxD.4220_2(7)>
+
+    Argument #0 (7 -> 8 executable)
+	maxD.4220_2
+	Value: [0, 0]
+
+Simulating statement (from ssa_edges): D.5577_14 = maxD.4220_22 + 1;
+
+Simulating statement (from ssa_edges): maxD.4220_1 = PHI <maxD.4220_2(4), maxD.4220_12(5)>
+
+Visiting PHI node: maxD.4220_1 = PHI <maxD.4220_2(4), maxD.4220_12(5)>
+
+    Argument #0 (4 -> 6 not executable)
+
+    Argument #1 (5 -> 6 not executable)
+
+Simulating block 4
+
+Visiting statement:
+veD.4221_23 = ASSERT_EXPR <veD.4221_3, veD.4221_3 != 0B>;
+
+Found new range for ve_23: ~[0B, 0B]
+
+
+Visiting statement:
+eD.4222_26 = ASSERT_EXPR <eD.4222_8, eD.4222_8 != 0B>;
+
+Found new range for e_26: ~[0B, 0B]
+
+
+Visiting statement:
+if (D.5573_9 == 3)
+
+
+Visiting conditional with predicate: if (D.5573_9 == 3)
+
+With known ranges
+	D.5573_9: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (4 -> 6) to worklist
+
+Adding Destination of edge (4 -> 5) to worklist
+
+
+Simulating block 8
+
+Visiting PHI node: maxD.4220_22 = PHI <maxD.4220_2(7)>
+
+    Argument #0 (7 -> 8 executable)
+	maxD.4220_2
+	Value: [0, 0]
+
+Visiting statement:
+D.5577_14 = maxD.4220_22 + 1;
+
+(analyze_scalar_evolution 
+  (loop_nb = 0)
+  (scalar = D.5577_14)
+(get_scalar_evolution 
+  (scalar = D.5577_14)
+  (scalar_evolution = ))
+(analyze_scalar_evolution 
+  (loop_nb = 0)
+  (scalar = max_22)
+(get_scalar_evolution 
+  (scalar = max_22)
+  (scalar_evolution = ))
+(analyze_scalar_evolution 
+  (loop_nb = 0)
+  (scalar = max_2)
+(get_scalar_evolution 
+  (scalar = max_2)
+  (scalar_evolution = ))
+(analyze_initial_condition 
+  (loop_phi_node = 
+max_2 = PHI <0(3), max_1(6)>
+)
+  (init_cond = 0))
+(analyze_evolution_in_loop 
+  (loop_phi_node = max_2 = PHI <0(3), max_1(6)>
+)
+  (evolution_function = scev_not_known))
+(set_scalar_evolution 
+  instantiated_below = 3 
+  (scalar = max_2)
+  (scalar_evolution = max_2))
+)
+(set_scalar_evolution 
+  instantiated_below = 0 
+  (scalar = max_22)
+  (scalar_evolution = max_2))
+)
+(analyze_scalar_evolution 
+  (loop_nb = 0)
+  (scalar = 1)
+(get_scalar_evolution 
+  (scalar = 1)
+  (scalar_evolution = 1))
+)
+(set_scalar_evolution 
+  instantiated_below = 0 
+  (scalar = D.5577_14)
+  (scalar_evolution = max_2 + 1))
+)
+(instantiate_scev 
+  (instantiate_below = 0)
+  (evolution_loop = 0)
+  (chrec = max_2 + 1)
+(analyze_scalar_evolution 
+  (loop_nb = 0)
+  (scalar = max_2)
+(get_scalar_evolution 
+  (scalar = max_2)
+  (scalar_evolution = ))
+(analyze_initial_condition 
+  (loop_phi_node = 
+max_2 = PHI <0(3), max_1(6)>
+)
+  (init_cond = 0))
+(analyze_evolution_in_loop 
+  (loop_phi_node = max_2 = PHI <0(3), max_1(6)>
+)
+  (evolution_function = scev_not_known))
+(set_scalar_evolution 
+  instantiated_below = 3 
+  (scalar = max_2)
+  (scalar_evolution = max_2))
+)
+  (res = scev_not_known))
+Found new range for D.5577_14: [1, 1]
+
+Adding Destination of edge (8 -> 9) to worklist
+
+
+Simulating block 6
+
+Visiting PHI node: maxD.4220_1 = PHI <maxD.4220_2(4), maxD.4220_12(5)>
+
+    Argument #0 (4 -> 6 executable)
+	maxD.4220_2
+	Value: [0, 0]
+
+    Argument #1 (5 -> 6 not executable)
+Adding Destination of edge (6 -> 7) to worklist
+
+
+Simulating statement (from ssa_edges): maxD.4220_2 = PHI <0(3), maxD.4220_1(6)>
+
+Visiting PHI node: maxD.4220_2 = PHI <0(3), maxD.4220_1(6)>
+
+    Argument #0 (3 -> 7 executable)
+	0
+	Value: [0, 0]
+
+    Argument #1 (6 -> 7 executable)
+	maxD.4220_1
+	Value: [0, 0]
+
+Simulating block 5
+
+Visiting statement:
+maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_2>;
+
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = max_12)
+(get_scalar_evolution 
+  (scalar = max_12)
+  (scalar_evolution = ))
+(set_scalar_evolution 
+  instantiated_below = 3 
+  (scalar = max_12)
+  (scalar_evolution = max_12))
+)
+(instantiate_scev 
+  (instantiate_below = 3)
+  (evolution_loop = 1)
+  (chrec = max_12)
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = max_12)
+(get_scalar_evolution 
+  (scalar = max_12)
+  (scalar_evolution = max_12))
+(set_scalar_evolution 
+  instantiated_below = 3 
+  (scalar = max_12)
+  (scalar_evolution = max_12))
+)
+  (res = scev_not_known))
+Found new range for max_12: VARYING
+
+Adding Destination of edge (5 -> 6) to worklist
+
+
+Simulating statement (from ssa_edges): maxD.4220_1 = PHI <maxD.4220_2(4), maxD.4220_12(5)>
+
+Visiting PHI node: maxD.4220_1 = PHI <maxD.4220_2(4), maxD.4220_12(5)>
+
+    Argument #0 (4 -> 6 executable)
+	maxD.4220_2
+	Value: [0, 0]
+
+    Argument #1 (5 -> 6 executable)
+	maxD.4220_12
+	Value: VARYING
+
+Simulating statement (from ssa_edges): maxD.4220_2 = PHI <0(3), maxD.4220_1(6)>
+
+Visiting PHI node: maxD.4220_2 = PHI <0(3), maxD.4220_1(6)>
+
+    Argument #0 (3 -> 7 executable)
+	0
+	Value: [0, 0]
+
+    Argument #1 (6 -> 7 executable)
+	maxD.4220_1
+	Value: VARYING
+
+Simulating statement (from ssa_edges): maxD.4220_22 = PHI <maxD.4220_2(7)>
+
+Visiting PHI node: maxD.4220_22 = PHI <maxD.4220_2(7)>
+
+    Argument #0 (7 -> 8 executable)
+	maxD.4220_2
+	Value: VARYING
+
+Simulating statement (from ssa_edges): D.5577_14 = maxD.4220_22 + 1;
+
+Visiting statement:
+D.5577_14 = maxD.4220_22 + 1;
+
+(analyze_scalar_evolution 
+  (loop_nb = 0)
+  (scalar = D.5577_14)
+(get_scalar_evolution 
+  (scalar = D.5577_14)
+  (scalar_evolution = max_2 + 1))
+(set_scalar_evolution 
+  instantiated_below = 0 
+  (scalar = D.5577_14)
+  (scalar_evolution = max_2 + 1))
+)
+(instantiate_scev 
+  (instantiate_below = 0)
+  (evolution_loop = 0)
+  (chrec = max_2 + 1)
+(analyze_scalar_evolution 
+  (loop_nb = 0)
+  (scalar = max_2)
+(get_scalar_evolution 
+  (scalar = max_2)
+  (scalar_evolution = ))
+(analyze_initial_condition 
+  (loop_phi_node = 
+max_2 = PHI <0(3), max_1(6)>
+)
+  (init_cond = 0))
+(analyze_evolution_in_loop 
+  (loop_phi_node = max_2 = PHI <0(3), max_1(6)>
+)
+  (evolution_function = scev_not_known))
+(set_scalar_evolution 
+  instantiated_below = 3 
+  (scalar = max_2)
+  (scalar_evolution = max_2))
+)
+  (res = scev_not_known))
+Found new range for D.5577_14: VARYING
+
+
+Simulating block 9
+
+Simulating block 7
+
+Simulating block 6
+
+Value ranges after VRP:
+
+max_1: VARYING
+max_2: VARYING
+ve_3: VARYING
+bb_5(D): VARYING
+D.5570_6: VARYING
+ve_7: VARYING
+e_8: VARYING
+D.5573_9: VARYING
+D.5576_10: VARYING
+val_11: VARYING
+max_12: VARYING
+ve_13: VARYING
+D.5577_14: VARYING
+D.5578_15: VARYING
+.MEM_16: VARYING
+.MEM_17: VARYING
+.MEM_18: VARYING
+max_22: VARYING
+ve_23: ~[0B, 0B]  EQUIVALENCES: { ve_3 } (1 elements)
+bb_24: ~[0B, 0B]  EQUIVALENCES: { bb_5(D) } (1 elements)
+bb_25: ~[0B, 0B]  EQUIVALENCES: { bb_5(D) bb_24 } (2 elements)
+e_26: ~[0B, 0B]  EQUIVALENCES: { e_8 } (1 elements)
+
+
+
+Substituting values and folding statements
+
+Folding statement: if (D.5570_6 == 0)
+Not folded
+Folding statement: D.5570_6 = bb_5(D)->max_distance;
+Not folded
+Folding statement: # DEBUG max => 0
+Not folded
+Folding statement: # DEBUG ve => ve_7
+Not folded
+Folding statement: ve_7 = bb_24->pred;
+Not folded
+Folding statement: if (D.5573_9 == 3)
+Not folded
+Folding statement: D.5573_9 = e_8->type;
+Not folded
+Folding statement: # DEBUG e => e_8
+Not folded
+Folding statement: e_8 = ve_23->edge;
+Not folded
+Folding statement: # DEBUG max => max_12
+Not folded
+Folding statement: max_12 = MAX_EXPR <val_11, max_2>;
+Not folded
+Folding statement: # DEBUG val => val_11
+Not folded
+Folding statement: val_11 = calc_max_distance_recursive (D.5576_10);
+Not folded
+Folding statement: D.5576_10 = e_26->source;
+Not folded
+Folding statement: # DEBUG ve => ve_13
+Not folded
+Folding statement: ve_13 = ve_23->next;
+Not folded
+Folding statement: # DEBUG max => max_1
+Not folded
+Folding statement: if (ve_3 != 0B)
+Not folded
+Folding statement: # DEBUG max => max_2
+Not folded
+Folding statement: # DEBUG ve => ve_3
+Not folded
+Folding statement: bb_25->max_distance = D.5577_14;
+Not folded
+Folding statement: D.5577_14 = max_22 + 1;
+Not folded
+Folding statement: return D.5578_15;
+Not folded
+Folding statement: D.5578_15 = bb_24->max_distance;
+Not folded
+
+Pass statistics:
+----------------
+Number of ASSERT_EXPR expressions inserted: 4
+
+calc_max_distance_recursive (struct basic_block * bbD.4216)
+{
+  struct edge * eD.4222;
+  struct vec_edge * veD.4221;
+  intD.0 maxD.4220;
+  intD.0 valD.4219;
+  intD.0 D.5578;
+  intD.0 D.5577;
+  struct basic_block * D.5576;
+  edge_type D.5573;
+  intD.0 D.5570;
+
+  # BLOCK 2 freq:1475
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4220 => 0
+  # VUSE <.MEMD.5614_19(D)>
+  D.5570_6 = bbD.4216_5(D)->max_distanceD.4146;
+  if (D.5570_6 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 9>;
+  # SUCC: 3 [61.0%]  (true,exec) 9 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:900
+  # PRED: 2 [61.0%]  (true,exec)
+  # VUSE <.MEMD.5614_19(D)>
+  veD.4221_7 = bbD.4216_5(D)->predD.4147;
+  # DEBUG veD.4221 => veD.4221_7
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:9100
+  # PRED: 7 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5614_17>
+  eD.4222_8 = veD.4221_3->edgeD.4138;
+  # DEBUG eD.4222 => eD.4222_8
+  # VUSE <.MEMD.5614_17>
+  D.5573_9 = eD.4222_8->typeD.4133;
+  if (D.5573_9 == 3)
+    goto <bb 6>;
+  else
+    goto <bb 5>;
+  # SUCC: 6 [48.8%]  (true,exec) 5 [51.2%]  (false,exec)
+
+  # BLOCK 5 freq:4662
+  # PRED: 4 [51.2%]  (false,exec)
+  # VUSE <.MEMD.5614_17>
+  D.5576_10 = eD.4222_8->sourceD.4134;
+  # .MEMD.5614_20 = VDEF <.MEMD.5614_17>
+  valD.4219_11 = calc_max_distance_recursiveD.4217 (D.5576_10);
+  # DEBUG valD.4219 => valD.4219_11
+  maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_2>;
+  # DEBUG maxD.4220 => maxD.4220_12
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 4 [48.8%]  (true,exec) 5 [100.0%]  (fallthru,exec)
+  # maxD.4220_1 = PHI <maxD.4220_2(4), maxD.4220_12(5)>
+  # .MEMD.5614_16 = PHI <.MEMD.5614_17(4), .MEMD.5614_20(5)>
+  # DEBUG maxD.4220 => maxD.4220_1
+  # VUSE <.MEMD.5614_16>
+  veD.4221_13 = veD.4221_3->nextD.4139;
+  # DEBUG veD.4221 => veD.4221_13
+  # SUCC: 7 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 3 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,dfs_back,exec)
+  # maxD.4220_2 = PHI <0(3), maxD.4220_1(6)>
+  # veD.4221_3 = PHI <veD.4221_7(3), veD.4221_13(6)>
+  # .MEMD.5614_17 = PHI <.MEMD.5614_19(D)(3), .MEMD.5614_16(6)>
+  # DEBUG veD.4221 => veD.4221_3
+  # DEBUG maxD.4220 => maxD.4220_2
+  if (veD.4221_3 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 8>;
+  # SUCC: 4 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 8 freq:900
+  # PRED: 7 [9.0%]  (false,exec)
+  # maxD.4220_22 = PHI <maxD.4220_2(7)>
+  D.5577_14 = maxD.4220_22 + 1;
+  # .MEMD.5614_21 = VDEF <.MEMD.5614_17>
+  bbD.4216_5(D)->max_distanceD.4146 = D.5577_14;
+  # SUCC: 9 [100.0%]  (fallthru,exec)
+
+  # BLOCK 9 freq:1475
+  # PRED: 2 [39.0%]  (false,exec) 8 [100.0%]  (fallthru,exec)
+  # .MEMD.5614_18 = PHI <.MEMD.5614_19(D)(2), .MEMD.5614_21(8)>
+  # VUSE <.MEMD.5614_18>
+  D.5578_15 = bbD.4216_5(D)->max_distanceD.4146;
+  return D.5578_15;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance (calc_max_distance)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 7 8 9
+;;
+;; Loop 1
+;;  header 8, latch 7
+;;  depth 1, outer 0
+;;  nodes: 8 7 3 4 5
+;; 2 succs { 8 }
+;; 3 succs { 4 7 }
+;; 4 succs { 5 7 }
+;; 5 succs { 7 }
+;; 7 succs { 8 }
+;; 8 succs { 3 9 }
+;; 9 succs { 1 }
+
+
+Registering new PHI nodes in block #8
+
+Updating SSA information for statement # DEBUG max => max_2
+
+
+
+Registering new PHI nodes in block #3
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement if (max_2 <= val_12)
+
+
+
+Registering new PHI nodes in block #5
+
+
+
+Registering new PHI nodes in block #7
+
+
+
+Registering new PHI nodes in block #9
+
+Updating SSA information for statement D.5562_18->max_distance = max_2;
+
+
+DFA Statistics for calc_max_distance
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      8         32b
+Variables annotated                       8         96b
+USE operands                             21         84b
+DEF operands                              9         36b
+VUSE operands                            11         44b
+VDEF operands                             5         20b
+PHI nodes                                 6        360b
+PHI arguments                            13        312b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  984b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.2 (max: 3)
+
+
+Hash table statistics:
+    def_blocks:   size 31, 2 elements, 0.000000 collision/search ratio
+    repl_tbl:     size 31, 1 elements, 0.000000 collision/search ratio
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+max_4 -> { max_2 }
+
+Number of virtual NEW -> OLD mappings:       0
+Number of real NEW -> OLD mappings:          1
+Number of total NEW -> OLD mappings:         1
+
+Number of virtual symbols: 0
+
+
+Incremental SSA update started at block: 8
+
+Number of blocks in CFG: 10
+Number of blocks to update: 5 ( 50%)
+
+Affected blocks: 3 4 7 8 9 
+
+
+
+ASSERT_EXPRs to be inserted
+
+Assertions to be inserted for max_2
+	if (max_2 <= val_12)
+
+	BB #5
+	EDGE 4->5 4 [50.0%]  (true,exec)
+	PREDICATE: max_2 le_expr val_12
+
+	if (max_2 <= val_12)
+
+	BB #7
+	EDGE 4->7 4 [50.0%]  (false,exec)
+	PREDICATE: max_2 gt_expr val_12
+
+
+Assertions to be inserted for bb_3
+	if (bb_3 != 0B)
+
+	BB #3
+	EDGE 8->3 8 [91.0%]  (true,exec)
+	PREDICATE: bb_3 ne_expr 0B
+
+
+Assertions to be inserted for cfg.4_6
+	D.5562_7 = cfg.4_6->exit;
+
+	BB #2
+	PREDICATE: cfg.4_6 ne_expr 0B
+
+
+Assertions to be inserted for val_12
+	if (max_2 <= val_12)
+
+	BB #5
+	EDGE 4->5 4 [50.0%]  (true,exec)
+	PREDICATE: val_12 ge_expr max_2
+
+
+
+
+
+Registering new PHI nodes in block #2
+
+Updating SSA information for statement cfg.4_6 = cfg;
+
+Updating SSA information for statement D.5562_7 = cfg.4_6->exit;
+
+Updating SSA information for statement cfg.4_28 = ASSERT_EXPR <cfg.4_6, cfg.4_6 != 0B>;
+
+Updating SSA information for statement bb_10 = cfg.4_6->bb;
+
+
+
+Registering new PHI nodes in block #8
+
+Updating SSA information for statement # DEBUG bb => bb_3
+
+Updating SSA information for statement # DEBUG max => max_2
+
+Updating SSA information for statement if (bb_3 != 0B)
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement bb_27 = ASSERT_EXPR <bb_3, bb_3 != 0B>;
+
+Updating SSA information for statement D.5563_11 = bb_3->max_distance;
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement val_12 = calc_max_distance_recursive (bb_3);
+
+Updating SSA information for statement # DEBUG val => val_12
+
+Updating SSA information for statement if (max_2 <= val_12)
+
+
+
+Registering new PHI nodes in block #5
+
+Updating SSA information for statement max_17 = ASSERT_EXPR <max_2, max_2 <= val_12>;
+
+Updating SSA information for statement val_29 = ASSERT_EXPR <val_12, val_12 >= max_2>;
+
+Updating SSA information for statement max_13 = val_12 + 1;
+
+
+
+Registering new PHI nodes in block #10
+
+Updating SSA information for statement max_9 = ASSERT_EXPR <max_2, max_2 > val_12>;
+
+
+
+Registering new PHI nodes in block #7
+
+Updating SSA information for statement bb_16 = bb_3->next;
+
+
+
+Registering new PHI nodes in block #9
+
+Updating SSA information for statement D.5562_18 = cfg.4_6->exit;
+
+
+DFA Statistics for calc_max_distance
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      8         32b
+Variables annotated                       8         96b
+USE operands                             34        136b
+DEF operands                             14         56b
+VUSE operands                            11         44b
+VDEF operands                             5         20b
+PHI nodes                                 6        360b
+PHI arguments                            13        312b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                 1056b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.2 (max: 3)
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+max_9 -> { max_2 }
+max_17 -> { max_2 }
+bb_27 -> { bb_3 }
+cfg.4_28 -> { cfg.4_6 }
+val_29 -> { val_12 }
+
+Number of virtual NEW -> OLD mappings:       0
+Number of real NEW -> OLD mappings:          5
+Number of total NEW -> OLD mappings:         5
+
+Number of virtual symbols: 0
+
+
+Incremental SSA update started at block: 2
+
+Number of blocks in CFG: 11
+Number of blocks to update: 8 ( 73%)
+
+Affected blocks: 2 3 4 5 7 8 9 10 
+
+
+
+SSA form after inserting ASSERT_EXPRs
+calc_max_distance ()
+{
+  struct basic_block * bbD.4232;
+  intD.0 maxD.4231;
+  intD.0 valD.4230;
+  intD.0 D.5563;
+  struct basic_block * D.5562;
+  struct control_flow_graph * cfg.4D.5561;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4231 => 0
+  # .MEMD.5615_22 = VDEF <.MEMD.5615_21(D)>
+  depth_first_searchD.4185 ();
+  # .MEMD.5615_23 = VDEF <.MEMD.5615_22>
+  mark_edgesD.4209 ();
+  # VUSE <.MEMD.5615_23>
+  cfg.4D.5561_6 = cfgD.4174;
+  # VUSE <.MEMD.5615_23>
+  D.5562_7 = cfg.4D.5561_6->exitD.4156;
+  cfg.4D.5561_28 = ASSERT_EXPR <cfg.4D.5561_6, cfg.4D.5561_6 != 0B>;
+  # .MEMD.5615_24 = VDEF <.MEMD.5615_23>
+  maxD.4231_8 = calc_max_distance_recursiveD.4217 (D.5562_7);
+  # DEBUG maxD.4231 => maxD.4231_8
+  # VUSE <.MEMD.5615_24>
+  bbD.4232_10 = cfg.4D.5561_28->bbD.4157;
+  # DEBUG bbD.4232 => bbD.4232_10
+  goto <bb 8>;
+  # SUCC: 8 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 8 [91.0%]  (true,exec)
+  bbD.4232_27 = ASSERT_EXPR <bbD.4232_3, bbD.4232_3 != 0B>;
+  # VUSE <.MEMD.5615_20>
+  D.5563_11 = bbD.4232_27->max_distanceD.4146;
+  if (D.5563_11 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 7>;
+  # SUCC: 4 [29.0%]  (true,exec) 7 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5615_25 = VDEF <.MEMD.5615_20>
+  valD.4230_12 = calc_max_distance_recursiveD.4217 (bbD.4232_27);
+  # DEBUG valD.4230 => valD.4230_12
+  if (maxD.4231_2 <= valD.4230_12)
+    goto <bb 5>;
+  else
+    goto <bb 10>;
+  # SUCC: 5 [50.0%]  (true,exec) 10 [50.0%]  (false,exec)
+
+  # BLOCK 10 freq:1320
+  # PRED: 4 [50.0%]  (false,exec)
+  maxD.4231_9 = ASSERT_EXPR <maxD.4231_2, maxD.4231_2 > valD.4230_12>;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru)
+
+  # BLOCK 5 freq:1319
+  # PRED: 4 [50.0%]  (true,exec)
+  maxD.4231_17 = ASSERT_EXPR <maxD.4231_2, maxD.4231_2 <= valD.4230_12>;
+  valD.4230_29 = ASSERT_EXPR <valD.4230_12, valD.4230_12 >= maxD.4231_17>;
+  maxD.4231_13 = valD.4230_29 + 1;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 10 [100.0%]  (fallthru) 5 [100.0%]  (fallthru,exec)
+  # maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_9(10), maxD.4231_13(5)>
+  # .MEMD.5615_19 = PHI <.MEMD.5615_20(3), .MEMD.5615_25(10), .MEMD.5615_25(5)>
+  # DEBUG maxD.4231 => maxD.4231_1
+  # VUSE <.MEMD.5615_19>
+  bbD.4232_16 = bbD.4232_27->nextD.4151;
+  # DEBUG bbD.4232 => bbD.4232_16
+  # SUCC: 8 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 8 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 7 [100.0%]  (fallthru,dfs_back,exec)
+  # maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(7)>
+  # bbD.4232_3 = PHI <bbD.4232_10(2), bbD.4232_16(7)>
+  # .MEMD.5615_20 = PHI <.MEMD.5615_24(2), .MEMD.5615_19(7)>
+  # DEBUG bbD.4232 => bbD.4232_3
+  # DEBUG maxD.4231 => maxD.4231_2
+  if (bbD.4232_3 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 9>;
+  # SUCC: 3 [91.0%]  (true,exec) 9 [9.0%]  (false,exec)
+
+  # BLOCK 9 freq:900
+  # PRED: 8 [9.0%]  (false,exec)
+  # maxD.4231_4 = PHI <maxD.4231_2(8)>
+  # VUSE <.MEMD.5615_20>
+  D.5562_18 = cfg.4D.5561_28->exitD.4156;
+  # .MEMD.5615_26 = VDEF <.MEMD.5615_20>
+  D.5562_18->max_distanceD.4146 = maxD.4231_4;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+Immediate_uses: 
+
+max_1 : --> single use.
+max_2 = PHI <max_8(2), max_1(7)>
+# DEBUG max => max_1
+
+max_2 : -->7 uses.
+max_1 = PHI <max_2(3), max_9(10), max_13(5)>
+max_4 = PHI <max_2(8)>
+max_9 = ASSERT_EXPR <max_2, max_2 > val_12>;
+max_9 = ASSERT_EXPR <max_2, max_2 > val_12>;
+max_17 = ASSERT_EXPR <max_2, max_2 <= val_12>;
+max_17 = ASSERT_EXPR <max_2, max_2 <= val_12>;
+if (max_2 <= val_12)
+# DEBUG max => max_2
+
+bb_3 : -->3 uses.
+bb_27 = ASSERT_EXPR <bb_3, bb_3 != 0B>;
+bb_27 = ASSERT_EXPR <bb_3, bb_3 != 0B>;
+if (bb_3 != 0B)
+# DEBUG bb => bb_3
+
+max_4 : --> single use.
+D.5562_18->max_distance = max_4;
+
+cfg.4_6 : -->3 uses.
+cfg.4_28 = ASSERT_EXPR <cfg.4_6, cfg.4_6 != 0B>;
+cfg.4_28 = ASSERT_EXPR <cfg.4_6, cfg.4_6 != 0B>;
+D.5562_7 = cfg.4_6->exit;
+
+D.5562_7 : --> single use.
+max_8 = calc_max_distance_recursive (D.5562_7);
+
+max_8 : --> single use.
+max_2 = PHI <max_8(2), max_1(7)>
+# DEBUG max => max_8
+
+max_9 : --> single use.
+max_1 = PHI <max_2(3), max_9(10), max_13(5)>
+
+bb_10 : --> single use.
+bb_3 = PHI <bb_10(2), bb_16(7)>
+# DEBUG bb => bb_10
+
+D.5563_11 : --> single use.
+if (D.5563_11 == 0)
+
+val_12 : -->5 uses.
+val_29 = ASSERT_EXPR <val_12, val_12 >= max_17>;
+val_29 = ASSERT_EXPR <val_12, val_12 >= max_17>;
+max_9 = ASSERT_EXPR <max_2, max_2 > val_12>;
+max_17 = ASSERT_EXPR <max_2, max_2 <= val_12>;
+if (max_2 <= val_12)
+# DEBUG val => val_12
+
+max_13 : --> single use.
+max_1 = PHI <max_2(3), max_9(10), max_13(5)>
+
+bb_16 : --> single use.
+bb_3 = PHI <bb_10(2), bb_16(7)>
+# DEBUG bb => bb_16
+
+max_17 : --> single use.
+val_29 = ASSERT_EXPR <val_12, val_12 >= max_17>;
+
+D.5562_18 : --> single use.
+D.5562_18->max_distance = max_4;
+
+.MEM_19 : -->2 uses.
+.MEM_20 = PHI <.MEM_24(2), .MEM_19(7)>
+# VUSE <.MEM_19>
+bb_16 = bb_27->next;
+
+.MEM_20 : -->5 uses.
+# VUSE <.MEM_20>
+D.5562_18 = cfg.4_28->exit;
+# .MEM_26 = VDEF <.MEM_20>
+D.5562_18->max_distance = max_4;
+# .MEM_25 = VDEF <.MEM_20>
+val_12 = calc_max_distance_recursive (bb_27);
+.MEM_19 = PHI <.MEM_20(3), .MEM_25(10), .MEM_25(5)>
+# VUSE <.MEM_20>
+D.5563_11 = bb_27->max_distance;
+
+.MEM_21(D) : --> single use.
+# .MEM_22 = VDEF <.MEM_21(D)>
+depth_first_search ();
+
+.MEM_22 : --> single use.
+# .MEM_23 = VDEF <.MEM_22>
+mark_edges ();
+
+.MEM_23 : -->3 uses.
+# .MEM_24 = VDEF <.MEM_23>
+max_8 = calc_max_distance_recursive (D.5562_7);
+# VUSE <.MEM_23>
+D.5562_7 = cfg.4_6->exit;
+# VUSE <.MEM_23>
+cfg.4_6 = cfg;
+
+.MEM_24 : -->2 uses.
+# VUSE <.MEM_24>
+bb_10 = cfg.4_28->bb;
+.MEM_20 = PHI <.MEM_24(2), .MEM_19(7)>
+
+.MEM_25 : -->2 uses.
+.MEM_19 = PHI <.MEM_20(3), .MEM_25(10), .MEM_25(5)>
+.MEM_19 = PHI <.MEM_20(3), .MEM_25(10), .MEM_25(5)>
+
+.MEM_26 : --> no uses.
+
+bb_27 : -->3 uses.
+bb_16 = bb_27->next;
+val_12 = calc_max_distance_recursive (bb_27);
+D.5563_11 = bb_27->max_distance;
+
+cfg.4_28 : -->2 uses.
+D.5562_18 = cfg.4_28->exit;
+bb_10 = cfg.4_28->bb;
+
+val_29 : --> single use.
+max_13 = val_29 + 1;
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+cfg.4D.5561_28 = ASSERT_EXPR <cfg.4D.5561_6, cfg.4D.5561_6 != 0B>;
+
+Found new range for cfg.4_28: ~[0B, 0B]
+
+Adding Destination of edge (2 -> 8) to worklist
+
+
+Simulating block 8
+
+Visiting PHI node: maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(7)>
+
+    Argument #0 (2 -> 8 executable)
+	maxD.4231_8
+	Value: VARYING
+
+Visiting PHI node: bbD.4232_3 = PHI <bbD.4232_10(2), bbD.4232_16(7)>
+
+    Argument #0 (2 -> 8 executable)
+	bbD.4232_10
+	Value: VARYING
+
+Visiting statement:
+if (bbD.4232_3 != 0B)
+
+
+Visiting conditional with predicate: if (bb_3 != 0B)
+
+With known ranges
+	bb_3: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (8 -> 3) to worklist
+
+Adding Destination of edge (8 -> 9) to worklist
+
+
+Simulating statement (from ssa_edges): bbD.4232_27 = ASSERT_EXPR <bbD.4232_3, bbD.4232_3 != 0B>;
+
+Simulating statement (from ssa_edges): if (maxD.4231_2 <= valD.4230_12)
+
+Simulating statement (from ssa_edges): maxD.4231_17 = ASSERT_EXPR <maxD.4231_2, maxD.4231_2 <= valD.4230_12>;
+
+Simulating statement (from ssa_edges): maxD.4231_9 = ASSERT_EXPR <maxD.4231_2, maxD.4231_2 > valD.4230_12>;
+
+Simulating statement (from ssa_edges): maxD.4231_4 = PHI <maxD.4231_2(8)>
+
+Visiting PHI node: maxD.4231_4 = PHI <maxD.4231_2(8)>
+
+    Argument #0 (8 -> 9 executable)
+	maxD.4231_2
+	Value: VARYING
+
+Simulating statement (from ssa_edges): maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_9(10), maxD.4231_13(5)>
+
+Visiting PHI node: maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_9(10), maxD.4231_13(5)>
+
+    Argument #0 (3 -> 7 not executable)
+
+    Argument #1 (10 -> 7 not executable)
+
+    Argument #2 (5 -> 7 not executable)
+
+Simulating block 3
+
+Visiting statement:
+bbD.4232_27 = ASSERT_EXPR <bbD.4232_3, bbD.4232_3 != 0B>;
+
+Found new range for bb_27: ~[0B, 0B]
+
+
+Visiting statement:
+if (D.5563_11 == 0)
+
+
+Visiting conditional with predicate: if (D.5563_11 == 0)
+
+With known ranges
+	D.5563_11: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (3 -> 4) to worklist
+
+Adding Destination of edge (3 -> 7) to worklist
+
+
+Simulating block 9
+
+Visiting statement:
+return;
+
+
+Simulating block 4
+
+Visiting statement:
+if (maxD.4231_2 <= valD.4230_12)
+
+
+Visiting conditional with predicate: if (max_2 <= val_12)
+
+With known ranges
+	max_2: VARYING	val_12: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (4 -> 5) to worklist
+
+Adding Destination of edge (4 -> 10) to worklist
+
+
+Simulating block 5
+
+Visiting statement:
+maxD.4231_17 = ASSERT_EXPR <maxD.4231_2, maxD.4231_2 <= valD.4230_12>;
+
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = max_17)
+(get_scalar_evolution 
+  (scalar = max_17)
+  (scalar_evolution = ))
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = max_2)
+(get_scalar_evolution 
+  (scalar = max_2)
+  (scalar_evolution = ))
+(analyze_initial_condition 
+  (loop_phi_node = 
+max_2 = PHI <max_8(2), max_1(7)>
+)
+  (init_cond = max_8))
+(analyze_evolution_in_loop 
+  (loop_phi_node = max_2 = PHI <max_8(2), max_1(7)>
+)
+  (evolution_function = scev_not_known))
+(set_scalar_evolution 
+  instantiated_below = 2 
+  (scalar = max_2)
+  (scalar_evolution = max_2))
+)
+(set_scalar_evolution 
+  instantiated_below = 2 
+  (scalar = max_17)
+  (scalar_evolution = max_2))
+)
+(instantiate_scev 
+  (instantiate_below = 2)
+  (evolution_loop = 1)
+  (chrec = max_2)
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = max_2)
+(get_scalar_evolution 
+  (scalar = max_2)
+  (scalar_evolution = max_2))
+(set_scalar_evolution 
+  instantiated_below = 2 
+  (scalar = max_2)
+  (scalar_evolution = max_2))
+)
+  (res = scev_not_known))
+Found new range for max_17: [-INF, val_12]
+
+
+Visiting statement:
+valD.4230_29 = ASSERT_EXPR <valD.4230_12, valD.4230_12 >= maxD.4231_17>;
+
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = val_29)
+(get_scalar_evolution 
+  (scalar = val_29)
+  (scalar_evolution = ))
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = val_12)
+(get_scalar_evolution 
+  (scalar = val_12)
+  (scalar_evolution = ))
+(set_scalar_evolution 
+  instantiated_below = 2 
+  (scalar = val_12)
+  (scalar_evolution = val_12))
+)
+(set_scalar_evolution 
+  instantiated_below = 2 
+  (scalar = val_29)
+  (scalar_evolution = val_12))
+)
+(instantiate_scev 
+  (instantiate_below = 2)
+  (evolution_loop = 1)
+  (chrec = val_12)
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = val_12)
+(get_scalar_evolution 
+  (scalar = val_12)
+  (scalar_evolution = val_12))
+(set_scalar_evolution 
+  instantiated_below = 2 
+  (scalar = val_12)
+  (scalar_evolution = val_12))
+)
+  (res = scev_not_known))
+Found new range for val_29: [max_17, +INF]
+
+
+Visiting statement:
+maxD.4231_13 = valD.4230_29 + 1;
+
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = max_13)
+(get_scalar_evolution 
+  (scalar = max_13)
+  (scalar_evolution = ))
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = val_29)
+(get_scalar_evolution 
+  (scalar = val_29)
+  (scalar_evolution = val_12))
+(set_scalar_evolution 
+  instantiated_below = 2 
+  (scalar = val_29)
+  (scalar_evolution = val_12))
+)
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = 1)
+(get_scalar_evolution 
+  (scalar = 1)
+  (scalar_evolution = 1))
+)
+(set_scalar_evolution 
+  instantiated_below = 2 
+  (scalar = max_13)
+  (scalar_evolution = val_12 + 1))
+)
+(instantiate_scev 
+  (instantiate_below = 2)
+  (evolution_loop = 1)
+  (chrec = val_12 + 1)
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = val_12)
+(get_scalar_evolution 
+  (scalar = val_12)
+  (scalar_evolution = val_12))
+(set_scalar_evolution 
+  instantiated_below = 2 
+  (scalar = val_12)
+  (scalar_evolution = val_12))
+)
+  (res = scev_not_known))
+Found new range for max_13: VARYING
+
+
+Simulating statement (from ssa_edges): maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_9(10), maxD.4231_13(5)>
+
+Visiting PHI node: maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_9(10), maxD.4231_13(5)>
+
+    Argument #0 (3 -> 7 executable)
+	maxD.4231_2
+	Value: VARYING
+
+Simulating block 7
+Adding Destination of edge (7 -> 8) to worklist
+
+
+Simulating block 10
+
+Visiting statement:
+maxD.4231_9 = ASSERT_EXPR <maxD.4231_2, maxD.4231_2 > valD.4230_12>;
+
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = max_9)
+(get_scalar_evolution 
+  (scalar = max_9)
+  (scalar_evolution = ))
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = max_2)
+(get_scalar_evolution 
+  (scalar = max_2)
+  (scalar_evolution = max_2))
+(set_scalar_evolution 
+  instantiated_below = 2 
+  (scalar = max_2)
+  (scalar_evolution = max_2))
+)
+(set_scalar_evolution 
+  instantiated_below = 2 
+  (scalar = max_9)
+  (scalar_evolution = max_2))
+)
+(instantiate_scev 
+  (instantiate_below = 2)
+  (evolution_loop = 1)
+  (chrec = max_2)
+(analyze_scalar_evolution 
+  (loop_nb = 1)
+  (scalar = max_2)
+(get_scalar_evolution 
+  (scalar = max_2)
+  (scalar_evolution = max_2))
+(set_scalar_evolution 
+  instantiated_below = 2 
+  (scalar = max_2)
+  (scalar_evolution = max_2))
+)
+  (res = scev_not_known))
+Found new range for max_9: [val_12 + 1, +INF]
+
+Adding Destination of edge (10 -> 7) to worklist
+
+
+Simulating block 8
+
+Simulating block 7
+
+Value ranges after VRP:
+
+max_1: VARYING
+max_2: VARYING
+bb_3: VARYING
+max_4: VARYING
+cfg.4_6: VARYING
+D.5562_7: VARYING
+max_8: VARYING
+max_9: [val_12 + 1, +INF]  EQUIVALENCES: { max_2 } (1 elements)
+bb_10: VARYING
+D.5563_11: VARYING
+val_12: VARYING
+max_13: VARYING
+bb_16: VARYING
+max_17: [-INF, val_12]  EQUIVALENCES: { max_2 } (1 elements)
+D.5562_18: VARYING
+.MEM_19: VARYING
+.MEM_20: VARYING
+bb_27: ~[0B, 0B]  EQUIVALENCES: { bb_3 } (1 elements)
+cfg.4_28: ~[0B, 0B]  EQUIVALENCES: { cfg.4_6 } (1 elements)
+val_29: [max_17, +INF]  EQUIVALENCES: { val_12 } (1 elements)
+
+
+
+Substituting values and folding statements
+
+Folding statement: # DEBUG bb => bb_10
+Not folded
+Folding statement: bb_10 = cfg.4_28->bb;
+Not folded
+Folding statement: # DEBUG max => max_8
+Not folded
+Folding statement: max_8 = calc_max_distance_recursive (D.5562_7);
+Not folded
+Folding statement: D.5562_7 = cfg.4_6->exit;
+Not folded
+Folding statement: cfg.4_6 = cfg;
+Not folded
+Folding statement: mark_edges ();
+Not folded
+Folding statement: depth_first_search ();
+Not folded
+Folding statement: # DEBUG max => 0
+Not folded
+Folding statement: if (D.5563_11 == 0)
+Not folded
+Folding statement: D.5563_11 = bb_27->max_distance;
+Not folded
+Folding statement: if (max_2 <= val_12)
+Not folded
+Folding statement: # DEBUG val => val_12
+Not folded
+Folding statement: val_12 = calc_max_distance_recursive (bb_27);
+Not folded
+Folding statement: max_13 = val_29 + 1;
+Not folded
+Folding statement: # DEBUG bb => bb_16
+Not folded
+Folding statement: bb_16 = bb_27->next;
+Not folded
+Folding statement: # DEBUG max => max_1
+Not folded
+Folding statement: if (bb_3 != 0B)
+Not folded
+Folding statement: # DEBUG max => max_2
+Not folded
+Folding statement: # DEBUG bb => bb_3
+Not folded
+Folding statement: return;
+Not folded
+Folding statement: D.5562_18->max_distance = max_4;
+Not folded
+Folding statement: D.5562_18 = cfg.4_28->exit;
+Not folded
+
+Pass statistics:
+----------------
+Number of ASSERT_EXPR expressions inserted: 5
+
+Removing basic block 10
+;; basic block 10, loop depth 1, count 0
+;; prev block 4, next block 5
+;; pred:      
+;; succ:       7 [100.0%]  (fallthru,exec)
+<bb 10>:
+Invalid sum of incoming frequencies 0, should be 1320
+goto <bb 7>;
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  intD.0 valD.4230;
+  intD.0 maxD.4231;
+  struct basic_block * bbD.4232;
+
+}
+calc_max_distance ()
+{
+  struct basic_block * bbD.4232;
+  intD.0 maxD.4231;
+  intD.0 valD.4230;
+  intD.0 D.5563;
+  struct basic_block * D.5562;
+  struct control_flow_graph * cfg.4D.5561;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4231 => 0
+  # .MEMD.5615_22 = VDEF <.MEMD.5615_21(D)>
+  depth_first_searchD.4185 ();
+  # .MEMD.5615_23 = VDEF <.MEMD.5615_22>
+  mark_edgesD.4209 ();
+  # VUSE <.MEMD.5615_23>
+  cfg.4D.5561_6 = cfgD.4174;
+  # VUSE <.MEMD.5615_23>
+  D.5562_7 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_24 = VDEF <.MEMD.5615_23>
+  maxD.4231_8 = calc_max_distance_recursiveD.4217 (D.5562_7);
+  # DEBUG maxD.4231 => maxD.4231_8
+  # VUSE <.MEMD.5615_24>
+  bbD.4232_10 = cfg.4D.5561_6->bbD.4157;
+  # DEBUG bbD.4232 => bbD.4232_10
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 7 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5615_20>
+  D.5563_11 = bbD.4232_3->max_distanceD.4146;
+  if (D.5563_11 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 6>;
+  # SUCC: 4 [29.0%]  (true,exec) 6 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5615_25 = VDEF <.MEMD.5615_20>
+  valD.4230_12 = calc_max_distance_recursiveD.4217 (bbD.4232_3);
+  # DEBUG valD.4230 => valD.4230_12
+  if (maxD.4231_2 <= valD.4230_12)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [50.0%]  (true,exec) 6 [50.0%]  (false,exec)
+
+  # BLOCK 5 freq:1319
+  # PRED: 4 [50.0%]  (true,exec)
+  maxD.4231_13 = valD.4230_12 + 1;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [50.0%]  (false,exec) 5 [100.0%]  (fallthru,exec)
+  # maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_2(4), maxD.4231_13(5)>
+  # .MEMD.5615_19 = PHI <.MEMD.5615_20(3), .MEMD.5615_25(4), .MEMD.5615_25(5)>
+  # DEBUG maxD.4231 => maxD.4231_1
+  # VUSE <.MEMD.5615_19>
+  bbD.4232_16 = bbD.4232_3->nextD.4151;
+  # DEBUG bbD.4232 => bbD.4232_16
+  # SUCC: 7 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,dfs_back,exec)
+  # maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(6)>
+  # bbD.4232_3 = PHI <bbD.4232_10(2), bbD.4232_16(6)>
+  # .MEMD.5615_20 = PHI <.MEMD.5615_24(2), .MEMD.5615_19(6)>
+  # DEBUG bbD.4232 => bbD.4232_3
+  # DEBUG maxD.4231 => maxD.4231_2
+  if (bbD.4232_3 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 8>;
+  # SUCC: 3 [91.0%]  (true,exec) 8 [9.0%]  (false,exec)
+
+  # BLOCK 8 freq:900
+  # PRED: 7 [9.0%]  (false,exec)
+  # maxD.4231_4 = PHI <maxD.4231_2(7)>
+  # VUSE <.MEMD.5615_20>
+  D.5562_18 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_26 = VDEF <.MEMD.5615_20>
+  D.5562_18->max_distanceD.4146 = maxD.4231_4;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function fine_tune_cfg (fine_tune_cfg)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5
+;;
+;; Loop 1
+;;  header 4, latch 3
+;;  depth 1, outer 0
+;;  nodes: 4 3
+;; 2 succs { 4 }
+;; 3 succs { 4 }
+;; 4 succs { 3 5 }
+;; 5 succs { 1 }
+
+ASSERT_EXPRs to be inserted
+
+Assertions to be inserted for current_function.1_2
+	if (current_function.1_2 != 0B)
+
+	BB #3
+	EDGE 4->3 4 [91.0%]  (true,exec)
+	PREDICATE: current_function.1_2 ne_expr 0B
+
+
+
+
+
+Registering new PHI nodes in block #4
+
+Updating SSA information for statement current_function.1_2 = current_function;
+
+Updating SSA information for statement if (current_function.1_2 != 0B)
+
+
+
+Registering new PHI nodes in block #3
+
+Updating SSA information for statement current_function.1_3 = ASSERT_EXPR <current_function.1_2, current_function.1_2 != 0B>;
+
+Updating SSA information for statement cfg.2_4 = current_function.1_2->cfg;
+
+
+
+Registering new PHI nodes in block #5
+
+
+DFA Statistics for fine_tune_cfg
+
+---------------------------------------------------------
+                                Number of        Memory
+                                instances         used 
+---------------------------------------------------------
+Referenced variables                      8         32b
+Variables annotated                       8         96b
+USE operands                              8         32b
+DEF operands                              6         24b
+VUSE operands                             9         36b
+VDEF operands                             4         16b
+PHI nodes                                 1         60b
+PHI arguments                             2         48b
+---------------------------------------------------------
+Total memory used by DFA/SSA data                  344b
+---------------------------------------------------------
+
+Average number of arguments per PHI node: 2.0 (max: 2)
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+current_function.1_3 -> { current_function.1_2 }
+
+Number of virtual NEW -> OLD mappings:       0
+Number of real NEW -> OLD mappings:          1
+Number of total NEW -> OLD mappings:         1
+
+Number of virtual symbols: 0
+
+
+Incremental SSA update started at block: 4
+
+Number of blocks in CFG: 6
+Number of blocks to update: 2 ( 33%)
+
+Affected blocks: 3 4 
+
+
+
+SSA form after inserting ASSERT_EXPRs
+fine_tune_cfg ()
+{
+  struct function * current_function.3D.5560;
+  struct control_flow_graph * cfg.2D.5559;
+  struct function * current_function.1D.5558;
+  struct function * first_function.0D.5557;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5616_8(D)>
+  first_function.0D.5557_1 = first_functionD.4111;
+  # .MEMD.5616_9 = VDEF <.MEMD.5616_8(D)>
+  current_functionD.4113 = first_function.0D.5557_1;
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 4 [91.0%]  (true,exec)
+  current_function.1D.5558_3 = ASSERT_EXPR <current_function.1D.5558_2, current_function.1D.5558_2 != 0B>;
+  # VUSE <.MEMD.5616_7>
+  cfg.2D.5559_4 = current_function.1D.5558_3->cfgD.4162;
+  # .MEMD.5616_10 = VDEF <.MEMD.5616_7>
+  cfgD.4174 = cfg.2D.5559_4;
+  # .MEMD.5616_11 = VDEF <.MEMD.5616_10>
+  calc_max_distanceD.4228 ();
+  # VUSE <.MEMD.5616_11>
+  current_function.1D.5558_5 = current_functionD.4113;
+  # VUSE <.MEMD.5616_11>
+  current_function.3D.5560_6 = current_function.1D.5558_5->nextD.4163;
+  # .MEMD.5616_12 = VDEF <.MEMD.5616_11>
+  current_functionD.4113 = current_function.3D.5560_6;
+  # SUCC: 4 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 4 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 3 [100.0%]  (fallthru,dfs_back,exec)
+  # .MEMD.5616_7 = PHI <.MEMD.5616_9(2), .MEMD.5616_12(3)>
+  # VUSE <.MEMD.5616_7>
+  current_function.1D.5558_2 = current_functionD.4113;
+  if (current_function.1D.5558_2 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 [91.0%]  (true,exec) 5 [9.0%]  (false,exec)
+
+  # BLOCK 5 freq:900
+  # PRED: 4 [9.0%]  (false,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+Immediate_uses: 
+
+first_function.0_1 : --> single use.
+current_function = first_function.0_1;
+
+current_function.1_2 : -->3 uses.
+current_function.1_3 = ASSERT_EXPR <current_function.1_2, current_function.1_2 != 0B>;
+current_function.1_3 = ASSERT_EXPR <current_function.1_2, current_function.1_2 != 0B>;
+if (current_function.1_2 != 0B)
+
+current_function.1_3 : --> single use.
+cfg.2_4 = current_function.1_3->cfg;
+
+cfg.2_4 : --> single use.
+cfg = cfg.2_4;
+
+current_function.1_5 : --> single use.
+current_function.3_6 = current_function.1_5->next;
+
+current_function.3_6 : --> single use.
+current_function = current_function.3_6;
+
+.MEM_7 : -->3 uses.
+# VUSE <.MEM_7>
+cfg.2_4 = current_function.1_3->cfg;
+# .MEM_10 = VDEF <.MEM_7>
+cfg = cfg.2_4;
+# VUSE <.MEM_7>
+current_function.1_2 = current_function;
+
+.MEM_8(D) : -->2 uses.
+# .MEM_9 = VDEF <.MEM_8(D)>
+current_function = first_function.0_1;
+# VUSE <.MEM_8(D)>
+first_function.0_1 = first_function;
+
+.MEM_9 : --> single use.
+.MEM_7 = PHI <.MEM_9(2), .MEM_12(3)>
+
+.MEM_10 : --> single use.
+# .MEM_11 = VDEF <.MEM_10>
+calc_max_distance ();
+
+.MEM_11 : -->3 uses.
+# .MEM_12 = VDEF <.MEM_11>
+current_function = current_function.3_6;
+# VUSE <.MEM_11>
+current_function.3_6 = current_function.1_5->next;
+# VUSE <.MEM_11>
+current_function.1_5 = current_function;
+
+.MEM_12 : --> single use.
+.MEM_7 = PHI <.MEM_9(2), .MEM_12(3)>
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+Adding Destination of edge (2 -> 4) to worklist
+
+
+Simulating block 4
+
+Visiting statement:
+if (current_function.1D.5558_2 != 0B)
+
+
+Visiting conditional with predicate: if (current_function.1_2 != 0B)
+
+With known ranges
+	current_function.1_2: VARYING
+
+Predicate evaluates to: DON'T KNOW
+Adding Destination of edge (4 -> 3) to worklist
+
+Adding Destination of edge (4 -> 5) to worklist
+
+
+Simulating block 3
+
+Visiting statement:
+current_function.1D.5558_3 = ASSERT_EXPR <current_function.1D.5558_2, current_function.1D.5558_2 != 0B>;
+
+Found new range for current_function.1_3: ~[0B, 0B]
+
+Adding Destination of edge (3 -> 4) to worklist
+
+
+Simulating block 5
+
+Visiting statement:
+return;
+
+
+Simulating block 4
+
+Value ranges after VRP:
+
+first_function.0_1: VARYING
+current_function.1_2: VARYING
+current_function.1_3: ~[0B, 0B]  EQUIVALENCES: { current_function.1_2 } (1 elements)
+cfg.2_4: VARYING
+current_function.1_5: VARYING
+current_function.3_6: VARYING
+.MEM_7: VARYING
+
+
+
+Substituting values and folding statements
+
+Folding statement: current_function = first_function.0_1;
+Not folded
+Folding statement: first_function.0_1 = first_function;
+Not folded
+Folding statement: current_function = current_function.3_6;
+Not folded
+Folding statement: current_function.3_6 = current_function.1_5->next;
+Not folded
+Folding statement: current_function.1_5 = current_function;
+Not folded
+Folding statement: calc_max_distance ();
+Not folded
+Folding statement: cfg = cfg.2_4;
+Not folded
+Folding statement: cfg.2_4 = current_function.1_3->cfg;
+Not folded
+Folding statement: if (current_function.1_2 != 0B)
+Not folded
+Folding statement: current_function.1_2 = current_function;
+Not folded
+Folding statement: return;
+Not folded
+
+Pass statistics:
+----------------
+Number of ASSERT_EXPR expressions inserted: 1
+
+fine_tune_cfg ()
+{
+  struct function * current_function.3D.5560;
+  struct control_flow_graph * cfg.2D.5559;
+  struct function * current_function.1D.5558;
+  struct function * first_function.0D.5557;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5616_8(D)>
+  first_function.0D.5557_1 = first_functionD.4111;
+  # .MEMD.5616_9 = VDEF <.MEMD.5616_8(D)>
+  current_functionD.4113 = first_function.0D.5557_1;
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 4 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5616_7>
+  cfg.2D.5559_4 = current_function.1D.5558_2->cfgD.4162;
+  # .MEMD.5616_10 = VDEF <.MEMD.5616_7>
+  cfgD.4174 = cfg.2D.5559_4;
+  # .MEMD.5616_11 = VDEF <.MEMD.5616_10>
+  calc_max_distanceD.4228 ();
+  # VUSE <.MEMD.5616_11>
+  current_function.1D.5558_5 = current_functionD.4113;
+  # VUSE <.MEMD.5616_11>
+  current_function.3D.5560_6 = current_function.1D.5558_5->nextD.4163;
+  # .MEMD.5616_12 = VDEF <.MEMD.5616_11>
+  current_functionD.4113 = current_function.3D.5560_6;
+  # SUCC: 4 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 4 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 3 [100.0%]  (fallthru,dfs_back,exec)
+  # .MEMD.5616_7 = PHI <.MEMD.5616_9(2), .MEMD.5616_12(3)>
+  # VUSE <.MEMD.5616_7>
+  current_function.1D.5558_2 = current_functionD.4113;
+  if (current_function.1D.5558_2 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 [91.0%]  (true,exec) 5 [9.0%]  (false,exec)
+
+  # BLOCK 5 freq:900
+  # PRED: 4 [9.0%]  (false,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+

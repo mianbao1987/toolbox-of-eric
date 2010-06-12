@@ -1,0 +1,2445 @@
+
+;; Function search (search)
+
+
+Pass statistics:
+----------------
+
+Immediate_uses: 
+
+ve_1 : -->3 uses.
+ve_7 = ve_1->next;
+e_4 = ve_1->edge;
+if (ve_1 != 0B)
+# DEBUG ve => ve_1
+
+bb_2(D) : -->3 uses.
+bb_2(D)->dfs_order = count.10_8;
+ve_3 = bb_2(D)->succ;
+bb_2(D)->visited = 1;
+
+ve_3 : --> single use.
+ve_1 = PHI <ve_3(2), ve_7(5)>
+# DEBUG ve => ve_3
+
+e_4 : -->2 uses.
+e_4->type = 1;
+succ_bb_5 = e_4->target;
+# DEBUG e => e_4
+
+succ_bb_5 : -->2 uses.
+search (succ_bb_5);
+D.5604_6 = succ_bb_5->visited;
+# DEBUG succ_bb => succ_bb_5
+
+D.5604_6 : --> single use.
+if (D.5604_6 == 0)
+
+ve_7 : --> single use.
+ve_1 = PHI <ve_3(2), ve_7(5)>
+# DEBUG ve => ve_7
+
+count.10_8 : --> single use.
+bb_2(D)->dfs_order = count.10_8;
+
+count.10_9 : --> single use.
+count.11_10 = count.10_9 - 1;
+
+count.11_10 : --> single use.
+count = count.11_10;
+
+.MEM_11 : -->2 uses.
+.MEM_12 = PHI <.MEM_14(2), .MEM_11(5)>
+# VUSE <.MEM_11>
+ve_7 = ve_1->next;
+
+.MEM_12 : -->7 uses.
+# .MEM_17 = VDEF <.MEM_12>
+bb_2(D)->dfs_order = count.10_8;
+# VUSE <.MEM_12>
+count.10_8 = count;
+# .MEM_15 = VDEF <.MEM_12>
+e_4->type = 1;
+.MEM_11 = PHI <.MEM_12(3), .MEM_16(4)>
+# VUSE <.MEM_12>
+D.5604_6 = succ_bb_5->visited;
+# VUSE <.MEM_12>
+succ_bb_5 = e_4->target;
+# VUSE <.MEM_12>
+e_4 = ve_1->edge;
+
+.MEM_13(D) : --> single use.
+# .MEM_14 = VDEF <.MEM_13(D)>
+bb_2(D)->visited = 1;
+
+.MEM_14 : -->2 uses.
+.MEM_12 = PHI <.MEM_14(2), .MEM_11(5)>
+# VUSE <.MEM_14>
+ve_3 = bb_2(D)->succ;
+
+.MEM_15 : --> single use.
+# .MEM_16 = VDEF <.MEM_15>
+search (succ_bb_5);
+
+.MEM_16 : --> single use.
+.MEM_11 = PHI <.MEM_12(3), .MEM_16(4)>
+
+.MEM_17 : -->2 uses.
+# .MEM_18 = VDEF <.MEM_17>
+count = count.11_10;
+# VUSE <.MEM_17>
+count.10_9 = count;
+
+.MEM_18 : --> no uses.
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+Adding Destination of edge (2 -> 6) to worklist
+
+
+Simulating block 6
+
+Visiting PHI node: veD.4179_1 = PHI <veD.4179_3(2), veD.4179_7(5)>
+
+
+	Argument #0: veD.4179_3 copy-of chain: ve_3 -> ve_3 [NOT A COPY]
+
+PHI node veD.4179_1 copy-of chain: ve_1 -> ve_3 -> ve_3 [COPY]
+Telling the propagator to add SSA edges out of this PHI and continue.
+
+
+Visiting statement:
+if (veD.4179_1 != 0B)
+
+No interesting values produced.
+Adding Destination of edge (6 -> 3) to worklist
+
+Adding Destination of edge (6 -> 7) to worklist
+
+
+Simulating block 3
+
+Visiting statement:
+if (D.5604_6 == 0)
+
+No interesting values produced.
+Adding Destination of edge (3 -> 4) to worklist
+
+Adding Destination of edge (3 -> 5) to worklist
+
+
+Simulating block 7
+
+Visiting statement:
+return;
+
+No interesting values produced.
+
+Simulating block 4
+
+Simulating block 5
+Adding Destination of edge (5 -> 6) to worklist
+
+
+Simulating block 6
+
+Visiting PHI node: veD.4179_1 = PHI <veD.4179_3(2), veD.4179_7(5)>
+
+
+	Argument #0: veD.4179_3 copy-of chain: ve_3 -> ve_3 [NOT A COPY]
+	Argument #1: veD.4179_7 copy-of chain: ve_7 -> ve_7 [NOT A COPY]
+
+PHI node veD.4179_1 copy-of chain: ve_1 -> ve_1 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Substituting values and folding statements
+
+Folding statement: # DEBUG ve => ve_3
+Not folded
+Folding statement: ve_3 = bb_2(D)->succ;
+Not folded
+Folding statement: bb_2(D)->visited = 1;
+Not folded
+Folding statement: if (D.5604_6 == 0)
+Not folded
+Folding statement: D.5604_6 = succ_bb_5->visited;
+Not folded
+Folding statement: # DEBUG succ_bb => succ_bb_5
+Not folded
+Folding statement: succ_bb_5 = e_4->target;
+Not folded
+Folding statement: # DEBUG e => e_4
+Not folded
+Folding statement: e_4 = ve_1->edge;
+Not folded
+Folding statement: search (succ_bb_5);
+Not folded
+Folding statement: e_4->type = 1;
+Not folded
+Folding PHI node: .MEM_11 = PHI <.MEM_12(3), .MEM_16(4)>
+No folding possible
+Folding statement: # DEBUG ve => ve_7
+Not folded
+Folding statement: ve_7 = ve_1->next;
+Not folded
+Folding PHI node: ve_1 = PHI <ve_3(2), ve_7(5)>
+No folding possible
+Folding PHI node: .MEM_12 = PHI <.MEM_14(2), .MEM_11(5)>
+No folding possible
+Folding statement: if (ve_1 != 0B)
+Not folded
+Folding statement: # DEBUG ve => ve_1
+Not folded
+Folding statement: return;
+Not folded
+Folding statement: count = count.11_10;
+Not folded
+Folding statement: count.11_10 = count.10_9 - 1;
+Not folded
+Folding statement: count.10_9 = count;
+Not folded
+Folding statement: bb_2(D)->dfs_order = count.10_8;
+Not folded
+Folding statement: count.10_8 = count;
+Not folded
+
+Pass statistics:
+----------------
+
+search (struct basic_block * bbD.4175)
+{
+  struct edge * eD.4180;
+  struct vec_edge * veD.4179;
+  struct basic_block * succ_bbD.4178;
+  intD.0 count.11D.5608;
+  intD.0 count.10D.5607;
+  intD.0 D.5604;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # .MEMD.5609_14 = VDEF <.MEMD.5609_13(D)>
+  bbD.4175_2(D)->visitedD.4144 = 1;
+  # VUSE <.MEMD.5609_14>
+  veD.4179_3 = bbD.4175_2(D)->succD.4149;
+  # DEBUG veD.4179 => veD.4179_3
+  goto <bb 6>;
+  # SUCC: 6 (fallthru,exec)
+
+  # BLOCK 3
+  # PRED: 6 (true,exec)
+  # VUSE <.MEMD.5609_12>
+  eD.4180_4 = veD.4179_1->edgeD.4138;
+  # DEBUG eD.4180 => eD.4180_4
+  # VUSE <.MEMD.5609_12>
+  succ_bbD.4178_5 = eD.4180_4->targetD.4135;
+  # DEBUG succ_bbD.4178 => succ_bbD.4178_5
+  # VUSE <.MEMD.5609_12>
+  D.5604_6 = succ_bbD.4178_5->visitedD.4144;
+  if (D.5604_6 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 (true,exec) 5 (false,exec)
+
+  # BLOCK 4
+  # PRED: 3 (true,exec)
+  # .MEMD.5609_15 = VDEF <.MEMD.5609_12>
+  eD.4180_4->typeD.4133 = 1;
+  # .MEMD.5609_16 = VDEF <.MEMD.5609_15>
+  searchD.4176 (succ_bbD.4178_5);
+  # SUCC: 5 (fallthru,exec)
+
+  # BLOCK 5
+  # PRED: 3 (false,exec) 4 (fallthru,exec)
+  # .MEMD.5609_11 = PHI <.MEMD.5609_12(3), .MEMD.5609_16(4)>
+  # VUSE <.MEMD.5609_11>
+  veD.4179_7 = veD.4179_1->nextD.4139;
+  # DEBUG veD.4179 => veD.4179_7
+  # SUCC: 6 (fallthru,exec)
+
+  # BLOCK 6
+  # PRED: 2 (fallthru,exec) 5 (fallthru,exec)
+  # veD.4179_1 = PHI <veD.4179_3(2), veD.4179_7(5)>
+  # .MEMD.5609_12 = PHI <.MEMD.5609_14(2), .MEMD.5609_11(5)>
+  # DEBUG veD.4179 => veD.4179_1
+  if (veD.4179_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 (true,exec) 7 (false,exec)
+
+  # BLOCK 7
+  # PRED: 6 (false,exec)
+  # VUSE <.MEMD.5609_12>
+  count.10D.5607_8 = countD.4173;
+  # .MEMD.5609_17 = VDEF <.MEMD.5609_12>
+  bbD.4175_2(D)->dfs_orderD.4145 = count.10D.5607_8;
+  # VUSE <.MEMD.5609_17>
+  count.10D.5607_9 = countD.4173;
+  count.11D.5608_10 = count.10D.5607_9 - 1;
+  # .MEMD.5609_18 = VDEF <.MEMD.5609_17>
+  countD.4173 = count.11D.5608_10;
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function depth_first_search (depth_first_search)
+
+
+Pass statistics:
+----------------
+
+Immediate_uses: 
+
+bb_1 : -->3 uses.
+bb_4 = bb_1->next;
+bb_1->visited = 0;
+if (bb_1 != 0B)
+# DEBUG bb => bb_1
+
+cfg.8_2 : --> single use.
+bb_3 = cfg.8_2->bb;
+
+bb_3 : --> single use.
+bb_1 = PHI <bb_3(2), bb_4(3)>
+# DEBUG bb => bb_3
+
+bb_4 : --> single use.
+bb_1 = PHI <bb_3(2), bb_4(3)>
+# DEBUG bb => bb_4
+
+cfg.8_5 : --> single use.
+count.9_6 = cfg.8_5->bb_num;
+
+count.9_6 : --> single use.
+count = count.9_6;
+
+cfg.8_7 : --> single use.
+D.5603_8 = cfg.8_7->entry;
+
+D.5603_8 : --> single use.
+search (D.5603_8);
+
+.MEM_9 : -->4 uses.
+# .MEM_12 = VDEF <.MEM_9>
+count = count.9_6;
+# VUSE <.MEM_9>
+count.9_6 = cfg.8_5->bb_num;
+# VUSE <.MEM_9>
+cfg.8_5 = cfg;
+# .MEM_11 = VDEF <.MEM_9>
+bb_1->visited = 0;
+
+.MEM_10(D) : -->3 uses.
+.MEM_9 = PHI <.MEM_10(D)(2), .MEM_11(3)>
+# VUSE <.MEM_10(D)>
+bb_3 = cfg.8_2->bb;
+# VUSE <.MEM_10(D)>
+cfg.8_2 = cfg;
+
+.MEM_11 : -->2 uses.
+.MEM_9 = PHI <.MEM_10(D)(2), .MEM_11(3)>
+# VUSE <.MEM_11>
+bb_4 = bb_1->next;
+
+.MEM_12 : -->3 uses.
+# .MEM_13 = VDEF <.MEM_12>
+search (D.5603_8);
+# VUSE <.MEM_12>
+D.5603_8 = cfg.8_7->entry;
+# VUSE <.MEM_12>
+cfg.8_7 = cfg;
+
+.MEM_13 : --> no uses.
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+Adding Destination of edge (2 -> 4) to worklist
+
+
+Simulating block 4
+
+Visiting PHI node: bbD.4187_1 = PHI <bbD.4187_3(2), bbD.4187_4(3)>
+
+
+	Argument #0: bbD.4187_3 copy-of chain: bb_3 -> bb_3 [NOT A COPY]
+
+PHI node bbD.4187_1 copy-of chain: bb_1 -> bb_3 -> bb_3 [COPY]
+Telling the propagator to add SSA edges out of this PHI and continue.
+
+
+Visiting statement:
+if (bbD.4187_1 != 0B)
+
+No interesting values produced.
+Adding Destination of edge (4 -> 3) to worklist
+
+Adding Destination of edge (4 -> 5) to worklist
+
+
+Simulating block 3
+Adding Destination of edge (3 -> 4) to worklist
+
+
+Simulating block 5
+
+Visiting statement:
+return;
+
+No interesting values produced.
+
+Simulating block 4
+
+Visiting PHI node: bbD.4187_1 = PHI <bbD.4187_3(2), bbD.4187_4(3)>
+
+
+	Argument #0: bbD.4187_3 copy-of chain: bb_3 -> bb_3 [NOT A COPY]
+	Argument #1: bbD.4187_4 copy-of chain: bb_4 -> bb_4 [NOT A COPY]
+
+PHI node bbD.4187_1 copy-of chain: bb_1 -> bb_1 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Substituting values and folding statements
+
+Folding statement: # DEBUG bb => bb_3
+Not folded
+Folding statement: bb_3 = cfg.8_2->bb;
+Not folded
+Folding statement: cfg.8_2 = cfg;
+Not folded
+Folding statement: # DEBUG bb => bb_4
+Not folded
+Folding statement: bb_4 = bb_1->next;
+Not folded
+Folding statement: bb_1->visited = 0;
+Not folded
+Folding PHI node: bb_1 = PHI <bb_3(2), bb_4(3)>
+No folding possible
+Folding PHI node: .MEM_9 = PHI <.MEM_10(D)(2), .MEM_11(3)>
+No folding possible
+Folding statement: if (bb_1 != 0B)
+Not folded
+Folding statement: # DEBUG bb => bb_1
+Not folded
+Folding statement: return;
+Not folded
+Folding statement: search (D.5603_8);
+Not folded
+Folding statement: D.5603_8 = cfg.8_7->entry;
+Not folded
+Folding statement: cfg.8_7 = cfg;
+Not folded
+Folding statement: count = count.9_6;
+Not folded
+Folding statement: count.9_6 = cfg.8_5->bb_num;
+Not folded
+Folding statement: cfg.8_5 = cfg;
+Not folded
+
+Pass statistics:
+----------------
+
+depth_first_search ()
+{
+  struct basic_block * bbD.4187;
+  struct basic_block * D.5603;
+  intD.0 count.9D.5602;
+  struct control_flow_graph * cfg.8D.5601;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # VUSE <.MEMD.5610_10(D)>
+  cfg.8D.5601_2 = cfgD.4174;
+  # VUSE <.MEMD.5610_10(D)>
+  bbD.4187_3 = cfg.8D.5601_2->bbD.4157;
+  # DEBUG bbD.4187 => bbD.4187_3
+  goto <bb 4>;
+  # SUCC: 4 (fallthru,exec)
+
+  # BLOCK 3
+  # PRED: 4 (true,exec)
+  # .MEMD.5610_11 = VDEF <.MEMD.5610_9>
+  bbD.4187_1->visitedD.4144 = 0;
+  # VUSE <.MEMD.5610_11>
+  bbD.4187_4 = bbD.4187_1->nextD.4151;
+  # DEBUG bbD.4187 => bbD.4187_4
+  # SUCC: 4 (fallthru,exec)
+
+  # BLOCK 4
+  # PRED: 2 (fallthru,exec) 3 (fallthru,exec)
+  # bbD.4187_1 = PHI <bbD.4187_3(2), bbD.4187_4(3)>
+  # .MEMD.5610_9 = PHI <.MEMD.5610_10(D)(2), .MEMD.5610_11(3)>
+  # DEBUG bbD.4187 => bbD.4187_1
+  if (bbD.4187_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 (true,exec) 5 (false,exec)
+
+  # BLOCK 5
+  # PRED: 4 (false,exec)
+  # VUSE <.MEMD.5610_9>
+  cfg.8D.5601_5 = cfgD.4174;
+  # VUSE <.MEMD.5610_9>
+  count.9D.5602_6 = cfg.8D.5601_5->bb_numD.4153;
+  # .MEMD.5610_12 = VDEF <.MEMD.5610_9>
+  countD.4173 = count.9D.5602_6;
+  # VUSE <.MEMD.5610_12>
+  cfg.8D.5601_7 = cfgD.4174;
+  # VUSE <.MEMD.5610_12>
+  D.5603_8 = cfg.8D.5601_7->entryD.4155;
+  # .MEMD.5610_13 = VDEF <.MEMD.5610_12>
+  searchD.4176 (D.5603_8);
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function is_ancestor (is_ancestor)
+
+
+Pass statistics:
+----------------
+
+Immediate_uses: 
+
+bb_1 : -->3 uses.
+bb_2 = PHI <bb_12(7), bb_1(9)>
+ve_9 = bb_1->pred;
+if (bb_1 == source_7(D))
+# DEBUG bb => bb_1
+
+bb_2 : -->2 uses.
+bb_1 = PHI <bb_6(2), bb_2(10)>
+if (D.5599_15 != bb_2)
+# DEBUG bb => bb_2
+
+ve_3 : -->3 uses.
+ve_13 = ve_3->next;
+e_10 = ve_3->edge;
+if (ve_3 != 0B)
+# DEBUG ve => ve_3
+
+D.5594_4 : --> single use.
+return D.5594_4;
+
+target_5(D) : --> single use.
+bb_6 = target_5(D);
+
+bb_6 : --> single use.
+bb_1 = PHI <bb_6(2), bb_2(10)>
+# DEBUG bb => bb_6
+
+source_7(D) : --> single use.
+if (bb_1 == source_7(D))
+
+D.5594_8 : --> no uses.
+
+ve_9 : --> single use.
+ve_3 = PHI <ve_9(5), ve_13(8)>
+# DEBUG ve => ve_9
+
+e_10 : -->2 uses.
+bb_12 = e_10->source;
+D.5595_11 = e_10->type;
+# DEBUG e => e_10
+
+D.5595_11 : --> single use.
+if (D.5595_11 == 1)
+
+bb_12 : --> single use.
+bb_2 = PHI <bb_12(7), bb_1(9)>
+# DEBUG bb => bb_12
+
+ve_13 : --> single use.
+ve_3 = PHI <ve_9(5), ve_13(8)>
+# DEBUG ve => ve_13
+
+cfg.7_14 : --> single use.
+D.5599_15 = cfg.7_14->entry;
+
+D.5599_15 : --> single use.
+if (D.5599_15 != bb_2)
+
+D.5594_16 : --> no uses.
+
+.MEM_17(D) : -->7 uses.
+# VUSE <.MEM_17(D)>
+D.5599_15 = cfg.7_14->entry;
+# VUSE <.MEM_17(D)>
+cfg.7_14 = cfg;
+# VUSE <.MEM_17(D)>
+ve_13 = ve_3->next;
+# VUSE <.MEM_17(D)>
+bb_12 = e_10->source;
+# VUSE <.MEM_17(D)>
+D.5595_11 = e_10->type;
+# VUSE <.MEM_17(D)>
+e_10 = ve_3->edge;
+# VUSE <.MEM_17(D)>
+ve_9 = bb_1->pred;
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+bbD.4195_6 = targetD.4192_5(D);
+
+Adding Destination of edge (2 -> 3) to worklist
+
+
+Simulating statement (from ssa_edges): bbD.4195_1 = PHI <bbD.4195_6(2), bbD.4195_2(10)>
+
+Visiting PHI node: bbD.4195_1 = PHI <bbD.4195_6(2), bbD.4195_2(10)>
+
+
+	Argument #0: bbD.4195_6 copy-of chain: bb_6 -> target_5(D) -> target_5(D) [COPY]
+
+PHI node bbD.4195_1 copy-of chain: bb_1 -> target_5(D) -> target_5(D) [COPY]
+Telling the propagator to add SSA edges out of this PHI and continue.
+
+
+Simulating statement (from ssa_edges): if (bbD.4195_1 == sourceD.4191_7(D))
+
+Simulating statement (from ssa_edges): bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_1(9)>
+
+Visiting PHI node: bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_1(9)>
+
+
+
+PHI node bbD.4195_2 copy-of chain: bb_2 [UNDEFINED]
+Telling the propagator to do nothing with SSA edges and keep iterating.
+
+
+Simulating block 3
+
+Visiting PHI node: bbD.4195_1 = PHI <bbD.4195_6(2), bbD.4195_2(10)>
+
+
+	Argument #0: bbD.4195_6 copy-of chain: bb_6 -> target_5(D) -> target_5(D) [COPY]
+
+PHI node bbD.4195_1 copy-of chain: bb_1 -> target_5(D) -> target_5(D) [COPY]
+Telling the propagator to add SSA edges out of this PHI and continue.
+
+
+Visiting statement:
+if (bbD.4195_1 == sourceD.4191_7(D))
+
+Trying to determine truth value of predicate if (bb_1 == source_7(D))
+No interesting values produced.
+Adding Destination of edge (3 -> 4) to worklist
+
+Adding Destination of edge (3 -> 5) to worklist
+
+
+Simulating statement (from ssa_edges): bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_1(9)>
+
+Visiting PHI node: bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_1(9)>
+
+
+
+PHI node bbD.4195_2 copy-of chain: bb_2 [UNDEFINED]
+Telling the propagator to do nothing with SSA edges and keep iterating.
+
+
+Simulating block 4
+Adding Destination of edge (4 -> 12) to worklist
+
+
+Simulating block 5
+Adding Destination of edge (5 -> 9) to worklist
+
+
+Simulating block 12
+
+Visiting PHI node: D.5594_4 = PHI <1(4), 0(11)>
+
+
+
+PHI node D.5594_4 copy-of chain: D.5594_4 -> D.5594_4 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Visiting statement:
+return D.5594_4;
+
+No interesting values produced.
+
+Simulating block 9
+
+Visiting PHI node: veD.4196_3 = PHI <veD.4196_9(5), veD.4196_13(8)>
+
+
+	Argument #0: veD.4196_9 copy-of chain: ve_9 -> ve_9 [NOT A COPY]
+
+PHI node veD.4196_3 copy-of chain: ve_3 -> ve_9 -> ve_9 [COPY]
+Telling the propagator to add SSA edges out of this PHI and continue.
+
+
+Visiting statement:
+if (veD.4196_3 != 0B)
+
+No interesting values produced.
+Adding Destination of edge (9 -> 6) to worklist
+
+Adding Destination of edge (9 -> 10) to worklist
+
+
+Simulating block 6
+
+Visiting statement:
+if (D.5595_11 == 1)
+
+No interesting values produced.
+Adding Destination of edge (6 -> 7) to worklist
+
+Adding Destination of edge (6 -> 8) to worklist
+
+
+Simulating block 7
+
+Simulating block 10
+
+Visiting PHI node: bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_1(9)>
+
+
+	Argument #0: bbD.4195_12 copy-of chain: bb_12 -> bb_12 [NOT A COPY]
+	Argument #1: bbD.4195_1 copy-of chain: bb_1 -> target_5(D) -> target_5(D) [COPY]
+
+PHI node bbD.4195_2 copy-of chain: bb_2 -> bb_2 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Visiting statement:
+if (D.5599_15 != bbD.4195_2)
+
+Trying to determine truth value of predicate if (D.5599_15 != bb_2)
+No interesting values produced.
+Adding Destination of edge (10 -> 3) to worklist
+
+Adding Destination of edge (10 -> 11) to worklist
+
+
+Simulating statement (from ssa_edges): bbD.4195_1 = PHI <bbD.4195_6(2), bbD.4195_2(10)>
+
+Visiting PHI node: bbD.4195_1 = PHI <bbD.4195_6(2), bbD.4195_2(10)>
+
+
+	Argument #0: bbD.4195_6 copy-of chain: bb_6 -> target_5(D) -> target_5(D) [COPY]
+	Argument #1: bbD.4195_2 copy-of chain: bb_2 -> bb_2 [NOT A COPY]
+
+PHI node bbD.4195_1 copy-of chain: bb_1 -> bb_1 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Simulating block 8
+Adding Destination of edge (8 -> 9) to worklist
+
+
+Simulating block 3
+
+Simulating block 11
+Adding Destination of edge (11 -> 12) to worklist
+
+
+Simulating block 9
+
+Visiting PHI node: veD.4196_3 = PHI <veD.4196_9(5), veD.4196_13(8)>
+
+
+	Argument #0: veD.4196_9 copy-of chain: ve_9 -> ve_9 [NOT A COPY]
+	Argument #1: veD.4196_13 copy-of chain: ve_13 -> ve_13 [NOT A COPY]
+
+PHI node veD.4196_3 copy-of chain: ve_3 -> ve_3 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Simulating block 12
+
+Substituting values and folding statements
+
+Folding statement: # DEBUG bb => bb_6
+Folded into: # DEBUG bb => target_5(D)
+
+Folding statement: bb_6 = target_5(D);
+Not folded
+Folding PHI node: bb_1 = PHI <bb_6(2), bb_2(10)>
+Folded into: bb_1 = PHI <target_5(D)(2), bb_2(10)>
+
+Folding statement: if (bb_1 == source_7(D))
+Not folded
+Folding statement: # DEBUG bb => bb_1
+Not folded
+Removing dead stmt D.5594_8 = 1;
+
+Folding statement: # DEBUG ve => ve_9
+Not folded
+Folding statement: ve_9 = bb_1->pred;
+Not folded
+Folding statement: if (D.5595_11 == 1)
+Not folded
+Folding statement: D.5595_11 = e_10->type;
+Not folded
+Folding statement: # DEBUG e => e_10
+Not folded
+Folding statement: e_10 = ve_3->edge;
+Not folded
+Folding statement: # DEBUG bb => bb_12
+Not folded
+Folding statement: bb_12 = e_10->source;
+Not folded
+Folding statement: # DEBUG ve => ve_13
+Not folded
+Folding statement: ve_13 = ve_3->next;
+Not folded
+Folding PHI node: ve_3 = PHI <ve_9(5), ve_13(8)>
+No folding possible
+Folding statement: if (ve_3 != 0B)
+Not folded
+Folding statement: # DEBUG ve => ve_3
+Not folded
+Folding PHI node: bb_2 = PHI <bb_12(7), bb_1(9)>
+No folding possible
+Folding statement: if (D.5599_15 != bb_2)
+Not folded
+Folding statement: D.5599_15 = cfg.7_14->entry;
+Not folded
+Folding statement: cfg.7_14 = cfg;
+Not folded
+Folding statement: # DEBUG bb => bb_2
+Not folded
+Removing dead stmt D.5594_16 = 0;
+
+Folding PHI node: D.5594_4 = PHI <1(4), 0(11)>
+No folding possible
+Folding statement: return D.5594_4;
+Not folded
+
+Pass statistics:
+----------------
+Copies propagated: 2
+Statements deleted: 2
+
+Removing basic block 4
+;; basic block 4, loop depth 0, count 0
+;; prev block 3, next block 5
+;; pred:      
+;; succ:       12 (fallthru,exec)
+<bb 4>:
+goto <bb 12>;
+
+
+Removing basic block 11
+;; basic block 11, loop depth 0, count 0
+;; prev block 10, next block 12
+;; pred:      
+;; succ:       12 (fallthru,exec)
+<bb 11>:
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  struct basic_block * bbD.4195;
+  struct vec_edge * veD.4196;
+  struct edge * eD.4197;
+
+}
+is_ancestor (struct basic_block * sourceD.4191, struct basic_block * targetD.4192)
+{
+  struct edge * eD.4197;
+  struct vec_edge * veD.4196;
+  struct basic_block * bbD.4195;
+  struct basic_block * D.5599;
+  struct control_flow_graph * cfg.7D.5598;
+  edge_type D.5595;
+  intD.0 D.5594;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  bbD.4195_6 = targetD.4192_5(D);
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  # SUCC: 3 (fallthru,exec)
+
+  # BLOCK 3
+  # PRED: 2 (fallthru,exec) 9 (true,exec)
+  # bbD.4195_1 = PHI <targetD.4192_5(D)(2), bbD.4195_2(9)>
+  # DEBUG bbD.4195 => bbD.4195_1
+  if (bbD.4195_1 == sourceD.4191_7(D))
+    goto <bb 10>;
+  else
+    goto <bb 4>;
+  # SUCC: 10 (true,exec) 4 (false,exec)
+
+  # BLOCK 4
+  # PRED: 3 (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_9 = bbD.4195_1->predD.4147;
+  # DEBUG veD.4196 => veD.4196_9
+  goto <bb 8>;
+  # SUCC: 8 (fallthru,exec)
+
+  # BLOCK 5
+  # PRED: 8 (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_10 = veD.4196_3->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_10
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_11 = eD.4197_10->typeD.4133;
+  if (D.5595_11 == 1)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+  # SUCC: 6 (true,exec) 7 (false,exec)
+
+  # BLOCK 6
+  # PRED: 5 (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  bbD.4195_12 = eD.4197_10->sourceD.4134;
+  # DEBUG bbD.4195 => bbD.4195_12
+  goto <bb 9>;
+  # SUCC: 9 (fallthru,exec)
+
+  # BLOCK 7
+  # PRED: 5 (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_13 = veD.4196_3->nextD.4139;
+  # DEBUG veD.4196 => veD.4196_13
+  # SUCC: 8 (fallthru,exec)
+
+  # BLOCK 8
+  # PRED: 4 (fallthru,exec) 7 (fallthru,exec)
+  # veD.4196_3 = PHI <veD.4196_9(4), veD.4196_13(7)>
+  # DEBUG veD.4196 => veD.4196_3
+  if (veD.4196_3 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+  # SUCC: 5 (true,exec) 9 (false,exec)
+
+  # BLOCK 9
+  # PRED: 6 (fallthru,exec) 8 (false,exec)
+  # bbD.4195_2 = PHI <bbD.4195_12(6), bbD.4195_1(8)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  # VUSE <.MEMD.5611_17(D)>
+  cfg.7D.5598_14 = cfgD.4174;
+  # VUSE <.MEMD.5611_17(D)>
+  D.5599_15 = cfg.7D.5598_14->entryD.4155;
+  if (D.5599_15 != bbD.4195_2)
+    goto <bb 3>;
+  else
+    goto <bb 10>;
+  # SUCC: 3 (true,exec) 10 (false,exec)
+
+  # BLOCK 10
+  # PRED: 3 (true,exec) 9 (false,exec)
+  # D.5594_4 = PHI <1(3), 0(9)>
+  return D.5594_4;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function mark_edge (mark_edge)
+
+
+Pass statistics:
+----------------
+
+Immediate_uses: 
+
+e_1(D) : -->5 uses.
+e_1(D)->type = 4;
+e_1(D)->type = 2;
+e_1(D)->type = 3;
+target_3 = e_1(D)->target;
+source_2 = e_1(D)->source;
+
+source_2 : -->2 uses.
+D.5588_5 = is_ancestor (source_2, target_3);
+D.5584_4 = is_ancestor (target_3, source_2);
+# DEBUG source => source_2
+
+target_3 : -->2 uses.
+D.5588_5 = is_ancestor (source_2, target_3);
+D.5584_4 = is_ancestor (target_3, source_2);
+# DEBUG target => target_3
+
+D.5584_4 : --> single use.
+if (D.5584_4 != 0)
+
+D.5588_5 : --> single use.
+if (D.5588_5 != 0)
+
+.MEM_6(D) : -->7 uses.
+# .MEM_9 = VDEF <.MEM_6(D)>
+e_1(D)->type = 4;
+# .MEM_8 = VDEF <.MEM_6(D)>
+e_1(D)->type = 2;
+# VUSE <.MEM_6(D)>
+D.5588_5 = is_ancestor (source_2, target_3);
+# .MEM_7 = VDEF <.MEM_6(D)>
+e_1(D)->type = 3;
+# VUSE <.MEM_6(D)>
+D.5584_4 = is_ancestor (target_3, source_2);
+# VUSE <.MEM_6(D)>
+target_3 = e_1(D)->target;
+# VUSE <.MEM_6(D)>
+source_2 = e_1(D)->source;
+
+.MEM_7 : --> no uses.
+
+.MEM_8 : --> no uses.
+
+.MEM_9 : --> no uses.
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+if (D.5584_4 != 0)
+
+No interesting values produced.
+Adding Destination of edge (2 -> 3) to worklist
+
+Adding Destination of edge (2 -> 4) to worklist
+
+
+Simulating block 3
+Adding Destination of edge (3 -> 7) to worklist
+
+
+Simulating block 4
+
+Visiting statement:
+if (D.5588_5 != 0)
+
+No interesting values produced.
+Adding Destination of edge (4 -> 5) to worklist
+
+Adding Destination of edge (4 -> 6) to worklist
+
+
+Simulating block 5
+
+Simulating block 7
+
+Visiting statement:
+return;
+
+No interesting values produced.
+
+Simulating block 6
+Adding Destination of edge (6 -> 7) to worklist
+
+
+Simulating block 7
+
+Substituting values and folding statements
+
+Folding statement: if (D.5584_4 != 0)
+Not folded
+Folding statement: D.5584_4 = is_ancestor (target_3, source_2);
+Not folded
+Folding statement: # DEBUG target => target_3
+Not folded
+Folding statement: target_3 = e_1(D)->target;
+Not folded
+Folding statement: # DEBUG source => source_2
+Not folded
+Folding statement: source_2 = e_1(D)->source;
+Not folded
+Folding statement: e_1(D)->type = 3;
+Not folded
+Folding statement: if (D.5588_5 != 0)
+Not folded
+Folding statement: D.5588_5 = is_ancestor (source_2, target_3);
+Not folded
+Folding statement: e_1(D)->type = 2;
+Not folded
+Folding statement: e_1(D)->type = 4;
+Not folded
+Folding statement: return;
+Not folded
+
+Pass statistics:
+----------------
+
+mark_edge (struct edge * eD.4203)
+{
+  struct basic_block * targetD.4207;
+  struct basic_block * sourceD.4206;
+  intD.0 D.5588;
+  intD.0 D.5584;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  sourceD.4206_2 = eD.4203_1(D)->sourceD.4134;
+  # DEBUG sourceD.4206 => sourceD.4206_2
+  # VUSE <.MEMD.5612_6(D)>
+  targetD.4207_3 = eD.4203_1(D)->targetD.4135;
+  # DEBUG targetD.4207 => targetD.4207_3
+  # VUSE <.MEMD.5612_6(D)>
+  D.5584_4 = is_ancestorD.4193 (targetD.4207_3, sourceD.4206_2);
+  if (D.5584_4 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 (true,exec) 4 (false,exec)
+
+  # BLOCK 3
+  # PRED: 2 (true,exec)
+  # .MEMD.5612_7 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 3;
+  goto <bb 7>;
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 4
+  # PRED: 2 (false,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  D.5588_5 = is_ancestorD.4193 (sourceD.4206_2, targetD.4207_3);
+  if (D.5588_5 != 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 (true,exec) 6 (false,exec)
+
+  # BLOCK 5
+  # PRED: 4 (true,exec)
+  # .MEMD.5612_8 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 2;
+  goto <bb 7>;
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 6
+  # PRED: 4 (false,exec)
+  # .MEMD.5612_9 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 4;
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 7
+  # PRED: 3 (fallthru,exec) 5 (fallthru,exec) 6 (fallthru,exec)
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function mark_edges (mark_edges)
+
+
+Pass statistics:
+----------------
+
+Immediate_uses: 
+
+e_1 : -->4 uses.
+e_6 = e_1->next;
+mark_edge (e_1);
+D.5581_5 = e_1->type;
+if (e_1 != 0B)
+# DEBUG e => e_1
+
+current_function.6_2 : --> single use.
+cfg_3 = current_function.6_2->cfg;
+
+cfg_3 : --> single use.
+e_4 = cfg_3->edge;
+# DEBUG cfg => cfg_3
+
+e_4 : --> single use.
+e_1 = PHI <e_4(2), e_6(5)>
+# DEBUG e => e_4
+
+D.5581_5 : --> single use.
+if (D.5581_5 == 0)
+
+e_6 : --> single use.
+e_1 = PHI <e_4(2), e_6(5)>
+# DEBUG e => e_6
+
+.MEM_7 : -->2 uses.
+.MEM_8 = PHI <.MEM_9(D)(2), .MEM_7(5)>
+# VUSE <.MEM_7>
+e_6 = e_1->next;
+
+.MEM_8 : -->3 uses.
+# .MEM_10 = VDEF <.MEM_8>
+mark_edge (e_1);
+.MEM_7 = PHI <.MEM_8(3), .MEM_10(4)>
+# VUSE <.MEM_8>
+D.5581_5 = e_1->type;
+
+.MEM_9(D) : -->4 uses.
+.MEM_8 = PHI <.MEM_9(D)(2), .MEM_7(5)>
+# VUSE <.MEM_9(D)>
+e_4 = cfg_3->edge;
+# VUSE <.MEM_9(D)>
+cfg_3 = current_function.6_2->cfg;
+# VUSE <.MEM_9(D)>
+current_function.6_2 = current_function;
+
+.MEM_10 : --> single use.
+.MEM_7 = PHI <.MEM_8(3), .MEM_10(4)>
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+Adding Destination of edge (2 -> 6) to worklist
+
+
+Simulating block 6
+
+Visiting PHI node: eD.4212_1 = PHI <eD.4212_4(2), eD.4212_6(5)>
+
+
+	Argument #0: eD.4212_4 copy-of chain: e_4 -> e_4 [NOT A COPY]
+
+PHI node eD.4212_1 copy-of chain: e_1 -> e_4 -> e_4 [COPY]
+Telling the propagator to add SSA edges out of this PHI and continue.
+
+
+Visiting statement:
+if (eD.4212_1 != 0B)
+
+No interesting values produced.
+Adding Destination of edge (6 -> 3) to worklist
+
+Adding Destination of edge (6 -> 7) to worklist
+
+
+Simulating block 3
+
+Visiting statement:
+if (D.5581_5 == 0)
+
+No interesting values produced.
+Adding Destination of edge (3 -> 4) to worklist
+
+Adding Destination of edge (3 -> 5) to worklist
+
+
+Simulating block 7
+
+Visiting statement:
+return;
+
+No interesting values produced.
+
+Simulating block 4
+
+Simulating block 5
+Adding Destination of edge (5 -> 6) to worklist
+
+
+Simulating block 6
+
+Visiting PHI node: eD.4212_1 = PHI <eD.4212_4(2), eD.4212_6(5)>
+
+
+	Argument #0: eD.4212_4 copy-of chain: e_4 -> e_4 [NOT A COPY]
+	Argument #1: eD.4212_6 copy-of chain: e_6 -> e_6 [NOT A COPY]
+
+PHI node eD.4212_1 copy-of chain: e_1 -> e_1 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Substituting values and folding statements
+
+Folding statement: # DEBUG e => e_4
+Not folded
+Folding statement: e_4 = cfg_3->edge;
+Not folded
+Folding statement: # DEBUG cfg => cfg_3
+Not folded
+Folding statement: cfg_3 = current_function.6_2->cfg;
+Not folded
+Folding statement: current_function.6_2 = current_function;
+Not folded
+Folding statement: if (D.5581_5 == 0)
+Not folded
+Folding statement: D.5581_5 = e_1->type;
+Not folded
+Folding statement: mark_edge (e_1);
+Not folded
+Folding PHI node: .MEM_7 = PHI <.MEM_8(3), .MEM_10(4)>
+No folding possible
+Folding statement: # DEBUG e => e_6
+Not folded
+Folding statement: e_6 = e_1->next;
+Not folded
+Folding PHI node: e_1 = PHI <e_4(2), e_6(5)>
+No folding possible
+Folding PHI node: .MEM_8 = PHI <.MEM_9(D)(2), .MEM_7(5)>
+No folding possible
+Folding statement: if (e_1 != 0B)
+Not folded
+Folding statement: # DEBUG e => e_1
+Not folded
+Folding statement: return;
+Not folded
+
+Pass statistics:
+----------------
+
+mark_edges ()
+{
+  struct edge * eD.4212;
+  struct control_flow_graph * cfgD.4211;
+  edge_type D.5581;
+  struct function * current_function.6D.5580;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # VUSE <.MEMD.5613_9(D)>
+  current_function.6D.5580_2 = current_functionD.4113;
+  # VUSE <.MEMD.5613_9(D)>
+  cfgD.4211_3 = current_function.6D.5580_2->cfgD.4162;
+  # DEBUG cfgD.4211 => cfgD.4211_3
+  # VUSE <.MEMD.5613_9(D)>
+  eD.4212_4 = cfgD.4211_3->edgeD.4159;
+  # DEBUG eD.4212 => eD.4212_4
+  goto <bb 6>;
+  # SUCC: 6 (fallthru,exec)
+
+  # BLOCK 3
+  # PRED: 6 (true,exec)
+  # VUSE <.MEMD.5613_8>
+  D.5581_5 = eD.4212_1->typeD.4133;
+  if (D.5581_5 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 (true,exec) 5 (false,exec)
+
+  # BLOCK 4
+  # PRED: 3 (true,exec)
+  # .MEMD.5613_10 = VDEF <.MEMD.5613_8>
+  mark_edgeD.4204 (eD.4212_1);
+  # SUCC: 5 (fallthru,exec)
+
+  # BLOCK 5
+  # PRED: 3 (false,exec) 4 (fallthru,exec)
+  # .MEMD.5613_7 = PHI <.MEMD.5613_8(3), .MEMD.5613_10(4)>
+  # VUSE <.MEMD.5613_7>
+  eD.4212_6 = eD.4212_1->nextD.4136;
+  # DEBUG eD.4212 => eD.4212_6
+  # SUCC: 6 (fallthru,exec)
+
+  # BLOCK 6
+  # PRED: 2 (fallthru,exec) 5 (fallthru,exec)
+  # eD.4212_1 = PHI <eD.4212_4(2), eD.4212_6(5)>
+  # .MEMD.5613_8 = PHI <.MEMD.5613_9(D)(2), .MEMD.5613_7(5)>
+  # DEBUG eD.4212 => eD.4212_1
+  if (eD.4212_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 (true,exec) 7 (false,exec)
+
+  # BLOCK 7
+  # PRED: 6 (false,exec)
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function calc_max_distance_recursive (calc_max_distance_recursive)
+
+
+Pass statistics:
+----------------
+
+Immediate_uses: 
+
+max_1 : --> single use.
+max_2 = PHI <0(3), max_1(7)>
+# DEBUG max => max_1
+
+max_2 : -->3 uses.
+D.5577_14 = max_2 + 1;
+max_12 = MAX_EXPR <val_11, max_2>;
+max_1 = PHI <max_2(5), max_12(6)>
+# DEBUG max => max_2
+
+ve_3 : -->3 uses.
+ve_13 = ve_3->next;
+e_8 = ve_3->edge;
+if (ve_3 != 0B)
+# DEBUG ve => ve_3
+
+max_4 : --> no uses.
+
+bb_5(D) : -->4 uses.
+D.5578_15 = bb_5(D)->max_distance;
+bb_5(D)->max_distance = D.5577_14;
+ve_7 = bb_5(D)->pred;
+D.5570_6 = bb_5(D)->max_distance;
+
+D.5570_6 : --> single use.
+if (D.5570_6 == 0)
+
+ve_7 : --> single use.
+ve_3 = PHI <ve_7(3), ve_13(7)>
+# DEBUG ve => ve_7
+
+e_8 : -->2 uses.
+D.5576_10 = e_8->source;
+D.5573_9 = e_8->type;
+# DEBUG e => e_8
+
+D.5573_9 : --> single use.
+if (D.5573_9 == 3)
+
+D.5576_10 : --> single use.
+val_11 = calc_max_distance_recursive (D.5576_10);
+
+val_11 : --> single use.
+max_12 = MAX_EXPR <val_11, max_2>;
+# DEBUG val => val_11
+
+max_12 : --> single use.
+max_1 = PHI <max_2(5), max_12(6)>
+# DEBUG max => max_12
+
+ve_13 : --> single use.
+ve_3 = PHI <ve_7(3), ve_13(7)>
+# DEBUG ve => ve_13
+
+D.5577_14 : --> single use.
+bb_5(D)->max_distance = D.5577_14;
+
+D.5578_15 : --> single use.
+return D.5578_15;
+
+.MEM_16 : -->2 uses.
+.MEM_17 = PHI <.MEM_19(D)(3), .MEM_16(7)>
+# VUSE <.MEM_16>
+ve_13 = ve_3->next;
+
+.MEM_17 : -->6 uses.
+# .MEM_21 = VDEF <.MEM_17>
+bb_5(D)->max_distance = D.5577_14;
+# .MEM_20 = VDEF <.MEM_17>
+val_11 = calc_max_distance_recursive (D.5576_10);
+# VUSE <.MEM_17>
+D.5576_10 = e_8->source;
+.MEM_16 = PHI <.MEM_17(5), .MEM_20(6)>
+# VUSE <.MEM_17>
+D.5573_9 = e_8->type;
+# VUSE <.MEM_17>
+e_8 = ve_3->edge;
+
+.MEM_18 : --> single use.
+# VUSE <.MEM_18>
+D.5578_15 = bb_5(D)->max_distance;
+
+.MEM_19(D) : -->4 uses.
+.MEM_17 = PHI <.MEM_19(D)(3), .MEM_16(7)>
+# VUSE <.MEM_19(D)>
+ve_7 = bb_5(D)->pred;
+.MEM_18 = PHI <.MEM_19(D)(2), .MEM_21(9)>
+# VUSE <.MEM_19(D)>
+D.5570_6 = bb_5(D)->max_distance;
+
+.MEM_20 : --> single use.
+.MEM_16 = PHI <.MEM_17(5), .MEM_20(6)>
+
+.MEM_21 : --> single use.
+.MEM_18 = PHI <.MEM_19(D)(2), .MEM_21(9)>
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+
+Visiting statement:
+if (D.5570_6 == 0)
+
+No interesting values produced.
+Adding Destination of edge (2 -> 3) to worklist
+
+Adding Destination of edge (2 -> 10) to worklist
+
+
+Simulating block 3
+Adding Destination of edge (3 -> 8) to worklist
+
+
+Simulating block 10
+
+Visiting statement:
+return D.5578_15;
+
+No interesting values produced.
+
+Simulating block 8
+
+Visiting PHI node: maxD.4220_2 = PHI <0(3), maxD.4220_1(7)>
+
+
+
+PHI node maxD.4220_2 copy-of chain: max_2 -> max_2 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Visiting PHI node: veD.4221_3 = PHI <veD.4221_7(3), veD.4221_13(7)>
+
+
+	Argument #0: veD.4221_7 copy-of chain: ve_7 -> ve_7 [NOT A COPY]
+
+PHI node veD.4221_3 copy-of chain: ve_3 -> ve_7 -> ve_7 [COPY]
+Telling the propagator to add SSA edges out of this PHI and continue.
+
+
+Visiting statement:
+if (veD.4221_3 != 0B)
+
+No interesting values produced.
+Adding Destination of edge (8 -> 4) to worklist
+
+Adding Destination of edge (8 -> 9) to worklist
+
+
+Simulating statement (from ssa_edges): maxD.4220_1 = PHI <maxD.4220_2(5), maxD.4220_12(6)>
+
+Visiting PHI node: maxD.4220_1 = PHI <maxD.4220_2(5), maxD.4220_12(6)>
+
+
+
+PHI node maxD.4220_1 copy-of chain: max_1 [UNDEFINED]
+Telling the propagator to do nothing with SSA edges and keep iterating.
+
+
+Simulating block 4
+
+Visiting statement:
+if (D.5573_9 == 3)
+
+No interesting values produced.
+Adding Destination of edge (4 -> 5) to worklist
+
+Adding Destination of edge (4 -> 6) to worklist
+
+
+Simulating block 9
+Adding Destination of edge (9 -> 10) to worklist
+
+
+Simulating block 5
+Adding Destination of edge (5 -> 7) to worklist
+
+
+Simulating block 6
+
+Simulating block 10
+
+Simulating block 7
+
+Visiting PHI node: maxD.4220_1 = PHI <maxD.4220_2(5), maxD.4220_12(6)>
+
+
+	Argument #0: maxD.4220_2 copy-of chain: max_2 -> max_2 [NOT A COPY]
+	Argument #1: maxD.4220_12 copy-of chain: max_12 -> max_12 [NOT A COPY]
+
+PHI node maxD.4220_1 copy-of chain: max_1 -> max_1 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+Adding Destination of edge (7 -> 8) to worklist
+
+
+Simulating block 8
+
+Visiting PHI node: veD.4221_3 = PHI <veD.4221_7(3), veD.4221_13(7)>
+
+
+	Argument #0: veD.4221_7 copy-of chain: ve_7 -> ve_7 [NOT A COPY]
+	Argument #1: veD.4221_13 copy-of chain: ve_13 -> ve_13 [NOT A COPY]
+
+PHI node veD.4221_3 copy-of chain: ve_3 -> ve_3 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Substituting values and folding statements
+
+Folding statement: if (D.5570_6 == 0)
+Not folded
+Folding statement: D.5570_6 = bb_5(D)->max_distance;
+Not folded
+Folding statement: # DEBUG max => 0
+Not folded
+Removing dead stmt max_4 = 0;
+
+Folding statement: # DEBUG ve => ve_7
+Not folded
+Folding statement: ve_7 = bb_5(D)->pred;
+Not folded
+Folding statement: if (D.5573_9 == 3)
+Not folded
+Folding statement: D.5573_9 = e_8->type;
+Not folded
+Folding statement: # DEBUG e => e_8
+Not folded
+Folding statement: e_8 = ve_3->edge;
+Not folded
+Folding statement: // predicted unlikely by continue predictor.
+Not folded
+Folding statement: # DEBUG max => max_12
+Not folded
+Folding statement: max_12 = MAX_EXPR <val_11, max_2>;
+Not folded
+Folding statement: # DEBUG val => val_11
+Not folded
+Folding statement: val_11 = calc_max_distance_recursive (D.5576_10);
+Not folded
+Folding statement: D.5576_10 = e_8->source;
+Not folded
+Folding PHI node: max_1 = PHI <max_2(5), max_12(6)>
+No folding possible
+Folding PHI node: .MEM_16 = PHI <.MEM_17(5), .MEM_20(6)>
+No folding possible
+Folding statement: # DEBUG ve => ve_13
+Not folded
+Folding statement: ve_13 = ve_3->next;
+Not folded
+Folding statement: # DEBUG max => max_1
+Not folded
+Folding PHI node: max_2 = PHI <0(3), max_1(7)>
+No folding possible
+Folding PHI node: ve_3 = PHI <ve_7(3), ve_13(7)>
+No folding possible
+Folding PHI node: .MEM_17 = PHI <.MEM_19(D)(3), .MEM_16(7)>
+No folding possible
+Folding statement: if (ve_3 != 0B)
+Not folded
+Folding statement: # DEBUG max => max_2
+Not folded
+Folding statement: # DEBUG ve => ve_3
+Not folded
+Folding statement: bb_5(D)->max_distance = D.5577_14;
+Not folded
+Folding statement: D.5577_14 = max_2 + 1;
+Not folded
+Folding PHI node: .MEM_18 = PHI <.MEM_19(D)(2), .MEM_21(9)>
+No folding possible
+Folding statement: return D.5578_15;
+Not folded
+Folding statement: D.5578_15 = bb_5(D)->max_distance;
+Not folded
+
+Pass statistics:
+----------------
+Statements deleted: 1
+
+calc_max_distance_recursive (struct basic_block * bbD.4216)
+{
+  struct edge * eD.4222;
+  struct vec_edge * veD.4221;
+  intD.0 maxD.4220;
+  intD.0 valD.4219;
+  intD.0 D.5578;
+  intD.0 D.5577;
+  struct basic_block * D.5576;
+  edge_type D.5573;
+  intD.0 D.5570;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # DEBUG maxD.4220 => 0
+  # VUSE <.MEMD.5614_19(D)>
+  D.5570_6 = bbD.4216_5(D)->max_distanceD.4146;
+  if (D.5570_6 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 10>;
+  # SUCC: 3 (true,exec) 10 (false,exec)
+
+  # BLOCK 3
+  # PRED: 2 (true,exec)
+  # VUSE <.MEMD.5614_19(D)>
+  veD.4221_7 = bbD.4216_5(D)->predD.4147;
+  # DEBUG veD.4221 => veD.4221_7
+  goto <bb 8>;
+  # SUCC: 8 (fallthru,exec)
+
+  # BLOCK 4
+  # PRED: 8 (true,exec)
+  # VUSE <.MEMD.5614_17>
+  eD.4222_8 = veD.4221_3->edgeD.4138;
+  # DEBUG eD.4222 => eD.4222_8
+  # VUSE <.MEMD.5614_17>
+  D.5573_9 = eD.4222_8->typeD.4133;
+  if (D.5573_9 == 3)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 (true,exec) 6 (false,exec)
+
+  # BLOCK 5
+  # PRED: 4 (true,exec)
+  // predicted unlikely by continue predictor.
+  goto <bb 7>;
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 6
+  # PRED: 4 (false,exec)
+  # VUSE <.MEMD.5614_17>
+  D.5576_10 = eD.4222_8->sourceD.4134;
+  # .MEMD.5614_20 = VDEF <.MEMD.5614_17>
+  valD.4219_11 = calc_max_distance_recursiveD.4217 (D.5576_10);
+  # DEBUG valD.4219 => valD.4219_11
+  maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_2>;
+  # DEBUG maxD.4220 => maxD.4220_12
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 7
+  # PRED: 5 (fallthru,exec) 6 (fallthru,exec)
+  # maxD.4220_1 = PHI <maxD.4220_2(5), maxD.4220_12(6)>
+  # .MEMD.5614_16 = PHI <.MEMD.5614_17(5), .MEMD.5614_20(6)>
+  # DEBUG maxD.4220 => maxD.4220_1
+  # VUSE <.MEMD.5614_16>
+  veD.4221_13 = veD.4221_3->nextD.4139;
+  # DEBUG veD.4221 => veD.4221_13
+  # SUCC: 8 (fallthru,exec)
+
+  # BLOCK 8
+  # PRED: 3 (fallthru,exec) 7 (fallthru,exec)
+  # maxD.4220_2 = PHI <0(3), maxD.4220_1(7)>
+  # veD.4221_3 = PHI <veD.4221_7(3), veD.4221_13(7)>
+  # .MEMD.5614_17 = PHI <.MEMD.5614_19(D)(3), .MEMD.5614_16(7)>
+  # DEBUG veD.4221 => veD.4221_3
+  # DEBUG maxD.4220 => maxD.4220_2
+  if (veD.4221_3 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 9>;
+  # SUCC: 4 (true,exec) 9 (false,exec)
+
+  # BLOCK 9
+  # PRED: 8 (false,exec)
+  D.5577_14 = maxD.4220_2 + 1;
+  # .MEMD.5614_21 = VDEF <.MEMD.5614_17>
+  bbD.4216_5(D)->max_distanceD.4146 = D.5577_14;
+  # SUCC: 10 (fallthru,exec)
+
+  # BLOCK 10
+  # PRED: 2 (false,exec) 9 (fallthru,exec)
+  # .MEMD.5614_18 = PHI <.MEMD.5614_19(D)(2), .MEMD.5614_21(9)>
+  # VUSE <.MEMD.5614_18>
+  D.5578_15 = bbD.4216_5(D)->max_distanceD.4146;
+  return D.5578_15;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function calc_max_distance (calc_max_distance)
+
+
+Pass statistics:
+----------------
+
+Immediate_uses: 
+
+max_1 : --> single use.
+max_2 = PHI <max_8(2), max_1(8)>
+# DEBUG max => max_1
+
+max_2 : -->4 uses.
+D.5562_18->max_distance = max_2;
+max_14 = max_2;
+if (max_2 <= val_12)
+max_1 = PHI <max_2(3), max_15(7)>
+# DEBUG max => max_2
+
+bb_3 : -->4 uses.
+bb_16 = bb_3->next;
+val_12 = calc_max_distance_recursive (bb_3);
+D.5563_11 = bb_3->max_distance;
+if (bb_3 != 0B)
+# DEBUG bb => bb_3
+
+max_4 : --> single use.
+max_15 = max_4;
+
+cfg.4_6 : --> single use.
+D.5562_7 = cfg.4_6->exit;
+
+D.5562_7 : --> single use.
+max_8 = calc_max_distance_recursive (D.5562_7);
+
+max_8 : --> single use.
+max_2 = PHI <max_8(2), max_1(8)>
+# DEBUG max => max_8
+
+cfg.4_9 : --> single use.
+bb_10 = cfg.4_9->bb;
+
+bb_10 : --> single use.
+bb_3 = PHI <bb_10(2), bb_16(8)>
+# DEBUG bb => bb_10
+
+D.5563_11 : --> single use.
+if (D.5563_11 == 0)
+
+val_12 : -->2 uses.
+max_13 = val_12 + 1;
+if (max_2 <= val_12)
+# DEBUG val => val_12
+
+max_13 : --> single use.
+max_4 = PHI <max_13(5), max_14(6)>
+
+max_14 : --> single use.
+max_4 = PHI <max_13(5), max_14(6)>
+
+max_15 : --> single use.
+max_1 = PHI <max_2(3), max_15(7)>
+# DEBUG max => max_15
+
+bb_16 : --> single use.
+bb_3 = PHI <bb_10(2), bb_16(8)>
+# DEBUG bb => bb_16
+
+cfg.4_17 : --> single use.
+D.5562_18 = cfg.4_17->exit;
+
+D.5562_18 : --> single use.
+D.5562_18->max_distance = max_2;
+
+.MEM_19 : -->2 uses.
+.MEM_20 = PHI <.MEM_24(2), .MEM_19(8)>
+# VUSE <.MEM_19>
+bb_16 = bb_3->next;
+
+.MEM_20 : -->6 uses.
+# .MEM_26 = VDEF <.MEM_20>
+D.5562_18->max_distance = max_2;
+# VUSE <.MEM_20>
+D.5562_18 = cfg.4_17->exit;
+# VUSE <.MEM_20>
+cfg.4_17 = cfg;
+# .MEM_25 = VDEF <.MEM_20>
+val_12 = calc_max_distance_recursive (bb_3);
+.MEM_19 = PHI <.MEM_20(3), .MEM_25(7)>
+# VUSE <.MEM_20>
+D.5563_11 = bb_3->max_distance;
+
+.MEM_21(D) : --> single use.
+# .MEM_22 = VDEF <.MEM_21(D)>
+depth_first_search ();
+
+.MEM_22 : --> single use.
+# .MEM_23 = VDEF <.MEM_22>
+mark_edges ();
+
+.MEM_23 : -->3 uses.
+# .MEM_24 = VDEF <.MEM_23>
+max_8 = calc_max_distance_recursive (D.5562_7);
+# VUSE <.MEM_23>
+D.5562_7 = cfg.4_6->exit;
+# VUSE <.MEM_23>
+cfg.4_6 = cfg;
+
+.MEM_24 : -->3 uses.
+.MEM_20 = PHI <.MEM_24(2), .MEM_19(8)>
+# VUSE <.MEM_24>
+bb_10 = cfg.4_9->bb;
+# VUSE <.MEM_24>
+cfg.4_9 = cfg;
+
+.MEM_25 : --> single use.
+.MEM_19 = PHI <.MEM_20(3), .MEM_25(7)>
+
+.MEM_26 : --> no uses.
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+Adding Destination of edge (2 -> 9) to worklist
+
+
+Simulating block 9
+
+Visiting PHI node: maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(8)>
+
+
+	Argument #0: maxD.4231_8 copy-of chain: max_8 -> max_8 [NOT A COPY]
+
+PHI node maxD.4231_2 copy-of chain: max_2 -> max_8 -> max_8 [COPY]
+Telling the propagator to add SSA edges out of this PHI and continue.
+
+
+Visiting PHI node: bbD.4232_3 = PHI <bbD.4232_10(2), bbD.4232_16(8)>
+
+
+	Argument #0: bbD.4232_10 copy-of chain: bb_10 -> bb_10 [NOT A COPY]
+
+PHI node bbD.4232_3 copy-of chain: bb_3 -> bb_10 -> bb_10 [COPY]
+Telling the propagator to add SSA edges out of this PHI and continue.
+
+
+Visiting statement:
+if (bbD.4232_3 != 0B)
+
+No interesting values produced.
+Adding Destination of edge (9 -> 3) to worklist
+
+Adding Destination of edge (9 -> 10) to worklist
+
+
+Simulating statement (from ssa_edges): maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_15(7)>
+
+Visiting PHI node: maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_15(7)>
+
+
+
+PHI node maxD.4231_1 copy-of chain: max_1 [UNDEFINED]
+Telling the propagator to do nothing with SSA edges and keep iterating.
+
+
+Simulating statement (from ssa_edges): if (maxD.4231_2 <= valD.4230_12)
+
+Simulating statement (from ssa_edges): maxD.4231_14 = maxD.4231_2;
+
+Simulating block 3
+
+Visiting statement:
+if (D.5563_11 == 0)
+
+No interesting values produced.
+Adding Destination of edge (3 -> 4) to worklist
+
+Adding Destination of edge (3 -> 8) to worklist
+
+
+Simulating block 10
+
+Visiting statement:
+return;
+
+No interesting values produced.
+
+Simulating block 4
+
+Visiting statement:
+if (maxD.4231_2 <= valD.4230_12)
+
+Trying to determine truth value of predicate if (max_2 <= val_12)
+No interesting values produced.
+Adding Destination of edge (4 -> 5) to worklist
+
+Adding Destination of edge (4 -> 6) to worklist
+
+
+Simulating block 5
+Adding Destination of edge (5 -> 7) to worklist
+
+
+Simulating block 8
+
+Visiting PHI node: maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_15(7)>
+
+
+	Argument #0: maxD.4231_2 copy-of chain: max_2 -> max_8 -> max_8 [COPY]
+
+PHI node maxD.4231_1 copy-of chain: max_1 -> max_8 -> max_8 [COPY]
+Telling the propagator to add SSA edges out of this PHI and continue.
+
+Adding Destination of edge (8 -> 9) to worklist
+
+
+Simulating statement (from ssa_edges): maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(8)>
+
+Visiting PHI node: maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(8)>
+
+
+	Argument #0: maxD.4231_8 copy-of chain: max_8 -> max_8 [NOT A COPY]
+	Argument #1: maxD.4231_1 copy-of chain: max_1 -> max_8 -> max_8 [COPY]
+
+PHI node maxD.4231_2 copy-of chain: max_2 -> max_8 -> max_8 [COPY]
+Telling the propagator to add SSA edges out of this PHI and continue.
+
+
+Simulating statement (from ssa_edges): maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_15(7)>
+
+Visiting PHI node: maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_15(7)>
+
+
+	Argument #0: maxD.4231_2 copy-of chain: max_2 -> max_8 -> max_8 [COPY]
+
+PHI node maxD.4231_1 copy-of chain: max_1 -> max_8 -> max_8 [COPY]
+Telling the propagator to add SSA edges out of this PHI and continue.
+
+
+Simulating statement (from ssa_edges): maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(8)>
+
+Visiting PHI node: maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(8)>
+
+
+	Argument #0: maxD.4231_8 copy-of chain: max_8 -> max_8 [NOT A COPY]
+	Argument #1: maxD.4231_1 copy-of chain: max_1 -> max_8 -> max_8 [COPY]
+
+PHI node maxD.4231_2 copy-of chain: max_2 -> max_8 -> max_8 [COPY]
+Telling the propagator to do nothing with SSA edges and keep iterating.
+
+
+Simulating statement (from ssa_edges): maxD.4231_14 = maxD.4231_2;
+
+Simulating block 6
+
+Visiting statement:
+maxD.4231_14 = maxD.4231_2;
+
+
+Simulating statement (from ssa_edges): maxD.4231_4 = PHI <maxD.4231_13(5), maxD.4231_14(6)>
+
+Visiting PHI node: maxD.4231_4 = PHI <maxD.4231_13(5), maxD.4231_14(6)>
+
+
+	Argument #0: maxD.4231_13 copy-of chain: max_13 -> max_13 [NOT A COPY]
+	Argument #1: maxD.4231_14 copy-of chain: max_14 -> max_8 -> max_8 [COPY]
+
+PHI node maxD.4231_4 copy-of chain: max_4 -> max_4 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Simulating block 7
+
+Visiting statement:
+maxD.4231_15 = maxD.4231_4;
+
+Adding Destination of edge (7 -> 8) to worklist
+
+
+Simulating statement (from ssa_edges): maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_15(7)>
+
+Visiting PHI node: maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_15(7)>
+
+
+	Argument #0: maxD.4231_2 copy-of chain: max_2 -> max_8 -> max_8 [COPY]
+	Argument #1: maxD.4231_15 copy-of chain: max_15 -> max_4 -> max_4 [COPY]
+
+PHI node maxD.4231_1 copy-of chain: max_1 -> max_1 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Simulating block 9
+
+Visiting PHI node: maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(8)>
+
+
+	Argument #0: maxD.4231_8 copy-of chain: max_8 -> max_8 [NOT A COPY]
+	Argument #1: maxD.4231_1 copy-of chain: max_1 -> max_1 [NOT A COPY]
+
+PHI node maxD.4231_2 copy-of chain: max_2 -> max_2 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Visiting PHI node: bbD.4232_3 = PHI <bbD.4232_10(2), bbD.4232_16(8)>
+
+
+	Argument #0: bbD.4232_10 copy-of chain: bb_10 -> bb_10 [NOT A COPY]
+	Argument #1: bbD.4232_16 copy-of chain: bb_16 -> bb_16 [NOT A COPY]
+
+PHI node bbD.4232_3 copy-of chain: bb_3 -> bb_3 [NOT A COPY]
+Telling the propagator to add SSA edges out of this PHI and never visit again.
+
+
+Simulating statement (from ssa_edges): maxD.4231_14 = maxD.4231_2;
+
+Visiting statement:
+maxD.4231_14 = maxD.4231_2;
+
+
+Simulating statement (from ssa_edges): maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(8)>
+
+Simulating block 8
+
+Substituting values and folding statements
+
+Folding statement: # DEBUG bb => bb_10
+Not folded
+Folding statement: bb_10 = cfg.4_9->bb;
+Not folded
+Folding statement: cfg.4_9 = cfg;
+Not folded
+Folding statement: # DEBUG max => max_8
+Not folded
+Folding statement: max_8 = calc_max_distance_recursive (D.5562_7);
+Not folded
+Folding statement: D.5562_7 = cfg.4_6->exit;
+Not folded
+Folding statement: cfg.4_6 = cfg;
+Not folded
+Folding statement: mark_edges ();
+Not folded
+Folding statement: depth_first_search ();
+Not folded
+Folding statement: # DEBUG max => 0
+Not folded
+Folding statement: if (D.5563_11 == 0)
+Not folded
+Folding statement: D.5563_11 = bb_3->max_distance;
+Not folded
+Folding statement: if (max_2 <= val_12)
+Not folded
+Folding statement: # DEBUG val => val_12
+Not folded
+Folding statement: val_12 = calc_max_distance_recursive (bb_3);
+Not folded
+Folding statement: max_13 = val_12 + 1;
+Not folded
+Folding statement: max_14 = max_2;
+Not folded
+Folding PHI node: max_4 = PHI <max_13(5), max_14(6)>
+Folded into: max_4 = PHI <max_13(5), max_2(6)>
+
+Folding statement: # DEBUG max => max_15
+Folded into: # DEBUG max => max_4
+
+Folding statement: max_15 = max_4;
+Not folded
+Folding PHI node: max_1 = PHI <max_2(3), max_15(7)>
+Folded into: max_1 = PHI <max_2(3), max_4(7)>
+
+Folding PHI node: .MEM_19 = PHI <.MEM_20(3), .MEM_25(7)>
+No folding possible
+Folding statement: # DEBUG bb => bb_16
+Not folded
+Folding statement: bb_16 = bb_3->next;
+Not folded
+Folding statement: # DEBUG max => max_1
+Not folded
+Folding PHI node: max_2 = PHI <max_8(2), max_1(8)>
+No folding possible
+Folding PHI node: bb_3 = PHI <bb_10(2), bb_16(8)>
+No folding possible
+Folding PHI node: .MEM_20 = PHI <.MEM_24(2), .MEM_19(8)>
+No folding possible
+Folding statement: if (bb_3 != 0B)
+Not folded
+Folding statement: # DEBUG max => max_2
+Not folded
+Folding statement: # DEBUG bb => bb_3
+Not folded
+Folding statement: return;
+Not folded
+Folding statement: D.5562_18->max_distance = max_2;
+Not folded
+Folding statement: D.5562_18 = cfg.4_17->exit;
+Not folded
+Folding statement: cfg.4_17 = cfg;
+Not folded
+
+Pass statistics:
+----------------
+Copies propagated: 3
+
+calc_max_distance ()
+{
+  struct basic_block * bbD.4232;
+  intD.0 maxD.4231;
+  intD.0 valD.4230;
+  intD.0 D.5563;
+  struct basic_block * D.5562;
+  struct control_flow_graph * cfg.4D.5561;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # DEBUG maxD.4231 => 0
+  # .MEMD.5615_22 = VDEF <.MEMD.5615_21(D)>
+  depth_first_searchD.4185 ();
+  # .MEMD.5615_23 = VDEF <.MEMD.5615_22>
+  mark_edgesD.4209 ();
+  # VUSE <.MEMD.5615_23>
+  cfg.4D.5561_6 = cfgD.4174;
+  # VUSE <.MEMD.5615_23>
+  D.5562_7 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_24 = VDEF <.MEMD.5615_23>
+  maxD.4231_8 = calc_max_distance_recursiveD.4217 (D.5562_7);
+  # DEBUG maxD.4231 => maxD.4231_8
+  # VUSE <.MEMD.5615_24>
+  cfg.4D.5561_9 = cfgD.4174;
+  # VUSE <.MEMD.5615_24>
+  bbD.4232_10 = cfg.4D.5561_9->bbD.4157;
+  # DEBUG bbD.4232 => bbD.4232_10
+  goto <bb 9>;
+  # SUCC: 9 (fallthru,exec)
+
+  # BLOCK 3
+  # PRED: 9 (true,exec)
+  # VUSE <.MEMD.5615_20>
+  D.5563_11 = bbD.4232_3->max_distanceD.4146;
+  if (D.5563_11 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 8>;
+  # SUCC: 4 (true,exec) 8 (false,exec)
+
+  # BLOCK 4
+  # PRED: 3 (true,exec)
+  # .MEMD.5615_25 = VDEF <.MEMD.5615_20>
+  valD.4230_12 = calc_max_distance_recursiveD.4217 (bbD.4232_3);
+  # DEBUG valD.4230 => valD.4230_12
+  if (maxD.4231_2 <= valD.4230_12)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 (true,exec) 6 (false,exec)
+
+  # BLOCK 5
+  # PRED: 4 (true,exec)
+  maxD.4231_13 = valD.4230_12 + 1;
+  goto <bb 7>;
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 6
+  # PRED: 4 (false,exec)
+  maxD.4231_14 = maxD.4231_2;
+  # SUCC: 7 (fallthru,exec)
+
+  # BLOCK 7
+  # PRED: 5 (fallthru,exec) 6 (fallthru,exec)
+  # maxD.4231_4 = PHI <maxD.4231_13(5), maxD.4231_2(6)>
+  maxD.4231_15 = maxD.4231_4;
+  # DEBUG maxD.4231 => maxD.4231_4
+  # SUCC: 8 (fallthru,exec)
+
+  # BLOCK 8
+  # PRED: 3 (false,exec) 7 (fallthru,exec)
+  # maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_4(7)>
+  # .MEMD.5615_19 = PHI <.MEMD.5615_20(3), .MEMD.5615_25(7)>
+  # DEBUG maxD.4231 => maxD.4231_1
+  # VUSE <.MEMD.5615_19>
+  bbD.4232_16 = bbD.4232_3->nextD.4151;
+  # DEBUG bbD.4232 => bbD.4232_16
+  # SUCC: 9 (fallthru,exec)
+
+  # BLOCK 9
+  # PRED: 2 (fallthru,exec) 8 (fallthru,exec)
+  # maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(8)>
+  # bbD.4232_3 = PHI <bbD.4232_10(2), bbD.4232_16(8)>
+  # .MEMD.5615_20 = PHI <.MEMD.5615_24(2), .MEMD.5615_19(8)>
+  # DEBUG bbD.4232 => bbD.4232_3
+  # DEBUG maxD.4231 => maxD.4231_2
+  if (bbD.4232_3 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 10>;
+  # SUCC: 3 (true,exec) 10 (false,exec)
+
+  # BLOCK 10
+  # PRED: 9 (false,exec)
+  # VUSE <.MEMD.5615_20>
+  cfg.4D.5561_17 = cfgD.4174;
+  # VUSE <.MEMD.5615_20>
+  D.5562_18 = cfg.4D.5561_17->exitD.4156;
+  # .MEMD.5615_26 = VDEF <.MEMD.5615_20>
+  D.5562_18->max_distanceD.4146 = maxD.4231_2;
+  return;
+  # SUCC: EXIT
+
+}
+
+
+
+;; Function fine_tune_cfg (fine_tune_cfg)
+
+
+Pass statistics:
+----------------
+
+Immediate_uses: 
+
+first_function.0_1 : --> single use.
+current_function = first_function.0_1;
+
+current_function.1_2 : --> single use.
+if (current_function.1_2 != 0B)
+
+current_function.1_3 : --> single use.
+cfg.2_4 = current_function.1_3->cfg;
+
+cfg.2_4 : --> single use.
+cfg = cfg.2_4;
+
+current_function.1_5 : --> single use.
+current_function.3_6 = current_function.1_5->next;
+
+current_function.3_6 : --> single use.
+current_function = current_function.3_6;
+
+.MEM_7 : -->4 uses.
+# .MEM_10 = VDEF <.MEM_7>
+cfg = cfg.2_4;
+# VUSE <.MEM_7>
+cfg.2_4 = current_function.1_3->cfg;
+# VUSE <.MEM_7>
+current_function.1_3 = current_function;
+# VUSE <.MEM_7>
+current_function.1_2 = current_function;
+
+.MEM_8(D) : -->2 uses.
+# .MEM_9 = VDEF <.MEM_8(D)>
+current_function = first_function.0_1;
+# VUSE <.MEM_8(D)>
+first_function.0_1 = first_function;
+
+.MEM_9 : --> single use.
+.MEM_7 = PHI <.MEM_9(2), .MEM_12(3)>
+
+.MEM_10 : --> single use.
+# .MEM_11 = VDEF <.MEM_10>
+calc_max_distance ();
+
+.MEM_11 : -->3 uses.
+# .MEM_12 = VDEF <.MEM_11>
+current_function = current_function.3_6;
+# VUSE <.MEM_11>
+current_function.3_6 = current_function.1_5->next;
+# VUSE <.MEM_11>
+current_function.1_5 = current_function;
+
+.MEM_12 : --> single use.
+.MEM_7 = PHI <.MEM_9(2), .MEM_12(3)>
+
+Adding Destination of edge (0 -> 2) to worklist
+
+
+Simulating block 2
+Adding Destination of edge (2 -> 4) to worklist
+
+
+Simulating block 4
+
+Visiting statement:
+if (current_function.1D.5558_2 != 0B)
+
+No interesting values produced.
+Adding Destination of edge (4 -> 3) to worklist
+
+Adding Destination of edge (4 -> 5) to worklist
+
+
+Simulating block 3
+Adding Destination of edge (3 -> 4) to worklist
+
+
+Simulating block 5
+
+Visiting statement:
+return;
+
+No interesting values produced.
+
+Simulating block 4
+
+Substituting values and folding statements
+
+Folding statement: current_function = first_function.0_1;
+Not folded
+Folding statement: first_function.0_1 = first_function;
+Not folded
+Folding statement: current_function = current_function.3_6;
+Not folded
+Folding statement: current_function.3_6 = current_function.1_5->next;
+Not folded
+Folding statement: current_function.1_5 = current_function;
+Not folded
+Folding statement: calc_max_distance ();
+Not folded
+Folding statement: cfg = cfg.2_4;
+Not folded
+Folding statement: cfg.2_4 = current_function.1_3->cfg;
+Not folded
+Folding statement: current_function.1_3 = current_function;
+Not folded
+Folding PHI node: .MEM_7 = PHI <.MEM_9(2), .MEM_12(3)>
+No folding possible
+Folding statement: if (current_function.1_2 != 0B)
+Not folded
+Folding statement: current_function.1_2 = current_function;
+Not folded
+Folding statement: return;
+Not folded
+
+Pass statistics:
+----------------
+
+fine_tune_cfg ()
+{
+  struct function * current_function.3D.5560;
+  struct control_flow_graph * cfg.2D.5559;
+  struct function * current_function.1D.5558;
+  struct function * first_function.0D.5557;
+
+  # BLOCK 2
+  # PRED: ENTRY (fallthru,exec)
+  # VUSE <.MEMD.5616_8(D)>
+  first_function.0D.5557_1 = first_functionD.4111;
+  # .MEMD.5616_9 = VDEF <.MEMD.5616_8(D)>
+  current_functionD.4113 = first_function.0D.5557_1;
+  goto <bb 4>;
+  # SUCC: 4 (fallthru,exec)
+
+  # BLOCK 3
+  # PRED: 4 (true,exec)
+  # VUSE <.MEMD.5616_7>
+  current_function.1D.5558_3 = current_functionD.4113;
+  # VUSE <.MEMD.5616_7>
+  cfg.2D.5559_4 = current_function.1D.5558_3->cfgD.4162;
+  # .MEMD.5616_10 = VDEF <.MEMD.5616_7>
+  cfgD.4174 = cfg.2D.5559_4;
+  # .MEMD.5616_11 = VDEF <.MEMD.5616_10>
+  calc_max_distanceD.4228 ();
+  # VUSE <.MEMD.5616_11>
+  current_function.1D.5558_5 = current_functionD.4113;
+  # VUSE <.MEMD.5616_11>
+  current_function.3D.5560_6 = current_function.1D.5558_5->nextD.4163;
+  # .MEMD.5616_12 = VDEF <.MEMD.5616_11>
+  current_functionD.4113 = current_function.3D.5560_6;
+  # SUCC: 4 (fallthru,exec)
+
+  # BLOCK 4
+  # PRED: 2 (fallthru,exec) 3 (fallthru,exec)
+  # .MEMD.5616_7 = PHI <.MEMD.5616_9(2), .MEMD.5616_12(3)>
+  # VUSE <.MEMD.5616_7>
+  current_function.1D.5558_2 = current_functionD.4113;
+  if (current_function.1D.5558_2 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 (true,exec) 5 (false,exec)
+
+  # BLOCK 5
+  # PRED: 4 (false,exec)
+  return;
+  # SUCC: EXIT
+
+}
+
+

@@ -1,0 +1,2227 @@
+
+;; Function search (search)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 7 6
+;;
+;; Loop 1
+;;  header 3, latch 7
+;;  depth 1, outer 0
+;;  nodes: 3 7 5 4
+;; 2 succs { 3 6 }
+;; 3 succs { 4 5 }
+;; 4 succs { 5 }
+;; 5 succs { 7 6 }
+;; 7 succs { 3 }
+;; 6 succs { 1 }
+
+
+Optimizing block #0
+
+
+
+Optimizing block #2
+
+Optimizing statement bb_2(D)->visited = 1;
+LKUP STMT bb_2(D)->visited = 1
+          bb_2(D)->visited = 1;
+LKUP STMT 1 = bb_2(D)->visited
+          1 = bb_2(D)->visited;
+2>>> STMT 1 = bb_2(D)->visited
+          1 = bb_2(D)->visited;
+Optimizing statement ve_3 = bb_2(D)->succ;
+LKUP STMT ve_3 = bb_2(D)->succ
+          ve_3 = bb_2(D)->succ;
+2>>> STMT ve_3 = bb_2(D)->succ
+          ve_3 = bb_2(D)->succ;
+Optimizing statement # DEBUG ve => ve_3
+Optimizing statement # DEBUG ve => ve_3
+Optimizing statement if (ve_3 != 0B)
+LKUP STMT ve_3 ne_expr 0B
+          if (ve_3 != 0B)
+
+
+Optimizing block #6
+
+Optimizing statement count.10_8 = count;
+LKUP STMT count.10_8 = count
+          count.10_8 = count;
+2>>> STMT count.10_8 = count
+          count.10_8 = count;
+Optimizing statement bb_2(D)->dfs_order = count.10_8;
+LKUP STMT bb_2(D)->dfs_order = count.10_8
+          bb_2(D)->dfs_order = count.10_8;
+LKUP STMT count.10_8 = bb_2(D)->dfs_order
+          count.10_8 = bb_2(D)->dfs_order;
+2>>> STMT count.10_8 = bb_2(D)->dfs_order
+          count.10_8 = bb_2(D)->dfs_order;
+Optimizing statement count.11_10 = count.10_8 + -1;
+LKUP STMT count.11_10 = count.10_8 plus_expr -1
+          count.11_10 = count.10_8 + -1;
+2>>> STMT count.11_10 = count.10_8 plus_expr -1
+          count.11_10 = count.10_8 + -1;
+Optimizing statement count = count.11_10;
+LKUP STMT count = count.11_10
+          count = count.11_10;
+LKUP STMT count.11_10 = count
+          count.11_10 = count;
+2>>> STMT count.11_10 = count
+          count.11_10 = count;
+Optimizing statement return;
+<<<< STMT count.11_10 = count
+          count.11_10 = count;
+<<<< STMT count.11_10 = count.10_8 plus_expr -1
+          count.11_10 = count.10_8 + -1;
+<<<< STMT count.10_8 = bb_2(D)->dfs_order
+          count.10_8 = bb_2(D)->dfs_order;
+<<<< STMT count.10_8 = count
+          count.10_8 = count;
+
+
+Optimizing block #3
+
+1>>> COND 1 = ve_3 ne_expr 0B
+1>>> COND 0 = ve_3 eq_expr 0B
+Optimizing statement e_4 = ve_9->edge;
+LKUP STMT e_4 = ve_9->edge
+          e_4 = ve_9->edge;
+2>>> STMT e_4 = ve_9->edge
+          e_4 = ve_9->edge;
+Optimizing statement # DEBUG e => e_4
+Optimizing statement succ_bb_5 = e_4->target;
+LKUP STMT succ_bb_5 = e_4->target
+          succ_bb_5 = e_4->target;
+2>>> STMT succ_bb_5 = e_4->target
+          succ_bb_5 = e_4->target;
+Optimizing statement # DEBUG succ_bb => succ_bb_5
+Optimizing statement D.5604_6 = succ_bb_5->visited;
+LKUP STMT D.5604_6 = succ_bb_5->visited
+          D.5604_6 = succ_bb_5->visited;
+2>>> STMT D.5604_6 = succ_bb_5->visited
+          D.5604_6 = succ_bb_5->visited;
+Optimizing statement if (D.5604_6 == 0)
+LKUP STMT D.5604_6 eq_expr 0
+          if (D.5604_6 == 0)
+
+
+Optimizing block #4
+
+0>>> COPY D.5604_6 = 0
+1>>> COND 1 = D.5604_6 eq_expr 0
+1>>> COND 0 = D.5604_6 ne_expr 0
+1>>> COND 1 = D.5604_6 le_expr 0
+1>>> COND 1 = D.5604_6 ge_expr 0
+Optimizing statement e_4->type = 1;
+LKUP STMT e_4->type = 1
+          e_4->type = 1;
+LKUP STMT 1 = e_4->type
+          1 = e_4->type;
+2>>> STMT 1 = e_4->type
+          1 = e_4->type;
+Optimizing statement search (succ_bb_5);
+LKUP STMT ve_7 = ve_9->next
+          ve_7 = ve_9->next;
+LKUP STMT ve_7 ne_expr 0B
+          if (ve_7 != 0B)
+<<<< STMT 1 = e_4->type
+          1 = e_4->type;
+<<<< COND 1 = D.5604_6 ge_expr 0
+<<<< COND 1 = D.5604_6 le_expr 0
+<<<< COND 0 = D.5604_6 ne_expr 0
+<<<< COND 1 = D.5604_6 eq_expr 0
+
+
+Optimizing block #5
+
+Optimizing statement ve_7 = ve_9->next;
+LKUP STMT ve_7 = ve_9->next
+          ve_7 = ve_9->next;
+2>>> STMT ve_7 = ve_9->next
+          ve_7 = ve_9->next;
+Optimizing statement # DEBUG ve => ve_7
+Optimizing statement # DEBUG ve => ve_7
+Optimizing statement if (ve_7 != 0B)
+LKUP STMT ve_7 ne_expr 0B
+          if (ve_7 != 0B)
+
+
+Optimizing block #7
+
+1>>> COND 1 = ve_7 ne_expr 0B
+1>>> COND 0 = ve_7 eq_expr 0B
+<<<< COND 0 = ve_7 eq_expr 0B
+<<<< COND 1 = ve_7 ne_expr 0B
+<<<< STMT ve_7 = ve_9->next
+          ve_7 = ve_9->next;
+1>>> COND 1 = D.5604_6 ne_expr 0
+1>>> COND 0 = D.5604_6 eq_expr 0
+LKUP STMT ve_7 = ve_9->next
+          ve_7 = ve_9->next;
+LKUP STMT ve_7 ne_expr 0B
+          if (ve_7 != 0B)
+<<<< COND 0 = D.5604_6 eq_expr 0
+<<<< COND 1 = D.5604_6 ne_expr 0
+<<<< STMT D.5604_6 = succ_bb_5->visited
+          D.5604_6 = succ_bb_5->visited;
+<<<< STMT succ_bb_5 = e_4->target
+          succ_bb_5 = e_4->target;
+<<<< STMT e_4 = ve_9->edge
+          e_4 = ve_9->edge;
+<<<< COND 0 = ve_3 eq_expr 0B
+<<<< COND 1 = ve_3 ne_expr 0B
+1>>> COND 1 = ve_3 ne_expr 0B
+1>>> COND 0 = ve_3 eq_expr 0B
+LKUP STMT e_4 = ve_3->edge
+          e_4 = ve_3->edge;
+LKUP STMT succ_bb_5 = e_4->target
+          succ_bb_5 = e_4->target;
+LKUP STMT D.5604_6 = succ_bb_5->visited
+          D.5604_6 = succ_bb_5->visited;
+LKUP STMT D.5604_6 eq_expr 0
+          if (D.5604_6 == 0)
+<<<< COND 0 = ve_3 eq_expr 0B
+<<<< COND 1 = ve_3 ne_expr 0B
+<<<< STMT ve_3 = bb_2(D)->succ
+          ve_3 = bb_2(D)->succ;
+<<<< STMT 1 = bb_2(D)->visited
+          1 = bb_2(D)->visited;
+Total number of statements:                       22
+
+Exprs considered for dominator optimizations:     14
+
+Hash table statistics:
+    avail_exprs: size 2039, 0 elements, 0.105263 collision/search ratio
+
+Pass statistics:
+----------------
+
+Removing basic block 7
+;; basic block 7, loop depth 1, count 0
+;; prev block 5, next block 6
+;; pred:      
+;; succ:       3 [100.0%]  (fallthru,dfs_back)
+<bb 7>:
+Invalid sum of incoming frequencies 0, should be 8281
+goto <bb 3>;
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  struct basic_block * succ_bbD.4178;
+  struct vec_edge * veD.4179;
+  struct edge * eD.4180;
+
+}
+search (struct basic_block * bbD.4175)
+{
+  struct edge * eD.4180;
+  struct vec_edge * veD.4179;
+  struct basic_block * succ_bbD.4178;
+  intD.0 count.11D.5608;
+  intD.0 count.10D.5607;
+  intD.0 D.5604;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # .MEMD.5609_14 = VDEF <.MEMD.5609_13(D)>
+  bbD.4175_2(D)->visitedD.4144 = 1;
+  # VUSE <.MEMD.5609_14>
+  veD.4179_3 = bbD.4175_2(D)->succD.4149;
+  # DEBUG veD.4179 => veD.4179_3
+  # DEBUG veD.4179 => veD.4179_3
+  if (veD.4179_3 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 6>;
+  # SUCC: 3 [91.0%]  (true,exec) 6 [9.0%]  (false,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 5 [91.0%]  (true,exec) 2 [91.0%]  (true,exec)
+  # veD.4179_9 = PHI <veD.4179_7(5), veD.4179_3(2)>
+  # .MEMD.5609_19 = PHI <.MEMD.5609_11(5), .MEMD.5609_14(2)>
+  # VUSE <.MEMD.5609_19>
+  eD.4180_4 = veD.4179_9->edgeD.4138;
+  # DEBUG eD.4180 => eD.4180_4
+  # VUSE <.MEMD.5609_19>
+  succ_bbD.4178_5 = eD.4180_4->targetD.4135;
+  # DEBUG succ_bbD.4178 => succ_bbD.4178_5
+  # VUSE <.MEMD.5609_19>
+  D.5604_6 = succ_bbD.4178_5->visitedD.4144;
+  if (D.5604_6 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 [29.0%]  (true,exec) 5 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5609_15 = VDEF <.MEMD.5609_19>
+  eD.4180_4->typeD.4133 = 1;
+  # .MEMD.5609_16 = VDEF <.MEMD.5609_15>
+  searchD.4176 (succ_bbD.4178_5);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5609_11 = PHI <.MEMD.5609_19(3), .MEMD.5609_16(4)>
+  # VUSE <.MEMD.5609_11>
+  veD.4179_7 = veD.4179_9->nextD.4139;
+  # DEBUG veD.4179 => veD.4179_7
+  # DEBUG veD.4179 => veD.4179_7
+  if (veD.4179_7 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 6>;
+  # SUCC: 3 [91.0%]  (true,exec) 6 [9.0%]  (false,exec)
+
+  # BLOCK 6 freq:900
+  # PRED: 5 [9.0%]  (false,exec) 2 [9.0%]  (false,exec)
+  # .MEMD.5609_22 = PHI <.MEMD.5609_11(5), .MEMD.5609_14(2)>
+  # VUSE <.MEMD.5609_22>
+  count.10D.5607_8 = countD.4173;
+  # .MEMD.5609_17 = VDEF <.MEMD.5609_22>
+  bbD.4175_2(D)->dfs_orderD.4145 = count.10D.5607_8;
+  count.11D.5608_10 = count.10D.5607_8 + -1;
+  # .MEMD.5609_18 = VDEF <.MEMD.5609_17>
+  countD.4173 = count.11D.5608_10;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function depth_first_search (depth_first_search)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 5 4
+;;
+;; Loop 1
+;;  header 3, latch 5
+;;  depth 1, outer 0
+;;  nodes: 3 5
+;; 2 succs { 3 4 }
+;; 3 succs { 5 4 }
+;; 5 succs { 3 }
+;; 4 succs { 1 }
+
+
+Optimizing block #0
+
+
+
+Optimizing block #2
+
+Optimizing statement cfg.8_2 = cfg;
+LKUP STMT cfg.8_2 = cfg
+          cfg.8_2 = cfg;
+2>>> STMT cfg.8_2 = cfg
+          cfg.8_2 = cfg;
+Optimizing statement bb_3 = cfg.8_2->bb;
+LKUP STMT bb_3 = cfg.8_2->bb
+          bb_3 = cfg.8_2->bb;
+2>>> STMT bb_3 = cfg.8_2->bb
+          bb_3 = cfg.8_2->bb;
+Optimizing statement # DEBUG bb => bb_3
+Optimizing statement # DEBUG bb => bb_3
+Optimizing statement if (bb_3 != 0B)
+LKUP STMT bb_3 ne_expr 0B
+          if (bb_3 != 0B)
+
+
+Optimizing block #4
+
+Optimizing statement count.9_6 = cfg.8_2->bb_num;
+LKUP STMT count.9_6 = cfg.8_2->bb_num
+          count.9_6 = cfg.8_2->bb_num;
+2>>> STMT count.9_6 = cfg.8_2->bb_num
+          count.9_6 = cfg.8_2->bb_num;
+Optimizing statement count = count.9_6;
+LKUP STMT count = count.9_6
+          count = count.9_6;
+LKUP STMT count.9_6 = count
+          count.9_6 = count;
+2>>> STMT count.9_6 = count
+          count.9_6 = count;
+Optimizing statement D.5603_8 = cfg.8_2->entry;
+LKUP STMT D.5603_8 = cfg.8_2->entry
+          D.5603_8 = cfg.8_2->entry;
+2>>> STMT D.5603_8 = cfg.8_2->entry
+          D.5603_8 = cfg.8_2->entry;
+Optimizing statement search (D.5603_8);
+Optimizing statement return;
+<<<< STMT D.5603_8 = cfg.8_2->entry
+          D.5603_8 = cfg.8_2->entry;
+<<<< STMT count.9_6 = count
+          count.9_6 = count;
+<<<< STMT count.9_6 = cfg.8_2->bb_num
+          count.9_6 = cfg.8_2->bb_num;
+
+
+Optimizing block #3
+
+1>>> COND 1 = bb_3 ne_expr 0B
+1>>> COND 0 = bb_3 eq_expr 0B
+Optimizing statement bb_14->visited = 0;
+LKUP STMT bb_14->visited = 0
+          bb_14->visited = 0;
+LKUP STMT 0 = bb_14->visited
+          0 = bb_14->visited;
+2>>> STMT 0 = bb_14->visited
+          0 = bb_14->visited;
+Optimizing statement bb_4 = bb_14->next;
+LKUP STMT bb_4 = bb_14->next
+          bb_4 = bb_14->next;
+2>>> STMT bb_4 = bb_14->next
+          bb_4 = bb_14->next;
+Optimizing statement # DEBUG bb => bb_4
+Optimizing statement # DEBUG bb => bb_4
+Optimizing statement if (bb_4 != 0B)
+LKUP STMT bb_4 ne_expr 0B
+          if (bb_4 != 0B)
+
+
+Optimizing block #5
+
+1>>> COND 1 = bb_4 ne_expr 0B
+1>>> COND 0 = bb_4 eq_expr 0B
+<<<< COND 0 = bb_4 eq_expr 0B
+<<<< COND 1 = bb_4 ne_expr 0B
+<<<< STMT bb_4 = bb_14->next
+          bb_4 = bb_14->next;
+<<<< STMT 0 = bb_14->visited
+          0 = bb_14->visited;
+<<<< COND 0 = bb_3 eq_expr 0B
+<<<< COND 1 = bb_3 ne_expr 0B
+1>>> COND 1 = bb_3 ne_expr 0B
+1>>> COND 0 = bb_3 eq_expr 0B
+LKUP STMT bb_4 = bb_3->next
+          bb_4 = bb_3->next;
+LKUP STMT bb_4 ne_expr 0B
+          if (bb_4 != 0B)
+<<<< COND 0 = bb_3 eq_expr 0B
+<<<< COND 1 = bb_3 ne_expr 0B
+<<<< STMT bb_3 = cfg.8_2->bb
+          bb_3 = cfg.8_2->bb;
+<<<< STMT cfg.8_2 = cfg
+          cfg.8_2 = cfg;
+Total number of statements:                       15
+
+Exprs considered for dominator optimizations:      9
+
+Hash table statistics:
+    avail_exprs: size 2039, 0 elements, 0.100000 collision/search ratio
+
+Pass statistics:
+----------------
+
+Removing basic block 5
+;; basic block 5, loop depth 1, count 0
+;; prev block 3, next block 4
+;; pred:      
+;; succ:       3 [100.0%]  (fallthru,dfs_back)
+<bb 5>:
+Invalid sum of incoming frequencies 0, should be 8281
+goto <bb 3>;
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  struct basic_block * bbD.4187;
+
+}
+depth_first_search ()
+{
+  struct basic_block * bbD.4187;
+  struct basic_block * D.5603;
+  intD.0 count.9D.5602;
+  struct control_flow_graph * cfg.8D.5601;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5610_10(D)>
+  cfg.8D.5601_2 = cfgD.4174;
+  # VUSE <.MEMD.5610_10(D)>
+  bbD.4187_3 = cfg.8D.5601_2->bbD.4157;
+  # DEBUG bbD.4187 => bbD.4187_3
+  # DEBUG bbD.4187 => bbD.4187_3
+  if (bbD.4187_3 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [91.0%]  (true,exec) 4 [9.0%]  (false,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 3 [91.0%]  (true,exec) 2 [91.0%]  (true,exec)
+  # bbD.4187_14 = PHI <bbD.4187_4(3), bbD.4187_3(2)>
+  # .MEMD.5610_15 = PHI <.MEMD.5610_11(3), .MEMD.5610_10(D)(2)>
+  # .MEMD.5610_11 = VDEF <.MEMD.5610_15>
+  bbD.4187_14->visitedD.4144 = 0;
+  # VUSE <.MEMD.5610_11>
+  bbD.4187_4 = bbD.4187_14->nextD.4151;
+  # DEBUG bbD.4187 => bbD.4187_4
+  # DEBUG bbD.4187 => bbD.4187_4
+  if (bbD.4187_4 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [91.0%]  (true,exec) 4 [9.0%]  (false,exec)
+
+  # BLOCK 4 freq:900
+  # PRED: 3 [9.0%]  (false,exec) 2 [9.0%]  (false,exec)
+  # .MEMD.5610_16 = PHI <.MEMD.5610_11(3), .MEMD.5610_10(D)(2)>
+  # VUSE <.MEMD.5610_16>
+  count.9D.5602_6 = cfg.8D.5601_2->bb_numD.4153;
+  # .MEMD.5610_12 = VDEF <.MEMD.5610_16>
+  countD.4173 = count.9D.5602_6;
+  # VUSE <.MEMD.5610_12>
+  D.5603_8 = cfg.8D.5601_2->entryD.4155;
+  # .MEMD.5610_13 = VDEF <.MEMD.5610_12>
+  searchD.4176 (D.5603_8);
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function is_ancestor (is_ancestor)
+
+
+Pass statistics:
+----------------
+
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 11 4 5 6 7 12 8 9 10
+;;
+;; Loop 1
+;;  header 4, latch 11
+;;  depth 1, outer 0
+;;  nodes: 4 11 3 9 7 8 12 5 6
+;;
+;; Loop 2
+;;  header 8, latch 12
+;;  depth 2, outer 1
+;;  nodes: 8 12 6
+;; 2 succs { 10 4 }
+;; 3 succs { 10 11 }
+;; 11 succs { 4 }
+;; 4 succs { 5 9 }
+;; 5 succs { 7 8 }
+;; 6 succs { 7 12 }
+;; 7 succs { 9 }
+;; 12 succs { 8 }
+;; 8 succs { 6 9 }
+;; 9 succs { 3 10 }
+;; 10 succs { 1 }
+
+
+Optimizing block #0
+
+
+
+Optimizing block #2
+
+Optimizing statement # DEBUG bb => target_5(D)
+Optimizing statement # DEBUG bb => target_5(D)
+Optimizing statement if (target_5(D) == source_7(D))
+LKUP STMT target_5(D) eq_expr source_7(D)
+          if (target_5(D) == source_7(D))
+
+
+Optimizing block #10
+
+Optimizing statement return D.5594_4;
+
+
+Optimizing block #4
+
+1>>> COND 1 = target_5(D) ne_expr source_7(D)
+1>>> COND 0 = target_5(D) eq_expr source_7(D)
+Optimizing statement ve_9 = bb_21->pred;
+LKUP STMT ve_9 = bb_21->pred
+          ve_9 = bb_21->pred;
+2>>> STMT ve_9 = bb_21->pred
+          ve_9 = bb_21->pred;
+Optimizing statement # DEBUG ve => ve_9
+Optimizing statement # DEBUG ve => ve_9
+Optimizing statement if (ve_9 != 0B)
+LKUP STMT ve_9 ne_expr 0B
+          if (ve_9 != 0B)
+
+
+Optimizing block #9
+
+Optimizing statement # DEBUG bb => bb_2
+Optimizing statement cfg.7_14 = cfg;
+LKUP STMT cfg.7_14 = cfg
+          cfg.7_14 = cfg;
+2>>> STMT cfg.7_14 = cfg
+          cfg.7_14 = cfg;
+Optimizing statement D.5599_15 = cfg.7_14->entry;
+LKUP STMT D.5599_15 = cfg.7_14->entry
+          D.5599_15 = cfg.7_14->entry;
+2>>> STMT D.5599_15 = cfg.7_14->entry
+          D.5599_15 = cfg.7_14->entry;
+Optimizing statement if (D.5599_15 != bb_2)
+LKUP STMT D.5599_15 ne_expr bb_2
+          if (D.5599_15 != bb_2)
+
+
+Optimizing block #3
+
+1>>> COND 1 = D.5599_15 ne_expr bb_2
+1>>> COND 0 = D.5599_15 eq_expr bb_2
+Optimizing statement # DEBUG bb => bb_1
+  Replaced 'bbD.4195_1' with variable 'bbD.4195_2'
+Optimizing statement if (bb_1 == source_7(D))
+  Replaced 'bbD.4195_1' with variable 'bbD.4195_2'
+LKUP STMT bb_2 eq_expr source_7(D)
+          if (bb_2 == source_7(D))
+
+
+Optimizing block #11
+
+1>>> COND 1 = bb_2 ne_expr source_7(D)
+1>>> COND 0 = bb_2 eq_expr source_7(D)
+<<<< COND 0 = bb_2 eq_expr source_7(D)
+<<<< COND 1 = bb_2 ne_expr source_7(D)
+<<<< COND 0 = D.5599_15 eq_expr bb_2
+<<<< COND 1 = D.5599_15 ne_expr bb_2
+<<<< STMT D.5599_15 = cfg.7_14->entry
+          D.5599_15 = cfg.7_14->entry;
+<<<< STMT cfg.7_14 = cfg
+          cfg.7_14 = cfg;
+
+
+Optimizing block #5
+
+1>>> COND 1 = ve_9 ne_expr 0B
+1>>> COND 0 = ve_9 eq_expr 0B
+Optimizing statement e_20 = ve_9->edge;
+LKUP STMT e_20 = ve_9->edge
+          e_20 = ve_9->edge;
+2>>> STMT e_20 = ve_9->edge
+          e_20 = ve_9->edge;
+Optimizing statement # DEBUG e => e_20
+Optimizing statement D.5595_23 = e_20->type;
+LKUP STMT D.5595_23 = e_20->type
+          D.5595_23 = e_20->type;
+2>>> STMT D.5595_23 = e_20->type
+          D.5595_23 = e_20->type;
+Optimizing statement if (D.5595_23 == 1)
+LKUP STMT D.5595_23 eq_expr 1
+          if (D.5595_23 == 1)
+
+
+Optimizing block #7
+
+Optimizing statement bb_12 = e_18->source;
+LKUP STMT bb_12 = e_18->source
+          bb_12 = e_18->source;
+2>>> STMT bb_12 = e_18->source
+          bb_12 = e_18->source;
+Optimizing statement # DEBUG bb => bb_12
+LKUP STMT cfg.7_14 = cfg
+          cfg.7_14 = cfg;
+LKUP STMT D.5599_15 = cfg.7_14->entry
+          D.5599_15 = cfg.7_14->entry;
+LKUP STMT bb_12 ne_expr D.5599_15
+          if (bb_12 != D.5599_15)
+<<<< STMT bb_12 = e_18->source
+          bb_12 = e_18->source;
+
+
+Optimizing block #8
+
+1>>> COND 1 = D.5595_23 ne_expr 1
+1>>> COND 0 = D.5595_23 eq_expr 1
+Optimizing statement ve_13 = ve_24->next;
+LKUP STMT ve_13 = ve_24->next
+          ve_13 = ve_24->next;
+2>>> STMT ve_13 = ve_24->next
+          ve_13 = ve_24->next;
+Optimizing statement # DEBUG ve => ve_13
+Optimizing statement # DEBUG ve => ve_13
+Optimizing statement if (ve_13 != 0B)
+LKUP STMT ve_13 ne_expr 0B
+          if (ve_13 != 0B)
+
+
+Optimizing block #6
+
+1>>> COND 1 = ve_13 ne_expr 0B
+1>>> COND 0 = ve_13 eq_expr 0B
+Optimizing statement e_10 = ve_13->edge;
+LKUP STMT e_10 = ve_13->edge
+          e_10 = ve_13->edge;
+2>>> STMT e_10 = ve_13->edge
+          e_10 = ve_13->edge;
+Optimizing statement # DEBUG e => e_10
+Optimizing statement D.5595_11 = e_10->type;
+LKUP STMT D.5595_11 = e_10->type
+          D.5595_11 = e_10->type;
+2>>> STMT D.5595_11 = e_10->type
+          D.5595_11 = e_10->type;
+Optimizing statement if (D.5595_11 == 1)
+LKUP STMT D.5595_11 eq_expr 1
+          if (D.5595_11 == 1)
+
+
+Optimizing block #12
+
+1>>> COND 1 = D.5595_11 ne_expr 1
+1>>> COND 0 = D.5595_11 eq_expr 1
+<<<< COND 0 = D.5595_11 eq_expr 1
+<<<< COND 1 = D.5595_11 ne_expr 1
+<<<< STMT D.5595_11 = e_10->type
+          D.5595_11 = e_10->type;
+<<<< STMT e_10 = ve_13->edge
+          e_10 = ve_13->edge;
+<<<< COND 0 = ve_13 eq_expr 0B
+<<<< COND 1 = ve_13 ne_expr 0B
+0>>> COPY ve_13 = 0B
+1>>> COND 1 = ve_13 eq_expr 0B
+1>>> COND 0 = ve_13 ne_expr 0B
+1>>> COND 1 = ve_13 le_expr 0B
+1>>> COND 1 = ve_13 ge_expr 0B
+LKUP STMT cfg.7_14 = cfg
+          cfg.7_14 = cfg;
+LKUP STMT D.5599_15 = cfg.7_14->entry
+          D.5599_15 = cfg.7_14->entry;
+LKUP STMT D.5599_15 ne_expr bb_21
+          if (D.5599_15 != bb_21)
+<<<< COND 1 = ve_13 ge_expr 0B
+<<<< COND 1 = ve_13 le_expr 0B
+<<<< COND 0 = ve_13 ne_expr 0B
+<<<< COND 1 = ve_13 eq_expr 0B
+<<<< STMT ve_13 = ve_24->next
+          ve_13 = ve_24->next;
+<<<< COND 0 = D.5595_23 eq_expr 1
+<<<< COND 1 = D.5595_23 ne_expr 1
+1>>> COND 1 = D.5595_23 ne_expr 1
+1>>> COND 0 = D.5595_23 eq_expr 1
+LKUP STMT ve_13 = ve_9->next
+          ve_13 = ve_9->next;
+LKUP STMT ve_13 ne_expr 0B
+          if (ve_13 != 0B)
+<<<< COND 0 = D.5595_23 eq_expr 1
+<<<< COND 1 = D.5595_23 ne_expr 1
+<<<< STMT D.5595_23 = e_20->type
+          D.5595_23 = e_20->type;
+<<<< STMT e_20 = ve_9->edge
+          e_20 = ve_9->edge;
+<<<< COND 0 = ve_9 eq_expr 0B
+<<<< COND 1 = ve_9 ne_expr 0B
+0>>> COPY ve_9 = 0B
+1>>> COND 1 = ve_9 eq_expr 0B
+1>>> COND 0 = ve_9 ne_expr 0B
+1>>> COND 1 = ve_9 le_expr 0B
+1>>> COND 1 = ve_9 ge_expr 0B
+LKUP STMT cfg.7_14 = cfg
+          cfg.7_14 = cfg;
+LKUP STMT D.5599_15 = cfg.7_14->entry
+          D.5599_15 = cfg.7_14->entry;
+LKUP STMT D.5599_15 ne_expr bb_21
+          if (D.5599_15 != bb_21)
+<<<< COND 1 = ve_9 ge_expr 0B
+<<<< COND 1 = ve_9 le_expr 0B
+<<<< COND 0 = ve_9 ne_expr 0B
+<<<< COND 1 = ve_9 eq_expr 0B
+<<<< STMT ve_9 = bb_21->pred
+          ve_9 = bb_21->pred;
+<<<< COND 0 = target_5(D) eq_expr source_7(D)
+<<<< COND 1 = target_5(D) ne_expr source_7(D)
+1>>> COND 1 = target_5(D) ne_expr source_7(D)
+1>>> COND 0 = target_5(D) eq_expr source_7(D)
+LKUP STMT ve_9 = target_5(D)->pred
+          ve_9 = target_5(D)->pred;
+LKUP STMT ve_9 ne_expr 0B
+          if (ve_9 != 0B)
+<<<< COND 0 = target_5(D) eq_expr source_7(D)
+<<<< COND 1 = target_5(D) ne_expr source_7(D)
+Total number of statements:                       28
+
+Exprs considered for dominator optimizations:     16
+
+Hash table statistics:
+    avail_exprs: size 2039, 0 elements, 0.177778 collision/search ratio
+
+Pass statistics:
+----------------
+Copies propagated: 2
+
+Removing basic block 11
+;; basic block 11, loop depth 1, count 0
+;; prev block 3, next block 4
+;; pred:      
+;; succ:       4 [100.0%]  (fallthru,dfs_back)
+<bb 11>:
+Invalid sum of incoming frequencies 0, should be 722
+
+
+Removing basic block 12
+;; basic block 12, loop depth 2, count 0
+;; prev block 7, next block 8
+;; pred:      
+;; succ:       8 [100.0%]  (fallthru,dfs_back)
+<bb 12>:
+Invalid sum of incoming frequencies 0, should be 8318
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  struct basic_block * bbD.4195;
+  struct vec_edge * veD.4196;
+  struct edge * eD.4197;
+
+}
+is_ancestor (struct basic_block * sourceD.4191, struct basic_block * targetD.4192)
+{
+  struct edge * eD.4197;
+  struct vec_edge * veD.4196;
+  struct basic_block * bbD.4195;
+  struct basic_block * D.5599;
+  struct control_flow_graph * cfg.7D.5598;
+  edge_type D.5595;
+  intD.0 D.5594;
+
+  # BLOCK 2 freq:165
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  if (targetD.4192_5(D) == sourceD.4191_7(D))
+    goto <bb 10>;
+  else
+    goto <bb 4>;
+  # SUCC: 10 [4.5%]  (true,exec) 4 [95.5%]  (false,exec)
+
+  # BLOCK 3 freq:756
+  # PRED: 9 [86.0%]  (true,exec)
+  # bbD.4195_1 = PHI <bbD.4195_2(9)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  if (bbD.4195_2 == sourceD.4191_7(D))
+    goto <bb 10>;
+  else
+    goto <bb 4>;
+  # SUCC: 10 [4.5%]  (true,exec) 4 [95.5%]  (false,exec)
+
+  # BLOCK 4 freq:880
+  # PRED: 3 [95.5%]  (false,exec) 2 [95.5%]  (false,exec)
+  # bbD.4195_21 = PHI <bbD.4195_2(3), targetD.4192_5(D)(2)>
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_9 = bbD.4195_21->predD.4147;
+  # DEBUG veD.4196 => veD.4196_9
+  # DEBUG veD.4196 => veD.4196_9
+  if (veD.4196_9 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+  # SUCC: 5 [95.5%]  (true,exec) 9 [4.5%]  (false,exec)
+
+  # BLOCK 5 freq:840
+  # PRED: 4 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_20 = veD.4196_9->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_20
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_23 = eD.4197_20->typeD.4133;
+  if (D.5595_23 == 1)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 [4.5%]  (true,exec) 8 [95.5%]  (false,exec)
+
+  # BLOCK 6 freq:8710
+  # PRED: 8 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_10 = veD.4196_13->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_10
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_11 = eD.4197_10->typeD.4133;
+  if (D.5595_11 == 1)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+  # SUCC: 7 [4.5%]  (true,exec) 8 [95.5%]  (false,exec)
+
+  # BLOCK 7 freq:430
+  # PRED: 6 [4.5%]  (true,exec) 5 [4.5%]  (true,exec)
+  # eD.4197_18 = PHI <eD.4197_10(6), eD.4197_20(5)>
+  # VUSE <.MEMD.5611_17(D)>
+  bbD.4195_12 = eD.4197_18->sourceD.4134;
+  # DEBUG bbD.4195 => bbD.4195_12
+  goto <bb 9>;
+  # SUCC: 9 [100.0%]  (fallthru,exec)
+
+  # BLOCK 8 freq:9120
+  # PRED: 6 [95.5%]  (false,exec) 5 [95.5%]  (false,exec)
+  # veD.4196_24 = PHI <veD.4196_13(6), veD.4196_9(5)>
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_13 = veD.4196_24->nextD.4139;
+  # DEBUG veD.4196 => veD.4196_13
+  # DEBUG veD.4196 => veD.4196_13
+  if (veD.4196_13 != 0B)
+    goto <bb 6>;
+  else
+    goto <bb 9>;
+  # SUCC: 6 [95.5%]  (true,exec) 9 [4.5%]  (false,exec)
+
+  # BLOCK 9 freq:880
+  # PRED: 7 [100.0%]  (fallthru,exec) 8 [4.5%]  (false,exec) 4 [4.5%]  (false,exec)
+  # bbD.4195_2 = PHI <bbD.4195_12(7), bbD.4195_21(8), bbD.4195_21(4)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  # VUSE <.MEMD.5611_17(D)>
+  cfg.7D.5598_14 = cfgD.4174;
+  # VUSE <.MEMD.5611_17(D)>
+  D.5599_15 = cfg.7D.5598_14->entryD.4155;
+  if (D.5599_15 != bbD.4195_2)
+    goto <bb 3>;
+  else
+    goto <bb 10>;
+  # SUCC: 3 [86.0%]  (true,exec) 10 [14.0%]  (false,exec)
+
+  # BLOCK 10 freq:165
+  # PRED: 3 [4.5%]  (true,exec) 9 [14.0%]  (false,exec) 2 [4.5%]  (true,exec)
+  # D.5594_4 = PHI <1(3), 0(9), 1(2)>
+  return D.5594_4;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edge (mark_edge)
+
+
+Pass statistics:
+----------------
+
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7
+;; 2 succs { 3 4 }
+;; 3 succs { 7 }
+;; 4 succs { 5 6 }
+;; 5 succs { 7 }
+;; 6 succs { 7 }
+;; 7 succs { 1 }
+
+
+Optimizing block #0
+
+
+
+Optimizing block #2
+
+Optimizing statement source_2 = e_1(D)->source;
+LKUP STMT source_2 = e_1(D)->source
+          source_2 = e_1(D)->source;
+2>>> STMT source_2 = e_1(D)->source
+          source_2 = e_1(D)->source;
+Optimizing statement # DEBUG source => source_2
+Optimizing statement target_3 = e_1(D)->target;
+LKUP STMT target_3 = e_1(D)->target
+          target_3 = e_1(D)->target;
+2>>> STMT target_3 = e_1(D)->target
+          target_3 = e_1(D)->target;
+Optimizing statement # DEBUG target => target_3
+Optimizing statement D.5584_4 = is_ancestor (target_3, source_2);
+LKUP STMT D.5584_4 = is_ancestor (target_3, source_2)
+          D.5584_4 = is_ancestor (target_3, source_2);
+2>>> STMT D.5584_4 = is_ancestor (target_3, source_2)
+          D.5584_4 = is_ancestor (target_3, source_2);
+Optimizing statement if (D.5584_4 != 0)
+LKUP STMT D.5584_4 ne_expr 0
+          if (D.5584_4 != 0)
+
+
+Optimizing block #3
+
+1>>> COND 1 = D.5584_4 ne_expr 0
+1>>> COND 0 = D.5584_4 eq_expr 0
+Optimizing statement e_1(D)->type = 3;
+LKUP STMT e_1(D)->type = 3
+          e_1(D)->type = 3;
+LKUP STMT 3 = e_1(D)->type
+          3 = e_1(D)->type;
+2>>> STMT 3 = e_1(D)->type
+          3 = e_1(D)->type;
+<<<< STMT 3 = e_1(D)->type
+          3 = e_1(D)->type;
+<<<< COND 0 = D.5584_4 eq_expr 0
+<<<< COND 1 = D.5584_4 ne_expr 0
+
+
+Optimizing block #4
+
+0>>> COPY D.5584_4 = 0
+1>>> COND 1 = D.5584_4 eq_expr 0
+1>>> COND 0 = D.5584_4 ne_expr 0
+1>>> COND 1 = D.5584_4 le_expr 0
+1>>> COND 1 = D.5584_4 ge_expr 0
+Optimizing statement D.5588_5 = is_ancestor (source_2, target_3);
+LKUP STMT D.5588_5 = is_ancestor (source_2, target_3)
+          D.5588_5 = is_ancestor (source_2, target_3);
+2>>> STMT D.5588_5 = is_ancestor (source_2, target_3)
+          D.5588_5 = is_ancestor (source_2, target_3);
+Optimizing statement if (D.5588_5 != 0)
+LKUP STMT D.5588_5 ne_expr 0
+          if (D.5588_5 != 0)
+
+
+Optimizing block #5
+
+1>>> COND 1 = D.5588_5 ne_expr 0
+1>>> COND 0 = D.5588_5 eq_expr 0
+Optimizing statement e_1(D)->type = 2;
+LKUP STMT e_1(D)->type = 2
+          e_1(D)->type = 2;
+LKUP STMT 2 = e_1(D)->type
+          2 = e_1(D)->type;
+2>>> STMT 2 = e_1(D)->type
+          2 = e_1(D)->type;
+<<<< STMT 2 = e_1(D)->type
+          2 = e_1(D)->type;
+<<<< COND 0 = D.5588_5 eq_expr 0
+<<<< COND 1 = D.5588_5 ne_expr 0
+
+
+Optimizing block #6
+
+0>>> COPY D.5588_5 = 0
+1>>> COND 1 = D.5588_5 eq_expr 0
+1>>> COND 0 = D.5588_5 ne_expr 0
+1>>> COND 1 = D.5588_5 le_expr 0
+1>>> COND 1 = D.5588_5 ge_expr 0
+Optimizing statement e_1(D)->type = 4;
+LKUP STMT e_1(D)->type = 4
+          e_1(D)->type = 4;
+LKUP STMT 4 = e_1(D)->type
+          4 = e_1(D)->type;
+2>>> STMT 4 = e_1(D)->type
+          4 = e_1(D)->type;
+<<<< STMT 4 = e_1(D)->type
+          4 = e_1(D)->type;
+<<<< COND 1 = D.5588_5 ge_expr 0
+<<<< COND 1 = D.5588_5 le_expr 0
+<<<< COND 0 = D.5588_5 ne_expr 0
+<<<< COND 1 = D.5588_5 eq_expr 0
+<<<< COPY D.5588_5 = 0
+<<<< STMT D.5588_5 = is_ancestor (source_2, target_3)
+          D.5588_5 = is_ancestor (source_2, target_3);
+<<<< COND 1 = D.5584_4 ge_expr 0
+<<<< COND 1 = D.5584_4 le_expr 0
+<<<< COND 0 = D.5584_4 ne_expr 0
+<<<< COND 1 = D.5584_4 eq_expr 0
+<<<< COPY D.5584_4 = 0
+
+
+Optimizing block #7
+
+Optimizing statement return;
+<<<< STMT D.5584_4 = is_ancestor (target_3, source_2)
+          D.5584_4 = is_ancestor (target_3, source_2);
+<<<< STMT target_3 = e_1(D)->target
+          target_3 = e_1(D)->target;
+<<<< STMT source_2 = e_1(D)->source
+          source_2 = e_1(D)->source;
+Total number of statements:                       12
+
+Exprs considered for dominator optimizations:      9
+
+Hash table statistics:
+    avail_exprs: size 2039, 0 elements, 0.100000 collision/search ratio
+
+Pass statistics:
+----------------
+
+mark_edge (struct edge * eD.4203)
+{
+  struct basic_block * targetD.4207;
+  struct basic_block * sourceD.4206;
+  intD.0 D.5588;
+  intD.0 D.5584;
+
+  # BLOCK 2 freq:10000
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  sourceD.4206_2 = eD.4203_1(D)->sourceD.4134;
+  # DEBUG sourceD.4206 => sourceD.4206_2
+  # VUSE <.MEMD.5612_6(D)>
+  targetD.4207_3 = eD.4203_1(D)->targetD.4135;
+  # DEBUG targetD.4207 => targetD.4207_3
+  # VUSE <.MEMD.5612_6(D)>
+  D.5584_4 = is_ancestorD.4193 (targetD.4207_3, sourceD.4206_2);
+  if (D.5584_4 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [61.0%]  (true,exec) 4 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:6102
+  # PRED: 2 [61.0%]  (true,exec)
+  # .MEMD.5612_7 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 3;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:3898
+  # PRED: 2 [39.0%]  (false,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  D.5588_5 = is_ancestorD.4193 (sourceD.4206_2, targetD.4207_3);
+  if (D.5588_5 != 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [39.0%]  (true,exec) 6 [61.0%]  (false,exec)
+
+  # BLOCK 5 freq:1520
+  # PRED: 4 [39.0%]  (true,exec)
+  # .MEMD.5612_8 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 2;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:2378
+  # PRED: 4 [61.0%]  (false,exec)
+  # .MEMD.5612_9 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 4;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 3 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edges (mark_edges)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 7 6
+;;
+;; Loop 1
+;;  header 3, latch 7
+;;  depth 1, outer 0
+;;  nodes: 3 7 5 4
+;; 2 succs { 3 6 }
+;; 3 succs { 4 5 }
+;; 4 succs { 5 }
+;; 5 succs { 7 6 }
+;; 7 succs { 3 }
+;; 6 succs { 1 }
+
+
+Optimizing block #0
+
+
+
+Optimizing block #2
+
+Optimizing statement current_function.6_2 = current_function;
+LKUP STMT current_function.6_2 = current_function
+          current_function.6_2 = current_function;
+2>>> STMT current_function.6_2 = current_function
+          current_function.6_2 = current_function;
+Optimizing statement cfg_3 = current_function.6_2->cfg;
+LKUP STMT cfg_3 = current_function.6_2->cfg
+          cfg_3 = current_function.6_2->cfg;
+2>>> STMT cfg_3 = current_function.6_2->cfg
+          cfg_3 = current_function.6_2->cfg;
+Optimizing statement # DEBUG cfg => cfg_3
+Optimizing statement e_4 = cfg_3->edge;
+LKUP STMT e_4 = cfg_3->edge
+          e_4 = cfg_3->edge;
+2>>> STMT e_4 = cfg_3->edge
+          e_4 = cfg_3->edge;
+Optimizing statement # DEBUG e => e_4
+Optimizing statement # DEBUG e => e_4
+Optimizing statement if (e_4 != 0B)
+LKUP STMT e_4 ne_expr 0B
+          if (e_4 != 0B)
+
+
+Optimizing block #6
+
+Optimizing statement return;
+
+
+Optimizing block #3
+
+1>>> COND 1 = e_4 ne_expr 0B
+1>>> COND 0 = e_4 eq_expr 0B
+Optimizing statement D.5581_5 = e_13->type;
+LKUP STMT D.5581_5 = e_13->type
+          D.5581_5 = e_13->type;
+2>>> STMT D.5581_5 = e_13->type
+          D.5581_5 = e_13->type;
+Optimizing statement if (D.5581_5 == 0)
+LKUP STMT D.5581_5 eq_expr 0
+          if (D.5581_5 == 0)
+
+
+Optimizing block #4
+
+0>>> COPY D.5581_5 = 0
+1>>> COND 1 = D.5581_5 eq_expr 0
+1>>> COND 0 = D.5581_5 ne_expr 0
+1>>> COND 1 = D.5581_5 le_expr 0
+1>>> COND 1 = D.5581_5 ge_expr 0
+Optimizing statement mark_edge (e_13);
+LKUP STMT e_6 = e_13->next
+          e_6 = e_13->next;
+LKUP STMT e_6 ne_expr 0B
+          if (e_6 != 0B)
+<<<< COND 1 = D.5581_5 ge_expr 0
+<<<< COND 1 = D.5581_5 le_expr 0
+<<<< COND 0 = D.5581_5 ne_expr 0
+<<<< COND 1 = D.5581_5 eq_expr 0
+
+
+Optimizing block #5
+
+Optimizing statement e_6 = e_13->next;
+LKUP STMT e_6 = e_13->next
+          e_6 = e_13->next;
+2>>> STMT e_6 = e_13->next
+          e_6 = e_13->next;
+Optimizing statement # DEBUG e => e_6
+Optimizing statement # DEBUG e => e_6
+Optimizing statement if (e_6 != 0B)
+LKUP STMT e_6 ne_expr 0B
+          if (e_6 != 0B)
+
+
+Optimizing block #7
+
+1>>> COND 1 = e_6 ne_expr 0B
+1>>> COND 0 = e_6 eq_expr 0B
+<<<< COND 0 = e_6 eq_expr 0B
+<<<< COND 1 = e_6 ne_expr 0B
+<<<< STMT e_6 = e_13->next
+          e_6 = e_13->next;
+1>>> COND 1 = D.5581_5 ne_expr 0
+1>>> COND 0 = D.5581_5 eq_expr 0
+LKUP STMT e_6 = e_13->next
+          e_6 = e_13->next;
+LKUP STMT e_6 ne_expr 0B
+          if (e_6 != 0B)
+<<<< COND 0 = D.5581_5 eq_expr 0
+<<<< COND 1 = D.5581_5 ne_expr 0
+<<<< STMT D.5581_5 = e_13->type
+          D.5581_5 = e_13->type;
+<<<< COND 0 = e_4 eq_expr 0B
+<<<< COND 1 = e_4 ne_expr 0B
+1>>> COND 1 = e_4 ne_expr 0B
+1>>> COND 0 = e_4 eq_expr 0B
+LKUP STMT D.5581_5 = e_4->type
+          D.5581_5 = e_4->type;
+LKUP STMT D.5581_5 eq_expr 0
+          if (D.5581_5 == 0)
+<<<< COND 0 = e_4 eq_expr 0B
+<<<< COND 1 = e_4 ne_expr 0B
+<<<< STMT e_4 = cfg_3->edge
+          e_4 = cfg_3->edge;
+<<<< STMT cfg_3 = current_function.6_2->cfg
+          cfg_3 = current_function.6_2->cfg;
+<<<< STMT current_function.6_2 = current_function
+          current_function.6_2 = current_function;
+Total number of statements:                       15
+
+Exprs considered for dominator optimizations:      8
+
+Hash table statistics:
+    avail_exprs: size 2039, 0 elements, 0.139535 collision/search ratio
+
+Pass statistics:
+----------------
+
+Removing basic block 7
+;; basic block 7, loop depth 1, count 0
+;; prev block 5, next block 6
+;; pred:      
+;; succ:       3 [100.0%]  (fallthru,dfs_back)
+<bb 7>:
+Invalid sum of incoming frequencies 0, should be 8281
+goto <bb 3>;
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  struct control_flow_graph * cfgD.4211;
+  struct edge * eD.4212;
+
+}
+mark_edges ()
+{
+  struct edge * eD.4212;
+  struct control_flow_graph * cfgD.4211;
+  edge_type D.5581;
+  struct function * current_function.6D.5580;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5613_9(D)>
+  current_function.6D.5580_2 = current_functionD.4113;
+  # VUSE <.MEMD.5613_9(D)>
+  cfgD.4211_3 = current_function.6D.5580_2->cfgD.4162;
+  # DEBUG cfgD.4211 => cfgD.4211_3
+  # VUSE <.MEMD.5613_9(D)>
+  eD.4212_4 = cfgD.4211_3->edgeD.4159;
+  # DEBUG eD.4212 => eD.4212_4
+  # DEBUG eD.4212 => eD.4212_4
+  if (eD.4212_4 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 6>;
+  # SUCC: 3 [91.0%]  (true,exec) 6 [9.0%]  (false,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 5 [91.0%]  (true,exec) 2 [91.0%]  (true,exec)
+  # eD.4212_13 = PHI <eD.4212_6(5), eD.4212_4(2)>
+  # .MEMD.5613_14 = PHI <.MEMD.5613_7(5), .MEMD.5613_9(D)(2)>
+  # VUSE <.MEMD.5613_14>
+  D.5581_5 = eD.4212_13->typeD.4133;
+  if (D.5581_5 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 [29.0%]  (true,exec) 5 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5613_10 = VDEF <.MEMD.5613_14>
+  mark_edgeD.4204 (eD.4212_13);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5613_7 = PHI <.MEMD.5613_14(3), .MEMD.5613_10(4)>
+  # VUSE <.MEMD.5613_7>
+  eD.4212_6 = eD.4212_13->nextD.4136;
+  # DEBUG eD.4212 => eD.4212_6
+  # DEBUG eD.4212 => eD.4212_6
+  if (eD.4212_6 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 6>;
+  # SUCC: 3 [91.0%]  (true,exec) 6 [9.0%]  (false,exec)
+
+  # BLOCK 6 freq:900
+  # PRED: 5 [9.0%]  (false,exec) 2 [9.0%]  (false,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance_recursive (calc_max_distance_recursive)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 9 7 8
+;;
+;; Loop 1
+;;  header 4, latch 9
+;;  depth 1, outer 0
+;;  nodes: 4 9 6 5
+;; 2 succs { 3 8 }
+;; 3 succs { 4 7 }
+;; 4 succs { 6 5 }
+;; 5 succs { 6 }
+;; 6 succs { 9 7 }
+;; 9 succs { 4 }
+;; 7 succs { 8 }
+;; 8 succs { 1 }
+
+
+Optimizing block #0
+
+
+
+Optimizing block #2
+
+Optimizing statement # DEBUG max => 0
+Optimizing statement D.5570_6 = bb_5(D)->max_distance;
+LKUP STMT D.5570_6 = bb_5(D)->max_distance
+          D.5570_6 = bb_5(D)->max_distance;
+2>>> STMT D.5570_6 = bb_5(D)->max_distance
+          D.5570_6 = bb_5(D)->max_distance;
+Optimizing statement if (D.5570_6 == 0)
+LKUP STMT D.5570_6 eq_expr 0
+          if (D.5570_6 == 0)
+
+
+Optimizing block #3
+
+0>>> COPY D.5570_6 = 0
+1>>> COND 1 = D.5570_6 eq_expr 0
+1>>> COND 0 = D.5570_6 ne_expr 0
+1>>> COND 1 = D.5570_6 le_expr 0
+1>>> COND 1 = D.5570_6 ge_expr 0
+Optimizing statement ve_7 = bb_5(D)->pred;
+LKUP STMT ve_7 = bb_5(D)->pred
+          ve_7 = bb_5(D)->pred;
+2>>> STMT ve_7 = bb_5(D)->pred
+          ve_7 = bb_5(D)->pred;
+Optimizing statement # DEBUG ve => ve_7
+Optimizing statement # DEBUG ve => ve_7
+Optimizing statement # DEBUG max => 0
+Optimizing statement if (ve_7 != 0B)
+LKUP STMT ve_7 ne_expr 0B
+          if (ve_7 != 0B)
+
+
+Optimizing block #7
+
+Optimizing statement D.5577_14 = max_22 + 1;
+LKUP STMT D.5577_14 = max_22 plus_expr 1
+          D.5577_14 = max_22 + 1;
+2>>> STMT D.5577_14 = max_22 plus_expr 1
+          D.5577_14 = max_22 + 1;
+Optimizing statement bb_5(D)->max_distance = D.5577_14;
+LKUP STMT bb_5(D)->max_distance = D.5577_14
+          bb_5(D)->max_distance = D.5577_14;
+LKUP STMT D.5577_14 = bb_5(D)->max_distance
+          D.5577_14 = bb_5(D)->max_distance;
+2>>> STMT D.5577_14 = bb_5(D)->max_distance
+          D.5577_14 = bb_5(D)->max_distance;
+<<<< STMT D.5577_14 = bb_5(D)->max_distance
+          D.5577_14 = bb_5(D)->max_distance;
+<<<< STMT D.5577_14 = max_22 plus_expr 1
+          D.5577_14 = max_22 + 1;
+
+
+Optimizing block #4
+
+1>>> COND 1 = ve_7 ne_expr 0B
+1>>> COND 0 = ve_7 eq_expr 0B
+Optimizing statement e_8 = ve_27->edge;
+LKUP STMT e_8 = ve_27->edge
+          e_8 = ve_27->edge;
+2>>> STMT e_8 = ve_27->edge
+          e_8 = ve_27->edge;
+Optimizing statement # DEBUG e => e_8
+Optimizing statement D.5573_9 = e_8->type;
+LKUP STMT D.5573_9 = e_8->type
+          D.5573_9 = e_8->type;
+2>>> STMT D.5573_9 = e_8->type
+          D.5573_9 = e_8->type;
+Optimizing statement if (D.5573_9 == 3)
+LKUP STMT D.5573_9 eq_expr 3
+          if (D.5573_9 == 3)
+
+
+Optimizing block #5
+
+1>>> COND 1 = D.5573_9 ne_expr 3
+1>>> COND 0 = D.5573_9 eq_expr 3
+Optimizing statement D.5576_10 = e_8->source;
+LKUP STMT D.5576_10 = e_8->source
+          D.5576_10 = e_8->source;
+2>>> STMT D.5576_10 = e_8->source
+          D.5576_10 = e_8->source;
+Optimizing statement val_11 = calc_max_distance_recursive (D.5576_10);
+Optimizing statement # DEBUG val => val_11
+Optimizing statement max_12 = MAX_EXPR <val_11, max_24>;
+LKUP STMT max_12 = val_11 max_expr max_24
+          max_12 = MAX_EXPR <val_11, max_24>;
+2>>> STMT max_12 = val_11 max_expr max_24
+          max_12 = MAX_EXPR <val_11, max_24>;
+Optimizing statement # DEBUG max => max_12
+LKUP STMT ve_13 = ve_27->next
+          ve_13 = ve_27->next;
+LKUP STMT ve_13 ne_expr 0B
+          if (ve_13 != 0B)
+<<<< STMT max_12 = val_11 max_expr max_24
+          max_12 = MAX_EXPR <val_11, max_24>;
+<<<< STMT D.5576_10 = e_8->source
+          D.5576_10 = e_8->source;
+<<<< COND 0 = D.5573_9 eq_expr 3
+<<<< COND 1 = D.5573_9 ne_expr 3
+
+
+Optimizing block #6
+
+Optimizing statement # DEBUG max => max_1
+Optimizing statement ve_13 = ve_27->next;
+LKUP STMT ve_13 = ve_27->next
+          ve_13 = ve_27->next;
+2>>> STMT ve_13 = ve_27->next
+          ve_13 = ve_27->next;
+Optimizing statement # DEBUG ve => ve_13
+Optimizing statement # DEBUG ve => ve_13
+Optimizing statement # DEBUG max => max_1
+Optimizing statement if (ve_13 != 0B)
+LKUP STMT ve_13 ne_expr 0B
+          if (ve_13 != 0B)
+
+
+Optimizing block #9
+
+1>>> COND 1 = ve_13 ne_expr 0B
+1>>> COND 0 = ve_13 eq_expr 0B
+<<<< COND 0 = ve_13 eq_expr 0B
+<<<< COND 1 = ve_13 ne_expr 0B
+<<<< STMT ve_13 = ve_27->next
+          ve_13 = ve_27->next;
+<<<< COPY D.5570_6 = 0
+0>>> COPY D.5573_9 = 3
+1>>> COND 1 = D.5573_9 eq_expr 3
+1>>> COND 0 = D.5573_9 ne_expr 3
+1>>> COND 1 = D.5573_9 le_expr 3
+1>>> COND 1 = D.5573_9 ge_expr 3
+LKUP STMT ve_13 = ve_27->next
+          ve_13 = ve_27->next;
+LKUP STMT ve_13 ne_expr 0B
+          if (ve_13 != 0B)
+<<<< COND 1 = D.5573_9 ge_expr 3
+<<<< COND 1 = D.5573_9 le_expr 3
+<<<< COND 0 = D.5573_9 ne_expr 3
+<<<< COND 1 = D.5573_9 eq_expr 3
+<<<< STMT D.5573_9 = e_8->type
+          D.5573_9 = e_8->type;
+<<<< STMT e_8 = ve_27->edge
+          e_8 = ve_27->edge;
+<<<< COND 0 = ve_7 eq_expr 0B
+<<<< COND 1 = ve_7 ne_expr 0B
+1>>> COND 1 = ve_7 ne_expr 0B
+1>>> COND 0 = ve_7 eq_expr 0B
+LKUP STMT e_8 = ve_7->edge
+          e_8 = ve_7->edge;
+LKUP STMT D.5573_9 = e_8->type
+          D.5573_9 = e_8->type;
+LKUP STMT D.5573_9 eq_expr 3
+          if (D.5573_9 == 3)
+<<<< COND 0 = ve_7 eq_expr 0B
+<<<< COND 1 = ve_7 ne_expr 0B
+<<<< STMT ve_7 = bb_5(D)->pred
+          ve_7 = bb_5(D)->pred;
+<<<< COND 1 = D.5570_6 ge_expr 0
+<<<< COND 1 = D.5570_6 le_expr 0
+<<<< COND 0 = D.5570_6 ne_expr 0
+<<<< COND 1 = D.5570_6 eq_expr 0
+
+
+Optimizing block #8
+
+Optimizing statement D.5578_15 = bb_5(D)->max_distance;
+LKUP STMT D.5578_15 = bb_5(D)->max_distance
+          D.5578_15 = bb_5(D)->max_distance;
+2>>> STMT D.5578_15 = bb_5(D)->max_distance
+          D.5578_15 = bb_5(D)->max_distance;
+Optimizing statement return D.5578_15;
+<<<< STMT D.5578_15 = bb_5(D)->max_distance
+          D.5578_15 = bb_5(D)->max_distance;
+<<<< STMT D.5570_6 = bb_5(D)->max_distance
+          D.5570_6 = bb_5(D)->max_distance;
+Total number of statements:                       27
+
+Exprs considered for dominator optimizations:     14
+
+Hash table statistics:
+    avail_exprs: size 2039, 0 elements, 0.095238 collision/search ratio
+
+Pass statistics:
+----------------
+
+Removing basic block 9
+;; basic block 9, loop depth 1, count 0
+;; prev block 6, next block 7
+;; pred:      
+;; succ:       4 [100.0%]  (fallthru,dfs_back)
+<bb 9>:
+Invalid sum of incoming frequencies 0, should be 8281
+goto <bb 4>;
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  intD.0 valD.4219;
+  intD.0 maxD.4220;
+  struct vec_edge * veD.4221;
+  struct edge * eD.4222;
+
+}
+calc_max_distance_recursive (struct basic_block * bbD.4216)
+{
+  struct edge * eD.4222;
+  struct vec_edge * veD.4221;
+  intD.0 maxD.4220;
+  intD.0 valD.4219;
+  intD.0 D.5578;
+  intD.0 D.5577;
+  struct basic_block * D.5576;
+  edge_type D.5573;
+  intD.0 D.5570;
+
+  # BLOCK 2 freq:1475
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4220 => 0
+  # VUSE <.MEMD.5614_19(D)>
+  D.5570_6 = bbD.4216_5(D)->max_distanceD.4146;
+  if (D.5570_6 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 8>;
+  # SUCC: 3 [61.0%]  (true,exec) 8 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:900
+  # PRED: 2 [61.0%]  (true,exec)
+  # VUSE <.MEMD.5614_19(D)>
+  veD.4221_7 = bbD.4216_5(D)->predD.4147;
+  # DEBUG veD.4221 => veD.4221_7
+  # DEBUG veD.4221 => veD.4221_7
+  # DEBUG maxD.4220 => 0
+  if (veD.4221_7 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 7>;
+  # SUCC: 4 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 4 freq:9100
+  # PRED: 6 [91.0%]  (true,exec) 3 [91.0%]  (true,exec)
+  # maxD.4220_24 = PHI <maxD.4220_1(6), 0(3)>
+  # veD.4221_27 = PHI <veD.4221_13(6), veD.4221_7(3)>
+  # .MEMD.5614_28 = PHI <.MEMD.5614_16(6), .MEMD.5614_19(D)(3)>
+  # VUSE <.MEMD.5614_28>
+  eD.4222_8 = veD.4221_27->edgeD.4138;
+  # DEBUG eD.4222 => eD.4222_8
+  # VUSE <.MEMD.5614_28>
+  D.5573_9 = eD.4222_8->typeD.4133;
+  if (D.5573_9 == 3)
+    goto <bb 6>;
+  else
+    goto <bb 5>;
+  # SUCC: 6 [48.8%]  (true,exec) 5 [51.2%]  (false,exec)
+
+  # BLOCK 5 freq:4662
+  # PRED: 4 [51.2%]  (false,exec)
+  # VUSE <.MEMD.5614_28>
+  D.5576_10 = eD.4222_8->sourceD.4134;
+  # .MEMD.5614_20 = VDEF <.MEMD.5614_28>
+  valD.4219_11 = calc_max_distance_recursiveD.4217 (D.5576_10);
+  # DEBUG valD.4219 => valD.4219_11
+  maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_24>;
+  # DEBUG maxD.4220 => maxD.4220_12
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 4 [48.8%]  (true,exec) 5 [100.0%]  (fallthru,exec)
+  # maxD.4220_1 = PHI <maxD.4220_24(4), maxD.4220_12(5)>
+  # .MEMD.5614_16 = PHI <.MEMD.5614_28(4), .MEMD.5614_20(5)>
+  # DEBUG maxD.4220 => maxD.4220_1
+  # VUSE <.MEMD.5614_16>
+  veD.4221_13 = veD.4221_27->nextD.4139;
+  # DEBUG veD.4221 => veD.4221_13
+  # DEBUG veD.4221 => veD.4221_13
+  # DEBUG maxD.4220 => maxD.4220_1
+  if (veD.4221_13 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 7>;
+  # SUCC: 4 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:900
+  # PRED: 6 [9.0%]  (false,exec) 3 [9.0%]  (false,exec)
+  # maxD.4220_22 = PHI <maxD.4220_1(6), 0(3)>
+  # .MEMD.5614_29 = PHI <.MEMD.5614_16(6), .MEMD.5614_19(D)(3)>
+  D.5577_14 = maxD.4220_22 + 1;
+  # .MEMD.5614_21 = VDEF <.MEMD.5614_29>
+  bbD.4216_5(D)->max_distanceD.4146 = D.5577_14;
+  # SUCC: 8 [100.0%]  (fallthru,exec)
+
+  # BLOCK 8 freq:1475
+  # PRED: 2 [39.0%]  (false,exec) 7 [100.0%]  (fallthru,exec)
+  # .MEMD.5614_18 = PHI <.MEMD.5614_19(D)(2), .MEMD.5614_21(7)>
+  # VUSE <.MEMD.5614_18>
+  D.5578_15 = bbD.4216_5(D)->max_distanceD.4146;
+  return D.5578_15;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance (calc_max_distance)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 8 7
+;;
+;; Loop 1
+;;  header 3, latch 8
+;;  depth 1, outer 0
+;;  nodes: 3 8 6 4 5
+;; 2 succs { 3 7 }
+;; 3 succs { 4 6 }
+;; 4 succs { 5 6 }
+;; 5 succs { 6 }
+;; 6 succs { 8 7 }
+;; 8 succs { 3 }
+;; 7 succs { 1 }
+
+
+Optimizing block #0
+
+
+
+Optimizing block #2
+
+Optimizing statement # DEBUG max => 0
+Optimizing statement depth_first_search ();
+Optimizing statement mark_edges ();
+Optimizing statement cfg.4_6 = cfg;
+LKUP STMT cfg.4_6 = cfg
+          cfg.4_6 = cfg;
+2>>> STMT cfg.4_6 = cfg
+          cfg.4_6 = cfg;
+Optimizing statement D.5562_7 = cfg.4_6->exit;
+LKUP STMT D.5562_7 = cfg.4_6->exit
+          D.5562_7 = cfg.4_6->exit;
+2>>> STMT D.5562_7 = cfg.4_6->exit
+          D.5562_7 = cfg.4_6->exit;
+Optimizing statement max_8 = calc_max_distance_recursive (D.5562_7);
+Optimizing statement # DEBUG max => max_8
+Optimizing statement bb_10 = cfg.4_6->bb;
+LKUP STMT bb_10 = cfg.4_6->bb
+          bb_10 = cfg.4_6->bb;
+2>>> STMT bb_10 = cfg.4_6->bb
+          bb_10 = cfg.4_6->bb;
+Optimizing statement # DEBUG bb => bb_10
+Optimizing statement # DEBUG bb => bb_10
+Optimizing statement # DEBUG max => max_8
+Optimizing statement if (bb_10 != 0B)
+LKUP STMT bb_10 ne_expr 0B
+          if (bb_10 != 0B)
+
+
+Optimizing block #7
+
+Optimizing statement D.5562_18 = cfg.4_6->exit;
+LKUP STMT D.5562_18 = cfg.4_6->exit
+          D.5562_18 = cfg.4_6->exit;
+2>>> STMT D.5562_18 = cfg.4_6->exit
+          D.5562_18 = cfg.4_6->exit;
+Optimizing statement D.5562_18->max_distance = max_4;
+LKUP STMT D.5562_18->max_distance = max_4
+          D.5562_18->max_distance = max_4;
+LKUP STMT max_4 = D.5562_18->max_distance
+          max_4 = D.5562_18->max_distance;
+2>>> STMT max_4 = D.5562_18->max_distance
+          max_4 = D.5562_18->max_distance;
+Optimizing statement return;
+<<<< STMT max_4 = D.5562_18->max_distance
+          max_4 = D.5562_18->max_distance;
+<<<< STMT D.5562_18 = cfg.4_6->exit
+          D.5562_18 = cfg.4_6->exit;
+
+
+Optimizing block #3
+
+1>>> COND 1 = bb_10 ne_expr 0B
+1>>> COND 0 = bb_10 eq_expr 0B
+Optimizing statement D.5563_11 = bb_28->max_distance;
+LKUP STMT D.5563_11 = bb_28->max_distance
+          D.5563_11 = bb_28->max_distance;
+2>>> STMT D.5563_11 = bb_28->max_distance
+          D.5563_11 = bb_28->max_distance;
+Optimizing statement if (D.5563_11 == 0)
+LKUP STMT D.5563_11 eq_expr 0
+          if (D.5563_11 == 0)
+
+
+Optimizing block #4
+
+0>>> COPY D.5563_11 = 0
+1>>> COND 1 = D.5563_11 eq_expr 0
+1>>> COND 0 = D.5563_11 ne_expr 0
+1>>> COND 1 = D.5563_11 le_expr 0
+1>>> COND 1 = D.5563_11 ge_expr 0
+Optimizing statement val_12 = calc_max_distance_recursive (bb_28);
+Optimizing statement # DEBUG val => val_12
+Optimizing statement if (val_12 >= max_27)
+LKUP STMT val_12 ge_expr max_27
+          if (val_12 >= max_27)
+
+
+Optimizing block #5
+
+1>>> COND 1 = val_12 ge_expr max_27
+1>>> COND 0 = val_12 lt_expr max_27
+Optimizing statement max_13 = val_12 + 1;
+LKUP STMT max_13 = val_12 plus_expr 1
+          max_13 = val_12 + 1;
+2>>> STMT max_13 = val_12 plus_expr 1
+          max_13 = val_12 + 1;
+LKUP STMT bb_16 = bb_28->next
+          bb_16 = bb_28->next;
+LKUP STMT bb_16 ne_expr 0B
+          if (bb_16 != 0B)
+<<<< STMT max_13 = val_12 plus_expr 1
+          max_13 = val_12 + 1;
+<<<< COND 0 = val_12 lt_expr max_27
+<<<< COND 1 = val_12 ge_expr max_27
+<<<< COPY D.5563_11 = 0
+1>>> COND 1 = val_12 lt_expr max_27
+1>>> COND 0 = val_12 ge_expr max_27
+1>>> COND 1 = val_12 le_expr max_27
+1>>> COND 1 = val_12 ne_expr max_27
+LKUP STMT bb_16 = bb_28->next
+          bb_16 = bb_28->next;
+LKUP STMT bb_16 ne_expr 0B
+          if (bb_16 != 0B)
+<<<< COND 1 = val_12 ne_expr max_27
+<<<< COND 1 = val_12 le_expr max_27
+<<<< COND 0 = val_12 ge_expr max_27
+<<<< COND 1 = val_12 lt_expr max_27
+<<<< COND 1 = D.5563_11 ge_expr 0
+<<<< COND 1 = D.5563_11 le_expr 0
+<<<< COND 0 = D.5563_11 ne_expr 0
+<<<< COND 1 = D.5563_11 eq_expr 0
+
+
+Optimizing block #6
+
+Optimizing statement # DEBUG max => max_1
+Optimizing statement bb_16 = bb_28->next;
+LKUP STMT bb_16 = bb_28->next
+          bb_16 = bb_28->next;
+2>>> STMT bb_16 = bb_28->next
+          bb_16 = bb_28->next;
+Optimizing statement # DEBUG bb => bb_16
+Optimizing statement # DEBUG bb => bb_16
+Optimizing statement # DEBUG max => max_1
+Optimizing statement if (bb_16 != 0B)
+LKUP STMT bb_16 ne_expr 0B
+          if (bb_16 != 0B)
+
+
+Optimizing block #8
+
+1>>> COND 1 = bb_16 ne_expr 0B
+1>>> COND 0 = bb_16 eq_expr 0B
+<<<< COND 0 = bb_16 eq_expr 0B
+<<<< COND 1 = bb_16 ne_expr 0B
+<<<< STMT bb_16 = bb_28->next
+          bb_16 = bb_28->next;
+1>>> COND 1 = D.5563_11 ne_expr 0
+1>>> COND 0 = D.5563_11 eq_expr 0
+LKUP STMT bb_16 = bb_28->next
+          bb_16 = bb_28->next;
+LKUP STMT bb_16 ne_expr 0B
+          if (bb_16 != 0B)
+<<<< COND 0 = D.5563_11 eq_expr 0
+<<<< COND 1 = D.5563_11 ne_expr 0
+<<<< STMT D.5563_11 = bb_28->max_distance
+          D.5563_11 = bb_28->max_distance;
+<<<< COND 0 = bb_10 eq_expr 0B
+<<<< COND 1 = bb_10 ne_expr 0B
+1>>> COND 1 = bb_10 ne_expr 0B
+1>>> COND 0 = bb_10 eq_expr 0B
+LKUP STMT D.5563_11 = bb_10->max_distance
+          D.5563_11 = bb_10->max_distance;
+LKUP STMT D.5563_11 eq_expr 0
+          if (D.5563_11 == 0)
+<<<< COND 0 = bb_10 eq_expr 0B
+<<<< COND 1 = bb_10 ne_expr 0B
+<<<< STMT bb_10 = cfg.4_6->bb
+          bb_10 = cfg.4_6->bb;
+<<<< STMT D.5562_7 = cfg.4_6->exit
+          D.5562_7 = cfg.4_6->exit;
+<<<< STMT cfg.4_6 = cfg
+          cfg.4_6 = cfg;
+Total number of statements:                       27
+
+Exprs considered for dominator optimizations:     12
+
+Hash table statistics:
+    avail_exprs: size 2039, 0 elements, 0.125000 collision/search ratio
+
+Pass statistics:
+----------------
+
+Removing basic block 8
+;; basic block 8, loop depth 1, count 0
+;; prev block 6, next block 7
+;; pred:      
+;; succ:       3 [100.0%]  (fallthru,dfs_back)
+<bb 8>:
+Invalid sum of incoming frequencies 0, should be 8281
+goto <bb 3>;
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+  intD.0 valD.4230;
+  intD.0 maxD.4231;
+  struct basic_block * bbD.4232;
+
+}
+calc_max_distance ()
+{
+  struct basic_block * bbD.4232;
+  intD.0 maxD.4231;
+  intD.0 valD.4230;
+  intD.0 D.5563;
+  struct basic_block * D.5562;
+  struct control_flow_graph * cfg.4D.5561;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4231 => 0
+  # .MEMD.5615_22 = VDEF <.MEMD.5615_21(D)>
+  depth_first_searchD.4185 ();
+  # .MEMD.5615_23 = VDEF <.MEMD.5615_22>
+  mark_edgesD.4209 ();
+  # VUSE <.MEMD.5615_23>
+  cfg.4D.5561_6 = cfgD.4174;
+  # VUSE <.MEMD.5615_23>
+  D.5562_7 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_24 = VDEF <.MEMD.5615_23>
+  maxD.4231_8 = calc_max_distance_recursiveD.4217 (D.5562_7);
+  # DEBUG maxD.4231 => maxD.4231_8
+  # VUSE <.MEMD.5615_24>
+  bbD.4232_10 = cfg.4D.5561_6->bbD.4157;
+  # DEBUG bbD.4232 => bbD.4232_10
+  # DEBUG bbD.4232 => bbD.4232_10
+  # DEBUG maxD.4231 => maxD.4231_8
+  if (bbD.4232_10 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 6 [91.0%]  (true,exec) 2 [91.0%]  (true,exec)
+  # maxD.4231_27 = PHI <maxD.4231_1(6), maxD.4231_8(2)>
+  # bbD.4232_28 = PHI <bbD.4232_16(6), bbD.4232_10(2)>
+  # .MEMD.5615_30 = PHI <.MEMD.5615_19(6), .MEMD.5615_24(2)>
+  # VUSE <.MEMD.5615_30>
+  D.5563_11 = bbD.4232_28->max_distanceD.4146;
+  if (D.5563_11 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 6>;
+  # SUCC: 4 [29.0%]  (true,exec) 6 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5615_25 = VDEF <.MEMD.5615_30>
+  valD.4230_12 = calc_max_distance_recursiveD.4217 (bbD.4232_28);
+  # DEBUG valD.4230 => valD.4230_12
+  if (valD.4230_12 >= maxD.4231_27)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [50.0%]  (true,exec) 6 [50.0%]  (false,exec)
+
+  # BLOCK 5 freq:1319
+  # PRED: 4 [50.0%]  (true,exec)
+  maxD.4231_13 = valD.4230_12 + 1;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [50.0%]  (false,exec) 5 [100.0%]  (fallthru,exec)
+  # maxD.4231_1 = PHI <maxD.4231_27(3), maxD.4231_27(4), maxD.4231_13(5)>
+  # .MEMD.5615_19 = PHI <.MEMD.5615_30(3), .MEMD.5615_25(4), .MEMD.5615_25(5)>
+  # DEBUG maxD.4231 => maxD.4231_1
+  # VUSE <.MEMD.5615_19>
+  bbD.4232_16 = bbD.4232_28->nextD.4151;
+  # DEBUG bbD.4232 => bbD.4232_16
+  # DEBUG bbD.4232 => bbD.4232_16
+  # DEBUG maxD.4231 => maxD.4231_1
+  if (bbD.4232_16 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:900
+  # PRED: 6 [9.0%]  (false,exec) 2 [9.0%]  (false,exec)
+  # maxD.4231_4 = PHI <maxD.4231_1(6), maxD.4231_8(2)>
+  # .MEMD.5615_31 = PHI <.MEMD.5615_19(6), .MEMD.5615_24(2)>
+  # VUSE <.MEMD.5615_31>
+  D.5562_18 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_26 = VDEF <.MEMD.5615_31>
+  D.5562_18->max_distanceD.4146 = maxD.4231_4;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function fine_tune_cfg (fine_tune_cfg)
+
+
+Pass statistics:
+----------------
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 5 4
+;;
+;; Loop 1
+;;  header 3, latch 5
+;;  depth 1, outer 0
+;;  nodes: 3 5
+;; 2 succs { 3 4 }
+;; 3 succs { 5 4 }
+;; 5 succs { 3 }
+;; 4 succs { 1 }
+
+
+Optimizing block #0
+
+
+
+Optimizing block #2
+
+Optimizing statement first_function.0_1 = first_function;
+LKUP STMT first_function.0_1 = first_function
+          first_function.0_1 = first_function;
+2>>> STMT first_function.0_1 = first_function
+          first_function.0_1 = first_function;
+Optimizing statement current_function = first_function.0_1;
+LKUP STMT current_function = first_function.0_1
+          current_function = first_function.0_1;
+LKUP STMT first_function.0_1 = current_function
+          first_function.0_1 = current_function;
+2>>> STMT first_function.0_1 = current_function
+          first_function.0_1 = current_function;
+Optimizing statement current_function.1_13 = current_function;
+LKUP STMT current_function.1_13 = current_function
+          current_function.1_13 = current_function;
+FIND: first_function.0_1
+  Replaced redundant expr '# VUSE <.MEMD.5616_9>
+current_functionD.4113' with 'first_function.0D.5557_1'
+==== ASGN current_function.1_13 = first_function.0_1
+Optimizing statement if (current_function.1_13 != 0B)
+  Replaced 'current_function.1D.5558_13' with variable 'first_function.0D.5557_1'
+LKUP STMT first_function.0_1 ne_expr 0B
+          if (first_function.0_1 != 0B)
+
+
+Optimizing block #4
+
+Optimizing statement return;
+
+
+Optimizing block #3
+
+1>>> COND 1 = first_function.0_1 ne_expr 0B
+1>>> COND 0 = first_function.0_1 eq_expr 0B
+Optimizing statement cfg.2_4 = current_function.1_14->cfg;
+LKUP STMT cfg.2_4 = current_function.1_14->cfg
+          cfg.2_4 = current_function.1_14->cfg;
+2>>> STMT cfg.2_4 = current_function.1_14->cfg
+          cfg.2_4 = current_function.1_14->cfg;
+Optimizing statement cfg = cfg.2_4;
+LKUP STMT cfg = cfg.2_4
+          cfg = cfg.2_4;
+LKUP STMT cfg.2_4 = cfg
+          cfg.2_4 = cfg;
+2>>> STMT cfg.2_4 = cfg
+          cfg.2_4 = cfg;
+Optimizing statement calc_max_distance ();
+Optimizing statement current_function.1_5 = current_function;
+LKUP STMT current_function.1_5 = current_function
+          current_function.1_5 = current_function;
+2>>> STMT current_function.1_5 = current_function
+          current_function.1_5 = current_function;
+Optimizing statement current_function.3_6 = current_function.1_5->next;
+LKUP STMT current_function.3_6 = current_function.1_5->next
+          current_function.3_6 = current_function.1_5->next;
+2>>> STMT current_function.3_6 = current_function.1_5->next
+          current_function.3_6 = current_function.1_5->next;
+Optimizing statement current_function = current_function.3_6;
+LKUP STMT current_function = current_function.3_6
+          current_function = current_function.3_6;
+LKUP STMT current_function.3_6 = current_function
+          current_function.3_6 = current_function;
+2>>> STMT current_function.3_6 = current_function
+          current_function.3_6 = current_function;
+Optimizing statement current_function.1_2 = current_function;
+LKUP STMT current_function.1_2 = current_function
+          current_function.1_2 = current_function;
+FIND: current_function.3_6
+  Replaced redundant expr '# VUSE <.MEMD.5616_12>
+current_functionD.4113' with 'current_function.3D.5560_6'
+==== ASGN current_function.1_2 = current_function.3_6
+Optimizing statement if (current_function.1_2 != 0B)
+  Replaced 'current_function.1D.5558_2' with variable 'current_function.3D.5560_6'
+LKUP STMT current_function.3_6 ne_expr 0B
+          if (current_function.3_6 != 0B)
+
+
+Optimizing block #5
+
+1>>> COND 1 = current_function.3_6 ne_expr 0B
+1>>> COND 0 = current_function.3_6 eq_expr 0B
+<<<< COND 0 = current_function.3_6 eq_expr 0B
+<<<< COND 1 = current_function.3_6 ne_expr 0B
+<<<< STMT current_function.3_6 = current_function
+          current_function.3_6 = current_function;
+<<<< STMT current_function.3_6 = current_function.1_5->next
+          current_function.3_6 = current_function.1_5->next;
+<<<< STMT current_function.1_5 = current_function
+          current_function.1_5 = current_function;
+<<<< STMT cfg.2_4 = cfg
+          cfg.2_4 = cfg;
+<<<< STMT cfg.2_4 = current_function.1_14->cfg
+          cfg.2_4 = current_function.1_14->cfg;
+<<<< COND 0 = first_function.0_1 eq_expr 0B
+<<<< COND 1 = first_function.0_1 ne_expr 0B
+1>>> COND 1 = first_function.0_1 ne_expr 0B
+1>>> COND 0 = first_function.0_1 eq_expr 0B
+LKUP STMT cfg.2_4 = first_function.0_1->cfg
+          cfg.2_4 = first_function.0_1->cfg;
+LKUP STMT current_function.1_5 = current_function
+          current_function.1_5 = current_function;
+LKUP STMT current_function.3_6 = current_function.1_5->next
+          current_function.3_6 = current_function.1_5->next;
+LKUP STMT current_function.3_6 ne_expr 0B
+          if (current_function.3_6 != 0B)
+<<<< COND 0 = first_function.0_1 eq_expr 0B
+<<<< COND 1 = first_function.0_1 ne_expr 0B
+<<<< STMT first_function.0_1 = current_function
+          first_function.0_1 = current_function;
+<<<< STMT first_function.0_1 = first_function
+          first_function.0_1 = first_function;
+Total number of statements:                       13
+
+Exprs considered for dominator optimizations:     11
+
+Hash table statistics:
+    avail_exprs: size 2039, 0 elements, 0.147059 collision/search ratio
+
+Pass statistics:
+----------------
+Copies propagated: 2
+Redundant expressions eliminated: 2
+
+Removing basic block 5
+;; basic block 5, loop depth 1, count 0
+;; prev block 3, next block 4
+;; pred:      
+;; succ:       3 [100.0%]  (fallthru,dfs_back)
+<bb 5>:
+Invalid sum of incoming frequencies 0, should be 8281
+goto <bb 3>;
+
+
+Scope blocks after cleanups:
+
+{ Scope block #0 
+
+}
+fine_tune_cfg ()
+{
+  struct function * current_function.3D.5560;
+  struct control_flow_graph * cfg.2D.5559;
+  struct function * current_function.1D.5558;
+  struct function * first_function.0D.5557;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5616_8(D)>
+  first_function.0D.5557_1 = first_functionD.4111;
+  # .MEMD.5616_9 = VDEF <.MEMD.5616_8(D)>
+  current_functionD.4113 = first_function.0D.5557_1;
+  current_function.1D.5558_13 = first_function.0D.5557_1;
+  if (first_function.0D.5557_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [91.0%]  (true,exec) 4 [9.0%]  (false,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 3 [91.0%]  (true,exec) 2 [91.0%]  (true,exec)
+  # current_function.1D.5558_14 = PHI <current_function.3D.5560_6(3), first_function.0D.5557_1(2)>
+  # .MEMD.5616_15 = PHI <.MEMD.5616_12(3), .MEMD.5616_9(2)>
+  # VUSE <.MEMD.5616_15>
+  cfg.2D.5559_4 = current_function.1D.5558_14->cfgD.4162;
+  # .MEMD.5616_10 = VDEF <.MEMD.5616_15>
+  cfgD.4174 = cfg.2D.5559_4;
+  # .MEMD.5616_11 = VDEF <.MEMD.5616_10>
+  calc_max_distanceD.4228 ();
+  # VUSE <.MEMD.5616_11>
+  current_function.1D.5558_5 = current_functionD.4113;
+  # VUSE <.MEMD.5616_11>
+  current_function.3D.5560_6 = current_function.1D.5558_5->nextD.4163;
+  # .MEMD.5616_12 = VDEF <.MEMD.5616_11>
+  current_functionD.4113 = current_function.3D.5560_6;
+  current_function.1D.5558_2 = current_function.3D.5560_6;
+  if (current_function.3D.5560_6 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [91.0%]  (true,exec) 4 [9.0%]  (false,exec)
+
+  # BLOCK 4 freq:900
+  # PRED: 3 [9.0%]  (false,exec) 2 [9.0%]  (false,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+

@@ -1,0 +1,1614 @@
+
+;; Function search (search)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+bb = &NONLOCAL
+ve_3 = *bb + 288
+e_4 = *ve_1
+succ_bb_5 = *e_4 + 64
+ESCAPED = succ_bb_5
+ve_7 = *ve_1 + 32
+ve_1 = ve_3
+ve_1 = ve_7
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 7, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 5, location:4
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 9, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 10, location:0
+Equivalence classes for Direct node node id 8:bb are pointer: 11, location:0
+Equivalence classes for Indirect node node id 9:ve_3 are pointer: 12, location:0
+Equivalence classes for Direct node node id 10:e_4 are pointer: 13, location:0
+Equivalence classes for Direct node node id 11:ve_1 are pointer: 15, location:0
+Equivalence classes for Indirect node node id 12:succ_bb_5 are pointer: 4, location:0
+Equivalence classes for Indirect node node id 13:ve_7 are pointer: 14, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               6
+Non-pointer vars:          1
+Statically unified vars:  0
+Dynamically unified vars: 0
+Iterations:               2
+Number of edges:          8
+Number of implicit edges: 9
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = { ESCAPED NONLOCAL }
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+bb = { NONLOCAL }
+ve_3 = { ESCAPED NONLOCAL }
+e_4 = { ESCAPED NONLOCAL }
+ve_1 = { ESCAPED NONLOCAL }
+succ_bb_5 = { ESCAPED NONLOCAL }
+ve_7 = { ESCAPED NONLOCAL }
+
+
+Alias information for search
+
+Aliased symbols
+
+.MEMD.5609, UID D.5609, voidD.32, is global, call clobbered, default def: .MEMD.5609_13(D)
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+veD.4179_1, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4175_2(D), points-to non-local, points-to vars: { }
+veD.4179_3, points-to non-local, points-to escaped, points-to vars: { }
+eD.4180_4, points-to non-local, points-to escaped, points-to vars: { }
+succ_bbD.4178_5, points-to non-local, points-to escaped, points-to vars: { }
+veD.4179_7, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in search: 9
+
+Variable: D.5604, UID D.5604, intD.0
+Variable: countD.4173, UID D.4173, intD.0, is global, call clobbered
+Variable: bbD.4175, UID D.4175, struct basic_block *, default def: bbD.4175_2(D), initial: struct basic_block *
+Variable: succ_bbD.4178, UID D.4178, struct basic_block *
+Variable: veD.4179, UID D.4179, struct vec_edge *
+Variable: eD.4180, UID D.4180, struct edge *
+Variable: count.10D.5607, UID D.5607, intD.0
+Variable: count.11D.5608, UID D.5608, intD.0
+Variable: .MEMD.5609, UID D.5609, voidD.32, is global, call clobbered, default def: .MEMD.5609_13(D)
+
+Points to sets created:8
+search (struct basic_block * bbD.4175)
+{
+  struct edge * eD.4180;
+  struct vec_edge * veD.4179;
+  struct basic_block * succ_bbD.4178;
+  intD.0 count.11D.5608;
+  intD.0 count.10D.5607;
+  intD.0 D.5604;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # .MEMD.5609_14 = VDEF <.MEMD.5609_13(D)>
+  bbD.4175_2(D)->visitedD.4144 = 1;
+  # VUSE <.MEMD.5609_14>
+  veD.4179_3 = bbD.4175_2(D)->succD.4149;
+  # DEBUG veD.4179 => veD.4179_3
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 6 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5609_12>
+  eD.4180_4 = veD.4179_1->edgeD.4138;
+  # DEBUG eD.4180 => eD.4180_4
+  # VUSE <.MEMD.5609_12>
+  succ_bbD.4178_5 = eD.4180_4->targetD.4135;
+  # DEBUG succ_bbD.4178 => succ_bbD.4178_5
+  # VUSE <.MEMD.5609_12>
+  D.5604_6 = succ_bbD.4178_5->visitedD.4144;
+  if (D.5604_6 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 [29.0%]  (true,exec) 5 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5609_15 = VDEF <.MEMD.5609_12>
+  eD.4180_4->typeD.4133 = 1;
+  # .MEMD.5609_16 = VDEF <.MEMD.5609_15>
+  searchD.4176 (succ_bbD.4178_5);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5609_11 = PHI <.MEMD.5609_12(3), .MEMD.5609_16(4)>
+  # VUSE <.MEMD.5609_11>
+  veD.4179_7 = veD.4179_1->nextD.4139;
+  # DEBUG veD.4179 => veD.4179_7
+  # SUCC: 6 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 6 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,dfs_back,exec)
+  # veD.4179_1 = PHI <veD.4179_3(2), veD.4179_7(5)>
+  # .MEMD.5609_12 = PHI <.MEMD.5609_14(2), .MEMD.5609_11(5)>
+  # DEBUG veD.4179 => veD.4179_1
+  if (veD.4179_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:900
+  # PRED: 6 [9.0%]  (false,exec)
+  # VUSE <.MEMD.5609_12>
+  count.10D.5607_8 = countD.4173;
+  # .MEMD.5609_17 = VDEF <.MEMD.5609_12>
+  bbD.4175_2(D)->dfs_orderD.4145 = count.10D.5607_8;
+  # VUSE <.MEMD.5609_17>
+  count.10D.5607_9 = countD.4173;
+  count.11D.5608_10 = count.10D.5607_9 - 1;
+  # .MEMD.5609_18 = VDEF <.MEMD.5609_17>
+  countD.4173 = count.11D.5608_10;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function depth_first_search (depth_first_search)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+cfg = NONLOCAL
+cfg.8_2 = cfg
+bb_3 = *cfg.8_2 + 128
+bb_4 = *bb_1 + 352
+bb_1 = bb_3
+bb_1 = bb_4
+cfg.8_5 = cfg
+cfg.8_7 = cfg
+D.5603_8 = *cfg.8_7 + 64
+ESCAPED = D.5603_8
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Found location equivalence for node NONLOCAL
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 7, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 5, location:3
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 9, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 10, location:0
+Equivalence classes for Direct node node id 8:cfg.8_2 are pointer: 5, location:0
+Equivalence classes for Direct node node id 9:cfg are pointer: 5, location:0
+Equivalence classes for Indirect node node id 10:bb_3 are pointer: 11, location:0
+Equivalence classes for Indirect node node id 11:bb_4 are pointer: 12, location:0
+Equivalence classes for Direct node node id 12:bb_1 are pointer: 13, location:0
+Equivalence classes for Direct node node id 13:cfg.8_5 are pointer: 5, location:0
+Equivalence classes for Direct node node id 14:cfg.8_7 are pointer: 5, location:0
+Equivalence classes for Indirect node node id 15:D.5603_8 are pointer: 4, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Unifying cfg.8_2 to cfg
+Unifying cfg.8_5 to cfg
+Unifying cfg.8_7 to cfg
+Uniting pointer but not location equivalent variables
+Unifying NONLOCAL to cfg
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               8
+Non-pointer vars:          1
+Statically unified vars:  4
+Dynamically unified vars: 0
+Iterations:               2
+Number of edges:          12
+Number of implicit edges: 12
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = same as cfg
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+cfg.8_2 = same as cfg
+cfg = { ESCAPED NONLOCAL }
+bb_3 = { ESCAPED NONLOCAL }
+bb_4 = { ESCAPED NONLOCAL }
+bb_1 = { ESCAPED NONLOCAL }
+cfg.8_5 = same as cfg
+cfg.8_7 = same as cfg
+D.5603_8 = { ESCAPED NONLOCAL }
+
+
+Alias information for depth_first_search
+
+Aliased symbols
+
+.MEMD.5610, UID D.5610, voidD.32, is global, call clobbered, default def: .MEMD.5610_10(D)
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+bbD.4187_1, points-to non-local, points-to escaped, points-to vars: { }
+cfg.8D.5601_2, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4187_3, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4187_4, points-to non-local, points-to escaped, points-to vars: { }
+cfg.8D.5601_5, points-to non-local, points-to escaped, points-to vars: { }
+cfg.8D.5601_7, points-to non-local, points-to escaped, points-to vars: { }
+D.5603_8, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in depth_first_search: 7
+
+Variable: bbD.4187, UID D.4187, struct basic_block *
+Variable: countD.4173, UID D.4173, intD.0, is global, call clobbered
+Variable: cfgD.4174, UID D.4174, struct control_flow_graph *, is global, call clobbered
+Variable: cfg.8D.5601, UID D.5601, struct control_flow_graph *
+Variable: count.9D.5602, UID D.5602, intD.0
+Variable: D.5603, UID D.5603, struct basic_block *
+Variable: .MEMD.5610, UID D.5610, voidD.32, is global, call clobbered, default def: .MEMD.5610_10(D)
+
+Points to sets created:9
+depth_first_search ()
+{
+  struct basic_block * bbD.4187;
+  struct basic_block * D.5603;
+  intD.0 count.9D.5602;
+  struct control_flow_graph * cfg.8D.5601;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5610_10(D)>
+  cfg.8D.5601_2 = cfgD.4174;
+  # VUSE <.MEMD.5610_10(D)>
+  bbD.4187_3 = cfg.8D.5601_2->bbD.4157;
+  # DEBUG bbD.4187 => bbD.4187_3
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 4 [91.0%]  (true,exec)
+  # .MEMD.5610_11 = VDEF <.MEMD.5610_9>
+  bbD.4187_1->visitedD.4144 = 0;
+  # VUSE <.MEMD.5610_11>
+  bbD.4187_4 = bbD.4187_1->nextD.4151;
+  # DEBUG bbD.4187 => bbD.4187_4
+  # SUCC: 4 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 4 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 3 [100.0%]  (fallthru,dfs_back,exec)
+  # bbD.4187_1 = PHI <bbD.4187_3(2), bbD.4187_4(3)>
+  # .MEMD.5610_9 = PHI <.MEMD.5610_10(D)(2), .MEMD.5610_11(3)>
+  # DEBUG bbD.4187 => bbD.4187_1
+  if (bbD.4187_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 [91.0%]  (true,exec) 5 [9.0%]  (false,exec)
+
+  # BLOCK 5 freq:900
+  # PRED: 4 [9.0%]  (false,exec)
+  # VUSE <.MEMD.5610_9>
+  cfg.8D.5601_5 = cfgD.4174;
+  # VUSE <.MEMD.5610_9>
+  count.9D.5602_6 = cfg.8D.5601_5->bb_numD.4153;
+  # .MEMD.5610_12 = VDEF <.MEMD.5610_9>
+  countD.4173 = count.9D.5602_6;
+  # VUSE <.MEMD.5610_12>
+  cfg.8D.5601_7 = cfgD.4174;
+  # VUSE <.MEMD.5610_12>
+  D.5603_8 = cfg.8D.5601_7->entryD.4155;
+  # .MEMD.5610_13 = VDEF <.MEMD.5610_12>
+  searchD.4176 (D.5603_8);
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function is_ancestor (is_ancestor)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+source = &NONLOCAL
+target = &NONLOCAL
+bb_1 = target
+bb_1 = bb_2
+ve_9 = *bb_1 + 224
+e_10 = *ve_3
+bb_12 = *e_10 + 32
+ve_13 = *ve_3 + 32
+ve_3 = ve_9
+ve_3 = ve_13
+bb_2 = bb_12
+bb_2 = bb_1
+cfg = NONLOCAL
+cfg.7_14 = cfg
+D.5599_15 = *cfg.7_14 + 64
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 6, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 4, location:4
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 8, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 9, location:0
+Equivalence classes for Direct node node id 8:source are pointer: 10, location:0
+Equivalence classes for Direct node node id 9:target are pointer: 10, location:0
+Equivalence classes for Direct node node id 10:bb_1 are pointer: 12, location:0
+Equivalence classes for Direct node node id 11:bb_2 are pointer: 12, location:0
+Equivalence classes for Indirect node node id 12:ve_9 are pointer: 13, location:0
+Equivalence classes for Direct node node id 13:e_10 are pointer: 14, location:0
+Equivalence classes for Direct node node id 14:ve_3 are pointer: 16, location:0
+Equivalence classes for Indirect node node id 15:bb_12 are pointer: 11, location:0
+Equivalence classes for Indirect node node id 16:ve_13 are pointer: 15, location:0
+Equivalence classes for Direct node node id 17:cfg.7_14 are pointer: 4, location:0
+Equivalence classes for Direct node node id 18:cfg are pointer: 4, location:0
+Equivalence classes for Indirect node node id 19:D.5599_15 are pointer: 17, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Unifying target to source
+Unifying bb_2 to bb_1
+Unifying cfg.7_14 to cfg
+Uniting pointer but not location equivalent variables
+Unifying NONLOCAL to cfg
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               12
+Non-pointer vars:          1
+Statically unified vars:  4
+Dynamically unified vars: 0
+Iterations:               2
+Number of edges:          15
+Number of implicit edges: 15
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { }
+NONLOCAL = same as cfg
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+source = { NONLOCAL }
+target = same as source
+bb_1 = { ESCAPED NONLOCAL }
+bb_2 = same as bb_1
+ve_9 = { ESCAPED NONLOCAL }
+e_10 = { ESCAPED NONLOCAL }
+ve_3 = { ESCAPED NONLOCAL }
+bb_12 = { ESCAPED NONLOCAL }
+ve_13 = { ESCAPED NONLOCAL }
+cfg.7_14 = same as cfg
+cfg = { ESCAPED NONLOCAL }
+D.5599_15 = { ESCAPED NONLOCAL }
+
+
+Alias information for is_ancestor
+
+Aliased symbols
+
+.MEMD.5611, UID D.5611, voidD.32, is global, call clobbered, default def: .MEMD.5611_17(D)
+
+Call clobber information
+
+ESCAPED, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+bbD.4195_1, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4195_2, points-to non-local, points-to escaped, points-to vars: { }
+veD.4196_3, points-to non-local, points-to escaped, points-to vars: { }
+targetD.4192_5(D), points-to non-local, points-to vars: { }
+sourceD.4191_7(D), points-to non-local, points-to vars: { }
+veD.4196_9, points-to non-local, points-to escaped, points-to vars: { }
+eD.4197_10, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4195_12, points-to non-local, points-to escaped, points-to vars: { }
+veD.4196_13, points-to non-local, points-to escaped, points-to vars: { }
+cfg.7D.5598_14, points-to non-local, points-to escaped, points-to vars: { }
+D.5599_15, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in is_ancestor: 11
+
+Variable: .MEMD.5611, UID D.5611, voidD.32, is global, call clobbered, default def: .MEMD.5611_17(D)
+Variable: sourceD.4191, UID D.4191, struct basic_block *, default def: sourceD.4191_7(D), initial: struct basic_block *
+Variable: targetD.4192, UID D.4192, struct basic_block *, default def: targetD.4192_5(D), initial: struct basic_block *
+Variable: bbD.4195, UID D.4195, struct basic_block *
+Variable: veD.4196, UID D.4196, struct vec_edge *
+Variable: eD.4197, UID D.4197, struct edge *
+Variable: D.5594, UID D.5594, intD.0
+Variable: D.5595, UID D.5595, edge_type
+Variable: cfg.7D.5598, UID D.5598, struct control_flow_graph *
+Variable: D.5599, UID D.5599, struct basic_block *
+Variable: cfgD.4174, UID D.4174, struct control_flow_graph *, is global, call clobbered
+
+Points to sets created:13
+is_ancestor (struct basic_block * sourceD.4191, struct basic_block * targetD.4192)
+{
+  struct edge * eD.4197;
+  struct vec_edge * veD.4196;
+  struct basic_block * bbD.4195;
+  struct basic_block * D.5599;
+  struct control_flow_graph * cfg.7D.5598;
+  edge_type D.5595;
+  intD.0 D.5594;
+
+  # BLOCK 2 freq:165
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG bbD.4195 => targetD.4192_5(D)
+  # SUCC: 3 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:921
+  # PRED: 2 [100.0%]  (fallthru,exec) 11 [100.0%]  (fallthru,dfs_back,exec)
+  # bbD.4195_1 = PHI <targetD.4192_5(D)(2), bbD.4195_2(11)>
+  # DEBUG bbD.4195 => bbD.4195_1
+  if (bbD.4195_1 == sourceD.4191_7(D))
+    goto <bb 10>;
+  else
+    goto <bb 4>;
+  # SUCC: 10 [4.5%]  (true,exec) 4 [95.5%]  (false,exec)
+
+  # BLOCK 4 freq:880
+  # PRED: 3 [95.5%]  (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_9 = bbD.4195_1->predD.4147;
+  # DEBUG veD.4196 => veD.4196_9
+  goto <bb 8>;
+  # SUCC: 8 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9550
+  # PRED: 8 [95.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  eD.4197_10 = veD.4196_3->edgeD.4138;
+  # DEBUG eD.4197 => eD.4197_10
+  # VUSE <.MEMD.5611_17(D)>
+  D.5595_11 = eD.4197_10->typeD.4133;
+  if (D.5595_11 == 1)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+  # SUCC: 6 [4.5%]  (true,exec) 7 [95.5%]  (false,exec)
+
+  # BLOCK 6 freq:430
+  # PRED: 5 [4.5%]  (true,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  bbD.4195_12 = eD.4197_10->sourceD.4134;
+  # DEBUG bbD.4195 => bbD.4195_12
+  goto <bb 9>;
+  # SUCC: 9 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:9120
+  # PRED: 5 [95.5%]  (false,exec)
+  # VUSE <.MEMD.5611_17(D)>
+  veD.4196_13 = veD.4196_3->nextD.4139;
+  # DEBUG veD.4196 => veD.4196_13
+  # SUCC: 8 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 8 freq:10000
+  # PRED: 4 [100.0%]  (fallthru,exec) 7 [100.0%]  (fallthru,dfs_back,exec)
+  # veD.4196_3 = PHI <veD.4196_9(4), veD.4196_13(7)>
+  # DEBUG veD.4196 => veD.4196_3
+  if (veD.4196_3 != 0B)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+  # SUCC: 5 [95.5%]  (true,exec) 9 [4.5%]  (false,exec)
+
+  # BLOCK 9 freq:880
+  # PRED: 6 [100.0%]  (fallthru,exec) 8 [4.5%]  (false,exec)
+  # bbD.4195_2 = PHI <bbD.4195_12(6), bbD.4195_1(8)>
+  # DEBUG bbD.4195 => bbD.4195_2
+  # VUSE <.MEMD.5611_17(D)>
+  cfg.7D.5598_14 = cfgD.4174;
+  # VUSE <.MEMD.5611_17(D)>
+  D.5599_15 = cfg.7D.5598_14->entryD.4155;
+  if (D.5599_15 != bbD.4195_2)
+    goto <bb 11>;
+  else
+    goto <bb 10>;
+  # SUCC: 11 [86.0%]  (true,exec) 10 [14.0%]  (false,exec)
+
+  # BLOCK 11 freq:757
+  # PRED: 9 [86.0%]  (true,exec)
+  goto <bb 3>;
+  # SUCC: 3 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 10 freq:165
+  # PRED: 3 [4.5%]  (true,exec) 9 [14.0%]  (false,exec)
+  # D.5594_4 = PHI <1(3), 0(9)>
+  return D.5594_4;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edge (mark_edge)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+e = &NONLOCAL
+source_2 = *e + 32
+target_3 = *e + 64
+CALLUSED = target_3
+CALLUSED = source_2
+CALLUSED = source_2
+CALLUSED = target_3
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 6, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 4, location:4
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 10, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 11, location:0
+Equivalence classes for Direct node node id 8:e are pointer: 12, location:0
+Equivalence classes for Indirect node node id 9:source_2 are pointer: 7, location:0
+Equivalence classes for Indirect node node id 10:target_3 are pointer: 8, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               3
+Non-pointer vars:          1
+Statically unified vars:  0
+Dynamically unified vars: 0
+Iterations:               1
+Number of edges:          5
+Number of implicit edges: 8
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { }
+NONLOCAL = { ESCAPED NONLOCAL }
+CALLUSED = { ESCAPED NONLOCAL }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+e = { NONLOCAL }
+source_2 = { ESCAPED NONLOCAL }
+target_3 = { ESCAPED NONLOCAL }
+
+
+Alias information for mark_edge
+
+Aliased symbols
+
+.MEMD.5612, UID D.5612, voidD.32, is global, call clobbered, default def: .MEMD.5612_6(D)
+
+Call clobber information
+
+ESCAPED, points-to vars: { }
+CALLUSED, points-to non-local, points-to escaped, points-to vars: { }
+
+Flow-insensitive points-to information
+
+eD.4203_1(D), points-to non-local, points-to vars: { }
+sourceD.4206_2, points-to non-local, points-to escaped, points-to vars: { }
+targetD.4207_3, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in mark_edge: 6
+
+Variable: .MEMD.5612, UID D.5612, voidD.32, is global, call clobbered, default def: .MEMD.5612_6(D)
+Variable: D.5584, UID D.5584, intD.0
+Variable: D.5588, UID D.5588, intD.0
+Variable: eD.4203, UID D.4203, struct edge *, default def: eD.4203_1(D), initial: struct edge *
+Variable: sourceD.4206, UID D.4206, struct basic_block *
+Variable: targetD.4207, UID D.4207, struct basic_block *
+
+Points to sets created:5
+mark_edge (struct edge * eD.4203)
+{
+  struct basic_block * targetD.4207;
+  struct basic_block * sourceD.4206;
+  intD.0 D.5588;
+  intD.0 D.5584;
+
+  # BLOCK 2 freq:10000
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  sourceD.4206_2 = eD.4203_1(D)->sourceD.4134;
+  # DEBUG sourceD.4206 => sourceD.4206_2
+  # VUSE <.MEMD.5612_6(D)>
+  targetD.4207_3 = eD.4203_1(D)->targetD.4135;
+  # DEBUG targetD.4207 => targetD.4207_3
+  # VUSE <.MEMD.5612_6(D)>
+  D.5584_4 = is_ancestorD.4193 (targetD.4207_3, sourceD.4206_2);
+  if (D.5584_4 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+  # SUCC: 3 [61.0%]  (true,exec) 4 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:6102
+  # PRED: 2 [61.0%]  (true,exec)
+  # .MEMD.5612_7 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 3;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:3898
+  # PRED: 2 [39.0%]  (false,exec)
+  # VUSE <.MEMD.5612_6(D)>
+  D.5588_5 = is_ancestorD.4193 (sourceD.4206_2, targetD.4207_3);
+  if (D.5588_5 != 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [39.0%]  (true,exec) 6 [61.0%]  (false,exec)
+
+  # BLOCK 5 freq:1520
+  # PRED: 4 [39.0%]  (true,exec)
+  # .MEMD.5612_8 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 2;
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:2378
+  # PRED: 4 [61.0%]  (false,exec)
+  # .MEMD.5612_9 = VDEF <.MEMD.5612_6(D)>
+  eD.4203_1(D)->typeD.4133 = 4;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:10000
+  # PRED: 3 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function mark_edges (mark_edges)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+current_function = NONLOCAL
+current_function.6_2 = current_function
+cfg_3 = *current_function.6_2 + 32
+e_4 = *cfg_3 + 192
+ESCAPED = e_1
+e_6 = *e_1 + 96
+e_1 = e_4
+e_1 = e_6
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Found location equivalence for node NONLOCAL
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 9, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 7, location:3
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 11, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 12, location:0
+Equivalence classes for Direct node node id 8:current_function.6_2 are pointer: 7, location:0
+Equivalence classes for Direct node node id 9:current_function are pointer: 7, location:0
+Equivalence classes for Indirect node node id 10:cfg_3 are pointer: 13, location:0
+Equivalence classes for Indirect node node id 11:e_4 are pointer: 4, location:0
+Equivalence classes for Direct node node id 12:e_1 are pointer: 6, location:0
+Equivalence classes for Indirect node node id 13:e_6 are pointer: 5, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Unifying current_function.6_2 to current_function
+Uniting pointer but not location equivalent variables
+Unifying NONLOCAL to current_function
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               6
+Non-pointer vars:          1
+Statically unified vars:  2
+Dynamically unified vars: 0
+Iterations:               3
+Number of edges:          12
+Number of implicit edges: 10
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = same as current_function
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+current_function.6_2 = same as current_function
+current_function = { ESCAPED NONLOCAL }
+cfg_3 = { ESCAPED NONLOCAL }
+e_4 = { ESCAPED NONLOCAL }
+e_1 = { ESCAPED NONLOCAL }
+e_6 = { ESCAPED NONLOCAL }
+
+
+Alias information for mark_edges
+
+Aliased symbols
+
+.MEMD.5613, UID D.5613, voidD.32, is global, call clobbered, default def: .MEMD.5613_9(D)
+current_functionD.4113, UID D.4113, struct function *, is global, call clobbered
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+eD.4212_1, points-to non-local, points-to escaped, points-to vars: { }
+current_function.6D.5580_2, points-to non-local, points-to escaped, points-to vars: { }
+cfgD.4211_3, points-to non-local, points-to escaped, points-to vars: { }
+eD.4212_4, points-to non-local, points-to escaped, points-to vars: { }
+eD.4212_6, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in mark_edges: 6
+
+Variable: current_function.6D.5580, UID D.5580, struct function *
+Variable: D.5581, UID D.5581, edge_type
+Variable: .MEMD.5613, UID D.5613, voidD.32, is global, call clobbered, default def: .MEMD.5613_9(D)
+Variable: current_functionD.4113, UID D.4113, struct function *, is global, call clobbered
+Variable: cfgD.4211, UID D.4211, struct control_flow_graph *
+Variable: eD.4212, UID D.4212, struct edge *
+
+Points to sets created:7
+mark_edges ()
+{
+  struct edge * eD.4212;
+  struct control_flow_graph * cfgD.4211;
+  edge_type D.5581;
+  struct function * current_function.6D.5580;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5613_9(D)>
+  current_function.6D.5580_2 = current_functionD.4113;
+  # VUSE <.MEMD.5613_9(D)>
+  cfgD.4211_3 = current_function.6D.5580_2->cfgD.4162;
+  # DEBUG cfgD.4211 => cfgD.4211_3
+  # VUSE <.MEMD.5613_9(D)>
+  eD.4212_4 = cfgD.4211_3->edgeD.4159;
+  # DEBUG eD.4212 => eD.4212_4
+  goto <bb 6>;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 6 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5613_8>
+  D.5581_5 = eD.4212_1->typeD.4133;
+  if (D.5581_5 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+  # SUCC: 4 [29.0%]  (true,exec) 5 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5613_10 = VDEF <.MEMD.5613_8>
+  mark_edgeD.4204 (eD.4212_1);
+  # SUCC: 5 [100.0%]  (fallthru,exec)
+
+  # BLOCK 5 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 4 [100.0%]  (fallthru,exec)
+  # .MEMD.5613_7 = PHI <.MEMD.5613_8(3), .MEMD.5613_10(4)>
+  # VUSE <.MEMD.5613_7>
+  eD.4212_6 = eD.4212_1->nextD.4136;
+  # DEBUG eD.4212 => eD.4212_6
+  # SUCC: 6 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 6 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 5 [100.0%]  (fallthru,dfs_back,exec)
+  # eD.4212_1 = PHI <eD.4212_4(2), eD.4212_6(5)>
+  # .MEMD.5613_8 = PHI <.MEMD.5613_9(D)(2), .MEMD.5613_7(5)>
+  # DEBUG eD.4212 => eD.4212_1
+  if (eD.4212_1 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+  # SUCC: 3 [91.0%]  (true,exec) 7 [9.0%]  (false,exec)
+
+  # BLOCK 7 freq:900
+  # PRED: 6 [9.0%]  (false,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance_recursive (calc_max_distance_recursive)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+bb = &NONLOCAL
+ve_7 = *bb + 224
+e_8 = *ve_3
+D.5576_10 = *e_8 + 32
+ESCAPED = D.5576_10
+ve_13 = *ve_3 + 32
+ve_3 = ve_7
+ve_3 = ve_13
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 7, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 5, location:4
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 9, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 10, location:0
+Equivalence classes for Direct node node id 8:bb are pointer: 11, location:0
+Equivalence classes for Indirect node node id 9:ve_7 are pointer: 12, location:0
+Equivalence classes for Direct node node id 10:e_8 are pointer: 13, location:0
+Equivalence classes for Direct node node id 11:ve_3 are pointer: 15, location:0
+Equivalence classes for Indirect node node id 12:D.5576_10 are pointer: 4, location:0
+Equivalence classes for Indirect node node id 13:ve_13 are pointer: 14, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               6
+Non-pointer vars:          1
+Statically unified vars:  0
+Dynamically unified vars: 0
+Iterations:               2
+Number of edges:          8
+Number of implicit edges: 9
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = { ESCAPED NONLOCAL }
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+bb = { NONLOCAL }
+ve_7 = { ESCAPED NONLOCAL }
+e_8 = { ESCAPED NONLOCAL }
+ve_3 = { ESCAPED NONLOCAL }
+D.5576_10 = { ESCAPED NONLOCAL }
+ve_13 = { ESCAPED NONLOCAL }
+
+
+Alias information for calc_max_distance_recursive
+
+Aliased symbols
+
+.MEMD.5614, UID D.5614, voidD.32, is global, call clobbered, default def: .MEMD.5614_19(D)
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+veD.4221_3, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4216_5(D), points-to non-local, points-to vars: { }
+veD.4221_7, points-to non-local, points-to escaped, points-to vars: { }
+eD.4222_8, points-to non-local, points-to escaped, points-to vars: { }
+D.5576_10, points-to non-local, points-to escaped, points-to vars: { }
+veD.4221_13, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in calc_max_distance_recursive: 11
+
+Variable: bbD.4216, UID D.4216, struct basic_block *, default def: bbD.4216_5(D), initial: struct basic_block *
+Variable: valD.4219, UID D.4219, intD.0
+Variable: maxD.4220, UID D.4220, intD.0
+Variable: veD.4221, UID D.4221, struct vec_edge *
+Variable: eD.4222, UID D.4222, struct edge *
+Variable: .MEMD.5614, UID D.5614, voidD.32, is global, call clobbered, default def: .MEMD.5614_19(D)
+Variable: D.5570, UID D.5570, intD.0
+Variable: D.5573, UID D.5573, edge_type
+Variable: D.5576, UID D.5576, struct basic_block *
+Variable: D.5577, UID D.5577, intD.0
+Variable: D.5578, UID D.5578, intD.0
+
+Points to sets created:8
+calc_max_distance_recursive (struct basic_block * bbD.4216)
+{
+  struct edge * eD.4222;
+  struct vec_edge * veD.4221;
+  intD.0 maxD.4220;
+  intD.0 valD.4219;
+  intD.0 D.5578;
+  intD.0 D.5577;
+  struct basic_block * D.5576;
+  edge_type D.5573;
+  intD.0 D.5570;
+
+  # BLOCK 2 freq:1475
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4220 => 0
+  # VUSE <.MEMD.5614_19(D)>
+  D.5570_6 = bbD.4216_5(D)->max_distanceD.4146;
+  if (D.5570_6 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 10>;
+  # SUCC: 3 [61.0%]  (true,exec) 10 [39.0%]  (false,exec)
+
+  # BLOCK 3 freq:900
+  # PRED: 2 [61.0%]  (true,exec)
+  # VUSE <.MEMD.5614_19(D)>
+  veD.4221_7 = bbD.4216_5(D)->predD.4147;
+  # DEBUG veD.4221 => veD.4221_7
+  goto <bb 8>;
+  # SUCC: 8 [100.0%]  (fallthru,exec)
+
+  # BLOCK 4 freq:9100
+  # PRED: 8 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5614_17>
+  eD.4222_8 = veD.4221_3->edgeD.4138;
+  # DEBUG eD.4222 => eD.4222_8
+  # VUSE <.MEMD.5614_17>
+  D.5573_9 = eD.4222_8->typeD.4133;
+  if (D.5573_9 == 3)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [48.8%]  (true,exec) 6 [51.2%]  (false,exec)
+
+  # BLOCK 5 freq:4438
+  # PRED: 4 [48.8%]  (true,exec)
+  goto <bb 7>;
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:4662
+  # PRED: 4 [51.2%]  (false,exec)
+  # VUSE <.MEMD.5614_17>
+  D.5576_10 = eD.4222_8->sourceD.4134;
+  # .MEMD.5614_20 = VDEF <.MEMD.5614_17>
+  valD.4219_11 = calc_max_distance_recursiveD.4217 (D.5576_10);
+  # DEBUG valD.4219 => valD.4219_11
+  maxD.4220_12 = MAX_EXPR <valD.4219_11, maxD.4220_2>;
+  # DEBUG maxD.4220 => maxD.4220_12
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:9100
+  # PRED: 5 [100.0%]  (fallthru,exec) 6 [100.0%]  (fallthru,exec)
+  # maxD.4220_1 = PHI <maxD.4220_2(5), maxD.4220_12(6)>
+  # .MEMD.5614_16 = PHI <.MEMD.5614_17(5), .MEMD.5614_20(6)>
+  # DEBUG maxD.4220 => maxD.4220_1
+  # VUSE <.MEMD.5614_16>
+  veD.4221_13 = veD.4221_3->nextD.4139;
+  # DEBUG veD.4221 => veD.4221_13
+  # SUCC: 8 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 8 freq:10000
+  # PRED: 3 [100.0%]  (fallthru,exec) 7 [100.0%]  (fallthru,dfs_back,exec)
+  # maxD.4220_2 = PHI <0(3), maxD.4220_1(7)>
+  # veD.4221_3 = PHI <veD.4221_7(3), veD.4221_13(7)>
+  # .MEMD.5614_17 = PHI <.MEMD.5614_19(D)(3), .MEMD.5614_16(7)>
+  # DEBUG veD.4221 => veD.4221_3
+  # DEBUG maxD.4220 => maxD.4220_2
+  if (veD.4221_3 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 9>;
+  # SUCC: 4 [91.0%]  (true,exec) 9 [9.0%]  (false,exec)
+
+  # BLOCK 9 freq:900
+  # PRED: 8 [9.0%]  (false,exec)
+  D.5577_14 = maxD.4220_2 + 1;
+  # .MEMD.5614_21 = VDEF <.MEMD.5614_17>
+  bbD.4216_5(D)->max_distanceD.4146 = D.5577_14;
+  # SUCC: 10 [100.0%]  (fallthru,exec)
+
+  # BLOCK 10 freq:1475
+  # PRED: 2 [39.0%]  (false,exec) 9 [100.0%]  (fallthru,exec)
+  # .MEMD.5614_18 = PHI <.MEMD.5614_19(D)(2), .MEMD.5614_21(9)>
+  # VUSE <.MEMD.5614_18>
+  D.5578_15 = bbD.4216_5(D)->max_distanceD.4146;
+  return D.5578_15;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function calc_max_distance (calc_max_distance)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+cfg = NONLOCAL
+cfg.4_6 = cfg
+D.5562_7 = *cfg.4_6 + 96
+ESCAPED = D.5562_7
+cfg.4_9 = cfg
+bb_10 = *cfg.4_9 + 128
+ESCAPED = bb_3
+bb_16 = *bb_3 + 352
+bb_3 = bb_10
+bb_3 = bb_16
+cfg.4_17 = cfg
+D.5562_18 = *cfg.4_17 + 96
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Found location equivalence for node NONLOCAL
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 10, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 8, location:3
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 12, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 13, location:0
+Equivalence classes for Direct node node id 8:cfg.4_6 are pointer: 8, location:0
+Equivalence classes for Direct node node id 9:cfg are pointer: 8, location:0
+Equivalence classes for Indirect node node id 10:D.5562_7 are pointer: 4, location:0
+Equivalence classes for Direct node node id 11:cfg.4_9 are pointer: 8, location:0
+Equivalence classes for Indirect node node id 12:bb_10 are pointer: 5, location:0
+Equivalence classes for Direct node node id 13:bb_3 are pointer: 7, location:0
+Equivalence classes for Indirect node node id 14:bb_16 are pointer: 6, location:0
+Equivalence classes for Direct node node id 15:cfg.4_17 are pointer: 8, location:0
+Equivalence classes for Indirect node node id 16:D.5562_18 are pointer: 14, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Unifying cfg.4_6 to cfg
+Unifying cfg.4_9 to cfg
+Unifying cfg.4_17 to cfg
+Uniting pointer but not location equivalent variables
+Unifying NONLOCAL to cfg
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               9
+Non-pointer vars:          1
+Statically unified vars:  4
+Dynamically unified vars: 0
+Iterations:               2
+Number of edges:          15
+Number of implicit edges: 13
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = same as cfg
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+cfg.4_6 = same as cfg
+cfg = { ESCAPED NONLOCAL }
+D.5562_7 = { ESCAPED NONLOCAL }
+cfg.4_9 = same as cfg
+bb_10 = { ESCAPED NONLOCAL }
+bb_3 = { ESCAPED NONLOCAL }
+bb_16 = { ESCAPED NONLOCAL }
+cfg.4_17 = same as cfg
+D.5562_18 = { ESCAPED NONLOCAL }
+
+
+Alias information for calc_max_distance
+
+Aliased symbols
+
+.MEMD.5615, UID D.5615, voidD.32, is global, call clobbered, default def: .MEMD.5615_21(D)
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+bbD.4232_3, points-to non-local, points-to escaped, points-to vars: { }
+cfg.4D.5561_6, points-to non-local, points-to escaped, points-to vars: { }
+D.5562_7, points-to non-local, points-to escaped, points-to vars: { }
+cfg.4D.5561_9, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4232_10, points-to non-local, points-to escaped, points-to vars: { }
+bbD.4232_16, points-to non-local, points-to escaped, points-to vars: { }
+cfg.4D.5561_17, points-to non-local, points-to escaped, points-to vars: { }
+D.5562_18, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in calc_max_distance: 8
+
+Variable: .MEMD.5615, UID D.5615, voidD.32, is global, call clobbered, default def: .MEMD.5615_21(D)
+Variable: valD.4230, UID D.4230, intD.0
+Variable: cfg.4D.5561, UID D.5561, struct control_flow_graph *
+Variable: D.5562, UID D.5562, struct basic_block *
+Variable: D.5563, UID D.5563, intD.0
+Variable: maxD.4231, UID D.4231, intD.0
+Variable: bbD.4232, UID D.4232, struct basic_block *
+Variable: cfgD.4174, UID D.4174, struct control_flow_graph *, is global, call clobbered
+
+Points to sets created:10
+calc_max_distance ()
+{
+  struct basic_block * bbD.4232;
+  intD.0 maxD.4231;
+  intD.0 valD.4230;
+  intD.0 D.5563;
+  struct basic_block * D.5562;
+  struct control_flow_graph * cfg.4D.5561;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # DEBUG maxD.4231 => 0
+  # .MEMD.5615_22 = VDEF <.MEMD.5615_21(D)>
+  depth_first_searchD.4185 ();
+  # .MEMD.5615_23 = VDEF <.MEMD.5615_22>
+  mark_edgesD.4209 ();
+  # VUSE <.MEMD.5615_23>
+  cfg.4D.5561_6 = cfgD.4174;
+  # VUSE <.MEMD.5615_23>
+  D.5562_7 = cfg.4D.5561_6->exitD.4156;
+  # .MEMD.5615_24 = VDEF <.MEMD.5615_23>
+  maxD.4231_8 = calc_max_distance_recursiveD.4217 (D.5562_7);
+  # DEBUG maxD.4231 => maxD.4231_8
+  # VUSE <.MEMD.5615_24>
+  cfg.4D.5561_9 = cfgD.4174;
+  # VUSE <.MEMD.5615_24>
+  bbD.4232_10 = cfg.4D.5561_9->bbD.4157;
+  # DEBUG bbD.4232 => bbD.4232_10
+  goto <bb 8>;
+  # SUCC: 8 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 8 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5615_20>
+  D.5563_11 = bbD.4232_3->max_distanceD.4146;
+  if (D.5563_11 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 7>;
+  # SUCC: 4 [29.0%]  (true,exec) 7 [71.0%]  (false,exec)
+
+  # BLOCK 4 freq:2639
+  # PRED: 3 [29.0%]  (true,exec)
+  # .MEMD.5615_25 = VDEF <.MEMD.5615_20>
+  valD.4230_12 = calc_max_distance_recursiveD.4217 (bbD.4232_3);
+  # DEBUG valD.4230 => valD.4230_12
+  if (maxD.4231_2 <= valD.4230_12)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+  # SUCC: 5 [50.0%]  (true,exec) 6 [50.0%]  (false,exec)
+
+  # BLOCK 5 freq:1319
+  # PRED: 4 [50.0%]  (true,exec)
+  maxD.4231_13 = valD.4230_12 + 1;
+  # SUCC: 6 [100.0%]  (fallthru,exec)
+
+  # BLOCK 6 freq:2639
+  # PRED: 5 [100.0%]  (fallthru,exec) 4 [50.0%]  (false,exec)
+  # maxD.4231_4 = PHI <maxD.4231_13(5), maxD.4231_2(4)>
+  # DEBUG maxD.4231 => maxD.4231_4
+  # SUCC: 7 [100.0%]  (fallthru,exec)
+
+  # BLOCK 7 freq:9100
+  # PRED: 3 [71.0%]  (false,exec) 6 [100.0%]  (fallthru,exec)
+  # maxD.4231_1 = PHI <maxD.4231_2(3), maxD.4231_4(6)>
+  # .MEMD.5615_19 = PHI <.MEMD.5615_20(3), .MEMD.5615_25(6)>
+  # DEBUG maxD.4231 => maxD.4231_1
+  # VUSE <.MEMD.5615_19>
+  bbD.4232_16 = bbD.4232_3->nextD.4151;
+  # DEBUG bbD.4232 => bbD.4232_16
+  # SUCC: 8 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 8 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 7 [100.0%]  (fallthru,dfs_back,exec)
+  # maxD.4231_2 = PHI <maxD.4231_8(2), maxD.4231_1(7)>
+  # bbD.4232_3 = PHI <bbD.4232_10(2), bbD.4232_16(7)>
+  # .MEMD.5615_20 = PHI <.MEMD.5615_24(2), .MEMD.5615_19(7)>
+  # DEBUG bbD.4232 => bbD.4232_3
+  # DEBUG maxD.4231 => maxD.4231_2
+  if (bbD.4232_3 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 9>;
+  # SUCC: 3 [91.0%]  (true,exec) 9 [9.0%]  (false,exec)
+
+  # BLOCK 9 freq:900
+  # PRED: 8 [9.0%]  (false,exec)
+  # VUSE <.MEMD.5615_20>
+  cfg.4D.5561_17 = cfgD.4174;
+  # VUSE <.MEMD.5615_20>
+  D.5562_18 = cfg.4D.5561_17->exitD.4156;
+  # .MEMD.5615_26 = VDEF <.MEMD.5615_20>
+  D.5562_18->max_distanceD.4146 = maxD.4231_2;
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+
+
+;; Function fine_tune_cfg (fine_tune_cfg)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+READONLY = &READONLY
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+CALLUSED = *CALLUSED
+CALLUSED = CALLUSED + UNKNOWN
+INTEGER = &ANYTHING
+first_function = NONLOCAL
+first_function.0_1 = first_function
+current_function = NONLOCAL
+current_function = first_function.0_1
+ESCAPED = first_function.0_1
+current_function.1_3 = current_function
+cfg.2_4 = *current_function.1_3 + 32
+cfg = NONLOCAL
+cfg = cfg.2_4
+ESCAPED = cfg.2_4
+current_function.1_5 = current_function
+current_function.3_6 = *current_function.1_5 + 64
+current_function = current_function.3_6
+ESCAPED = current_function.3_6
+current_function.1_2 = current_function
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Found location equivalence for node NONLOCAL
+Equivalence classes for Indirect node node id 0:NULL are pointer: 1, location:0
+Equivalence classes for Indirect node node id 1:ANYTHING are pointer: 2, location:1
+Equivalence classes for Indirect node node id 2:READONLY are pointer: 3, location:2
+Equivalence classes for Indirect node node id 3:ESCAPED are pointer: 7, location:3
+Equivalence classes for Indirect node node id 4:NONLOCAL are pointer: 4, location:3
+Equivalence classes for Indirect node node id 5:CALLUSED are pointer: 9, location:0
+Equivalence classes for Direct node node id 6:STOREDANYTHING are pointer: 0, location:0
+Equivalence classes for Indirect node node id 7:INTEGER are pointer: 10, location:0
+Equivalence classes for Direct node node id 8:first_function.0_1 are pointer: 4, location:0
+Equivalence classes for Direct node node id 9:first_function are pointer: 4, location:0
+Equivalence classes for Direct node node id 10:current_function are pointer: 11, location:0
+Equivalence classes for Direct node node id 11:current_function.1_3 are pointer: 11, location:0
+Equivalence classes for Indirect node node id 12:cfg.2_4 are pointer: 5, location:0
+Equivalence classes for Direct node node id 13:cfg are pointer: 12, location:0
+Equivalence classes for Direct node node id 14:current_function.1_5 are pointer: 11, location:0
+Equivalence classes for Indirect node node id 15:current_function.3_6 are pointer: 6, location:0
+Equivalence classes for Direct node node id 16:current_function.1_2 are pointer: 11, location:0
+STOREDANYTHING is a non-pointer variable, eliminating edges.
+Rewriting constraints and unifying variables
+Unifying first_function.0_1 to first_function
+Unifying current_function.1_3 to current_function
+Unifying current_function.1_5 to current_function
+Unifying current_function.1_2 to current_function
+Uniting pointer but not location equivalent variables
+Unifying NONLOCAL to first_function
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+Stats:
+Total vars:               9
+Non-pointer vars:          1
+Statically unified vars:  5
+Dynamically unified vars: 0
+Iterations:               2
+Number of edges:          14
+Number of implicit edges: 18
+NULL = { }
+ANYTHING = { ANYTHING }
+READONLY = { READONLY }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = same as first_function
+CALLUSED = { }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+first_function.0_1 = same as first_function
+first_function = { ESCAPED NONLOCAL }
+current_function = { ESCAPED NONLOCAL }
+current_function.1_3 = same as current_function
+cfg.2_4 = { ESCAPED NONLOCAL }
+cfg = { ESCAPED NONLOCAL }
+current_function.1_5 = same as current_function
+current_function.3_6 = { ESCAPED NONLOCAL }
+current_function.1_2 = same as current_function
+
+
+Alias information for fine_tune_cfg
+
+Aliased symbols
+
+.MEMD.5616, UID D.5616, voidD.32, is global, call clobbered, default def: .MEMD.5616_8(D)
+first_functionD.4111, UID D.4111, struct function *, is global, call clobbered
+current_functionD.4113, UID D.4113, struct function *, is global, call clobbered
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+CALLUSED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+first_function.0D.5557_1, points-to non-local, points-to escaped, points-to vars: { }
+current_function.1D.5558_2, points-to non-local, points-to escaped, points-to vars: { }
+current_function.1D.5558_3, points-to non-local, points-to escaped, points-to vars: { }
+cfg.2D.5559_4, points-to non-local, points-to escaped, points-to vars: { }
+current_function.1D.5558_5, points-to non-local, points-to escaped, points-to vars: { }
+current_function.3D.5560_6, points-to non-local, points-to escaped, points-to vars: { }
+
+
+Referenced variables in fine_tune_cfg: 8
+
+Variable: .MEMD.5616, UID D.5616, voidD.32, is global, call clobbered, default def: .MEMD.5616_8(D)
+Variable: first_function.0D.5557, UID D.5557, struct function *
+Variable: current_function.1D.5558, UID D.5558, struct function *
+Variable: cfg.2D.5559, UID D.5559, struct control_flow_graph *
+Variable: current_function.3D.5560, UID D.5560, struct function *
+Variable: first_functionD.4111, UID D.4111, struct function *, is global, call clobbered
+Variable: cfgD.4174, UID D.4174, struct control_flow_graph *, is global, call clobbered
+Variable: current_functionD.4113, UID D.4113, struct function *, is global, call clobbered
+
+Points to sets created:8
+fine_tune_cfg ()
+{
+  struct function * current_function.3D.5560;
+  struct control_flow_graph * cfg.2D.5559;
+  struct function * current_function.1D.5558;
+  struct function * first_function.0D.5557;
+
+  # BLOCK 2 freq:900
+  # PRED: ENTRY [100.0%]  (fallthru,exec)
+  # VUSE <.MEMD.5616_8(D)>
+  first_function.0D.5557_1 = first_functionD.4111;
+  # .MEMD.5616_9 = VDEF <.MEMD.5616_8(D)>
+  current_functionD.4113 = first_function.0D.5557_1;
+  goto <bb 4>;
+  # SUCC: 4 [100.0%]  (fallthru,exec)
+
+  # BLOCK 3 freq:9100
+  # PRED: 4 [91.0%]  (true,exec)
+  # VUSE <.MEMD.5616_7>
+  current_function.1D.5558_3 = current_functionD.4113;
+  # VUSE <.MEMD.5616_7>
+  cfg.2D.5559_4 = current_function.1D.5558_3->cfgD.4162;
+  # .MEMD.5616_10 = VDEF <.MEMD.5616_7>
+  cfgD.4174 = cfg.2D.5559_4;
+  # .MEMD.5616_11 = VDEF <.MEMD.5616_10>
+  calc_max_distanceD.4228 ();
+  # VUSE <.MEMD.5616_11>
+  current_function.1D.5558_5 = current_functionD.4113;
+  # VUSE <.MEMD.5616_11>
+  current_function.3D.5560_6 = current_function.1D.5558_5->nextD.4163;
+  # .MEMD.5616_12 = VDEF <.MEMD.5616_11>
+  current_functionD.4113 = current_function.3D.5560_6;
+  # SUCC: 4 [100.0%]  (fallthru,dfs_back,exec)
+
+  # BLOCK 4 freq:10000
+  # PRED: 2 [100.0%]  (fallthru,exec) 3 [100.0%]  (fallthru,dfs_back,exec)
+  # .MEMD.5616_7 = PHI <.MEMD.5616_9(2), .MEMD.5616_12(3)>
+  # VUSE <.MEMD.5616_7>
+  current_function.1D.5558_2 = current_functionD.4113;
+  if (current_function.1D.5558_2 != 0B)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+  # SUCC: 3 [91.0%]  (true,exec) 5 [9.0%]  (false,exec)
+
+  # BLOCK 5 freq:900
+  # PRED: 4 [9.0%]  (false,exec)
+  return;
+  # SUCC: EXIT [100.0%] 
+
+}
+
+

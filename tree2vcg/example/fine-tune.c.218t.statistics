@@ -1,0 +1,123 @@
+31 ccp "Constants propagated" "is_ancestor" 2
+35 copyprop "Copies propagated" "is_ancestor" 2
+35 copyprop "Statements deleted" "is_ancestor" 2
+37 cddce "Statements deleted" "is_ancestor" 1
+31 ccp "Constants propagated" "calc_max_distance_recursive" 2
+35 copyprop "Statements deleted" "calc_max_distance_recursive" 1
+31 ccp "Constants propagated" "calc_max_distance" 1
+31 ccp "Statements deleted" "calc_max_distance" 1
+35 copyprop "Copies propagated" "calc_max_distance" 3
+37 cddce "Statements deleted" "calc_max_distance" 2
+69 fre "SCC iterations == 3" "search" 1
+69 fre "Eliminated" "search" 1
+70 copyprop "Copies propagated" "search" 1
+70 copyprop "Statements deleted" "search" 1
+72 vrp "Number of ASSERT_EXPR expressions inserted" "search" 4
+96 pre "SCC iterations == 3" "search" 1
+96 pre "compute_antic iterations == 3" "search" 1
+96 pre "insert iterations == 1" "search" 1
+125 vrp "Number of ASSERT_EXPR expressions inserted" "search" 5
+128 cddce "PHI nodes deleted" "search" 1
+69 fre "SCC iterations == 3" "depth_first_search" 1
+69 fre "Eliminated" "depth_first_search" 2
+70 copyprop "Copies propagated" "depth_first_search" 2
+70 copyprop "Statements deleted" "depth_first_search" 2
+72 vrp "Number of ASSERT_EXPR expressions inserted" "depth_first_search" 2
+96 pre "SCC iterations == 3" "depth_first_search" 1
+96 pre "compute_antic iterations == 3" "depth_first_search" 1
+96 pre "insert iterations == 1" "depth_first_search" 1
+125 vrp "Number of ASSERT_EXPR expressions inserted" "depth_first_search" 3
+128 cddce "PHI nodes deleted" "depth_first_search" 1
+69 fre "SCC iterations == 3" "is_ancestor" 1
+72 vrp "Number of ASSERT_EXPR expressions inserted" "is_ancestor" 4
+83 dom "Copies propagated" "is_ancestor" 2
+96 pre "SCC iterations == 3" "is_ancestor" 1
+96 pre "compute_antic iterations == 3" "is_ancestor" 1
+96 pre "insert iterations == 2" "is_ancestor" 1
+96 pre "Insertions" "is_ancestor" 2
+96 pre "New PHIs" "is_ancestor" 2
+96 pre "Eliminated" "is_ancestor" 2
+100 copyprop "Copies propagated" "is_ancestor" 1
+100 copyprop "Statements deleted" "is_ancestor" 2
+125 vrp "Number of ASSERT_EXPR expressions inserted" "is_ancestor" 8
+72 vrp "Number of ASSERT_EXPR expressions inserted" "mark_edge" 3
+96 pre "compute_antic iterations == 2" "mark_edge" 1
+96 pre "insert iterations == 1" "mark_edge" 1
+125 vrp "Number of ASSERT_EXPR expressions inserted" "mark_edge" 3
+69 fre "SCC iterations == 3" "mark_edges" 1
+72 vrp "Number of ASSERT_EXPR expressions inserted" "mark_edges" 1
+96 pre "SCC iterations == 3" "mark_edges" 1
+96 pre "compute_antic iterations == 3" "mark_edges" 1
+96 pre "insert iterations == 1" "mark_edges" 1
+125 vrp "Number of ASSERT_EXPR expressions inserted" "mark_edges" 2
+128 cddce "PHI nodes deleted" "mark_edges" 1
+69 fre "SCC iterations == 3" "calc_max_distance_recursive" 1
+69 fre "SCC iterations == 3" "calc_max_distance_recursive" 1
+72 vrp "Number of ASSERT_EXPR expressions inserted" "calc_max_distance_recursive" 4
+96 pre "SCC iterations == 3" "calc_max_distance_recursive" 1
+96 pre "SCC iterations == 3" "calc_max_distance_recursive" 1
+96 pre "compute_antic iterations == 3" "calc_max_distance_recursive" 1
+96 pre "insert iterations == 2" "calc_max_distance_recursive" 1
+96 pre "Insertions" "calc_max_distance_recursive" 1
+96 pre "New PHIs" "calc_max_distance_recursive" 2
+96 pre "Eliminated" "calc_max_distance_recursive" 2
+100 copyprop "Copies propagated" "calc_max_distance_recursive" 3
+100 copyprop "Statements deleted" "calc_max_distance_recursive" 1
+101 dceloop "Statements deleted" "calc_max_distance_recursive" 1
+101 dceloop "PHI nodes deleted" "calc_max_distance_recursive" 1
+125 vrp "Number of ASSERT_EXPR expressions inserted" "calc_max_distance_recursive" 6
+125 vrp "Constants propagated" "calc_max_distance_recursive" 1
+128 cddce "PHI nodes deleted" "calc_max_distance_recursive" 1
+69 fre "SCC iterations == 3" "calc_max_distance" 1
+69 fre "SCC iterations == 3" "calc_max_distance" 1
+69 fre "Eliminated" "calc_max_distance" 2
+70 copyprop "Copies propagated" "calc_max_distance" 2
+70 copyprop "Statements deleted" "calc_max_distance" 2
+72 vrp "Number of ASSERT_EXPR expressions inserted" "calc_max_distance" 5
+96 pre "SCC iterations == 3" "calc_max_distance" 1
+96 pre "SCC iterations == 3" "calc_max_distance" 1
+96 pre "compute_antic iterations == 3" "calc_max_distance" 1
+96 pre "insert iterations == 1" "calc_max_distance" 1
+125 vrp "Number of ASSERT_EXPR expressions inserted" "calc_max_distance" 6
+128 cddce "PHI nodes deleted" "calc_max_distance" 1
+69 fre "SCC iterations == 3" "fine_tune_cfg" 1
+69 fre "Eliminated" "fine_tune_cfg" 1
+70 copyprop "Copies propagated" "fine_tune_cfg" 1
+70 copyprop "Statements deleted" "fine_tune_cfg" 1
+72 vrp "Number of ASSERT_EXPR expressions inserted" "fine_tune_cfg" 1
+83 dom "Redundant expressions eliminated" "fine_tune_cfg" 2
+83 dom "Copies propagated" "fine_tune_cfg" 2
+87 dce "Statements deleted" "fine_tune_cfg" 2
+96 pre "SCC iterations == 3" "fine_tune_cfg" 1
+96 pre "compute_antic iterations == 3" "fine_tune_cfg" 1
+96 pre "insert iterations == 1" "fine_tune_cfg" 1
+125 vrp "Number of ASSERT_EXPR expressions inserted" "fine_tune_cfg" 1
+128 cddce "PHI nodes deleted" "fine_tune_cfg" 1
+31 ccp "Constants propagated" 5
+31 ccp "Statements deleted" 1
+35 copyprop "Copies propagated" 5
+35 copyprop "Statements deleted" 3
+37 cddce "Statements deleted" 3
+69 fre "SCC iterations == 3" 9
+69 fre "Eliminated" 6
+70 copyprop "Copies propagated" 6
+70 copyprop "Statements deleted" 6
+72 vrp "Number of ASSERT_EXPR expressions inserted" 24
+83 dom "Copies propagated" 4
+83 dom "Redundant expressions eliminated" 2
+87 dce "Statements deleted" 2
+96 pre "compute_antic iterations == 2" 1
+96 pre "compute_antic iterations == 3" 7
+96 pre "Insertions" 3
+96 pre "New PHIs" 4
+96 pre "SCC iterations == 3" 9
+96 pre "insert iterations == 1" 6
+96 pre "insert iterations == 2" 2
+96 pre "Eliminated" 4
+100 copyprop "Copies propagated" 4
+100 copyprop "Statements deleted" 3
+101 dceloop "PHI nodes deleted" 1
+101 dceloop "Statements deleted" 1
+125 vrp "Constants propagated" 1
+125 vrp "Number of ASSERT_EXPR expressions inserted" 34
+128 cddce "PHI nodes deleted" 6
