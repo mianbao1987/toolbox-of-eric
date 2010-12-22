@@ -42,5 +42,9 @@ extern void output_vcg (void);
 extern void handle_options (int argc, char *argv[]);
 
 /* fine_tune.c */
-extern void fine_tune_vcg (void);
+extern void fine_tune_cfg (void);
+
+/* vcg.h */
+extern void cfg_to_vcg (void);
+
 #endif

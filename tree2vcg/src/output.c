@@ -45,7 +45,7 @@ output_node (struct gdl_node *node)
   str = gdl_get_node_label (node);
   if (str != NULL)
     {
-      fprintf (fout, "label: \"", str);
+      fprintf (fout, "label: \"");
       for (i = 0; i < strlen (str); i++)
         {
           if (str[i] == '"')
@@ -77,7 +77,6 @@ static void
 output_edge (struct gdl_edge *edge)
 {
   char *str;
-  int val;
   int i;
 
   fputs ("edge: {\n", fout);
@@ -96,7 +95,7 @@ output_edge (struct gdl_edge *edge)
   str = gdl_get_edge_label (edge);
   if (str != NULL)
     {
-      fprintf (fout, "label: \"", str);
+      fprintf (fout, "label: \"");
       for (i = 0; i < strlen (str); i++)
         {
           if (str[i] == '"')
@@ -130,7 +129,7 @@ output_graph_attributes (struct gdl_graph *graph)
   str = gdl_get_graph_label (graph);
   if (str != NULL)
     {
-      fprintf (fout, "label: \"", str);
+      fprintf (fout, "label: \"");
       for (i = 0; i < strlen (str); i++)
         {
           if (str[i] == '"')
