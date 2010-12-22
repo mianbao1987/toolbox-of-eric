@@ -1,6 +1,6 @@
 /* Handle command line options.
 
-   Copyright (C) 2009, 2010 Eric Fisher, joefoxreal@gmail.com. 
+   Copyright (C) 2009, 2010 Mingjie Xing, mingjie.xing@gmail.com. 
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ char *fin_name, *fout_name;
 FILE *fin, *fout;
 
 const char *argp_program_version = "tree2vcg 0.5";
-const char *argp_program_bug_address = "joefoxreal@gmail.com";
+const char *argp_program_bug_address = "mingjie.xing@gmail.com";
 
 static struct argp_option options[] = {
   {"output", 'o', "FILE", 0, "Output to FILE instead of standard output"},

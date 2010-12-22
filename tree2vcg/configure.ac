@@ -2,7 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT(tree2vcg, 0.5, joefoxreal@gmail.com)
+AC_INIT(tree2vcg, 0.6, mingjie.xing@gmail.com)
+AC_CONFIG_HEADERS(config.h)
 
 # automake
 AM_INIT_AUTOMAKE
@@ -12,11 +13,15 @@ AC_PROG_YACC
 AC_PROG_CC
 AC_PROG_LEX
 
-AC_ARG_WITH(libiberty, [  --with-libiberty=PATH		specify prefix directory for installed libiberty package.
-				Equivalent to --with-libiberty-include=PATH/include
-				plus --with-mpfr-lib=PATH/lib])
-AC_ARG_WITH(libiberty_include, [  --with-libiberty-include=PATH	specify directory for installed libiberty include files])
-AC_ARG_WITH(libiberty_lib, [  --with-libiberty-lib=PATH	specify directory for installed libiberty library])
+AC_ARG_WITH(libiberty, [AS_HELP_STRING([--with-libiberty=PATH],
+  [specify prefix directory for installed libiberty package.  Equivalent to
+   --with-libiberty-include=PATH/include plus --with-libiberty-lib=PATH/lib])])
+
+AC_ARG_WITH(libiberty_include, [AS_HELP_STRING([--with-libiberty-include=PATH],
+  [specify directory for installed libiberty include files])])
+
+AC_ARG_WITH(libiberty_lib, [AS_HELP_STRING([--with-libiberty-lib=PATH],
+  [specify directory for installed libiberty library])])
 
 if test "x$with_libiberty" != x; then
   liberty_inc="-I$with_libiberty/include"

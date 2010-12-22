@@ -17,7 +17,7 @@
 
 # Makefile for tree2vcg.
 # 
-# Copyright (C) 2009, 2010 Eric Fisher, joefoxreal@gmail.com. 
+# Copyright (C) 2009, 2010 Mingjie Xing, mingjie.xing@gmail.com. 
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -58,6 +58,7 @@ am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
+CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
@@ -69,7 +70,7 @@ tree2vcg_OBJECTS = $(am_tree2vcg_OBJECTS)
 tree2vcg_LDADD = $(LDADD)
 tree2vcg_LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(tree2vcg_LDFLAGS) \
 	$(LDFLAGS) -o $@
-DEFAULT_INCLUDES = -I.@am__isrc@
+DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
@@ -179,7 +180,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_YFLAGS = -d -t
-AM_CFLAGS = $(LIBERTY_INC)
+AM_CFLAGS = $(LIBERTY_INC) -Wall
 tree2vcg_SOURCES = \
   cfg.h cfg.c \
   edge-attr.def \

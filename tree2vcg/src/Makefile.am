@@ -1,6 +1,6 @@
 # Makefile for tree2vcg.
 # 
-# Copyright (C) 2009, 2010 Eric Fisher, joefoxreal@gmail.com. 
+# Copyright (C) 2009, 2010 Mingjie Xing, mingjie.xing@gmail.com. 
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 bin_PROGRAMS = tree2vcg
 
 AM_YFLAGS = -d -t
-AM_CFLAGS = $(LIBERTY_INC)
+AM_CFLAGS = $(LIBERTY_INC) -Wall
 
 tree2vcg_SOURCES = \
   cfg.h cfg.c \

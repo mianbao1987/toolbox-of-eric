@@ -1,6 +1,6 @@
 /* Control flow graph
 
-   Copyright (C) 2009, 2010 Eric Fisher, joefoxreal@gmail.com. 
+   Copyright (C) 2009, 2010 Mingjie Xing, mingjie.xing@gmail.com. 
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <assert.h>
 
 #include <error.h>
