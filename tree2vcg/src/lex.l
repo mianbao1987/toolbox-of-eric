@@ -27,6 +27,11 @@ digits [[:digit:]]+
 identifier [[:alpha:]][[:alnum:]_]*
 
 %option noyywrap
+ /* Suppress gcc warning input() defined but not used use: %option noinput.  */
+ /* For lint purists according to flex manual use: %option nounput.  */
+%option noinput
+%option nounput
+
 
 %s fn
 %s bb
