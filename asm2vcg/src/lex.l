@@ -63,13 +63,11 @@ identifier [[:alpha:]][[:alnum:]_]*
 
 <pred>"ENTRY" {
     yylval.str = xstrdup (yytext);
-    BEGIN (INITIAL);
     return PRED_NUM;
   }
 
 <pred>{digits} {
     yylval.str = xstrdup (yytext);
-    BEGIN (INITIAL);
     return PRED_NUM;
   }
 
@@ -80,13 +78,11 @@ identifier [[:alpha:]][[:alnum:]_]*
 
 <succ>"EXIT" {
     yylval.str = xstrdup (yytext);
-    BEGIN (INITIAL);
     return SUCC_NUM;
   }
 
 <succ>{digits} {
     yylval.str = xstrdup (yytext);
-    BEGIN (INITIAL);
     return SUCC_NUM;
   }
 
@@ -115,6 +111,8 @@ identifier [[:alpha:]][[:alnum:]_]*
 
 <pred,succ>"("[^\)]*")" { /* omit */ }
 <pred,succ>"["[^\]]*"]" { /* omit */ }
+<pred>\n { BEGIN (INITIAL); }
+<succ>\n { BEGIN (INITIAL); }
 
 "#".* {
     /* omit other comments */

@@ -84,12 +84,15 @@ cfg_to_vcg (void)
           gdl_add_subgraph (fun_graph, bb_graph);
 
           /* bb node */
-          node = gdl_new_node (NULL);
+          str_a = concat (current_function->name, "_", bb->name, NULL);
+
+          node = gdl_new_node (str_a);
           if (bb->text == NULL)
             gdl_set_node_label (node, bb->name);
           else
             gdl_set_node_label (node, bb->text);
 
+          gdl_set_node_vertical_order (node, bb->max_distance);
           gdl_add_node (bb_graph, node);
         }
 
