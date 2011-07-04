@@ -1,0 +1,24 @@
+#########
+# Usage #
+#########
+
+First, rewrite the configure file to set up the directories, options (and actions).
+
+Then, run the command:
+  gccbat -f config.sh -d
+to print the running commands.
+
+If the running commands are correct, then run it actually:
+  gccbat -f config.sh
+
+Also, actions can be specified through command line:
+  gccbat -f config.sh -a "..."
+
+########
+# Note #
+########
+
+Files under "contrib" are copied from gcc/contrib.  File gccbat is implemented
+based on them.
+
+mingjie.xing@gmail.com

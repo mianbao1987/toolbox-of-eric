@@ -1,0 +1,190 @@
+#! /bin/sh
+#
+# Top command.
+#
+# (C) 2011 Free Software Foundation
+# This script is Free Software, and it can be copied, distributed and
+# modified as defined in the GNU General Public License.  A copy of
+# its license can be downloaded from http://www.gnu.org/copyleft/gpl.html
+
+#####################
+# Internal Commands #
+#####################
+
+# Update svn
+TC_UPDATE=0
+
+# Remove build directory
+TC_CLEAN=0
+
+# Run configure
+TC_CONFIGURE=0
+
+# Build, i.e. make
+TC_BUILD=0
+
+# Run regression test
+TC_CHECK=0
+
+# Run install
+TC_INSTALL=0
+
+# Dry run
+TC_DRY_RUN=0
+
+#############
+# Functions #
+#############
+
+# Change to the directory given by $1.
+
+message () {
+  echo "gccbat: $@"
+}
+
+error () {
+  message "error: $1"
+  exit 1
+}
+
+run () {
+  if [ $TC_DRY_RUN -ne 0 ]; then 
+    echo "flying: $@"
+  else
+    eval $@
+  fi
+}
+
+go () {
+  message "cd $1"
+  run cd $1 || error "Could not change directory to $1"
+}
+
+# Update svn
+update () {
+  go $TC_SOURCE_DIR
+  message "update svn"
+  run $TC_CONTRIB_DIR/gcc_update
+}
+
+# Build clean gcc.
+clean () {
+  # rm objdir
+  message "rm -rf $TC_BUILD_DIR"
+  run rm -rf $TC_BUILD_DIR
+}
+
+# Configure gcc.
+configure () {
+  message "mkdir -p $TC_BUILD_DIR"
+  run mkdir -p $TC_BUILD_DIR || error "Could not create $TC_BUILD_DIR"
+  go $TC_BUILD_DIR
+  message "$TC_SOURCE_DIR/configure $TC_CONFIGURE_OPTION"
+  run $TC_SOURCE_DIR/configure $TC_CONFIGURE_OPTION || \
+    error "Could not configure gcc"
+}
+
+# Build gcc.
+build () {
+  go $TC_BUILD_DIR
+  # make
+  message "make $TC_MAKE_OPTION"
+  run make $TC_MAKE_OPTION || error "Could not build gcc"
+}
+
+# Regression test
+check () {
+  go $TC_BUILD_DIR
+  message "regression test"
+  run make check-gcc || error "Could not do regression test"
+  message "generate test summary"
+  run $TC_CONTRIB_DIR/test_summary || error "Could not generate test summary"
+}
+
+# Install gcc.
+install () {
+  go $TC_BUILD_DIR
+  message "make install"
+  run make install || error "Could not install gcc"
+}
+
+usage () {
+cat <<EOF
+gccbat -f config [options]
+  -a action	specify actions.
+  -d		dry run, just print.
+  -f config	specify configure file.
+  -h		show usage.
+EOF
+  exit 1
+}
+
+#######
+# Run #
+#######
+
+# Issue usage if no parameters are given.
+test $# -eq 0 && usage
+
+while true; do
+  case "$1" in
+    "-a") action=$2; shift 2;;
+    "-f") config_file=$2; shift 2;;
+    "-d") TC_DRY_RUN=1; shift 1;;
+    "-h") usage;;
+    *) break;
+  esac
+done
+
+# Load configuration
+PATH=.:$PATH
+. $config_file
+
+# Set actions
+if [ -z "$action" ]; then
+  action="$TC_ACTION";
+fi
+
+# Init configuration
+for a in $action; do
+  case "$a" in
+    "update") TC_UPDATE=1;;
+    "clean") TC_CLEAN=1;;
+    "configure") TC_CONFIGURE=1;;
+    "build") TC_BUILD=1;;
+    "check") TC_CHECK=1;;
+    "install") TC_INSTALL=1;;
+    *) break;;
+  esac
+done
+
+# Update svn
+if [ $TC_UPDATE -ne 0 ]; then
+  update;
+fi
+
+# Clean build directory
+if [ $TC_CLEAN -ne 0 ]; then 
+  clean;
+fi
+
+# Configure 
+if [ $TC_CONFIGURE -ne 0 ]; then 
+  configure;
+fi
+
+# Build
+if [ $TC_BUILD -ne 0 ]; then 
+  build;
+fi
+
+# Regression test
+if [ $TC_CHECK -ne 0 ]; then
+  check;
+fi
+
+# Install
+if [ $TC_INSTALL -ne 0 ]; then
+  install;
+fi
+
