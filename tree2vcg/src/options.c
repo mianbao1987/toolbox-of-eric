@@ -29,8 +29,8 @@
 char *fin_name, *fout_name;
 FILE *fin, *fout;
 
-const char *argp_program_version = "tree2vcg 0.5";
-const char *argp_program_bug_address = "mingjie.xing@gmail.com";
+const char *argp_program_version = "tree2vcg";
+const char *argp_program_bug_address = "mianbao1987@gmail.com";
 
 static struct argp_option options[] = {
   {"output", 'o', "FILE", 0, "Output to FILE instead of standard output"},
